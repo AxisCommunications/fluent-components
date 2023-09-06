@@ -1,0 +1,11 @@
+{
+  "extends": ["../../.eslintrc.json"],
+  "root": true,
+  "ignorePatterns": ["lib", "**/*.js"],
+  "parserOptions": {
+    "project": ["./tsconfig.src.json"]
+  },
+  "rules": {
+    "eqeqeq": ["error", "always", { "null": "ignore" }]
+  }
+}

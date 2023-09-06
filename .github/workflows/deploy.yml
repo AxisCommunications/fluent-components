@@ -1,0 +1,42 @@
+name: Deploy examples to gh-pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  docs-gh-pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm install --frozen-lockfile
+
+      - name: Build example project
+        run: pnpm --filter examples build:deploy
+
+      - name: Deploy example page to gh-pages
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git switch --orphan gh-pages
+          git add -f docs
+          git commit -m "docs: update examplepage"
+          git push -f origin gh-pages

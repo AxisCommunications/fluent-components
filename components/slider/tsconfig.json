@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.src.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "lib": ["es5", "es6", "dom", "dom.iterable"]
+  },
+  "include": ["src"],
+  "exclude": ["**/*.spec.*", "vitest.config.ts"]
+}

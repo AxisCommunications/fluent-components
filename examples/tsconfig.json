@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["es5", "es6", "dom", "dom.iterable", "ES2015", "es2017"],
+    "paths": {
+      "@axiscommunications/fluent-hooks": ["hooks/src"],
+      "@axiscommunications/fluent-password-input": [
+        "components/password-input/src"
+      ],
+      "@axiscommunications/fluent-icons": ["icons/src"],
+      "@axiscommunications/fluent-slider": ["components/slider/src"],
+      "@axiscommunications/fluent-stepper": ["components/stepper/src"],
+      "@axiscommunications/fluent-styles": ["styles/src"],
+      "@axiscommunications/fluent-theme": ["theme/src"],
+      "@axiscommunications/fluent-topbar": ["components/topbar/src"],
+      "@axiscommunications/fluent-notification-bar": [
+        "components/notification-bar/src"
+      ]
+    }
+  },
+  "include": ["src"]
+}

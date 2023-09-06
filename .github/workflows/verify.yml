@@ -1,0 +1,42 @@
+name: Verify code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm install --frozen-lockfile
+
+      - name: Check commit message
+        if: ${{ github.event_name == 'pull_request' }}
+        run: pnpm commitlint ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
+
+      - name: Build, linting & Unit testing
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: |
+          git diff --exit-code
+          pnpm build
+          pnpm check
+          pnpm test

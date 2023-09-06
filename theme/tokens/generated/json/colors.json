@@ -1,0 +1,496 @@
+{
+  "#000000": [
+    "dark.colorNeutralForegroundOnBrand",
+    "dark.colorNeutralBackground5",
+    "dark.colorNeutralBackground4Pressed",
+    "dark.colorStrokeFocus1",
+    "light.colorNeutralForegroundOnBrand",
+    "light.colorStrokeFocus2"
+  ],
+  "#00aef2": [
+    "dark.colorBrandForegroundLinkPressed"
+  ],
+  "#0182b3": [
+    "light.colorBrandForegroundLinkHover"
+  ],
+  "#026690": [
+    "light.colorBrandForegroundLinkPressed"
+  ],
+  "#028fcc": [
+    "light.colorBrandForegroundLink",
+    "light.colorBrandForegroundLinkSelected"
+  ],
+  "#050505": [
+    "dark.colorNeutralBackground5Pressed"
+  ],
+  "#0a0a0a": [
+    "dark.colorNeutralBackground4",
+    "dark.colorNeutralBackground3Pressed",
+    "dark.colorNeutralStrokeSubtle"
+  ],
+  "#0f0f0f": [
+    "dark.colorNeutralBackground5Selected"
+  ],
+  "#141414": [
+    "dark.colorNeutralBackground3",
+    "dark.colorNeutralBackground2Pressed",
+    "dark.colorNeutralBackground5Hover",
+    "dark.colorNeutralBackgroundDisabled"
+  ],
+  "#1a1a1a": [
+    "dark.colorNeutralBackground4Selected"
+  ],
+  "#1f1f1f": [
+    "dark.colorNeutralBackground2",
+    "dark.colorNeutralBackground1Pressed",
+    "dark.colorNeutralBackground4Hover"
+  ],
+  "#242424": [
+    "dark.colorNeutralForeground1Static",
+    "dark.colorNeutralForegroundInverted",
+    "dark.colorNeutralForegroundInvertedHover",
+    "dark.colorNeutralForegroundInvertedPressed",
+    "dark.colorNeutralForegroundInvertedSelected",
+    "dark.colorNeutralForegroundInverted2",
+    "dark.colorNeutralBackground3Selected",
+    "light.colorNeutralForeground1",
+    "light.colorNeutralForeground1Hover",
+    "light.colorNeutralForeground1Pressed",
+    "light.colorNeutralForeground1Selected",
+    "light.colorNeutralForeground2Hover",
+    "light.colorNeutralForeground2Pressed",
+    "light.colorNeutralForeground2Selected",
+    "light.colorNeutralForeground2LinkHover",
+    "light.colorNeutralForeground2LinkPressed",
+    "light.colorNeutralForeground2LinkSelected",
+    "light.colorNeutralForeground1Static",
+    "light.colorNeutralForegroundInverted"
+  ],
+  "#292929": [
+    "dark.colorNeutralBackground1",
+    "dark.colorNeutralBackground3Hover",
+    "dark.colorNeutralStrokeOnBrand",
+    "light.colorNeutralBackgroundInverted"
+  ],
+  "#2e2e2e": [
+    "dark.colorNeutralBackground2Selected",
+    "dark.colorNeutralStroke3",
+    "dark.colorSubtleBackgroundPressed"
+  ],
+  "#333333": [
+    "dark.colorNeutralBackground6",
+    "dark.colorNeutralBackground2Hover",
+    "dark.colorNeutralStencil2",
+    "dark.colorSubtleBackgroundSelected",
+    "light.colorNeutralBackgroundStatic"
+  ],
+  "#34c9ff": [
+    "dark.colorBrandForegroundLink",
+    "dark.colorBrandForegroundLinkSelected"
+  ],
+  "#383838": [
+    "dark.colorNeutralBackground1Selected",
+    "dark.colorNeutralStroke2",
+    "dark.colorSubtleBackgroundHover"
+  ],
+  "#3d3d3d": [
+    "dark.colorNeutralBackground1Hover",
+    "dark.colorNeutralBackgroundStatic"
+  ],
+  "#424242": [
+    "dark.colorNeutralStrokeDisabled",
+    "light.colorNeutralForeground2",
+    "light.colorNeutralForeground3Hover",
+    "light.colorNeutralForeground3Pressed",
+    "light.colorNeutralForeground3Selected",
+    "light.colorNeutralForeground2Link"
+  ],
+  "#4d4d4d": [
+    "light.colorNeutralStrokeAccessiblePressed"
+  ],
+  "#54d2ff": [
+    "dark.colorBrandForegroundLinkHover"
+  ],
+  "#575757": [
+    "dark.colorNeutralStencil1",
+    "light.colorNeutralStrokeAccessibleHover"
+  ],
+  "#5c3e00": [
+    "dark.colorBrandBackground2Pressed",
+    "dark.colorBrandStroke2"
+  ],
+  "#5c5c5c": [
+    "dark.colorNeutralForegroundDisabled"
+  ],
+  "#616161": [
+    "light.colorNeutralForeground3",
+    "light.colorNeutralStrokeAccessible"
+  ],
+  "#666666": [
+    "dark.colorNeutralStroke1"
+  ],
+  "#6b6b6b": [
+    "dark.colorNeutralStroke1Pressed"
+  ],
+  "#707070": [
+    "dark.colorNeutralStroke1Selected",
+    "light.colorNeutralForeground4"
+  ],
+  "#757575": [
+    "dark.colorNeutralStroke1Hover"
+  ],
+  "#795102": [
+    "dark.colorBrandBackground2"
+  ],
+  "#966805": [
+    "dark.colorBrandStroke2Pressed",
+    "light.colorBrandForeground2Pressed"
+  ],
+  "#999999": [
+    "dark.colorNeutralForeground4"
+  ],
+  "#ad7600": [
+    "dark.colorBrandBackgroundPressed",
+    "dark.colorBrandBackground2Hover"
+  ],
+  "#adadad": [
+    "dark.colorNeutralForeground3",
+    "dark.colorNeutralStrokeAccessible"
+  ],
+  "#b3b3b3": [
+    "dark.colorNeutralStrokeAccessiblePressed",
+    "light.colorNeutralStroke1Pressed"
+  ],
+  "#bdbdbd": [
+    "dark.colorNeutralStrokeAccessibleHover",
+    "light.colorNeutralForegroundDisabled",
+    "light.colorNeutralStroke1Selected"
+  ],
+  "#bf8208": [
+    "dark.colorBrandForegroundOnLightPressed",
+    "dark.colorBrandStroke2Hover",
+    "light.colorBrandForegroundOnLightPressed"
+  ],
+  "#c7c7c7": [
+    "light.colorNeutralStroke1Hover"
+  ],
+  "#d1d1d1": [
+    "light.colorNeutralStroke1"
+  ],
+  "#d69600": [
+    "dark.colorBrandForegroundInvertedPressed",
+    "dark.colorBrandForegroundOnLightSelected",
+    "dark.colorBrandBackgroundSelected",
+    "light.colorBrandForeground2Hover",
+    "light.colorBrandForegroundOnLightSelected",
+    "light.colorCompoundBrandForeground1Pressed",
+    "light.colorCompoundBrandStrokePressed"
+  ],
+  "#d6d6d6": [
+    "dark.colorNeutralForeground2",
+    "dark.colorNeutralForeground3Hover",
+    "dark.colorNeutralForeground3Pressed",
+    "dark.colorNeutralForeground3Selected",
+    "dark.colorNeutralForeground2Link",
+    "light.colorNeutralBackground3Pressed"
+  ],
+  "#dbdbdb": [
+    "light.colorNeutralBackground2Pressed"
+  ],
+  "#dfa001": [
+    "dark.colorBrandForegroundInvertedHover",
+    "dark.colorBrandForegroundOnLightHover",
+    "dark.colorBrandBackground",
+    "light.colorNeutralForeground2BrandPressed",
+    "light.colorNeutralForeground3BrandPressed",
+    "light.colorBrandForeground2",
+    "light.colorBrandForegroundOnLightHover",
+    "light.colorCompoundBrandForeground1Hover",
+    "light.colorCompoundBrandStrokeHover"
+  ],
+  "#e0e0e0": [
+    "light.colorNeutralBackground1Pressed",
+    "light.colorNeutralBackground3Selected",
+    "light.colorNeutralStroke2",
+    "light.colorNeutralStrokeSubtle",
+    "light.colorNeutralStrokeDisabled",
+    "light.colorSubtleBackgroundPressed"
+  ],
+  "#e6e6e6": [
+    "light.colorNeutralBackground6",
+    "light.colorNeutralBackground2Selected",
+    "light.colorNeutralStencil1"
+  ],
+  "#ebebeb": [
+    "light.colorNeutralBackground5",
+    "light.colorNeutralBackground1Selected",
+    "light.colorNeutralBackground3Hover",
+    "light.colorSubtleBackgroundSelected"
+  ],
+  "#efab01": [
+    "dark.colorBrandForegroundInverted",
+    "dark.colorBrandForegroundOnLight",
+    "dark.colorBrandBackgroundHover",
+    "dark.colorBrandBackgroundStatic",
+    "light.colorNeutralForeground2BrandHover",
+    "light.colorNeutralForeground2BrandSelected",
+    "light.colorNeutralForeground3BrandHover",
+    "light.colorNeutralForeground3BrandSelected",
+    "light.colorNeutralStrokeAccessibleSelected",
+    "light.colorBrandForeground1",
+    "light.colorBrandForegroundOnLight",
+    "light.colorBrandBackgroundStatic",
+    "light.colorBrandStroke1",
+    "light.colorBrandStroke2Pressed",
+    "light.colorCompoundBrandForeground1",
+    "light.colorCompoundBrandBackgroundPressed",
+    "light.colorCompoundBrandStroke"
+  ],
+  "#f0f0f0": [
+    "light.colorNeutralBackground4",
+    "light.colorNeutralBackground2Hover",
+    "light.colorNeutralBackground5Pressed",
+    "light.colorNeutralBackgroundDisabled",
+    "light.colorNeutralStroke3"
+  ],
+  "#f5f5f5": [
+    "light.colorNeutralBackground3",
+    "light.colorNeutralBackground1Hover",
+    "light.colorNeutralBackground4Pressed",
+    "light.colorNeutralBackground5Hover",
+    "light.colorSubtleBackgroundHover"
+  ],
+  "#f9bb01": [
+    "light.colorBrandBackgroundPressed",
+    "light.colorBrandBackgroundSelected",
+    "light.colorCompoundBrandBackgroundHover"
+  ],
+  "#fafafa": [
+    "light.colorNeutralBackground2",
+    "light.colorNeutralBackground4Hover",
+    "light.colorNeutralBackground5Selected",
+    "light.colorNeutralStencil2"
+  ],
+  "#fec10c": [
+    "dark.colorNeutralForeground2BrandPressed",
+    "dark.colorNeutralForeground3BrandPressed",
+    "dark.colorCompoundBrandForeground1Pressed",
+    "dark.colorCompoundBrandBackgroundPressed",
+    "dark.colorCompoundBrandStrokePressed",
+    "light.colorBrandBackgroundHover",
+    "light.colorCompoundBrandBackground"
+  ],
+  "#ffcc33": [
+    "dark.colorNeutralForeground2BrandHover",
+    "dark.colorNeutralForeground2BrandSelected",
+    "dark.colorNeutralForeground3BrandHover",
+    "dark.colorNeutralForeground3BrandSelected",
+    "dark.colorNeutralStrokeAccessibleSelected",
+    "dark.colorBrandForeground1",
+    "dark.colorBrandStroke1",
+    "dark.colorCompoundBrandForeground1",
+    "dark.colorCompoundBrandBackground",
+    "dark.colorCompoundBrandStroke",
+    "light.colorBrandForegroundInverted",
+    "light.colorBrandForegroundInvertedPressed",
+    "light.colorBrandBackground"
+  ],
+  "#ffd450": [
+    "dark.colorBrandForeground2",
+    "dark.colorCompoundBrandForeground1Hover",
+    "dark.colorCompoundBrandBackgroundHover",
+    "dark.colorCompoundBrandStrokeHover",
+    "light.colorBrandForegroundInvertedHover"
+  ],
+  "#ffdc70": [
+    "light.colorBrandStroke2Hover"
+  ],
+  "#ffe79b": [
+    "dark.colorBrandForeground2Hover",
+    "light.colorBrandBackground2Pressed"
+  ],
+  "#ffeeba": [
+    "dark.colorBrandBackgroundInvertedPressed",
+    "light.colorBrandBackgroundInvertedPressed",
+    "light.colorBrandStroke2"
+  ],
+  "#fff6d7": [
+    "dark.colorBrandBackgroundInvertedSelected",
+    "light.colorBrandBackground2Hover",
+    "light.colorBrandBackgroundInvertedSelected"
+  ],
+  "#fffcf1": [
+    "dark.colorBrandForeground2Pressed",
+    "dark.colorBrandBackgroundInvertedHover",
+    "light.colorBrandBackground2",
+    "light.colorBrandBackgroundInvertedHover"
+  ],
+  "#ffffff": [
+    "dark.colorNeutralForeground1",
+    "dark.colorNeutralForeground1Hover",
+    "dark.colorNeutralForeground1Pressed",
+    "dark.colorNeutralForeground1Selected",
+    "dark.colorNeutralForeground2Hover",
+    "dark.colorNeutralForeground2Pressed",
+    "dark.colorNeutralForeground2Selected",
+    "dark.colorNeutralForeground2LinkHover",
+    "dark.colorNeutralForeground2LinkPressed",
+    "dark.colorNeutralForeground2LinkSelected",
+    "dark.colorNeutralForegroundStaticInverted",
+    "dark.colorNeutralForegroundInvertedLink",
+    "dark.colorNeutralForegroundInvertedLinkHover",
+    "dark.colorNeutralForegroundInvertedLinkPressed",
+    "dark.colorNeutralForegroundInvertedLinkSelected",
+    "dark.colorNeutralBackgroundInverted",
+    "dark.colorNeutralStrokeOnBrand2",
+    "dark.colorNeutralStrokeOnBrand2Hover",
+    "dark.colorNeutralStrokeOnBrand2Pressed",
+    "dark.colorNeutralStrokeOnBrand2Selected",
+    "dark.colorBrandBackgroundInverted",
+    "dark.colorStrokeFocus2",
+    "light.colorNeutralForegroundStaticInverted",
+    "light.colorNeutralForegroundInvertedHover",
+    "light.colorNeutralForegroundInvertedPressed",
+    "light.colorNeutralForegroundInvertedSelected",
+    "light.colorNeutralForegroundInverted2",
+    "light.colorNeutralForegroundInvertedLink",
+    "light.colorNeutralForegroundInvertedLinkHover",
+    "light.colorNeutralForegroundInvertedLinkPressed",
+    "light.colorNeutralForegroundInvertedLinkSelected",
+    "light.colorNeutralBackground1",
+    "light.colorNeutralBackground4Selected",
+    "light.colorNeutralStrokeOnBrand",
+    "light.colorNeutralStrokeOnBrand2",
+    "light.colorNeutralStrokeOnBrand2Hover",
+    "light.colorNeutralStrokeOnBrand2Pressed",
+    "light.colorNeutralStrokeOnBrand2Selected",
+    "light.colorBrandBackgroundInverted",
+    "light.colorStrokeFocus1"
+  ],
+  "rgba(0, 0, 0, 0.05)": [
+    "light.colorNeutralStrokeAlpha",
+    "light.colorNeutralStencil2Alpha"
+  ],
+  "rgba(0, 0, 0, 0.1)": [
+    "dark.colorSubtleBackgroundInvertedHover",
+    "light.colorNeutralStencil1Alpha",
+    "light.colorSubtleBackgroundInvertedHover"
+  ],
+  "rgba(0, 0, 0, 0.2)": [
+    "dark.colorSubtleBackgroundInvertedSelected",
+    "light.colorSubtleBackgroundInvertedSelected"
+  ],
+  "rgba(0, 0, 0, 0.3)": [
+    "dark.colorSubtleBackgroundInvertedPressed",
+    "light.colorSubtleBackgroundInvertedPressed"
+  ],
+  "rgba(0, 0, 0, 0.4)": [
+    "light.colorBackgroundOverlay"
+  ],
+  "rgba(0, 0, 0, 0.5)": [
+    "dark.colorBackgroundOverlay"
+  ],
+  "rgba(0,0,0,0.06)": [
+    "light.colorNeutralShadowAmbientLighter"
+  ],
+  "rgba(0,0,0,0.07)": [
+    "light.colorNeutralShadowKeyLighter"
+  ],
+  "rgba(0,0,0,0.12)": [
+    "dark.colorNeutralShadowAmbientLighter",
+    "light.colorNeutralShadowAmbient"
+  ],
+  "rgba(0,0,0,0.14)": [
+    "dark.colorNeutralShadowKeyLighter",
+    "light.colorNeutralShadowKey"
+  ],
+  "rgba(0,0,0,0.2)": [
+    "light.colorScrollbarOverlay"
+  ],
+  "rgba(0,0,0,0.20)": [
+    "light.colorNeutralShadowAmbientDarker"
+  ],
+  "rgba(0,0,0,0.24)": [
+    "dark.colorNeutralShadowAmbient",
+    "light.colorNeutralShadowKeyDarker"
+  ],
+  "rgba(0,0,0,0.25)": [
+    "dark.colorBrandShadowKey",
+    "light.colorBrandShadowKey"
+  ],
+  "rgba(0,0,0,0.28)": [
+    "dark.colorNeutralShadowKey"
+  ],
+  "rgba(0,0,0,0.30)": [
+    "dark.colorBrandShadowAmbient",
+    "light.colorBrandShadowAmbient"
+  ],
+  "rgba(0,0,0,0.40)": [
+    "dark.colorNeutralShadowAmbientDarker"
+  ],
+  "rgba(0,0,0,0.48)": [
+    "dark.colorNeutralShadowKeyDarker"
+  ],
+  "rgba(255, 255, 255, 0.05)": [
+    "dark.colorNeutralStencil2Alpha"
+  ],
+  "rgba(255, 255, 255, 0.1)": [
+    "dark.colorNeutralBackgroundInvertedDisabled",
+    "dark.colorNeutralStrokeAlpha",
+    "dark.colorNeutralStencil1Alpha",
+    "light.colorNeutralBackgroundInvertedDisabled"
+  ],
+  "rgba(255, 255, 255, 0.4)": [
+    "dark.colorNeutralForegroundInvertedDisabled",
+    "dark.colorNeutralStrokeInvertedDisabled",
+    "light.colorNeutralForegroundInvertedDisabled",
+    "light.colorNeutralStrokeInvertedDisabled"
+  ],
+  "rgba(255, 255, 255, 0.5)": [
+    "light.colorNeutralBackgroundAlpha",
+    "light.colorSubtleBackgroundLightAlphaPressed"
+  ],
+  "rgba(255, 255, 255, 0.7)": [
+    "light.colorSubtleBackgroundLightAlphaHover"
+  ],
+  "rgba(255, 255, 255, 0.8)": [
+    "light.colorNeutralBackgroundAlpha2"
+  ],
+  "rgba(255,255,255,0.2)": [
+    "dark.colorScrollbarOverlay"
+  ],
+  "rgba(26, 26, 26, 0.5)": [
+    "dark.colorNeutralBackgroundAlpha"
+  ],
+  "rgba(31, 31, 31, 0.7)": [
+    "dark.colorNeutralBackgroundAlpha2"
+  ],
+  "rgba(36, 36, 36, 0.5)": [
+    "dark.colorSubtleBackgroundLightAlphaPressed"
+  ],
+  "rgba(36, 36, 36, 0.8)": [
+    "dark.colorSubtleBackgroundLightAlphaHover"
+  ],
+  "transparent": [
+    "dark.colorSubtleBackground",
+    "dark.colorSubtleBackgroundLightAlphaSelected",
+    "dark.colorSubtleBackgroundInverted",
+    "dark.colorTransparentBackground",
+    "dark.colorTransparentBackgroundHover",
+    "dark.colorTransparentBackgroundPressed",
+    "dark.colorTransparentBackgroundSelected",
+    "dark.colorTransparentStroke",
+    "dark.colorTransparentStrokeInteractive",
+    "dark.colorTransparentStrokeDisabled",
+    "light.colorSubtleBackground",
+    "light.colorSubtleBackgroundLightAlphaSelected",
+    "light.colorSubtleBackgroundInverted",
+    "light.colorTransparentBackground",
+    "light.colorTransparentBackgroundHover",
+    "light.colorTransparentBackgroundPressed",
+    "light.colorTransparentBackgroundSelected",
+    "light.colorTransparentStroke",
+    "light.colorTransparentStrokeInteractive",
+    "light.colorTransparentStrokeDisabled"
+  ]
+}

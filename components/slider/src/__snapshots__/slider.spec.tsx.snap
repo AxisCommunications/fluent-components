@@ -1,0 +1,132 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`slider > should render 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <span
+        class="axis-Slider ___thdmca0_1rq59xo fp2oml8 fifp7yv fwrwuds f1asdtw4 f4aqd28 f22iagw f10pi13n fly5x3f f3er7iy f1lx44mx fke05om ftqa4ok f2hkw1w f1b1k54r f4ne723 fh7aioi fqqcjud ffht0p2 f1p0ul1q f1c901ms f1alokd7 f78i1la f1kvsw7t f8k7e5g f1bw8brt f1pmxfrl fszkfcr f57dp0y f1ap5ily f11dm2qb f136rfnd fdsq1qd f1khssms fq4eyks f1ya6x16 f1e2iu44 ftuszwa f1pffoy2 f1bmyog6 fs6b7xr f15fv2gd"
+      >
+        <span
+          class="axis-Slider__control ___144j0yg_julj5g0 f10pi13n f14t3ns0 f1l02sjl fcgxt0o f1ujusj6 fz0d3q9 f1k6fduh fdwl3z2"
+        >
+          <span
+            class="axis-Slider__rail ___kotjr40_1djcq1g fnivh3a fc7yr5o f1el4m67 f8yange f1p9o1ba f1sil6mw ftgm304 f1euv43f fly5x3f f1erzq44 f1i1t8d1 f188r07x f1d3ncnn"
+          >
+            <span
+              class="axis-Slider__track ___pq61zr0_1xft6bt fnivh3a fc7yr5o f1el4m67 f8yange ftgm304 f1euv43f f1erzq44 f1i1t8d1 f188r07x f1yrba31 f174n9yu"
+              style="left: 0%; width: 20%;"
+            />
+          </span>
+          <div
+            class="axis-Slider__thumb ___yjt7u40_1dh3pfy f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 fj7ikun f1qcq4si f3llg7k f1hyzvmj fcetbih f1kt6s4o"
+            style="left: 20%;"
+          >
+            <input
+              data-index="0"
+              id="slider-thumb-r0"
+              max="100"
+              min="0"
+              type="range"
+              value="20"
+            />
+            <span
+              class="axis-Slider__thumb-label ___1b1bz8r_1eqf7oo fk116j8 fg8tfde fpvge99 fv71qf3 f1ywm7hm fw5db7e f14wxoun f1uw59to f1aa9q02 f16jpd5f f1jar5jt fyu767a f1euv43f feml9b3 f22iagw f122n59 f4d9j23 fxugw4r f18ygdci fxeb0a7 f1j7ml58 f1wl9k8s f15w9qf9 f1js41m7 fguqkdo f1ljr5q2 fto0uou f1hr5hl2 f1brpl1h"
+            >
+              20
+            </span>
+          </div>
+        </span>
+      </span>
+    </div>
+  </body>,
+  "container": <div>
+    <span
+      class="axis-Slider ___thdmca0_1rq59xo fp2oml8 fifp7yv fwrwuds f1asdtw4 f4aqd28 f22iagw f10pi13n fly5x3f f3er7iy f1lx44mx fke05om ftqa4ok f2hkw1w f1b1k54r f4ne723 fh7aioi fqqcjud ffht0p2 f1p0ul1q f1c901ms f1alokd7 f78i1la f1kvsw7t f8k7e5g f1bw8brt f1pmxfrl fszkfcr f57dp0y f1ap5ily f11dm2qb f136rfnd fdsq1qd f1khssms fq4eyks f1ya6x16 f1e2iu44 ftuszwa f1pffoy2 f1bmyog6 fs6b7xr f15fv2gd"
+    >
+      <span
+        class="axis-Slider__control ___144j0yg_julj5g0 f10pi13n f14t3ns0 f1l02sjl fcgxt0o f1ujusj6 fz0d3q9 f1k6fduh fdwl3z2"
+      >
+        <span
+          class="axis-Slider__rail ___kotjr40_1djcq1g fnivh3a fc7yr5o f1el4m67 f8yange f1p9o1ba f1sil6mw ftgm304 f1euv43f fly5x3f f1erzq44 f1i1t8d1 f188r07x f1d3ncnn"
+        >
+          <span
+            class="axis-Slider__track ___pq61zr0_1xft6bt fnivh3a fc7yr5o f1el4m67 f8yange ftgm304 f1euv43f f1erzq44 f1i1t8d1 f188r07x f1yrba31 f174n9yu"
+            style="left: 0%; width: 20%;"
+          />
+        </span>
+        <div
+          class="axis-Slider__thumb ___yjt7u40_1dh3pfy f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 fj7ikun f1qcq4si f3llg7k f1hyzvmj fcetbih f1kt6s4o"
+          style="left: 20%;"
+        >
+          <input
+            data-index="0"
+            id="slider-thumb-r0"
+            max="100"
+            min="0"
+            type="range"
+            value="20"
+          />
+          <span
+            class="axis-Slider__thumb-label ___1b1bz8r_1eqf7oo fk116j8 fg8tfde fpvge99 fv71qf3 f1ywm7hm fw5db7e f14wxoun f1uw59to f1aa9q02 f16jpd5f f1jar5jt fyu767a f1euv43f feml9b3 f22iagw f122n59 f4d9j23 fxugw4r f18ygdci fxeb0a7 f1j7ml58 f1wl9k8s f15w9qf9 f1js41m7 fguqkdo f1ljr5q2 fto0uou f1hr5hl2 f1brpl1h"
+          >
+            20
+          </span>
+        </div>
+      </span>
+    </span>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,0 +1,34 @@
+name: Verify tokens
+on:
+  push:
+    paths:
+      - "theme/tokens/**"
+  pull_request:
+    paths:
+      - "theme/tokens/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm install --frozen-lockfile
+
+      - name: Transform Fluent Theme to JSON, builds tokens for platforms
+        run: pnpm --filter @axteams-software/one-react-theme tokens:runall
+
+      - name: build theme
+        run: pnpm --filter @axteams-software/one-react-theme build

@@ -1,0 +1,7 @@
+packages:
+  - "components/**"
+  - "examples"
+  - "hooks"
+  - "icons"
+  - "styles"
+  - "theme"

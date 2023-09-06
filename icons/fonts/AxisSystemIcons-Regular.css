@@ -1,0 +1,604 @@
+@font-face {
+    font-family: "AxisSystemIcons-Regular";
+    src: url("./AxisSystemIcons-Regular.ttf?e18daf1a650fb1e18dd1d92455be21b5") format("truetype");
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: AxisSystemIcons-Regular !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ic_axis_acs_camera_20_regular:before {
+    content: "\f101";
+}
+.icon-ic_axis_acs_camera_24_regular:before {
+    content: "\f102";
+}
+.icon-ic_axis_acs_camera_28_regular:before {
+    content: "\f103";
+}
+.icon-ic_axis_acs_camera_32_regular:before {
+    content: "\f104";
+}
+.icon-ic_axis_add_12_regular:before {
+    content: "\f105";
+}
+.icon-ic_axis_add_20_regular:before {
+    content: "\f106";
+}
+.icon-ic_axis_adm_wrench_20_regular:before {
+    content: "\f107";
+}
+.icon-ic_axis_adm_wrench_24_regular:before {
+    content: "\f108";
+}
+.icon-ic_axis_adm_wrench_28_regular:before {
+    content: "\f109";
+}
+.icon-ic_axis_adm_wrench_32_regular:before {
+    content: "\f10a";
+}
+.icon-ic_axis_alf_multiple_16_regular:before {
+    content: "\f10b";
+}
+.icon-ic_axis_alf_multiple_20_regular:before {
+    content: "\f10c";
+}
+.icon-ic_axis_alf_multiple_24_regular:before {
+    content: "\f10d";
+}
+.icon-ic_axis_alf_multiple_28_regular:before {
+    content: "\f10e";
+}
+.icon-ic_axis_alf_multiple_32_regular:before {
+    content: "\f10f";
+}
+.icon-ic_axis_alf_multiple_48_regular:before {
+    content: "\f110";
+}
+.icon-ic_axis_assign_ip_20_regular:before {
+    content: "\f111";
+}
+.icon-ic_axis_assign_ip_24_regular:before {
+    content: "\f112";
+}
+.icon-ic_axis_assign_ip_28_regular:before {
+    content: "\f113";
+}
+.icon-ic_axis_assign_ip_32_regular:before {
+    content: "\f114";
+}
+.icon-ic_axis_body_worn_camera_12_regular:before {
+    content: "\f115";
+}
+.icon-ic_axis_body_worn_camera_16_regular:before {
+    content: "\f116";
+}
+.icon-ic_axis_body_worn_camera_20_regular:before {
+    content: "\f117";
+}
+.icon-ic_axis_body_worn_camera_24_regular:before {
+    content: "\f118";
+}
+.icon-ic_axis_body_worn_camera_28_regular:before {
+    content: "\f119";
+}
+.icon-ic_axis_body_worn_camera_32_regular:before {
+    content: "\f11a";
+}
+.icon-ic_axis_body_worn_camera_48_regular:before {
+    content: "\f11b";
+}
+.icon-ic_axis_body_worn_camera_multiple_16_regular:before {
+    content: "\f11c";
+}
+.icon-ic_axis_body_worn_camera_multiple_20_regular:before {
+    content: "\f11d";
+}
+.icon-ic_axis_body_worn_camera_multiple_24_regular:before {
+    content: "\f11e";
+}
+.icon-ic_axis_body_worn_camera_multiple_28_regular:before {
+    content: "\f11f";
+}
+.icon-ic_axis_body_worn_camera_multiple_32_regular:before {
+    content: "\f120";
+}
+.icon-ic_axis_body_worn_camera_multiple_48_regular:before {
+    content: "\f121";
+}
+.icon-ic_axis_bounding_box_16_regular:before {
+    content: "\f122";
+}
+.icon-ic_axis_bounding_box_20_regular:before {
+    content: "\f123";
+}
+.icon-ic_axis_bounding_box_24_regular:before {
+    content: "\f124";
+}
+.icon-ic_axis_bounding_box_28_regular:before {
+    content: "\f125";
+}
+.icon-ic_axis_bounding_box_32_regular:before {
+    content: "\f126";
+}
+.icon-ic_axis_bounding_box_48_regular:before {
+    content: "\f127";
+}
+.icon-ic_axis_clipboard_alert_16_regular:before {
+    content: "\f128";
+}
+.icon-ic_axis_clipboard_alert_20_regular:before {
+    content: "\f129";
+}
+.icon-ic_axis_clipboard_alert_24_regular:before {
+    content: "\f12a";
+}
+.icon-ic_axis_clipboard_alert_28_regular:before {
+    content: "\f12b";
+}
+.icon-ic_axis_clipboard_alert_32_regular:before {
+    content: "\f12c";
+}
+.icon-ic_axis_devices_20_regular:before {
+    content: "\f12d";
+}
+.icon-ic_axis_devices_24_regular:before {
+    content: "\f12e";
+}
+.icon-ic_axis_devices_28_regular:before {
+    content: "\f12f";
+}
+.icon-ic_axis_devices_32_regular:before {
+    content: "\f130";
+}
+.icon-ic_axis_diamond_2_16_regular:before {
+    content: "\f131";
+}
+.icon-ic_axis_diamond_2_20_regular:before {
+    content: "\f132";
+}
+.icon-ic_axis_diamond_2_24_regular:before {
+    content: "\f133";
+}
+.icon-ic_axis_diamond_2_28_regular:before {
+    content: "\f134";
+}
+.icon-ic_axis_diamond_2_32_regular:before {
+    content: "\f135";
+}
+.icon-ic_axis_diamond_2_48_regular:before {
+    content: "\f136";
+}
+.icon-ic_axis_door_station_16_regular:before {
+    content: "\f137";
+}
+.icon-ic_axis_door_station_20_regular:before {
+    content: "\f138";
+}
+.icon-ic_axis_door_station_24_regular:before {
+    content: "\f139";
+}
+.icon-ic_axis_door_station_28_regular:before {
+    content: "\f13a";
+}
+.icon-ic_axis_door_station_32_regular:before {
+    content: "\f13b";
+}
+.icon-ic_axis_film_strip_edit_20_regular:before {
+    content: "\f13c";
+}
+.icon-ic_axis_film_strip_edit_24_regular:before {
+    content: "\f13d";
+}
+.icon-ic_axis_film_strip_edit_28_regular:before {
+    content: "\f13e";
+}
+.icon-ic_axis_film_strip_edit_32_regular:before {
+    content: "\f13f";
+}
+.icon-ic_axis_film_strip_edit_48_regular:before {
+    content: "\f140";
+}
+.icon-ic_axis_frame_step_back_16_regular:before {
+    content: "\f141";
+}
+.icon-ic_axis_frame_step_back_20_regular:before {
+    content: "\f142";
+}
+.icon-ic_axis_frame_step_back_24_regular:before {
+    content: "\f143";
+}
+.icon-ic_axis_frame_step_back_28_regular:before {
+    content: "\f144";
+}
+.icon-ic_axis_frame_step_back_32_regular:before {
+    content: "\f145";
+}
+.icon-ic_axis_frame_step_back_48_regular:before {
+    content: "\f146";
+}
+.icon-ic_axis_frame_step_forward_16_regular:before {
+    content: "\f147";
+}
+.icon-ic_axis_frame_step_forward_20_regular:before {
+    content: "\f148";
+}
+.icon-ic_axis_frame_step_forward_24_regular:before {
+    content: "\f149";
+}
+.icon-ic_axis_frame_step_forward_28_regular:before {
+    content: "\f14a";
+}
+.icon-ic_axis_frame_step_forward_32_regular:before {
+    content: "\f14b";
+}
+.icon-ic_axis_frame_step_forward_48_regular:before {
+    content: "\f14c";
+}
+.icon-ic_axis_headphones_off_20_regular:before {
+    content: "\f14d";
+}
+.icon-ic_axis_headphones_off_24_regular:before {
+    content: "\f14e";
+}
+.icon-ic_axis_headphones_off_28_regular:before {
+    content: "\f14f";
+}
+.icon-ic_axis_headphones_off_32_regular:before {
+    content: "\f150";
+}
+.icon-ic_axis_headphones_off_48_regular:before {
+    content: "\f151";
+}
+.icon-ic_axis_power_arrow_clockwise_20_regular:before {
+    content: "\f152";
+}
+.icon-ic_axis_power_arrow_clockwise_24_regular:before {
+    content: "\f153";
+}
+.icon-ic_axis_power_arrow_clockwise_28_regular:before {
+    content: "\f154";
+}
+.icon-ic_axis_power_arrow_clockwise_32_regular:before {
+    content: "\f155";
+}
+.icon-ic_axis_smart_search_16_regular:before {
+    content: "\f156";
+}
+.icon-ic_axis_smart_search_20_regular:before {
+    content: "\f157";
+}
+.icon-ic_axis_smart_search_24_regular:before {
+    content: "\f158";
+}
+.icon-ic_axis_smart_search_28_regular:before {
+    content: "\f159";
+}
+.icon-ic_axis_smart_search_32_regular:before {
+    content: "\f15a";
+}
+.icon-ic_axis_smart_search_48_regular:before {
+    content: "\f15b";
+}
+.icon-ic_axis_speedometer_20_regular:before {
+    content: "\f15c";
+}
+.icon-ic_axis_temp_record_16_regular:before {
+    content: "\f15d";
+}
+.icon-ic_axis_temp_record_20_regular:before {
+    content: "\f15e";
+}
+.icon-ic_axis_temp_record_24_regular:before {
+    content: "\f15f";
+}
+.icon-ic_axis_temp_record_28_regular:before {
+    content: "\f160";
+}
+.icon-ic_axis_temp_record_32_regular:before {
+    content: "\f161";
+}
+.icon-ic_axis_temp_record_48_regular:before {
+    content: "\f162";
+}
+.icon-ic_axis_temp_redact_16_regular:before {
+    content: "\f163";
+}
+.icon-ic_axis_temp_redact_20_regular:before {
+    content: "\f164";
+}
+.icon-ic_axis_temp_redact_24_regular:before {
+    content: "\f165";
+}
+.icon-ic_axis_temp_redact_28_regular:before {
+    content: "\f166";
+}
+.icon-ic_axis_temp_redact_32_regular:before {
+    content: "\f167";
+}
+.icon-ic_axis_temp_redact_48_regular:before {
+    content: "\f168";
+}
+.icon-ic_axis_temp_smart_search_16_regular:before {
+    content: "\f169";
+}
+.icon-ic_axis_temp_smart_search_20_regular:before {
+    content: "\f16a";
+}
+.icon-ic_axis_temp_smart_search_24_regular:before {
+    content: "\f16b";
+}
+.icon-ic_axis_temp_smart_search_28_regular:before {
+    content: "\f16c";
+}
+.icon-ic_axis_timeline_markers_20_regular:before {
+    content: "\f16d";
+}
+.icon-ic_axis_timeline_markers_24_regular:before {
+    content: "\f16e";
+}
+.icon-ic_axis_timeline_markers_28_regular:before {
+    content: "\f16f";
+}
+.icon-ic_axis_timeline_markers_32_regular:before {
+    content: "\f170";
+}
+.icon-ic_axis_ufo_12_regular:before {
+    content: "\f171";
+}
+.icon-ic_axis_ufo_16_regular:before {
+    content: "\f172";
+}
+.icon-ic_axis_ufo_20_regular:before {
+    content: "\f173";
+}
+.icon-ic_axis_ufo_24_regular:before {
+    content: "\f174";
+}
+.icon-ic_axis_ufo_28_regular:before {
+    content: "\f175";
+}
+.icon-ic_axis_ufo_32_regular:before {
+    content: "\f176";
+}
+.icon-ic_axis_ufo_48_regular:before {
+    content: "\f177";
+}
+.icon-ic_axis_vehicle_bus_profile_16_regular:before {
+    content: "\f178";
+}
+.icon-ic_axis_vehicle_bus_profile_20_regular:before {
+    content: "\f179";
+}
+.icon-ic_axis_vehicle_bus_profile_24_regular:before {
+    content: "\f17a";
+}
+.icon-ic_axis_vehicle_bus_profile_28_regular:before {
+    content: "\f17b";
+}
+.icon-ic_axis_vehicle_bus_profile_32_regular:before {
+    content: "\f17c";
+}
+.icon-ic_axis_vehicle_bus_profile_48_regular:before {
+    content: "\f17d";
+}
+.icon-ic_axis_vehicle_motorcycle_profile_16_regular:before {
+    content: "\f17e";
+}
+.icon-ic_axis_vehicle_motorcycle_profile_20_regular:before {
+    content: "\f17f";
+}
+.icon-ic_axis_vehicle_motorcycle_profile_24_regular:before {
+    content: "\f180";
+}
+.icon-ic_axis_vehicle_motorcycle_profile_28_regular:before {
+    content: "\f181";
+}
+.icon-ic_axis_vehicle_motorcycle_profile_32_regular:before {
+    content: "\f182";
+}
+.icon-ic_axis_vehicle_motorcycle_profile_48_regular:before {
+    content: "\f183";
+}
+.icon-ic_axis_vehicle_truck_profile_12_regular:before {
+    content: "\f184";
+}
+.icon-ic_axis_vehicle_truck_profile_16_regular:before {
+    content: "\f185";
+}
+.icon-ic_axis_vehicle_truck_profile_20_regular:before {
+    content: "\f186";
+}
+.icon-ic_axis_vehicle_truck_profile_24_regular:before {
+    content: "\f187";
+}
+.icon-ic_axis_vehicle_truck_profile_28_regular:before {
+    content: "\f188";
+}
+.icon-ic_axis_vehicle_truck_profile_32_regular:before {
+    content: "\f189";
+}
+.icon-ic_axis_vehicle_truck_profile_48_regular:before {
+    content: "\f18a";
+}
+.icon-ic_axis_vehicles_12_regular:before {
+    content: "\f18b";
+}
+.icon-ic_axis_vehicles_16_regular:before {
+    content: "\f18c";
+}
+.icon-ic_axis_vehicles_20_regular:before {
+    content: "\f18d";
+}
+.icon-ic_axis_vehicles_24_regular:before {
+    content: "\f18e";
+}
+.icon-ic_axis_vehicles_28_regular:before {
+    content: "\f18f";
+}
+.icon-ic_axis_vehicles_32_regular:before {
+    content: "\f190";
+}
+.icon-ic_axis_vehicles_48_regular:before {
+    content: "\f191";
+}
+.icon-ic_axis_walking_12_regular:before {
+    content: "\f192";
+}
+.icon-ic_axis_walking_16_regular:before {
+    content: "\f193";
+}
+.icon-ic_axis_walking_20_regular:before {
+    content: "\f194";
+}
+.icon-ic_axis_walking_24_regular:before {
+    content: "\f195";
+}
+.icon-ic_axis_walking_28_regular:before {
+    content: "\f196";
+}
+.icon-ic_axis_walking_32_regular:before {
+    content: "\f197";
+}
+.icon-ic_axis_walking_48_regular:before {
+    content: "\f198";
+}
+.icon-ic_axis_ptz_20_regular:before {
+    content: "\f199";
+}
+.icon-ic_axis_ptz_24_regular:before {
+    content: "\f19a";
+}
+.icon-ic_axis_ptz_28_regular:before {
+    content: "\f19b";
+}
+.icon-ic_axis_ptz_32_regular:before {
+    content: "\f19c";
+}
+.icon-ic_axis_ptz_48_regular:before {
+    content: "\f19d";
+}
+.icon-ic_axis_recorder_16_regular:before {
+    content: "\f19e";
+}
+.icon-ic_axis_recorder_20_regular:before {
+    content: "\f19f";
+}
+.icon-ic_axis_recorder_24_regular:before {
+    content: "\f1a0";
+}
+.icon-ic_axis_recorder_28_regular:before {
+    content: "\f1a1";
+}
+.icon-ic_axis_recorder_32_regular:before {
+    content: "\f1a2";
+}
+.icon-ic_axis_recorder_48_regular:before {
+    content: "\f1a3";
+}
+.icon-ic_axis_recordings_20_regular:before {
+    content: "\f1a4";
+}
+.icon-ic_axis_recordings_24_regular:before {
+    content: "\f1a5";
+}
+.icon-ic_axis_recordings_28_regular:before {
+    content: "\f1a6";
+}
+.icon-ic_axis_recordings_32_regular:before {
+    content: "\f1a7";
+}
+.icon-ic_axis_recordings_48_regular:before {
+    content: "\f1a8";
+}
+.icon-ic_axis_resize_12_regular:before {
+    content: "\f1a9";
+}
+.icon-ic_axis_resize_16_regular:before {
+    content: "\f1aa";
+}
+.icon-ic_axis_resize_20_regular:before {
+    content: "\f1ab";
+}
+.icon-ic_axis_resize_24_regular:before {
+    content: "\f1ac";
+}
+.icon-ic_axis_resize_28_regular:before {
+    content: "\f1ad";
+}
+.icon-ic_axis_resize_32_regular:before {
+    content: "\f1ae";
+}
+.icon-ic_axis_resize_48_regular:before {
+    content: "\f1af";
+}
+.icon-ic_axis_keyhole_20_regular:before {
+    content: "\f1b0";
+}
+.icon-ic_axis_keyhole_24_regular:before {
+    content: "\f1b1";
+}
+.icon-ic_axis_keyhole_28_regular:before {
+    content: "\f1b2";
+}
+.icon-ic_axis_keyhole_32_regular:before {
+    content: "\f1b3";
+}
+.icon-ic_axis_installer_device_20_regular:before {
+    content: "\f1b4";
+}
+.icon-ic_axis_installer_device_24_regular:before {
+    content: "\f1b5";
+}
+.icon-ic_axis_installer_device_28_regular:before {
+    content: "\f1b6";
+}
+.icon-ic_axis_installer_device_32_regular:before {
+    content: "\f1b7";
+}
+.icon-ic_axis_installer_device_48_regular:before {
+    content: "\f1b8";
+}
+.icon-ic_axis_navigation_contract_16_regular:before {
+    content: "\f1b9";
+}
+.icon-ic_axis_navigation_contract_20_regular:before {
+    content: "\f1ba";
+}
+.icon-ic_axis_navigation_contract_24_regular:before {
+    content: "\f1bb";
+}
+.icon-ic_axis_navigation_contract_28_regular:before {
+    content: "\f1bc";
+}
+.icon-ic_axis_navigation_contract_32_regular:before {
+    content: "\f1bd";
+}
+.icon-ic_axis_navigation_contract_48_regular:before {
+    content: "\f1be";
+}
+.icon-ic_axis_navigation_expand_16_regular:before {
+    content: "\f1bf";
+}
+.icon-ic_axis_navigation_expand_20_regular:before {
+    content: "\f1c0";
+}
+.icon-ic_axis_navigation_expand_24_regular:before {
+    content: "\f1c1";
+}
+.icon-ic_axis_navigation_expand_28_regular:before {
+    content: "\f1c2";
+}
+.icon-ic_axis_navigation_expand_32_regular:before {
+    content: "\f1c3";
+}
+.icon-ic_axis_navigation_expand_48_regular:before {
+    content: "\f1c4";
+}

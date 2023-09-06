@@ -1,0 +1,40 @@
+name: Verify icons
+on:
+  push:
+    paths:
+      - "icons/**"
+  pull_request:
+    paths:
+      - "icons/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm install --frozen-lockfile
+
+      - name: Transform SVG to fonts
+        run: pnpm --filter @axteams-software/one-react-icons fonts:build
+
+      - name: Transform SVG to react components
+        run: pnpm --filter @axteams-software/one-react-icons react:build
+
+      - name: Build
+        run: pnpm --filter @axteams-software/one-react-icons build
+
+      - name: Lint
+        run: pnpm --filter @axteams-software/one-react-icons lint

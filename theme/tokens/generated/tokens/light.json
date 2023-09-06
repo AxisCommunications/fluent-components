@@ -1,0 +1,708 @@
+{
+  "color": {
+    "Neutral": {
+      "Foreground": {
+        "1": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "2": {
+          "value": "#424242",
+          "type": "color"
+        },
+        "3": {
+          "value": "#616161",
+          "type": "color"
+        },
+        "4": {
+          "value": "#707070",
+          "type": "color"
+        },
+        "1Hover": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "1Pressed": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "1Selected": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "2Hover": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "2Pressed": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "2Selected": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "2BrandHover": {
+          "value": "#EFAB01",
+          "type": "color"
+        },
+        "2BrandPressed": {
+          "value": "#DFA001",
+          "type": "color"
+        },
+        "2BrandSelected": {
+          "value": "#EFAB01",
+          "type": "color"
+        },
+        "3Hover": {
+          "value": "#424242",
+          "type": "color"
+        },
+        "3Pressed": {
+          "value": "#424242",
+          "type": "color"
+        },
+        "3Selected": {
+          "value": "#424242",
+          "type": "color"
+        },
+        "3BrandHover": {
+          "value": "#EFAB01",
+          "type": "color"
+        },
+        "3BrandPressed": {
+          "value": "#DFA001",
+          "type": "color"
+        },
+        "3BrandSelected": {
+          "value": "#EFAB01",
+          "type": "color"
+        },
+        "Disabled": {
+          "value": "#bdbdbd",
+          "type": "color"
+        },
+        "InvertedDisabled": {
+          "value": "rgba(255, 255, 255, 0.4)",
+          "type": "color"
+        },
+        "2Link": {
+          "value": "#424242",
+          "type": "color"
+        },
+        "2LinkHover": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "2LinkPressed": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "2LinkSelected": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "1Static": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "StaticInverted": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "Inverted": {
+          "value": "#242424",
+          "type": "color"
+        },
+        "InvertedHover": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "InvertedPressed": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "InvertedSelected": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "Inverted2": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "OnBrand": {
+          "value": "#000000",
+          "type": "color"
+        },
+        "InvertedLink": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "InvertedLinkHover": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "InvertedLinkPressed": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "InvertedLinkSelected": {
+          "value": "#ffffff",
+          "type": "color"
+        }
+      },
+      "Background": {
+        "1": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "2": {
+          "value": "#fafafa",
+          "type": "color"
+        },
+        "3": {
+          "value": "#f5f5f5",
+          "type": "color"
+        },
+        "4": {
+          "value": "#f0f0f0",
+          "type": "color"
+        },
+        "5": {
+          "value": "#ebebeb",
+          "type": "color"
+        },
+        "6": {
+          "value": "#e6e6e6",
+          "type": "color"
+        },
+        "1Hover": {
+          "value": "#f5f5f5",
+          "type": "color"
+        },
+        "1Pressed": {
+          "value": "#e0e0e0",
+          "type": "color"
+        },
+        "1Selected": {
+          "value": "#ebebeb",
+          "type": "color"
+        },
+        "2Hover": {
+          "value": "#f0f0f0",
+          "type": "color"
+        },
+        "2Pressed": {
+          "value": "#dbdbdb",
+          "type": "color"
+        },
+        "2Selected": {
+          "value": "#e6e6e6",
+          "type": "color"
+        },
+        "3Hover": {
+          "value": "#ebebeb",
+          "type": "color"
+        },
+        "3Pressed": {
+          "value": "#d6d6d6",
+          "type": "color"
+        },
+        "3Selected": {
+          "value": "#e0e0e0",
+          "type": "color"
+        },
+        "4Hover": {
+          "value": "#fafafa",
+          "type": "color"
+        },
+        "4Pressed": {
+          "value": "#f5f5f5",
+          "type": "color"
+        },
+        "4Selected": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "5Hover": {
+          "value": "#f5f5f5",
+          "type": "color"
+        },
+        "5Pressed": {
+          "value": "#f0f0f0",
+          "type": "color"
+        },
+        "5Selected": {
+          "value": "#fafafa",
+          "type": "color"
+        },
+        "Inverted": {
+          "value": "#292929",
+          "type": "color"
+        },
+        "Static": {
+          "value": "#333333",
+          "type": "color"
+        },
+        "Alpha": {
+          "value": "rgba(255, 255, 255, 0.5)",
+          "type": "color"
+        },
+        "Alpha2": {
+          "value": "rgba(255, 255, 255, 0.8)",
+          "type": "color"
+        },
+        "Disabled": {
+          "value": "#f0f0f0",
+          "type": "color"
+        },
+        "InvertedDisabled": {
+          "value": "rgba(255, 255, 255, 0.1)",
+          "type": "color"
+        }
+      },
+      "Stroke": {
+        "1": {
+          "value": "#d1d1d1",
+          "type": "color"
+        },
+        "2": {
+          "value": "#e0e0e0",
+          "type": "color"
+        },
+        "3": {
+          "value": "#f0f0f0",
+          "type": "color"
+        },
+        "Accessible": {
+          "value": "#616161",
+          "type": "color"
+        },
+        "AccessibleHover": {
+          "value": "#575757",
+          "type": "color"
+        },
+        "AccessiblePressed": {
+          "value": "#4d4d4d",
+          "type": "color"
+        },
+        "AccessibleSelected": {
+          "value": "#EFAB01",
+          "type": "color"
+        },
+        "1Hover": {
+          "value": "#c7c7c7",
+          "type": "color"
+        },
+        "1Pressed": {
+          "value": "#b3b3b3",
+          "type": "color"
+        },
+        "1Selected": {
+          "value": "#bdbdbd",
+          "type": "color"
+        },
+        "Subtle": {
+          "value": "#e0e0e0",
+          "type": "color"
+        },
+        "OnBrand": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "OnBrand2": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "OnBrand2Hover": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "OnBrand2Pressed": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "OnBrand2Selected": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "Disabled": {
+          "value": "#e0e0e0",
+          "type": "color"
+        },
+        "InvertedDisabled": {
+          "value": "rgba(255, 255, 255, 0.4)",
+          "type": "color"
+        },
+        "Alpha": {
+          "value": "rgba(0, 0, 0, 0.05)",
+          "type": "color"
+        }
+      },
+      "Shadow": {
+        "Ambient": {
+          "value": "rgba(0,0,0,0.12)",
+          "type": "color"
+        },
+        "Key": {
+          "value": "rgba(0,0,0,0.14)",
+          "type": "color"
+        },
+        "AmbientLighter": {
+          "value": "rgba(0,0,0,0.06)",
+          "type": "color"
+        },
+        "KeyLighter": {
+          "value": "rgba(0,0,0,0.07)",
+          "type": "color"
+        },
+        "AmbientDarker": {
+          "value": "rgba(0,0,0,0.20)",
+          "type": "color"
+        },
+        "KeyDarker": {
+          "value": "rgba(0,0,0,0.24)",
+          "type": "color"
+        }
+      },
+      "Stencil": {
+        "1": {
+          "value": "#e6e6e6",
+          "type": "color"
+        },
+        "2": {
+          "value": "#fafafa",
+          "type": "color"
+        },
+        "1Alpha": {
+          "value": "rgba(0, 0, 0, 0.1)",
+          "type": "color"
+        },
+        "2Alpha": {
+          "value": "rgba(0, 0, 0, 0.05)",
+          "type": "color"
+        }
+      }
+    },
+    "Brand": {
+      "ForegroundLink": {
+        "value": "#028fcc",
+        "type": "color"
+      },
+      "ForegroundLinkHover": {
+        "value": "#0182b3",
+        "type": "color"
+      },
+      "ForegroundLinkPressed": {
+        "value": "#026690",
+        "type": "color"
+      },
+      "ForegroundLinkSelected": {
+        "value": "#028fcc",
+        "type": "color"
+      },
+      "Foreground1": {
+        "value": "#EFAB01",
+        "type": "color"
+      },
+      "Foreground2": {
+        "value": "#DFA001",
+        "type": "color"
+      },
+      "Foreground2Hover": {
+        "value": "#D69600",
+        "type": "color"
+      },
+      "Foreground2Pressed": {
+        "value": "#966805",
+        "type": "color"
+      },
+      "ForegroundInverted": {
+        "value": "#FFCC33",
+        "type": "color"
+      },
+      "ForegroundInvertedHover": {
+        "value": "#FFD450",
+        "type": "color"
+      },
+      "ForegroundInvertedPressed": {
+        "value": "#FFCC33",
+        "type": "color"
+      },
+      "ForegroundOnLight": {
+        "value": "#EFAB01",
+        "type": "color"
+      },
+      "ForegroundOnLightHover": {
+        "value": "#DFA001",
+        "type": "color"
+      },
+      "ForegroundOnLightPressed": {
+        "value": "#BF8208",
+        "type": "color"
+      },
+      "ForegroundOnLightSelected": {
+        "value": "#D69600",
+        "type": "color"
+      },
+      "Background": {
+        "value": "#ffcc33",
+        "type": "color"
+      },
+      "BackgroundHover": {
+        "value": "#FEC10C",
+        "type": "color"
+      },
+      "BackgroundPressed": {
+        "value": "#F9BB01",
+        "type": "color"
+      },
+      "BackgroundSelected": {
+        "value": "#F9BB01",
+        "type": "color"
+      },
+      "BackgroundStatic": {
+        "value": "#EFAB01",
+        "type": "color"
+      },
+      "Background2": {
+        "value": "#FFFCF1",
+        "type": "color"
+      },
+      "Background2Hover": {
+        "value": "#FFF6D7",
+        "type": "color"
+      },
+      "Background2Pressed": {
+        "value": "#FFE79B",
+        "type": "color"
+      },
+      "BackgroundInverted": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "BackgroundInvertedHover": {
+        "value": "#FFFCF1",
+        "type": "color"
+      },
+      "BackgroundInvertedPressed": {
+        "value": "#FFEEBA",
+        "type": "color"
+      },
+      "BackgroundInvertedSelected": {
+        "value": "#FFF6D7",
+        "type": "color"
+      },
+      "Stroke1": {
+        "value": "#EFAB01",
+        "type": "color"
+      },
+      "Stroke2": {
+        "value": "#FFEEBA",
+        "type": "color"
+      },
+      "Stroke2Hover": {
+        "value": "#FFDC70",
+        "type": "color"
+      },
+      "Stroke2Pressed": {
+        "value": "#EFAB01",
+        "type": "color"
+      },
+      "ShadowAmbient": {
+        "value": "rgba(0,0,0,0.30)",
+        "type": "color"
+      },
+      "ShadowKey": {
+        "value": "rgba(0,0,0,0.25)",
+        "type": "color"
+      }
+    },
+    "Subtle": {
+      "Background": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "BackgroundHover": {
+        "value": "#f5f5f5",
+        "type": "color"
+      },
+      "BackgroundPressed": {
+        "value": "#e0e0e0",
+        "type": "color"
+      },
+      "BackgroundSelected": {
+        "value": "#ebebeb",
+        "type": "color"
+      },
+      "BackgroundLightAlphaHover": {
+        "value": "rgba(255, 255, 255, 0.7)",
+        "type": "color"
+      },
+      "BackgroundLightAlphaPressed": {
+        "value": "rgba(255, 255, 255, 0.5)",
+        "type": "color"
+      },
+      "BackgroundLightAlphaSelected": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "BackgroundInverted": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "BackgroundInvertedHover": {
+        "value": "rgba(0, 0, 0, 0.1)",
+        "type": "color"
+      },
+      "BackgroundInvertedPressed": {
+        "value": "rgba(0, 0, 0, 0.3)",
+        "type": "color"
+      },
+      "BackgroundInvertedSelected": {
+        "value": "rgba(0, 0, 0, 0.2)",
+        "type": "color"
+      }
+    },
+    "Transparent": {
+      "Background": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "BackgroundHover": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "BackgroundPressed": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "BackgroundSelected": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "Stroke": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "StrokeInteractive": {
+        "value": "transparent",
+        "type": "color"
+      },
+      "StrokeDisabled": {
+        "value": "transparent",
+        "type": "color"
+      }
+    },
+    "Stroke": {
+      "Focus1": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "Focus2": {
+        "value": "#000000",
+        "type": "color"
+      }
+    },
+    "Compound": {
+      "BrandForeground1": {
+        "value": "#EFAB01",
+        "type": "color"
+      },
+      "BrandForeground1Hover": {
+        "value": "#DFA001",
+        "type": "color"
+      },
+      "BrandForeground1Pressed": {
+        "value": "#D69600",
+        "type": "color"
+      },
+      "BrandBackground": {
+        "value": "#FEC10C",
+        "type": "color"
+      },
+      "BrandBackgroundHover": {
+        "value": "#F9BB01",
+        "type": "color"
+      },
+      "BrandBackgroundPressed": {
+        "value": "#EFAB01",
+        "type": "color"
+      },
+      "BrandStroke": {
+        "value": "#EFAB01",
+        "type": "color"
+      },
+      "BrandStrokeHover": {
+        "value": "#DFA001",
+        "type": "color"
+      },
+      "BrandStrokePressed": {
+        "value": "#D69600",
+        "type": "color"
+      }
+    },
+    "Background": {
+      "Overlay": {
+        "value": "rgba(0, 0, 0, 0.4)",
+        "type": "color"
+      }
+    },
+    "Scrollbar": {
+      "Overlay": {
+        "value": "rgba(0,0,0,0.2)",
+        "type": "color"
+      }
+    }
+  },
+  "shadow": {
+    "2": {
+      "value": "0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14)",
+      "type": "other"
+    },
+    "4": {
+      "value": "0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.14)",
+      "type": "other"
+    },
+    "8": {
+      "value": "0 0 2px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.14)",
+      "type": "other"
+    },
+    "16": {
+      "value": "0 0 2px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.14)",
+      "type": "other"
+    },
+    "28": {
+      "value": "0 0 8px rgba(0,0,0,0.12), 0 14px 28px rgba(0,0,0,0.14)",
+      "type": "other"
+    },
+    "64": {
+      "value": "0 0 8px rgba(0,0,0,0.12), 0 32px 64px rgba(0,0,0,0.14)",
+      "type": "other"
+    },
+    "2Brand": {
+      "value": "0 0 2px rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.25)",
+      "type": "other"
+    },
+    "4Brand": {
+      "value": "0 0 2px rgba(0,0,0,0.30), 0 2px 4px rgba(0,0,0,0.25)",
+      "type": "other"
+    },
+    "8Brand": {
+      "value": "0 0 2px rgba(0,0,0,0.30), 0 4px 8px rgba(0,0,0,0.25)",
+      "type": "other"
+    },
+    "16Brand": {
+      "value": "0 0 2px rgba(0,0,0,0.30), 0 8px 16px rgba(0,0,0,0.25)",
+      "type": "other"
+    },
+    "28Brand": {
+      "value": "0 0 8px rgba(0,0,0,0.30), 0 14px 28px rgba(0,0,0,0.25)",
+      "type": "other"
+    },
+    "64Brand": {
+      "value": "0 0 8px rgba(0,0,0,0.30), 0 32px 64px rgba(0,0,0,0.25)",
+      "type": "other"
+    }
+  }
+}

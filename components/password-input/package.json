@@ -1,0 +1,62 @@
+{
+  "name": "@axiscommunications/fluent-password-input",
+  "version": "7.1.0",
+  "description": "Password input for Fluent UI v9",
+  "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
+  "license": "MIT",
+  "main": "lib/cjs/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AxisCommunications/fluent-components.git",
+    "directory": "components/password-input"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "build:esm": "tsc",
+    "build": "pnpm build:cjs && pnpm build:esm",
+    "lint": "tsc --noEmit && eslint . --cache",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@fluentui/react-components": "^9.26.0",
+    "@fluentui/react-icons": "^2.0.196",
+    "@fluentui/react-utilities": "^9.9.2",
+    "@griffel/react": "^1.5.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "@vitest/coverage-c8": "^0.30.1",
+    "eslint": "^7.0.0",
+    "jsdom": "^21.1.1",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0",
+    "typescript": "^4.5.5",
+    "vitest": "^0.30.1"
+  },
+  "peerDependencies": {
+    "@fluentui/react-components": "^9.26.0",
+    "@fluentui/react-icons": "^2.0.196",
+    "@fluentui/react-utilities": "^9.9.2",
+    "@griffel/react": "^1.5.2",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
+  },
+  "packageManager": "pnpm@8.1.0"
+}

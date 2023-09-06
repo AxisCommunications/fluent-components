@@ -1,0 +1,162 @@
+{
+  "fontFamily": {
+    "Base": {
+      "value": "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+      "type": "fontFamilies"
+    },
+    "Monospace": {
+      "value": "Consolas, 'Courier New', Courier, monospace",
+      "type": "fontFamilies"
+    },
+    "Numeric": {
+      "value": "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+      "type": "fontFamilies"
+    }
+  },
+  "lineHeight": {
+    "Base100": {
+      "value": 14,
+      "type": "lineHeights"
+    },
+    "Base200": {
+      "value": 16,
+      "type": "lineHeights"
+    },
+    "Base300": {
+      "value": 20,
+      "type": "lineHeights"
+    },
+    "Base400": {
+      "value": 22,
+      "type": "lineHeights"
+    },
+    "Base500": {
+      "value": 28,
+      "type": "lineHeights"
+    },
+    "Base600": {
+      "value": 32,
+      "type": "lineHeights"
+    },
+    "Hero700": {
+      "value": 36,
+      "type": "lineHeights"
+    },
+    "Hero800": {
+      "value": 40,
+      "type": "lineHeights"
+    },
+    "Hero900": {
+      "value": 52,
+      "type": "lineHeights"
+    },
+    "Hero1000": {
+      "value": 92,
+      "type": "lineHeights"
+    }
+  },
+  "fontWeight": {
+    "Regular": {
+      "value": 400,
+      "type": "fontWeights"
+    },
+    "Medium": {
+      "value": 500,
+      "type": "fontWeights"
+    },
+    "Semibold": {
+      "value": 600,
+      "type": "fontWeights"
+    },
+    "Bold": {
+      "value": 700,
+      "type": "fontWeights"
+    }
+  },
+  "fontSize": {
+    "Base100": {
+      "value": 10,
+      "type": "fontSizes"
+    },
+    "Base200": {
+      "value": 12,
+      "type": "fontSizes"
+    },
+    "Base300": {
+      "value": 14,
+      "type": "fontSizes"
+    },
+    "Base400": {
+      "value": 16,
+      "type": "fontSizes"
+    },
+    "Base500": {
+      "value": 20,
+      "type": "fontSizes"
+    },
+    "Base600": {
+      "value": 24,
+      "type": "fontSizes"
+    },
+    "Hero700": {
+      "value": 28,
+      "type": "fontSizes"
+    },
+    "Hero800": {
+      "value": 32,
+      "type": "fontSizes"
+    },
+    "Hero900": {
+      "value": 40,
+      "type": "fontSizes"
+    },
+    "Hero1000": {
+      "value": 68,
+      "type": "fontSizes"
+    }
+  },
+  "borderRadius": {
+    "None": {
+      "value": 0,
+      "type": "borderRadius"
+    },
+    "Small": {
+      "value": 2,
+      "type": "borderRadius"
+    },
+    "Medium": {
+      "value": 4,
+      "type": "borderRadius"
+    },
+    "Large": {
+      "value": 6,
+      "type": "borderRadius"
+    },
+    "XLarge": {
+      "value": 8,
+      "type": "borderRadius"
+    },
+    "Circular": {
+      "value": 10000,
+      "type": "borderRadius"
+    }
+  },
+  "strokeWidth": {
+    "Thin": {
+      "value": 1,
+      "type": "borderWidth"
+    },
+    "Thick": {
+      "value": 2,
+      "type": "borderWidth"
+    },
+    "Thicker": {
+      "value": 3,
+      "type": "borderWidth"
+    },
+    "Thickest": {
+      "value": 4,
+      "type": "borderWidth"
+    }
+  }
+}
