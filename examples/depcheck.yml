@@ -1,0 +1,2 @@
+ignores: ["react-dom", "typescript", "@griffel/react"]
+skip-missing: true
