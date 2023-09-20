@@ -15,13 +15,11 @@ export const TopBar = forwardRef(
     const rootStyle = mergeClasses(topBarClassNames.root, styles.root);
     const leftSectionStyle = mergeClasses(
       topBarClassNames.left,
-      styles.section,
-      styles.leftSection
+      styles.section
     );
     const rightSectionStyle = mergeClasses(
       topBarClassNames.right,
-      styles.section,
-      styles.rightSection
+      styles.section
     );
 
     const language = profileMenu?.language;
