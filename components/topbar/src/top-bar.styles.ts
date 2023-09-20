@@ -29,10 +29,4 @@ export const useTopBarStyles = makeStyles({
     alignItems: "center",
     overflowX: "hidden",
   },
-  leftSection: {
-    gridColumnStart: "left",
-  },
-  rightSection: {
-    gridColumnStart: "right",
-  },
 });
