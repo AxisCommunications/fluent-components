@@ -1,6 +1,3 @@
-# Changelog
-
-All notable changes to this project will be documented in this file.
 ## [8.0.1](https://github.com/AxisCommunications/fluent-components/compare/v8.0.0...v8.0.1) (2023-09-22T06:30:07.838Z))
 
 ## [8.0.0](https://github.com/AxisCommunications/fluent-components/compare/2bd9f2ac94b512349dd4699e8dc1986fe2e08843...v8.0.0) (2023-09-22T06:21:05.951Z))
