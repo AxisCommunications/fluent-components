@@ -47,7 +47,7 @@
           "type": "color"
         },
         "2BrandPressed": {
-          "value": "#DFA001",
+          "value": "#E0A101",
           "type": "color"
         },
         "2BrandSelected": {
@@ -71,7 +71,7 @@
           "type": "color"
         },
         "3BrandPressed": {
-          "value": "#DFA001",
+          "value": "#E0A101",
           "type": "color"
         },
         "3BrandSelected": {
@@ -406,15 +406,15 @@
         "type": "color"
       },
       "Foreground2": {
-        "value": "#DFA001",
+        "value": "#E0A101",
         "type": "color"
       },
       "Foreground2Hover": {
-        "value": "#D69600",
+        "value": "#B07A0F",
         "type": "color"
       },
       "Foreground2Pressed": {
-        "value": "#966805",
+        "value": "#3E2F1D",
         "type": "color"
       },
       "ForegroundInverted": {
@@ -434,15 +434,15 @@
         "type": "color"
       },
       "ForegroundOnLightHover": {
-        "value": "#DFA001",
+        "value": "#E0A101",
         "type": "color"
       },
       "ForegroundOnLightPressed": {
-        "value": "#BF8208",
+        "value": "#674808",
         "type": "color"
       },
       "ForegroundOnLightSelected": {
-        "value": "#D69600",
+        "value": "#B07A0F",
         "type": "color"
       },
       "Background": {
@@ -454,11 +454,11 @@
         "type": "color"
       },
       "BackgroundPressed": {
-        "value": "#F9BB01",
+        "value": "#B07A0F",
         "type": "color"
       },
       "BackgroundSelected": {
-        "value": "#F9BB01",
+        "value": "#B07A0F",
         "type": "color"
       },
       "BackgroundStatic": {
@@ -610,11 +610,11 @@
         "type": "color"
       },
       "BrandForeground1Hover": {
-        "value": "#DFA001",
+        "value": "#E0A101",
         "type": "color"
       },
       "BrandForeground1Pressed": {
-        "value": "#D69600",
+        "value": "#B07A0F",
         "type": "color"
       },
       "BrandBackground": {
@@ -622,11 +622,11 @@
         "type": "color"
       },
       "BrandBackgroundHover": {
-        "value": "#F9BB01",
+        "value": "#EFAB01",
         "type": "color"
       },
       "BrandBackgroundPressed": {
-        "value": "#EFAB01",
+        "value": "#E0A101",
         "type": "color"
       },
       "BrandStroke": {
@@ -634,11 +634,11 @@
         "type": "color"
       },
       "BrandStrokeHover": {
-        "value": "#DFA001",
+        "value": "#E0A101",
         "type": "color"
       },
       "BrandStrokePressed": {
-        "value": "#D69600",
+        "value": "#B07A0F",
         "type": "color"
       }
     },
