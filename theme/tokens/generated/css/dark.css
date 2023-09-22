@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Jul 2023 09:50:56 GMT
+ * Generated on Fri, 22 Sep 2023 14:14:03 GMT
  */
 
 .dark {
@@ -106,28 +106,28 @@
   --color-brand-foreground2-hover: #FFE79B;
   --color-brand-foreground2-pressed: #FFFCF1;
   --color-brand-foreground-inverted: #EFAB01;
-  --color-brand-foreground-inverted-hover: #DFA001;
-  --color-brand-foreground-inverted-pressed: #D69600;
+  --color-brand-foreground-inverted-hover: #E0A101;
+  --color-brand-foreground-inverted-pressed: #B07A0F;
   --color-brand-foreground-on-light: #EFAB01;
-  --color-brand-foreground-on-light-hover: #DFA001;
-  --color-brand-foreground-on-light-pressed: #BF8208;
-  --color-brand-foreground-on-light-selected: #D69600;
-  --color-brand-background: #DFA001;
+  --color-brand-foreground-on-light-hover: #E0A101;
+  --color-brand-foreground-on-light-pressed: #674808;
+  --color-brand-foreground-on-light-selected: #B07A0F;
+  --color-brand-background: #E0A101;
   --color-brand-background-hover: #EFAB01;
-  --color-brand-background-pressed: #AD7600;
-  --color-brand-background-selected: #D69600;
+  --color-brand-background-pressed: #4C381E;
+  --color-brand-background-selected: #B07A0F;
   --color-brand-background-static: #EFAB01;
-  --color-brand-background2: #795102;
-  --color-brand-background2-hover: #AD7600;
-  --color-brand-background2-pressed: #5C3E00;
+  --color-brand-background2: #342818;
+  --color-brand-background2-hover: #4C381E;
+  --color-brand-background2-pressed: #281E03;
   --color-brand-background-inverted: #ffffff;
   --color-brand-background-inverted-hover: #FFFCF1;
   --color-brand-background-inverted-pressed: #FFEEBA;
   --color-brand-background-inverted-selected: #FFF6D7;
   --color-brand-stroke1: #FFCC33;
   --color-brand-stroke2: #5C3E00;
-  --color-brand-stroke2-hover: #BF8208;
-  --color-brand-stroke2-pressed: #966805;
+  --color-brand-stroke2-hover: #674808;
+  --color-brand-stroke2-pressed: #3E2F1D;
   --color-brand-shadow-ambient: rgba(0,0,0,0.30);
   --color-brand-shadow-key: rgba(0,0,0,0.25);
   --color-subtle-background: transparent;

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 14 Jul 2023 09:50:56 GMT
+ * Generated on Fri, 22 Sep 2023 14:14:03 GMT
  */
 
 .light {
@@ -15,13 +15,13 @@
   --color-neutral-foreground-2-pressed: #242424;
   --color-neutral-foreground-2-selected: #242424;
   --color-neutral-foreground-2-brand-hover: #EFAB01;
-  --color-neutral-foreground-2-brand-pressed: #DFA001;
+  --color-neutral-foreground-2-brand-pressed: #E0A101;
   --color-neutral-foreground-2-brand-selected: #EFAB01;
   --color-neutral-foreground-3-hover: #424242;
   --color-neutral-foreground-3-pressed: #424242;
   --color-neutral-foreground-3-selected: #424242;
   --color-neutral-foreground-3-brand-hover: #EFAB01;
-  --color-neutral-foreground-3-brand-pressed: #DFA001;
+  --color-neutral-foreground-3-brand-pressed: #E0A101;
   --color-neutral-foreground-3-brand-selected: #EFAB01;
   --color-neutral-foreground-disabled: #bdbdbd;
   --color-neutral-foreground-inverted-disabled: rgba(255, 255, 255, 0.4);
@@ -102,20 +102,20 @@
   --color-brand-foreground-link-pressed: #026690;
   --color-brand-foreground-link-selected: #028fcc;
   --color-brand-foreground1: #EFAB01;
-  --color-brand-foreground2: #DFA001;
-  --color-brand-foreground2-hover: #D69600;
-  --color-brand-foreground2-pressed: #966805;
+  --color-brand-foreground2: #E0A101;
+  --color-brand-foreground2-hover: #B07A0F;
+  --color-brand-foreground2-pressed: #3E2F1D;
   --color-brand-foreground-inverted: #FFCC33;
   --color-brand-foreground-inverted-hover: #FFD450;
   --color-brand-foreground-inverted-pressed: #FFCC33;
   --color-brand-foreground-on-light: #EFAB01;
-  --color-brand-foreground-on-light-hover: #DFA001;
-  --color-brand-foreground-on-light-pressed: #BF8208;
-  --color-brand-foreground-on-light-selected: #D69600;
+  --color-brand-foreground-on-light-hover: #E0A101;
+  --color-brand-foreground-on-light-pressed: #674808;
+  --color-brand-foreground-on-light-selected: #B07A0F;
   --color-brand-background: #ffcc33;
   --color-brand-background-hover: #FEC10C;
-  --color-brand-background-pressed: #F9BB01;
-  --color-brand-background-selected: #F9BB01;
+  --color-brand-background-pressed: #B07A0F;
+  --color-brand-background-selected: #B07A0F;
   --color-brand-background-static: #EFAB01;
   --color-brand-background2: #FFFCF1;
   --color-brand-background2-hover: #FFF6D7;
@@ -151,14 +151,14 @@
   --color-stroke-focus1: #ffffff;
   --color-stroke-focus2: #000000;
   --color-compound-brand-foreground1: #EFAB01;
-  --color-compound-brand-foreground1-hover: #DFA001;
-  --color-compound-brand-foreground1-pressed: #D69600;
+  --color-compound-brand-foreground1-hover: #E0A101;
+  --color-compound-brand-foreground1-pressed: #B07A0F;
   --color-compound-brand-background: #FEC10C;
-  --color-compound-brand-background-hover: #F9BB01;
-  --color-compound-brand-background-pressed: #EFAB01;
+  --color-compound-brand-background-hover: #EFAB01;
+  --color-compound-brand-background-pressed: #E0A101;
   --color-compound-brand-stroke: #EFAB01;
-  --color-compound-brand-stroke-hover: #DFA001;
-  --color-compound-brand-stroke-pressed: #D69600;
+  --color-compound-brand-stroke-hover: #E0A101;
+  --color-compound-brand-stroke-pressed: #B07A0F;
   --color-background-overlay: rgba(0, 0, 0, 0.4);
   --color-scrollbar-overlay: rgba(0,0,0,0.2);
   --shadow-2: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
