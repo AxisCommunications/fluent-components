@@ -422,11 +422,11 @@
         "type": "color"
       },
       "ForegroundInvertedHover": {
-        "value": "#DFA001",
+        "value": "#E0A101",
         "type": "color"
       },
       "ForegroundInvertedPressed": {
-        "value": "#D69600",
+        "value": "#B07A0F",
         "type": "color"
       },
       "ForegroundOnLight": {
@@ -434,19 +434,19 @@
         "type": "color"
       },
       "ForegroundOnLightHover": {
-        "value": "#DFA001",
+        "value": "#E0A101",
         "type": "color"
       },
       "ForegroundOnLightPressed": {
-        "value": "#BF8208",
+        "value": "#674808",
         "type": "color"
       },
       "ForegroundOnLightSelected": {
-        "value": "#D69600",
+        "value": "#B07A0F",
         "type": "color"
       },
       "Background": {
-        "value": "#DFA001",
+        "value": "#E0A101",
         "type": "color"
       },
       "BackgroundHover": {
@@ -454,11 +454,11 @@
         "type": "color"
       },
       "BackgroundPressed": {
-        "value": "#AD7600",
+        "value": "#4C381E",
         "type": "color"
       },
       "BackgroundSelected": {
-        "value": "#D69600",
+        "value": "#B07A0F",
         "type": "color"
       },
       "BackgroundStatic": {
@@ -466,15 +466,15 @@
         "type": "color"
       },
       "Background2": {
-        "value": "#795102",
+        "value": "#342818",
         "type": "color"
       },
       "Background2Hover": {
-        "value": "#AD7600",
+        "value": "#4C381E",
         "type": "color"
       },
       "Background2Pressed": {
-        "value": "#5C3E00",
+        "value": "#281E03",
         "type": "color"
       },
       "BackgroundInverted": {
@@ -502,11 +502,11 @@
         "type": "color"
       },
       "Stroke2Hover": {
-        "value": "#BF8208",
+        "value": "#674808",
         "type": "color"
       },
       "Stroke2Pressed": {
-        "value": "#966805",
+        "value": "#3E2F1D",
         "type": "color"
       },
       "ShadowAmbient": {

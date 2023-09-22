@@ -19,23 +19,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@axiscommunications/fluent-hooks": "workspace:*",
-    "@axiscommunications/fluent-icons": "workspace:*",
-    "@axiscommunications/fluent-notification-bar": "workspace:*",
-    "@axiscommunications/fluent-password-input": "workspace:*",
-    "@axiscommunications/fluent-slider": "workspace:*",
-    "@axiscommunications/fluent-stepper": "workspace:*",
-    "@axiscommunications/fluent-styles": "workspace:*",
-    "@axiscommunications/fluent-theme": "workspace:*",
-    "@axiscommunications/fluent-topbar": "workspace:*",
-    "@fluentui/react-components": "^9.26.0",
-    "@fluentui/react-context-selector": "^9.1.26",
-    "@fluentui/react-icons": "^2.0.196",
-    "@griffel/react": "^1.5.11",
     "@vitejs/plugin-react": "^1.3.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "6.8.1",
     "scheduler": "0.20.0",
     "vite": "^3.0.9"
   },
