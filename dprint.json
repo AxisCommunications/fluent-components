@@ -17,7 +17,6 @@
     "icons/src",
     "icons/svgo_config.yml",
     "CHANGELOG.md",
-    "changeset.md",
     "pnpm-lock.yaml"
   ],
   "plugins": [

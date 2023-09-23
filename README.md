@@ -109,13 +109,13 @@ will pick up changes only after running `pnpm build`, not when source files chan
 2. Create release commit on the branch
 
    ```sh
-   pnpm release major|minor|patch
+   pnpm exec release major|minor|patch
    ```
 
    or to release an alpha version
 
    ```sh
-   pnpm release premajor|preminor|prepatch|prerelease
+   pnpm exec release premajor|preminor|prepatch|prerelease
    ```
 
 3. Push release branch
