@@ -145,6 +145,7 @@
   "#674808": [
     "dark.colorBrandForegroundOnLightPressed",
     "dark.colorBrandStroke2Hover",
+    "dark.colorBrandStroke2Contrast",
     "light.colorBrandForegroundOnLightPressed"
   ],
   "#6b6b6b": [
@@ -312,7 +313,8 @@
   "#ffeeba": [
     "dark.colorBrandBackgroundInvertedPressed",
     "light.colorBrandBackgroundInvertedPressed",
-    "light.colorBrandStroke2"
+    "light.colorBrandStroke2",
+    "light.colorBrandStroke2Contrast"
   ],
   "#fff6d7": [
     "dark.colorBrandBackgroundInvertedSelected",
@@ -439,6 +441,10 @@
     "dark.colorNeutralStrokeAlpha",
     "dark.colorNeutralStencil1Alpha",
     "light.colorNeutralBackgroundInvertedDisabled"
+  ],
+  "rgba(255, 255, 255, 0.2)": [
+    "dark.colorNeutralStrokeAlpha2",
+    "light.colorNeutralStrokeAlpha2"
   ],
   "rgba(255, 255, 255, 0.4)": [
     "dark.colorNeutralForegroundInvertedDisabled",

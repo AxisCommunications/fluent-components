@@ -337,6 +337,10 @@
         "Alpha": {
           "value": "rgba(255, 255, 255, 0.1)",
           "type": "color"
+        },
+        "Alpha2": {
+          "value": "rgba(255, 255, 255, 0.2)",
+          "type": "color"
         }
       },
       "Shadow": {
@@ -507,6 +511,10 @@
       },
       "Stroke2Pressed": {
         "value": "#3E2F1D",
+        "type": "color"
+      },
+      "Stroke2Contrast": {
+        "value": "#674808",
         "type": "color"
       },
       "ShadowAmbient": {

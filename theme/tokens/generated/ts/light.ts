@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 22 Sep 2023 14:14:03 GMT
+ * Generated on Mon, 25 Sep 2023 07:58:57 GMT
  */
 
 import { ColorTokens, ShadowTokens, ShadowBrandTokens } from "@fluentui/react-components";
@@ -38,6 +38,7 @@ export const colorTokens: ColorTokens = {
   colorBrandShadowKey: "rgba(0,0,0,0.25)",
   colorBrandStroke1: "#efab01",
   colorBrandStroke2: "#ffeeba",
+  colorBrandStroke2Contrast: "#ffeeba",
   colorBrandStroke2Hover: "#ffdc70",
   colorBrandStroke2Pressed: "#efab01",
   colorCompoundBrandBackground: "#fec10c",
@@ -134,6 +135,7 @@ export const colorTokens: ColorTokens = {
   colorNeutralStrokeAccessiblePressed: "#4d4d4d",
   colorNeutralStrokeAccessibleSelected: "#efab01",
   colorNeutralStrokeAlpha: "rgba(0, 0, 0, 0.05)",
+  colorNeutralStrokeAlpha2: "rgba(255, 255, 255, 0.2)",
   colorNeutralStrokeDisabled: "#e0e0e0",
   colorNeutralStrokeInvertedDisabled: "rgba(255, 255, 255, 0.4)",
   colorNeutralStrokeOnBrand: "#ffffff",
