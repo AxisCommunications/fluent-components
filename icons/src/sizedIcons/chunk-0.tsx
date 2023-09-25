@@ -258,6 +258,86 @@ const AlfMultiple48RegularIcon = (props: AxisIconProps) => {
 export const AlfMultiple48Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/AlfMultiple48RegularIcon, 'AlfMultiple48Regular');
 
 
+const Analytics20FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M14 8.5a5.5 5.5 0 10-2.18 4.38l4.15 4.15.08.07a.75.75 0 00.98-1.13l-4.15-4.15A5.48 5.48 0 0014 8.5zm-6 2v-4a.5.5 0 011 0v4a.5.5 0 01-1 0zm-2 0v-2a.5.5 0 011 0v2a.5.5 0 01-1 0zm4.5.5a.5.5 0 01-.5-.5v-3a.5.5 0 011 0v3a.5.5 0 01-.5.5z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics20FilledIcon, 'Analytics20Filled');
+
+
+const Analytics20RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M6 10.5a.5.5 0 001 0v-2a.5.5 0 00-1 0v2z" fill={primaryFill} /><path d="M8.5 11a.5.5 0 01-.5-.5v-4a.5.5 0 011 0v4a.5.5 0 01-.5.5z" fill={primaryFill} /><path d="M10 10.5a.5.5 0 001 0v-3a.5.5 0 00-1 0v3z" fill={primaryFill} /><path d="M14 8.5a5.5 5.5 0 10-1.98 4.23l4.13 4.12.07.06a.5.5 0 00.63-.76l-4.12-4.13A5.48 5.48 0 0014 8.5zm-10 0a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics20RegularIcon, 'Analytics20Regular');
+
+
+const Analytics24FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M17.5 10a7.5 7.5 0 10-2.95 5.96l4.74 4.75.1.08a1 1 0 001.32-1.5l-4.75-4.74A7.47 7.47 0 0017.5 10zm-8.25 2.25v-5a.75.75 0 011.5 0v5a.75.75 0 01-1.5 0zm-2.5 0v-2.5a.75.75 0 011.5 0v2.5a.75.75 0 01-1.5 0zm5.75.75a.75.75 0 01-.75-.75v-3.5a.75.75 0 011.5 0v3.5c0 .41-.34.75-.75.75z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics24FilledIcon, 'Analytics24Filled');
+
+
+const Analytics24RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M6.75 12.25a.75.75 0 001.5 0v-2a.75.75 0 00-1.5 0v2z" fill={primaryFill} /><path d="M10 13a.75.75 0 01-.75-.75v-4.5a.75.75 0 011.5 0v4.5c0 .41-.34.75-.75.75z" fill={primaryFill} /><path d="M11.75 12.25a.75.75 0 001.5 0v-3a.75.75 0 00-1.5 0v3z" fill={primaryFill} /><path d="M17.25 10a7.25 7.25 0 10-2.68 5.63l4.9 4.9.08.07a.75.75 0 00.98-1.13l-4.9-4.9A7.22 7.22 0 0017.25 10zm-13 0a5.75 5.75 0 1111.5 0 5.75 5.75 0 01-11.5 0z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics24RegularIcon, 'Analytics24Regular');
+
+
+const Analytics28FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={28} height={28} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M21 11.5a9.5 9.5 0 10-3.93 7.7l6.37 6.36.11.1a1.5 1.5 0 002.01-2.22l-6.37-6.37A9.46 9.46 0 0021 11.5zM8 14.25v-3a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0zm3.25.75a.75.75 0 01-.75-.75v-6a.75.75 0 011.5 0v6c0 .41-.34.75-.75.75zm1.75-.75v-4.5a.75.75 0 011.5 0v4.5a.75.75 0 01-1.5 0z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics28FilledIcon, 'Analytics28Filled');
+
+
+const Analytics28RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={28} height={28} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M8 14.25a.75.75 0 001.5 0v-3a.75.75 0 00-1.5 0v3z" fill={primaryFill} /><path d="M11.25 15a.75.75 0 01-.75-.75v-6a.75.75 0 011.5 0v6c0 .41-.34.75-.75.75z" fill={primaryFill} /><path d="M13 14.25a.75.75 0 001.5 0v-4.5a.75.75 0 00-1.5 0v4.5z" fill={primaryFill} /><path d="M20.25 11.5a8.75 8.75 0 10-3.12 6.7l6.84 6.83.08.07a.75.75 0 00.98-1.13l-6.84-6.84a8.72 8.72 0 002.06-5.63zm-16 0a7.25 7.25 0 1114.5 0 7.25 7.25 0 01-14.5 0z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics28RegularIcon, 'Analytics28Regular');
+
+
+const Analytics32FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={32} height={32} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M3 13.5a10.5 10.5 0 1118.76 6.49l6.88 6.88a1.25 1.25 0 01-1.77 1.76l-6.88-6.87A10.5 10.5 0 013 13.5zm6.5 3a1 1 0 102 0V13a1 1 0 10-2 0v3.5zm4 1a1 1 0 001-1V10a1 1 0 10-2 0v6.5a1 1 0 001 1zm2-1a1 1 0 102 0v-5a1 1 0 10-2 0v5z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics32Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics32FilledIcon, 'Analytics32Filled');
+
+
+const Analytics32RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={32} height={32} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M9.5 16.5a1 1 0 102 0V13a1 1 0 10-2 0v3.5z" fill={primaryFill} /><path d="M13.5 17.5a1 1 0 01-1-1V10a1 1 0 112 0v6.5a1 1 0 01-1 1z" fill={primaryFill} /><path d="M15.5 16.5a1 1 0 102 0v-5a1 1 0 10-2 0v5z" fill={primaryFill} /><path d="M3 13.5a10.5 10.5 0 1118.6 6.68l7.1 7.11a1 1 0 01-1.4 1.42l-7.12-7.11A10.5 10.5 0 013 13.5zM13.5 5a8.5 8.5 0 100 17 8.5 8.5 0 000-17z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics32Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics32RegularIcon, 'Analytics32Regular');
+
+
+const Analytics48FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={48} height={48} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M6 20.5a14.5 14.5 0 1125.76 9.14l9.8 9.8a1.5 1.5 0 11-2.12 2.12l-9.8-9.8A14.5 14.5 0 016 20.5zm8.5 4.25a1.25 1.25 0 102.5 0v-5.5a1.25 1.25 0 10-2.5 0v5.5zM20.25 26c.69 0 1.25-.56 1.25-1.25v-9.5a1.25 1.25 0 10-2.5 0v9.5c0 .69.56 1.25 1.25 1.25zm3.25-1.25a1.25 1.25 0 102.5 0v-7.5a1.25 1.25 0 10-2.5 0v7.5z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics48Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics48FilledIcon, 'Analytics48Filled');
+
+
+const Analytics48RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={48} height={48} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M14 24.75a1.25 1.25 0 102.5 0v-5.5a1.25 1.25 0 10-2.5 0v5.5z" fill={primaryFill} /><path d="M19.75 26c-.69 0-1.25-.56-1.25-1.25v-9.5a1.25 1.25 0 112.5 0v9.5c0 .69-.56 1.25-1.25 1.25z" fill={primaryFill} /><path d="M23 24.75a1.25 1.25 0 102.5 0v-7.5a1.25 1.25 0 10-2.5 0v7.5z" fill={primaryFill} /><path d="M6 20a14 14 0 1124.74 8.98l10.9 10.89a1.25 1.25 0 11-1.77 1.76l-10.9-10.89A14 14 0 016 20zM20 8.5a11.5 11.5 0 100 23 11.5 11.5 0 000-23z" fill={primaryFill} /></svg>;
+}
+
+export const Analytics48Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Analytics48RegularIcon, 'Analytics48Regular');
+
+
 const AssignIp20FilledIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
   return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M10.73 8.03v-2.4h.68c.92 0 1.38.4 1.38 1.19 0 .8-.46 1.21-1.38 1.21h-.68z" fill={primaryFill} /><path d="M3.5 4c0-1.1.9-2 2-2h9a2 2 0 012 2v8a2 2 0 01-2 2h-4v1.09c.43.15.76.48.91.91H16a.5.5 0 010 1h-4.59a1.5 1.5 0 01-2.82 0H4a.5.5 0 010-1h4.59c.15-.43.48-.76.91-.91V14h-4a2 2 0 01-2-2V4zm2 8h1.73V4.3H5.5V12zm5.23 0V9.35h.82a3.3 3.3 0 002.23-.72c.56-.48.84-1.1.84-1.88 0-1.63-.97-2.45-2.91-2.45H8.99V12h1.74z" fill={primaryFill} /></svg>;
@@ -2066,9 +2146,169 @@ const Resize48RegularIcon = (props: AxisIconProps) => {
 export const Resize48Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Resize48RegularIcon, 'Resize48Regular');
 
 
+const Skip15Backward16FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={12} height={13} viewBox="0 0 12 13" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M1.75 1c.41 0 .75.34.75.75v.38A6 6 0 110 7a.67.67 0 111.33 0A4.67 4.67 0 103.6 3h.16a.75.75 0 010 1.5h-2A.75.75 0 011 3.75V3.7 1.75c0-.41.34-.75.75-.75z" fill={primaryFill} /><path d="M4.82 9.3V5h-.56A3.87 3.87 0 013 5.63v.78a1.92 1.92 0 00.71-.24c.07-.04.13-.08.18-.13V9.3h.93z" fill={primaryFill} /><path d="M6 8.4v.79c.28.12.62.18 1.03.18.5 0 .89-.14 1.18-.4.29-.27.44-.62.44-1.04 0-.39-.13-.7-.37-.92a1.43 1.43 0 00-1.01-.34c-.11 0-.24 0-.4.02l.06-.84h1.52v-.76H6.23l-.16 2.35c.28-.04.53-.05.75-.05.59 0 .88.2.88.62 0 .2-.07.36-.2.48a.86.86 0 01-.58.17c-.32 0-.63-.09-.91-.26z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward16Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward16FilledIcon, 'Skip15Backward16Filled');
+
+
+const Skip15Backward16RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={12} height={13} viewBox="0 0 12 13" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M1.5 1c.28 0 .5.22.5.5v1.03A6 6 0 110 7a.46.46 0 01.92 0 5.08 5.08 0 101.4-3.5H4a.5.5 0 010 1H1.5A.5.5 0 011 4V1.5c0-.28.22-.5.5-.5z" fill={primaryFill} /><path d="M4.82 9.3V5h-.56A3.87 3.87 0 013 5.63v.78a1.92 1.92 0 00.71-.24c.07-.04.13-.08.18-.13V9.3h.93z" fill={primaryFill} /><path d="M6 8.4v.79c.28.12.62.18 1.03.18.5 0 .89-.14 1.18-.4.29-.27.44-.62.44-1.04 0-.39-.13-.7-.37-.92a1.43 1.43 0 00-1.01-.34c-.11 0-.24 0-.4.02l.06-.84h1.52v-.76H6.23l-.16 2.35c.28-.04.53-.05.75-.05.59 0 .88.2.88.62 0 .2-.07.36-.2.48a.86.86 0 01-.58.17c-.32 0-.63-.09-.91-.26z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward16Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward16RegularIcon, 'Skip15Backward16Regular');
+
+
+const Skip15Backward20FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M8 1.45c-1.74 0-3.33.69-4.5 1.8H5a.75.75 0 010 1.5H2a.75.75 0 01-.5-.2.73.73 0 01-.25-.8V1a.75.75 0 011.5 0v.96A8 8 0 110 8a.73.73 0 011.45 0A6.55 6.55 0 108 1.45z" fill={primaryFill} /><path d="M6.25 11V5.27H5.5a5.16 5.16 0 01-1.67.84v1.04a2.56 2.56 0 00.95-.31c.1-.06.17-.12.24-.18V11h1.23z" fill={primaryFill} /><path d="M8.16 9.8v1.06c.36.16.82.24 1.36.24.66 0 1.19-.18 1.57-.54.4-.36.59-.82.59-1.38 0-.51-.17-.92-.5-1.22-.32-.3-.77-.46-1.34-.46l-.52.03.07-1.12h2.03V5.4H8.45l-.2 3.12a8.7 8.7 0 011-.06c.78 0 1.17.27 1.17.83 0 .26-.1.48-.28.63-.18.16-.44.23-.76.23a2.3 2.3 0 01-1.22-.35z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward20FilledIcon, 'Skip15Backward20Filled');
+
+
+const Skip15Backward20RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M8 1c-2.15 0-4.08.97-5.36 2.5H5a.5.5 0 010 1H1.5A.5.5 0 011 4V.5a.5.5 0 011 0v2.2A8 8 0 110 8a.5.5 0 011 0 7 7 0 107-7z" fill={primaryFill} /><path d="M6.25 11V5.27H5.5a5.16 5.16 0 01-1.67.84v1.04a2.56 2.56 0 00.95-.31c.1-.06.17-.12.24-.18V11h1.23z" fill={primaryFill} /><path d="M8.16 9.8v1.06c.36.16.82.24 1.36.24.66 0 1.19-.18 1.57-.54.4-.36.59-.82.59-1.38 0-.51-.17-.92-.5-1.22-.32-.3-.77-.46-1.34-.46l-.52.03.07-1.12h2.03V5.4H8.45l-.2 3.12a8.7 8.7 0 011-.06c.78 0 1.17.27 1.17.83 0 .26-.1.48-.28.63-.18.16-.44.23-.76.23a2.3 2.3 0 01-1.22-.35z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward20RegularIcon, 'Skip15Backward20Regular');
+
+
+const Skip15Backward24FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M10 2C7.67 2 5.58 3 4.11 4.58h1.3a1 1 0 010 2H1.68a1 1 0 01-1-1V1.42a1 1 0 112 0V3.2A10 10 0 110 10a1 1 0 112 0 8 8 0 108-8z" fill={primaryFill} /><path d="M8.31 14V6.84h-.93a6.45 6.45 0 01-2.1 1.05v1.3a3.2 3.2 0 001.19-.4c.12-.06.22-.14.3-.21V14h1.54z" fill={primaryFill} /><path d="M10.7 12.5v1.32c.45.2 1.02.3 1.7.3a2.8 2.8 0 001.97-.67c.48-.45.72-1.02.72-1.73 0-.64-.2-1.15-.6-1.52-.41-.38-.98-.57-1.7-.57l-.65.03.1-1.4h2.53V7h-3.7l-.27 3.9c.47-.05.89-.08 1.25-.08.98 0 1.47.35 1.47 1.04 0 .33-.12.6-.35.8-.22.18-.54.28-.95.28-.54 0-1.05-.15-1.53-.44z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward24FilledIcon, 'Skip15Backward24Filled');
+
+
+const Skip15Backward24RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M10 1.54c-2.41 0-4.59 1-6.13 2.63H6a.75.75 0 110 1.5H2.25a.75.75 0 01-.75-.75V.75a.75.75 0 011.5 0v2.1A10 10 0 110 10a.77.77 0 011.54.01A8.46 8.46 0 1010 1.54z" fill={primaryFill} /><path d="M8.06 14V6.84h-.93a6.45 6.45 0 01-2.1 1.05v1.3a3.2 3.2 0 001.2-.4l.3-.21V14h1.53z" fill={primaryFill} /><path d="M10.45 12.5v1.32c.45.2 1.02.3 1.7.3a2.8 2.8 0 001.97-.67c.48-.45.72-1.02.72-1.73 0-.64-.2-1.15-.6-1.52-.41-.38-.98-.57-1.7-.57l-.64.03.1-1.4h2.52V7h-3.7l-.27 3.9c.47-.05.9-.08 1.25-.08.98 0 1.47.35 1.47 1.04 0 .33-.11.6-.34.8-.23.18-.55.28-.96.28-.54 0-1.05-.15-1.52-.44z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward24RegularIcon, 'Skip15Backward24Regular');
+
+
+const Skip15Backward28FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={22} height={22} viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M4.69 4.58A9 9 0 112 11a1 1 0 10-2 0 11 11 0 103.67-8.2V1.42a1 1 0 00-2 0v4.16a1 1 0 001 1h3.75a1 1 0 100-2H4.69z" fill={primaryFill} /><path d="M8.47 15V7.13H7.44a7.1 7.1 0 01-2.3 1.15v1.43a3.52 3.52 0 001.3-.44c.13-.07.24-.15.34-.23V15h1.69z" fill={primaryFill} /><path d="M11.09 13.35v1.45c.5.22 1.13.33 1.87.33.91 0 1.64-.24 2.17-.73.53-.5.8-1.13.8-1.9 0-.71-.22-1.27-.67-1.68a2.63 2.63 0 00-1.86-.63c-.2 0-.44.01-.71.04l.1-1.55h2.78V7.3H11.5l-.3 4.3c.53-.07.99-.1 1.38-.1 1.08 0 1.62.38 1.62 1.15 0 .36-.13.65-.38.87-.25.2-.6.31-1.05.31-.6 0-1.15-.16-1.68-.48z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward28FilledIcon, 'Skip15Backward28Filled');
+
+
+const Skip15Backward28RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={22} height={22} viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M3.82 4.83A9.47 9.47 0 111.54 11 .77.77 0 000 11a11 11 0 103-7.55V1.42a.75.75 0 10-1.5 0v4.16c0 .42.34.75.75.75H6a.75.75 0 100-1.5H3.82z" fill={primaryFill} /><path d="M8.47 15V7.13H7.44a7.1 7.1 0 01-2.3 1.15v1.43a3.52 3.52 0 001.3-.44c.13-.07.24-.15.34-.23V15h1.69z" fill={primaryFill} /><path d="M11.09 13.35v1.45c.5.22 1.13.33 1.87.33.91 0 1.64-.24 2.17-.73.53-.5.8-1.13.8-1.9 0-.71-.22-1.27-.67-1.68a2.63 2.63 0 00-1.86-.63c-.2 0-.44.01-.71.04l.1-1.55h2.78V7.3H11.5l-.3 4.3c.53-.07.99-.1 1.38-.1 1.08 0 1.62.38 1.62 1.15 0 .36-.13.65-.38.87-.25.2-.6.31-1.05.31-.6 0-1.15-.16-1.68-.48z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward28RegularIcon, 'Skip15Backward28Regular');
+
+
+const Skip15Backward32FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={26} height={26} viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M5.7 5.4A10.55 10.55 0 112.45 13 1.23 1.23 0 000 13a13 13 0 104.42-9.76V1.72a1.23 1.23 0 10-2.46 0v4.9c0 .68.55 1.23 1.23 1.23H7.6a1.23 1.23 0 000-2.45H5.7z" fill={primaryFill} /><path d="M10.28 18V8.7H9.07a8.38 8.38 0 01-2.72 1.36v1.69a4.18 4.18 0 001.54-.52c.15-.09.28-.18.4-.28V18h2z" fill={primaryFill} /><path d="M13.38 16.05v1.72c.6.26 1.33.39 2.2.39 1.09 0 1.94-.3 2.57-.87.63-.58.95-1.34.95-2.25 0-.83-.27-1.5-.8-1.98a3.1 3.1 0 00-2.2-.74c-.23 0-.51.01-.84.04l.13-1.82h3.29V8.9h-4.82l-.34 5.08c.61-.08 1.15-.11 1.62-.11 1.28 0 1.91.45 1.91 1.35 0 .43-.15.77-.45 1.03-.3.25-.7.37-1.23.37-.7 0-1.37-.19-2-.57z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward32Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward32FilledIcon, 'Skip15Backward32Filled');
+
+
+const Skip15Backward32RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={26} height={26} viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M4.95 5.5A11 11 0 112 13a1 1 0 10-2 0 13 13 0 104-9.38V1.5a1 1 0 00-2 0v5a1 1 0 001 1h4.5a1 1 0 000-2H4.95z" fill={primaryFill} /><path d="M10.28 18V8.7H9.07a8.38 8.38 0 01-2.72 1.36v1.69a4.18 4.18 0 001.54-.52c.15-.09.28-.18.4-.28V18h2z" fill={primaryFill} /><path d="M13.38 16.05v1.72c.6.26 1.33.39 2.2.39 1.09 0 1.94-.3 2.57-.87.63-.58.95-1.34.95-2.25 0-.83-.27-1.5-.8-1.98a3.1 3.1 0 00-2.2-.74c-.23 0-.51.01-.84.04l.13-1.82h3.29V8.9h-4.82l-.34 5.08c.61-.08 1.15-.11 1.62-.11 1.28 0 1.91.45 1.91 1.35 0 .43-.15.77-.45 1.03-.3.25-.7.37-1.23.37-.7 0-1.37-.19-2-.57z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Backward32Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Backward32RegularIcon, 'Skip15Backward32Regular');
+
+
+const Skip15Forward16FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={12} height={13} viewBox="0 0 12 13" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M9.5 1.75a.75.75 0 011.5 0v2c0 .41-.34.75-.75.75h-2a.75.75 0 010-1.5h.16a4.67 4.67 0 102.26 4A.67.67 0 1112 7a6 6 0 11-2.5-4.87v-.38z" fill={primaryFill} /><path d="M4.82 9.3V5h-.56A3.87 3.87 0 013 5.63v.78a1.92 1.92 0 00.71-.24c.07-.04.13-.08.18-.13V9.3h.93z" fill={primaryFill} /><path d="M6 8.4v.79c.28.12.62.18 1.03.18.5 0 .89-.14 1.18-.4.29-.27.44-.62.44-1.04 0-.39-.13-.7-.37-.92a1.43 1.43 0 00-1.01-.34c-.11 0-.24 0-.4.02l.06-.84h1.52v-.76H6.23l-.16 2.35c.28-.04.53-.05.75-.05.59 0 .88.2.88.62 0 .2-.07.36-.2.48a.86.86 0 01-.58.17c-.32 0-.63-.09-.91-.26z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward16Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward16FilledIcon, 'Skip15Forward16Filled');
+
+
+const Skip15Forward16RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={12} height={13} viewBox="0 0 12 13" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M10 1.5a.5.5 0 011 0V4a.5.5 0 01-.5.5H8a.5.5 0 010-1h1.68A5.06 5.06 0 00.92 7a5.08 5.08 0 1010.16 0A.46.46 0 0112 7a6 6 0 11-2-4.47V1.5z" fill={primaryFill} /><path d="M4.73 9.3V5H4.2a3.66 3.66 0 01-1.2.63v.78a1.75 1.75 0 00.68-.24l.17-.13V9.3h.88z" fill={primaryFill} /><path d="M6.09 8.4v.79c.26.12.58.18.97.18.47 0 .85-.14 1.12-.4.28-.27.42-.62.42-1.04 0-.39-.12-.7-.35-.92a1.32 1.32 0 00-.96-.34c-.1 0-.23 0-.37.02l.05-.84h1.45v-.76H6.3l-.15 2.35c.27-.04.5-.05.71-.05.56 0 .84.2.84.62a.6.6 0 01-.2.48.8.8 0 01-.54.17c-.3 0-.6-.09-.87-.26z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward16Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward16RegularIcon, 'Skip15Forward16Regular');
+
+
+const Skip15Forward20FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M12.5 3.25A6.55 6.55 0 1014.54 8 .73.73 0 1116 8a8 8 0 11-2.75-6.04V1a.75.75 0 011.5 0v2.75c.1.28 0 .61-.24.8a.75.75 0 01-.51.2h-3a.75.75 0 010-1.5h1.5z" fill={primaryFill} /><path d="M6.65 11V5.27H5.9a5.16 5.16 0 01-1.67.84v1.04a2.56 2.56 0 00.95-.31l.24-.18V11h1.23z" fill={primaryFill} /><path d="M8.55 9.8v1.06c.37.16.82.24 1.36.24.67 0 1.2-.18 1.58-.54.39-.36.58-.82.58-1.38 0-.51-.16-.92-.48-1.22-.33-.3-.78-.46-1.36-.46l-.52.03.08-1.12h2.03V5.4H8.85l-.2 3.12a8.7 8.7 0 011-.06c.77 0 1.17.27 1.17.83 0 .26-.1.48-.28.63-.18.16-.44.23-.76.23a2.3 2.3 0 01-1.23-.35z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward20FilledIcon, 'Skip15Forward20Filled');
+
+
+const Skip15Forward20RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M13.36 3.5A6.98 6.98 0 001 8a7 7 0 1014 0 .5.5 0 011 0 8 8 0 11-2-5.3V.5a.5.5 0 011 0V4a.5.5 0 01-.5.5H11a.5.5 0 010-1h2.36z" fill={primaryFill} /><path d="M6.65 11V5.27H5.9a5.16 5.16 0 01-1.67.84v1.04a2.56 2.56 0 00.95-.31l.24-.18V11h1.23z" fill={primaryFill} /><path d="M8.55 9.8v1.06c.37.16.82.24 1.36.24.67 0 1.2-.18 1.58-.54.39-.36.58-.82.58-1.38 0-.51-.16-.92-.48-1.22-.33-.3-.78-.46-1.36-.46l-.52.03.08-1.12h2.03V5.4H8.85l-.2 3.12a8.7 8.7 0 011-.06c.77 0 1.17.27 1.17.83 0 .26-.1.48-.28.63-.18.16-.44.23-.76.23a2.3 2.3 0 01-1.23-.35z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward20RegularIcon, 'Skip15Forward20Regular');
+
+
+const Skip15Forward24FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M15.89 4.58A8 8 0 1018 10a1 1 0 112 0 10 10 0 11-2.67-6.8V1.42a1 1 0 112 0v4.16a1 1 0 01-1 1h-3.75a1 1 0 110-2h1.3z" fill={primaryFill} /><path d="M8.31 6.84V14H6.77V8.58a1.9 1.9 0 01-.3.21 3.49 3.49 0 01-.77.32 3.2 3.2 0 01-.42.08v-1.3a6.42 6.42 0 002.1-1.05h.93z" fill={primaryFill} /><path d="M10.7 13.82V12.5c.47.3.98.44 1.52.44.4 0 .73-.1.95-.29.23-.2.35-.46.35-.79 0-.7-.49-1.04-1.47-1.04-.36 0-.78.03-1.25.08l.26-3.9h3.71v1.26h-2.53l-.1 1.4.65-.03c.72 0 1.29.19 1.7.57.4.37.6.88.6 1.52 0 .7-.24 1.28-.72 1.73a2.8 2.8 0 01-1.98.67c-.67 0-1.24-.1-1.7-.3z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward24FilledIcon, 'Skip15Forward24Filled');
+
+
+const Skip15Forward24RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M16.13 4.17A8.46 8.46 0 1018.46 10 .77.77 0 0120 10a10 10 0 11-3-7.14V.75a.75.75 0 011.5 0v4.17c0 .41-.34.75-.75.75H14a.75.75 0 010-1.5h2.13z" fill={primaryFill} /><path d="M8.31 14V6.84h-.93a6.45 6.45 0 01-2.1 1.05v1.3a3.2 3.2 0 001.19-.4c.12-.06.22-.14.3-.21V14h1.54z" fill={primaryFill} /><path d="M10.7 12.5v1.32c.45.2 1.02.3 1.7.3a2.8 2.8 0 001.97-.67c.48-.45.72-1.02.72-1.73 0-.64-.2-1.15-.6-1.52-.41-.38-.98-.57-1.7-.57l-.65.03.1-1.4h2.53V7h-3.7l-.27 3.9c.47-.05.89-.08 1.25-.08.98 0 1.47.35 1.47 1.04 0 .33-.12.6-.35.8-.22.18-.54.28-.95.28-.54 0-1.05-.15-1.53-.44z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward24RegularIcon, 'Skip15Forward24Regular');
+
+
+const Skip15Forward28FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={22} height={22} viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M17.31 4.58A9 9 0 1020 11a1 1 0 112 0 11 11 0 11-3.67-8.2V1.42a1 1 0 112 0v4.16a1 1 0 01-1 1h-3.75a1 1 0 110-2h1.73z" fill={primaryFill} /><path d="M8.47 15V7.13H7.44a7.1 7.1 0 01-2.3 1.15v1.43a3.52 3.52 0 001.3-.44c.13-.07.24-.15.34-.23V15h1.69z" fill={primaryFill} /><path d="M11.09 13.35v1.45c.5.22 1.13.33 1.87.33.91 0 1.64-.24 2.17-.73.53-.5.8-1.13.8-1.9 0-.71-.22-1.27-.67-1.68a2.63 2.63 0 00-1.86-.63c-.2 0-.44.01-.71.04l.1-1.55h2.78V7.3H11.5l-.3 4.3c.53-.07.99-.1 1.38-.1 1.08 0 1.62.38 1.62 1.15 0 .36-.13.65-.38.87-.25.2-.6.31-1.05.31-.6 0-1.15-.16-1.68-.48z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward28FilledIcon, 'Skip15Forward28Filled');
+
+
+const Skip15Forward28RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={22} height={22} viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M11 1.53a9.44 9.44 0 017.18 3.3H16a.75.75 0 000 1.5h3.75c.41 0 .75-.33.75-.75V1.42a.75.75 0 00-1.5 0v2.03A11 11 0 1022 11a.77.77 0 00-1.53 0A9.47 9.47 0 1111 1.53z" fill={primaryFill} /><path d="M8.64 7.13V15H6.95V9.04a3.83 3.83 0 01-1.18.59l-.46.08V8.28a7.06 7.06 0 002.3-1.15h1.03z" fill={primaryFill} /><path d="M11.26 14.8v-1.45c.53.32 1.09.48 1.68.48.45 0 .8-.1 1.05-.31.26-.22.38-.5.38-.87 0-.77-.54-1.15-1.61-1.15-.4 0-.86.03-1.38.1l.3-4.3h4.07v1.38h-2.78l-.11 1.55c.27-.03.51-.04.71-.04.8 0 1.41.21 1.86.63.45.41.67.97.67 1.67 0 .78-.26 1.41-.8 1.9-.53.5-1.26.74-2.17.74-.74 0-1.36-.1-1.87-.33z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward28RegularIcon, 'Skip15Forward28Regular');
+
+
+const Skip15Forward32FilledIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={26} height={26} viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M20.3 5.4a10.55 10.55 0 103.24 7.6A1.23 1.23 0 0126 13a13 13 0 11-4.42-9.76V1.72a1.23 1.23 0 012.46 0v4.9c0 .68-.55 1.23-1.23 1.23H18.4a1.23 1.23 0 010-2.45h1.91z" fill={primaryFill} /><path d="M10.3 18V8.7H9.1a8.38 8.38 0 01-2.73 1.36v1.69a4.18 4.18 0 001.54-.52c.15-.09.28-.18.4-.28V18h2z" fill={primaryFill} /><path d="M13.4 16.05v1.72c.6.26 1.33.39 2.21.39 1.08 0 1.93-.3 2.56-.87.64-.58.95-1.34.95-2.25 0-.83-.26-1.5-.8-1.98a3.1 3.1 0 00-2.19-.74c-.24 0-.52.01-.84.04l.12-1.82h3.3V8.9h-4.83l-.34 5.08c.61-.08 1.16-.11 1.63-.11 1.27 0 1.9.45 1.9 1.35 0 .43-.14.77-.44 1.03-.3.25-.71.37-1.24.37-.7 0-1.37-.19-1.99-.57z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward32Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward32FilledIcon, 'Skip15Forward32Filled');
+
+
+const Skip15Forward32RegularIcon = (props: AxisIconProps) => {
+  const { fill: primaryFill = 'currentColor', className } = props;
+  return <svg {...props} width={26} height={26} viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M21.05 5.5A11 11 0 1024 13a1 1 0 112 0 13 13 0 11-4-9.38V1.5a1 1 0 112 0v5a1 1 0 01-1 1h-4.5a1 1 0 110-2h2.55z" fill={primaryFill} /><path d="M10.3 18V8.7H9.1a8.38 8.38 0 01-2.73 1.36v1.69a4.18 4.18 0 001.54-.52c.15-.09.28-.18.4-.28V18h2z" fill={primaryFill} /><path d="M13.4 16.05v1.72c.6.26 1.33.39 2.21.39 1.08 0 1.93-.3 2.56-.87.64-.58.95-1.34.95-2.25 0-.83-.26-1.5-.8-1.98a3.1 3.1 0 00-2.19-.74c-.24 0-.52.01-.84.04l.12-1.82h3.3V8.9h-4.83l-.34 5.08c.61-.08 1.16-.11 1.63-.11 1.27 0 1.9.45 1.9 1.35 0 .43-.14.77-.44 1.03-.3.25-.71.37-1.24.37-.7 0-1.37-.19-1.99-.57z" fill={primaryFill} /></svg>;
+}
+
+export const Skip15Forward32Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/Skip15Forward32RegularIcon, 'Skip15Forward32Regular');
+
+
 const SmartSearch16FilledIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M5.34 1A6.7 6.7 0 002.2 3.53 7.02 7.02 0 001 7.46l3-.01C4 5.81 5 4.42 6.39 3.9L5.34 1zM4.11 8.36l-2.26.59c.24.99.72 1.9 1.38 2.66.67.75 1.51 1.33 2.45 1.67L6.45 11a3.75 3.75 0 01-2.34-2.65zm2.82 6.6l.37-3.76a3.63 3.63 0 002.32-.56l1.32 1.48c.25.28.67.3.94.05a.7.7 0 00.04-.98L10.6 9.71a3.84 3.84 0 00.63-3.17l3.56-.9a7.79 7.79 0 01-1.59 6.76 7.13 7.13 0 01-6.27 2.56zm4-9.23l1.63-.83a5.49 5.49 0 00-2.3-2.43c-1-.54-2.12-.75-3.24-.6l.23 1.81a3.6 3.6 0 013.69 2.05z" fill={primaryFill} /><path d="M6.74 4.86A2.75 2.75 0 005 7.44a2.72 2.72 0 002.4 2.73 2.61 2.61 0 002.5-1.23 2.8 2.8 0 00.14-2.75 2.66 2.66 0 00-3.3-1.33zm.93 3.27a.65.65 0 01-.5-.22.7.7 0 01-.17-.47c0-.3.18-.55.43-.64a.65.65 0 01.73.18.69.69 0 01.17.46c0 .38-.3.69-.66.69z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M14.79 5.64a7.79 7.79 0 01-1.59 6.76 7.13 7.13 0 01-6.27 2.56l.37-3.76a3.63 3.63 0 002.32-.56l1.32 1.48c.25.28.67.3.94.05a.7.7 0 00.04-.98L10.6 9.71a3.84 3.84 0 00.63-3.17l3.56-.9z" fill={primaryFill} /><path d="M1.85 8.95c.24.99.72 1.9 1.38 2.66.67.75 1.51 1.33 2.45 1.67L6.45 11a3.75 3.75 0 01-2.34-2.65l-2.26.59z" fill={primaryFill} /><path d="M5.34 1A6.7 6.7 0 002.2 3.53 7.02 7.02 0 001 7.46l3-.01C4 5.81 5 4.42 6.39 3.9L5.34 1z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M6.74 4.86A2.75 2.75 0 005 7.44a2.72 2.72 0 002.4 2.73 2.61 2.61 0 002.5-1.23 2.8 2.8 0 00.14-2.75 2.66 2.66 0 00-3.3-1.33zm.93 3.27c.36 0 .66-.31.66-.69a.7.7 0 00-.17-.46.66.66 0 00-.73-.18.69.69 0 00-.43.64.7.7 0 00.18.47.67.67 0 00.49.22z" fill={primaryFill} /><path d="M12.56 4.9a5.49 5.49 0 00-2.3-2.43c-1-.54-2.12-.75-3.24-.6l.23 1.81a3.6 3.6 0 013.69 2.05l1.62-.83z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch16Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch16FilledIcon, 'SmartSearch16Filled');
@@ -2076,7 +2316,7 @@ export const SmartSearch16Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearc
 
 const SmartSearch16RegularIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M13.32 4.6A6.5 6.5 0 007.45 1l.02 2.67c1.46.05 2.7.96 3.24 2.23l2.61-1.3z" fill={primaryFill} /><path d="M7.48 4.67A2.67 2.67 0 017.33 10H7.3a2.67 2.67 0 01-2.63-2.67 2.67 2.67 0 012.8-2.66zm-.15 3.94a1.28 1.28 0 100-2.55 1.28 1.28 0 000 2.55z" fill={primaryFill} /><path d="M5.05 1.07l1.03 2.82a3.67 3.67 0 00-2.4 3.79L.7 7.96a6.67 6.67 0 014.35-6.9z" fill={primaryFill} /><path d="M1.57 10.17L4.1 9.04c.48.91 1.33 1.6 2.36 1.85l-.87 2.82a6.5 6.5 0 01-4-3.54z" fill={primaryFill} /><path d="M7.26 14.67L7.29 11h.04c.78 0 1.5-.24 2.1-.66l1.39 1.5a.5.5 0 10.73-.67l-1.39-1.5a3.65 3.65 0 00.81-2.78l3.64-.44a7.33 7.33 0 01-7.35 8.22z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M6.08 3.89L5.05 1.07A6.67 6.67 0 00.7 7.96l2.98-.28a3.67 3.67 0 012.4-3.79z" fill={primaryFill} /><path d="M10.9 1.96a6.5 6.5 0 012.42 2.65l-2.6 1.3a3.67 3.67 0 00-3.25-2.24L7.45 1a6.5 6.5 0 013.45.96z" fill={primaryFill} /><path d="M7.3 11l-.04 3.67a7.33 7.33 0 007.35-8.22l-3.64.44a3.72 3.72 0 01-.8 2.77l1.38 1.51a.5.5 0 11-.73.68l-1.4-1.5c-.59.4-1.3.65-2.09.65H7.3z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M9.81 6.35A2.67 2.67 0 107.31 10h.02a2.65 2.65 0 002.65-2.99 2.65 2.65 0 00-.17-.66zM7.33 8.61a1.28 1.28 0 100-2.55 1.28 1.28 0 000 2.55z" fill={primaryFill} /><path d="M4.09 9.04l-2.52 1.13a6.5 6.5 0 004.01 3.54l.87-2.82A3.67 3.67 0 014.1 9.04z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch16Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch16RegularIcon, 'SmartSearch16Regular');
@@ -2084,7 +2324,7 @@ export const SmartSearch16Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSear
 
 const SmartSearch20FilledIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M6.27 2a8.07 8.07 0 00-3.83 2.89A7.7 7.7 0 001 9.38h3.64v-.02c0-1.85 1.2-3.44 2.9-4.05L6.27 2zm-1.5 8.41l-2.74.67a7 7 0 001.68 3.04 7.3 7.3 0 002.97 1.91l.94-2.6a4.38 4.38 0 01-2.84-3.02zm3.43 7.55l.45-4.3a4.63 4.63 0 002.81-.64l1.6 1.7c.3.31.82.33 1.15.04.33-.3.35-.79.05-1.1l-1.6-1.7a4.22 4.22 0 00.76-3.63l4.32-1.03a8.39 8.39 0 01-1.92 7.73 9.16 9.16 0 01-7.62 2.93zM13.07 7.4l1.96-.95a6.45 6.45 0 00-2.78-2.78A6.72 6.72 0 008.3 3l.29 2.08a4.47 4.47 0 014.47 2.34z" fill={primaryFill} /><path d="M7.97 6.42a3.15 3.15 0 00-2.11 2.94A3.19 3.19 0 009.1 12.5a3.3 3.3 0 002.71-1.42 3.06 3.06 0 00.17-3.14 3.25 3.25 0 00-4.01-1.51zm1.13 3.73a.84.84 0 01-.27-.05.81.81 0 01-.52-.55.79.79 0 01.5-.93.83.83 0 011 .36.77.77 0 01.1.38.8.8 0 01-.81.79z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M6.27 2a8.07 8.07 0 00-3.83 2.89A7.7 7.7 0 001 9.38h3.64v-.02c0-1.85 1.2-3.44 2.9-4.05L6.27 2z" fill={primaryFill} /><path d="M15.03 6.46a6.45 6.45 0 00-2.78-2.78A6.72 6.72 0 008.3 3l.29 2.08a4.47 4.47 0 014.47 2.34l1.96-.95z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M7.97 6.42a3.15 3.15 0 00-2.11 2.94A3.19 3.19 0 009.1 12.5a3.3 3.3 0 002.71-1.42 3.06 3.06 0 00.17-3.14 3.25 3.25 0 00-4.01-1.51zm1.13 3.73a.8.8 0 00.78-.98.77.77 0 00-.19-.34.82.82 0 00-.88-.2c-.3.1-.52.4-.52.73a.76.76 0 00.21.53.81.81 0 00.6.26z" fill={primaryFill} /><path d="M2.03 11.08a7 7 0 001.68 3.04 7.3 7.3 0 002.97 1.91l.94-2.6a4.38 4.38 0 01-2.84-3.02l-2.75.67z" fill={primaryFill} /><path d="M17.74 7.3a8.39 8.39 0 01-1.92 7.73 9.16 9.16 0 01-7.62 2.93l.45-4.3a4.63 4.63 0 002.81-.64l1.6 1.7c.3.31.82.33 1.15.04.33-.3.35-.79.05-1.1l-1.6-1.7a4.22 4.22 0 00.76-3.63l4.32-1.03z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch20FilledIcon, 'SmartSearch20Filled');
@@ -2092,7 +2332,7 @@ export const SmartSearch20Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearc
 
 const SmartSearch20RegularIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M6.32 1.34a8.33 8.33 0 00-5.45 8.6l3.98-.37A4.34 4.34 0 017.68 5.1L6.33 1.34z" fill={primaryFill} /><path d="M8.97 5.84h.2a3.33 3.33 0 110 6.66h-.04a3.32 3.32 0 01-3.3-3.33 3.33 3.33 0 013.14-3.33zm.2 4.92a1.6 1.6 0 100-3.19 1.6 1.6 0 000 3.2z" fill={primaryFill} /><path d="M5.13 10.74L1.7 12.28a8 8 0 004.94 4.36l1.05-3.4a4.35 4.35 0 01-2.56-2.5z" fill={primaryFill} /><path d="M9.12 13.5l-.05 4.83a9.17 9.17 0 009.2-10.27l-4.8.58A4.4 4.4 0 0112.45 12l1.9 2.06a.5.5 0 01-.74.68l-1.9-2.06c-.7.52-1.59.83-2.54.83h-.05z" fill={primaryFill} /><path d="M12.94 7.04l2.33-1.16A7 7 0 008.94 2l.03 2.84h.2c1.62 0 3.03.88 3.77 2.2z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={20} height={20} viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M1.7 12.28l3.43-1.54a4.35 4.35 0 002.56 2.5l-1.05 3.4a8 8 0 01-4.94-4.36z" fill={primaryFill} /><path d="M2.13 4.71a8.33 8.33 0 014.19-3.37l1.37 3.75a4.34 4.34 0 00-2.84 4.48l-3.98.37a8.33 8.33 0 011.26-5.23z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M9.17 5.83a3.39 3.39 0 00-1.14.2 3.33 3.33 0 001.1 6.47h.04a3.32 3.32 0 003.3-3.74 3.31 3.31 0 00-3.3-2.93zm0 4.93a1.6 1.6 0 100-3.19 1.6 1.6 0 000 3.2z" fill={primaryFill} /><path d="M15.27 5.88l-2.33 1.16a4.33 4.33 0 00-3.97-2.2L8.94 2a7 7 0 016.33 3.88z" fill={primaryFill} /><path d="M9.07 18.33l.05-4.83h.05c.95 0 1.83-.3 2.55-.83l1.9 2.06a.5.5 0 10.73-.68l-1.9-2.06a4.32 4.32 0 001.02-3.35l4.8-.58a9.17 9.17 0 01-9.2 10.27z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch20RegularIcon, 'SmartSearch20Regular');
@@ -2100,7 +2340,7 @@ export const SmartSearch20Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSear
 
 const SmartSearch24FilledIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M8.51 2a9.98 9.98 0 00-4.73 3.6A9.7 9.7 0 002 11.24l4.5-.02a5.4 5.4 0 013.58-5.07L8.51 2zM6.66 12.52l-3.39.83a8.79 8.79 0 002.08 3.8c1 1.09 2.26 1.9 3.67 2.39l1.16-3.24a5.45 5.45 0 01-3.52-3.78zm4.23 9.43l.56-5.38a5.68 5.68 0 003.47-.8l1.99 2.12c.37.4 1 .43 1.4.06.42-.37.44-.99.07-1.39l-1.98-2.11a5.31 5.31 0 00.94-4.54l5.34-1.28a10.6 10.6 0 01-2.38 9.65 11 11 0 01-9.4 3.67zm6.02-13.19l2.42-1.18A8.01 8.01 0 0015.9 4.1a8.22 8.22 0 00-4.86-.86l.35 2.6a5.51 5.51 0 015.53 2.93z" fill={primaryFill} /><path d="M10.6 7.52a4.04 4.04 0 015.29 2.74 3.87 3.87 0 01-2 4.4 4.04 4.04 0 01-5.77-2.5 3.93 3.93 0 012.49-4.64zm1.4 4.66a1 1 0 00.97-1.21.97.97 0 00-.23-.43 1 1 0 00-1.74.66.97.97 0 00.27.67 1 1 0 00.73.31z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M8.51 2a9.98 9.98 0 00-4.73 3.6A9.7 9.7 0 002 11.24l4.5-.02a5.4 5.4 0 013.58-5.07L8.51 2z" fill={primaryFill} /><path d="M19.33 7.58A8.01 8.01 0 0015.9 4.1a8.22 8.22 0 00-4.86-.86l.35 2.6a5.51 5.51 0 015.53 2.93l2.42-1.2z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M10.6 7.52c-1.52.56-2.6 2-2.6 3.68v.01a3.96 3.96 0 004 3.92 4.04 4.04 0 003.36-1.8 3.86 3.86 0 00.2-3.91 4 4 0 00-4.96-1.9zm1.4 4.66a1 1 0 00.97-1.21.97.97 0 00-.23-.43 1 1 0 00-1.74.66.97.97 0 00.27.67 1 1 0 00.73.31z" fill={primaryFill} /><path d="M22.68 8.63a10.6 10.6 0 01-2.38 9.65 11 11 0 01-9.4 3.67l.55-5.38a5.68 5.68 0 003.47-.8l1.99 2.12c.37.4 1 .43 1.4.06.42-.37.44-.99.07-1.39l-1.98-2.11a5.31 5.31 0 00.94-4.54l5.34-1.28z" fill={primaryFill} /><path d="M3.27 13.35a8.79 8.79 0 002.08 3.8c1 1.09 2.26 1.9 3.67 2.39l1.16-3.24a5.45 5.45 0 01-3.52-3.78l-3.39.83z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch24FilledIcon, 'SmartSearch24Filled');
@@ -2108,7 +2348,7 @@ export const SmartSearch24Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearc
 
 const SmartSearch24RegularIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M2.55 5.65A10 10 0 017.58 1.6l1.54 4.23a5.5 5.5 0 00-3.6 5.68l-4.48.42a10 10 0 011.51-6.28z" fill={primaryFill} /><path d="M10.97 7a4 4 0 00-.01 8H11a3.98 3.98 0 003.97-4.48A3.97 3.97 0 0011 7h-.03zm.03 5.91a1.91 1.91 0 110-3.82 1.91 1.91 0 010 3.82z" fill={primaryFill} /><path d="M13.93 15.65l2.11 2.3a1 1 0 001.47-1.36l-2.1-2.3a5.48 5.48 0 001.05-3.96l5.46-.66A11 11 0 0110.88 22l.06-5.5H11c1.08 0 2.08-.31 2.93-.85z" fill={primaryFill} /><path d="M15.93 8.55A5.5 5.5 0 0011 5.5h-.04L10.94 3a8 8 0 017.22 4.44l-2.23 1.11z" fill={primaryFill} /><path d="M5.98 13.26a5.52 5.52 0 003.4 3L8.34 19.6a9 9 0 01-5.55-4.9L6 13.25z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={24} height={24} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M7.58 1.6a10 10 0 00-6.54 10.33l4.48-.42a5.5 5.5 0 013.6-5.68L7.58 1.6z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M9.63 7.24A4 4 0 0110.97 7H11a4 4 0 110 8h-.04a4 4 0 01-1.33-7.76zM11 12.91a1.91 1.91 0 100-3.82 1.91 1.91 0 000 3.82z" fill={primaryFill} /><path d="M11 5.5a5.5 5.5 0 014.93 3.05l2.23-1.11A8 8 0 0010.94 3l.02 2.5H11z" fill={primaryFill} /><path d="M16.04 17.94l-2.1-2.29a5.47 5.47 0 01-3 .85l-.06 5.5A11 11 0 0021.92 9.67l-5.46.66a5.55 5.55 0 01-1.06 3.97l2.11 2.29a1 1 0 01-1.47 1.35z" fill={primaryFill} /><path d="M9.38 16.26a5.52 5.52 0 01-3.4-3L2.8 14.69a9 9 0 005.55 4.9l1.04-3.33z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch24RegularIcon, 'SmartSearch24Regular');
@@ -2116,7 +2356,7 @@ export const SmartSearch24Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSear
 
 const SmartSearch28FilledIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={28} height={28} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M8.75 2a11.89 11.89 0 00-5.63 4.33A11.7 11.7 0 001 13.07l5.36-.01v-.02a6.49 6.49 0 014.26-6.07L8.75 2zm-2.2 12.62l-4.04 1a10.57 10.57 0 006.85 7.43l1.38-3.9a6.52 6.52 0 01-4.19-4.53zm5.04 11.31l.66-6.44a6.7 6.7 0 004.14-.96l2.36 2.54c.44.48 1.2.51 1.68.07s.51-1.18.07-1.66l-2.36-2.54a6.4 6.4 0 001.13-5.44l6.35-1.55a12.83 12.83 0 01-2.83 11.6 13.1 13.1 0 01-11.2 4.38zm7.16-15.82l2.88-1.42a9.72 9.72 0 00-9.88-5.2l.42 3.11a6.55 6.55 0 016.58 3.51z" fill={primaryFill} /><path d="M11.24 8.62a4.72 4.72 0 00-3.1 4.42v.01a4.67 4.67 0 003.19 4.44 4.78 4.78 0 006.34-4.45 4.68 4.68 0 00-.52-2.14 4.77 4.77 0 00-5.9-2.28zm1.66 5.6a1.21 1.21 0 01-.87-.38 1.17 1.17 0 01-.32-.8 1.18 1.18 0 011.2-1.18 1.2 1.2 0 011.19 1.18c0 .65-.54 1.18-1.2 1.18z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={28} height={28} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" className={className}><path fillRule="evenodd" clipRule="evenodd" d="M11.24 8.62a4.72 4.72 0 00-3.1 4.42v.01a4.67 4.67 0 003.19 4.44 4.78 4.78 0 006.34-4.45 4.68 4.68 0 00-.52-2.14 4.77 4.77 0 00-5.9-2.28zm1.66 5.6a1.18 1.18 0 001.05-1.75 1.18 1.18 0 00-1.08-.6 1.18 1.18 0 00-1.15 1.18 1.17 1.17 0 00.79 1.1 1.2 1.2 0 00.4.07z" fill={primaryFill} /><path d="M21.63 8.7a9.72 9.72 0 00-9.88-5.2l.42 3.1a6.55 6.55 0 016.58 3.51l2.88-1.42z" fill={primaryFill} /><path d="M25.62 9.95a12.83 12.83 0 01-2.83 11.6 13.1 13.1 0 01-11.2 4.38l.66-6.44a6.7 6.7 0 004.14-.96l2.36 2.54c.44.48 1.2.51 1.68.07s.51-1.18.07-1.66l-2.36-2.54a6.4 6.4 0 001.13-5.44l6.35-1.55z" fill={primaryFill} /><path d="M2.51 15.62a10.57 10.57 0 006.85 7.43l1.38-3.9a6.52 6.52 0 01-4.19-4.53l-4.04 1z" fill={primaryFill} /><path d="M8.75 2a11.89 11.89 0 00-5.63 4.33A11.7 11.7 0 001 13.07l5.36-.01v-.02a6.49 6.49 0 014.26-6.07L8.75 2z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch28FilledIcon, 'SmartSearch28Filled');
@@ -2124,7 +2364,7 @@ export const SmartSearch28Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearc
 
 const SmartSearch28RegularIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={28} height={28} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M8.85 1.87a11.67 11.67 0 00-7.63 12.05l5.47-.51a6.17 6.17 0 014.03-6.37L8.86 1.87z" fill={primaryFill} /><path d="M11.24 8.45a4.67 4.67 0 001.54 9.05h.05a4.67 4.67 0 100-9.33h-.03c-.55 0-1.08.1-1.56.28zm3.83 4.38a2.23 2.23 0 11-4.47 0 2.23 2.23 0 014.47 0z" fill={primaryFill} /><path d="M12.83 6.67c2.42 0 4.52 1.39 5.53 3.42l2.83-1.41a9.33 9.33 0 00-8.43-5.18l.02 3.17h.05z" fill={primaryFill} /><path d="M19 12.83c0-.25-.02-.5-.04-.74l6.61-.81A12.83 12.83 0 0112.7 25.67l.07-6.67h.06c1.26 0 2.42-.37 3.4-1.02l2.61 2.84a1 1 0 101.47-1.36l-2.62-2.83a6.14 6.14 0 001.31-3.8z" fill={primaryFill} /><path d="M7.2 15.36a6.18 6.18 0 003.81 3.37l-1.28 4.14a10.5 10.5 0 01-6.47-5.73l3.95-1.78z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={28} height={28} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M2.98 6.6a11.67 11.67 0 015.87-4.73l1.88 5.17a6.17 6.17 0 00-4.04 6.37l-5.47.51c-.24-2.57.37-5.15 1.76-7.33z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M8.17 12.83a4.67 4.67 0 014.63-4.66h.03a4.67 4.67 0 110 9.33h-.05a4.66 4.66 0 01-4.61-4.67zm6.9 0a2.23 2.23 0 11-4.47 0 2.23 2.23 0 014.47 0z" fill={primaryFill} /><path d="M11.01 18.73a6.18 6.18 0 01-3.8-3.37l-3.95 1.78a10.5 10.5 0 006.47 5.73l1.28-4.14z" fill={primaryFill} /><path d="M18.96 12.09a6.24 6.24 0 01-1.27 4.54l2.62 2.84a1 1 0 11-1.47 1.35l-2.62-2.84A6.14 6.14 0 0112.77 19l-.07 6.67a12.83 12.83 0 0012.87-14.4l-6.61.82z" fill={primaryFill} /><path d="M18.36 10.09a6.17 6.17 0 00-5.53-3.42h-.05l-.02-3.17a9.33 9.33 0 018.43 5.18l-2.83 1.4z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch28RegularIcon, 'SmartSearch28Regular');
@@ -2132,7 +2372,7 @@ export const SmartSearch28Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSear
 
 const SmartSearch32FilledIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={32} height={32} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M10 2a13.8 13.8 0 00-9 12.92l6.21-.02v-.02a7.56 7.56 0 014.95-7.09L9.99 2zM7.43 16.72L2.76 17.9a12.35 12.35 0 007.93 8.66l1.6-4.53a7.59 7.59 0 01-4.85-5.3zm5.84 13.2l.77-7.52a7.72 7.72 0 004.8-1.11l2.73 2.96c.52.56 1.4.6 1.96.08.56-.51.6-1.38.08-1.94l-2.74-2.97a7.5 7.5 0 001.3-6.34l7.38-1.8a15.05 15.05 0 01-3.28 13.52 15.19 15.19 0 01-13 5.12zm8.3-18.45l3.36-1.66a11.14 11.14 0 00-11.46-6.07l.48 3.63a7.6 7.6 0 017.63 4.1z" fill={primaryFill} /><path d="M12.88 9.73a5.5 5.5 0 00-3.6 5.15v.01a5.48 5.48 0 005.53 5.49 5.52 5.52 0 004.92-8 5.53 5.53 0 00-6.85-2.65zm1.93 6.53a1.42 1.42 0 01-.46-.08 1.38 1.38 0 01-.92-1.3 1.38 1.38 0 011.38-1.37 1.38 1.38 0 011.38 1.37c0 .76-.62 1.38-1.38 1.38z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={32} height={32} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M29.56 11.28a15.05 15.05 0 01-3.28 13.52 15.19 15.19 0 01-13 5.12l.77-7.52a7.72 7.72 0 004.8-1.11l2.73 2.96c.52.56 1.4.6 1.96.08.56-.51.6-1.38.08-1.94l-2.74-2.97a7.5 7.5 0 001.3-6.34l7.38-1.8z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M12.88 9.73a5.5 5.5 0 00-3.6 5.15v.01a5.48 5.48 0 005.53 5.49 5.52 5.52 0 004.92-8 5.53 5.53 0 00-6.85-2.65zm1.93 6.53a1.38 1.38 0 10-1.38-1.38 1.37 1.37 0 001.38 1.38z" fill={primaryFill} /><path d="M2.76 17.9a12.35 12.35 0 007.93 8.65l1.6-4.53a7.59 7.59 0 01-4.85-5.3L2.76 17.9z" fill={primaryFill} /><path d="M10 2a13.8 13.8 0 00-9 12.92l6.21-.02v-.02a7.56 7.56 0 014.95-7.09L9.99 2z" fill={primaryFill} /><path d="M24.94 9.8a11.14 11.14 0 00-11.46-6.06l.48 3.63a7.6 7.6 0 017.63 4.1l3.35-1.66z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch32Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch32FilledIcon, 'SmartSearch32Filled');
@@ -2140,7 +2380,7 @@ export const SmartSearch32Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearc
 
 const SmartSearch32RegularIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={32} height={32} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M10.1 2.14A13.33 13.33 0 001.4 15.9l5.96-.56a7.34 7.34 0 014.8-7.58L10.1 2.14z" fill={primaryFill} /><path d="M9.8 16.85a5.3 5.3 0 01-.47-2.18 5.34 5.34 0 015.3-5.34h.04a5.33 5.33 0 110 10.67h-.06a5.33 5.33 0 01-4.8-3.15zm4.87.37a2.55 2.55 0 100-5.1 2.55 2.55 0 000 5.1z" fill={primaryFill} /><path d="M7.98 17.68l-4.26 1.9a12 12 0 007.4 6.55l1.38-4.46a7.35 7.35 0 01-4.52-4z" fill={primaryFill} /><path d="M14.51 29.33L14.6 22h.08a7.3 7.3 0 003.98-1.17l2.8 3.04a1.25 1.25 0 001.84-1.7l-2.8-3.04a7.3 7.3 0 001.46-5.35l7.28-.89A14.67 14.67 0 0114.5 29.33z" fill={primaryFill} /><path d="M21.24 11.4l2.98-1.48A10.67 10.67 0 0014.58 4l.03 3.33h.06a7.33 7.33 0 016.57 4.07z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={32} height={32} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M3.4 7.54c1.58-2.5 3.94-4.4 6.7-5.4l2.06 5.63a7.34 7.34 0 00-4.8 7.58l-5.97.56c-.27-2.94.43-5.88 2.01-8.37z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M9.36 15.16A5.3 5.3 0 0014.6 20h.06a5.33 5.33 0 000-10.67h-.05a5.32 5.32 0 00-5.26 5.83zm5.3 2.06a2.55 2.55 0 100-5.1 2.55 2.55 0 000 5.1z" fill={primaryFill} /><path d="M24.22 9.92l-2.98 1.48a7.33 7.33 0 00-6.57-4.07h-.06L14.58 4a10.67 10.67 0 019.64 5.92z" fill={primaryFill} /><path d="M14.59 22l-.08 7.33A14.67 14.67 0 0029.23 12.9l-7.28.89a7.42 7.42 0 01-1.47 5.35l2.81 3.04a1.25 1.25 0 11-1.84 1.7l-2.8-3.04A7.3 7.3 0 0114.59 22z" fill={primaryFill} /><path d="M3.72 19.59l4.26-1.91a7.35 7.35 0 004.52 4l-1.38 4.45a12 12 0 01-7.4-6.54z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch32Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch32RegularIcon, 'SmartSearch32Regular');
@@ -2148,7 +2388,7 @@ export const SmartSearch32Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSear
 
 const SmartSearch48FilledIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={48} height={48} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M15.72 4a19.54 19.54 0 00-9.24 7.22A19.71 19.71 0 003 22.45l8.79-.02v-.03c0-4.64 2.9-8.6 6.99-10.12L15.72 4zM12.1 25.03l-6.63 1.68A17.7 17.7 0 0016.7 39.08l2.27-6.49a10.8 10.8 0 01-6.86-7.56zm8.25 18.86l1.08-10.74a10.8 10.8 0 006.8-1.6l3.86 4.23c.73.8 1.97.86 2.76.12.8-.73.85-1.97.12-2.77l-3.87-4.24a10.8 10.8 0 001.84-9.06l10.43-2.58a21.72 21.72 0 01-4.65 19.32 21.48 21.48 0 01-18.37 7.32zm11.75-26.37l4.73-2.36a15.72 15.72 0 00-16.2-8.68l.68 5.19a10.73 10.73 0 0110.79 5.85z" fill={primaryFill} /><path d="M19.8 15.04a7.85 7.85 0 00-5.09 7.36v.02a7.85 7.85 0 007.81 7.83 7.74 7.74 0 006.56-3.58 7.85 7.85 0 00.4-7.84 7.8 7.8 0 00-9.68-3.8zm2.72 9.33a1.96 1.96 0 01-1.95-1.96 1.96 1.96 0 011.95-1.97 1.94 1.94 0 011.96 1.96c0 1.09-.88 1.97-1.96 1.97z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={48} height={48} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M5.48 26.7A17.7 17.7 0 0016.7 39.09l2.27-6.49a10.8 10.8 0 01-6.86-7.56l-6.63 1.68z" fill={primaryFill} /><path d="M43.38 17.25a21.72 21.72 0 01-4.65 19.32 21.48 21.48 0 01-18.37 7.32l1.08-10.74a10.8 10.8 0 006.8-1.6l3.86 4.23c.73.8 1.97.86 2.76.12.8-.73.85-1.97.12-2.77l-3.87-4.24a10.8 10.8 0 001.84-9.06l10.43-2.58z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M19.8 15.04a7.85 7.85 0 00-5.09 7.36v.02a7.85 7.85 0 007.81 7.83 7.74 7.74 0 006.56-3.58 7.85 7.85 0 00.4-7.84 7.8 7.8 0 00-9.68-3.8zm2.72 9.33a1.96 1.96 0 001.45-3.3 1.94 1.94 0 00-2.13-.5c-.74.27-1.27.99-1.27 1.83a1.98 1.98 0 001.3 1.86 1.94 1.94 0 00.65.1z" fill={primaryFill} /><path d="M15.72 4a19.54 19.54 0 00-9.24 7.22A19.71 19.71 0 003 22.45l8.79-.02v-.03c0-4.64 2.9-8.6 6.99-10.12L15.72 4z" fill={primaryFill} /><path d="M36.84 15.16a15.72 15.72 0 00-16.2-8.68l.68 5.19a10.73 10.73 0 0110.79 5.85l4.73-2.36z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch48Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch48FilledIcon, 'SmartSearch48Filled');
@@ -2156,7 +2396,7 @@ export const SmartSearch48Filled = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearc
 
 const SmartSearch48RegularIcon = (props: AxisIconProps) => {
   const { fill: primaryFill = 'currentColor', className } = props;
-  return <svg {...props} width={48} height={48} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M15.16 3.2A20 20 0 002.1 23.87l9.46-.89a10.5 10.5 0 016.87-10.85L15.15 3.2z" fill={primaryFill} /><path d="M5.58 29.38l6.84-3.07a10.53 10.53 0 006.48 5.72l-2.22 7.17a18 18 0 01-11.1-9.82z" fill={primaryFill} /><path d="M19.64 29.65A8.02 8.02 0 0114 22a8 8 0 017.94-8H22a8 8 0 11-2.36 15.65zM22 25.83a3.83 3.83 0 100-7.66 3.83 3.83 0 000 7.66z" fill={primaryFill} /><path d="M32.45 35.55l-4.5-4.9A10.45 10.45 0 0122 32.5h-.11L21.77 44a22 22 0 0022.07-24.66l-11.42 1.39a10.61 10.61 0 01-2.27 7.9l4.51 4.88a1.5 1.5 0 01-2.2 2.04z" fill={primaryFill} /><path d="M36.33 14.88l-4.93 2.45a10.5 10.5 0 00-9.48-5.83L21.87 6a16 16 0 0114.46 8.88z" fill={primaryFill} /></svg>;
+  return <svg {...props} width={48} height={48} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className={className}><path d="M5.1 11.3a20 20 0 0110.06-8.1l3.25 8.93a10.5 10.5 0 00-6.86 10.85l-9.46.89A20 20 0 015.1 11.3z" fill={primaryFill} /><path d="M31.4 17.33l4.93-2.45A16 16 0 0021.87 6l.05 5.5H22a10.5 10.5 0 019.4 5.83z" fill={primaryFill} /><path fillRule="evenodd" clipRule="evenodd" d="M14.7 25.28a8.02 8.02 0 0013.73 1.48 7.96 7.96 0 00.74-8.32A8 8 0 0022 14h-.06a7.98 7.98 0 00-7.24 11.28zm7.3.55a3.83 3.83 0 100-7.66 3.83 3.83 0 000 7.66z" fill={primaryFill} /><path d="M27.94 30.66l4.51 4.89a1.5 1.5 0 002.21-2.04l-4.51-4.89a10.46 10.46 0 002.27-7.9l11.42-1.38A22 22 0 0121.77 44l.12-11.5H22c2.2 0 4.25-.68 5.94-1.84z" fill={primaryFill} /><path d="M12.42 26.3l-6.84 3.08a18 18 0 0011.1 9.82l2.22-7.17c-2.9-.89-5.25-3-6.48-5.72z" fill={primaryFill} /></svg>;
 }
 
 export const SmartSearch48Regular = /*#__PURE__*/wrapIcon(/*#__PURE__*/SmartSearch48RegularIcon, 'SmartSearch48Regular');

@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Filled";
-    src: url("./AxisSystemIcons-Filled.ttf?c027f8a7af6783361a9f7185c9debfc3") format("truetype");
+    src: url("./AxisSystemIcons-Filled.ttf?2d95a6f60049d728f7c0cacea86e1eef") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -553,4 +553,49 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_navigation_expand_48_filled:before {
     content: "\f1b4";
+}
+.icon-ic_axis_skip_15_backward_16_filled:before {
+    content: "\f1b5";
+}
+.icon-ic_axis_skip_15_backward_20_filled:before {
+    content: "\f1b6";
+}
+.icon-ic_axis_skip_15_backward_24_filled:before {
+    content: "\f1b7";
+}
+.icon-ic_axis_skip_15_backward_28_filled:before {
+    content: "\f1b8";
+}
+.icon-ic_axis_skip_15_backward_32_filled:before {
+    content: "\f1b9";
+}
+.icon-ic_axis_skip_15_forward_16_filled:before {
+    content: "\f1ba";
+}
+.icon-ic_axis_skip_15_forward_20_filled:before {
+    content: "\f1bb";
+}
+.icon-ic_axis_skip_15_forward_24_filled:before {
+    content: "\f1bc";
+}
+.icon-ic_axis_skip_15_forward_28_filled:before {
+    content: "\f1bd";
+}
+.icon-ic_axis_skip_15_forward_32_filled:before {
+    content: "\f1be";
+}
+.icon-ic_axis_analytics_20_filled:before {
+    content: "\f1bf";
+}
+.icon-ic_axis_analytics_24_filled:before {
+    content: "\f1c0";
+}
+.icon-ic_axis_analytics_28_filled:before {
+    content: "\f1c1";
+}
+.icon-ic_axis_analytics_32_filled:before {
+    content: "\f1c2";
+}
+.icon-ic_axis_analytics_48_filled:before {
+    content: "\f1c3";
 }
