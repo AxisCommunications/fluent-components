@@ -1,6 +1,6 @@
 <!--
   Do not edit directly
-  Generated on Fri, 22 Sep 2023 14:14:03 GMT
+  Generated on Mon, 25 Sep 2023 07:58:57 GMT
 -->
 <ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -89,6 +89,7 @@
   <Color x:Key="Dark.ColorNeutralStrokeDisabled">#424242</Color>
   <Color x:Key="Dark.ColorNeutralStrokeInvertedDisabled">rgba(255, 255, 255, 0.4)</Color>
   <Color x:Key="Dark.ColorNeutralStrokeAlpha">rgba(255, 255, 255, 0.1)</Color>
+  <Color x:Key="Dark.ColorNeutralStrokeAlpha2">rgba(255, 255, 255, 0.2)</Color>
   <Color x:Key="Dark.ColorNeutralShadowAmbient">rgba(0,0,0,0.24)</Color>
   <Color x:Key="Dark.ColorNeutralShadowKey">rgba(0,0,0,0.28)</Color>
   <Color x:Key="Dark.ColorNeutralShadowAmbientLighter">rgba(0,0,0,0.12)</Color>
@@ -130,6 +131,7 @@
   <Color x:Key="Dark.ColorBrandStroke2">#5C3E00</Color>
   <Color x:Key="Dark.ColorBrandStroke2Hover">#674808</Color>
   <Color x:Key="Dark.ColorBrandStroke2Pressed">#3E2F1D</Color>
+  <Color x:Key="Dark.ColorBrandStroke2Contrast">#674808</Color>
   <Color x:Key="Dark.ColorBrandShadowAmbient">rgba(0,0,0,0.30)</Color>
   <Color x:Key="Dark.ColorBrandShadowKey">rgba(0,0,0,0.25)</Color>
   <Color x:Key="Dark.ColorSubtleBackground">transparent</Color>
@@ -246,6 +248,7 @@
   <Color x:Key="Light.ColorNeutralStrokeDisabled">#e0e0e0</Color>
   <Color x:Key="Light.ColorNeutralStrokeInvertedDisabled">rgba(255, 255, 255, 0.4)</Color>
   <Color x:Key="Light.ColorNeutralStrokeAlpha">rgba(0, 0, 0, 0.05)</Color>
+  <Color x:Key="Light.ColorNeutralStrokeAlpha2">rgba(255, 255, 255, 0.2)</Color>
   <Color x:Key="Light.ColorNeutralShadowAmbient">rgba(0,0,0,0.12)</Color>
   <Color x:Key="Light.ColorNeutralShadowKey">rgba(0,0,0,0.14)</Color>
   <Color x:Key="Light.ColorNeutralShadowAmbientLighter">rgba(0,0,0,0.06)</Color>
@@ -287,6 +290,7 @@
   <Color x:Key="Light.ColorBrandStroke2">#FFEEBA</Color>
   <Color x:Key="Light.ColorBrandStroke2Hover">#FFDC70</Color>
   <Color x:Key="Light.ColorBrandStroke2Pressed">#EFAB01</Color>
+  <Color x:Key="Light.ColorBrandStroke2Contrast">#FFEEBA</Color>
   <Color x:Key="Light.ColorBrandShadowAmbient">rgba(0,0,0,0.30)</Color>
   <Color x:Key="Light.ColorBrandShadowKey">rgba(0,0,0,0.25)</Color>
   <Color x:Key="Light.ColorSubtleBackground">transparent</Color>
