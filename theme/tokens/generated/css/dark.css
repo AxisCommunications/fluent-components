@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 22 Sep 2023 14:14:03 GMT
+ * Generated on Mon, 25 Sep 2023 07:58:57 GMT
  */
 
 .dark {
@@ -87,6 +87,7 @@
   --color-neutral-stroke-disabled: #424242;
   --color-neutral-stroke-inverted-disabled: rgba(255, 255, 255, 0.4);
   --color-neutral-stroke-alpha: rgba(255, 255, 255, 0.1);
+  --color-neutral-stroke-alpha2: rgba(255, 255, 255, 0.2);
   --color-neutral-shadow-ambient: rgba(0,0,0,0.24);
   --color-neutral-shadow-key: rgba(0,0,0,0.28);
   --color-neutral-shadow-ambient-lighter: rgba(0,0,0,0.12);
@@ -128,6 +129,7 @@
   --color-brand-stroke2: #5C3E00;
   --color-brand-stroke2-hover: #674808;
   --color-brand-stroke2-pressed: #3E2F1D;
+  --color-brand-stroke2-contrast: #674808;
   --color-brand-shadow-ambient: rgba(0,0,0,0.30);
   --color-brand-shadow-key: rgba(0,0,0,0.25);
   --color-subtle-background: transparent;
