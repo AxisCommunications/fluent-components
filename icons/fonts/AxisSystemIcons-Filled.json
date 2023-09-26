@@ -178,5 +178,20 @@
     "ic_axis_navigation_expand_24_filled": "0xf1b1",
     "ic_axis_navigation_expand_28_filled": "0xf1b2",
     "ic_axis_navigation_expand_32_filled": "0xf1b3",
-    "ic_axis_navigation_expand_48_filled": "0xf1b4"
+    "ic_axis_navigation_expand_48_filled": "0xf1b4",
+    "ic_axis_skip_15_backward_16_filled": "0xf1b5",
+    "ic_axis_skip_15_backward_20_filled": "0xf1b6",
+    "ic_axis_skip_15_backward_24_filled": "0xf1b7",
+    "ic_axis_skip_15_backward_28_filled": "0xf1b8",
+    "ic_axis_skip_15_backward_32_filled": "0xf1b9",
+    "ic_axis_skip_15_forward_16_filled": "0xf1ba",
+    "ic_axis_skip_15_forward_20_filled": "0xf1bb",
+    "ic_axis_skip_15_forward_24_filled": "0xf1bc",
+    "ic_axis_skip_15_forward_28_filled": "0xf1bd",
+    "ic_axis_skip_15_forward_32_filled": "0xf1be",
+    "ic_axis_analytics_20_filled": "0xf1bf",
+    "ic_axis_analytics_24_filled": "0xf1c0",
+    "ic_axis_analytics_28_filled": "0xf1c1",
+    "ic_axis_analytics_32_filled": "0xf1c2",
+    "ic_axis_analytics_48_filled": "0xf1c3"
 }
