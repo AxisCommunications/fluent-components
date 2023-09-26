@@ -10,6 +10,8 @@ import {
 } from "@fluentui/react-components";
 import {
   bundleIcon,
+  CircleFilled,
+  CircleRegular,
   SignOutFilled,
   SignOutRegular,
 } from "@fluentui/react-icons";
@@ -21,6 +23,7 @@ import { useTranslation } from "./translation-context";
 import { UserInformation } from "./profile-user-information";
 
 const SignOutIcon = bundleIcon(SignOutFilled, SignOutRegular);
+const NotificationIcon = bundleIcon(CircleRegular, CircleFilled);
 
 export const ProfileMenu = ({
   customContent,
@@ -31,6 +34,8 @@ export const ProfileMenu = ({
   signOutLabel,
   tag,
   theme,
+  hasNotification = false,
+  notificationIcon,
 }: ProfileMenuProps) => {
   const handleSignOut = useCallback(() => onSignOut(), [onSignOut]);
   const { t } = useTranslation();
@@ -40,7 +45,26 @@ export const ProfileMenu = ({
       <MenuTrigger>
         <MenuButton
           data-testid="profile-menu-button"
-          icon={<Avatar name={name} size={24} />}
+          icon={
+            <Avatar
+              name={name}
+              size={24}
+              badge={hasNotification
+                ? {
+                  icon: notificationIcon !== undefined
+                    ? notificationIcon
+                    : <NotificationIcon />,
+                  /*
+                    Since this is not a Badge but a PresenceBadge, we only
+                    have the option to change the color through "status".
+                    "away" gives us the orange color that we want.
+                  */
+                  status: "away",
+                  size: "extra-small",
+                }
+                : undefined}
+            />
+          }
           shape="circular"
           appearance="transparent"
         />

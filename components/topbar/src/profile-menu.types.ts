@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export type LanguageOption = {
   readonly id: string;
   readonly label?: string;
@@ -29,6 +31,8 @@ export type UserInformationProps = {
 
 export type ProfileMenuProps = UserInformationProps & {
   readonly customContent?: JSX.Element;
+  readonly hasNotification?: boolean;
+  readonly notificationIcon?: ReactElement;
   readonly language: LanguageSubmenuProps;
   readonly onSignOut: () => void;
   readonly signOutLabel?: string;

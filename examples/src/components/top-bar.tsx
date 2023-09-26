@@ -23,6 +23,8 @@ import {
   BoxFilled,
   BoxRegular,
   bundleIcon,
+  MailFilled,
+  MailRegular,
   OpenRegular,
   QuestionCircleRegular,
 } from "@fluentui/react-icons";
@@ -30,6 +32,7 @@ import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/ApplicationStateProvider";
 
 const ApplicationIcon = bundleIcon(BoxFilled, BoxRegular);
+const MailIcon = bundleIcon(MailFilled, MailRegular);
 
 const useStyles = makeStyles({
   topBar: {
@@ -155,6 +158,8 @@ export const Navbar = () => {
             onChange: setSelectedTheme,
             options: themes,
           },
+          hasNotification: true,
+          notificationIcon: <MailIcon />,
         }}
       />
     </div>
