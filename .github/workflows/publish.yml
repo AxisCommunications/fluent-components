@@ -47,7 +47,7 @@ jobs:
         with:
           tag_name: v${{ steps.vars.outputs.version }}
           release_name: Release v${{ steps.vars.outputs.version }}
-          body_path: changeset.md
+          body_path: CHANGELOG.md
           draft: false
           prerelease: false
 
