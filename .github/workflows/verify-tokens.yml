@@ -1,11 +1,12 @@
 name: Verify tokens
+
 on:
   push:
-    paths:
-      - "theme/tokens/**"
+    branches:
+      - main
   pull_request:
-    paths:
-      - "theme/tokens/**"
+    branches:
+      - main
 
 jobs:
   build:

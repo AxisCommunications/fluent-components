@@ -1,11 +1,12 @@
 name: Verify icons
+
 on:
   push:
-    paths:
-      - "icons/**"
+    branches:
+      - main
   pull_request:
-    paths:
-      - "icons/**"
+    branches:
+      - main
 
 jobs:
   build:
