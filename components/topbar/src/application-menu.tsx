@@ -60,6 +60,7 @@ export const ApplicationMenu = (
               ? (currentSelection.label ?? appLabel(t, currentSelection.id))
               // FIXME: use translateable placeholder
               : ""}
+            {currentSelection?.beta && <BetaBadge />}
           </span>
         </MenuButton>
       </MenuTrigger>
