@@ -9,7 +9,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "backstage:local": "npx --yes @techdocs/cli serve -v -i artifacts.se.axis.com/axis/backstage-techdocs",
     "build": "pnpm -r build",
     "check": "pnpm format:check && pnpm lint",
     "check:unused-deps": "pnpm -r check:unused-deps",
