@@ -6,12 +6,15 @@
 
 The React packages are based on the `@fluentui/react-*` **v9** packages.
 
-- `@axiscommunications/fluent-theme` - an Axis branded theme
-- `@axiscommunications/fluent-stepper` - a stepper component for building e.g. wizards
-- `@axiscommunications/fluent-icons` - custom Axis icons
-- `@axiscommunications/fluent-hooks` - react hooks to use with fluent components
-- `@axiscommunications/fluent-styles` - styles to use with fluent components
-- `@axiscommunications/fluent-slider` - various slider components
+- [`@axiscommunications/fluent-theme`](theme/docs/README.md) - an Axis branded theme
+- [`@axiscommunications/fluent-icons`](icons/docs/README.md) - custom Axis icons
+- [`@axiscommunications/fluent-hooks`](hooks/docs/README.md) - react hooks to use with fluent components
+- [`@axiscommunications/fluent-styles`](styles/docs/README.md) - styles to use with fluent components
+- [`@axiscommunications/fluent-stepper`](components/stepper/docs/README.md) - a stepper component for building e.g. wizards
+- [`@axiscommunications/fluent-slider`](components/slider/docs/README.md) - various slider components
+- [`@axiscommunications/fluent-topbar`](components/topbar/docs/README.md) - top level bar that hosts app and organization selection and menus
+- [`@axiscommunications/fluent-password-input`](components/password-input/docs/README.md) - a password input that lets you reveal the password
+- [`@axiscommunications/fluent-notification-bar`](components/notification-bar/docs/README.md) - component to show notification messages
 
 ## Usage
 
