@@ -23,9 +23,9 @@
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "@fluentui/react-components": "^9.32.1",
+    "@fluentui/react-components": "^9.33.0",
     "@fluentui/react-icons": "^2.0.218",
-    "@fluentui/react-utilities": "^9.13.3",
+    "@fluentui/react-utilities": "^9.13.5",
     "@griffel/react": "^1.5.15",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
