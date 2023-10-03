@@ -1,4 +1,4 @@
-import React, { useCallback, useId, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import {
   RangeSlider,
@@ -13,6 +13,7 @@ import {
   makeStyles,
   mergeClasses,
   tokens,
+  useId,
 } from "@fluentui/react-components";
 import { useLayoutStyles, useScrollPageStyle } from "../styles/page";
 import { PageHeader } from "../components/page-header";

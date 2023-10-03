@@ -52,7 +52,7 @@ export function useAppContext<T>(
 }
 
 // provider to provide context for app
-export const ApplicationStateProvider: FC<PropsWithChildren> = ({
+export const ApplicationStateProvider: FC<PropsWithChildren<unknown>> = ({
   children,
 }) => {
   const [state, setState] = React.useState<
