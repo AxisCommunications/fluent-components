@@ -29,7 +29,7 @@
     "lint": "tsc --noEmit && eslint . --cache"
   },
   "devDependencies": {
-    "@fluentui/react-components": "^9.33.0",
+    "@fluentui/react-components": "^9.34.0",
     "@types/react": "^18.2.24",
     "eslint": "^7.0.0",
     "react": "^18.2.0",
