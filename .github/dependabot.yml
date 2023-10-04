@@ -1,0 +1,61 @@
+version: 2
+
+registries:
+  npm-github:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{ secrets.NPM_PKG_GITHUB_TOKEN }}
+
+updates:
+  - package-ecosystem: "npm"
+    registries:
+      - npm-github
+    directory: "/"
+    groups:
+      toolchain:
+        update-types:
+          - "minor"
+          - "patch"
+        patterns:
+          - "*vite*"
+          - "depcheck"
+          - "dprint"
+          - "eslint*"
+          - "ts-node"
+          - "typescript"
+      fluent:
+        update-types:
+          - "minor"
+          - "patch"
+        patterns:
+          - "*fluentui*"
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+        # FIXME: can be removed after https://github.com/dependabot/dependabot-core/issues/7915
+        exclude-patterns:
+          - "*fluentui*"
+      dependencies:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+        # FIXME: can be removed after https://github.com/dependabot/dependabot-core/issues/7915
+        exclude-patterns:
+          - "*fluentui*"
+    ignore:
+      # Fluent slot types don't work with @types/react v17, and fluent itself uses react 17,
+      # so we avoid all related upgrades that would result in a react v18 dependency.
+      - dependency-name: "react*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@testing-library/react"
+        update-types: ["version-update:semver-major"]
+    rebase-strategy: "disabled"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "05:00"
