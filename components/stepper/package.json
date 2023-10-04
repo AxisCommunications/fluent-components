@@ -1,4 +1,5 @@
 {
+  "author": "axiscommunications@Axis",
   "name": "@axiscommunications/fluent-stepper",
   "version": "8.1.1",
   "description": "Stepper for Fluent UI v9",

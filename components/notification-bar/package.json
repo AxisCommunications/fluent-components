@@ -1,4 +1,5 @@
 {
+  "author": "axiscommunications@Axis",
   "name": "@axiscommunications/fluent-notification-bar",
   "version": "8.1.1",
   "description": "Notification bar for Fluent UI v9",

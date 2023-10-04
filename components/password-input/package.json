@@ -1,4 +1,5 @@
 {
+  "author": "axiscommunications@Axis",
   "name": "@axiscommunications/fluent-password-input",
   "version": "8.1.1",
   "description": "Password input for Fluent UI v9",
