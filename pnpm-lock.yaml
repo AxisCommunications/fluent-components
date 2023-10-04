@@ -36,8 +36,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.38.0)
       sort-package-json:
-        specifier: 2.5.1
-        version: 2.5.1
+        specifier: 2.6.0
+        version: 2.6.0
       tools:
         specifier: file:tools
         version: file:tools
@@ -159,8 +159,8 @@ importers:
         specifier: ^12.1.5
         version: 12.1.5(react-dom@17.0.2)(react@17.0.2)
       '@testing-library/user-event':
-        specifier: ^14.4.3
-        version: 14.4.3(@testing-library/dom@9.3.3)
+        specifier: ^14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.3)
       '@types/react':
         specifier: ^17.0.67
         version: 17.0.67
@@ -466,11 +466,11 @@ importers:
         specifier: ^0.20.0
         version: 0.20.0
       style-dictionary:
-        specifier: ^3.1.1
-        version: 3.7.2
+        specifier: ^3.8.0
+        version: 3.8.0
       token-transformer:
-        specifier: ^0.0.19
-        version: 0.0.19
+        specifier: ^0.0.33
+        version: 0.0.33
       ts-node:
         specifier: ^10.9.1
         version: 10.9.1(@types/node@18.15.11)(typescript@4.9.5)
@@ -491,8 +491,8 @@ importers:
         specifier: ^18.0.0
         version: 18.15.11
       '@types/semver':
-        specifier: ^7.5.2
-        version: 7.5.2
+        specifier: ^7.5.3
+        version: 7.5.3
 
 packages:
 
@@ -3767,8 +3767,8 @@ packages:
       react-dom: 17.0.2(react@17.0.2)
     dev: true
 
-  /@testing-library/user-event@14.4.3(@testing-library/dom@9.3.3):
-    resolution: {integrity: sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==}
+  /@testing-library/user-event@14.5.1(@testing-library/dom@9.3.3):
+    resolution: {integrity: sha512-UCcUKrUYGj7ClomOo2SpNVvx4/fkd/2BbIHDCle8A0ax+P3bU7yJwDBDrS6ZwdTMARWTGODX1hEsCcO+7beJjg==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
@@ -3889,8 +3889,8 @@ packages:
   /@types/scheduler@0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
 
-  /@types/semver@7.5.2:
-    resolution: {integrity: sha512-7aqorHYgdNO4DM36stTiGO3DvKoex9TQRwsJU6vMaFGyqpBA1MNZkz+PG3gaNUPpTAOYhT1WR7M1JyA3fbS9Cw==}
+  /@types/semver@7.5.3:
+    resolution: {integrity: sha512-OxepLK9EuNEIPxWNME+C6WwbRAOOI2o2BaQEGzz5Lu2e4Z5eDnEo+/aVEDMIXywoJitJ7xWd641wrGLZdtwRyw==}
     dev: true
 
   /@types/stack-utils@2.0.1:
@@ -4023,13 +4023,13 @@ packages:
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.38.0)
       '@types/json-schema': 7.0.11
-      '@types/semver': 7.5.2
+      '@types/semver': 7.5.3
       '@typescript-eslint/scope-manager': 5.58.0
       '@typescript-eslint/types': 5.58.0
       '@typescript-eslint/typescript-estree': 5.58.0(typescript@4.9.5)
       eslint: 8.38.0
       eslint-scope: 5.1.1
-      semver: 7.4.0
+      semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -4571,7 +4571,7 @@ packages:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /camelcase@5.3.1:
@@ -4591,7 +4591,7 @@ packages:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
       upper-case-first: 2.0.2
     dev: true
 
@@ -4649,7 +4649,7 @@ packages:
       path-case: 3.0.4
       sentence-case: 3.0.4
       snake-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /check-error@1.0.2:
@@ -4793,7 +4793,7 @@ packages:
     resolution: {integrity: sha512-I2hSBi7Vvs7BEuJDr5dDHfzb/Ruj3FyvFyh7KLilAjNQw3Be+xgqUBA2W6scVEcL0hL1dwPRtIqEPVUCKkSsyQ==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
       upper-case: 2.0.2
     dev: true
 
@@ -5059,8 +5059,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /detect-newline@4.0.0:
-    resolution: {integrity: sha512-1aXUEPdfGdzVPFpzGJJNgq9o81bGg1s09uxTWsqBlo9PI332uyJRQq13+LK/UN4JfxJbFdCXonUFQ9R/p7yCtw==}
+  /detect-newline@4.0.1:
+    resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
@@ -5141,7 +5141,7 @@ packages:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /dprint@0.41.0:
@@ -6415,7 +6415,7 @@ packages:
     resolution: {integrity: sha512-H/vuk5TEEVZwrR0lp2zed9OCo1uAILMlx0JEMgC26rzyJJ3N1v6XkwHHXJQdR2doSjcGPM6OKPYoJgf0plJ11Q==}
     dependencies:
       capital-case: 1.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /homedir-polyfill@1.0.3:
@@ -7066,7 +7066,7 @@ packages:
   /lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /lru-cache@5.1.1:
@@ -7233,7 +7233,7 @@ packages:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /node-gyp@3.8.0:
@@ -7497,7 +7497,7 @@ packages:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /parent-module@1.0.1:
@@ -7532,14 +7532,14 @@ packages:
     resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /path-case@3.0.4:
     resolution: {integrity: sha512-qO4qCFjXqVTrcbPt/hQfhTQ+VhFsqNKOPtytgNKkKxSoEp3XPUQ8ObFuePylOIok5gjn69ry8XiULxCwot3Wfg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /path-exists@3.0.0:
@@ -8119,7 +8119,7 @@ packages:
     resolution: {integrity: sha512-8LS0JInaQMCRoQ7YUytAo/xUu5W2XnQxV2HI/6uM6U7CITS1RqPElr30V6uIqyMKM9lJGRVFy5/4CuzcixNYSg==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
       upper-case-first: 2.0.2
     dev: true
 
@@ -8187,19 +8187,19 @@ packages:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /sort-object-keys@1.1.3:
     resolution: {integrity: sha512-855pvK+VkU7PaKYPc+Jjnmt4EzejQHyhhF33q31qG8x7maDzkeFhAAThdCYay11CISO+qAMwjOBP+fPZe0IPyg==}
     dev: true
 
-  /sort-package-json@2.5.1:
-    resolution: {integrity: sha512-vx/KoZxm8YNMUqdlw7SGTfqR5pqZ/sUfgOuRtDILiOy/3AvzhAibyUe2cY3OpLs3oRSow9up4yLVtQaM24rbDQ==}
+  /sort-package-json@2.6.0:
+    resolution: {integrity: sha512-XSQ+lY9bAYA8ZsoChcEoPlgcSMaheziEp1beox1JVxy1SV4F2jSq9+h2rJ+3mC/Dhu9Ius1DLnInD5AWcsDXZw==}
     hasBin: true
     dependencies:
       detect-indent: 7.0.1
-      detect-newline: 4.0.0
+      detect-newline: 4.0.1
       get-stdin: 9.0.0
       git-hooks-list: 3.1.0
       globby: 13.2.2
@@ -8414,8 +8414,8 @@ packages:
       acorn: 8.8.2
     dev: true
 
-  /style-dictionary@3.7.2:
-    resolution: {integrity: sha512-Nd/qrPj1ikYX+sL/8PofMgfaJLRvGgT96Ty3dJLGNqtZmecVr3Xs+OZivMQEYmSCTiap/UyeV5SqwmAgn3/KKA==}
+  /style-dictionary@3.8.0:
+    resolution: {integrity: sha512-wHlB/f5eO3mDcYv6WtOz6gvQC477jBKrwuIXe+PtHskTCBsJdAOvL8hCquczJxDui2TnwpeNE+2msK91JJomZg==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -8588,8 +8588,8 @@ packages:
       is-number: 7.0.0
     dev: true
 
-  /token-transformer@0.0.19:
-    resolution: {integrity: sha512-BzTX70PgY8DflQgkvSNZm+jtwmgOUuKb6QXUihSDpIb79BvZ0ZH9lpeIlGTdASQqxHthMNHjvbya3IcaAmM/ww==}
+  /token-transformer@0.0.33:
+    resolution: {integrity: sha512-0h7Cvo8trUcv6sZPyA+iNHsFEwIhN4FhXtYqgndHQNYub+dTDW8ZCQURBNDNa0PvJ8Xg2wqG1V/5WSwV0l6yOw==}
     hasBin: true
     dependencies:
       yargs: 17.7.1
@@ -8840,13 +8840,13 @@ packages:
   /upper-case-first@2.0.2:
     resolution: {integrity: sha512-514ppYHBaKwfJRK/pNC6c/OxfGa0obSnAl106u97Ed0I625Nin96KAjttZF6ZL3e1XLtphxnqrOi9iWgm+u+bg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /upper-case@2.0.2:
     resolution: {integrity: sha512-KgdgDGJt2TpuwBUIjgG6lzw2GWFRCW9Qkfkiv0DxqHHLYJHmtmdUIKcZd8rHgFSjopVTlw6ggzCm1b8MFQwikg==}
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.6.2
     dev: true
 
   /uri-js@4.4.1:
