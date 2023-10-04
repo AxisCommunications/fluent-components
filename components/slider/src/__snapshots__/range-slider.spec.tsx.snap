@@ -20,12 +20,12 @@ exports[`range-slider > should render 1`] = `
             />
           </span>
           <div
-            class="axis-Slider__thumb ___yjt7u40_1dh3pfy f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 fj7ikun f1qcq4si f3llg7k f1hyzvmj fcetbih f1kt6s4o"
+            class="axis-Slider__thumb ___14hb9vm_jmfl5w0 f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 f8sy9bk fufffdp f1sclg23 f132a78j fcetbih f1kt6s4o"
             style="left: 20%;"
           >
             <input
               data-index="0"
-              id="slider-thumb-r0"
+              id="slider-thumb-1"
               max="100"
               min="0"
               type="range"
@@ -38,12 +38,12 @@ exports[`range-slider > should render 1`] = `
             </span>
           </div>
           <div
-            class="axis-Slider__thumb ___yjt7u40_1dh3pfy f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 fj7ikun f1qcq4si f3llg7k f1hyzvmj fcetbih f1kt6s4o"
+            class="axis-Slider__thumb ___14hb9vm_jmfl5w0 f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 f8sy9bk fufffdp f1sclg23 f132a78j fcetbih f1kt6s4o"
             style="left: 40%;"
           >
             <input
               data-index="1"
-              id="slider-thumb-r1"
+              id="slider-thumb-2"
               max="100"
               min="0"
               type="range"
@@ -75,12 +75,12 @@ exports[`range-slider > should render 1`] = `
           />
         </span>
         <div
-          class="axis-Slider__thumb ___yjt7u40_1dh3pfy f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 fj7ikun f1qcq4si f3llg7k f1hyzvmj fcetbih f1kt6s4o"
+          class="axis-Slider__thumb ___14hb9vm_jmfl5w0 f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 f8sy9bk fufffdp f1sclg23 f132a78j fcetbih f1kt6s4o"
           style="left: 20%;"
         >
           <input
             data-index="0"
-            id="slider-thumb-r0"
+            id="slider-thumb-1"
             max="100"
             min="0"
             type="range"
@@ -93,12 +93,12 @@ exports[`range-slider > should render 1`] = `
           </span>
         </div>
         <div
-          class="axis-Slider__thumb ___yjt7u40_1dh3pfy f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 fj7ikun f1qcq4si f3llg7k f1hyzvmj fcetbih f1kt6s4o"
+          class="axis-Slider__thumb ___14hb9vm_jmfl5w0 f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 f8sy9bk fufffdp f1sclg23 f132a78j fcetbih f1kt6s4o"
           style="left: 40%;"
         >
           <input
             data-index="1"
-            id="slider-thumb-r1"
+            id="slider-thumb-2"
             max="100"
             min="0"
             type="range"
