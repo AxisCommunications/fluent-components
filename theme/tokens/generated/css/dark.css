@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 25 Sep 2023 07:58:57 GMT
+ * Generated on Fri, 06 Oct 2023 09:11:01 GMT
  */
 
 .dark {
@@ -98,10 +98,10 @@
   --color-neutral-stencil-2: #333333;
   --color-neutral-stencil-1-alpha: rgba(255, 255, 255, 0.1);
   --color-neutral-stencil-2-alpha: rgba(255, 255, 255, 0.05);
-  --color-brand-foreground-link: #34c9ff;
-  --color-brand-foreground-link-hover: #54d2ff;
-  --color-brand-foreground-link-pressed: #00aef2;
-  --color-brand-foreground-link-selected: #34c9ff;
+  --color-brand-foreground-link: #0ABAFF;
+  --color-brand-foreground-link-hover: #29C7FF;
+  --color-brand-foreground-link-pressed: #00AEF2;
+  --color-brand-foreground-link-selected: #0ABAFF;
   --color-brand-foreground1: #FFCC33;
   --color-brand-foreground2: #FFD450;
   --color-brand-foreground2-hover: #FFE79B;

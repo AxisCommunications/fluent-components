@@ -390,19 +390,19 @@
     },
     "Brand": {
       "ForegroundLink": {
-        "value": "#34c9ff",
+        "value": "#0ABAFF",
         "type": "color"
       },
       "ForegroundLinkHover": {
-        "value": "#54d2ff",
+        "value": "#29C7FF",
         "type": "color"
       },
       "ForegroundLinkPressed": {
-        "value": "#00aef2",
+        "value": "#00AEF2",
         "type": "color"
       },
       "ForegroundLinkSelected": {
-        "value": "#34c9ff",
+        "value": "#0ABAFF",
         "type": "color"
       },
       "Foreground1": {
