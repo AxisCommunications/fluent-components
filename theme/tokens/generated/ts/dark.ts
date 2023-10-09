@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 25 Sep 2023 07:58:57 GMT
+ * Generated on Fri, 06 Oct 2023 09:11:01 GMT
  */
 
 import { ColorTokens, ShadowTokens, ShadowBrandTokens } from "@fluentui/react-components";
@@ -24,12 +24,12 @@ export const colorTokens: ColorTokens = {
   colorBrandForeground2Hover: "#ffe79b",
   colorBrandForeground2Pressed: "#fffcf1",
   colorBrandForegroundInverted: "#efab01",
-  colorBrandForegroundInvertedHover: "#e0a101",
-  colorBrandForegroundInvertedPressed: "#b07a0f",
-  colorBrandForegroundLink: "#34c9ff",
-  colorBrandForegroundLinkHover: "#54d2ff",
+  colorBrandForegroundInvertedHover: "#dfa001",
+  colorBrandForegroundInvertedPressed: "#d69600",
+  colorBrandForegroundLink: "#0abaff",
+  colorBrandForegroundLinkHover: "#29c7ff",
   colorBrandForegroundLinkPressed: "#00aef2",
-  colorBrandForegroundLinkSelected: "#34c9ff",
+  colorBrandForegroundLinkSelected: "#0abaff",
   colorBrandForegroundOnLight: "#efab01",
   colorBrandForegroundOnLightHover: "#e0a101",
   colorBrandForegroundOnLightPressed: "#674808",

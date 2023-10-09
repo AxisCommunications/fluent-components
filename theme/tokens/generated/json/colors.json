@@ -28,6 +28,10 @@
     "dark.colorNeutralBackground3Pressed",
     "dark.colorNeutralStrokeSubtle"
   ],
+  "#0abaff": [
+    "dark.colorBrandForegroundLink",
+    "dark.colorBrandForegroundLinkSelected"
+  ],
   "#0f0f0f": [
     "dark.colorNeutralBackground5Selected"
   ],
@@ -75,6 +79,9 @@
     "dark.colorNeutralStrokeOnBrand",
     "light.colorNeutralBackgroundInverted"
   ],
+  "#29c7ff": [
+    "dark.colorBrandForegroundLinkHover"
+  ],
   "#2e2e2e": [
     "dark.colorNeutralBackground2Selected",
     "dark.colorNeutralStroke3",
@@ -86,13 +93,6 @@
     "dark.colorNeutralStencil2",
     "dark.colorSubtleBackgroundSelected",
     "light.colorNeutralBackgroundStatic"
-  ],
-  "#342818": [
-    "dark.colorBrandBackground2"
-  ],
-  "#34c9ff": [
-    "dark.colorBrandForegroundLink",
-    "dark.colorBrandForegroundLinkSelected"
   ],
   "#383838": [
     "dark.colorNeutralBackground1Selected",
@@ -121,9 +121,6 @@
   ],
   "#4d4d4d": [
     "light.colorNeutralStrokeAccessiblePressed"
-  ],
-  "#54d2ff": [
-    "dark.colorBrandForegroundLinkHover"
   ],
   "#575757": [
     "dark.colorNeutralStencil1",
