@@ -24,9 +24,9 @@
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "@fluentui/react-components": "^9.33.0",
-    "@fluentui/react-icons": "^2.0.218",
-    "@fluentui/react-utilities": "^9.13.5",
+    "@fluentui/react-components": "^9.34.1",
+    "@fluentui/react-icons": "^2.0.219",
+    "@fluentui/react-utilities": "^9.14.1",
     "@griffel/react": "^1.5.16",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
@@ -43,7 +43,7 @@
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.32.1",
-    "@fluentui/react-icons": "^2.0.218",
+    "@fluentui/react-icons": "^2.0.219",
     "@fluentui/react-utilities": "^9.13.3",
     "@griffel/react": "^1.5.15",
     "react": ">=16.8.0 <19.0.0",
