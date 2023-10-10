@@ -24,10 +24,6 @@
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "@fluentui/react-components": "^9.34.2",
-    "@fluentui/react-icons": "^2.0.219",
-    "@fluentui/react-utilities": "^9.14.2",
-    "@griffel/react": "^1.5.16",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.5.1",
@@ -38,7 +34,6 @@
     "jsdom": "^21.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "scheduler": "^0.20.0",
     "typescript": "^4.5.5",
     "vitest": "^0.34.6"
   },

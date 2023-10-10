@@ -33,14 +33,12 @@
     "tokens:transform": "node --require ts-node/register tokens/build-ts-to-json.ts"
   },
   "devDependencies": {
-    "@fluentui/react-components": "^9.34.2",
     "@types/node": "^18.0.0",
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.8",
     "eslint": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "scheduler": "^0.20.0",
     "style-dictionary": "^3.8.0",
     "token-transformer": "^0.0.33",
     "ts-node": "^10.9.1",
