@@ -94,6 +94,9 @@
     "dark.colorSubtleBackgroundSelected",
     "light.colorNeutralBackgroundStatic"
   ],
+  "#342818": [
+    "dark.colorBrandBackground2"
+  ],
   "#383838": [
     "dark.colorNeutralBackground1Selected",
     "dark.colorNeutralStroke2",
