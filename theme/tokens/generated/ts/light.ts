@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 06 Oct 2023 09:11:01 GMT
+ * Generated on Tue, 10 Oct 2023 06:24:34 GMT
  */
 
 import { ColorTokens, ShadowTokens, ShadowBrandTokens } from "@fluentui/react-components";
