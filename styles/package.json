@@ -30,14 +30,14 @@
     "lint": "tsc --noEmit && eslint . --cache"
   },
   "devDependencies": {
-    "@fluentui/react-components": "^9.33.0",
+    "@fluentui/react-components": "^9.34.2",
     "@types/react": "^18.2.24",
     "eslint": "^7.0.0",
     "react": "^18.2.0",
     "typescript": "^4.5.5"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.32.1",
+    "@fluentui/react-components": "^9.34.2",
     "react": ">=16.8.0 <19.0.0"
   },
   "packageManager": "pnpm@8.1.0",
