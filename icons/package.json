@@ -37,7 +37,7 @@
     "react:svg:unfill": "find ./dist/react-svg -type f -name '*.svg' -exec sed -i.bak 's/fill=\"none\"//g' '{}' \\; && find ./dist/react-svg -type f -name '*.bak' -delete"
   },
   "devDependencies": {
-    "@svgr/core": "^5.5.0",
+    "@svgr/core": "^8.1.0",
     "@types/node": "^18.0.0",
     "@types/react": "^18.2.24",
     "eslint": "^7.0.0",
