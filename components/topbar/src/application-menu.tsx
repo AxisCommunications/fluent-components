@@ -7,6 +7,7 @@ import {
   MenuPopover,
   MenuTrigger,
   mergeClasses,
+  Text,
 } from "@fluentui/react-components";
 import { BoxFilled, BoxRegular, bundleIcon } from "@fluentui/react-icons";
 import React from "react";
@@ -31,9 +32,11 @@ function appIcon(id: string): JSX.Element {
   return <ApplicationIcon />;
 }
 
-export const ApplicationMenu = (
-  { options, value, onChange }: ApplicationMenuProps
-) => {
+export const ApplicationMenu = ({
+  options,
+  value,
+  onChange,
+}: ApplicationMenuProps) => {
   const { t } = useTranslation();
   const styles = useStyles();
 
@@ -50,14 +53,14 @@ export const ApplicationMenu = (
             styles.singleLine
           )}
           icon={currentSelection
-            ? (currentSelection.icon ?? appIcon(currentSelection.id))
+            ? currentSelection.icon ?? appIcon(currentSelection.id)
             : undefined}
           data-testid="application-menu-trigger"
           menuIcon={isStandalone ? null : undefined}
         >
           <span className={styles.applicationLabel}>
             {currentSelection
-              ? (currentSelection.label ?? appLabel(t, currentSelection.id))
+              ? currentSelection.label ?? appLabel(t, currentSelection.id)
               // FIXME: use translateable placeholder
               : ""}
             {currentSelection?.beta && <BetaBadge />}
@@ -69,8 +72,13 @@ export const ApplicationMenu = (
           {options?.map(({ id, icon, label, beta }) => (
             <MenuItem
               data-testid={`application-menu-item-${id}`}
-              disabled={id === value}
-              icon={icon ?? appIcon(id)}
+              icon={
+                <div
+                  className={mergeClasses(id === value && styles.selectedApp)}
+                >
+                  {icon ?? appIcon(id)}
+                </div>
+              }
               key={id}
               // eslint-disable-next-line react/jsx-no-bind
               onClick={() => {
@@ -79,8 +87,14 @@ export const ApplicationMenu = (
                 }
               }}
             >
-              {label ?? appLabel(t, id)}
-              {beta && <BetaBadge disabled={id === value} />}
+              <Text
+                className={mergeClasses(
+                  id === value && styles.selectedAppLabel
+                )}
+              >
+                {label ?? appLabel(t, id)}
+              </Text>
+              {beta && <BetaBadge />}
             </MenuItem>
           ))}
         </MenuList>
