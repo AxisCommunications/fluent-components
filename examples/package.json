@@ -17,7 +17,9 @@
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "dev": "vite",
     "lint": "tsc --noEmit && eslint . --cache",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui"
   },
   "dependencies": {
     "@axiscommunications/fluent-hooks": "workspace:*",
@@ -41,6 +43,8 @@
     "vite": "^3.0.9"
   },
   "devDependencies": {
+    "@types/node": "^20.8.4",
+    "@playwright/test": "1.38.1",
     "@types/react": "^17.0.67",
     "@types/react-dom": "^17.0.21",
     "eslint": "^8.52.0",
