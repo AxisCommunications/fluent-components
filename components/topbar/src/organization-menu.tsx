@@ -29,7 +29,8 @@ export const OrganizationMenu = (
 
   const currentOrganization = options?.find(({ id }) => id === value);
   const checkedValues = { org: [value] };
-  const noDropDownContent = options?.length === 1 && !customContent;
+  const noDropDownContent = options?.length === 1 && !customContent
+    && currentOrganization;
 
   return (
     <Menu checkedValues={checkedValues}>
