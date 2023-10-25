@@ -29,13 +29,13 @@ jobs:
           pnpm install --frozen-lockfile
 
       - name: Transform SVG to fonts
-        run: pnpm --filter @axteams-software/one-react-icons fonts:build
+        run: pnpm --filter @axiscommunications/fluent-icons fonts:build
 
       - name: Transform SVG to react components
-        run: pnpm --filter @axteams-software/one-react-icons react:build
+        run: pnpm --filter @axiscommunications/fluent-icons react:build
 
       - name: Build
-        run: pnpm --filter @axteams-software/one-react-icons build
+        run: pnpm --filter @axiscommunications/fluent-icons build
 
       - name: Lint
-        run: pnpm --filter @axteams-software/one-react-icons lint
+        run: pnpm --filter @axiscommunications/fluent-icons lint
