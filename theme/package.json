@@ -42,7 +42,7 @@
     "style-dictionary": "^3.9.0",
     "token-transformer": "^0.0.33",
     "ts-node": "^10.9.1",
-    "typescript": "^4.5.5"
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.36.0",
