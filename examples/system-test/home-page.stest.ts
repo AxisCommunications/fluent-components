@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { goToPage } from "./utils";
 
 test("should be able to navigate to home page", async ({ page }) => {
