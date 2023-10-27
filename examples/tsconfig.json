@@ -2,6 +2,7 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "lib": ["es5", "es6", "dom", "dom.iterable", "ES2015", "es2017"],
+    "types": ["node"],
     "paths": {
       "@axiscommunications/fluent-hooks": ["hooks/src"],
       "@axiscommunications/fluent-password-input": [
@@ -18,5 +19,5 @@
       ]
     }
   },
-  "include": ["src"]
+  "include": ["src", "system-test", "*.ts"]
 }
