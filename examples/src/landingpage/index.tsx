@@ -28,7 +28,7 @@ export const WelcomePage = () => {
   const layoutStyles = useLayoutStyles();
 
   return (
-    <div className={layoutStyles.grid}>
+    <div id="welcome-page" className={layoutStyles.grid}>
       <div className={styles.pageContainer}>
         <div className={styles.page}>
           <WelcomeMessage />
