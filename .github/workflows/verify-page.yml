@@ -29,11 +29,6 @@ jobs:
           corepack enable
           corepack prepare --activate
           pnpm install --frozen-lockfile
-        env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
-
-      # - name: Install Playwright Browsers (chromium)
-      #   run: pnpm playwright install-deps chromium
 
       - name: Run Playwright tests
         run: pnpm stest
