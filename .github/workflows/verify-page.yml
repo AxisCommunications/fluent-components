@@ -1,0 +1,42 @@
+name: Verifies gh-page is up and running
+
+on:
+  push:
+    branches:
+      - main
+      - playwright-base
+  workflow_dispatch:
+
+jobs:
+  verify-gh-page:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Delay start
+      #   run: sleep 30s
+      #   shell: bash
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm install --frozen-lockfile
+
+      - name: Run Playwright tests
+        run: pnpm stest
+        working-directory: ./examples
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: examples/test-results/*
+          retention-days: 5
