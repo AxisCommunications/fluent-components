@@ -73,7 +73,7 @@ export const Navbar = () => {
   const [selectedApp, setSelectedApp] = useState(applications[0].id);
 
   const [currentOrganizationId, setCurrentOrganizationId] = useState<string>(
-    () => organizations[0].id
+    () => organizations[0]?.id ?? ""
   );
   const selectedTheme = useAppContext((context) => context.theme);
   const setTheme = useAppContext((context) => context.setTheme);

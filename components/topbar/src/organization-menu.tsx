@@ -31,6 +31,7 @@ export const OrganizationMenu = (
   const checkedValues = { org: [value] };
   const noDropDownContent = options?.length === 1 && !customContent
     && currentOrganization;
+  const onlyCustomContent = !options?.length && !!customContent;
 
   return (
     <Menu checkedValues={checkedValues}>
@@ -52,25 +53,27 @@ export const OrganizationMenu = (
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
-          <div className={styles.organizationSelection}>
-            {options?.map(({ id, label }) => {
-              return (
-                <MenuItemRadio
-                  data-testid={`organization-menu-item-${id}`}
-                  key={id}
-                  name="org"
-                  // eslint-disable-next-line react/jsx-no-bind
-                  onClick={() => onChange(id)}
-                  value={id}
-                >
-                  {label}
-                </MenuItemRadio>
-              );
-            })}
-          </div>
+          {!onlyCustomContent && (
+            <div className={styles.organizationSelection}>
+              {options?.map(({ id, label }) => {
+                return (
+                  <MenuItemRadio
+                    data-testid={`organization-menu-item-${id}`}
+                    key={id}
+                    name="org"
+                    // eslint-disable-next-line react/jsx-no-bind
+                    onClick={() => onChange(id)}
+                    value={id}
+                  >
+                    {label}
+                  </MenuItemRadio>
+                );
+              })}
+            </div>
+          )}
           {customContent !== undefined && (
             <>
-              <MenuDivider />
+              {!onlyCustomContent && <MenuDivider />}
               {customContent}
             </>
           )}
