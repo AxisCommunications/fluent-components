@@ -18,8 +18,8 @@
     "dev": "vite",
     "lint": "tsc --noEmit && eslint . --cache",
     "serve": "vite preview",
-    "test": "pnpm playwright test",
-    "test:ui": "pnpm playwright test --ui"
+    "stest": "pnpm playwright test",
+    "stest:ui": "pnpm playwright test --ui"
   },
   "dependencies": {
     "@axiscommunications/fluent-hooks": "workspace:*",

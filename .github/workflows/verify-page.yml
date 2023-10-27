@@ -33,7 +33,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: pnpm test
+        run: pnpm stest
         working-directory: ./examples
 
       - uses: actions/upload-artifact@v3
