@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
     {
       name: "fluent-components:stest:chromium",
       use: chromium(),
-      testMatch: ["**/**.stest.ts"],
+      testMatch: ["system-test/**.stest.ts"],
     },
   ]),
 };

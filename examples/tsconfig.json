@@ -19,5 +19,5 @@
       ]
     }
   },
-  "include": ["src", "*.ts"]
+  "include": ["src", "system-test", "*.ts"]
 }
