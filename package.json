@@ -1,7 +1,7 @@
 {
   "author": "Axis Communications AB",
   "name": "@axiscommunications/fluent-components",
-  "version": "8.3.1",
+  "version": "8.3.2",
   "private": true,
   "description": "Axis branded theme, components and examples for Fluent UI v9",
   "repository": {
