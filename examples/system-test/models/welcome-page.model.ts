@@ -1,12 +1,12 @@
 import type { Locator, Page } from "@playwright/test";
-import { TEST_ID } from "../util/test-id";
+import { TestId } from "../util/test-id";
 import { getRootPath } from "../util/common";
 
 export class WelcomePage {
   private readonly welcomePage: Locator;
 
   constructor(public readonly page: Page) {
-    this.welcomePage = this.page.getByTestId(TEST_ID.welcomePage);
+    this.welcomePage = this.page.getByTestId(TestId.welcomePage);
   }
 
   get root() {

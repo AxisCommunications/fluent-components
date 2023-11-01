@@ -4,7 +4,7 @@ import { tokens } from "@fluentui/react-components";
 import { useLayoutStyles } from "../styles/page";
 import { WelcomeMessage } from "./welcome-message/welcome-message.component";
 import { WelcomeImage } from "./welcome-image/welcome-image.component";
-import { TEST_ID } from "../../system-test/util/test-id";
+import { TestId } from "../../system-test/util/test-id";
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -29,7 +29,7 @@ export const WelcomePage = () => {
   const layoutStyles = useLayoutStyles();
 
   return (
-    <div data-testid={TEST_ID.welcomePage} className={layoutStyles.grid}>
+    <div data-testid={TestId.welcomePage} className={layoutStyles.grid}>
       <div className={styles.pageContainer}>
         <div className={styles.page}>
           <WelcomeMessage />
