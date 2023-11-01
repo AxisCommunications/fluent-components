@@ -31,5 +31,5 @@ jobs:
       - name: Transform Fluent Theme to JSON, builds tokens for platforms
         run: pnpm --filter @axiscommunications/fluent-theme tokens:runall
 
-      - name: build theme
+      - name: Build theme
         run: pnpm --filter @axiscommunications/fluent-theme build

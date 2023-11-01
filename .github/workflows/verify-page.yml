@@ -1,20 +1,14 @@
 name: Verifies gh-page is up and running
 
 on:
-  push:
-    branches:
-      - main
-      - playwright-base
+  schedule:
+    - cron: "0 * * * 1-5"
   workflow_dispatch:
 
 jobs:
   verify-gh-page:
     runs-on: ubuntu-latest
     steps:
-      # - name: Delay start
-      #   run: sleep 30s
-      #   shell: bash
-
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
