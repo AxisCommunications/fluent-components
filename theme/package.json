@@ -33,7 +33,7 @@
     "tokens:transform": "node --require ts-node/register tokens/build-ts-to-json.ts"
   },
   "devDependencies": {
-    "@types/node": "^20.8.8",
+    "@types/node": "^20.8.10",
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.8",
     "eslint": "^8.52.0",
