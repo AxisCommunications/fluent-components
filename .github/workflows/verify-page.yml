@@ -34,3 +34,8 @@ jobs:
           name: playwright-report
           path: examples/test-results/*
           retention-days: 5
+
+      - name: Notify in Teams on failure (test)
+        if: always()
+        run: node notify-teams.js --hook ${{ secrets.TEAMS_WEBHOOK_DEV }} --title 'test message' --github '${{ toJson(github) }}' --steps '${{ toJson(steps) }}'
+        working-directory: ./github/scripts
