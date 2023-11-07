@@ -2,8 +2,13 @@ name: Verifies gh-page is up and running
 
 on:
   schedule:
-    - cron: "0 */2 * * 1-5"
+    - cron: "0 */4 * * 1-5"
   workflow_dispatch:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+    branches:
+      - "main"
 
 jobs:
   verify-gh-page:
