@@ -36,6 +36,6 @@ jobs:
           retention-days: 5
 
       - name: Notify in Teams on failure
-        if: always()
+        if: failure()
         run: node notify-teams.js --hook ${{ secrets.TEAMS_WEBHOOK_DEV }} --title '${{ github.workflow }} failed!' --github '${{ toJson(github) }}' --steps '${{ toJson(steps) }}'
         working-directory: ./tools/github
