@@ -1,6 +1,5 @@
 {
   "extends": ["../.eslintrc.json"],
   "root": true,
-  "env": { "node": true },
-  "ignorePatterns": ["**/generated/**"]
+  "ignorePatterns": ["**/generated/**", "github"]
 }
