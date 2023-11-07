@@ -2,7 +2,7 @@ name: Verifies gh-page is up and running
 
 on:
   schedule:
-    - cron: "0 * * * 1-5"
+    - cron: "* 0 * * 1-5"
   workflow_dispatch:
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
           path: examples/test-results/*
           retention-days: 5
 
-      - name: Notify in Teams on failure (test)
+      - name: Notify in Teams on failure
         if: always()
-        run: node notify-teams.js --hook ${{ secrets.TEAMS_WEBHOOK_DEV }} --title 'test message' --github '${{ toJson(github) }}' --steps '${{ toJson(steps) }}'
+        run: node notify-teams.js --hook ${{ secrets.TEAMS_WEBHOOK_DEV }} --title '${{ github.workflow }} failed!' --github '${{ toJson(github) }}' --steps '${{ toJson(steps) }}'
         working-directory: ./tools/github
