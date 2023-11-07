@@ -1,6 +1,6 @@
 "use strict";
-const fetch = require("node-fetch");
-const { ArgumentParser } = require("argparse");
+import fetch from "node-fetch";
+import { ArgumentParser } from "argparse";
 
 const run = () => {
   const { title, error, github, steps, hook } = getArguments();
@@ -30,7 +30,7 @@ function invokeTeamsWebhook(template, hook) {
 function renderMessage(title, githubRunId, failingStepId, error) {
   const body = [
     {
-      text: `<a href="https://github.com/LKP-RnD/vms-web-client/actions/runs/${githubRunId}">Job failing at ${failingStepId}</a>`,
+      text: `<a href="https://github.com/AxisCommunications/fluent-components/actions/runs/${githubRunId}">Job failing at ${failingStepId}</a>`,
     },
   ];
 

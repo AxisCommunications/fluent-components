@@ -16,7 +16,9 @@
     "release": "generated/release/cli.js"
   },
   "dependencies": {
+    "argparse": "2.0.1",
     "cmd-ts": "0.13.0",
+    "node-fetch": "2.7.0",
     "semver": "^7.5.4"
   },
   "devDependencies": {
