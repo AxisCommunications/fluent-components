@@ -7,6 +7,7 @@ Send a notification to your Teams channels Incoming Webhook connector.
 > **_NOTE:_** All steps included in the job need to have the parameter "id" set to be included in the list of results in the notification.
 
 Example:
+
 ```yaml
 jobs:
   my-job:
@@ -24,13 +25,13 @@ jobs:
           github: ${{ toJson(github) }}
           steps: ${{ toJson(steps) }}
 ```
-    
+
 ### Parameters
 
 | Parameter            | Type   | Required | Description                       |
-|----------------------|--------|----------|-----------------------------------|
+| -------------------- | ------ | -------- | --------------------------------- |
 | webhook_url          | string | Yes      | The webhook url                   |
 | summary              | string | Yes      | Header of notification card       |
 | notification_summary | string | Yes      | Summary seen in notification      |
-| github               | json   | No       | The github context in JSON-format | 
-| steps                | json   | No       | The Github steps so far (JSON)    | 
+| github               | json   | No       | The github context in JSON-format |
+| steps                | json   | No       | The Github steps so far (JSON)    |
