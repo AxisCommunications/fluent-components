@@ -42,7 +42,7 @@ jobs:
 
       - name: Notify in Teams
         if: always()
-        uses: ./.github/actions/notify-teams@main
+        uses: ./.github/actions/notify-teams
         id: notify-teams
         with:
           webhook_url: ${{ secrets.TEAMS_WEBHOOK_DEV }}
