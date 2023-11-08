@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -12276,6 +12272,7 @@ packages:
   file:tools:
     resolution: {directory: tools, type: directory}
     name: tools
+    version: 8.3.2
     hasBin: true
     dependencies:
       cmd-ts: 0.13.0
@@ -12283,3 +12280,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
