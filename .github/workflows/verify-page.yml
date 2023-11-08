@@ -40,7 +40,14 @@ jobs:
           path: examples/test-results/*
           retention-days: 5
 
-      - name: Notify in Teams on failure
-        if: failure()
-        run: node notify-teams.js --hook ${{ secrets.TEAMS_WEBHOOK_DEV }} --title '${{ github.workflow }} failed!' --github '${{ toJson(github) }}' --steps '${{ toJson(steps) }}'
-        working-directory: ./tools/github
+      - name: Notify in Teams
+        if: always()
+        uses: ./.github/actions/notify-teams@main
+        id: notify-teams
+        with:
+          webhook_url: ${{ secrets.TEAMS_WEBHOOK_DEV }}
+          summary: "${{ github.workflow }}"
+          notification_summary: "Check this workflow for more details"
+          github: ${{ toJson(github) }}
+          steps: ${{ toJson(steps) }}
+          image: "https://resources.jetbrains.com/storage/products/company/brand/logos/TeamCity_icon.png"
