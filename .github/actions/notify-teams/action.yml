@@ -1,0 +1,31 @@
+name: notify-teams
+description: Call a Teams webhook
+inputs:
+  webhook_url:
+    description: The webhook url
+    required: true
+  summary:
+    description: Header of notification card
+    required: true
+  notification_summary:
+    description: Summary seen in notification
+    required: true
+  github:
+    description: The github context in JSON-format
+    required: false
+  steps:
+    description: The Github steps so far (JSON)
+    required: false
+  image:
+    description: Url to image to show in notification
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Set GitHub action path
+      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - name: Notify teams
+      shell: bash
+      run: notify-teams.sh ${{ inputs.webhook_url }} "${{ inputs.notification_summary }}" "${{ inputs.summary }}" '${{ inputs.github }}' '${{ inputs.steps }}' '${{ inputs.image }}'
