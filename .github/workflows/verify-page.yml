@@ -46,8 +46,7 @@ jobs:
         id: notify-teams
         with:
           webhook_url: ${{ secrets.TEAMS_WEBHOOK_DEV }}
-          summary: "${{ github.workflow }}"
-          notification_summary: "Check this workflow for more details"
+          summary: "${{ github.workflow }} ${{ github.job }} failed"
+          notification_summary: "${{ github.job }} failed!"
           github: ${{ toJson(github) }}
           steps: ${{ toJson(steps) }}
-          image: "https://resources.jetbrains.com/storage/products/company/brand/logos/TeamCity_icon.png"
