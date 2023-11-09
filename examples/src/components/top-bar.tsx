@@ -24,6 +24,7 @@ import {
   BoxFilled,
   BoxRegular,
   bundleIcon,
+  FoodApple24Regular,
   MailFilled,
   MailRegular,
   Megaphone24Filled,
@@ -110,6 +111,11 @@ export const Navbar = () => {
     <div className={styles.topBar}>
       <TopBar
         appMenu={{
+          customContent: (
+            <MenuItem icon={<FoodApple24Regular />}>
+              Custom app menu item
+            </MenuItem>
+          ),
           options: applications,
           value: selectedApp,
           onChange: onNavigateToApplication,

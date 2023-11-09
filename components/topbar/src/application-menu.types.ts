@@ -7,6 +7,7 @@ export type ApplicationOption = {
 };
 
 export type ApplicationMenuProps = {
+  customContent?: JSX.Element;
   options?: ApplicationOption[];
   value: string;
   onChange: (id: string) => void;
