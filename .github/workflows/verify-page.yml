@@ -6,9 +6,8 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows: ["pages-build-deployment"]
-    types: [completed]
-    branches:
-      - "main"
+    types:
+      - completed
 
 jobs:
   verify-gh-page:
