@@ -30,7 +30,7 @@
     "@typescript-eslint/parser": "^5.53.0",
     "depcheck": "1.4.7",
     "dprint": "0.42.5",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-deprecation": "^2.0.0",
     "eslint-plugin-react": "^7.33.2",
