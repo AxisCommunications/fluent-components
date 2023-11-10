@@ -1,6 +1,6 @@
 <!--
   Do not edit directly
-  Generated on Tue, 10 Oct 2023 06:24:34 GMT
+  Generated on Fri, 10 Nov 2023 16:29:36 GMT
 -->
 <ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -134,6 +134,36 @@
   <Color x:Key="Dark.ColorBrandStroke2Contrast">#674808</Color>
   <Color x:Key="Dark.ColorBrandShadowAmbient">rgba(0,0,0,0.30)</Color>
   <Color x:Key="Dark.ColorBrandShadowKey">rgba(0,0,0,0.25)</Color>
+  <Color x:Key="Dark.ColorStatusDangerBackground1">#481D20</Color>
+  <Color x:Key="Dark.ColorStatusDangerBackground2">#6e0811</Color>
+  <Color x:Key="Dark.ColorStatusDangerBackground3">#c50f1f</Color>
+  <Color x:Key="Dark.ColorStatusDangerForeground1">#dc626d</Color>
+  <Color x:Key="Dark.ColorStatusDangerForeground2">#eeacb2</Color>
+  <Color x:Key="Dark.ColorStatusDangerForeground3">#dc626d</Color>
+  <Color x:Key="Dark.ColorStatusDangerBorderActive">#dc626d</Color>
+  <Color x:Key="Dark.ColorStatusDangerForegroundInverted">#b10e1c</Color>
+  <Color x:Key="Dark.ColorStatusDangerBorder1">#901c27</Color>
+  <Color x:Key="Dark.ColorStatusDangerBorder2">#dc626d</Color>
+  <Color x:Key="Dark.ColorStatusWarningBackground1">#492D1D</Color>
+  <Color x:Key="Dark.ColorStatusWarningBackground2">#8a3707</Color>
+  <Color x:Key="Dark.ColorStatusWarningBackground3">#f7630c</Color>
+  <Color x:Key="Dark.ColorStatusWarningForeground1">#faa06b</Color>
+  <Color x:Key="Dark.ColorStatusWarningForeground2">#fdcfb4</Color>
+  <Color x:Key="Dark.ColorStatusWarningForeground3">#f98845</Color>
+  <Color x:Key="Dark.ColorStatusWarningBorderActive">#faa06b</Color>
+  <Color x:Key="Dark.ColorStatusWarningForegroundInverted">#bc4b09</Color>
+  <Color x:Key="Dark.ColorStatusWarningBorder1">#884228</Color>
+  <Color x:Key="Dark.ColorStatusWarningBorder2">#f98845</Color>
+  <Color x:Key="Dark.ColorStatusSuccessBackground1">#113711</Color>
+  <Color x:Key="Dark.ColorStatusSuccessBackground2">#094509</Color>
+  <Color x:Key="Dark.ColorStatusSuccessBackground3">#107c10</Color>
+  <Color x:Key="Dark.ColorStatusSuccessForeground1">#54b054</Color>
+  <Color x:Key="Dark.ColorStatusSuccessForeground2">#9fd89f</Color>
+  <Color x:Key="Dark.ColorStatusSuccessForeground3">#9fd89f</Color>
+  <Color x:Key="Dark.ColorStatusSuccessBorderActive">#54b054</Color>
+  <Color x:Key="Dark.ColorStatusSuccessForegroundInverted">#0e700e</Color>
+  <Color x:Key="Dark.ColorStatusSuccessBorder1">#116811</Color>
+  <Color x:Key="Dark.ColorStatusSuccessBorder2">#9fd89f</Color>
   <Color x:Key="Dark.ColorSubtleBackground">transparent</Color>
   <Color x:Key="Dark.ColorSubtleBackgroundHover">#383838</Color>
   <Color x:Key="Dark.ColorSubtleBackgroundPressed">#2e2e2e</Color>
@@ -293,6 +323,36 @@
   <Color x:Key="Light.ColorBrandStroke2Contrast">#FFEEBA</Color>
   <Color x:Key="Light.ColorBrandShadowAmbient">rgba(0,0,0,0.30)</Color>
   <Color x:Key="Light.ColorBrandShadowKey">rgba(0,0,0,0.25)</Color>
+  <Color x:Key="Light.ColorStatusDangerBackground1">#fdf3f4</Color>
+  <Color x:Key="Light.ColorStatusDangerBackground2">#eeacb2</Color>
+  <Color x:Key="Light.ColorStatusDangerBackground3">#c50f1f</Color>
+  <Color x:Key="Light.ColorStatusDangerForeground1">#b10e1c</Color>
+  <Color x:Key="Light.ColorStatusDangerForeground2">#6e0811</Color>
+  <Color x:Key="Light.ColorStatusDangerForeground3">#c50f1f</Color>
+  <Color x:Key="Light.ColorStatusDangerForegroundInverted">#dc626d</Color>
+  <Color x:Key="Light.ColorStatusDangerBorderActive">#c50f1f</Color>
+  <Color x:Key="Light.ColorStatusDangerBorder1">#eeacb2</Color>
+  <Color x:Key="Light.ColorStatusDangerBorder2">#c50f1f</Color>
+  <Color x:Key="Light.ColorStatusWarningBackground1">#fff9f5</Color>
+  <Color x:Key="Light.ColorStatusWarningBackground2">#fdcfb4</Color>
+  <Color x:Key="Light.ColorStatusWarningBackground3">#f7630c</Color>
+  <Color x:Key="Light.ColorStatusWarningForeground1">#bc4b09</Color>
+  <Color x:Key="Light.ColorStatusWarningForeground2">#8a3707</Color>
+  <Color x:Key="Light.ColorStatusWarningForeground3">#bc4b09</Color>
+  <Color x:Key="Light.ColorStatusWarningForegroundInverted">#faa06b</Color>
+  <Color x:Key="Light.ColorStatusWarningBorderActive">#f7630c</Color>
+  <Color x:Key="Light.ColorStatusWarningBorder1">#fdcfb4</Color>
+  <Color x:Key="Light.ColorStatusWarningBorder2">#bc4b09</Color>
+  <Color x:Key="Light.ColorStatusSuccessBackground1">#f1faf1</Color>
+  <Color x:Key="Light.ColorStatusSuccessBackground2">#9fd89f</Color>
+  <Color x:Key="Light.ColorStatusSuccessBackground3">#107c10</Color>
+  <Color x:Key="Light.ColorStatusSuccessForeground1">#0e700e</Color>
+  <Color x:Key="Light.ColorStatusSuccessForeground2">#094509</Color>
+  <Color x:Key="Light.ColorStatusSuccessForeground3">#107c10</Color>
+  <Color x:Key="Light.ColorStatusSuccessForegroundInverted">#54b054</Color>
+  <Color x:Key="Light.ColorStatusSuccessBorderActive">#107c10</Color>
+  <Color x:Key="Light.ColorStatusSuccessBorder1">#9fd89f</Color>
+  <Color x:Key="Light.ColorStatusSuccessBorder2">#107c10</Color>
   <Color x:Key="Light.ColorSubtleBackground">transparent</Color>
   <Color x:Key="Light.ColorSubtleBackgroundHover">#f5f5f5</Color>
   <Color x:Key="Light.ColorSubtleBackgroundPressed">#e0e0e0</Color>

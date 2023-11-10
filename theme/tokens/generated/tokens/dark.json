@@ -526,6 +526,134 @@
         "type": "color"
       }
     },
+    "Status": {
+      "Danger": {
+        "Background1": {
+          "value": "#481D20",
+          "type": "color"
+        },
+        "Background2": {
+          "value": "#6e0811",
+          "type": "color"
+        },
+        "Background3": {
+          "value": "#c50f1f",
+          "type": "color"
+        },
+        "Foreground1": {
+          "value": "#dc626d",
+          "type": "color"
+        },
+        "Foreground2": {
+          "value": "#eeacb2",
+          "type": "color"
+        },
+        "Foreground3": {
+          "value": "#dc626d",
+          "type": "color"
+        },
+        "BorderActive": {
+          "value": "#dc626d",
+          "type": "color"
+        },
+        "ForegroundInverted": {
+          "value": "#b10e1c",
+          "type": "color"
+        },
+        "Border1": {
+          "value": "#901c27",
+          "type": "color"
+        },
+        "Border2": {
+          "value": "#dc626d",
+          "type": "color"
+        }
+      },
+      "Warning": {
+        "Background1": {
+          "value": "#492D1D",
+          "type": "color"
+        },
+        "Background2": {
+          "value": "#8a3707",
+          "type": "color"
+        },
+        "Background3": {
+          "value": "#f7630c",
+          "type": "color"
+        },
+        "Foreground1": {
+          "value": "#faa06b",
+          "type": "color"
+        },
+        "Foreground2": {
+          "value": "#fdcfb4",
+          "type": "color"
+        },
+        "Foreground3": {
+          "value": "#f98845",
+          "type": "color"
+        },
+        "BorderActive": {
+          "value": "#faa06b",
+          "type": "color"
+        },
+        "ForegroundInverted": {
+          "value": "#bc4b09",
+          "type": "color"
+        },
+        "Border1": {
+          "value": "#884228",
+          "type": "color"
+        },
+        "Border2": {
+          "value": "#f98845",
+          "type": "color"
+        }
+      },
+      "Success": {
+        "Background1": {
+          "value": "#113711",
+          "type": "color"
+        },
+        "Background2": {
+          "value": "#094509",
+          "type": "color"
+        },
+        "Background3": {
+          "value": "#107c10",
+          "type": "color"
+        },
+        "Foreground1": {
+          "value": "#54b054",
+          "type": "color"
+        },
+        "Foreground2": {
+          "value": "#9fd89f",
+          "type": "color"
+        },
+        "Foreground3": {
+          "value": "#9fd89f",
+          "type": "color"
+        },
+        "BorderActive": {
+          "value": "#54b054",
+          "type": "color"
+        },
+        "ForegroundInverted": {
+          "value": "#0e700e",
+          "type": "color"
+        },
+        "Border1": {
+          "value": "#116811",
+          "type": "color"
+        },
+        "Border2": {
+          "value": "#9fd89f",
+          "type": "color"
+        }
+      }
+    },
     "Subtle": {
       "Background": {
         "value": "transparent",

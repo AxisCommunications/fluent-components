@@ -1,98 +1,40 @@
-import StyleDictionaryPackage, { Dictionary, Platform } from "style-dictionary";
+import { writeFileSync } from "fs";
+import { axisDarkTheme, axisLightTheme } from "../src";
+import { Theme } from "@fluentui/react-components";
 
-const getTypeName = (category: string) =>
-  `${category[0].toUpperCase()}${category.substring(1)}Tokens`;
+console.log("Build ts themes started...");
 
-const getTsTokens = (
-  sortCategories: string[],
-  dictionary: Dictionary,
-  category: string
-): string | undefined => {
-  let tokens = dictionary.allTokens.filter(
-    (t) => t.attributes?.category === category
-  );
-  if (sortCategories.includes(category)) {
-    tokens = tokens.sort((a, b) =>
-      a.name.localeCompare(b.name, undefined, { numeric: true })
-    );
-  }
-  const tokensString = tokens
-    .map((t) =>
-      t.attributes?.category === "fontWeight"
-        ? `${t.name}: ${t.value},`
-        : t.attributes?.category === "color"
-        ? `${t.name}: "${(t.value as string).toLowerCase()}",`
-        : `${t.name}: "${t.value}",`
-    )
-    .join("\n  ");
-
-  if (category === "shadow") {
-    return tokensString.length > 0
-      ? `export const ${category}Tokens: ShadowTokens & ShadowBrandTokens = {\n  ${tokensString}\n};`
-      : undefined;
-  }
-  const typeName = getTypeName(category);
-  return tokensString.length > 0
-    ? `export const ${category}Tokens: ${typeName} = {\n  ${tokensString}\n};`
-    : undefined;
+type TGenerate = {
+  name: string;
+  fileName: string;
+  theme: Theme;
 };
-
-const getTsImports = (categories: string[]) => {
-  const types = categories
-    .map((c) =>
-      c === "shadow" ? "ShadowTokens, ShadowBrandTokens" : getTypeName(c)
-    )
-    .join(", ");
-  return `import { ${types} } from "@fluentui/react-components";`;
-};
-
-const getTsFileHeader = () =>
-  `/**\n * Do not edit directly\n * Generated on ${
-    new Date().toUTCString()
-  }\n */`;
-
-StyleDictionaryPackage.registerFormat({
-  name: "typescript/fluentui",
-  formatter: ({ dictionary, options }) => {
-    const tokens = options.categories
-      .map((c: string) => getTsTokens(options.sortCategories, dictionary, c))
-      .filter((t: string | undefined) => !!t)
-      .join("\n\n");
-    return `${getTsFileHeader()}\n\n${
-      getTsImports(
-        options.categories
-      )
-    }\n\n${tokens}\n`;
+const THEMES: TGenerate[] = [
+  {
+    name: "AxisLightTheme",
+    fileName: "light",
+    theme: axisLightTheme,
   },
-});
+  {
+    name: "AxisDarkTheme",
+    fileName: "dark",
+    theme: axisDarkTheme,
+  },
+];
 
-export const getTsPlatform: (theme: string) => Platform = (theme) => ({
-  transforms: [
-    "attribute/cti",
-    "name/cti/camel",
-    "sizes/px",
-    "shadow/boxShadow",
-  ],
-  transformGroup: "js",
-  buildPath: "tokens/generated/ts/",
-  files: [
-    {
-      format: "typescript/fluentui",
-      destination: theme === "global" ? "base.ts" : `${theme}.ts`,
-      options: {
-        name: theme !== "global" ? theme : undefined,
-        categories: theme === "global"
-          ? [
-            "lineHeight",
-            "fontFamily",
-            "fontSize",
-            "fontWeight",
-            "borderRadius",
-            "strokeWidth",
-          ]
-          : ["color", "shadow"],
-        sortCategories: ["color", "shadow", "lineHeight", "fontSize"],
-      },
-    },
-  ],
+console.log("ts");
+THEMES.forEach(({ name, fileName, theme }) => {
+  // Convert the object to a JSON string and sort keys
+  const themeJson = JSON.stringify(theme, Object.keys(theme).sort(), 2);
+  const themeJsonWithoutQuotes = themeJson.replace(/"([^"]+)":/g, "$1:");
+  const importStatement =
+    "import { Theme } from \"@fluentui/react-components\";\n\n";
+  const typeDeclaration = `export const ${name}: Theme =`;
+  const themeDeclaration =
+    `${importStatement}${typeDeclaration} ${themeJsonWithoutQuotes};\n\n`;
+
+  const destination = `tokens/generated/ts/${fileName}.ts`;
+
+  writeFileSync(destination, themeDeclaration, "utf-8");
+  console.log(`${destination}, generated `);
 });

@@ -12,6 +12,11 @@ type ThemeJson = {
       Stencil: Record<string, MetaData>;
     };
     Brand: Record<string, MetaData>;
+    Status: {
+      Danger: Record<string, MetaData>;
+      Warning: Record<string, MetaData>;
+      Success: Record<string, MetaData>;
+    };
     Subtle: Record<string, MetaData>;
     Transparent: Record<string, MetaData>;
     Stroke: Record<string, MetaData>;
@@ -79,6 +84,11 @@ export const generateJsonTheme = (theme: Theme): ThemeJson => ({
       Stencil: extractTokens(theme, "colorNeutralStencil", "color"),
     },
     Brand: extractTokens(theme, "colorBrand", "color"),
+    Status: {
+      Danger: extractTokens(theme, "colorStatusDanger", "color"),
+      Warning: extractTokens(theme, "colorStatusWarning", "color"),
+      Success: extractTokens(theme, "colorStatusSuccess", "color"),
+    },
     Subtle: extractTokens(theme, "colorSubtle", "color"),
     Transparent: extractTokens(theme, "colorTransparent", "color"),
     Stroke: extractTokens(theme, "colorStroke", "color"),

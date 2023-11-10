@@ -1,8 +1,6 @@
 import StyleDictionaryPackage from "style-dictionary";
-
 import { getCssPlatform } from "./build-css";
 import { getJsonPlatform, mergeJsonDictFiles } from "./build-json";
-import { getTsPlatform } from "./build-ts";
 import { concatXamlFiles, getXamlPlatform } from "./build-xaml";
 
 // HAVE THE STYLE DICTIONARY CONFIG DYNAMICALLY GENERATED
@@ -52,7 +50,6 @@ const getStyleDictionaryConfig = (theme: string) => ({
   source: [`tokens/generated/tokens/${theme}.json`],
   platforms: {
     css: getCssPlatform(theme),
-    ts: getTsPlatform(theme),
     xaml: getXamlPlatform(theme),
     json: getJsonPlatform(theme),
   },
@@ -71,7 +68,6 @@ console.log("Build started...");
   );
 
   StyleDictionary.buildPlatform("css");
-  StyleDictionary.buildPlatform("ts");
   StyleDictionary.buildPlatform("xaml");
   StyleDictionary.buildPlatform("json");
 

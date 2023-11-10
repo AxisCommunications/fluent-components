@@ -23,6 +23,10 @@
   "#050505": [
     "dark.colorNeutralBackground5Pressed"
   ],
+  "#094509": [
+    "dark.colorStatusSuccessBackground2",
+    "light.colorStatusSuccessForeground2"
+  ],
   "#0a0a0a": [
     "dark.colorNeutralBackground4",
     "dark.colorNeutralBackground3Pressed",
@@ -32,8 +36,25 @@
     "dark.colorBrandForegroundLink",
     "dark.colorBrandForegroundLinkSelected"
   ],
+  "#0e700e": [
+    "dark.colorStatusSuccessForegroundInverted",
+    "light.colorStatusSuccessForeground1"
+  ],
   "#0f0f0f": [
     "dark.colorNeutralBackground5Selected"
+  ],
+  "#107c10": [
+    "dark.colorStatusSuccessBackground3",
+    "light.colorStatusSuccessBackground3",
+    "light.colorStatusSuccessForeground3",
+    "light.colorStatusSuccessBorderActive",
+    "light.colorStatusSuccessBorder2"
+  ],
+  "#113711": [
+    "dark.colorStatusSuccessBackground1"
+  ],
+  "#116811": [
+    "dark.colorStatusSuccessBorder1"
   ],
   "#141414": [
     "dark.colorNeutralBackground3",
@@ -118,12 +139,23 @@
     "light.colorNeutralForeground3Selected",
     "light.colorNeutralForeground2Link"
   ],
+  "#481d20": [
+    "dark.colorStatusDangerBackground1"
+  ],
+  "#492d1d": [
+    "dark.colorStatusWarningBackground1"
+  ],
   "#4c381e": [
     "dark.colorBrandBackgroundPressed",
     "dark.colorBrandBackground2Hover"
   ],
   "#4d4d4d": [
     "light.colorNeutralStrokeAccessiblePressed"
+  ],
+  "#54b054": [
+    "dark.colorStatusSuccessForeground1",
+    "dark.colorStatusSuccessBorderActive",
+    "light.colorStatusSuccessForegroundInverted"
   ],
   "#575757": [
     "dark.colorNeutralStencil1",
@@ -151,6 +183,10 @@
   "#6b6b6b": [
     "dark.colorNeutralStroke1Pressed"
   ],
+  "#6e0811": [
+    "dark.colorStatusDangerBackground2",
+    "light.colorStatusDangerForeground2"
+  ],
   "#707070": [
     "dark.colorNeutralStroke1Selected",
     "light.colorNeutralForeground4"
@@ -158,8 +194,25 @@
   "#757575": [
     "dark.colorNeutralStroke1Hover"
   ],
+  "#884228": [
+    "dark.colorStatusWarningBorder1"
+  ],
+  "#8a3707": [
+    "dark.colorStatusWarningBackground2",
+    "light.colorStatusWarningForeground2"
+  ],
+  "#901c27": [
+    "dark.colorStatusDangerBorder1"
+  ],
   "#999999": [
     "dark.colorNeutralForeground4"
+  ],
+  "#9fd89f": [
+    "dark.colorStatusSuccessForeground2",
+    "dark.colorStatusSuccessForeground3",
+    "dark.colorStatusSuccessBorder2",
+    "light.colorStatusSuccessBackground2",
+    "light.colorStatusSuccessBorder1"
   ],
   "#adadad": [
     "dark.colorNeutralForeground3",
@@ -176,14 +229,31 @@
     "light.colorCompoundBrandForeground1Pressed",
     "light.colorCompoundBrandStrokePressed"
   ],
+  "#b10e1c": [
+    "dark.colorStatusDangerForegroundInverted",
+    "light.colorStatusDangerForeground1"
+  ],
   "#b3b3b3": [
     "dark.colorNeutralStrokeAccessiblePressed",
     "light.colorNeutralStroke1Pressed"
+  ],
+  "#bc4b09": [
+    "dark.colorStatusWarningForegroundInverted",
+    "light.colorStatusWarningForeground1",
+    "light.colorStatusWarningForeground3",
+    "light.colorStatusWarningBorder2"
   ],
   "#bdbdbd": [
     "dark.colorNeutralStrokeAccessibleHover",
     "light.colorNeutralForegroundDisabled",
     "light.colorNeutralStroke1Selected"
+  ],
+  "#c50f1f": [
+    "dark.colorStatusDangerBackground3",
+    "light.colorStatusDangerBackground3",
+    "light.colorStatusDangerForeground3",
+    "light.colorStatusDangerBorderActive",
+    "light.colorStatusDangerBorder2"
   ],
   "#c7c7c7": [
     "light.colorNeutralStroke1Hover"
@@ -201,6 +271,13 @@
   ],
   "#dbdbdb": [
     "light.colorNeutralBackground2Pressed"
+  ],
+  "#dc626d": [
+    "dark.colorStatusDangerForeground1",
+    "dark.colorStatusDangerForeground3",
+    "dark.colorStatusDangerBorderActive",
+    "dark.colorStatusDangerBorder2",
+    "light.colorStatusDangerForegroundInverted"
   ],
   "#e0a101": [
     "dark.colorBrandForegroundInvertedHover",
@@ -233,6 +310,11 @@
     "light.colorNeutralBackground3Hover",
     "light.colorSubtleBackgroundSelected"
   ],
+  "#eeacb2": [
+    "dark.colorStatusDangerForeground2",
+    "light.colorStatusDangerBackground2",
+    "light.colorStatusDangerBorder1"
+  ],
   "#efab01": [
     "dark.colorBrandForegroundInverted",
     "dark.colorBrandForegroundOnLight",
@@ -259,6 +341,9 @@
     "light.colorNeutralBackgroundDisabled",
     "light.colorNeutralStroke3"
   ],
+  "#f1faf1": [
+    "light.colorStatusSuccessBackground1"
+  ],
   "#f5f5f5": [
     "light.colorNeutralBackground3",
     "light.colorNeutralBackground1Hover",
@@ -266,11 +351,33 @@
     "light.colorNeutralBackground5Hover",
     "light.colorSubtleBackgroundHover"
   ],
+  "#f7630c": [
+    "dark.colorStatusWarningBackground3",
+    "light.colorStatusWarningBackground3",
+    "light.colorStatusWarningBorderActive"
+  ],
+  "#f98845": [
+    "dark.colorStatusWarningForeground3",
+    "dark.colorStatusWarningBorder2"
+  ],
+  "#faa06b": [
+    "dark.colorStatusWarningForeground1",
+    "dark.colorStatusWarningBorderActive",
+    "light.colorStatusWarningForegroundInverted"
+  ],
   "#fafafa": [
     "light.colorNeutralBackground2",
     "light.colorNeutralBackground4Hover",
     "light.colorNeutralBackground5Selected",
     "light.colorNeutralStencil2"
+  ],
+  "#fdcfb4": [
+    "dark.colorStatusWarningForeground2",
+    "light.colorStatusWarningBackground2",
+    "light.colorStatusWarningBorder1"
+  ],
+  "#fdf3f4": [
+    "light.colorStatusDangerBackground1"
   ],
   "#fec10c": [
     "dark.colorNeutralForeground2BrandPressed",
@@ -320,6 +427,9 @@
     "dark.colorBrandBackgroundInvertedSelected",
     "light.colorBrandBackground2Hover",
     "light.colorBrandBackgroundInvertedSelected"
+  ],
+  "#fff9f5": [
+    "light.colorStatusWarningBackground1"
   ],
   "#fffcf1": [
     "dark.colorBrandForeground2Pressed",
