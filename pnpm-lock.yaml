@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -83,8 +79,8 @@ importers:
         specifier: ^8.52.0
         version: 8.52.0
       jsdom:
-        specifier: ^21.1.1
-        version: 21.1.1
+        specifier: ^22.1.0
+        version: 22.1.0
       react:
         specifier: ^17.0.2
         version: 17.0.2
@@ -96,7 +92,7 @@ importers:
         version: 4.9.5
       vitest:
         specifier: ^0.34.6
-        version: 0.34.6(jsdom@21.1.1)
+        version: 0.34.6(jsdom@22.1.0)
 
   components/password-input:
     dependencies:
@@ -129,8 +125,8 @@ importers:
         specifier: ^8.52.0
         version: 8.52.0
       jsdom:
-        specifier: ^21.1.1
-        version: 21.1.1
+        specifier: ^22.1.0
+        version: 22.1.0
       react:
         specifier: ^17.0.2
         version: 17.0.2
@@ -142,7 +138,7 @@ importers:
         version: 4.9.5
       vitest:
         specifier: ^0.34.6
-        version: 0.34.6(jsdom@21.1.1)
+        version: 0.34.6(jsdom@22.1.0)
 
   components/slider:
     dependencies:
@@ -184,8 +180,8 @@ importers:
         specifier: ^8.52.0
         version: 8.52.0
       jsdom:
-        specifier: ^21.1.1
-        version: 21.1.1
+        specifier: ^22.1.0
+        version: 22.1.0
       react:
         specifier: ^17.0.2
         version: 17.0.2
@@ -197,7 +193,7 @@ importers:
         version: 4.9.5
       vitest:
         specifier: ^0.34.6
-        version: 0.34.6(jsdom@21.1.1)
+        version: 0.34.6(jsdom@22.1.0)
 
   components/stepper:
     dependencies:
@@ -236,8 +232,8 @@ importers:
         specifier: ^8.52.0
         version: 8.52.0
       jsdom:
-        specifier: ^21.1.1
-        version: 21.1.1
+        specifier: ^22.1.0
+        version: 22.1.0
       react:
         specifier: ^17.0.2
         version: 17.0.2
@@ -249,7 +245,7 @@ importers:
         version: 4.9.5
       vitest:
         specifier: ^0.34.6
-        version: 0.34.6(jsdom@21.1.1)
+        version: 0.34.6(jsdom@22.1.0)
 
   components/topbar:
     dependencies:
@@ -288,8 +284,8 @@ importers:
         specifier: ^8.52.0
         version: 8.52.0
       jsdom:
-        specifier: ^21.1.1
-        version: 21.1.1
+        specifier: ^22.1.0
+        version: 22.1.0
       react:
         specifier: ^17.0.2
         version: 17.0.2
@@ -301,7 +297,7 @@ importers:
         version: 4.9.5
       vitest:
         specifier: ^0.34.6
-        version: 0.34.6(jsdom@21.1.1)
+        version: 0.34.6(jsdom@22.1.0)
 
   examples:
     dependencies:
@@ -6931,7 +6927,7 @@ packages:
       magic-string: 0.30.4
       picocolors: 1.0.0
       std-env: 3.4.3
-      vitest: 0.34.6(jsdom@21.1.1)
+      vitest: 0.34.6(jsdom@22.1.0)
     dev: true
 
   /@vitest/expect@0.34.6:
@@ -7030,13 +7026,6 @@ packages:
 
   /abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
-    dev: true
-
-  /acorn-globals@7.0.1:
-    resolution: {integrity: sha512-umOSDSDrfHbTNPuNpC2NSnnA3LUrqpevPb4T9jRx4MagXNS0rs+gwiTcAvqCRmsD6utzsrzNt+ebm00SNWiC3Q==}
-    dependencies:
-      acorn: 8.10.0
-      acorn-walk: 8.2.0
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
@@ -8437,19 +8426,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /escodegen@2.0.0:
-    resolution: {integrity: sha512-mmHKys/C8BFUGI+MAWNcSYoORYLMdPzjrknd2Vc+bUsjN5bXcr8EhrNB+UTqfL1y3I9c4fw2ihgtMPQLBRiQxw==}
-    engines: {node: '>=6.0'}
-    hasBin: true
-    dependencies:
-      esprima: 4.0.1
-      estraverse: 5.3.0
-      esutils: 2.0.3
-      optionator: 0.8.3
-    optionalDependencies:
-      source-map: 0.6.1
-    dev: true
-
   /eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
     dependencies:
@@ -9667,9 +9643,9 @@ packages:
     resolution: {integrity: sha512-UVU9dibq2JcFWxQPA6KCqj5O42VOmAY3zQUfEKxU0KpTGXwNoCjkX1e13eHNvw/xPynt6pU0rZ1htjWTNTSXsg==}
     dev: true
 
-  /jsdom@21.1.1:
-    resolution: {integrity: sha512-Jjgdmw48RKcdAIQyUD1UdBh2ecH7VqwaXPN3ehoZN6MqgVbMn+lRm1aAT1AsdJRAJpwfa4IpwgzySn61h2qu3w==}
-    engines: {node: '>=14'}
+  /jsdom@22.1.0:
+    resolution: {integrity: sha512-/9AVW7xNbsBv6GfWho4TTNjEo9fe6Zhf9O7s0Fhhr3u+awPwAJMKwAMXnkk5vBxflqLW9hTHX/0cs+P3gW+cQw==}
+    engines: {node: '>=16'}
     peerDependencies:
       canvas: ^2.5.0
     peerDependenciesMeta:
@@ -9677,13 +9653,10 @@ packages:
         optional: true
     dependencies:
       abab: 2.0.6
-      acorn: 8.8.2
-      acorn-globals: 7.0.1
       cssstyle: 3.0.0
       data-urls: 4.0.0
       decimal.js: 10.4.3
       domexception: 4.0.0
-      escodegen: 2.0.0
       form-data: 4.0.0
       html-encoding-sniffer: 3.0.0
       http-proxy-agent: 5.0.0
@@ -9787,14 +9760,6 @@ packages:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
       json-buffer: 3.0.1
-    dev: true
-
-  /levn@0.3.0:
-    resolution: {integrity: sha512-0OO4y2iOHix2W6ujICbKIaEQXvFQHue65vUG3pb5EUomzPI90z9hsA1VsO/dbIIpC53J8gxM9Q4Oho0jrCM/yA==}
-    engines: {node: '>= 0.8.0'}
-    dependencies:
-      prelude-ls: 1.1.2
-      type-check: 0.3.2
     dev: true
 
   /levn@0.4.1:
@@ -10205,18 +10170,6 @@ packages:
       wrappy: 1.0.2
     dev: true
 
-  /optionator@0.8.3:
-    resolution: {integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==}
-    engines: {node: '>= 0.8.0'}
-    dependencies:
-      deep-is: 0.1.4
-      fast-levenshtein: 2.0.6
-      levn: 0.3.0
-      prelude-ls: 1.1.2
-      type-check: 0.3.2
-      word-wrap: 1.2.3
-    dev: true
-
   /optionator@0.9.3:
     resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
     engines: {node: '>= 0.8.0'}
@@ -10438,11 +10391,6 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
-    dev: true
-
-  /prelude-ls@1.1.2:
-    resolution: {integrity: sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==}
-    engines: {node: '>= 0.8.0'}
     dev: true
 
   /prelude-ls@1.2.1:
@@ -11551,13 +11499,6 @@ packages:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
     dev: true
 
-  /type-check@0.3.2:
-    resolution: {integrity: sha512-ZCmOJdvOWDBYJlzAoFkC+Q0+bUyEOS1ltgp1MGU03fqHG+dbi9tBFU2Rd9QKiDZFAYrhPh2JUf7rZRIuHRKtOg==}
-    engines: {node: '>= 0.8.0'}
-    dependencies:
-      prelude-ls: 1.1.2
-    dev: true
-
   /type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -11849,7 +11790,7 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
 
-  /vitest@0.34.6(jsdom@21.1.1):
+  /vitest@0.34.6(jsdom@22.1.0):
     resolution: {integrity: sha512-+5CALsOvbNKnS+ZHMXtuUC7nL8/7F1F2DnHGjSsszX8zCjWSSviphCb/NuS9Nzf4Q03KyyDRBAXhF/8lffME4Q==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -11893,7 +11834,7 @@ packages:
       cac: 6.7.14
       chai: 4.3.10
       debug: 4.3.4
-      jsdom: 21.1.1
+      jsdom: 22.1.0
       local-pkg: 0.4.3
       magic-string: 0.30.4
       pathe: 1.1.1
@@ -12052,11 +11993,6 @@ packages:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
       string-width: 1.0.2
-    dev: true
-
-  /word-wrap@1.2.3:
-    resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}
-    engines: {node: '>=0.10.0'}
     dev: true
 
   /wordwrap@1.0.0:
@@ -12244,6 +12180,7 @@ packages:
   file:tools:
     resolution: {directory: tools, type: directory}
     name: tools
+    version: 8.3.2
     hasBin: true
     dependencies:
       cmd-ts: 0.13.0
@@ -12251,3 +12188,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
