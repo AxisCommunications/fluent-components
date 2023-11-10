@@ -1,18 +1,15 @@
-## [8.3.2](https://github.com/AxisCommunications/fluent-components/compare/797f43c1e266c00669d4ff8deaa3c9fcf4a8974b..3f8d75b96f71cdcd1df3747e9770f522132939d9) (2023-10-31T08:45:48.371Z)
+## [8.4.0](https://github.com/AxisCommunications/fluent-components/compare/1a8adf8b6f7f3af35e005daf98ee19df4e97ec7e..9ccb31ba9f786c379baadd717f526e1c2f7db65d) (2023-11-10T13:14:50.351Z)
 
 ### 🚧 Maintenance
 
-  - add playwright system test (#64) ([3f8d75b](https://github.com/AxisCommunications/fluent-components/commit/3f8d75b96f71cdcd1df3747e9770f522132939d9))
-  - add id to welcome page (#63) ([d570cf6](https://github.com/AxisCommunications/fluent-components/commit/d570cf6f9353dfcb2f4fecf4f391e946098efff9))
-  - update verify workflows to run on correct project (#60) ([1ce6046](https://github.com/AxisCommunications/fluent-components/commit/1ce6046f21c64333305bbf9c01cb00dc1a88b9bf))
-  - **deps**: bump the dev-dependencies group with 3 updates (#55) ([81776ac](https://github.com/AxisCommunications/fluent-components/commit/81776ac189fc1828ff5658d2f5670da4042dde62))
-  - **deps**: bump fluent (#59) ([8cccbca](https://github.com/AxisCommunications/fluent-components/commit/8cccbca88dd5b730c78cf39726096b594302a4c4))
-  - **deps**: bump the toolchain group with 1 update (#53) ([536f885](https://github.com/AxisCommunications/fluent-components/commit/536f8852a26f4bc9f2a67ec38e18ca2e12c26d5f))
-  - **deps**: bump @types/node from 18.15.11 to 20.8.7 (#52) ([5726079](https://github.com/AxisCommunications/fluent-components/commit/5726079d37df43815ae14b2db6af1a40d7706289))
-  - **deps**: bump the dependencies group with 3 updates (#48) ([69e1fa9](https://github.com/AxisCommunications/fluent-components/commit/69e1fa983ddc2e8452c98317e775ea1431e81d4d))
-  - **deps**: bump eslint-import-resolver-typescript from 2.7.1 to 3.6.1 (#43) ([c1f427e](https://github.com/AxisCommunications/fluent-components/commit/c1f427e2201c5ae48e6ab70c5b7931d1504952c1))
-  - **deps**: bump eslint from 7.32.0 to 8.51.0 (#44) ([84cebd0](https://github.com/AxisCommunications/fluent-components/commit/84cebd019af17ccda746a6becf52fafd1e72e41c))
-
-### 🐛 Bug fixes
-
-  - **topbar**: support no orgs + custom content (#61) ([542733e](https://github.com/AxisCommunications/fluent-components/commit/542733e7c0dfa9c7bca7e8ec62f4c57754d31bc4))
+  - Add custom content possibility to left side of topbar and top of application menu (#91) ([9ccb31b](https://github.com/AxisCommunications/fluent-components/commit/9ccb31ba9f786c379baadd717f526e1c2f7db65d))
+  - **deps**: bump the dev-dependencies group with 4 updates (#89) ([6f9d7c1](https://github.com/AxisCommunications/fluent-components/commit/6f9d7c1b46be54b22e44d965c01df75d8ce592c9))
+  - **deps**: bump eslint-plugin-deprecation from 1.4.1 to 2.0.0 (#71) ([d3d9872](https://github.com/AxisCommunications/fluent-components/commit/d3d9872e4f58b22f0eff3c1b8381f0ad66c7eb37))
+  - **deps**: bump the toolchain group with 1 update (#86) ([009f362](https://github.com/AxisCommunications/fluent-components/commit/009f3621260c7f02c7e17f684eb6fde95eacfa89))
+  - **deps**: bump jsdom from 21.1.1 to 22.1.0 (#79) ([74a1b26](https://github.com/AxisCommunications/fluent-components/commit/74a1b26a30ed170892a1092cea734aa6ed425dbd))
+  - bump fluent 9.38 (#83) ([ee58984](https://github.com/AxisCommunications/fluent-components/commit/ee589841c9594882f34e969fec1c0ae893eb6b45))
+  - align node version for deploy workflow (#77) ([b5c475d](https://github.com/AxisCommunications/fluent-components/commit/b5c475dff5aadee9af53c303f0062a287870896d))
+  - notify teams on gh-page test test fails (#78) ([58fc361](https://github.com/AxisCommunications/fluent-components/commit/58fc361285661667091242eba1bfe70e4177ae11))
+  - **deps**: bump the dependencies group with 2 updates (#70) ([261217a](https://github.com/AxisCommunications/fluent-components/commit/261217a5985f2315b2d199aac925632223bd2e91))
+  - dependabot rebase-strategy to auto (#72) ([ca6d1d5](https://github.com/AxisCommunications/fluent-components/commit/ca6d1d5b73e83bebd6375ad16c5392e880637011))
+  - schedule system test (#65) ([c455460](https://github.com/AxisCommunications/fluent-components/commit/c455460061fd1c5b9a8a8dc7f7b233f64da8f7f2))
