@@ -16,6 +16,7 @@ export const useTopBarStyles = makeStyles({
     gridTemplateColumns: "[left] auto [right] minmax(auto, max-content)",
     gridColumnGap: tokens.spacingHorizontalS,
     alignItems: "center",
+    justifyContent: "space-between",
     boxSizing: "border-box",
     height: "46px",
     backgroundColor: tokens.colorNeutralBackground4,

@@ -2,6 +2,7 @@ import {
   Badge,
   Menu,
   MenuButton,
+  MenuDivider,
   MenuItem,
   MenuList,
   MenuPopover,
@@ -33,6 +34,7 @@ function appIcon(id: string): JSX.Element {
 }
 
 export const ApplicationMenu = ({
+  customContent,
   options,
   value,
   onChange,
@@ -42,6 +44,8 @@ export const ApplicationMenu = ({
 
   const currentSelection = options?.find(({ id }) => id === value);
   const isStandalone = options?.length === 1;
+
+  const onlyCustomContent = !options?.length && !!customContent;
 
   return (
     <Menu>
@@ -69,6 +73,12 @@ export const ApplicationMenu = ({
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
+          {customContent !== undefined && (
+            <>
+              {customContent}
+              {!onlyCustomContent && <MenuDivider />}
+            </>
+          )}
           {options?.map(({ id, icon, label, beta }) => (
             <MenuItem
               data-testid={`application-menu-item-${id}`}

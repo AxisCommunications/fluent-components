@@ -6,6 +6,7 @@ export type TopBarProps = {
   readonly appMenu?: ApplicationMenuProps;
   readonly children?: ReadonlyArray<never>;
   readonly customContent?: JSX.Element;
+  readonly leftCustomContent?: JSX.Element;
   readonly orgMenu?: OrganizationMenuProps;
   readonly profileMenu?: ProfileMenuProps;
 };

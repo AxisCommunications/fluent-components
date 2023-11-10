@@ -10,6 +10,7 @@ import {
   TopBar,
 } from "@axiscommunications/fluent-topbar";
 import {
+  Button,
   makeStyles,
   Menu,
   MenuButton,
@@ -23,8 +24,10 @@ import {
   BoxFilled,
   BoxRegular,
   bundleIcon,
+  FoodApple24Regular,
   MailFilled,
   MailRegular,
+  Megaphone24Filled,
   OpenRegular,
   QuestionCircleRegular,
 } from "@fluentui/react-icons";
@@ -94,19 +97,40 @@ export const Navbar = () => {
     alert("sign me in");
   }, []);
 
-  const onNavigateToApplication = React.useCallback((appid: string) => {
-    setSelectedApp(appid);
-    alert("lets navigate! => " + appid);
-  }, [setSelectedApp]);
+  const onNavigateToApplication = React.useCallback(
+    (appid: string) => {
+      setSelectedApp(appid);
+      alert("lets navigate! => " + appid);
+    },
+    [setSelectedApp]
+  );
+
+  const [megaman, setMegaman] = useState("Megaman");
 
   return (
     <div className={styles.topBar}>
       <TopBar
         appMenu={{
+          customContent: (
+            <MenuItem icon={<FoodApple24Regular />}>
+              Custom app menu item
+            </MenuItem>
+          ),
           options: applications,
           value: selectedApp,
           onChange: onNavigateToApplication,
         }}
+        leftCustomContent={
+          <Button
+            appearance="subtle"
+            icon={<Megaphone24Filled />}
+            iconPosition="before"
+            onClick={() =>
+              setMegaman(megaman === "Megaman" ? "Rockman" : "Megaman")}
+          >
+            {megaman}
+          </Button>
+        }
         customContent={
           <Menu>
             <MenuTrigger>
