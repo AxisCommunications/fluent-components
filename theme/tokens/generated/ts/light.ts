@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 10 Oct 2023 06:24:34 GMT
+ * Generated on Sat, 11 Nov 2023 09:34:28 GMT
  */
 
 import { ColorTokens, ShadowTokens, ShadowBrandTokens } from "@fluentui/react-components";
@@ -165,6 +165,39 @@ export const colorTokens: ColorTokens = {
   colorTransparentStroke: "transparent",
   colorTransparentStrokeDisabled: "transparent",
   colorTransparentStrokeInteractive: "transparent",
+};
+
+export const colorStatusTokens: Record<string, string> = {
+  colorStatusDangerBackground1: "#fdf3f4",
+  colorStatusDangerBackground2: "#eeacb2",
+  colorStatusDangerBackground3: "#c50f1f",
+  colorStatusDangerBorder1: "#eeacb2",
+  colorStatusDangerBorder2: "#c50f1f",
+  colorStatusDangerBorderActive: "#c50f1f",
+  colorStatusDangerForeground1: "#b10e1c",
+  colorStatusDangerForeground2: "#6e0811",
+  colorStatusDangerForeground3: "#c50f1f",
+  colorStatusDangerForegroundInverted: "#dc626d",
+  colorStatusSuccessBackground1: "#f1faf1",
+  colorStatusSuccessBackground2: "#9fd89f",
+  colorStatusSuccessBackground3: "#107c10",
+  colorStatusSuccessBorder1: "#9fd89f",
+  colorStatusSuccessBorder2: "#107c10",
+  colorStatusSuccessBorderActive: "#107c10",
+  colorStatusSuccessForeground1: "#0e700e",
+  colorStatusSuccessForeground2: "#094509",
+  colorStatusSuccessForeground3: "#107c10",
+  colorStatusSuccessForegroundInverted: "#54b054",
+  colorStatusWarningBackground1: "#fff9f5",
+  colorStatusWarningBackground2: "#fdcfb4",
+  colorStatusWarningBackground3: "#f7630c",
+  colorStatusWarningBorder1: "#fdcfb4",
+  colorStatusWarningBorder2: "#bc4b09",
+  colorStatusWarningBorderActive: "#f7630c",
+  colorStatusWarningForeground1: "#bc4b09",
+  colorStatusWarningForeground2: "#8a3707",
+  colorStatusWarningForeground3: "#bc4b09",
+  colorStatusWarningForegroundInverted: "#faa06b",
 };
 
 export const shadowTokens: ShadowTokens & ShadowBrandTokens = {

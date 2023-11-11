@@ -3,6 +3,11 @@ import { Theme } from "@fluentui/react-components";
 type MetaData = { value: string | number; type: string };
 
 type ThemeJson = {
+  colorStatus: {
+    Danger: Record<string, MetaData>;
+    Warning: Record<string, MetaData>;
+    Success: Record<string, MetaData>;
+  };
   color: {
     Neutral: {
       Foreground: Record<string, MetaData>;
@@ -70,6 +75,11 @@ const extractTokens = (
 };
 
 export const generateJsonTheme = (theme: Theme): ThemeJson => ({
+  colorStatus: {
+    Danger: extractTokens(theme, "colorStatusDanger", "color"),
+    Warning: extractTokens(theme, "colorStatusWarning", "color"),
+    Success: extractTokens(theme, "colorStatusSuccess", "color"),
+  },
   color: {
     Neutral: {
       Foreground: extractTokens(theme, "colorNeutralForeground", "color"),
@@ -79,6 +89,7 @@ export const generateJsonTheme = (theme: Theme): ThemeJson => ({
       Stencil: extractTokens(theme, "colorNeutralStencil", "color"),
     },
     Brand: extractTokens(theme, "colorBrand", "color"),
+
     Subtle: extractTokens(theme, "colorSubtle", "color"),
     Transparent: extractTokens(theme, "colorTransparent", "color"),
     Stroke: extractTokens(theme, "colorStroke", "color"),
