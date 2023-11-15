@@ -1,9 +1,39 @@
 /**
  * Do not edit directly
- * Generated on Tue, 10 Oct 2023 06:24:34 GMT
+ * Generated on Sat, 11 Nov 2023 09:34:28 GMT
  */
 
 .dark {
+  --color-status-danger-background1: #481D20;
+  --color-status-danger-background2: #6e0811;
+  --color-status-danger-background3: #c50f1f;
+  --color-status-danger-foreground1: #dc626d;
+  --color-status-danger-foreground2: #eeacb2;
+  --color-status-danger-foreground3: #dc626d;
+  --color-status-danger-border-active: #dc626d;
+  --color-status-danger-foreground-inverted: #b10e1c;
+  --color-status-danger-border1: #901c27;
+  --color-status-danger-border2: #dc626d;
+  --color-status-warning-background1: #492D1D;
+  --color-status-warning-background2: #8a3707;
+  --color-status-warning-background3: #f7630c;
+  --color-status-warning-foreground1: #faa06b;
+  --color-status-warning-foreground2: #fdcfb4;
+  --color-status-warning-foreground3: #f98845;
+  --color-status-warning-border-active: #faa06b;
+  --color-status-warning-foreground-inverted: #bc4b09;
+  --color-status-warning-border1: #884228;
+  --color-status-warning-border2: #f98845;
+  --color-status-success-background1: #113711;
+  --color-status-success-background2: #094509;
+  --color-status-success-background3: #107c10;
+  --color-status-success-foreground1: #54b054;
+  --color-status-success-foreground2: #9fd89f;
+  --color-status-success-foreground3: #9fd89f;
+  --color-status-success-border-active: #54b054;
+  --color-status-success-foreground-inverted: #0e700e;
+  --color-status-success-border1: #116811;
+  --color-status-success-border2: #9fd89f;
   --color-neutral-foreground-1: #ffffff;
   --color-neutral-foreground-2: #d6d6d6;
   --color-neutral-foreground-3: #adadad;

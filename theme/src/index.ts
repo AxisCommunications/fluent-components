@@ -38,6 +38,12 @@ export const axisDarkTheme: Theme = {
   colorBrandForegroundLinkPressed: "#00AEF2",
   colorBrandForegroundLinkSelected: "#0ABAFF",
   colorScrollbarOverlay: "rgba(255,255,255,0.2)",
+  colorStatusDangerBackground1: "#481D20",
+  colorStatusDangerBorder1: "#901c27",
+  colorStatusWarningBackground1: "#492D1D",
+  colorStatusWarningBorder1: "#884228",
+  colorStatusSuccessBackground1: "#113711",
+  colorStatusSuccessBorder1: "#116811",
 };
 
 export const axisLightTheme: Theme = {

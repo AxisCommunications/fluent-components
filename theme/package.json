@@ -28,7 +28,8 @@
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && eslint . --cache",
-    "tokens:build": "node --require ts-node/register tokens/build.ts",
+    "tokens:build": "node --require ts-node/register tokens/build.ts && pnpm tokens:build-ts-theme",
+    "tokens:build-ts-theme": "node --require ts-node/register tokens/build-ts-theme.ts",
     "tokens:runall": "pnpm tokens:transform && pnpm tokens:build",
     "tokens:transform": "node --require ts-node/register tokens/build-ts-to-json.ts"
   },

@@ -1,6 +1,6 @@
 <!--
   Do not edit directly
-  Generated on Tue, 10 Oct 2023 06:24:34 GMT
+  Generated on Sat, 11 Nov 2023 09:34:28 GMT
 -->
 <ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -11,6 +11,156 @@
     <ResourceDictionary Source="Colors.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBackground1"
+    Color="{StaticResource Light.ColorStatusDangerBackground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBackground2"
+    Color="{StaticResource Light.ColorStatusDangerBackground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBackground3"
+    Color="{StaticResource Light.ColorStatusDangerBackground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerForeground1"
+    Color="{StaticResource Light.ColorStatusDangerForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerForeground2"
+    Color="{StaticResource Light.ColorStatusDangerForeground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerForeground3"
+    Color="{StaticResource Light.ColorStatusDangerForeground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerForegroundInverted"
+    Color="{StaticResource Light.ColorStatusDangerForegroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBorderActive"
+    Color="{StaticResource Light.ColorStatusDangerBorderActive}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBorder1"
+    Color="{StaticResource Light.ColorStatusDangerBorder1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBorder2"
+    Color="{StaticResource Light.ColorStatusDangerBorder2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBackground1"
+    Color="{StaticResource Light.ColorStatusWarningBackground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBackground2"
+    Color="{StaticResource Light.ColorStatusWarningBackground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBackground3"
+    Color="{StaticResource Light.ColorStatusWarningBackground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningForeground1"
+    Color="{StaticResource Light.ColorStatusWarningForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningForeground2"
+    Color="{StaticResource Light.ColorStatusWarningForeground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningForeground3"
+    Color="{StaticResource Light.ColorStatusWarningForeground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningForegroundInverted"
+    Color="{StaticResource Light.ColorStatusWarningForegroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBorderActive"
+    Color="{StaticResource Light.ColorStatusWarningBorderActive}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBorder1"
+    Color="{StaticResource Light.ColorStatusWarningBorder1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBorder2"
+    Color="{StaticResource Light.ColorStatusWarningBorder2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBackground1"
+    Color="{StaticResource Light.ColorStatusSuccessBackground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBackground2"
+    Color="{StaticResource Light.ColorStatusSuccessBackground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBackground3"
+    Color="{StaticResource Light.ColorStatusSuccessBackground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessForeground1"
+    Color="{StaticResource Light.ColorStatusSuccessForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessForeground2"
+    Color="{StaticResource Light.ColorStatusSuccessForeground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessForeground3"
+    Color="{StaticResource Light.ColorStatusSuccessForeground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessForegroundInverted"
+    Color="{StaticResource Light.ColorStatusSuccessForegroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBorderActive"
+    Color="{StaticResource Light.ColorStatusSuccessBorderActive}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBorder1"
+    Color="{StaticResource Light.ColorStatusSuccessBorder1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBorder2"
+    Color="{StaticResource Light.ColorStatusSuccessBorder2}"
+    p:Freeze="True"
+  />
   <SolidColorBrush
     x:Key="ColorNeutralForeground1"
     Color="{StaticResource Light.ColorNeutralForeground1}"

@@ -14,7 +14,7 @@ const getXamlColorTokens = (
   prefix: string
 ): string | undefined => {
   return dictionary.allTokens
-    .filter((t) => t.attributes?.category === "color")
+    .filter((t) => t.attributes?.category?.startsWith("color"))
     .map((t) => `<Color x:Key="${prefix}${t.name}">${t.value}</Color>`)
     .join("\r\n  ");
 };
@@ -24,7 +24,7 @@ const getXamlBrushTokens = (
   prefix: string
 ): string | undefined => {
   return dictionary.allTokens
-    .filter((t) => t.attributes?.category === "color")
+    .filter((t) => t.attributes?.category?.startsWith("color"))
     .map(
       (t) =>
         `<SolidColorBrush\r\n    x:Key="${t.name}"\r\n    Color="{StaticResource ${prefix}${t.name}}"\r\n    p:Freeze="True"\r\n  />`
