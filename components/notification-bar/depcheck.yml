@@ -1,9 +1,0 @@
-ignores:
-  [
-    "react-dom",
-    "typescript",
-    "@testing-library/jest-dom",
-    "@griffel/react",
-    "@vitest/coverage-c8",
-  ]
-skip-missing: true

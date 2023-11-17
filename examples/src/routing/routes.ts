@@ -6,7 +6,6 @@ export const routes = {
   VerticalStepper: "/vertical-stepper",
   TableUtilities: "/table-utilities",
   Slider: "/slider",
-  NotificationBar: "/notification-bar",
   PasswordInput: "/password-input",
 } as const;
 

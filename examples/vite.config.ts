@@ -29,9 +29,6 @@ export default defineConfig({
       "@axiscommunications/fluent-slider": path.resolve(
         "../components/slider/src/index.ts"
       ),
-      "@axiscommunications/fluent-notification-bar": path.resolve(
-        "../components/notification-bar/src/index.ts"
-      ),
     },
   },
 });
