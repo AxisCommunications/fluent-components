@@ -24,7 +24,6 @@
   "dependencies": {
     "@axiscommunications/fluent-hooks": "workspace:*",
     "@axiscommunications/fluent-icons": "workspace:*",
-    "@axiscommunications/fluent-notification-bar": "workspace:*",
     "@axiscommunications/fluent-password-input": "workspace:*",
     "@axiscommunications/fluent-slider": "workspace:*",
     "@axiscommunications/fluent-stepper": "workspace:*",

@@ -48,52 +48,6 @@ importers:
         specifier: ^4.5.5
         version: 4.9.5
 
-  components/notification-bar:
-    dependencies:
-      '@fluentui/react-components':
-        specifier: ^9.38.0
-        version: 9.38.0(@types/react-dom@17.0.21)(@types/react@17.0.67)(react-dom@17.0.2)(react@17.0.2)(scheduler@0.20.2)
-      '@fluentui/react-icons':
-        specifier: ^2.0.222
-        version: 2.0.222(react@17.0.2)
-      '@fluentui/react-utilities':
-        specifier: ^9.15.2
-        version: 9.15.2(@types/react@17.0.67)(react@17.0.2)
-      '@griffel/react':
-        specifier: ^1.5.18
-        version: 1.5.18(react@17.0.2)
-    devDependencies:
-      '@testing-library/jest-dom':
-        specifier: ^6.1.4
-        version: 6.1.4(vitest@0.34.6)
-      '@types/react':
-        specifier: ^17.0.67
-        version: 17.0.67
-      '@types/react-dom':
-        specifier: ^17.0.21
-        version: 17.0.21
-      '@vitest/coverage-c8':
-        specifier: ^0.33.0
-        version: 0.33.0(vitest@0.34.6)
-      eslint:
-        specifier: ^8.53.0
-        version: 8.53.0
-      jsdom:
-        specifier: ^22.1.0
-        version: 22.1.0
-      react:
-        specifier: ^17.0.2
-        version: 17.0.2
-      react-dom:
-        specifier: ^17.0.2
-        version: 17.0.2(react@17.0.2)
-      typescript:
-        specifier: ^4.5.5
-        version: 4.9.5
-      vitest:
-        specifier: ^0.34.6
-        version: 0.34.6(jsdom@22.1.0)
-
   components/password-input:
     dependencies:
       '@fluentui/react-components':
@@ -307,9 +261,6 @@ importers:
       '@axiscommunications/fluent-icons':
         specifier: workspace:*
         version: link:../icons
-      '@axiscommunications/fluent-notification-bar':
-        specifier: workspace:*
-        version: link:../components/notification-bar
       '@axiscommunications/fluent-password-input':
         specifier: workspace:*
         version: link:../components/password-input

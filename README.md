@@ -16,7 +16,6 @@ The React packages are based on the `@fluentui/react-*` **v9** packages.
 - [`@axiscommunications/fluent-slider`](components/slider/docs/README.md) - various slider components
 - [`@axiscommunications/fluent-topbar`](components/topbar/docs/README.md) - top level bar that hosts app and organization selection and menus
 - [`@axiscommunications/fluent-password-input`](components/password-input/docs/README.md) - a password input that lets you reveal the password
-- [`@axiscommunications/fluent-notification-bar`](components/notification-bar/docs/README.md) - component to show notification messages
 
 ## Usage
 
