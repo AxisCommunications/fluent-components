@@ -1,15 +1,9 @@
-## [8.4.0](https://github.com/AxisCommunications/fluent-components/compare/1a8adf8b6f7f3af35e005daf98ee19df4e97ec7e..9ccb31ba9f786c379baadd717f526e1c2f7db65d) (2023-11-10T13:14:50.351Z)
+## [8.5.0](https://github.com/AxisCommunications/fluent-components/compare/9ed20d323a25c95fcb6f1c651ec6ff1ef573b413..f1db709eefa1a1f0d785e4bca46d066bf26d6a59) (2023-11-23T14:54:56.233Z)
 
 ### 🚧 Maintenance
 
-  - Add custom content possibility to left side of topbar and top of application menu (#91) ([9ccb31b](https://github.com/AxisCommunications/fluent-components/commit/9ccb31ba9f786c379baadd717f526e1c2f7db65d))
-  - **deps**: bump the dev-dependencies group with 4 updates (#89) ([6f9d7c1](https://github.com/AxisCommunications/fluent-components/commit/6f9d7c1b46be54b22e44d965c01df75d8ce592c9))
-  - **deps**: bump eslint-plugin-deprecation from 1.4.1 to 2.0.0 (#71) ([d3d9872](https://github.com/AxisCommunications/fluent-components/commit/d3d9872e4f58b22f0eff3c1b8381f0ad66c7eb37))
-  - **deps**: bump the toolchain group with 1 update (#86) ([009f362](https://github.com/AxisCommunications/fluent-components/commit/009f3621260c7f02c7e17f684eb6fde95eacfa89))
-  - **deps**: bump jsdom from 21.1.1 to 22.1.0 (#79) ([74a1b26](https://github.com/AxisCommunications/fluent-components/commit/74a1b26a30ed170892a1092cea734aa6ed425dbd))
-  - bump fluent 9.38 (#83) ([ee58984](https://github.com/AxisCommunications/fluent-components/commit/ee589841c9594882f34e969fec1c0ae893eb6b45))
-  - align node version for deploy workflow (#77) ([b5c475d](https://github.com/AxisCommunications/fluent-components/commit/b5c475dff5aadee9af53c303f0062a287870896d))
-  - notify teams on gh-page test test fails (#78) ([58fc361](https://github.com/AxisCommunications/fluent-components/commit/58fc361285661667091242eba1bfe70e4177ae11))
-  - **deps**: bump the dependencies group with 2 updates (#70) ([261217a](https://github.com/AxisCommunications/fluent-components/commit/261217a5985f2315b2d199aac925632223bd2e91))
-  - dependabot rebase-strategy to auto (#72) ([ca6d1d5](https://github.com/AxisCommunications/fluent-components/commit/ca6d1d5b73e83bebd6375ad16c5392e880637011))
-  - schedule system test (#65) ([c455460](https://github.com/AxisCommunications/fluent-components/commit/c455460061fd1c5b9a8a8dc7f7b233f64da8f7f2))
+  - **deps**: bump fluent version (#105) ([f1db709](https://github.com/AxisCommunications/fluent-components/commit/f1db709eefa1a1f0d785e4bca46d066bf26d6a59))
+  - **notificationBar**: remove notification bar since the fluent message bar component is available (#100) ([1995a37](https://github.com/AxisCommunications/fluent-components/commit/1995a37ac5fa0f7369aa46afa9ae46554e9b0ba9))
+  - **deps**: bump @testing-library/jest-dom from 5.16.5 to 6.1.4 (#97) ([9ab9d79](https://github.com/AxisCommunications/fluent-components/commit/9ab9d798645a0919b5b913f083b7b406c84ec589))
+  - **deps**: bump @typescript-eslint/parser from 5.58.0 to 5.62.0 (#99) ([c8c3fe4](https://github.com/AxisCommunications/fluent-components/commit/c8c3fe485238eea8226ac4add4f6aabd207a37c8))
+  - handle statuscolor and added full ts-theme file generation (#94) ([789abfb](https://github.com/AxisCommunications/fluent-components/commit/789abfbc62a56a4dee5c4da2f204f493444d1c30))
