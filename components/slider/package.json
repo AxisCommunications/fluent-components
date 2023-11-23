@@ -38,8 +38,8 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.38.0",
-    "@fluentui/react-icons": "^2.0.222",
+    "@fluentui/react-components": "^9.41.0",
+    "@fluentui/react-icons": "^2.0.223",
     "@fluentui/react-utilities": "^9.15.2",
     "@griffel/react": "^1.5.18",
     "react": ">=16.8.0 <19.0.0",
