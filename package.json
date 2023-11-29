@@ -1,5 +1,4 @@
 {
-  "author": "Axis Communications AB",
   "name": "@axiscommunications/fluent-components",
   "version": "8.5.0",
   "private": true,
@@ -9,6 +8,7 @@
     "url": "https://github.com/AxisCommunications/fluent-components.git"
   },
   "license": "MIT",
+  "author": "Axis Communications AB",
   "scripts": {
     "build": "pnpm -r build",
     "check": "pnpm format:check && pnpm lint",

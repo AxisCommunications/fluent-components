@@ -1,5 +1,4 @@
 {
-  "author": "Axis Communications AB",
   "name": "@axiscommunications/fluent-topbar",
   "version": "8.5.0",
   "description": "Axis branded TopBar",
@@ -10,6 +9,7 @@
     "directory": "components/topbar"
   },
   "license": "MIT",
+  "author": "Axis Communications AB",
   "exports": {
     ".": {
       "require": "./lib/cjs/index.js",
@@ -49,7 +49,6 @@
     "@fluentui/react-components": "^9.41.0",
     "@fluentui/react-icons": "^2.0.223",
     "@fluentui/react-utilities": "^9.15.2",
-    "@griffel/react": "^1.5.18",
     "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0",
     "scheduler": "^0.20.0"

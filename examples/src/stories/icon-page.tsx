@@ -1,7 +1,12 @@
 import * as AxisReactIcons from "@axiscommunications/fluent-icons";
 import { AxisIconProps } from "@axiscommunications/fluent-icons";
-import { Caption1, Input } from "@fluentui/react-components";
-import { makeStyles, mergeClasses, shorthands } from "@griffel/react";
+import {
+  Caption1,
+  Input,
+  makeStyles,
+  mergeClasses,
+  shorthands,
+} from "@fluentui/react-components";
 import React from "react";
 import { PageHeader } from "../components/page-header";
 import { SimpleHeader } from "../components/simple-header";

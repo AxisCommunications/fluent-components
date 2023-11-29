@@ -1,6 +1,5 @@
-import { makeStyles, shorthands } from "@griffel/react";
 import React from "react";
-import { tokens } from "@fluentui/react-components";
+import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 import { useLayoutStyles } from "../styles/page";
 import { WelcomeMessage } from "./welcome-message/welcome-message.component";
 import { WelcomeImage } from "./welcome-image/welcome-image.component";

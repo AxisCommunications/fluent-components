@@ -1,5 +1,4 @@
 {
-  "author": "Axis Communications AB",
   "name": "@axiscommunications/fluent-styles",
   "version": "8.5.0",
   "description": "Styles for Fluent UI v9",
@@ -10,6 +9,7 @@
     "directory": "styles"
   },
   "license": "MIT",
+  "author": "Axis Communications AB",
   "exports": {
     ".": {
       "require": "./lib/cjs/index.js",
