@@ -5,14 +5,17 @@ import {
   axisLightTheme,
 } from "@axiscommunications/fluent-theme";
 import {
+  makeStyles,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   MenuPopover,
   MenuTrigger,
+  mergeClasses,
   SelectTabData,
   SelectTabEvent,
+  shorthands,
   Switch,
   Tab,
   TabList,
@@ -20,7 +23,6 @@ import {
 } from "@fluentui/react-components";
 import { useAppContext } from "../context/ApplicationStateProvider";
 import { DarkThemeRegular } from "@fluentui/react-icons";
-import { makeStyles, mergeClasses, shorthands } from "@griffel/react";
 import React, { memo, useCallback, useState } from "react";
 import { PageHeader } from "../components/page-header";
 import { SimpleHeader } from "../components/simple-header";

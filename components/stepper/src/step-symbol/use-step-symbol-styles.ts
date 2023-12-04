@@ -1,5 +1,9 @@
-import { makeStyles, mergeClasses, shorthands } from "@griffel/react";
-import { tokens } from "@fluentui/react-components";
+import {
+  makeStyles,
+  mergeClasses,
+  shorthands,
+  tokens,
+} from "@fluentui/react-components";
 import type { SlotClassNames } from "@fluentui/react-utilities";
 import type { StepSymbolSlots, StepSymbolState } from "./step-symbol.types";
 

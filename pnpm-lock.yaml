@@ -63,9 +63,6 @@ importers:
       '@fluentui/react-utilities':
         specifier: ^9.15.2
         version: 9.15.2(@types/react@17.0.67)(react@17.0.2)
-      '@griffel/react':
-        specifier: ^1.5.18
-        version: 1.5.18(react@17.0.2)
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.1.4
@@ -109,9 +106,6 @@ importers:
       '@fluentui/react-utilities':
         specifier: ^9.15.2
         version: 9.15.2(@types/react@17.0.67)(react@17.0.2)
-      '@griffel/react':
-        specifier: ^1.5.18
-        version: 1.5.18(react@17.0.2)
       scheduler:
         specifier: ^0.20.0
         version: 0.20.0
@@ -164,9 +158,6 @@ importers:
       '@fluentui/react-utilities':
         specifier: ^9.15.2
         version: 9.15.2(@types/react@17.0.67)(react@17.0.2)
-      '@griffel/react':
-        specifier: ^1.5.18
-        version: 1.5.18(react@17.0.2)
       scheduler:
         specifier: ^0.20.0
         version: 0.20.0
@@ -216,9 +207,6 @@ importers:
       '@fluentui/react-utilities':
         specifier: ^9.15.2
         version: 9.15.2(@types/react@17.0.67)(react@17.0.2)
-      '@griffel/react':
-        specifier: ^1.5.18
-        version: 1.5.18(react@17.0.2)
       scheduler:
         specifier: ^0.20.0
         version: 0.20.0
@@ -292,9 +280,6 @@ importers:
       '@fluentui/react-icons':
         specifier: ^2.0.223
         version: 2.0.223(react@17.0.2)
-      '@griffel/react':
-        specifier: ^1.5.18
-        version: 1.5.18(react@17.0.2)
       '@vitejs/plugin-react':
         specifier: ^1.3.2
         version: 1.3.2

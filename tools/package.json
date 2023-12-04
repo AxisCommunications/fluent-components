@@ -1,19 +1,19 @@
 {
-  "author": "Axis Communications AB",
   "name": "tools",
   "version": "8.5.0",
   "private": true,
+  "author": "Axis Communications AB",
   "type": "module",
-  "scripts": {
-    "generate": "tsc",
-    "git:check-dirty": "git diff --quiet || (echo 'workspace dirty!'; git diff; exit 1)",
-    "lint:eslint": "eslint . --cache",
-    "lint": "pnpm run lint:eslint && pnpm run generate && pnpm run git:check-dirty"
-  },
   "bin": {
     "changelog": "generated/changelog/cli.js",
     "commitlint": "generated/commitlint/cli.js",
     "release": "generated/release/cli.js"
+  },
+  "scripts": {
+    "generate": "tsc",
+    "git:check-dirty": "git diff --quiet || (echo 'workspace dirty!'; git diff; exit 1)",
+    "lint": "pnpm run lint:eslint && pnpm run generate && pnpm run git:check-dirty",
+    "lint:eslint": "eslint . --cache"
   },
   "dependencies": {
     "cmd-ts": "0.13.0",

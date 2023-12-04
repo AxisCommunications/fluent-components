@@ -1,5 +1,4 @@
 {
-  "author": "Axis Communications AB",
   "name": "examples",
   "version": "8.5.0",
   "private": true,
@@ -11,6 +10,7 @@
     "directory": "examples"
   },
   "license": "MIT",
+  "author": "Axis Communications AB",
   "scripts": {
     "build": "vite build",
     "build:deploy": "pnpm run build && cp -r ./dist/. ../docs",
@@ -33,7 +33,6 @@
     "@fluentui/react-components": "^9.41.0",
     "@fluentui/react-context-selector": "^9.1.42",
     "@fluentui/react-icons": "^2.0.223",
-    "@griffel/react": "^1.5.18",
     "@vitejs/plugin-react": "^1.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -42,8 +41,8 @@
     "vite": "^3.0.9"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
     "@playwright/test": "1.39.0",
+    "@types/node": "^20.9.0",
     "@types/react": "^17.0.67",
     "@types/react-dom": "^17.0.21",
     "eslint": "^8.53.0",
