@@ -1,9 +1,10 @@
-## [8.5.0](https://github.com/AxisCommunications/fluent-components/compare/9ed20d323a25c95fcb6f1c651ec6ff1ef573b413..f1db709eefa1a1f0d785e4bca46d066bf26d6a59) (2023-11-23T14:54:56.233Z)
+## [8.6.0](https://github.com/AxisCommunications/fluent-components/compare/c7e39e1cc9781da0d3e11c15a723883c44322883..a68d14f51d07773f70396d0d6be149fd94deaf54) (2023-12-05T09:35:07.891Z)
 
 ### 🚧 Maintenance
 
-  - **deps**: bump fluent version (#105) ([f1db709](https://github.com/AxisCommunications/fluent-components/commit/f1db709eefa1a1f0d785e4bca46d066bf26d6a59))
-  - **notificationBar**: remove notification bar since the fluent message bar component is available (#100) ([1995a37](https://github.com/AxisCommunications/fluent-components/commit/1995a37ac5fa0f7369aa46afa9ae46554e9b0ba9))
-  - **deps**: bump @testing-library/jest-dom from 5.16.5 to 6.1.4 (#97) ([9ab9d79](https://github.com/AxisCommunications/fluent-components/commit/9ab9d798645a0919b5b913f083b7b406c84ec589))
-  - **deps**: bump @typescript-eslint/parser from 5.58.0 to 5.62.0 (#99) ([c8c3fe4](https://github.com/AxisCommunications/fluent-components/commit/c8c3fe485238eea8226ac4add4f6aabd207a37c8))
-  - handle statuscolor and added full ts-theme file generation (#94) ([789abfb](https://github.com/AxisCommunications/fluent-components/commit/789abfbc62a56a4dee5c4da2f204f493444d1c30))
+  - **deps**: bump the dependencies group with 2 updates (#116) ([453dba6](https://github.com/AxisCommunications/fluent-components/commit/453dba6a96100ff53bdd022d0fdee5916436fedb))
+  - remove @griffel/react from peerDependencies (#113) ([270c791](https://github.com/AxisCommunications/fluent-components/commit/270c791a84d7b5c11e669b711c34b54d362c4a73))
+
+### ✨ Features
+
+  - **topbar**: handle resourcegroup in query params (#117) ([a68d14f](https://github.com/AxisCommunications/fluent-components/commit/a68d14f51d07773f70396d0d6be149fd94deaf54))
