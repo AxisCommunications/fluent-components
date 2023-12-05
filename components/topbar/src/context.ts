@@ -1,5 +1,5 @@
-export const topBarContextKeys = ["lang", "org", "theme"] as const;
-export type TopBarContextKey = typeof topBarContextKeys[number];
+export const topBarContextKeys = ["lang", "org", "theme", "rg"] as const;
+export type TopBarContextKey = (typeof topBarContextKeys)[number];
 export type TopBarContext = Partial<Record<TopBarContextKey, string>>;
 
 const _contextKeys = new Set(topBarContextKeys);
