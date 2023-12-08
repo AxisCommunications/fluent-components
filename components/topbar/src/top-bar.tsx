@@ -9,8 +9,14 @@ import { TranslationProvider } from "./translation-provider";
 
 export const TopBar = forwardRef(
   (props: TopBarProps, ref: ForwardedRef<HTMLDivElement>) => {
-    const { appMenu, orgMenu, profileMenu, customContent, leftCustomContent } =
-      props;
+    const {
+      appMenu,
+      orgMenu,
+      profileMenu,
+      customContent,
+      leftCustomContent,
+      applicationArea,
+    } = props;
     const styles = useTopBarStyles();
 
     const rootStyle = mergeClasses(topBarClassNames.root, styles.root);
@@ -32,7 +38,9 @@ export const TopBar = forwardRef(
       <TranslationProvider locale={locale}>
         <div className={rootStyle} ref={ref}>
           <div className={leftSectionStyle}>
-            {appMenu !== undefined && <ApplicationMenu {...appMenu} />}
+            {appMenu !== undefined && (
+              <ApplicationMenu {...appMenu} applicationArea={applicationArea} />
+            )}
             {leftCustomContent !== undefined && (
               <>
                 {appMenu !== undefined && (
