@@ -19,6 +19,15 @@ if (!fs.existsSync(DEST_PATH)) {
   fs.mkdirSync(DEST_PATH);
 }
 
+const pattern = /export const (\w+) =/g;
+const iconNameRegexp = new RegExp(pattern, "g");
+// const iconNameRegexp = new RegExp("const .*Icon =", "g");
+
+const toExports = (chunk: string) =>
+  (chunk.match(iconNameRegexp) ?? [])
+    .map((m: string) => m.split(" ")[2])
+    .join(", ");
+
 processFiles(SRC_PATH, DEST_PATH);
 
 function processFiles(src, dest) {
@@ -37,7 +46,10 @@ function processFiles(src, dest) {
   iconContents.forEach((chunk, i) => {
     const chunkFileName = `chunk-${i}`;
     const chunkPath = path.resolve(iconPath, `${chunkFileName}.tsx`);
-    indexContents.push(`export * from './icons/${chunkFileName}'`);
+    indexContents.push(
+      `export { ${toExports(chunk)} } from './icons/${chunkFileName}'`
+    );
+    fs.writeFileSync(chunkPath, chunk);
 
     try {
       fs.writeFileSync(chunkPath, chunk);
@@ -58,7 +70,10 @@ function processFiles(src, dest) {
   sizedIconContents.forEach((chunk, i) => {
     const chunkFileName = `chunk-${i}`;
     const chunkPath = path.resolve(sizedIconPath, `${chunkFileName}.tsx`);
-    indexContents.push(`export * from './sizedIcons/${chunkFileName}'`);
+    indexContents.push(
+      `export { ${toExports(chunk)} } from './sizedIcons/${chunkFileName}';`
+    );
+    fs.writeFileSync(chunkPath, chunk);
 
     try {
       fs.writeFileSync(chunkPath, chunk);
@@ -77,8 +92,10 @@ function processFiles(src, dest) {
   indexContents.push(
     "export { default as bundleIcon } from './utils/bundleIcon'"
   );
-  indexContents.push("export * from './utils/useIconState'");
-  indexContents.push("export * from './utils/constants'");
+  indexContents.push("export { useIconState } from './utils/useIconState'");
+  indexContents.push(
+    "export { iconFilledClassName, iconRegularClassName } from './utils/constants'"
+  );
 
   try {
     fs.writeFileSync(indexPath, indexContents.join("\n"));
