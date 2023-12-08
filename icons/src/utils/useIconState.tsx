@@ -1,5 +1,5 @@
 import React from "react";
-import { AxisIconProps } from "./axis-icon.types";
+import { AxisIconProps } from "./FluentIconsProps.types";
 import { makeStyles, mergeClasses } from "@griffel/react";
 
 const useRootStyles = makeStyles({
