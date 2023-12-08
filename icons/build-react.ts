@@ -116,7 +116,7 @@ function processFolder(srcPath, destPath, resizable) {
   /** @type string[] */
   const iconExports: string[] = [];
 
-  files.forEach(function (file, index) {
+  files.forEach(function(file, index) {
     var srcFile = path.join(srcPath, file);
     if (fs.lstatSync(srcFile).isDirectory()) {
       // for now, ignore subdirectories/localization, until we have a plan for handling it
@@ -145,9 +145,10 @@ function processFolder(srcPath, destPath, resizable) {
         [...iconContent.matchAll(new RegExp(`(?<= ${key}=)".+?"`, "g"))].map(
           (v) => v[0]
         );
-      const width = resizable ? '"1em"' : getAttr("width")[0];
+      const width = resizable ? "\"1em\"" : getAttr("width")[0];
       const paths = getAttr("d").join(",");
-      var jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]));`;
+      var jsCode =
+        `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]));`;
       iconExports.push(jsCode);
     }
   });
