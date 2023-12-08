@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -350,6 +354,9 @@ importers:
       icon-font-generator:
         specifier: ^2.1.10
         version: 2.1.11
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -12122,7 +12129,6 @@ packages:
   file:tools:
     resolution: {directory: tools, type: directory}
     name: tools
-    version: 8.5.0
     hasBin: true
     dependencies:
       cmd-ts: 0.13.0
@@ -12130,7 +12136,3 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
