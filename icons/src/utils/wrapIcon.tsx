@@ -1,5 +1,5 @@
 import React from "react";
-import { AxisIconProps } from "./axis-icon.types";
+import { AxisIconProps } from "./FluentIconsProps.types";
 import { useIconState } from "./useIconState";
 
 const wrapIcon = (Icon: (iconProps: AxisIconProps) => JSX.Element, displayName?: string) => {
