@@ -56,15 +56,36 @@ export interface MySystemsAppData {
 
 export const defaultMySystemsAppData: Record<
   MySystemsAppId,
-  MySystemsAppData
+  MySystemsAppData & { filledIcon: JSX.Element }
 > = {
-  dm: { icon: <SystemManagementIcon />, labelKey: "app_dm" },
-  iam: { icon: <UserManagementIcon />, labelKey: "app_iam" },
-  lm: { icon: <LicenseManagementIcon />, labelKey: "app_lm" },
-  portal: { icon: <MySystemsIcon />, labelKey: "app_portal" },
+  dm: {
+    icon: <SystemManagementIcon />,
+    filledIcon: <SystemManagementIcon filled />,
+    labelKey: "app_dm",
+  },
+  iam: {
+    icon: <UserManagementIcon />,
+    filledIcon: <UserManagementIcon filled />,
+    labelKey: "app_iam",
+  },
+  lm: {
+    icon: <LicenseManagementIcon />,
+    filledIcon: <LicenseManagementIcon filled />,
+    labelKey: "app_lm",
+  },
+  portal: {
+    icon: <MySystemsIcon />,
+    filledIcon: <MySystemsIcon filled />,
+    labelKey: "app_portal",
+  },
   shm: {
     icon: <SystemHealthMonitoringIcon />,
+    filledIcon: <SystemHealthMonitoringIcon filled />,
     labelKey: "app_shm",
   },
-  video: { icon: <VideoOperationIcon />, labelKey: "app_video" },
+  video: {
+    icon: <VideoOperationIcon />,
+    filledIcon: <VideoOperationIcon filled />,
+    labelKey: "app_video",
+  },
 };

@@ -16,6 +16,7 @@ import { ApplicationMenuProps } from "./application-menu.types";
 import { useStyles } from "./application.styles";
 import { defaultMySystemsAppData, isMySystemsAppId } from "./applications";
 import { TranslationFn, useTranslation } from "./translation-context";
+import { ApplicationArea } from "./top-bar.types";
 
 const ApplicationIcon = bundleIcon(BoxFilled, BoxRegular);
 
@@ -26,11 +27,13 @@ function appLabel(t: TranslationFn, id: string): string {
   return id;
 }
 
-function appIcon(id: string): JSX.Element {
+function appIcon(id: string, filled = false): JSX.Element {
   if (isMySystemsAppId(id)) {
-    return defaultMySystemsAppData[id].icon;
+    return filled
+      ? defaultMySystemsAppData[id].filledIcon
+      : defaultMySystemsAppData[id].icon;
   }
-  return <ApplicationIcon />;
+  return <ApplicationIcon filled={filled} />;
 }
 
 export const ApplicationMenu = ({
@@ -38,7 +41,8 @@ export const ApplicationMenu = ({
   options,
   value,
   onChange,
-}: ApplicationMenuProps) => {
+  applicationArea,
+}: ApplicationMenuProps & { applicationArea?: ApplicationArea }) => {
   const { t } = useTranslation();
   const styles = useStyles();
 
@@ -48,68 +52,95 @@ export const ApplicationMenu = ({
   const onlyCustomContent = !options?.length && !!customContent;
 
   return (
-    <Menu>
-      <MenuTrigger>
-        <MenuButton
-          appearance="subtle"
+    <>
+      <div
+        className={mergeClasses(
+          styles.menuRectangle,
+          applicationArea === "mySystems"
+            && styles.mySystemsMenuRectangle,
+          applicationArea === "myAxis" && styles.myAxisMenuRectangle,
+          applicationArea === "myBusiness" && styles.myBusinessMenuRectangle,
+          applicationArea === "myPartners" && styles.myPartnersMenuRectangle
+        )}
+      >
+        <div
           className={mergeClasses(
-            isStandalone && styles.standalone,
-            styles.singleLine
+            styles.currentIcon,
+            applicationArea !== undefined && styles.applicationAreaIcon
           )}
-          icon={currentSelection
-            ? currentSelection.icon ?? appIcon(currentSelection.id)
-            : undefined}
-          data-testid="application-menu-trigger"
-          menuIcon={isStandalone ? null : undefined}
         >
-          <span className={styles.applicationLabel}>
-            {currentSelection
-              ? currentSelection.label ?? appLabel(t, currentSelection.id)
-              // FIXME: use translateable placeholder
-              : ""}
-            {currentSelection?.beta && <BetaBadge />}
-          </span>
-        </MenuButton>
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList>
-          {customContent !== undefined && (
-            <>
-              {customContent}
-              {!onlyCustomContent && <MenuDivider />}
-            </>
-          )}
-          {options?.map(({ id, icon, label, beta }) => (
-            <MenuItem
-              data-testid={`application-menu-item-${id}`}
-              icon={
-                <div
-                  className={mergeClasses(id === value && styles.selectedApp)}
-                >
-                  {icon ?? appIcon(id)}
-                </div>
-              }
-              key={id}
-              // eslint-disable-next-line react/jsx-no-bind
-              onClick={() => {
-                if (currentSelection?.id !== id) {
-                  onChange?.(id);
+          {currentSelection
+            ? currentSelection.icon
+              ?? appIcon(currentSelection.id, applicationArea !== undefined)
+            : undefined}
+        </div>
+      </div>
+      <Menu
+        positioning={{
+          offset: applicationArea !== undefined
+            ? { mainAxis: 2, crossAxis: 36 }
+            : undefined,
+        }}
+      >
+        <MenuTrigger>
+          <MenuButton
+            appearance="subtle"
+            className={mergeClasses(
+              isStandalone && styles.standalone,
+              styles.singleLine
+            )}
+            data-testid="application-menu-trigger"
+            menuIcon={isStandalone ? null : undefined}
+          >
+            <span className={styles.applicationLabel}>
+              {currentSelection
+                ? currentSelection.label ?? appLabel(t, currentSelection.id)
+                // FIXME: use translateable placeholder
+                : ""}
+              {currentSelection?.beta && <BetaBadge />}
+            </span>
+          </MenuButton>
+        </MenuTrigger>
+        <MenuPopover className={styles.menuPopover}>
+          <MenuList>
+            {customContent !== undefined && (
+              <>
+                {customContent}
+                {!onlyCustomContent && <MenuDivider />}
+              </>
+            )}
+            {options?.map(({ id, icon, label, beta }) => (
+              <MenuItem
+                data-testid={`application-menu-item-${id}`}
+                icon={
+                  <div
+                    className={mergeClasses(id === value && styles.selectedApp)}
+                  >
+                    {icon ?? appIcon(id)}
+                  </div>
                 }
-              }}
-            >
-              <Text
-                className={mergeClasses(
-                  id === value && styles.selectedAppLabel
-                )}
+                key={id}
+                // eslint-disable-next-line react/jsx-no-bind
+                onClick={() => {
+                  if (currentSelection?.id !== id) {
+                    onChange?.(id);
+                  }
+                }}
               >
-                {label ?? appLabel(t, id)}
-              </Text>
-              {beta && <BetaBadge />}
-            </MenuItem>
-          ))}
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+                <Text
+                  className={mergeClasses(
+                    id === value && styles.selectedAppLabel
+                  )}
+                >
+                  {label ?? appLabel(t, id)}
+                </Text>
+                {beta && <BetaBadge />}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </>
   );
 };
 
