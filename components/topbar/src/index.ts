@@ -23,4 +23,4 @@ export type {
   ThemeSubmenuProps,
 } from "./profile-menu.types";
 export { TopBar } from "./top-bar";
-export type { TopBarProps } from "./top-bar.types";
+export type { ApplicationArea, TopBarProps } from "./top-bar.types";
