@@ -21,8 +21,8 @@ import {
 } from "@fluentui/react-components";
 import {
   AddRegular,
-  BoxFilled,
-  BoxRegular,
+  AnimalCat20Filled,
+  AnimalCat20Regular,
   bundleIcon,
   FoodApple24Regular,
   MailFilled,
@@ -34,7 +34,7 @@ import {
 import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/ApplicationStateProvider";
 
-const ApplicationIcon = bundleIcon(BoxFilled, BoxRegular);
+const ApplicationIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
 const MailIcon = bundleIcon(MailFilled, MailRegular);
 
 const useStyles = makeStyles({

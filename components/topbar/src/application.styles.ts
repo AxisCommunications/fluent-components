@@ -1,5 +1,6 @@
 import {
   makeStyles,
+  shorthands,
   tokens,
   typographyStyles,
 } from "@fluentui/react-components";
@@ -16,6 +17,7 @@ export const useStyles = makeStyles({
     pointerEvents: "none",
   },
   singleLine: {
+    boxSizing: "border-box",
     whiteSpace: "nowrap",
     overflowX: "hidden",
   },
@@ -23,6 +25,7 @@ export const useStyles = makeStyles({
     overflowX: "hidden",
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
+    marginLeft: tokens.spacingHorizontalXXXL,
   },
   beta: {
     marginLeft: "8px",
@@ -38,6 +41,42 @@ export const useStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1,
       display: "inline",
     },
+  },
+  menuPopover: {
+    ...shorthands.borderRadius("1px", "4px", "4px", "4px"),
+  },
+  currentIcon: {
+    fontSize: "20px",
+  },
+  applicationAreaIcon: {
+    fontSize: "24px",
+  },
+  menuRectangle: {
+    display: "flex",
+    pointerEvents: "none",
+    position: "absolute",
+    width: "34px",
+    height: "32px",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+    ...shorthands.borderRadius("6px", "6px", "1px", "6px"),
+  },
+  mySystemsMenuRectangle: {
+    color: "#CCEBF8",
+    backgroundColor: "#008DC6",
+  },
+  myAxisMenuRectangle: {
+    color: "#FFF5D6",
+    backgroundColor: "#DFA001",
+  },
+  myPartnersMenuRectangle: {
+    color: "#E8F4D9",
+    backgroundColor: "#7FB239",
+  },
+  myBusinessMenuRectangle: {
+    color: "#F7CEE8",
+    backgroundColor: "#C10B7E",
   },
   selectedAppLabel: {
     ...typographyStyles.body1Strong,
