@@ -55,6 +55,7 @@ export const useStyles = makeStyles({
     display: "flex",
     pointerEvents: "none",
     position: "absolute",
+    zIndex: 10,
     width: "34px",
     height: "32px",
     alignItems: "center",
