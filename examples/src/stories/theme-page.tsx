@@ -130,6 +130,7 @@ const tokenVariant = {
   transparent: "colorTransparent",
   stroke: "colorStroke",
   compound: "colorCompound",
+  status: "colorStatus",
 } as const;
 
 type TtokenVariant = typeof tokenVariant[keyof typeof tokenVariant];
@@ -210,6 +211,7 @@ export const ThemePage = () => {
                   onTabSelect={onVariantSelect}
                 >
                   <Tab value={tokenVariant.brand}>Brand</Tab>
+                  <Tab value={tokenVariant.status}>Status</Tab>
                   <Tab value={tokenVariant.neutral}>Neutral</Tab>
                   <Tab value={tokenVariant.palette}>Palette</Tab>
                   <Tab value={tokenVariant.subtle}>Subtle</Tab>
