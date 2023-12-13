@@ -1,5 +1,9 @@
-## [8.7.0](https://github.com/AxisCommunications/fluent-components/compare/26ba4ea8f6676d385a01f4485d4343662f0afcbf..56f8f0da7fdb80b2b233c2d29dd3b7475db7a49f) (2023-12-11T07:29:17.805Z)
+## [8.7.1](https://github.com/AxisCommunications/fluent-components/compare/6aab210b7a16cf3772156fdc20b24a9c24266d30..a5a4f713613c881c83d32c6af330164256792ccc) (2023-12-13T07:31:35.548Z)
 
-### ✨ Features
+### 🚧 Maintenance
 
-  - **topbar**: update application selector to align with MySystems, MyAxis, MyPartners and MyBusiness (#123) ([56f8f0d](https://github.com/AxisCommunications/fluent-components/commit/56f8f0da7fdb80b2b233c2d29dd3b7475db7a49f))
+  - align icon generation (#128) ([d01dd5d](https://github.com/AxisCommunications/fluent-components/commit/d01dd5d41a4a1e2dc99bd08d33150f804acb3c18))
+
+### 🐛 Bug fixes
+
+  - **topbar**: application menu icon visible also when hovering selected button (#131) ([a5a4f71](https://github.com/AxisCommunications/fluent-components/commit/a5a4f713613c881c83d32c6af330164256792ccc))
