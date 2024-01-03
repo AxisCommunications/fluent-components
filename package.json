@@ -29,7 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.62.0",
     "depcheck": "1.4.7",
-    "dprint": "0.44.0",
+    "dprint": "0.45.0",
     "eslint": "^8.56.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-deprecation": "^2.0.0",
@@ -37,7 +37,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "sort-package-json": "2.6.0",
     "tools": "file:tools",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^4.5.5"
   },
   "packageManager": "pnpm@8.1.0"

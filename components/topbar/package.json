@@ -33,7 +33,7 @@
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^12.1.5",
     "@types/react": "^17.0.67",
     "@types/react-dom": "^17.0.21",
