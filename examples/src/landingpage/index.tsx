@@ -1,9 +1,11 @@
 import React from "react";
-import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
+import { Image, makeStyles, shorthands, tokens } from "@fluentui/react-components";
 import { useLayoutStyles } from "../styles/page";
 import { WelcomeMessage } from "./welcome-message/welcome-message.component";
 import { WelcomeImage } from "./welcome-image/welcome-image.component";
 import { TestId } from "../../system-test/util/test-id";
+import { HomeLine, Illustration } from "@axiscommunications/fluent-illustrations";
+
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -33,6 +35,7 @@ export const WelcomePage = () => {
         <div className={styles.page}>
           <WelcomeMessage />
           <WelcomeImage />
+          <Illustration icon="Add" />
         </div>
       </div>
     </div>

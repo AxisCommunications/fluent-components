@@ -29,6 +29,9 @@ export default defineConfig({
       "@axiscommunications/fluent-slider": path.resolve(
         "../components/slider/src/index.ts"
       ),
+      "@axiscommunications/fluent-illustrations": path.resolve(
+        "../illustrations/src/index.ts"
+      ),
     },
   },
 });

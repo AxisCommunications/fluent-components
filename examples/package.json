@@ -30,6 +30,7 @@
     "@axiscommunications/fluent-styles": "workspace:*",
     "@axiscommunications/fluent-theme": "workspace:*",
     "@axiscommunications/fluent-topbar": "workspace:*",
+    "@axiscommunications/fluent-illustrations": "workspace:*",
     "@fluentui/react-components": "^9.43.2",
     "@fluentui/react-context-selector": "^9.1.42",
     "@fluentui/react-icons": "^2.0.224",
