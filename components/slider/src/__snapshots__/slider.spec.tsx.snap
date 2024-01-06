@@ -20,7 +20,7 @@ exports[`slider > should render 1`] = `
             />
           </span>
           <div
-            class="axis-Slider__thumb ___14hb9vm_jmfl5w0 f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 f8sy9bk fufffdp f1sclg23 f132a78j fcetbih f1kt6s4o"
+            class="axis-Slider__thumb ___ffv4vt0_dzc5jd0 f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f19g0ac f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu f1nebdzw feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 f8sy9bk fufffdp f1sclg23 f132a78j fcetbih f1kt6s4o"
             style="left: 20%;"
           >
             <input
@@ -32,7 +32,7 @@ exports[`slider > should render 1`] = `
               value="20"
             />
             <span
-              class="axis-Slider__thumb-label ___1b1bz8r_1eqf7oo fk116j8 fg8tfde fpvge99 fv71qf3 f1ywm7hm fw5db7e f14wxoun f1uw59to f1aa9q02 f16jpd5f f1jar5jt fyu767a f1euv43f feml9b3 f22iagw f122n59 f4d9j23 fxugw4r f18ygdci fxeb0a7 f1j7ml58 f1wl9k8s f15w9qf9 f1js41m7 fguqkdo f1ljr5q2 fto0uou f1hr5hl2 f1brpl1h"
+              class="axis-Slider__thumb-label ___1tp487w_n2k8qq0 fk116j8 fg8tfde fpvge99 fv71qf3 f1ywm7hm fw5db7e f14wxoun f1uw59to f1aa9q02 f16jpd5f f1jar5jt fyu767a f10pi13n feml9b3 f22iagw f122n59 f4d9j23 fxugw4r f18ygdci fxeb0a7 fv6wr3j f1j7ml58 f1wl9k8s f15w9qf9 f1js41m7 fguqkdo f1ljr5q2 fto0uou f1hr5hl2 f1brpl1h"
             >
               20
             </span>
@@ -57,7 +57,7 @@ exports[`slider > should render 1`] = `
           />
         </span>
         <div
-          class="axis-Slider__thumb ___14hb9vm_jmfl5w0 f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 f8sy9bk fufffdp f1sclg23 f132a78j fcetbih f1kt6s4o"
+          class="axis-Slider__thumb ___ffv4vt0_dzc5jd0 f8fbkgy f1nfllo7 f1djnp8u f1s8kh49 f19g0ac f22iagw f4d9j23 f122n59 f1euv43f f1t2h5zl f4aqd28 f1i1t8d1 f1vcxb5z fk1lali f1ewtqcl frcgkvu f1nebdzw feh19e8 f3j3guj fo75joz f1yag6sl fsc6avr f1w15cjc fkaq55s f1fp5o0y f163fonl f1yq6w5o f11yjt3y f1jpmc5p f10tv6oz f16xp3sf fwrmqbx f1seuxxq f1j7ml58 f14u7mkt f5zrw40 fto0uou f1ks5ppg fyl8oag f1wl9k8s f1mdlcz9 fmmikit f10awi5f f1mfomsq fftmtmu f13zj6fq fgougqc fprarqb f14vs0nd f1gtfqs9 f18zvfd9 f8sy9bk fufffdp f1sclg23 f132a78j fcetbih f1kt6s4o"
           style="left: 20%;"
         >
           <input
@@ -69,7 +69,7 @@ exports[`slider > should render 1`] = `
             value="20"
           />
           <span
-            class="axis-Slider__thumb-label ___1b1bz8r_1eqf7oo fk116j8 fg8tfde fpvge99 fv71qf3 f1ywm7hm fw5db7e f14wxoun f1uw59to f1aa9q02 f16jpd5f f1jar5jt fyu767a f1euv43f feml9b3 f22iagw f122n59 f4d9j23 fxugw4r f18ygdci fxeb0a7 f1j7ml58 f1wl9k8s f15w9qf9 f1js41m7 fguqkdo f1ljr5q2 fto0uou f1hr5hl2 f1brpl1h"
+            class="axis-Slider__thumb-label ___1tp487w_n2k8qq0 fk116j8 fg8tfde fpvge99 fv71qf3 f1ywm7hm fw5db7e f14wxoun f1uw59to f1aa9q02 f16jpd5f f1jar5jt fyu767a f10pi13n feml9b3 f22iagw f122n59 f4d9j23 fxugw4r f18ygdci fxeb0a7 fv6wr3j f1j7ml58 f1wl9k8s f15w9qf9 f1js41m7 fguqkdo f1ljr5q2 fto0uou f1hr5hl2 f1brpl1h"
           >
             20
           </span>

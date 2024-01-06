@@ -45,6 +45,7 @@ export type RangeSliderProps =
     max: number;
     value?: number[];
     defaultValue?: number[];
+    defaultTooltipOpen?: boolean;
     onChange?: (data: RangeSliderOnChangeData) => void;
     onChangeCommitted?: (data: RangeSliderOnChangeData) => void;
     valueLabelTransform?: (value: number) => number | string;

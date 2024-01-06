@@ -96,6 +96,7 @@ export const useRangeSlider_unstable = (
     value: values,
     onChange,
     onChangeCommitted,
+    defaultTooltipOpen = false,
   } = props;
 
   const [internalValues, setInternalValues] = useControllableState({
@@ -434,7 +435,7 @@ export const useRangeSlider_unstable = (
       value,
       valueLabelTransform,
       "data-index": index,
-      open: open === index || active === index,
+      open: open === index || active === index || defaultTooltipOpen,
       active: active === index,
       dragging,
       handleFocus: createHandleFocus(index),

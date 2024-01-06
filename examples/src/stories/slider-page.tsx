@@ -131,6 +131,19 @@ const DisabledSlider = () => {
   );
 };
 
+const RangeSliderWithLabelsAlwaysOpen = () => {
+  return (
+    <DemoRangeSlider
+      title={"Slider with custom labels always open"}
+      min={0}
+      max={100}
+      defaultValue={[10, 50]}
+      valueLabelTransform={(v) => `value ${v}`}
+      defaultTooltipOpen
+    />
+  );
+};
+
 const SliderWithRange = () => {
   return (
     <DemoRangeSlider
@@ -315,6 +328,7 @@ export const SliderPage = () => {
         <TransformedValueSlider />
         <SliderWithRange />
         <RangeSliderWithSteps />
+        <RangeSliderWithLabelsAlwaysOpen />
         <DisabledSlider />
         <SliderWithExternalButtons />
         <CustomizedSlider />

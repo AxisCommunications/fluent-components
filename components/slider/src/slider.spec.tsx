@@ -271,6 +271,22 @@ describe("slider", () => {
       expect(label).toHaveStyle({ transform: "translateY(-100%) scale(1)" });
     });
 
+    it("should open labels always", () => {
+      const { getByTestId } = render(
+        <Slider
+          min={0}
+          max={100}
+          data-testid="slider-root"
+          defaultTooltipOpen
+        />
+      );
+
+      const label = getByTestId("slider-root").querySelector(
+        `.${sliderClassNames.thumb.label}`
+      );
+      expect(label).toHaveStyle({ transform: "translateY(-100%) scale(1)" });
+    });
+
     it("should close on mouse leave", () => {
       const { getByTestId, getByRole } = render(
         <Slider min={0} max={100} data-testid="slider-root" />

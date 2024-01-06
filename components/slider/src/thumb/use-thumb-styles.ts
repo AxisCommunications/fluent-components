@@ -16,7 +16,7 @@ import {
 const useRootStyles = makeStyles({
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
-
+    zIndex: 1,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -29,6 +29,10 @@ const useRootStyles = makeStyles({
     boxSizing: "border-box",
     boxShadow:
       `0 0 0 calc(var(${sliderVars.thumb.size}) * .2) ${tokens.colorNeutralBackground1} inset`,
+
+    ":hover": {
+      zIndex: 5,
+    },
 
     "::before": {
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
@@ -90,7 +94,7 @@ const useLabelStyles = makeStyles({
     ),
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalM),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    position: "absolute",
+    position: "relative",
     top: "-10px",
     display: "flex",
     alignItems: "center",
@@ -99,6 +103,7 @@ const useLabelStyles = makeStyles({
     transformOrigin: "center bottom 0px",
     filter:
       `drop-shadow(0 0 2px ${tokens.colorNeutralShadowAmbient}) drop-shadow(0 4px 8px ${tokens.colorNeutralShadowKey})`,
+    textWrap: "nowrap",
 
     // this is the little arrow thingy below the label box
     "::before": {
