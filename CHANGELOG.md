@@ -1,9 +1,8 @@
-## [8.7.1](https://github.com/AxisCommunications/fluent-components/compare/6aab210b7a16cf3772156fdc20b24a9c24266d30..a5a4f713613c881c83d32c6af330164256792ccc) (2023-12-13T07:31:35.548Z)
+## [8.8.0](https://github.com/AxisCommunications/fluent-components/compare/0408100640e57f290fbfa6e90958d2c022d32cca..c3ba14277b6bc848350d5cfcff12550692c6f770) (2024-01-17T06:58:22.179Z)
 
 ### 🚧 Maintenance
 
-  - align icon generation (#128) ([d01dd5d](https://github.com/AxisCommunications/fluent-components/commit/d01dd5d41a4a1e2dc99bd08d33150f804acb3c18))
-
-### 🐛 Bug fixes
-
-  - **topbar**: application menu icon visible also when hovering selected button (#131) ([a5a4f71](https://github.com/AxisCommunications/fluent-components/commit/a5a4f713613c881c83d32c6af330164256792ccc))
+  - **deps**: bump the dev-dependencies group with 10 updates (#149) ([c3ba142](https://github.com/AxisCommunications/fluent-components/commit/c3ba14277b6bc848350d5cfcff12550692c6f770))
+  - **deps**: bump the toolchain group with 2 updates (#143) ([bcba1b7](https://github.com/AxisCommunications/fluent-components/commit/bcba1b703235f3b6db0320b1fda1b90e161a76bd))
+  - **deps**: bump peer dependencies (#141) ([6d5dc50](https://github.com/AxisCommunications/fluent-components/commit/6d5dc50d0197a1e22272198f3899c5d2fa9dc377))
+  - add statusColor to theme preview (#137) ([104c4c9](https://github.com/AxisCommunications/fluent-components/commit/104c4c9b2a266481756cc163e5f88f8e01b62d9e))
