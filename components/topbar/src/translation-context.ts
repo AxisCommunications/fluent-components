@@ -1,15 +1,12 @@
 import { createContext, useContext } from "react";
 import { MySystemsAppId } from "./applications";
+import { ApplicationArea } from ".";
 
-export const translationKeys = [
-  "beta",
-  "dark",
-  "light",
-  "logout",
-] as const;
+export const translationKeys = ["beta", "dark", "light", "logout"] as const;
 export type TranslationKey =
-  | typeof translationKeys[number]
-  | `app_${MySystemsAppId}`;
+  | (typeof translationKeys)[number]
+  | `app_${MySystemsAppId}`
+  | ApplicationArea;
 export type Translations = { readonly [key in TranslationKey]: string };
 
 export type TranslationFn = (key: keyof Translations) => string;
