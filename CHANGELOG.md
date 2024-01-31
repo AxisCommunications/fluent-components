@@ -1,9 +1,10 @@
-## [8.7.1](https://github.com/AxisCommunications/fluent-components/compare/6aab210b7a16cf3772156fdc20b24a9c24266d30..a5a4f713613c881c83d32c6af330164256792ccc) (2023-12-13T07:31:35.548Z)
+## [8.9.0](https://github.com/AxisCommunications/fluent-components/compare/c9e04f796dd6c1a777ee74cf24979319c022c16a..7be3e4877a9c712ce60a14fa1d3b5de70a169a13) (2024-01-31T08:28:40.847Z)
 
 ### 🚧 Maintenance
 
-  - align icon generation (#128) ([d01dd5d](https://github.com/AxisCommunications/fluent-components/commit/d01dd5d41a4a1e2dc99bd08d33150f804acb3c18))
+  - **deps**: bump the dependencies group with 2 updates (#162) ([4e8be8f](https://github.com/AxisCommunications/fluent-components/commit/4e8be8f3df84ade59a789a38bca11809f117b17d))
+  - **deps**: bump the dev-dependencies group with 4 updates (#163) ([0323353](https://github.com/AxisCommunications/fluent-components/commit/03233531bb416674bde5ee5b1cc5675ffd4ec43d))
 
-### 🐛 Bug fixes
+### ✨ Features
 
-  - **topbar**: application menu icon visible also when hovering selected button (#131) ([a5a4f71](https://github.com/AxisCommunications/fluent-components/commit/a5a4f713613c881c83d32c6af330164256792ccc))
+  - **topbar**: add optional application drawer as alternative to application menu (#165) ([7be3e48](https://github.com/AxisCommunications/fluent-components/commit/7be3e4877a9c712ce60a14fa1d3b5de70a169a13))

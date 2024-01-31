@@ -3,6 +3,7 @@ import {
   axisLightTheme,
 } from "@axiscommunications/fluent-theme";
 import {
+  ApplicationDrawerContent,
   ApplicationOption,
   LanguageOption,
   OrganizationOption,
@@ -18,24 +19,38 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
+  Title1,
 } from "@fluentui/react-components";
 import {
   AddRegular,
+  AddSubtractCircle20Filled,
+  AddSubtractCircle20Regular,
   AnimalCat20Filled,
   AnimalCat20Regular,
   bundleIcon,
   FoodApple24Regular,
+  FoodFish20Filled,
+  FoodFish20Regular,
   MailFilled,
   MailRegular,
   Megaphone24Filled,
   OpenRegular,
   QuestionCircleRegular,
+  ZoomFit20Filled,
+  ZoomFit20Regular,
 } from "@fluentui/react-icons";
 import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/ApplicationStateProvider";
 
 const ApplicationIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
 const MailIcon = bundleIcon(MailFilled, MailRegular);
+const ZoomIcon = bundleIcon(ZoomFit20Filled, ZoomFit20Regular);
+const FishIcon = bundleIcon(FoodFish20Filled, FoodFish20Regular);
+const CatIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
+const AddSubIcon = bundleIcon(
+  AddSubtractCircle20Filled,
+  AddSubtractCircle20Regular
+);
 
 const useStyles = makeStyles({
   topBar: {
@@ -58,6 +73,32 @@ export const Navbar = () => {
     { id: "iam" },
     { id: "lm" },
   ];
+
+  const appDrawerContent: ApplicationDrawerContent[] = [
+    {
+      icon: <ZoomIcon />,
+      label: "Zoo",
+      id: "zoo",
+      children: [
+        {
+          icon: <FishIcon />,
+          label: "Fisk",
+          id: "fisk",
+        },
+        {
+          icon: <CatIcon />,
+          label: "Cat",
+          id: "cat",
+        },
+      ],
+    },
+    {
+      icon: <AddSubIcon />,
+      label: "Add",
+      id: "add",
+    },
+  ];
+
   const organizations: OrganizationOption[] = [
     { id: "1", label: "organizationenn2" },
     { id: "2", label: "organizationen AB" },
@@ -73,7 +114,10 @@ export const Navbar = () => {
     ...new Array<LanguageOption>(50).fill({ id: "fi" }),
   ];
 
-  const [selectedApp, setSelectedApp] = useState(applications[0].id);
+  const [selectedApp, setSelectedApp] = useState(applications[1].id);
+  const [drawerSelectedApp, setDrawerSelectedApp] = useState(
+    appDrawerContent[1].id
+  );
 
   const [currentOrganizationId, setCurrentOrganizationId] = useState<string>(
     () => organizations[0]?.id ?? ""
@@ -105,11 +149,28 @@ export const Navbar = () => {
     [setSelectedApp]
   );
 
-  const [megaman, setMegaman] = useState("Megaman");
+  const onDrawerNavigate = React.useCallback(
+    (id: string) => {
+      setDrawerSelectedApp(id);
+      alert("lets navigate! => " + id);
+    },
+    [setDrawerSelectedApp]
+  );
+
+  const [showDrawer, setShowDrawer] = useState(true);
 
   return (
     <div className={styles.topBar}>
       <TopBar
+        appDrawer={showDrawer
+          ? {
+            link: { text: "Learn more", url: "https://example.com" },
+            applicationId: drawerSelectedApp,
+            title: <Title1>My Apps</Title1>,
+            content: appDrawerContent,
+            onChange: onDrawerNavigate,
+          }
+          : undefined}
         appMenu={{
           customContent: (
             <MenuItem icon={<FoodApple24Regular />}>
@@ -120,15 +181,15 @@ export const Navbar = () => {
           value: selectedApp,
           onChange: onNavigateToApplication,
         }}
+        applicationArea={"mySystems"}
         leftCustomContent={
           <Button
             appearance="subtle"
             icon={<Megaphone24Filled />}
             iconPosition="before"
-            onClick={() =>
-              setMegaman(megaman === "Megaman" ? "Rockman" : "Megaman")}
+            onClick={() => setShowDrawer(!showDrawer)}
           >
-            {megaman}
+            {showDrawer ? "Use application menu" : "Use application drawer"}
           </Button>
         }
         customContent={

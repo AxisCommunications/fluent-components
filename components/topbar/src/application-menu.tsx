@@ -10,31 +10,12 @@ import {
   mergeClasses,
   Text,
 } from "@fluentui/react-components";
-import { BoxFilled, BoxRegular, bundleIcon } from "@fluentui/react-icons";
 import React from "react";
 import { ApplicationMenuProps } from "./application-menu.types";
-import { useStyles } from "./application.styles";
-import { defaultMySystemsAppData, isMySystemsAppId } from "./applications";
-import { TranslationFn, useTranslation } from "./translation-context";
+import { useApplicationStyles } from "./application.styles";
+import { useTranslation } from "./translation-context";
 import { ApplicationArea } from "./top-bar.types";
-
-const ApplicationIcon = bundleIcon(BoxFilled, BoxRegular);
-
-function appLabel(t: TranslationFn, id: string): string {
-  if (isMySystemsAppId(id)) {
-    return t(defaultMySystemsAppData[id].labelKey);
-  }
-  return id;
-}
-
-function appIcon(id: string, filled = false): JSX.Element {
-  if (isMySystemsAppId(id)) {
-    return filled
-      ? defaultMySystemsAppData[id].filledIcon
-      : defaultMySystemsAppData[id].icon;
-  }
-  return <ApplicationIcon filled={filled} />;
-}
+import { appIcon, appLabel } from "./application-utils";
 
 export const ApplicationMenu = ({
   customContent,
@@ -44,7 +25,7 @@ export const ApplicationMenu = ({
   applicationArea,
 }: ApplicationMenuProps & { applicationArea?: ApplicationArea }) => {
   const { t } = useTranslation();
-  const styles = useStyles();
+  const styles = useApplicationStyles();
 
   const currentSelection = options?.find(({ id }) => id === value);
   const isStandalone = options?.length === 1;
@@ -56,8 +37,7 @@ export const ApplicationMenu = ({
       <div
         className={mergeClasses(
           styles.menuRectangle,
-          applicationArea === "mySystems"
-            && styles.mySystemsMenuRectangle,
+          applicationArea === "mySystems" && styles.mySystemsMenuRectangle,
           applicationArea === "myAxis" && styles.myAxisMenuRectangle,
           applicationArea === "myBusiness" && styles.myBusinessMenuRectangle,
           applicationArea === "myPartners" && styles.myPartnersMenuRectangle
@@ -145,7 +125,7 @@ export const ApplicationMenu = ({
 };
 
 function BetaBadge({ disabled }: { disabled?: boolean }) {
-  const styles = useStyles();
+  const styles = useApplicationStyles();
   const { t } = useTranslation();
 
   return (

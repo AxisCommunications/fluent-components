@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-icons",
-  "version": "8.7.1",
+  "version": "8.9.0",
   "description": "Icons",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -37,11 +37,11 @@
     "react:svg:unfill": "find ./dist/react-svg -type f -name '*.svg' -exec sed -i.bak 's/fill=\"none\"//g' '{}' \\; && find ./dist/react-svg -type f -name '*.bak' -delete"
   },
   "dependencies": {
-    "@griffel/react": "^1.5.19"
+    "@griffel/react": "^1.5.20"
   },
   "devDependencies": {
     "@svgr/core": "^5.5.0",
-    "@types/node": "^20.10.6",
+    "@types/node": "^20.11.5",
     "@types/react": "^18.2.24",
     "eslint": "^8.56.0",
     "icon-font-generator": "^2.1.11",

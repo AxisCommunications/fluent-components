@@ -9,7 +9,7 @@ import {
   iconRegularClassName,
 } from "@fluentui/react-icons";
 
-export const useStyles = makeStyles({
+export const useApplicationStyles = makeStyles({
   headerLabel: {
     textTransform: "uppercase",
   },
@@ -62,6 +62,30 @@ export const useStyles = makeStyles({
     justifyContent: "center",
     flexShrink: 0,
     ...shorthands.borderRadius("6px", "6px", "1px", "6px"),
+  },
+  applicationIconBase: {
+    height: "26px",
+    width: "28px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    ...shorthands.borderRadius("6px"),
+  },
+  myApplicationAreaBase: {
+    height: "32px",
+    width: "32px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    ...shorthands.borderRadius("6px", "6px", "1px", "6px"),
+  },
+  filledIcon: {
+    [`& .${iconFilledClassName}`]: {
+      display: "inline",
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: "none",
+    },
   },
   mySystemsMenuRectangle: {
     color: "#CCEBF8",
