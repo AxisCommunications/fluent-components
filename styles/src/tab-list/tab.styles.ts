@@ -1,11 +1,11 @@
-import { makeStyles, tokens } from "@fluentui/react-components";
+import { makeStyles, mergeClasses, tokens } from "@fluentui/react-components";
 
 import {
   iconFilledClassName,
   iconRegularClassName,
 } from "@fluentui/react-icons";
 
-export const useTabStyles = makeStyles({
+const useStyles = makeStyles({
   root: {
     [`& .${iconFilledClassName}`]: {
       color: tokens.colorNeutralForeground1,
@@ -24,3 +24,9 @@ export const useTabStyles = makeStyles({
     },
   },
 });
+
+export const useTabStyles = ({ selected }: { selected?: boolean }) => {
+  const styles = useStyles();
+  const rootStyle = mergeClasses(styles.root, selected && styles.selected);
+  return { styles, rootStyle };
+};

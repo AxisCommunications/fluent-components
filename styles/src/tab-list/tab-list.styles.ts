@@ -1,6 +1,6 @@
-import { makeStyles, tokens } from "@fluentui/react-components";
+import { makeStyles, mergeClasses, tokens } from "@fluentui/react-components";
 
-export const useTabListStyles = makeStyles({
+const useStyles = makeStyles({
   root: {
     display: "flex",
     columnGap: tokens.spacingHorizontalXS,
@@ -10,3 +10,9 @@ export const useTabListStyles = makeStyles({
     rowGap: tokens.spacingVerticalXS,
   },
 });
+
+export const useTabListStyles = ({ vertical }: { vertical?: boolean }) => {
+  const styles = useStyles();
+  const rootStyle = mergeClasses(styles.root, vertical && styles.vertical);
+  return { styles, rootStyle };
+};
