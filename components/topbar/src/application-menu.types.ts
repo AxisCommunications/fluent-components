@@ -4,6 +4,7 @@ export type ApplicationOption = {
   label?: string;
   url?: string;
   beta?: boolean;
+  group?: string;
 };
 
 export type ApplicationMenuProps = {

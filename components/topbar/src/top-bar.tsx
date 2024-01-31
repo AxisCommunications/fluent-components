@@ -6,11 +6,13 @@ import { ProfileMenu } from "./profile-menu";
 import { topBarClassNames, useTopBarStyles } from "./top-bar.styles";
 import { TopBarProps } from "./top-bar.types";
 import { TranslationProvider } from "./translation-provider";
+import { ApplicationDrawer } from "./application-drawer";
 
 export const TopBar = forwardRef(
   (props: TopBarProps, ref: ForwardedRef<HTMLDivElement>) => {
     const {
       appMenu,
+      appDrawer,
       orgMenu,
       profileMenu,
       customContent,
@@ -34,16 +36,30 @@ export const TopBar = forwardRef(
       ({ id }) => id === language.value
     )?.id;
 
+    const ApplicationSelector = () => {
+      if (appDrawer) {
+        return (
+          <ApplicationDrawer
+            {...appDrawer}
+            applicationArea={applicationArea ?? "mySystems"}
+          />
+        );
+      } else if (appMenu !== undefined) {
+        return (
+          <ApplicationMenu {...appMenu} applicationArea={applicationArea} />
+        );
+      }
+      return undefined;
+    };
+
     return (
       <TranslationProvider locale={locale}>
         <div className={rootStyle} ref={ref}>
           <div className={leftSectionStyle}>
-            {appMenu !== undefined && (
-              <ApplicationMenu {...appMenu} applicationArea={applicationArea} />
-            )}
+            {ApplicationSelector() !== undefined && ApplicationSelector()}
             {leftCustomContent !== undefined && (
               <>
-                {appMenu !== undefined && (
+                {ApplicationSelector() !== undefined && (
                   <Divider vertical style={{ padding: "0 4px" }} />
                 )}
                 {leftCustomContent}

@@ -41,12 +41,13 @@ export const mySystemsAppIds = [
   "shm",
   "video",
 ] as const;
-export type MySystemsAppId = typeof mySystemsAppIds[number];
+export type MySystemsAppId = (typeof mySystemsAppIds)[number];
 
 const _mySystemsAppIdSet = new Set(mySystemsAppIds);
 export function isMySystemsAppId(name: unknown): name is MySystemsAppId {
-  return typeof name === "string"
-    && _mySystemsAppIdSet.has(name as MySystemsAppId);
+  return (
+    typeof name === "string" && _mySystemsAppIdSet.has(name as MySystemsAppId)
+  );
 }
 
 export interface MySystemsAppData {
