@@ -2,6 +2,8 @@ import {
   bundleIcon,
   DarkThemeFilled,
   DarkThemeRegular,
+  DocumentCssFilled,
+  DocumentCssRegular,
   EyeFilled,
   EyeRegular,
   HomeFilled,
@@ -25,6 +27,7 @@ import { routes, TRoute } from "./routes";
 import { SliderPage } from "../stories/slider-page";
 import { WelcomePage } from "../landingpage";
 import { PasswordInputPage } from "../stories/password-input-page";
+import { FluentUiTabStylesPage } from "../stories/tab-list-utilities/tab-list-utilities-page";
 
 const HomeIcon = bundleIcon(HomeFilled, HomeRegular);
 const ThemeIcon = bundleIcon(DarkThemeFilled, DarkThemeRegular);
@@ -34,6 +37,7 @@ const VStepperIcon = bundleIcon(StepsFilled, StepsRegular);
 const TableUtilitiesIcon = bundleIcon(TableFilled, TableRegular);
 const SliderIcon = bundleIcon(OptionsFilled, OptionsRegular);
 const PasswordIcon = bundleIcon(EyeFilled, EyeRegular);
+const TabStylesIcon = bundleIcon(DocumentCssFilled, DocumentCssRegular);
 
 export enum RouteGroup {
   MISC,
@@ -94,15 +98,6 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     },
   ],
   [
-    routes.TableUtilities,
-    {
-      label: "Table Utilities",
-      element: <TableUtilitiesPage />,
-      icon: <TableUtilitiesIcon />,
-      group: RouteGroup.STORY,
-    },
-  ],
-  [
     routes.Slider,
     {
       label: "Slider",
@@ -117,6 +112,24 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
       label: "Password input",
       element: <PasswordInputPage />,
       icon: <PasswordIcon />,
+      group: RouteGroup.STORY,
+    },
+  ],
+  [
+    routes.TableUtilities,
+    {
+      label: "Table Utilities",
+      element: <TableUtilitiesPage />,
+      icon: <TableUtilitiesIcon />,
+      group: RouteGroup.STORY,
+    },
+  ],
+  [
+    routes.PasswordInput,
+    {
+      label: "Tablist utilities",
+      element: <FluentUiTabStylesPage />,
+      icon: <TabStylesIcon />,
       group: RouteGroup.STORY,
     },
   ],
