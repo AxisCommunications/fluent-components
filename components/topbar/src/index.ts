@@ -1,3 +1,9 @@
+export { ApplicationDrawer } from "./application-drawer";
+export type {
+  ApplicationDrawerContent,
+  ApplicationDrawerProps,
+  SingleApplicationDrawerContent,
+} from "./application-drawer.types";
 export { ApplicationMenu } from "./application-menu";
 export type {
   ApplicationMenuProps,

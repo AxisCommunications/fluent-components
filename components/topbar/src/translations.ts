@@ -38,6 +38,10 @@ const englishDefaults: Translations = {
   dark: "Dark",
   light: "Light",
   logout: "Logout",
+  myAxis: "MY AXIS",
+  myBusiness: "MY BUSINESS",
+  myPartners: "MY PARTNERS",
+  mySystems: "MY SYSTEMS",
 };
 
 export const translations: Record<SupportedLocale, Translations> = {
