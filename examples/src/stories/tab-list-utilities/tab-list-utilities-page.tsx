@@ -58,7 +58,7 @@ export const FluentUiTabStylesPage = () => {
   return (
     <div className={layoutStyles.grid}>
       <TabListContext.Provider value={{ selectedTab, setSelectedTab }}>
-        <PageHeader className={layoutStyles.header} title="Vertical stepper" />
+        <PageHeader className={layoutStyles.header} title="Tablist utilities" />
         <div
           className={mergeClasses(
             layoutStyles.content,
