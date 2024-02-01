@@ -1,9 +1,6 @@
-## [8.10.0](https://github.com/AxisCommunications/fluent-components/compare/0f732f49d0138402e837660e3bbdf9e771aafe14..88d6a0458c60805835742d88e406ff7774ca8d0a) (2024-02-01T10:15:05.000Z)
+## [8.10.1](https://github.com/AxisCommunications/fluent-components/compare/3c64833397a649ca76b1e5273d00561f7382ce51..9e42cd6d02d2168beb29fd82154537d1c3dfbc39) (2024-02-01T13:40:47.728Z)
 
 ### 🚧 Maintenance
 
-  - adjust example page route (#174) ([88d6a04](https://github.com/AxisCommunications/fluent-components/commit/88d6a0458c60805835742d88e406ff7774ca8d0a))
-
-### ✨ Features
-
-  - add tablist utilities styles and examples (#171) ([8f9257e](https://github.com/AxisCommunications/fluent-components/commit/8f9257e1618915c59d7af3e753198028106c4303))
+  - update color tab style (#178) ([9e42cd6](https://github.com/AxisCommunications/fluent-components/commit/9e42cd6d02d2168beb29fd82154537d1c3dfbc39))
+  - fix typo in codeblock tablist (#176) ([3ac6cc3](https://github.com/AxisCommunications/fluent-components/commit/3ac6cc3eddf76cee98f06ded63fe5d9a5f0217ff))
