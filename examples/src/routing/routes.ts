@@ -7,6 +7,7 @@ export const routes = {
   TableUtilities: "/table-utilities",
   Slider: "/slider",
   PasswordInput: "/password-input",
+  TabListUtilities: "/tab-list-utilities",
 } as const;
 
-export type TRoute = typeof routes[keyof typeof routes];
+export type TRoute = (typeof routes)[keyof typeof routes];

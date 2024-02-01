@@ -125,7 +125,7 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     },
   ],
   [
-    routes.PasswordInput,
+    routes.TabListUtilities,
     {
       label: "Tablist utilities",
       element: <FluentUiTabStylesPage />,
