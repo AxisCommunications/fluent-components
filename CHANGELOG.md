@@ -1,10 +1,5 @@
-## [8.9.0](https://github.com/AxisCommunications/fluent-components/compare/c9e04f796dd6c1a777ee74cf24979319c022c16a..7be3e4877a9c712ce60a14fa1d3b5de70a169a13) (2024-01-31T08:28:40.847Z)
-
-### 🚧 Maintenance
-
-  - **deps**: bump the dependencies group with 2 updates (#162) ([4e8be8f](https://github.com/AxisCommunications/fluent-components/commit/4e8be8f3df84ade59a789a38bca11809f117b17d))
-  - **deps**: bump the dev-dependencies group with 4 updates (#163) ([0323353](https://github.com/AxisCommunications/fluent-components/commit/03233531bb416674bde5ee5b1cc5675ffd4ec43d))
+## [8.10.0](https://github.com/AxisCommunications/fluent-components/compare/0f732f49d0138402e837660e3bbdf9e771aafe14..8f9257e1618915c59d7af3e753198028106c4303) (2024-02-01T07:08:39.265Z)
 
 ### ✨ Features
 
-  - **topbar**: add optional application drawer as alternative to application menu (#165) ([7be3e48](https://github.com/AxisCommunications/fluent-components/commit/7be3e4877a9c712ce60a14fa1d3b5de70a169a13))
+  - add tablist utilities styles and examples (#171) ([8f9257e](https://github.com/AxisCommunications/fluent-components/commit/8f9257e1618915c59d7af3e753198028106c4303))
