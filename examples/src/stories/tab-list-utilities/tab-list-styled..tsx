@@ -24,9 +24,9 @@ import {
 const { rootStyle: tabListStyle } = useTabListStyles({ vertical: true/false });
 const { rootStyle: tabStyle } = useTabStyles({ selected: true/false });
 
-<Tab className={tabListStyle} {...TabListProps}>
+<TabList className={tabListStyle} {...TabListProps}>
     <Tab className={tabStyle} {...TabProps}>tab1</Tab>
-</Tab>
+</TabList>
 
 //not happy with style? all styles can be grabbed from styles prop
 const { styles } = useTabListStyles();
