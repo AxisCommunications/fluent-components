@@ -4,6 +4,8 @@ export type ApplicationDrawerContent = SingleApplicationDrawerContent & {
 
 export type SingleApplicationDrawerContent = {
   id: string;
+  /** For proper rendering, this should be a bundled filled and unfilled version of an icon.
+   *  Created with bundleIcon(). */
   icon: JSX.Element;
   label: string;
 };
