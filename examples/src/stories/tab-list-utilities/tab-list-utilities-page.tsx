@@ -16,7 +16,7 @@ import {
   codeBlockStyled,
   StyledTabListComponent,
   TTabListComponent,
-} from "./tab-list-styled.";
+} from "./tab-list-styled";
 
 type TTabListContext = {
   selectedTab: string;
