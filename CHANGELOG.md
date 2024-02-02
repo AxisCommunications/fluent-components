@@ -1,6 +1,13 @@
-## [8.10.1](https://github.com/AxisCommunications/fluent-components/compare/3c64833397a649ca76b1e5273d00561f7382ce51..9e42cd6d02d2168beb29fd82154537d1c3dfbc39) (2024-02-01T13:40:47.728Z)
+## [8.11.0](https://github.com/AxisCommunications/fluent-components/compare/d13834fecc925e4da605bbf659e1db70540df620..cc50a475dff4c066d7ce9d1c1ff400e8a6082e70) (2024-02-02T12:37:22.385Z)
 
 ### 🚧 Maintenance
 
-  - update color tab style (#178) ([9e42cd6](https://github.com/AxisCommunications/fluent-components/commit/9e42cd6d02d2168beb29fd82154537d1c3dfbc39))
-  - fix typo in codeblock tablist (#176) ([3ac6cc3](https://github.com/AxisCommunications/fluent-components/commit/3ac6cc3eddf76cee98f06ded63fe5d9a5f0217ff))
+  - fix faulty filename in example (#181) ([c914a5f](https://github.com/AxisCommunications/fluent-components/commit/c914a5f600e6f2d9c479941ed4e91c85ac9e7fee))
+
+### ✨ Features
+
+  - **styles**: add navigation style (#180) ([c898f87](https://github.com/AxisCommunications/fluent-components/commit/c898f87e1149ea6da1c67e54d606aab4482323f1))
+
+### 🐛 Bug fixes
+
+  - **topbar**: adjust application drawer styles (#182) ([cc50a47](https://github.com/AxisCommunications/fluent-components/commit/cc50a475dff4c066d7ce9d1c1ff400e8a6082e70))
