@@ -16,11 +16,27 @@ export const useApplicationDrawrStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalS),
   },
   iconAndText: {
+    fontSize: "1.8em",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalM),
+  },
+  applicationGroupTitleIcon: {
+    color: tokens.colorNeutralForeground2,
+  },
+  applicationGroupTitleText: {
+    color: tokens.colorNeutralForeground4,
+  },
+  currentSpplicationGroupTitleIcon: {
+    color: tokens.colorNeutralForeground3,
+  },
+  currentApplicationGroupTitleText: {
+    color: tokens.colorNeutralForeground3,
+  },
+  applicationButton: {
+    paddingLeft: tokens.spacingHorizontalXXS,
   },
   content: {
     display: "flex",
