@@ -4,8 +4,10 @@ import React, { Fragment, useState } from "react";
 import { ApplicationArea } from "./top-bar.types";
 import { useTranslation } from "./translation-context";
 import {
+  Body1,
   Body1Strong,
   Button,
+  Caption1Stronger,
   Divider,
   Drawer,
   DrawerBody,
@@ -25,19 +27,46 @@ import {
   ApplicationDrawerProps,
   SingleApplicationDrawerContent,
 } from "./application-drawer.types";
+import { useApplicationStyles } from "./application.styles";
 
-const IconAndText = ({
-  icon,
-  text,
-}: {
-  icon: JSX.Element;
-  text: string;
+const CurrentApplication = ({ application }: {
+  application: SingleApplicationDrawerContent;
 }): JSX.Element => {
   const styles = useApplicationDrawerStyles();
+
   return (
     <div className={styles.iconAndText}>
-      <div style={{ fontSize: "1.8em" }}>{icon}</div>
-      <Body1Strong>{text}</Body1Strong>
+      <div
+        className={styles.currentSpplicationGroupTitleIcon}
+      >
+        {application.icon}
+      </div>
+      <Body1Strong className={styles.currentApplicationGroupTitleText}>
+        {application.label}
+      </Body1Strong>
+    </div>
+  );
+};
+
+const ApplicationGroupTitle = ({ application }: {
+  application: ApplicationDrawerContent;
+}): JSX.Element => {
+  const styles = useApplicationDrawerStyles();
+  const appStyles = useApplicationStyles();
+
+  return (
+    <div className={styles.iconAndText}>
+      <div
+        className={mergeClasses(
+          styles.applicationGroupTitleIcon,
+          appStyles.filledIcon
+        )}
+      >
+        {application.icon}
+      </div>
+      <Caption1Stronger className={styles.applicationGroupTitleText}>
+        {application.label.toLocaleUpperCase()}
+      </Caption1Stronger>
     </div>
   );
 };
@@ -96,7 +125,6 @@ const SingleApplication = ({
   applicationArea: ApplicationArea;
 }): JSX.Element => {
   const styles = useApplicationDrawerStyles();
-
   const buttonStyle = mergeClasses(
     styles.contentButton,
     application.id === currentSelectionId && styles.selectedContentButton
@@ -106,7 +134,6 @@ const SingleApplication = ({
     <Button
       data-testid={`application-drawer-item-${application.id}`}
       className={buttonStyle}
-      size="large"
       appearance="subtle"
       icon={iconConverter(
         application.icon,
@@ -115,7 +142,9 @@ const SingleApplication = ({
       )}
       onClick={() => onChange(application.id)}
     >
-      {application.label}
+      <Body1 className={styles.applicationButton}>
+        {application.label}
+      </Body1>
     </Button>
   );
 };
@@ -135,10 +164,7 @@ const ApplicationWithChildren = ({
 
   return (
     <>
-      {IconAndText({
-        icon: application.icon,
-        text: application.label.toLocaleUpperCase(),
-      })}
+      <ApplicationGroupTitle application={application} />
       <div className={styles.contentChildren}>
         {application.children?.map((child) => {
           return (
@@ -187,12 +213,7 @@ export const ApplicationDrawer = ({
         {<ApplicationAreaIcon applicationArea={applicationArea} />}
         <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
         {currentSelection
-          ? (
-            <IconAndText
-              icon={currentSelection.icon}
-              text={currentSelection.label}
-            />
-          )
+          ? <CurrentApplication application={currentSelection} />
           : null}
       </Button>
       <Drawer open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>

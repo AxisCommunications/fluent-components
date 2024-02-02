@@ -65,7 +65,9 @@ export const useApplicationStyles = makeStyles({
   },
   applicationIconBase: {
     height: "26px",
-    width: "28px",
+    minHeight: "26px",
+    width: "27px",
+    minWidth: "27px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -73,7 +75,9 @@ export const useApplicationStyles = makeStyles({
   },
   myApplicationAreaBase: {
     height: "32px",
+    minHeight: "32px",
     width: "32px",
+    minWidth: "32px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
