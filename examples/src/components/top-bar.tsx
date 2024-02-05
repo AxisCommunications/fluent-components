@@ -29,6 +29,7 @@ import {
   AnimalCat20Regular,
   bundleIcon,
   FoodApple24Regular,
+  FoodCarrot20Filled,
   FoodFish20Filled,
   FoodFish20Regular,
   MailFilled,
@@ -206,6 +207,9 @@ export const Navbar = () => {
               </MenuList>
             </MenuPopover>
           </Menu>
+        }
+        centerCustomContent={
+          <Button icon={<FoodCarrot20Filled />}>I AM CENTER</Button>
         }
         orgMenu={{
           customContent: (

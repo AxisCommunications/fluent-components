@@ -13,7 +13,7 @@ export const topBarClassNames = {
 export const useTopBarStyles = makeStyles({
   root: {
     display: "grid",
-    gridTemplateColumns: "[left] auto [right] minmax(auto, max-content)",
+    gridTemplateColumns: "repeat(3,1fr)",
     gridColumnGap: tokens.spacingHorizontalS,
     alignItems: "center",
     justifyContent: "space-between",
@@ -29,5 +29,17 @@ export const useTopBarStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     overflowX: "hidden",
+  },
+  leftSection: {
+    gridColumnStart: "1",
+    justifySelf: "left",
+  },
+  centerSection: {
+    gridColumnStart: "2",
+    justifySelf: "center",
+  },
+  rightSection: {
+    gridColumnStart: "3",
+    justifySelf: "right",
   },
 });

@@ -25,4 +25,5 @@ export type TopBarProps = {
   readonly orgMenu?: OrganizationMenuProps;
   readonly profileMenu?: ProfileMenuProps;
   readonly applicationArea?: ApplicationArea;
+  readonly centerCustomContent?: JSX.Element;
 };
