@@ -1,13 +1,5 @@
-## [8.11.0](https://github.com/AxisCommunications/fluent-components/compare/d13834fecc925e4da605bbf659e1db70540df620..cc50a475dff4c066d7ce9d1c1ff400e8a6082e70) (2024-02-02T12:37:22.385Z)
-
-### 🚧 Maintenance
-
-  - fix faulty filename in example (#181) ([c914a5f](https://github.com/AxisCommunications/fluent-components/commit/c914a5f600e6f2d9c479941ed4e91c85ac9e7fee))
+## [8.12.0](https://github.com/AxisCommunications/fluent-components/compare/a455868e0faa8b982ee3922302dd5bab6a734ea7..9236d469950556f1d785ca81198e15a73077fde7) (2024-02-05T13:42:57.556Z)
 
 ### ✨ Features
 
-  - **styles**: add navigation style (#180) ([c898f87](https://github.com/AxisCommunications/fluent-components/commit/c898f87e1149ea6da1c67e54d606aab4482323f1))
-
-### 🐛 Bug fixes
-
-  - **topbar**: adjust application drawer styles (#182) ([cc50a47](https://github.com/AxisCommunications/fluent-components/commit/cc50a475dff4c066d7ce9d1c1ff400e8a6082e70))
+  - **topbar**: add custom center content (#185) ([9236d46](https://github.com/AxisCommunications/fluent-components/commit/9236d469950556f1d785ca81198e15a73077fde7))
