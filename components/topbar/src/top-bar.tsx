@@ -18,17 +18,25 @@ export const TopBar = forwardRef(
       customContent,
       leftCustomContent,
       applicationArea,
+      centerCustomContent,
     } = props;
     const styles = useTopBarStyles();
 
     const rootStyle = mergeClasses(topBarClassNames.root, styles.root);
     const leftSectionStyle = mergeClasses(
       topBarClassNames.left,
-      styles.section
+      styles.section,
+      styles.leftSection
+    );
+    const centerSectionStyle = mergeClasses(
+      topBarClassNames.center,
+      styles.section,
+      styles.centerSection
     );
     const rightSectionStyle = mergeClasses(
       topBarClassNames.right,
-      styles.section
+      styles.section,
+      styles.rightSection
     );
 
     const language = profileMenu?.language;
@@ -66,6 +74,9 @@ export const TopBar = forwardRef(
               </>
             )}
           </div>
+          {centerCustomContent && (
+            <div className={centerSectionStyle}>{centerCustomContent}</div>
+          )}
           <div className={rightSectionStyle}>
             {orgMenu !== undefined && <OrganizationMenu {...orgMenu} />}
             {customContent !== undefined && (
