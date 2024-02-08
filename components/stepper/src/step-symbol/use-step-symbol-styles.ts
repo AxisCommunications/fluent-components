@@ -34,15 +34,15 @@ const useRootStyles = makeStyles({
     ...shorthands.border(
       tokens.strokeWidthThin,
       "solid",
-      tokens.colorBrandForeground2
+      tokens.colorCompoundBrandBackground
     ),
-    color: tokens.colorBrandForeground2,
+    color: tokens.colorCompoundBrandBackground,
   },
   current: {
     ...shorthands.border(
       tokens.strokeWidthThick,
       "solid",
-      tokens.colorBrandForeground2
+      tokens.colorCompoundBrandBackground
     ),
     fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground1,
