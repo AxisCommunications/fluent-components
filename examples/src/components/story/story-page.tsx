@@ -21,6 +21,8 @@ const useStyles = makeStyles({
   root: {
     height: "100%",
     display: "flex",
+    backgroundColor: tokens.colorNeutralBackground3,
+    ...shorthands.padding(0, "15%", 0, "5%"),
   },
   header: {
     ...shorthands.padding(tokens.spacingHorizontalM, tokens.spacingVerticalL),
@@ -49,7 +51,8 @@ const useStyles = makeStyles({
   },
   navigation: {
     height: "100%",
-    width: "250px",
+    width: "220px",
+    ...shorthands.border(0),
   },
   navigationBody: {
     backgroundImage:

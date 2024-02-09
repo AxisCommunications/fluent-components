@@ -136,10 +136,9 @@ const examples: pageData[] = [
 export const SliderPage = () => {
   const gh = getGhInfoByKey(routes.Slider);
   const styles = useStyles();
-  const links = examples.map(({ title, anchor, ...rest }) => ({
+  const links = examples.map(({ title, anchor }) => ({
     title,
     anchor,
-    ...rest,
   }));
 
   const renderSections = useMemo(
