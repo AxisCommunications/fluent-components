@@ -40,7 +40,7 @@ export function useStorySectionStyles() {
 type TStorySection = {
   title?: string;
   description?: string;
-};
+} & JSX.IntrinsicElements["div"];
 
 export function StorySection(
   { title, description, children, ...rest }: PropsWithChildren<TStorySection>

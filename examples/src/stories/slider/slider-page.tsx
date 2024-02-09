@@ -1,8 +1,14 @@
-import React from "react";
 import { makeStyles } from "@fluentui/react-components";
+import React, { useMemo } from "react";
 import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 import { StoryPage } from "../../components/story/story-page";
+import {
+  StoryPageNavigation,
+  TStoryNavigationLink,
+} from "../../components/story/story-navigation/story-page-navigation";
 import { StorySection } from "../../components/story/story-section";
+import { getGhInfoByKey } from "../../routing/route-map";
+import { routes } from "../../routing/routes";
 import {
   CustomSliderExample,
   CustomSliderExampleAsString,
@@ -47,8 +53,6 @@ import {
   WithStepsSliderExample,
   WithStepsSliderExampleAsString,
 } from "./with-steps-example";
-import { getGhInfoByKey } from "../../routing/route-map";
-import { routes } from "../../routing/routes";
 
 const useStyles = makeStyles({
   example: {
@@ -56,9 +60,102 @@ const useStyles = makeStyles({
   },
 });
 
+type pageData =
+  & { example: JSX.Element; codeString: string }
+  & TStoryNavigationLink;
+
+const examples: pageData[] = [
+  {
+    title: "Default",
+    anchor: "RegularSliderExample",
+    example: <RegularSliderExample />,
+    codeString: RegularSliderExampleAsString,
+  },
+  {
+    title: "Disabled",
+    anchor: "DisabledSliderExample",
+    example: <DisabledSliderExample />,
+    codeString: DisabledSliderExampleAsString,
+  },
+  {
+    title: "Small",
+    anchor: "SmallSliderExample",
+    example: <SmallSliderExample />,
+    codeString: SmallSliderExampleAsString,
+  },
+  {
+    title: "With marks",
+    anchor: "WithMarkSliderExample",
+    example: <WithMarkSliderExample />,
+    codeString: WithMarkSliderExampleAsString,
+  },
+  {
+    title: "With steps",
+    anchor: "WithStepsSliderExample",
+    example: <WithStepsSliderExample />,
+    codeString: WithStepsSliderExampleAsString,
+  },
+  {
+    title: "Stepping to marks",
+    anchor: "SteppingToMarksSliderExample",
+    example: <SteppingToMarksSliderExample />,
+    codeString: SteppingToMarksSliderExampleAsString,
+  },
+  {
+    title: "Transform value",
+    anchor: "TransformValueSliderExample",
+    example: <TransformValueSliderExample />,
+    codeString: TransformValueSliderExampleAsString,
+  },
+  {
+    title: "External buttons",
+    anchor: "ExternalButtonsSliderExample",
+    example: <ExternalButtonsSliderExample />,
+    codeString: ExternalButtonsSliderExampleAsString,
+  },
+  {
+    title: "Custom",
+    anchor: "CustomSliderExample",
+    example: <CustomSliderExample />,
+    codeString: CustomSliderExampleAsString,
+  },
+  {
+    title: "Range slider",
+    anchor: "RangeSliderExample",
+    example: <RangeSliderExample />,
+    codeString: RangeSliderExampleAsString,
+  },
+  {
+    title: "Range slider with steps",
+    anchor: "WithStepsRangeSliderExample",
+    example: <WithStepsRangeSliderExample />,
+    codeString: WithStepsRangeSliderExampleAsString,
+  },
+];
+
 export const SliderPage = () => {
   const gh = getGhInfoByKey(routes.Slider);
   const styles = useStyles();
+  const links = examples.map(({ title, anchor, ...rest }) => ({
+    title,
+    anchor,
+    ...rest,
+  }));
+
+  const renderSections = useMemo(
+    () =>
+      examples.map(({ title, example, codeString, anchor }) => {
+        return (
+          <StorySection key={anchor} title={title} id={anchor}>
+            <div className={styles.example}>
+              {example}
+            </div>
+            <StoryCodeBlockAccordion codeString={codeString} />
+          </StorySection>
+        );
+      }),
+    [routes]
+  );
 
   return (
     <StoryPage
@@ -66,81 +163,9 @@ export const SliderPage = () => {
       description={"An amazing slider"}
       ghUrl={gh.url}
       ghPackage={gh.packageName}
+      navigation={<StoryPageNavigation links={links} />}
     >
-      <StorySection title="Default">
-        <div className={styles.example}>
-          <RegularSliderExample />
-        </div>
-        <StoryCodeBlockAccordion codeString={RegularSliderExampleAsString} />
-      </StorySection>
-      <StorySection title="Small">
-        <div className={styles.example}>
-          <SmallSliderExample />
-        </div>
-        <StoryCodeBlockAccordion codeString={SmallSliderExampleAsString} />
-      </StorySection>
-      <StorySection title="With marks">
-        <div className={styles.example}>
-          <WithMarkSliderExample />
-        </div>
-        <StoryCodeBlockAccordion codeString={WithMarkSliderExampleAsString} />
-      </StorySection>
-      <StorySection title="With steps">
-        <div className={styles.example}>
-          <WithStepsSliderExample />
-        </div>
-        <StoryCodeBlockAccordion codeString={WithStepsSliderExampleAsString} />
-      </StorySection>
-      <StorySection title="Stepping to marks">
-        <div className={styles.example}>
-          <SteppingToMarksSliderExample />
-        </div>
-        <StoryCodeBlockAccordion
-          codeString={SteppingToMarksSliderExampleAsString}
-        />
-      </StorySection>
-      <StorySection title="Transform value">
-        <div className={styles.example}>
-          <TransformValueSliderExample />
-        </div>
-        <StoryCodeBlockAccordion
-          codeString={TransformValueSliderExampleAsString}
-        />
-      </StorySection>
-      <StorySection title="Range slider">
-        <div className={styles.example}>
-          <RangeSliderExample />
-        </div>
-        <StoryCodeBlockAccordion codeString={RangeSliderExampleAsString} />
-      </StorySection>
-      <StorySection title="Range slider with steps">
-        <div className={styles.example}>
-          <WithStepsRangeSliderExample />
-        </div>
-        <StoryCodeBlockAccordion
-          codeString={WithStepsRangeSliderExampleAsString}
-        />
-      </StorySection>
-      <StorySection title="Disabled">
-        <div className={styles.example}>
-          <DisabledSliderExample />
-        </div>
-        <StoryCodeBlockAccordion codeString={DisabledSliderExampleAsString} />
-      </StorySection>
-      <StorySection title="External buttons">
-        <div className={styles.example}>
-          <ExternalButtonsSliderExample />
-        </div>
-        <StoryCodeBlockAccordion
-          codeString={ExternalButtonsSliderExampleAsString}
-        />
-      </StorySection>
-      <StorySection title="Custom">
-        <div className={styles.example}>
-          <CustomSliderExample />
-        </div>
-        <StoryCodeBlockAccordion codeString={CustomSliderExampleAsString} />
-      </StorySection>
+      {renderSections}
     </StoryPage>
   );
 };

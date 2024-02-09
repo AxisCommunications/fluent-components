@@ -11,9 +11,9 @@ import {
   makeStyles,
   mergeClasses,
   shorthands,
-  tokens
+  tokens,
 } from "@fluentui/react-components";
-import { HomeFilled, HomeRegular, bundleIcon } from "@fluentui/react-icons";
+import { bundleIcon, HomeFilled, HomeRegular } from "@fluentui/react-icons";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { RouteCategory } from "../../routing/route-map";
@@ -65,7 +65,7 @@ const useStyles = makeStyles({
   footer: {
     ...shorthands.margin(0),
     ...shorthands.padding(
-      tokens.spacingVerticalXS,
+      tokens.spacingVerticalM,
       tokens.spacingVerticalS,
       tokens.spacingVerticalXS,
       tokens.spacingVerticalS

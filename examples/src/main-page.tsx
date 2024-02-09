@@ -5,6 +5,7 @@ import { Navbar } from "./components/top-bar";
 import { Layout } from "./layout";
 import { useStaticStyles } from "./styles/static";
 import { NavigationMenu } from "./components/navigation-menu/navigation-menu";
+import { useScrollToAnchor } from "./routing/use-scroll-to-anchor";
 
 export const useStyles = makeStyles({
   navigation: {
@@ -14,6 +15,7 @@ export const useStyles = makeStyles({
 
 export const MainPage = () => {
   useStaticStyles();
+  useScrollToAnchor();
 
   return (
     <Layout
