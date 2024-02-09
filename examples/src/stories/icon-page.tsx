@@ -8,8 +8,11 @@ import {
   shorthands,
 } from "@fluentui/react-components";
 import React from "react";
-import { PageHeader } from "../components/page-header";
 import { SimpleHeader } from "../components/simple-header";
+import { StoryPage } from "../components/story/story-page";
+import { StorySection } from "../components/story/story-section";
+import { getGhInfoByKey } from "../routing/route-map";
+import { routes } from "../routing/routes";
 import {
   useFixedPageStyle,
   useLayoutStyles,
@@ -59,6 +62,8 @@ const axisReactIcons: React.FC<AxisIconProps>[] = Object.keys(AxisReactIcons)
   .filter((icon) => !!icon && !!icon.displayName);
 
 export const IconPage = (): JSX.Element => {
+  const gh = getGhInfoByKey(routes.IconCatalog);
+
   const [search, setSearch] = React.useState("");
   // Fluent default size is 20
   const [size, setSize] = React.useState<string | number>(20);
@@ -117,13 +122,13 @@ export const IconPage = (): JSX.Element => {
   );
 
   return (
-    <div className={layoutStyles.grid}>
-      <PageHeader
-        className={layoutStyles.header}
-        title="Icon Catalog"
-        borderBottom={false}
-      />
-      <div className={mergeClasses(layoutStyles.content, fixedPageStyle)}>
+    <StoryPage
+      title="Icons"
+      ghUrl={gh.url}
+      ghPackage={gh.packageName}
+      description={"Axis branded icons"}
+    >
+      <StorySection>
         <div className={layoutStyles.innerGrid}>
           <SimpleHeader className={layoutStyles.header}>
             <div className={styles.inputBox}>
@@ -170,7 +175,7 @@ export const IconPage = (): JSX.Element => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </StorySection>
+    </StoryPage>
   );
 };

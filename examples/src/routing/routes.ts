@@ -3,7 +3,6 @@ export const routes = {
   Theme: "/theme",
   IconCatalog: "/icon-catalog",
   Stepper: "/stepper",
-  VerticalStepper: "/vertical-stepper",
   TableUtilities: "/table-utilities",
   Slider: "/slider",
   PasswordInput: "/password-input",

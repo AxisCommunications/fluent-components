@@ -3,11 +3,11 @@ import React, { useMemo } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { useAppContext } from "./context/ApplicationStateProvider";
 import { MainPage } from "./main-page";
-import { PageNotFound } from "./routing/page-not-found";
-import { getRouteByGroup, RouteGroup } from "./routing/route-map";
-import { routes } from "./routing/routes";
 import { useScrollStaticStyles } from "@axiscommunications/fluent-styles";
 import { WelcomePage } from "./landingpage";
+import { getRouteByGroup, RouteGroup } from "./routing/route-map";
+import { routes } from "./routing/routes";
+import { PageNotFound } from "./routing/page-not-found";
 
 export const App = () => {
   useScrollStaticStyles();

@@ -1,0 +1,51 @@
+{
+  // General snippets
+  "Print to console": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "log",
+    "body": ["console.log('$1', $1);"],
+    "description": "Log output to console"
+  },
+
+  "React component fluent": {
+    "prefix": "component:fluent",
+    "scope": "typescriptreact",
+    "body": [
+      "import { makeStyles, mergeClasses } from '@fluentui/react-components'",
+      "import React from 'react'",
+      "",
+      "const componentId = '${1/([A-Z][a-z]*)([A-Z][a-z]*)?([A-Z][a-z]*)?([A-Z][a-z]*)?/${1:/downcase}${2:+-}${2:/downcase}${3:+-}${3:/downcase}${4:+-}${4:/downcase}/}'",
+      "export const ${1/^(.)/${1:/downcase}/}ClassNames = {",
+      " root: componentId",
+      "}",
+      "",
+      "const useStyles = makeStyles({",
+      " root: {}",
+      "})",
+      "",
+      "type TUse${1:}Styles = {",
+      "  test: string",
+      "}",
+      "",
+      "export function use${1:}Styles({test}:TUse${1:}Styles ){",
+      " const styles = useStyles();",
+      " const rootStyle = mergeClasses(${1/^(.)/${1:/downcase}/}ClassNames.root, styles.root);",
+      " return {styles, rootStyle}",
+      "}",
+      "",
+      "type T${1:} = {",
+      "}",
+      "",
+      "export function ${1:}({ ...rest }:T${1:}){",
+      "  const {styles, rootStyle} = use${1:}Styles({test:''})",
+      "",
+      "  return (",
+      "    <div data-testid={componentId} className={rootStyle} {...rest}>",
+      "      Hello, this is ${1:} Component!",
+      "    </div>",
+      "  )",
+      "}"
+    ],
+    "description": "React component fluent"
+  }
+}

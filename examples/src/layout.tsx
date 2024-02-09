@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  makeStyles,
-  mergeClasses,
-  shorthands,
-  tokens,
-} from "@fluentui/react-components";
+import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 
 type LayoutProps = {
   readonly header: JSX.Element;
@@ -16,28 +11,26 @@ type LayoutProps = {
 const useStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground4,
-    display: "flex",
-    flexDirection: "column",
+    display: "grid",
+    gridTemplateColumns: "min-content 1fr",
+    gridTemplateRows: "min-content 1fr",
+    gridTemplateAreas: `
+    'header header'
+    'navigation outlet'`,
+    width: "100vw",
     height: "100vh",
-    width: "100vw",
-  },
-  body: {
     ...shorthands.overflow("hidden"),
-    display: "flex",
-    flexGrow: 1,
-    width: "100vw",
   },
-  content: {
-    ...shorthands.border(
-      tokens.strokeWidthThin,
-      "solid",
-      tokens.colorNeutralShadowKeyLighter
-    ),
-    ...shorthands.borderRadius(tokens.borderRadiusXLarge, 0, 0, 0),
-    ...shorthands.overflow("hidden"),
+  header: {
+    ...shorthands.gridArea("header"),
+  },
+  navigation: {
+    ...shorthands.gridArea("navigation"),
+  },
+  outlet: {
     backgroundColor: tokens.colorNeutralBackground2,
-    boxShadow: tokens.shadow4,
-    width: "100%",
+    ...shorthands.gridArea("outlet"),
+    ...shorthands.overflow("hidden"),
   },
 });
 
@@ -45,14 +38,12 @@ export const Layout = ({ header, navigation, content }: LayoutProps) => {
   const styles = useStyles();
 
   return (
-    <div className={mergeClasses("layout-root", styles.root)}>
-      {header}
-      <div className={mergeClasses("layout-body", styles.body)}>
+    <div className={styles.root}>
+      <div className={styles.header}>{header}</div>
+      <div className={styles.navigation}>
         {navigation}
-        <div className={mergeClasses("layout-content", styles.content)}>
-          {content}
-        </div>
       </div>
+      <div className={styles.outlet}>{content}</div>
     </div>
   );
 };

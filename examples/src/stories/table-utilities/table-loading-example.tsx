@@ -36,9 +36,9 @@ import {
   ChevronRight16Regular,
 } from "@fluentui/react-icons";
 import React, { useEffect, useMemo, useState } from "react";
-import { PageHeader } from "../components/page-header";
-import { useAppContext } from "../context/ApplicationStateProvider";
-import { useLayoutStyles, useScrollPageStyle } from "../styles/page";
+import { PageHeader } from "../../components/page-header";
+import { useAppContext } from "../../context/ApplicationStateProvider";
+import { useLayoutStyles, useScrollPageStyle } from "../../styles/page";
 
 const users = [
   { user: "Robin", role: "Admin", luckyNumber: 1337 },
