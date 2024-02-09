@@ -1,7 +1,9 @@
 import React from "react";
-import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 import { StoryPage } from "../../components/story/story-page";
-import { StorySection } from "../../components/story/story-section";
+import {
+  pageData,
+  useExampleWithNavigation,
+} from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import {
@@ -9,22 +11,37 @@ import {
   StyledTabListComponentAsJson,
 } from "./tab-list-example";
 
+const examples: pageData[] = [
+  {
+    title: "Default",
+    anchor: "StepperDialogExample",
+    example: (
+      <>
+        <StyledTabListComponent />
+        <StyledTabListComponent withText={false} />
+        <StyledTabListComponent vertical />
+        <StyledTabListComponent withText={false} vertical />
+      </>
+    ),
+    codeString: StyledTabListComponentAsJson,
+  },
+];
+
 export const FluentUiTabStylesPage = () => {
   const gh = getGhInfoByKey(routes.TabListUtilities);
+  const { renderSections, renderNavigation } = useExampleWithNavigation(
+    examples
+  );
+
   return (
     <StoryPage
       title="Tablist"
       description={"Style utilities that can be used with fluent´s tablist component"}
       ghUrl={gh.url}
       ghPackage={gh.packageName}
+      navigation={renderNavigation}
     >
-      <StorySection title="Default">
-        <StyledTabListComponent />
-        <StyledTabListComponent withText={false} />
-        <StyledTabListComponent vertical />
-        <StyledTabListComponent withText={false} vertical />
-        <StoryCodeBlockAccordion codeString={StyledTabListComponentAsJson} />
-      </StorySection>
+      {renderSections}
     </StoryPage>
   );
 };

@@ -6,7 +6,6 @@ import {
   makeStyles,
   mergeClasses,
   shorthands,
-  Subtitle2,
   tokens,
 } from "@fluentui/react-components";
 import React, { PropsWithChildren } from "react";
@@ -20,8 +19,9 @@ export const storyPageClassNames = {
 const useStyles = makeStyles({
   root: {
     height: "100%",
-    display: "flex",
     backgroundColor: tokens.colorNeutralBackground3,
+    display: "grid",
+    gridTemplateColumns: "1fr min-content",
     ...shorthands.padding(0, "15%", 0, "5%"),
   },
   header: {
@@ -37,6 +37,7 @@ const useStyles = makeStyles({
   },
   body: {
     overflowY: "auto",
+    height: "100%",
     position: "relative",
     display: "flex",
     flexDirection: "column",
@@ -44,6 +45,7 @@ const useStyles = makeStyles({
     ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingVerticalL),
   },
   main: {
+    overflowY: "auto",
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -133,11 +135,7 @@ export function StoryPage(
           position={"end"}
           open={true}
         >
-          <DrawerHeader className={styles.navigationHeader}>
-            <Subtitle2>
-              On this page
-            </Subtitle2>
-          </DrawerHeader>
+          <DrawerHeader className={styles.navigationHeader} />
           <DrawerBody className={styles.navigationBody}>
             {navigation}
           </DrawerBody>

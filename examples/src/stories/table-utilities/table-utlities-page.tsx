@@ -1,24 +1,37 @@
 import React from "react";
-import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 import { StoryPage } from "../../components/story/story-page";
-import { StorySection } from "../../components/story/story-section";
+import {
+  pageData,
+  useExampleWithNavigation,
+} from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import { TableExample, TableExampleAsJson } from "./table-example";
 
+const examples: pageData[] = [
+  {
+    title: "Default",
+    anchor: "TableExample",
+    example: <TableExample />,
+    codeString: TableExampleAsJson,
+  },
+];
+
 export const TableUtilitiesPage = () => {
   const gh = getGhInfoByKey(routes.TableUtilities);
+  const { renderSections, renderNavigation } = useExampleWithNavigation(
+    examples
+  );
+
   return (
     <StoryPage
       title="Table"
       description={"Style utilities that can be used with fluent´s table component"}
       ghUrl={gh.url}
       ghPackage={gh.packageName}
+      navigation={renderNavigation}
     >
-      <StorySection title="Default">
-        <TableExample />
-        <StoryCodeBlockAccordion codeString={TableExampleAsJson} />
-      </StorySection>
+      {renderSections}
     </StoryPage>
   );
 };

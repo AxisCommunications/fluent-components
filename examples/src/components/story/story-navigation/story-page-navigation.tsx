@@ -1,5 +1,5 @@
 import { makeStyles, MenuList, mergeClasses } from "@fluentui/react-components";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { StoryNavigationMenuItem } from "./story-navigation-menu-item";
 
@@ -35,6 +35,13 @@ export function StoryPageNavigation({ links }: TStoryPageNavigation) {
   const { rootStyle } = useStoryPageNavigationStyles();
   const { pathname, hash } = useLocation();
   const navigate = useNavigate();
+  const [selected, setSelected] = useState("#" + links[0].anchor);
+
+  useEffect(() => {
+    if (hash) {
+      setSelected(hash);
+    }
+  }, [hash]);
 
   const renderMenuItems = useMemo(
     () =>
@@ -42,14 +49,14 @@ export function StoryPageNavigation({ links }: TStoryPageNavigation) {
         return (
           <StoryNavigationMenuItem
             key={anchor}
-            selected={hash === "#" + anchor}
+            selected={selected === "#" + anchor}
             onClick={() => navigate(`${pathname}#${anchor}`)}
           >
             {title}
           </StoryNavigationMenuItem>
         );
       }),
-    [hash]
+    [selected]
   );
 
   return (

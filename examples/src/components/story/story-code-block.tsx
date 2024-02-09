@@ -42,7 +42,6 @@ export const StoryCodeBlock = (
 async function copyToClipboard(text: string): Promise<void> {
   try {
     await navigator.clipboard.writeText(text);
-    console.log("Text copied to clipboard:", text);
   } catch (error) {
     console.error("Error copying to clipboard:", error);
   }

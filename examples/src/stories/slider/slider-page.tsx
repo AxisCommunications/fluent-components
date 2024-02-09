@@ -1,68 +1,62 @@
 import { makeStyles } from "@fluentui/react-components";
-import React, { useMemo } from "react";
-import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
+import React from "react";
 import { StoryPage } from "../../components/story/story-page";
 import {
-  StoryPageNavigation,
-  TStoryNavigationLink,
-} from "../../components/story/story-navigation/story-page-navigation";
-import { StorySection } from "../../components/story/story-section";
+  pageData,
+  useExampleWithNavigation,
+} from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import {
   CustomSliderExample,
   CustomSliderExampleAsString,
-} from "./custom-example";
+} from "./examples/custom-example";
 import {
   DisabledSliderExample,
   DisabledSliderExampleAsString,
-} from "./disabled-example";
+} from "./examples/disabled-example";
 import {
   WithStepsRangeSliderExample,
   WithStepsRangeSliderExampleAsString,
-} from "./range-slider-with-steps-example";
+} from "./examples/range-slider-with-steps-example";
 import {
   RegularSliderExample,
   RegularSliderExampleAsString,
-} from "./regular-example";
+} from "./examples/regular-example";
 import {
   SmallSliderExample,
   SmallSliderExampleAsString,
-} from "./small-example";
+} from "./examples/small-example";
 import {
   SteppingToMarksSliderExample,
   SteppingToMarksSliderExampleAsString,
-} from "./stepping-to-marks-example";
+} from "./examples/stepping-to-marks-example";
 import {
   TransformValueSliderExample,
   TransformValueSliderExampleAsString,
-} from "./transform-value-example";
+} from "./examples/transform-value-example";
 import {
   ExternalButtonsSliderExample,
   ExternalButtonsSliderExampleAsString,
-} from "./with-external-buttons-example";
+} from "./examples/with-external-buttons-example";
 import {
   WithMarkSliderExample,
   WithMarkSliderExampleAsString,
-} from "./with-marks-example";
+} from "./examples/with-marks-example";
 import {
   RangeSliderExample,
   RangeSliderExampleAsString,
-} from "./with-range-example";
+} from "./examples/with-range-example";
 import {
   WithStepsSliderExample,
   WithStepsSliderExampleAsString,
-} from "./with-steps-example";
+} from "./examples/with-steps-example";
 
 const useStyles = makeStyles({
   example: {
     maxWidth: "400px",
   },
 });
-
-type pageData =
-  & { example: JSX.Element; codeString: string }
-  & TStoryNavigationLink;
 
 const examples: pageData[] = [
   {
@@ -136,24 +130,18 @@ const examples: pageData[] = [
 export const SliderPage = () => {
   const gh = getGhInfoByKey(routes.Slider);
   const styles = useStyles();
-  const links = examples.map(({ title, anchor }) => ({
-    title,
-    anchor,
-  }));
 
-  const renderSections = useMemo(
-    () =>
-      examples.map(({ title, example, codeString, anchor }) => {
-        return (
-          <StorySection key={anchor} title={title} id={anchor}>
-            <div className={styles.example}>
-              {example}
-            </div>
-            <StoryCodeBlockAccordion codeString={codeString} />
-          </StorySection>
-        );
-      }),
-    [routes]
+  const { renderSections, renderNavigation } = useExampleWithNavigation(
+    examples.map(d => {
+      return {
+        ...d,
+        example: (
+          <div className={styles.example}>
+            {d.example}
+          </div>
+        ),
+      };
+    })
   );
 
   return (
@@ -162,7 +150,7 @@ export const SliderPage = () => {
       description={"An amazing slider"}
       ghUrl={gh.url}
       ghPackage={gh.packageName}
-      navigation={<StoryPageNavigation links={links} />}
+      navigation={renderNavigation}
     >
       {renderSections}
     </StoryPage>

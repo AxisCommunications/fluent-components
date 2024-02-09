@@ -1,37 +1,50 @@
 import React from "react";
-import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 import { StoryPage } from "../../components/story/story-page";
-import { StorySection } from "../../components/story/story-section";
+import {
+  pageData,
+  useExampleWithNavigation,
+} from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import {
   StepperDialogExample,
   StepperDialogExampleAsString,
-} from "./stepper-dialog-example";
+} from "./examples/stepper-dialog-example";
 import {
   VerticalStepperDialogExample,
   VerticalStepperDialogExampleAsString,
-} from "./vertical-stepper-dialog-example";
+} from "./examples/vertical-stepper-dialog-example";
+
+const examples: pageData[] = [
+  {
+    title: "Stepper dialog",
+    anchor: "StepperDialogExample",
+    example: <StepperDialogExample />,
+    codeString: StepperDialogExampleAsString,
+  },
+  {
+    title: "Vertical stepper dialog",
+    anchor: "VerticalStepperDialogExample",
+    example: <VerticalStepperDialogExample />,
+    codeString: VerticalStepperDialogExampleAsString,
+  },
+];
 
 export const StepperPage = () => {
   const gh = getGhInfoByKey(routes.Stepper);
+  const { renderSections, renderNavigation } = useExampleWithNavigation(
+    examples
+  );
+
   return (
     <StoryPage
       title="Stepper"
       description={"A dialog which common use case is to guide user through instruction or/and information"}
       ghUrl={gh.url}
       ghPackage={gh.packageName}
+      navigation={renderNavigation}
     >
-      <StorySection title="Stepper dialog">
-        <StepperDialogExample />
-        <StoryCodeBlockAccordion codeString={StepperDialogExampleAsString} />
-      </StorySection>
-      <StorySection title="Vertical stepper dialog">
-        <VerticalStepperDialogExample />
-        <StoryCodeBlockAccordion
-          codeString={VerticalStepperDialogExampleAsString}
-        />
-      </StorySection>
+      {renderSections}
     </StoryPage>
   );
 };

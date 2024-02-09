@@ -1,7 +1,7 @@
 import {
+  Button,
   makeStyles,
-  MenuItem,
-  MenuItemProps,
+  MenuButtonProps,
   mergeClasses,
   tokens,
 } from "@fluentui/react-components";
@@ -14,10 +14,15 @@ export const navigationMenuItemClassNames = {
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground2,
+    ":hover": {
+      backgroundColor: tokens.colorNeutralBackground2,
+    },
   },
   selected: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
+    ":hover": {
+      backgroundColor: tokens.colorNeutralBackground2,
+    },
   },
 });
 
@@ -39,7 +44,7 @@ export function useNavigationMenuItemStyles(
 
 type TStoryNavigationMenuItem = {
   selected: boolean;
-} & MenuItemProps;
+} & MenuButtonProps;
 
 export function StoryNavigationMenuItem(
   { children, selected, ...rest }: TStoryNavigationMenuItem
@@ -47,8 +52,14 @@ export function StoryNavigationMenuItem(
   const { rootStyle } = useNavigationMenuItemStyles({ selected });
 
   return (
-    <MenuItem data-testid={componentId} className={rootStyle} {...rest}>
+    <Button
+      appearance="transparent"
+      shape="circular"
+      data-testid={componentId}
+      className={rootStyle}
+      {...rest}
+    >
       {children}
-    </MenuItem>
+    </Button>
   );
 }
