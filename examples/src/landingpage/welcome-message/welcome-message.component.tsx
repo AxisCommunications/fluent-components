@@ -1,8 +1,8 @@
 // --------------------------------------------------------------------
 // Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
 // --------------------------------------------------------------------
+import { Body1, Title2 } from "@fluentui/react-components";
 import React from "react";
-import { Body1, Link, Title2 } from "@fluentui/react-components";
 import { useWelcomeMessageStyle } from "./welcome-message.styles";
 
 export const WelcomeMessage: React.FC = () => {
@@ -11,25 +11,19 @@ export const WelcomeMessage: React.FC = () => {
   const bodyText = (
     <>
       <div>
-        Here you may find{" "}
-        <Link
-          href="https://www.npmjs.com/package/@fluentui/react-components"
-          inline
-        >
-          fluent
-        </Link>{" "}
-        customizations regarding:
+        Here you may find fluent customizations regarding:
       </div>
       <ul>
         <li>Components</li>
         <li>Themes</li>
         <li>Icons</li>
+        <li>Styling and more..</li>
       </ul>
     </>
   );
   return (
     <div className={styles.content}>
-      <Title2>Welcome to Axis Fluent Components</Title2>
+      <Title2 block wrap>Welcome to Axis Fluent Components</Title2>
       <Body1 className={styles.bodyText}>{bodyText}</Body1>
     </div>
   );

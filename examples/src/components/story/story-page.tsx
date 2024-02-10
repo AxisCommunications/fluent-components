@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalXXL),
   },
   package: {
-    color: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForeground3,
   },
   body: {
     overflowY: "auto",

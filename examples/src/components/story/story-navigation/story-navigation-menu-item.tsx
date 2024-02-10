@@ -14,6 +14,8 @@ export const navigationMenuItemClassNames = {
 
 const useStyles = makeStyles({
   root: {
+    backgroundImage:
+      `linear-gradient(90deg,${tokens.colorNeutralBackground3}0%,${tokens.colorNeutralBackground1}50%,${tokens.colorNeutralBackground3}100%)`,
     ":hover": {
       backgroundColor: tokens.colorNeutralBackground2,
     },
@@ -54,7 +56,6 @@ export function StoryNavigationMenuItem(
   return (
     <Button
       appearance="transparent"
-      shape="circular"
       data-testid={componentId}
       className={rootStyle}
       {...rest}

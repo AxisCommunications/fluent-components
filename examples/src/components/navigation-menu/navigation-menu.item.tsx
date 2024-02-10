@@ -14,10 +14,12 @@ export const navigationMenuItemClassNames = {
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground2,
+    backgroundImage:
+      `linear-gradient(90deg,${tokens.colorNeutralBackground1}0%,${tokens.colorNeutralBackground3}95%)`,
   },
   selected: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
+    backgroundImage:
+      `linear-gradient(90deg,${tokens.colorNeutralBackground1}100%,${tokens.colorNeutralBackground3}0%)`,
   },
 });
 

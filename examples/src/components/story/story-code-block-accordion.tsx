@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionPanel,
   makeStyles,
+  shorthands,
   tokens,
 } from "@fluentui/react-components";
 import React from "react";
@@ -12,6 +13,7 @@ import { StoryCodeBlock } from "./story-code-block";
 const useStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.borderRadius(tokens.borderRadiusLarge),
   },
 });
 
