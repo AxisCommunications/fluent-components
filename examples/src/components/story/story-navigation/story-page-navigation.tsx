@@ -1,26 +1,7 @@
-import { makeStyles, MenuList, mergeClasses } from "@fluentui/react-components";
+import { MenuList } from "@fluentui/react-components";
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { StoryNavigationMenuItem } from "./story-navigation-menu-item";
-
-const componentId = "story-page-navigation";
-export const storyPageNavigationClassNames = {
-  root: componentId,
-};
-
-const useStyles = makeStyles({
-  root: {},
-  menuItem: {},
-});
-
-export function useStoryPageNavigationStyles() {
-  const styles = useStyles();
-  const rootStyle = mergeClasses(
-    storyPageNavigationClassNames.root,
-    styles.root
-  );
-  return { styles, rootStyle };
-}
 
 export type TStoryNavigationLink = {
   title: string;
@@ -32,7 +13,6 @@ type TStoryPageNavigation = {
 };
 
 export function StoryPageNavigation({ links }: TStoryPageNavigation) {
-  const { rootStyle } = useStoryPageNavigationStyles();
   const { pathname, hash } = useLocation();
   const navigate = useNavigate();
   const [selected, setSelected] = useState("#" + links[0].anchor);
@@ -60,7 +40,7 @@ export function StoryPageNavigation({ links }: TStoryPageNavigation) {
   );
 
   return (
-    <MenuList className={rootStyle}>
+    <MenuList>
       {renderMenuItems}
     </MenuList>
   );

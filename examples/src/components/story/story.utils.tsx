@@ -27,12 +27,12 @@ export function useExampleWithNavigation(examples: pageData[]) {
           </StorySection>
         );
       }),
-    []
+    [examples]
   );
 
   const renderNavigation = useMemo(
     () => <StoryPageNavigation links={links} />,
-    []
+    [links]
   );
 
   return { renderSections, renderNavigation };
