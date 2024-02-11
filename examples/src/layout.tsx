@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     ...shorthands.gridArea("navigation"),
   },
   outlet: {
-    backgroundColor: tokens.colorNeutralBackground2,
+    backgroundColor: tokens.colorNeutralBackground3,
     ...shorthands.gridArea("outlet"),
     ...shorthands.overflow("hidden"),
   },
