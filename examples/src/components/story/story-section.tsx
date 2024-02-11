@@ -20,8 +20,6 @@ const useStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalS),
   },
   body: {
-    backgroundImage:
-      `linear-gradient(90deg,${tokens.colorNeutralBackground1}0%,${tokens.colorNeutralBackground3}95%)`,
     display: "flex",
     flexDirection: "column",
     ...shorthands.border("1px", "solid", tokens.colorNeutralBackground1),
