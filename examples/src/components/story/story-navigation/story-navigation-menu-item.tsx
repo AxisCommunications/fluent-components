@@ -21,10 +21,8 @@ const useStyles = makeStyles({
     },
   },
   selected: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
-    ":hover": {
-      backgroundColor: tokens.colorNeutralBackground2,
-    },
+    backgroundImage:
+      `linear-gradient(90deg,${tokens.colorNeutralBackground1}0%,${tokens.colorNeutralBackground1Selected}50%,${tokens.colorNeutralBackground1}100%)`,
   },
 });
 

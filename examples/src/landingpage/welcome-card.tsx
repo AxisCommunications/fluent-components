@@ -7,6 +7,7 @@ import {
   Text,
   tokens,
 } from "@fluentui/react-components";
+
 import React from "react";
 
 const useStyles = makeStyles({
@@ -27,11 +28,12 @@ type TCardExample = {
   title: string;
   description?: string;
   text?: string;
+  icon: JSX.Element;
   onClick: () => void;
 };
 
 export const WelcomeCard = (
-  { title, description, text, onClick }: TCardExample
+  { title, description, text, icon, onClick }: TCardExample
 ) => {
   const styles = useStyles();
 
@@ -42,6 +44,7 @@ export const WelcomeCard = (
     >
       <CardHeader
         header={<Text weight="semibold">{title}</Text>}
+        image={icon}
         description={
           <Caption1 className={styles.caption}>{description}</Caption1>
         }

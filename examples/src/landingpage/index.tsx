@@ -4,6 +4,12 @@ import {
   Title2,
   tokens,
 } from "@fluentui/react-components";
+import {
+  DarkThemeRegular,
+  DocumentCssRegular,
+  IconsRegular,
+  PuzzlePieceRegular,
+} from "@fluentui/react-icons";
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { TestId } from "../../system-test/util/test-id";
@@ -18,6 +24,7 @@ const useStyles = makeStyles({
     display: "flex",
     height: "100%",
     width: "100%",
+    ...shorthands.overflow("auto"),
     ...shorthands.padding(tokens.spacingVerticalXXL),
   },
   image: {
@@ -42,6 +49,53 @@ const useStyles = makeStyles({
 
 export const WelcomePage = () => {
   const styles = useStyles();
+  const {
+    navigateToFirstComponent,
+    navigateToFirstStyle,
+    navigateToIcon,
+    navigateToTheme,
+  } = useWelcomePage();
+
+  return (
+    <div data-testid={TestId.welcomePage} className={styles.root}>
+      <div className={styles.content}>
+        <Title2 block wrap>Welcome to Axis Fluent Components</Title2>
+        <div className={styles.cardContainer}>
+          <WelcomeCard
+            icon={<PuzzlePieceRegular fontSize={tokens.fontSizeBase600} />}
+            title="Components"
+            description={"Axis branded component"}
+            text={"Complement to fluent ui components"}
+            onClick={navigateToFirstComponent}
+          />
+          <WelcomeCard
+            icon={<DarkThemeRegular fontSize={tokens.fontSizeBase600} />}
+            title="Theme"
+            description={"Axis branded themes"}
+            onClick={navigateToTheme}
+          />
+          <WelcomeCard
+            icon={<IconsRegular fontSize={tokens.fontSizeBase600} />}
+            title="Icons"
+            description={"Axis branded icons"}
+            onClick={navigateToIcon}
+          />
+          <WelcomeCard
+            icon={<DocumentCssRegular fontSize={tokens.fontSizeBase600} />}
+            title="Styles"
+            description={"Utilities for existing components"}
+            onClick={navigateToFirstStyle}
+          />
+        </div>
+      </div>
+      <div className={styles.image}>
+        <WelcomeImage />
+      </div>
+    </div>
+  );
+};
+
+function useWelcomePage() {
   const navigate = useNavigate();
 
   const navigateToFirstComponent = useCallback(
@@ -74,37 +128,10 @@ export const WelcomePage = () => {
     [navigate]
   );
 
-  return (
-    <div data-testid={TestId.welcomePage} className={styles.root}>
-      <div className={styles.content}>
-        <Title2 block wrap>Welcome to Axis Fluent Components</Title2>
-        <div className={styles.cardContainer}>
-          <WelcomeCard
-            title="Components"
-            description={"Axis branded component"}
-            text={"Complement to fluent ui components"}
-            onClick={navigateToFirstComponent}
-          />
-          <WelcomeCard
-            title="Theme"
-            description={"Axis branded themes"}
-            onClick={navigateToTheme}
-          />
-          <WelcomeCard
-            title="Icons"
-            description={"Axis branded icons"}
-            onClick={navigateToIcon}
-          />
-          <WelcomeCard
-            title="Styles"
-            description={"Utilities for existing components"}
-            onClick={navigateToFirstStyle}
-          />
-        </div>
-      </div>
-      <div className={styles.image}>
-        <WelcomeImage />
-      </div>
-    </div>
-  );
-};
+  return {
+    navigateToFirstComponent,
+    navigateToFirstStyle,
+    navigateToIcon,
+    navigateToTheme,
+  };
+}
