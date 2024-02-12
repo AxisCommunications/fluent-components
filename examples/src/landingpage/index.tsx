@@ -1,43 +1,137 @@
-import React from "react";
-import { Image, makeStyles, shorthands, tokens } from "@fluentui/react-components";
-import { useLayoutStyles } from "../styles/page";
-import { WelcomeMessage } from "./welcome-message/welcome-message.component";
-import { WelcomeImage } from "./welcome-image/welcome-image.component";
+import {
+  makeStyles,
+  shorthands,
+  Title2,
+  tokens,
+} from "@fluentui/react-components";
+import {
+  DarkThemeRegular,
+  DocumentCssRegular,
+  IconsRegular,
+  PuzzlePieceRegular,
+} from "@fluentui/react-icons";
+import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { TestId } from "../../system-test/util/test-id";
-import { HomeLine, Illustration } from "@axiscommunications/fluent-illustrations";
-
+import { getRouteByCategory, RouteCategory } from "../routing/route-map";
+import { routes } from "../routing/routes";
+import { WelcomeCard } from "./welcome-card";
+import { WelcomeImage } from "./welcome-image/welcome-image.component";
 
 const useStyles = makeStyles({
-  pageContainer: {
-    ...shorthands.flex(1),
-    backgroundColor: tokens.colorNeutralBackground4,
-  },
-  page: {
+  root: {
+    position: "relative",
     display: "flex",
-    height:
-      `calc(100% - ${tokens.spacingHorizontalL} - ${tokens.spacingVerticalS})`,
-    justifyContent: "space-between",
-    paddingRight: tokens.spacingHorizontalXXXL,
-    backgroundColor: tokens.colorNeutralBackground2,
-    borderTopLeftRadius: tokens.borderRadiusXLarge,
-    paddingTop: tokens.spacingHorizontalL,
-    paddingBottom: tokens.spacingVerticalS,
+    height: "100%",
+    width: "100%",
+    ...shorthands.overflow("auto"),
+    ...shorthands.padding(tokens.spacingVerticalXXL),
+  },
+  image: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+  },
+  content: {
+    zIndex: 1,
+    display: "flex",
+    height: "100%",
+    width: "100%",
+    flexDirection: "column",
+    ...shorthands.gap(tokens.spacingHorizontalL),
+  },
+  cardContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    ...shorthands.gap(tokens.spacingHorizontalM),
   },
 });
 
 export const WelcomePage = () => {
   const styles = useStyles();
-  const layoutStyles = useLayoutStyles();
+  const {
+    navigateToFirstComponent,
+    navigateToFirstStyle,
+    navigateToIcon,
+    navigateToTheme,
+  } = useWelcomePage();
 
   return (
-    <div data-testid={TestId.welcomePage} className={layoutStyles.grid}>
-      <div className={styles.pageContainer}>
-        <div className={styles.page}>
-          <WelcomeMessage />
-          <WelcomeImage />
-          <Illustration icon="Add" />
+    <div data-testid={TestId.welcomePage} className={styles.root}>
+      <div className={styles.content}>
+        <Title2 block wrap>Welcome to Axis Fluent Components</Title2>
+        <div className={styles.cardContainer}>
+          <WelcomeCard
+            icon={<PuzzlePieceRegular fontSize={tokens.fontSizeBase600} />}
+            title="Components"
+            description={"Axis branded component"}
+            text={"Complement to fluent ui components"}
+            onClick={navigateToFirstComponent}
+          />
+          <WelcomeCard
+            icon={<DarkThemeRegular fontSize={tokens.fontSizeBase600} />}
+            title="Theme"
+            description={"Axis branded themes"}
+            onClick={navigateToTheme}
+          />
+          <WelcomeCard
+            icon={<IconsRegular fontSize={tokens.fontSizeBase600} />}
+            title="Icons"
+            description={"Axis branded icons"}
+            onClick={navigateToIcon}
+          />
+          <WelcomeCard
+            icon={<DocumentCssRegular fontSize={tokens.fontSizeBase600} />}
+            title="Styles"
+            description={"Utilities for existing components"}
+            onClick={navigateToFirstStyle}
+          />
         </div>
+      </div>
+      <div className={styles.image}>
+        <WelcomeImage />
       </div>
     </div>
   );
 };
+
+function useWelcomePage() {
+  const navigate = useNavigate();
+
+  const navigateToFirstComponent = useCallback(
+    () => {
+      const [firstComponent] = getRouteByCategory(RouteCategory.COMPONENT)[0];
+      navigate(firstComponent);
+    },
+    [navigate]
+  );
+
+  const navigateToFirstStyle = useCallback(
+    () => {
+      const [firstComponent] = getRouteByCategory(RouteCategory.STYLE)[0];
+      navigate(firstComponent);
+    },
+    [navigate]
+  );
+
+  const navigateToIcon = useCallback(
+    () => {
+      navigate(routes.IconCatalog);
+    },
+    [navigate]
+  );
+
+  const navigateToTheme = useCallback(
+    () => {
+      navigate(routes.Theme);
+    },
+    [navigate]
+  );
+
+  return {
+    navigateToFirstComponent,
+    navigateToFirstStyle,
+    navigateToIcon,
+    navigateToTheme,
+  };
+}
