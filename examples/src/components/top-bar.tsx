@@ -37,15 +37,15 @@ import {
   Megaphone24Filled,
   OpenRegular,
   QuestionCircleRegular,
-  ZoomFit20Filled,
-  ZoomFit20Regular,
+  ZoomFit16Filled,
+  ZoomFit16Regular,
 } from "@fluentui/react-icons";
 import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/ApplicationStateProvider";
 
 const ApplicationIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
 const MailIcon = bundleIcon(MailFilled, MailRegular);
-const ZoomIcon = bundleIcon(ZoomFit20Filled, ZoomFit20Regular);
+const ZoomIcon = bundleIcon(ZoomFit16Filled, ZoomFit16Regular);
 const FishIcon = bundleIcon(FoodFish20Filled, FoodFish20Regular);
 const CatIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
 const AddSubIcon = bundleIcon(
