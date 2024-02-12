@@ -1,54 +1,34 @@
-import {
-  bundleIcon,
-  DarkThemeFilled,
-  DarkThemeRegular,
-  DocumentCssFilled,
-  DocumentCssRegular,
-  EyeFilled,
-  EyeRegular,
-  HomeFilled,
-  HomeRegular,
-  IconsFilled,
-  IconsRegular,
-  OptionsFilled,
-  OptionsRegular,
-  StepsFilled,
-  StepsRegular,
-  TableFilled,
-  TableRegular,
-} from "@fluentui/react-icons";
 import React from "react";
-import { IconPage } from "../stories/icon-page";
-import { StepperPage } from "../stories/stepper-page";
-import { TableUtilitiesPage } from "../stories/table-utlities-page";
-import { ThemePage } from "../stories/theme-page";
-import { VerticalStepperPage } from "../stories/vertical-stepper-page";
-import { routes, TRoute } from "./routes";
-import { SliderPage } from "../stories/slider-page";
 import { WelcomePage } from "../landingpage";
-import { PasswordInputPage } from "../stories/password-input-page";
+import { IconPage } from "../stories/icon-page";
+import { PasswordInputPage } from "../stories/password-input/password-input-page";
+import { SliderPage } from "../stories/slider/slider-page";
+import { StepperPage } from "../stories/stepper/stepper-page";
 import { FluentUiTabStylesPage } from "../stories/tab-list-utilities/tab-list-utilities-page";
-
-const HomeIcon = bundleIcon(HomeFilled, HomeRegular);
-const ThemeIcon = bundleIcon(DarkThemeFilled, DarkThemeRegular);
-const IconCatalogIcon = bundleIcon(IconsFilled, IconsRegular);
-const StepperIcon = bundleIcon(StepsFilled, StepsRegular);
-const VStepperIcon = bundleIcon(StepsFilled, StepsRegular);
-const TableUtilitiesIcon = bundleIcon(TableFilled, TableRegular);
-const SliderIcon = bundleIcon(OptionsFilled, OptionsRegular);
-const PasswordIcon = bundleIcon(EyeFilled, EyeRegular);
-const TabStylesIcon = bundleIcon(DocumentCssFilled, DocumentCssRegular);
+import { ThemePage } from "../stories/theme-page";
+import { routes, TRoute } from "./routes";
+import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
 
 export enum RouteGroup {
   MISC,
   STORY,
 }
 
+export enum RouteCategory {
+  MISC,
+  COMPONENT,
+  STYLE,
+}
+
 type TRouteData = {
   label: string;
   element: JSX.Element;
-  icon?: JSX.Element;
   group: RouteGroup;
+  category?: RouteCategory;
+  ghInfo?: {
+    url: string;
+    packageName: string;
+  };
 };
 
 export const routeMap: Map<TRoute, TRouteData> = new Map([
@@ -56,7 +36,6 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.Home,
     {
       label: "Home",
-      icon: <HomeIcon />,
       element: <WelcomePage />,
       group: RouteGroup.MISC,
     },
@@ -64,19 +43,29 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
   [
     routes.Theme,
     {
-      label: "Theme",
+      label: "Themes",
       element: <ThemePage />,
-      icon: <ThemeIcon />,
       group: RouteGroup.STORY,
+      category: RouteCategory.MISC,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-theme",
+        packageName: "@axiscommunications/fluent-theme",
+      },
     },
   ],
   [
     routes.IconCatalog,
     {
-      label: "Icon Catalog",
+      label: "Icons",
       element: <IconPage />,
-      icon: <IconCatalogIcon />,
       group: RouteGroup.STORY,
+      category: RouteCategory.MISC,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-icons",
+        packageName: "@axiscommunications/fluent-icons",
+      },
     },
   ],
   [
@@ -84,17 +73,13 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     {
       label: "Stepper",
       element: <StepperPage />,
-      icon: <StepperIcon />,
       group: RouteGroup.STORY,
-    },
-  ],
-  [
-    routes.VerticalStepper,
-    {
-      label: "Vertical Stepper",
-      element: <VerticalStepperPage />,
-      icon: <VStepperIcon />,
-      group: RouteGroup.STORY,
+      category: RouteCategory.COMPONENT,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-stepper",
+        packageName: "@axiscommunications/fluent-stepper",
+      },
     },
   ],
   [
@@ -102,8 +87,13 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     {
       label: "Slider",
       element: <SliderPage />,
-      icon: <SliderIcon />,
       group: RouteGroup.STORY,
+      category: RouteCategory.COMPONENT,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-slider",
+        packageName: "@axiscommunications/fluent-slider",
+      },
     },
   ],
   [
@@ -111,30 +101,61 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     {
       label: "Password input",
       element: <PasswordInputPage />,
-      icon: <PasswordIcon />,
       group: RouteGroup.STORY,
+      category: RouteCategory.COMPONENT,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-password-input",
+        packageName: "@axiscommunications/fluent-password-input ",
+      },
     },
   ],
   [
     routes.TableUtilities,
     {
-      label: "Table Utilities",
+      label: "Table",
       element: <TableUtilitiesPage />,
-      icon: <TableUtilitiesIcon />,
       group: RouteGroup.STORY,
+      category: RouteCategory.STYLE,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
+        packageName: "@axiscommunications/fluent-styles",
+      },
     },
   ],
   [
     routes.TabListUtilities,
     {
-      label: "Tablist utilities",
+      label: "Tablist",
       element: <FluentUiTabStylesPage />,
-      icon: <TabStylesIcon />,
       group: RouteGroup.STORY,
+      category: RouteCategory.STYLE,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
+        packageName: "@axiscommunications/fluent-styles",
+      },
     },
   ],
 ]);
 
+export function getGhInfoByKey(
+  routeKey: TRoute
+): { url: string; packageName: string } {
+  const routeData = routeMap.get(routeKey);
+
+  if (routeData?.ghInfo) {
+    return routeData.ghInfo;
+  }
+
+  throw new Error("getGhInfoByKey should not happen");
+}
+
 export const getRouteByGroup = (group: RouteGroup) => {
   return [...routeMap.entries()].filter((e) => e[1].group === group);
+};
+
+export const getRouteByCategory = (category: RouteCategory) => {
+  return [...routeMap.entries()].filter((e) => e[1].category === category);
 };

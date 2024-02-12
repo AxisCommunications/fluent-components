@@ -21,16 +21,15 @@ import {
   TabList,
   Theme,
 } from "@fluentui/react-components";
-import { useAppContext } from "../context/ApplicationStateProvider";
 import { DarkThemeRegular } from "@fluentui/react-icons";
 import React, { memo, useCallback, useState } from "react";
-import { PageHeader } from "../components/page-header";
 import { SimpleHeader } from "../components/simple-header";
-import {
-  useFixedPageStyle,
-  useLayoutStyles,
-  useScrollPageStyle,
-} from "../styles/page";
+import { StoryPage } from "../components/story/story-page";
+import { StorySection } from "../components/story/story-section";
+import { useAppContext } from "../context/ApplicationStateProvider";
+import { getGhInfoByKey } from "../routing/route-map";
+import { routes } from "../routing/routes";
+import { useLayoutStyles, useScrollPageStyle } from "../styles/page";
 
 const useStyles = makeStyles({
   tablist: {
@@ -133,16 +132,17 @@ const tokenVariant = {
   status: "colorStatus",
 } as const;
 
-type TtokenVariant = typeof tokenVariant[keyof typeof tokenVariant];
+type TTokenVariant = typeof tokenVariant[keyof typeof tokenVariant];
 
 export const ThemePage = () => {
+  const gh = getGhInfoByKey(routes.Theme);
+
   const styles = useStyles();
-  const fixedPageStyle = useFixedPageStyle();
   const scrollPageStyle = useScrollPageStyle();
   const layoutStyles = useLayoutStyles();
 
   const [selectedTab, setSelectedTab] = useState<TaxisThemes>(axisThemes.main);
-  const [selectedVariant, setSelectedVariant] = useState<TtokenVariant>(
+  const [selectedVariant, setSelectedVariant] = useState<TTokenVariant>(
     tokenVariant.brand
   );
 
@@ -158,7 +158,7 @@ export const ThemePage = () => {
 
   const onVariantSelect = useCallback(
     (_: SelectTabEvent, { value }: SelectTabData) =>
-      setSelectedVariant(value as TtokenVariant),
+      setSelectedVariant(value as TTokenVariant),
     []
   );
 
@@ -173,13 +173,13 @@ export const ThemePage = () => {
   }, [selectedTab, setAppTheme]);
 
   return (
-    <div className={layoutStyles.grid}>
-      <PageHeader
-        className={layoutStyles.header}
-        title="Themes"
-        borderBottom={false}
-      />
-      <div className={mergeClasses(layoutStyles.content, fixedPageStyle)}>
+    <StoryPage
+      title="Theme"
+      description={"Axis branded theme"}
+      ghUrl={gh.url}
+      ghPackage={gh.packageName}
+    >
+      <StorySection>
         <div className={layoutStyles.innerGrid}>
           <SimpleHeader className={layoutStyles.header}>
             <div className={styles.tokenPicker}>
@@ -234,7 +234,7 @@ export const ThemePage = () => {
             />
           </div>
         </div>
-      </div>
-    </div>
+      </StorySection>
+    </StoryPage>
   );
 };
