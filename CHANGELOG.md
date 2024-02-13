@@ -1,9 +1,9 @@
-## [8.13.0](https://github.com/AxisCommunications/fluent-components/compare/8a31780d4e7da8f2c01ebdd707922850eae5bf8b..63fd53742a5007f62776aafe33ff80220c7baaf0) (2024-02-09T09:59:19.824Z)
+## [8.14.0](https://github.com/AxisCommunications/fluent-components/compare/685c15156754f8483b4613c9e0a6d64f5482a24f..549b673949a3a53ac90da61c48390bcc3e8a40e3) (2024-02-13T10:55:36.319Z)
 
-### ✨ Features
+### 🚧 Maintenance
 
-  - **passwordInput**: enable ref forwarding (#191) ([63fd537](https://github.com/AxisCommunications/fluent-components/commit/63fd53742a5007f62776aafe33ff80220c7baaf0))
+  - overhaul example page(#194) ([cf95617](https://github.com/AxisCommunications/fluent-components/commit/cf95617dc5c4242d100a4b3182338ab7c4f4421d))
 
 ### 🐛 Bug fixes
 
-  - **stepper**: update colors of previous and current steps (#190) ([1f54a6d](https://github.com/AxisCommunications/fluent-components/commit/1f54a6d2629e752f36a1aaf30dd2ade4eb11a4d6))
+  - **topbar**: style updates to application drawer (#195) ([549b673](https://github.com/AxisCommunications/fluent-components/commit/549b673949a3a53ac90da61c48390bcc3e8a40e3))
