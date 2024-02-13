@@ -1,6 +1,5 @@
 import { ArrowRightRegular, Dismiss20Regular } from "@fluentui/react-icons";
-import React, { Fragment, useState } from "react";
-
+import React, { useState } from "react";
 import { ApplicationArea } from "./top-bar.types";
 import { useTranslation } from "./translation-context";
 import {
@@ -14,6 +13,7 @@ import {
   DrawerHeader,
   Link,
   mergeClasses,
+  ToggleButton,
   tokens,
 } from "@fluentui/react-components";
 import { useApplicationDrawrStyles as useApplicationDrawerStyles } from "./application-drawer.styles";
@@ -29,22 +29,47 @@ import {
 } from "./application-drawer.types";
 import { useApplicationStyles } from "./application.styles";
 
-const CurrentApplication = ({ application }: {
-  application: SingleApplicationDrawerContent;
-}): JSX.Element => {
+const DrawerTrigger = (
+  { setIsOpen, applicationArea, currentSelection }: {
+    setIsOpen: (isOpen: boolean) => void;
+    applicationArea: ApplicationArea;
+    currentSelection: SingleApplicationDrawerContent | undefined;
+  }
+) => {
   const styles = useApplicationDrawerStyles();
+  const [hover, setHover] = useState(false);
 
   return (
-    <div className={styles.iconAndText}>
-      <div
-        className={styles.currentSpplicationGroupTitleIcon}
-      >
-        {application.icon}
-      </div>
-      <Body1Strong className={styles.currentApplicationGroupTitleText}>
-        {application.label}
-      </Body1Strong>
-    </div>
+    <Button
+      className={styles.drawerTriggerButton}
+      data-testid="application-drawer-trigger"
+      appearance="subtle"
+      onClick={() => setIsOpen(true)}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      {<ApplicationAreaIcon applicationArea={applicationArea} />}
+      <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
+      {currentSelection
+        ? (
+          <div className={styles.drawerTriggerApplication}>
+            <div
+              className={mergeClasses(
+                styles.drawerTriggerApplicationIcon,
+                hover && styles.drawerTriggerApplicationIconHovered
+              )}
+            >
+              {currentSelection.icon}
+            </div>
+            <Body1Strong
+              className={styles.drawerTriggerApplicationText}
+            >
+              {currentSelection.label}
+            </Body1Strong>
+          </div>
+        )
+        : null}
+    </Button>
   );
 };
 
@@ -55,7 +80,7 @@ const ApplicationGroupTitle = ({ application }: {
   const appStyles = useApplicationStyles();
 
   return (
-    <div className={styles.iconAndText}>
+    <div className={styles.applicationGroupTitle}>
       <div
         className={mergeClasses(
           styles.applicationGroupTitleIcon,
@@ -125,15 +150,12 @@ const SingleApplication = ({
   applicationArea: ApplicationArea;
 }): JSX.Element => {
   const styles = useApplicationDrawerStyles();
-  const buttonStyle = mergeClasses(
-    styles.contentButton,
-    application.id === currentSelectionId && styles.selectedContentButton
-  );
 
   return (
-    <Button
+    <ToggleButton
+      checked={application.id === currentSelectionId}
       data-testid={`application-drawer-item-${application.id}`}
-      className={buttonStyle}
+      className={styles.contentButton}
       appearance="subtle"
       icon={iconConverter(
         application.icon,
@@ -145,7 +167,7 @@ const SingleApplication = ({
       <Body1 className={styles.applicationButton}>
         {application.label}
       </Body1>
-    </Button>
+    </ToggleButton>
   );
 };
 
@@ -205,18 +227,17 @@ export const ApplicationDrawer = ({
 
   return (
     <>
-      <Button
-        data-testid="application-drawer-trigger"
-        appearance="subtle"
-        onClick={() => setIsOpen(true)}
+      <DrawerTrigger
+        applicationArea={applicationArea}
+        currentSelection={currentSelection}
+        setIsOpen={setIsOpen}
+      />
+
+      <Drawer
+        className={styles.drawer}
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
       >
-        {<ApplicationAreaIcon applicationArea={applicationArea} />}
-        <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
-        {currentSelection
-          ? <CurrentApplication application={currentSelection} />
-          : null}
-      </Button>
-      <Drawer open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader className={styles.header}>
           <div className={styles.headerTitle}>
             <ApplicationAreaIcon applicationArea={applicationArea} />
@@ -234,7 +255,7 @@ export const ApplicationDrawer = ({
           />
         </DrawerHeader>
 
-        <DrawerBody>
+        <DrawerBody className={styles.body}>
           {link && (
             <div className={styles.linkWrapper}>
               <Link
@@ -249,10 +270,10 @@ export const ApplicationDrawer = ({
           )}
           <div className={styles.content}>
             {title}
-            <Divider></Divider>
+            <Divider />
             {content?.map((c) => {
               return (
-                <Fragment key={c.id}>
+                <div className={styles.contentGroup} key={c.id}>
                   {c.children
                     ? (
                       <ApplicationWithChildren
@@ -270,8 +291,8 @@ export const ApplicationDrawer = ({
                         applicationArea={applicationArea}
                       />
                     )}
-                  <Divider></Divider>
-                </Fragment>
+                  <Divider className={styles.contentDivider} />
+                </div>
               );
             })}
           </div>

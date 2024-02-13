@@ -71,7 +71,7 @@ export const useApplicationStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    ...shorthands.borderRadius("6px"),
+    ...shorthands.borderRadius("4px", "4px", "1px", "4px"),
   },
   myApplicationAreaBase: {
     height: "32px",
