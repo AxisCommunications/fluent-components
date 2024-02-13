@@ -43,7 +43,7 @@ export const useApplicationDrawrStyles = makeStyles({
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalM),
   },
   drawerTriggerApplicationIcon: {
-    color: tokens.colorNeutralForeground3,
+    color: tokens.colorNeutralForeground2,
     "&:hover": {
       color: tokens.colorNeutralForeground2BrandHover,
     },
@@ -52,7 +52,7 @@ export const useApplicationDrawrStyles = makeStyles({
     color: tokens.colorNeutralForeground2BrandHover,
   },
   drawerTriggerApplicationText: {
-    color: tokens.colorNeutralForeground3,
+    color: tokens.colorNeutralForeground2,
   },
   applicationGroupTitle: {
     fontSize: "1.4em",
