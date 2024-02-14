@@ -130,6 +130,34 @@ describe("range-slider", () => {
 
       expect(onChangeCommitted).toHaveBeenCalledWith({ value: [40, 100] });
     });
+
+    it("should snap to closest mark", () => {
+      const onChange = vi.fn();
+      const onChangeCommitted = vi.fn();
+      const { getByTestId } = render(
+        <RangeSlider
+          title="Range Slider"
+          min={0}
+          max={100}
+          onChange={onChange}
+          onChangeCommitted={onChangeCommitted}
+          marks={[
+            { value: 20, label: <span data-testid="mark">20</span> },
+            { value: 40, label: "40" },
+            { value: 60, label: "60" },
+          ]}
+          data-testid="slider-root"
+        />
+      );
+
+      const mark: HTMLElement = getByTestId("mark");
+      getControlRoot(getByTestId("slider-root"));
+      fireEvent.mouseDown(mark, { button: 0, clientX: 29 });
+      fireEvent.mouseUp(mark, { button: 0, clientX: 29 });
+
+      expect(onChange).toHaveBeenCalledWith({ value: [20] });
+      expect(onChangeCommitted).toHaveBeenCalledWith({ value: [20] });
+    });
   });
 
   describe("keyboard interaction", () => {
