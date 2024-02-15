@@ -51,6 +51,10 @@ import {
   WithStepsSliderExample,
   WithStepsSliderExampleAsString,
 } from "./examples/with-steps-example";
+import {
+  WithStepsAndMarksRangeSliderExample,
+  WithStepsAndMarksRangeSliderExampleAsString,
+} from "./examples/range-slider-with-streps-and-marks-example";
 
 const useStyles = makeStyles({
   example: {
@@ -88,6 +92,12 @@ const examples: pageData[] = [
     anchor: "WithStepsSliderExample",
     example: <WithStepsSliderExample />,
     codeString: WithStepsSliderExampleAsString,
+  },
+  {
+    title: "With steps and marks",
+    anchor: "WithStepsAndMarksSliderExample",
+    example: <WithStepsAndMarksRangeSliderExample />,
+    codeString: WithStepsAndMarksRangeSliderExampleAsString,
   },
   {
     title: "Stepping to marks",
