@@ -1,5 +1,10 @@
-## [8.14.1](https://github.com/AxisCommunications/fluent-components/compare/1f9024e660d63c5998ffe8a9d5a34baf1d9a7a40..645df3b7f497dbf72e12509db5003b5eb9ac15f9) (2024-02-15T06:55:36.811Z)
+## [8.15.0](https://github.com/AxisCommunications/fluent-components/compare/7cd90f8c2c376c54124055b85725a859c13efb3a..7c13e1b9542da3b44dd563feb0377256d449d855) (2024-02-15T14:38:30.507Z)
+
+### 🚧 Maintenance
+
+  - **deps**: bump @typescript-eslint/eslint-plugin from 5.53.0 to 5.62.0 (#169) ([7c13e1b](https://github.com/AxisCommunications/fluent-components/commit/7c13e1b9542da3b44dd563feb0377256d449d855))
+  - **deps**: bump the dev-dependencies group with 4 updates (#201) ([9f620f5](https://github.com/AxisCommunications/fluent-components/commit/9f620f5417c316a5e0e8b2db2a7605346429a26f))
 
 ### 🐛 Bug fixes
 
-  - **topbar**: drawer trigger color update (#198) ([645df3b](https://github.com/AxisCommunications/fluent-components/commit/645df3b7f497dbf72e12509db5003b5eb9ac15f9))
+  - **slider**: snap to mark (#200) ([a391d57](https://github.com/AxisCommunications/fluent-components/commit/a391d5794b99bf50af561ae1ecb54f40789332fd))
