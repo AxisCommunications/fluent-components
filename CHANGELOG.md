@@ -1,9 +1,5 @@
-## [8.14.0](https://github.com/AxisCommunications/fluent-components/compare/685c15156754f8483b4613c9e0a6d64f5482a24f..549b673949a3a53ac90da61c48390bcc3e8a40e3) (2024-02-13T10:55:36.319Z)
-
-### 🚧 Maintenance
-
-  - overhaul example page(#194) ([cf95617](https://github.com/AxisCommunications/fluent-components/commit/cf95617dc5c4242d100a4b3182338ab7c4f4421d))
+## [8.14.1](https://github.com/AxisCommunications/fluent-components/compare/1f9024e660d63c5998ffe8a9d5a34baf1d9a7a40..645df3b7f497dbf72e12509db5003b5eb9ac15f9) (2024-02-15T06:55:36.811Z)
 
 ### 🐛 Bug fixes
 
-  - **topbar**: style updates to application drawer (#195) ([549b673](https://github.com/AxisCommunications/fluent-components/commit/549b673949a3a53ac90da61c48390bcc3e8a40e3))
+  - **topbar**: drawer trigger color update (#198) ([645df3b](https://github.com/AxisCommunications/fluent-components/commit/645df3b7f497dbf72e12509db5003b5eb9ac15f9))
