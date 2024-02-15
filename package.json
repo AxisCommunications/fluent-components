@@ -26,7 +26,7 @@
     "cmd-ts": "^0.13.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "depcheck": "1.4.7",
     "dprint": "0.45.0",
