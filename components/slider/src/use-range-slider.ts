@@ -28,6 +28,7 @@ import { ThumbProps } from "./thumb/thumb.types";
 import { toPercent } from "./utils";
 import { MarkLabelProps } from "./mark/label/mark-label.types";
 import { MarkLabel } from "./mark/label/mark-label";
+import { sliderClassNames } from "./use-slider-styles";
 
 const asc = (a: number, b: number): number => a - b;
 
@@ -78,6 +79,19 @@ const findClosest = (value: number, candidates: number[]) => {
     .map((v, index) => ({ value: v, index, distance: Math.abs(v - value) }))
     .sort((a, b) => a.distance - b.distance)[0];
   return { value: closest.value, index: closest.index };
+};
+
+const isMarkLabelElement = (target: EventTarget | null): boolean => {
+  if (
+    !target || !(target instanceof Element)
+    || target.classList.contains(sliderClassNames.root)
+  ) {
+    return false;
+  }
+  if (target.classList.contains(sliderClassNames.mark.label)) {
+    return true;
+  }
+  return isMarkLabelElement(target.parentNode);
 };
 
 export const useRangeSlider_unstable = (
@@ -165,17 +179,20 @@ export const useRangeSlider_unstable = (
   const controlRef = useFocusWithin<HTMLSpanElement>();
 
   const snapValueToClosest = useCallback(
-    (value: number) => {
+    (value: number, snapToMarkValue: boolean) => {
       if (snapValues) {
         return findClosest(value, snapValues).value;
       }
+      if (snapToMarkValue) {
+        return findClosest(value, markValues).value;
+      }
       return value;
     },
-    [snapValues]
+    [snapValues, markValues]
   );
 
   const getNewValue = useCallback(
-    (clientX: number): number => {
+    (clientX: number, snapToMarkValue: boolean): number => {
       const clientRect = controlRef.current?.getBoundingClientRect() as DOMRect;
       let relativePosition = clamp(
         (clientX - clientRect.x) / clientRect.width,
@@ -188,7 +205,8 @@ export const useRangeSlider_unstable = (
       }
 
       return snapValueToClosest(
-        Math.round(relativePosition * (max - min) + min)
+        Math.round(relativePosition * (max - min) + min),
+        snapToMarkValue
       );
     },
     [controlRef, dir, max, min, snapValueToClosest]
@@ -210,7 +228,8 @@ export const useRangeSlider_unstable = (
       if (e.button !== 0) {
         return;
       }
-      const newValue = getNewValue(e.clientX);
+
+      const newValue = getNewValue(e.clientX, isMarkLabelElement(e.target));
 
       // avoid text selection
       e.preventDefault();
@@ -245,7 +264,7 @@ export const useRangeSlider_unstable = (
       return;
     }
 
-    const wantedValue = getNewValue(clientX);
+    const wantedValue = getNewValue(clientX, false);
     const previousValue = wantedValue;
     const newValues = internalValues.slice();
     newValues[active] = wantedValue;
@@ -291,7 +310,10 @@ export const useRangeSlider_unstable = (
       touchId.current = touch.identifier;
     }
 
-    const newValue = getNewValue(touch.clientX);
+    const newValue = getNewValue(
+      touch.clientX,
+      isMarkLabelElement(event.target)
+    );
     const closestIndex = findClosest(newValue, internalValues).index;
 
     const newValues = internalValues.slice();
