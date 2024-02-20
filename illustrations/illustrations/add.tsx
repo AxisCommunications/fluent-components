@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function HomeLine({
+export function Example({
   size = 18, // or any default size of your choice
   color = "black" // or any color of your choice
 }) {
