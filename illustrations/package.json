@@ -1,7 +1,7 @@
 {
   "name": "@axiscommunications/fluent-illustrations",
   "private": true,
-  "version": "8.7.1",
+  "version": "8.15.0",
   "description": "Illustrations",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -29,8 +29,7 @@
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && eslint . --cache",
-    "optimize-svg": "svgo --config=.svgo.yml -f ./assets",
-    "convert-svg": "svgr -d ./illustrations ./assets"
+    "optimize-svg": "svgo --config=.svgo.yml -f ./assets"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
