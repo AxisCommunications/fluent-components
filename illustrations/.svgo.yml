@@ -1,6 +1,6 @@
 plugins:
   - removeViewBox: false
-  - removeDimensions: true 
+  - removeDimensions: true
   - removeDoctype: true
   - removeComments: true
   - removeMetadata: true
