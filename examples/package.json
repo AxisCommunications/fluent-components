@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.41.2",
-    "@types/node": "^20.11.18",
+    "@types/node": "^20.11.19",
     "@types/react": "^17.0.67",
     "@types/react-dom": "^17.0.21",
     "@types/react-syntax-highlighter": "15.5.11",
