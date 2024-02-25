@@ -29,9 +29,10 @@
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && eslint . --cache",
-    "illustrations:build-react": "pnpm run illustrations:generate-svg && pnpm run illustrations:optimize-svg",
-    "illustrations:generate-svg": "ts-node src/scripts/generate-svg.ts --from ./assets --to ./dist",
-    "illustrations:optimize-svg": "svgo --config=.svgo.yml -f ./dist"
+    "illustrations:build-react": "pnpm run illustrations:generate-svg && pnpm run illustrations:optimize-svg && pnpm illustrations:generate-react",
+    "illustrations:generate-svg": "ts-node src/scripts/generate-svg.ts --from ./assets --to ./dist/svg",
+    "illustrations:optimize-svg": "svgo --config=.svgo.yml -f ./dist/svg",
+    "illustrations:generate-react": "ts-node src/scripts/generate-react.ts --from ./dist/svg --to ./dist/react"
   },
   "dependencies": {
     "yargs": "17.7.2"
