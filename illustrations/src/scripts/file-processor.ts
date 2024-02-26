@@ -23,7 +23,7 @@ export function checkDirectory(path: string, createIfMissing = false) {
   const exist = fs.existsSync(path);
   if (!exist && createIfMissing) {
     console.log("creating directory: ", path);
-    fs.mkdirSync(path);
+    fs.mkdirSync(path, { recursive: true });
   }
   return exist;
 }
@@ -37,7 +37,7 @@ export function clearDirectory(path: string) {
   }
 }
 
-function* readAllFiles(dir: string): Generator<string> {
+export function* readAllFiles(dir: string): Generator<string> {
   const files = fs.readdirSync(dir, { withFileTypes: true });
 
   for (const file of files) {
@@ -49,6 +49,6 @@ function* readAllFiles(dir: string): Generator<string> {
   }
 }
 
-function getFileName(str: string) {
+export function getFileName(str: string) {
   return str.substring(str.lastIndexOf("/") + 1);
 }

@@ -1,6 +1,8 @@
 export const ILLUSTRATION_LIGHT = "_dark";
 export const ILLUSTRATION_DARK = "_light";
 
+export const FILE_PREFIX = "il_axis_";
+
 export const ANSI_RESET = "\u001B[0m";
 export const ANSI_BLACK = "\u001B[30m";
 export const ANSI_RED = "\u001B[31m";
