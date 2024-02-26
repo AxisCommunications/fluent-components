@@ -20,7 +20,7 @@
     "semver": "^7.5.4"
   },
   "devDependencies": {
-    "@types/node": "^20.11.18",
+    "@types/node": "^20.11.20",
     "@types/semver": "^7.5.6"
   }
 }
