@@ -3,6 +3,8 @@ export const ILLUSTRATION_DARK = "_light";
 
 export const FILE_PREFIX = "il_axis_";
 
+export const DEFAULT_CHUNK_SIZE = 50;
+
 export const ANSI_RESET = "\u001B[0m";
 export const ANSI_BLACK = "\u001B[30m";
 export const ANSI_RED = "\u001B[31m";

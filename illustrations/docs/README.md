@@ -1,4 +1,4 @@
-# Theme - @axiscommunications/fluent-illustrations
+# Illustrations - @axiscommunications/fluent-illustrations
 
 Axis branded illustrations
 

@@ -29,6 +29,7 @@
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && eslint . --cache",
+    "illustrations:deploy": "mkdir -p src && pnpm illustrations:build-react && cp -a dist/react/* src",
     "illustrations:build-react": "pnpm run illustrations:generate-svg && pnpm run illustrations:optimize-svg && pnpm illustrations:generate-react",
     "illustrations:generate-svg": "ts-node src/scripts/generate-svg.ts --from ./assets --to ./dist/svg",
     "illustrations:optimize-svg": "svgo --config=.svgo.yml -f ./dist/svg",

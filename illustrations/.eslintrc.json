@@ -1,5 +1,9 @@
 {
   "extends": ["../.eslintrc.json"],
   "root": true,
-  "ignorePatterns": ["**/generated/**", "tokens/**", "lib"]
+  "ignorePatterns": [
+    "assets/**",
+    "dist/**",
+    "lib"
+  ]
 }

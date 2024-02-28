@@ -7,6 +7,7 @@ export const routes = {
   Slider: "/slider",
   PasswordInput: "/password-input",
   TabListUtilities: "/tab-list-utilities",
+  Illustrations: "/illustrations-catalog",
 } as const;
 
 export type TRoute = (typeof routes)[keyof typeof routes];
