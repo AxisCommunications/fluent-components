@@ -1,10 +1,6 @@
-## [8.15.0](https://github.com/AxisCommunications/fluent-components/compare/7cd90f8c2c376c54124055b85725a859c13efb3a..7c13e1b9542da3b44dd563feb0377256d449d855) (2024-02-15T14:38:30.507Z)
+## [8.16.0](https://github.com/AxisCommunications/fluent-components/compare/f0bd6d7fc20006e511d2247ce454c37a49a098ed..4e2135a59eb3eb27270e28da82faf2417e6e9dbe) (2024-03-04T14:28:48.706Z)
 
-### 🚧 Maintenance
+### ✨ Features
 
-  - **deps**: bump @typescript-eslint/eslint-plugin from 5.53.0 to 5.62.0 (#169) ([7c13e1b](https://github.com/AxisCommunications/fluent-components/commit/7c13e1b9542da3b44dd563feb0377256d449d855))
-  - **deps**: bump the dev-dependencies group with 4 updates (#201) ([9f620f5](https://github.com/AxisCommunications/fluent-components/commit/9f620f5417c316a5e0e8b2db2a7605346429a26f))
-
-### 🐛 Bug fixes
-
-  - **slider**: snap to mark (#200) ([a391d57](https://github.com/AxisCommunications/fluent-components/commit/a391d5794b99bf50af561ae1ecb54f40789332fd))
+  - **icons**: add my systems icon (#215) ([4e2135a](https://github.com/AxisCommunications/fluent-components/commit/4e2135a59eb3eb27270e28da82faf2417e6e9dbe))
+  - add private illustration package (#205) ([8d4dafa](https://github.com/AxisCommunications/fluent-components/commit/8d4dafad6404c460efbbccb04236c495c2f37ba6))
