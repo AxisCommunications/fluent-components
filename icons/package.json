@@ -41,9 +41,9 @@
   },
   "devDependencies": {
     "@svgr/core": "^5.5.0",
-    "@types/node": "^20.11.18",
+    "@types/node": "^20.11.24",
     "@types/react": "^18.2.24",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "icon-font-generator": "^2.1.11",
     "react": "^18.2.0",
     "replace": "^1.2.2",
