@@ -7,11 +7,11 @@ export type FluentIllustration = {
 
 export type AxisIllustrationProps<
   TBaseAttributes extends
-    | React.SVGAttributes<SVGElement>
-    | React.HTMLAttributes<HTMLElement> = React.SVGAttributes<SVGElement>,
+    | React.ImgHTMLAttributes<HTMLImageElement>
+    | React.HTMLAttributes<HTMLElement> = React.ImgHTMLAttributes<
+      HTMLImageElement
+    >,
 > = TBaseAttributes & {
-  primaryFill?: string;
   className?: string;
-  filled?: boolean;
   title?: string;
 };

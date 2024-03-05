@@ -108,7 +108,7 @@ function processFolder(from: TGenerateREACTConfig["from"]): string[] {
     const illustrationName = toIllustrationName(file.fileName);
     const fileContentAsString = `\`${file.content}\``;
     const jsCode =
-      `export const ${illustrationName} = (/*#__PURE__*/createFluentIllustration('${illustrationName}', ${160}, ${fileContentAsString}));`;
+      `export const ${illustrationName} = (/*#__PURE__*/createFluentIllustration('${illustrationName}', ${fileContentAsString}));`;
     illustrations.push(jsCode);
   }
   return illustrations;

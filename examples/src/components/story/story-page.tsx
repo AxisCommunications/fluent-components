@@ -1,4 +1,5 @@
 import {
+  Divider,
   DrawerBody,
   DrawerHeader,
   InlineDrawer,
@@ -25,12 +26,17 @@ const useStyles = makeStyles({
     ...shorthands.padding(0, "15%", 0, "5%"),
   },
   header: {
-    ...shorthands.padding(tokens.spacingHorizontalM, tokens.spacingVerticalL),
+    ...shorthands.padding(
+      tokens.spacingHorizontalM,
+      tokens.spacingHorizontalM,
+      tokens.spacingHorizontalXXS,
+      tokens.spacingHorizontalM
+    ),
   },
   headerDescription: {
     display: "flex",
     flexDirection: "column",
-    ...shorthands.gap(tokens.spacingHorizontalXXL),
+    ...shorthands.gap(tokens.spacingHorizontalL),
   },
   package: {
     color: tokens.colorNeutralForeground3,
@@ -50,6 +56,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
+    ...shorthands.gap(tokens.spacingHorizontalS),
   },
   navigation: {
     height: "100%",
@@ -85,6 +92,9 @@ const useStyles = makeStyles({
     ),
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  customHeaderSlot: {
+    paddingTop: tokens.spacingHorizontalXL,
+  },
 });
 
 export function useStoryPageStyles() {
@@ -98,12 +108,21 @@ type TStoryPage = {
   ghPackage: string;
   ghUrl?: string;
   description?: string;
+  customHeader?: JSX.Element;
   navigation?: JSX.Element;
 };
 
 export function StoryPage(
-  { title, description, ghPackage, ghUrl, navigation, children, ...rest }:
-    PropsWithChildren<TStoryPage>
+  {
+    title,
+    description,
+    ghPackage,
+    ghUrl,
+    navigation,
+    children,
+    customHeader,
+    ...rest
+  }: PropsWithChildren<TStoryPage>
 ) {
   const { styles, rootStyle } = useStoryPageStyles();
   return (
@@ -123,8 +142,14 @@ export function StoryPage(
               </div>
               {description}
             </div>
+            {customHeader && (
+              <div className={styles.customHeaderSlot}>
+                {customHeader}
+              </div>
+            )}
           </StoryPageHeader>
         </div>
+        <Divider />
         <div className={styles.body}>
           {children}
         </div>
