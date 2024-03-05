@@ -4,9 +4,9 @@ import {
   BoxRegular,
   bundleIcon,
   CatchUp20Filled,
-  Dishwasher20Filled,
   Search20Filled,
 } from "@fluentui/react-icons";
+import { MySystems24Filled } from "@axiscommunications/fluent-icons";
 import { defaultMySystemsAppData, isMySystemsAppId } from "./applications";
 import { TranslationFn } from "./translation-context";
 import React from "react";
@@ -90,7 +90,7 @@ export const ApplicationAreaIcon = ({
       case appAreas.MY_PARTNERS:
         return <ArrowWrap20Filled />;
       case appAreas.MY_SYSTEMS:
-        return <Dishwasher20Filled />;
+        return <MySystems24Filled />;
     }
     return <DefaultApplicationIcon />;
   };
