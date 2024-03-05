@@ -1,6 +1,5 @@
-## [8.16.0](https://github.com/AxisCommunications/fluent-components/compare/f0bd6d7fc20006e511d2247ce454c37a49a098ed..4e2135a59eb3eb27270e28da82faf2417e6e9dbe) (2024-03-04T14:28:48.706Z)
+## [8.17.0](https://github.com/AxisCommunications/fluent-components/compare/38eb6078d96f18c71c51a22f52961daa9062e015..140904fbfd3c56bde08d14c6f33968552e227e77) (2024-03-05T10:45:19.659Z)
 
-### ✨ Features
+### 🐛 Bug fixes
 
-  - **icons**: add my systems icon (#215) ([4e2135a](https://github.com/AxisCommunications/fluent-components/commit/4e2135a59eb3eb27270e28da82faf2417e6e9dbe))
-  - add private illustration package (#205) ([8d4dafa](https://github.com/AxisCommunications/fluent-components/commit/8d4dafad6404c460efbbccb04236c495c2f37ba6))
+  - **topbar**: use correct my systems icon (#220) ([140904f](https://github.com/AxisCommunications/fluent-components/commit/140904fbfd3c56bde08d14c6f33968552e227e77))
