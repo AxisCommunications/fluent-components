@@ -55,11 +55,11 @@ export const IllustrationPage = (): JSX.Element => {
 
   return (
     <StoryPage
-      title="Illustrations (private package, WIP)"
+      title="Illustrations"
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       description={"Axis branded illustrations"}
-      status={[EStoryStatus.PRIVATE, EStoryStatus.WIP]}
+      status={[EStoryStatus.PRIVATE, EStoryStatus.NEW, EStoryStatus.WIP]}
       customHeader={
         <IllustrationPageHeader
           search={search}

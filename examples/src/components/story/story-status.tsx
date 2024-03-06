@@ -12,6 +12,7 @@ export enum EStoryStatus {
   NEW,
   WIP,
   STABLE,
+  UNSTABLE,
   PRIVATE,
   PUBLIC,
 }
@@ -19,6 +20,7 @@ export enum EStoryStatus {
 const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   [EStoryStatus.WIP]: (
     <Tooltip
+      key={EStoryStatus.PUBLIC}
       content={"Packages is not yet fully completed. Work is still in progress."}
       withArrow
       relationship={"label"}
@@ -28,6 +30,7 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   ),
   [EStoryStatus.NEW]: (
     <Tooltip
+      key={EStoryStatus.NEW}
       content={"Packages was newly added, beware of hick-ups!"}
       withArrow
       relationship={"label"}
@@ -37,6 +40,7 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   ),
   [EStoryStatus.STABLE]: (
     <Tooltip
+      key={EStoryStatus.STABLE}
       content={"Packages is considered stable, tho please report problems if found!"}
       withArrow
       relationship={"label"}
@@ -44,9 +48,20 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
       <Badge appearance="filled" color="brand">stable</Badge>
     </Tooltip>
   ),
+  [EStoryStatus.UNSTABLE]: (
+    <Tooltip
+      key={EStoryStatus.UNSTABLE}
+      content={"Packages is considered unstable, experimental."}
+      withArrow
+      relationship={"label"}
+    >
+      <Badge appearance="filled" color="warning">unstable</Badge>
+    </Tooltip>
+  ),
   [EStoryStatus.PRIVATE]: (
     <Tooltip
-      content={"Packages is private, you may copy from repository if you want."}
+      key={EStoryStatus.PRIVATE}
+      content={"Packages is private, not yet published, you may copy from repository if you want."}
       withArrow
       relationship={"label"}
     >
@@ -55,6 +70,7 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   ),
   [EStoryStatus.PUBLIC]: (
     <Tooltip
+      key={EStoryStatus.PUBLIC}
       content={"Packages is public and published."}
       withArrow
       relationship={"label"}
