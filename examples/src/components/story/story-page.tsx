@@ -11,6 +11,7 @@ import {
 } from "@fluentui/react-components";
 import React, { PropsWithChildren } from "react";
 import { StoryPageHeader } from "./story-page-header";
+import { EStoryStatus } from "./story-status";
 
 const componentId = "story-page";
 export const storyPageClassNames = {
@@ -110,6 +111,7 @@ type TStoryPage = {
   description?: string;
   customHeader?: JSX.Element;
   navigation?: JSX.Element;
+  status?: EStoryStatus[];
 };
 
 export function StoryPage(
@@ -121,6 +123,7 @@ export function StoryPage(
     navigation,
     children,
     customHeader,
+    status,
     ...rest
   }: PropsWithChildren<TStoryPage>
 ) {
@@ -129,7 +132,7 @@ export function StoryPage(
     <div data-testid={componentId} className={rootStyle} {...rest}>
       <div className={styles.main}>
         <div className={styles.header}>
-          <StoryPageHeader title={title}>
+          <StoryPageHeader title={title} status={status}>
             <div className={styles.headerDescription}>
               <div className={styles.package}>
                 {ghUrl

@@ -10,6 +10,7 @@ import { IllustrationDialog } from "./components/illustration-dialog";
 import { IllustrationPageHeader } from "./components/illustration-page-header";
 import { useIllustrationPage } from "./illustration-page.hooks";
 import { useStyles } from "./illustration-page.styles";
+import { EStoryStatus } from "../../components/story/story-status";
 
 export const IllustrationPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.Illustrations);
@@ -58,6 +59,7 @@ export const IllustrationPage = (): JSX.Element => {
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       description={"Axis branded illustrations"}
+      status={[EStoryStatus.PRIVATE, EStoryStatus.WIP]}
       customHeader={
         <IllustrationPageHeader
           search={search}
