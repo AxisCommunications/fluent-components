@@ -57,3 +57,7 @@ When done please start of dev example project and navigate to illustration page.
 verify that all look good!
 
 Now you can create PR of your changes!
+
+## License
+
+Illustration generation is heavily inspired of [microsoft/fluentui-system-icons](https://github.com/microsoft/fluentui-system-icons) which has MIT license.

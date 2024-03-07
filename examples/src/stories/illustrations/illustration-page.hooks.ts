@@ -1,26 +1,17 @@
+import { RadioGroupOnChangeData } from "@fluentui/react-components";
 import React from "react";
 import {
   axisIllustrations,
-  DEFAULT_ILLUSTRATION_WIDTH,
   DEFAULT_VARIANT_FILTER,
   TVariant,
 } from "./illustration-page.types";
-import {
-  RadioGroupOnChangeData,
-  SliderProps,
-} from "@fluentui/react-components";
 
 export function useIllustrationPage() {
   const [search, setSearch] = React.useState("");
-  const [illustrationWidth, setIllustrationWidth] = React.useState(
-    DEFAULT_ILLUSTRATION_WIDTH
-  );
+
   const [variant, setVariant] = React.useState<TVariant>(
     DEFAULT_VARIANT_FILTER
   );
-
-  const onUpdateIllustrationWidth: SliderProps["onChange"] = (_, data) =>
-    setIllustrationWidth(data.value);
 
   const filterByVariant = (
     _: React.FormEvent<HTMLDivElement>,
@@ -60,8 +51,6 @@ export function useIllustrationPage() {
     search,
     onSearchQueryChanged,
     filterByVariant,
-    onUpdateIllustrationWidth,
-    illustrationWidth,
     filteredIllustrations,
   };
 }

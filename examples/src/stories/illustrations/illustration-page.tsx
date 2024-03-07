@@ -11,6 +11,7 @@ import { IllustrationPageHeader } from "./components/illustration-page-header";
 import { useIllustrationPage } from "./illustration-page.hooks";
 import { useStyles } from "./illustration-page.styles";
 import { EStoryStatus } from "../../components/story/story-status";
+import { DEFAULT_ILLUSTRATION_WIDTH } from "./illustration-page.types";
 
 export const IllustrationPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.Illustrations);
@@ -19,8 +20,6 @@ export const IllustrationPage = (): JSX.Element => {
     onSearchQueryChanged,
     filterByVariant,
     filteredIllustrations,
-    onUpdateIllustrationWidth,
-    illustrationWidth,
   } = useIllustrationPage();
 
   const styles = useStyles();
@@ -35,7 +34,7 @@ export const IllustrationPage = (): JSX.Element => {
         className={styles.iconWrapper}
       >
         <IllustrationDialog
-          thumbnail={<Illustration width={illustrationWidth} />}
+          thumbnail={<Illustration width={DEFAULT_ILLUSTRATION_WIDTH} />}
           title={Illustration.displayName}
         >
           <Illustration />
@@ -59,14 +58,12 @@ export const IllustrationPage = (): JSX.Element => {
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       description={"Axis branded illustrations"}
-      status={[EStoryStatus.PRIVATE, EStoryStatus.NEW, EStoryStatus.WIP]}
+      status={[EStoryStatus.NEW, EStoryStatus.WIP]}
       customHeader={
         <IllustrationPageHeader
           search={search}
           onSearchQueryChanged={onSearchQueryChanged}
           filterByVariant={filterByVariant}
-          illustrationWidth={illustrationWidth}
-          onUpdateIllustrationWidth={onUpdateIllustrationWidth}
         />
       }
     >

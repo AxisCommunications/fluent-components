@@ -8,13 +8,16 @@ import {
 } from "@fluentui/react-components";
 import React from "react";
 
+/**
+ * statuses are sorted in same order the listed in enum
+ */
 export enum EStoryStatus {
-  NEW,
   WIP,
-  STABLE,
-  UNSTABLE,
+  NEW,
   PRIVATE,
   PUBLIC,
+  STABLE,
+  UNSTABLE,
 }
 
 const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
@@ -105,6 +108,7 @@ type TStoryStatus = {
 
 export function StoryStatus({ status }: TStoryStatus) {
   const { rootStyle } = useStoryStatusStyles();
+  const sortedStatuses = status.sort((a, b) => a - b);
 
   const _renderStatuses = (
     status: EStoryStatus
@@ -116,7 +120,7 @@ export function StoryStatus({ status }: TStoryStatus) {
 
   return (
     <div className={rootStyle}>
-      {status.map(_renderStatuses)}
+      {sortedStatuses.map(_renderStatuses)}
     </div>
   );
 }

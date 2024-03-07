@@ -123,7 +123,7 @@ export function StoryPage(
     navigation,
     children,
     customHeader,
-    status,
+    status = [],
     ...rest
   }: PropsWithChildren<TStoryPage>
 ) {

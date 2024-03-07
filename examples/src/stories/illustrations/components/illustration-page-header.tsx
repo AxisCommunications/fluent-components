@@ -1,16 +1,12 @@
 import {
   Input,
-  Label,
   makeStyles,
   Radio,
   RadioGroup,
   RadioGroupOnChangeData,
-  Slider,
-  SliderOnChangeData,
+  shorthands,
   tokens,
-  useId,
 } from "@fluentui/react-components";
-import { shorthands } from "@fluentui/react-components";
 import React from "react";
 import { DEFAULT_VARIANT_FILTER, variants } from "../illustration-page.types";
 
@@ -33,24 +29,16 @@ type TIllustrationPageHeader = {
     ev: React.FormEvent<HTMLDivElement>,
     data: RadioGroupOnChangeData
   ) => void;
-  illustrationWidth: number;
-  onUpdateIllustrationWidth: (
-    ev: React.ChangeEvent<HTMLInputElement>,
-    data: SliderOnChangeData
-  ) => void;
 };
 
 export function IllustrationPageHeader(
   {
-    illustrationWidth,
-    onUpdateIllustrationWidth,
     search,
     onSearchQueryChanged,
     filterByVariant,
   }: TIllustrationPageHeader
 ) {
   const styles = useStyles();
-  const id = useId();
 
   return (
     <div className={styles.root}>
@@ -71,17 +59,6 @@ export function IllustrationPageHeader(
           <Radio key={`option-${option}`} value={option} label={option} />
         ))}
       </RadioGroup>
-      <div className={styles.slider}>
-        <Slider
-          id={id}
-          aria-valuetext={`Value is ${illustrationWidth}`}
-          value={illustrationWidth}
-          min={20}
-          max={500}
-          onChange={onUpdateIllustrationWidth}
-        />
-        <Label size="small" htmlFor={id}>Width {illustrationWidth}</Label>
-      </div>
     </div>
   );
 }
