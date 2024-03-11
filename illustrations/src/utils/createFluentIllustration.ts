@@ -10,8 +10,8 @@ export const createFluentIllustration = (
     const image = `data:image/svg+xml;utf8,${encodeURIComponent(paths)}`;
     return React.createElement("img", {
       alt: "Axis illustration",
-      ...useIllustrationState(props),
       src: image,
+      ...useIllustrationState(props),
     });
   };
   Illustration.displayName = displayName;

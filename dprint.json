@@ -16,6 +16,7 @@
     "icons/fonts",
     "icons/src",
     "icons/svgo_config.yml",
+    "illustrations/src",
     "CHANGELOG.md",
     "pnpm-lock.yaml"
   ],
