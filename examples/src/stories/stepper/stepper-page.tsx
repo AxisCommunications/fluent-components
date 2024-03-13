@@ -14,6 +14,10 @@ import {
   VerticalStepperDialogExample,
   VerticalStepperDialogExampleAsString,
 } from "./examples/vertical-stepper-dialog-example";
+import {
+  CustomStepperDialogExample,
+  CustomStepperDialogExampleAsString,
+} from "./examples/custom-style-example";
 
 const examples: pageData[] = [
   {
@@ -27,6 +31,12 @@ const examples: pageData[] = [
     anchor: "VerticalStepperDialogExample",
     example: <VerticalStepperDialogExample />,
     codeString: VerticalStepperDialogExampleAsString,
+  },
+  {
+    title: "Override styling",
+    anchor: "Override styling",
+    example: <CustomStepperDialogExample />,
+    codeString: CustomStepperDialogExampleAsString,
   },
 ];
 
