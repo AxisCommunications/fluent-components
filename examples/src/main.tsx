@@ -1,15 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { App } from "./App";
 import { ApplicationStateProvider } from "./context/ApplicationStateProvider";
+import { createRoot } from "react-dom/client";
 
-const container = document.getElementById("root");
+const container = createRoot(document.getElementById("root") as HTMLElement);
 
-ReactDOM.render(
+container.render(
   <React.StrictMode>
     <ApplicationStateProvider>
       <App />
     </ApplicationStateProvider>
-  </React.StrictMode>,
-  container
+  </React.StrictMode>
 );
