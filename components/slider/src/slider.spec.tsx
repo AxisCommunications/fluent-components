@@ -5,7 +5,7 @@ import { sliderClassNames } from "./use-slider-styles";
 import { FluentProvider } from "@fluentui/react-components";
 import { Slider } from "./slider";
 import { getControlRoot } from "./test-helpers";
-import { vi } from "vitest";
+import { expect, vi } from "vitest";
 
 const expectSliderValue = (element: HTMLElement, value: number) => {
   expect(element.getAttribute("value")).toEqual(value.toString());

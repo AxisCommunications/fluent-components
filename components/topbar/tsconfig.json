@@ -1,8 +1,11 @@
 {
   "extends": "./tsconfig.src.json",
   "compilerOptions": {
-    "outDir": "lib"
+    "types": ["vitest/globals"],
+    "outDir": "lib",
+    "declaration": false,
+    "declarationMap": false
   },
   "include": ["src"],
-  "exclude": ["**/*.spec.*", "vitest.config.ts"]
+  "exclude": ["vitest.config.ts"]
 }
