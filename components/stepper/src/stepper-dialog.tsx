@@ -1,8 +1,8 @@
+import { Button } from "@fluentui/react-components";
 import React, { useCallback } from "react";
-import { Button, mergeClasses } from "@fluentui/react-components";
+import { Stepper } from "./stepper";
 import { useStepperDialogStyles } from "./stepper-dialog.styles";
 import { StepperDialogProps } from "./stepper-dialog.types";
-import { Stepper } from "./stepper";
 
 export const StepperDialog = ({
   currentStep,
@@ -16,7 +16,20 @@ export const StepperDialog = ({
   nextLabel,
   previousLabel,
   finishLabel,
+  className,
 }: StepperDialogProps) => {
+  const {
+    rootStyles,
+    containerStyles,
+    contentStyles,
+    buttonContainerStyles,
+    buttonStyles,
+    buttonCancel,
+    buttonPrevious,
+    buttonNext,
+    buttonFinish,
+  } = useStepperDialogStyles({ vertical, className });
+
   const onNext = useCallback(
     () => onStepChange(currentStep + 1),
     [currentStep, onStepChange]
@@ -25,15 +38,10 @@ export const StepperDialog = ({
     () => onStepChange(currentStep - 1),
     [currentStep, onStepChange]
   );
-  const styles = useStepperDialogStyles();
-  const rootStyles = mergeClasses("axis-StepperDialog", styles.root);
-  const stepperContainerStyles = mergeClasses(
-    styles.stepperContainer,
-    vertical && styles.stepperContainerVertical
-  );
+
   return (
     <div className={rootStyles}>
-      <div className={stepperContainerStyles}>
+      <div className={containerStyles}>
         <div>
           <Stepper
             currentStep={currentStep}
@@ -41,20 +49,25 @@ export const StepperDialog = ({
             vertical={vertical}
           />
         </div>
-        <div className={styles.stepContent}>{steps[currentStep].content}</div>
+        <div className={contentStyles}>{steps[currentStep].content}</div>
       </div>
-      <div className={styles.buttonContainer}>
-        <div className={styles.buttons}>
+      <div className={buttonContainerStyles}>
+        <div className={buttonStyles}>
           {cancelLabel && onCancel && (
-            <Button onClick={onCancel}>{cancelLabel}</Button>
+            <Button className={buttonCancel} onClick={onCancel}>
+              {cancelLabel}
+            </Button>
           )}
         </div>
-        <div className={styles.buttons}>
-          {currentStep > 0 && (
-            <Button onClick={onPrevious}>{previousLabel}</Button>
+        <div className={buttonStyles}>
+          {currentStep > 0 && previousLabel && (
+            <Button className={buttonPrevious} onClick={onPrevious}>
+              {previousLabel}
+            </Button>
           )}
-          {currentStep !== steps.length - 1 && (
+          {currentStep !== steps.length - 1 && nextLabel && (
             <Button
+              className={buttonNext}
               disabled={disableProgression}
               onClick={onNext}
               appearance="primary"
@@ -64,6 +77,7 @@ export const StepperDialog = ({
           )}
           {currentStep === steps.length - 1 && (
             <Button
+              className={buttonFinish}
               onClick={onFinish}
               disabled={disableProgression}
               appearance="primary"
