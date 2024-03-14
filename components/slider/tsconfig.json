@@ -2,9 +2,8 @@
   "extends": "./tsconfig.src.json",
   "compilerOptions": {
     "outDir": "lib",
-    "types": ["vitest/globals"],
     "lib": ["es5", "es6", "dom", "dom.iterable"]
   },
   "include": ["src"],
-  "exclude": ["vitest.config.ts"]
+  "exclude": ["vitest.config.ts", "**/*.spec.*"]
 }
