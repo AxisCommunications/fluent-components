@@ -1,5 +1,6 @@
-## [8.17.0](https://github.com/AxisCommunications/fluent-components/compare/38eb6078d96f18c71c51a22f52961daa9062e015..140904fbfd3c56bde08d14c6f33968552e227e77) (2024-03-05T10:45:19.659Z)
+## [8.18.0](https://github.com/AxisCommunications/fluent-components/compare/f5b6b274dacd01e30374f6e1a60798b9a411f511..703ba4dbf8a00c1b6791ee548753cd9a94b1bf47) (2024-03-14T14:05:47.206Z)
 
-### 🐛 Bug fixes
+### 🚧 Maintenance
 
-  - **topbar**: use correct my systems icon (#220) ([140904f](https://github.com/AxisCommunications/fluent-components/commit/140904fbfd3c56bde08d14c6f33968552e227e77))
+  - add classNames for stepper part (#224) ([703ba4d](https://github.com/AxisCommunications/fluent-components/commit/703ba4dbf8a00c1b6791ee548753cd9a94b1bf47))
+  - bump react in examples (#223) ([5dc135a](https://github.com/AxisCommunications/fluent-components/commit/5dc135a550c835b2f026bcd3871db469a5cbd004))

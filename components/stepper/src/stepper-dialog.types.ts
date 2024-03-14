@@ -12,8 +12,9 @@ export type StepperDialogProps = {
   onFinish: () => void;
   onCancel?: () => void;
   cancelLabel?: string;
-  nextLabel: string;
-  previousLabel: string;
+  nextLabel?: string;
+  previousLabel?: string;
   finishLabel: string;
   disableProgression?: boolean;
+  className?: string;
 };
