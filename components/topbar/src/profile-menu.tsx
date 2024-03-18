@@ -50,6 +50,7 @@ export const ProfileMenu = ({
             <Avatar
               name={name}
               size={24}
+              active={hasNotification ? "active" : "unset"}
               badge={hasNotification
                 ? {
                   icon: notificationIcon !== undefined
