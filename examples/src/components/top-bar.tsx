@@ -220,6 +220,7 @@ export const Navbar = () => {
           value: currentOrganizationId,
         }}
         profileMenu={{
+          // showCustomContentTopDivider: false,
           customContent: (
             <MenuItem
               icon={<OpenRegular />}
