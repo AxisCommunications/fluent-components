@@ -65,7 +65,7 @@ const DrawerTrigger = (
               <Body1Strong
                 className={styles.drawerTriggerApplicationText}
               >
-                {currentSelection.label}
+                {currentSelection.triggerLabel ?? currentSelection.label}
               </Body1Strong>
             </div>
           )
