@@ -1,6 +1,9 @@
-## [8.18.0](https://github.com/AxisCommunications/fluent-components/compare/f5b6b274dacd01e30374f6e1a60798b9a411f511..703ba4dbf8a00c1b6791ee548753cd9a94b1bf47) (2024-03-14T14:05:47.206Z)
+## [8.19.0](https://github.com/AxisCommunications/fluent-components/compare/db0ffb8a25d25a01c5c1177d602f03809eb3a9f9..5242d8321410b286b6eceeea7a25a886ce49b6b6) (2024-03-18T08:59:42.227Z)
 
 ### 🚧 Maintenance
 
-  - add classNames for stepper part (#224) ([703ba4d](https://github.com/AxisCommunications/fluent-components/commit/703ba4dbf8a00c1b6791ee548753cd9a94b1bf47))
-  - bump react in examples (#223) ([5dc135a](https://github.com/AxisCommunications/fluent-components/commit/5dc135a550c835b2f026bcd3871db469a5cbd004))
+  - add icon Devices size 48 (#228) ([97f8a71](https://github.com/AxisCommunications/fluent-components/commit/97f8a71d28817cccca5920d4f48037bec1ce8abf))
+
+### ✨ Features
+
+  - **topbar**: update profile menu ([5242d83](https://github.com/AxisCommunications/fluent-components/commit/5242d8321410b286b6eceeea7a25a886ce49b6b6))
