@@ -40,36 +40,38 @@ const DrawerTrigger = (
   const [hover, setHover] = useState(false);
 
   return (
-    <Button
-      className={styles.drawerTriggerButton}
-      data-testid="application-drawer-trigger"
-      appearance="subtle"
-      onClick={() => setIsOpen(true)}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      {<ApplicationAreaIcon applicationArea={applicationArea} />}
-      <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
-      {currentSelection
-        ? (
-          <div className={styles.drawerTriggerApplication}>
-            <div
-              className={mergeClasses(
-                styles.drawerTriggerApplicationIcon,
-                hover && styles.drawerTriggerApplicationIconHovered
-              )}
-            >
-              {currentSelection.icon}
+    <div className={styles.drawerTriggerRoot}>
+      <Button
+        className={styles.drawerTriggerButton}
+        data-testid="application-drawer-trigger"
+        appearance="subtle"
+        onClick={() => setIsOpen(true)}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        {<ApplicationAreaIcon applicationArea={applicationArea} />}
+        <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
+        {currentSelection
+          ? (
+            <div className={styles.drawerTriggerApplication}>
+              <div
+                className={mergeClasses(
+                  styles.drawerTriggerApplicationIcon,
+                  hover && styles.drawerTriggerApplicationIconHovered
+                )}
+              >
+                {currentSelection.icon}
+              </div>
+              <Body1Strong
+                className={styles.drawerTriggerApplicationText}
+              >
+                {currentSelection.label}
+              </Body1Strong>
             </div>
-            <Body1Strong
-              className={styles.drawerTriggerApplicationText}
-            >
-              {currentSelection.label}
-            </Body1Strong>
-          </div>
-        )
-        : null}
-    </Button>
+          )
+          : null}
+      </Button>
+    </div>
   );
 };
 
