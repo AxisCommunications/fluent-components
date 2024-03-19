@@ -5,6 +5,7 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import {
+  BeachRegular,
   DarkThemeRegular,
   DocumentCssRegular,
   IconsRegular,
@@ -53,6 +54,7 @@ export const WelcomePage = () => {
     navigateToFirstComponent,
     navigateToFirstStyle,
     navigateToIcon,
+    navigateToIllustration,
     navigateToTheme,
   } = useWelcomePage();
 
@@ -79,6 +81,12 @@ export const WelcomePage = () => {
             title="Icons"
             description={"Axis branded icons"}
             onClick={navigateToIcon}
+          />
+          <WelcomeCard
+            icon={<BeachRegular fontSize={tokens.fontSizeBase600} />}
+            title="Illustrations"
+            description={"Axis branded illustrations"}
+            onClick={navigateToIllustration}
           />
           <WelcomeCard
             icon={<DocumentCssRegular fontSize={tokens.fontSizeBase600} />}
@@ -121,6 +129,13 @@ function useWelcomePage() {
     [navigate]
   );
 
+  const navigateToIllustration = useCallback(
+    () => {
+      navigate(routes.Illustrations);
+    },
+    [navigate]
+  );
+
   const navigateToTheme = useCallback(
     () => {
       navigate(routes.Theme);
@@ -132,6 +147,7 @@ function useWelcomePage() {
     navigateToFirstComponent,
     navigateToFirstStyle,
     navigateToIcon,
+    navigateToIllustration,
     navigateToTheme,
   };
 }

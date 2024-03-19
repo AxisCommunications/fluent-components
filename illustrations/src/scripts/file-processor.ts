@@ -6,23 +6,29 @@ export function copyFiles(
   destPath: string,
   filter?: (file: string) => boolean
 ) {
+  let filesCopied = 0;
   for (const file of readAllFiles(srcPath)) {
-    const filename = getFileName(file);
-    const destFile = path.join(destPath, filename);
+    const destFile = path.join(destPath, file.fileName);
     if (!filter) {
-      fs.copyFileSync(file, destFile);
+      fs.copyFileSync(file.path, destFile);
+      filesCopied++;
       continue;
     }
-    if (filter(filename)) {
-      fs.copyFileSync(file, destFile);
+    if (filter(file.fileName)) {
+      filesCopied++;
+      fs.copyFileSync(file.path, destFile);
     }
   }
+  return filesCopied;
+}
+
+export function writeToFile(dest: string, content: string) {
+  fs.writeFileSync(dest, content);
 }
 
 export function checkDirectory(path: string, createIfMissing = false) {
   const exist = fs.existsSync(path);
   if (!exist && createIfMissing) {
-    console.log("creating directory: ", path);
     fs.mkdirSync(path, { recursive: true });
   }
   return exist;
@@ -32,19 +38,26 @@ export function clearDirectory(path: string) {
   const exist = checkDirectory(path);
   if (exist) {
     for (const file of readAllFiles(path)) {
-      rmSync(file);
+      rmSync(file.path);
     }
   }
 }
 
-export function* readAllFiles(dir: string): Generator<string> {
+export function* readAllFiles(
+  dir: string
+): Generator<{ path: string; content: string; fileName: string }> {
   const files = fs.readdirSync(dir, { withFileTypes: true });
 
   for (const file of files) {
     if (file.isDirectory()) {
       yield* readAllFiles(path.join(dir, file.name));
     } else {
-      yield path.join(dir, file.name);
+      const srcFile = path.join(dir, file.name);
+      yield {
+        fileName: getFileName(file.name),
+        path: path.join(dir, file.name),
+        content: fs.readFileSync(srcFile, { encoding: "utf8" }),
+      };
     }
   }
 }
