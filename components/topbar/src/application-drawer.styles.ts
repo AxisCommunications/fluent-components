@@ -22,6 +22,11 @@ export const useApplicationDrawrStyles = makeStyles({
     alignItems: "center",
     ...shorthands.gap(tokens.spacingHorizontalS),
   },
+  drawerTriggerRoot: {
+    display: "flex",
+    flexShrink: 0,
+    paddingLeft: "5px", // Total 13 with topbar padding
+  },
   drawerTriggerButton: {
     paddingLeft: "0px",
     paddingTop: "0px",

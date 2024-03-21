@@ -96,6 +96,7 @@ export const Navbar = () => {
     {
       icon: <AddSubIcon />,
       label: "Add",
+      triggerLabel: "ADD trigger",
       id: "add",
     },
   ];

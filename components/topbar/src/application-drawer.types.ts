@@ -10,7 +10,13 @@ export type SingleApplicationDrawerContent = {
    *  Created with bundleIcon().
    */
   icon: JSX.Element;
+  /** Label to show in opened drawer. */
   label: string;
+  /** Label to show in drawer trigger button when drawer is closed.
+   *  If not set, label will be used.
+   *  Unused for content with children.
+   */
+  triggerLabel?: string;
 };
 
 export type ApplicationDrawerProps = {
