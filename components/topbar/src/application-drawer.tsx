@@ -13,7 +13,6 @@ import {
   DrawerHeader,
   Link,
   mergeClasses,
-  ToggleButton,
   tokens,
 } from "@fluentui/react-components";
 import { useApplicationDrawrStyles as useApplicationDrawerStyles } from "./application-drawer.styles";
@@ -154,10 +153,12 @@ const SingleApplication = ({
   const styles = useApplicationDrawerStyles();
 
   return (
-    <ToggleButton
-      checked={application.id === currentSelectionId}
+    <Button
       data-testid={`application-drawer-item-${application.id}`}
-      className={styles.contentButton}
+      className={mergeClasses(
+        styles.contentButton,
+        application.id === currentSelectionId && styles.contentButtonChecked
+      )}
       appearance="subtle"
       icon={iconConverter(
         application.icon,
@@ -169,7 +170,7 @@ const SingleApplication = ({
       <Body1 className={styles.applicationButton}>
         {application.label}
       </Body1>
-    </ToggleButton>
+    </Button>
   );
 };
 

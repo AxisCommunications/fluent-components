@@ -105,6 +105,10 @@ export const useApplicationDrawrStyles = makeStyles({
     justifyContent: "flex-start",
     paddingLeft: tokens.spacingHorizontalSNudge,
   },
+  contentButtonChecked: {
+    color: tokens.colorNeutralForeground2Selected,
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+  },
   linkWrapper: {
     display: "flex",
     justifyContent: "flex-end",
