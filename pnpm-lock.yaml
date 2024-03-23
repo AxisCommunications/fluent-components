@@ -409,9 +409,6 @@ importers:
       '@types/react':
         specifier: ^18.2.65
         version: 18.2.65
-      '@types/react-dom':
-        specifier: ^18.2.8
-        version: 18.2.8
       '@types/yargs':
         specifier: 17.0.32
         version: 17.0.32
