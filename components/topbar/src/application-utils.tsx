@@ -6,13 +6,13 @@ import {
   CatchUp20Filled,
   Search20Filled,
 } from "@fluentui/react-icons";
-import { MySystems24Filled } from "@axiscommunications/fluent-icons";
 import { defaultMySystemsAppData, isMySystemsAppId } from "./applications";
 import { TranslationFn } from "./translation-context";
 import React from "react";
 import { ApplicationArea } from "./top-bar.types";
 import { useApplicationStyles } from "./application.styles";
 import { mergeClasses } from "@fluentui/react-components";
+import { MySystems24Filled } from "@axiscommunications/fluent-icons";
 
 enum appAreas {
   MY_SYSTEMS = "mySystems",

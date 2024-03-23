@@ -25,7 +25,7 @@ exports[`range-slider > should render 1`] = `
           >
             <input
               data-index="0"
-              id="slider-thumb-1"
+              id="slider-thumb-r0"
               max="100"
               min="0"
               type="range"
@@ -43,7 +43,7 @@ exports[`range-slider > should render 1`] = `
           >
             <input
               data-index="1"
-              id="slider-thumb-2"
+              id="slider-thumb-r1"
               max="100"
               min="0"
               type="range"
@@ -80,7 +80,7 @@ exports[`range-slider > should render 1`] = `
         >
           <input
             data-index="0"
-            id="slider-thumb-1"
+            id="slider-thumb-r0"
             max="100"
             min="0"
             type="range"
@@ -98,7 +98,7 @@ exports[`range-slider > should render 1`] = `
         >
           <input
             data-index="1"
-            id="slider-thumb-2"
+            id="slider-thumb-r1"
             max="100"
             min="0"
             type="range"

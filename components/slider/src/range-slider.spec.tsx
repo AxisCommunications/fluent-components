@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { RangeSlider } from "./range-slider";
 import React from "react";
 import { getControlRoot } from "./test-helpers";
-import { vi } from "vitest";
+import { expect, vi } from "vitest";
 
 const expectSliderValues = (elements: HTMLElement[], values: number[]) => {
   expect(elements).toHaveLength(values.length);
