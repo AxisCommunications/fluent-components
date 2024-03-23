@@ -9,7 +9,8 @@ const config = parseParamsGenerateSVG();
 main(config);
 
 function main({ from, to }: TGenerateSVGConfig) {
-  logger.info("running generate-svg");
+  logger.trace("running generate-svg");
+  logger.info(`from: ${from}, to: ${to}`);
   if (!checkDirectory(from)) {
     logger.warn("folder to process doesn't exist", from);
     process.exit(1);
@@ -18,7 +19,9 @@ function main({ from, to }: TGenerateSVGConfig) {
     clearDirectory(to);
   }
 
-  copyFiles(from, to, filter);
+  const filesCopied = copyFiles(from, to, filter);
+  logger.info(`svg copied ${filesCopied}`);
+  logger.trace("... generate-svg done!");
 }
 
 function filter(file: string) {

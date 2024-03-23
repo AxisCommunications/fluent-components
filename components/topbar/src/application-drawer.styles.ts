@@ -22,6 +22,11 @@ export const useApplicationDrawrStyles = makeStyles({
     alignItems: "center",
     ...shorthands.gap(tokens.spacingHorizontalS),
   },
+  drawerTriggerRoot: {
+    display: "flex",
+    flexShrink: 0,
+    paddingLeft: "5px", // Total 13 with topbar padding
+  },
   drawerTriggerButton: {
     paddingLeft: "0px",
     paddingTop: "0px",
@@ -35,14 +40,13 @@ export const useApplicationDrawrStyles = makeStyles({
     ),
   },
   drawerTriggerApplication: {
-    fontSize: "1.8em",
     display: "flex",
-    flexDirection: "row",
     alignItems: "center",
     ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalM),
   },
   drawerTriggerApplicationIcon: {
+    display: "flex",
     color: tokens.colorNeutralForeground2,
     "&:hover": {
       color: tokens.colorNeutralForeground2BrandHover,
@@ -55,14 +59,16 @@ export const useApplicationDrawrStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   applicationGroupTitle: {
-    fontSize: "1.4em",
     display: "flex",
-    flexDirection: "row",
     alignItems: "center",
     ...shorthands.gap(tokens.spacingHorizontalS),
-    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalS),
+    paddingTop: tokens.spacingVerticalS,
+    paddingBottom: tokens.spacingVerticalMNudge,
+    paddingRight: tokens.spacingHorizontalS,
+    paddingLeft: tokens.spacingHorizontalS,
   },
   applicationGroupTitleIcon: {
+    display: "flex",
     color: tokens.colorNeutralForeground2,
   },
   applicationGroupTitleText: {
@@ -76,7 +82,7 @@ export const useApplicationDrawrStyles = makeStyles({
     flexDirection: "column",
     width: "100%",
     ...shorthands.gap(tokens.spacingVerticalS),
-    paddingTop: tokens.spacingVerticalXXXL,
+    paddingTop: "48px",
   },
   contentGroup: {
     display: "flex",
@@ -98,6 +104,10 @@ export const useApplicationDrawrStyles = makeStyles({
     width: "100%",
     justifyContent: "flex-start",
     paddingLeft: tokens.spacingHorizontalSNudge,
+  },
+  contentButtonChecked: {
+    color: tokens.colorNeutralForeground2Selected,
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
   },
   linkWrapper: {
     display: "flex",

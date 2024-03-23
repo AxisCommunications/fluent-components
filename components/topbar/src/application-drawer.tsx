@@ -13,7 +13,6 @@ import {
   DrawerHeader,
   Link,
   mergeClasses,
-  ToggleButton,
   tokens,
 } from "@fluentui/react-components";
 import { useApplicationDrawrStyles as useApplicationDrawerStyles } from "./application-drawer.styles";
@@ -40,36 +39,38 @@ const DrawerTrigger = (
   const [hover, setHover] = useState(false);
 
   return (
-    <Button
-      className={styles.drawerTriggerButton}
-      data-testid="application-drawer-trigger"
-      appearance="subtle"
-      onClick={() => setIsOpen(true)}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      {<ApplicationAreaIcon applicationArea={applicationArea} />}
-      <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
-      {currentSelection
-        ? (
-          <div className={styles.drawerTriggerApplication}>
-            <div
-              className={mergeClasses(
-                styles.drawerTriggerApplicationIcon,
-                hover && styles.drawerTriggerApplicationIconHovered
-              )}
-            >
-              {currentSelection.icon}
+    <div className={styles.drawerTriggerRoot}>
+      <Button
+        className={styles.drawerTriggerButton}
+        data-testid="application-drawer-trigger"
+        appearance="subtle"
+        onClick={() => setIsOpen(true)}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        {<ApplicationAreaIcon applicationArea={applicationArea} />}
+        <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
+        {currentSelection
+          ? (
+            <div className={styles.drawerTriggerApplication}>
+              <div
+                className={mergeClasses(
+                  styles.drawerTriggerApplicationIcon,
+                  hover && styles.drawerTriggerApplicationIconHovered
+                )}
+              >
+                {currentSelection.icon}
+              </div>
+              <Body1Strong
+                className={styles.drawerTriggerApplicationText}
+              >
+                {currentSelection.triggerLabel ?? currentSelection.label}
+              </Body1Strong>
             </div>
-            <Body1Strong
-              className={styles.drawerTriggerApplicationText}
-            >
-              {currentSelection.label}
-            </Body1Strong>
-          </div>
-        )
-        : null}
-    </Button>
+          )
+          : null}
+      </Button>
+    </div>
   );
 };
 
@@ -152,10 +153,12 @@ const SingleApplication = ({
   const styles = useApplicationDrawerStyles();
 
   return (
-    <ToggleButton
-      checked={application.id === currentSelectionId}
+    <Button
       data-testid={`application-drawer-item-${application.id}`}
-      className={styles.contentButton}
+      className={mergeClasses(
+        styles.contentButton,
+        application.id === currentSelectionId && styles.contentButtonChecked
+      )}
       appearance="subtle"
       icon={iconConverter(
         application.icon,
@@ -167,7 +170,7 @@ const SingleApplication = ({
       <Body1 className={styles.applicationButton}>
         {application.label}
       </Body1>
-    </ToggleButton>
+    </Button>
   );
 };
 

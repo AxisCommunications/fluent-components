@@ -18,12 +18,20 @@ const useStyles = makeStyles({
 });
 
 export const StoryCodeBlockAccordion = (
-  { codeString, title = "Show code" }: { codeString: string; title?: string }
+  { codeString, title = "Show code", defaultOpen = false }: {
+    codeString: string;
+    defaultOpen?: boolean;
+    title?: string;
+  }
 ) => {
   const styles = useStyles();
 
   return (
-    <Accordion collapsible className={styles.root}>
+    <Accordion
+      collapsible
+      className={styles.root}
+      defaultOpenItems={defaultOpen ? "1" : null}
+    >
       <AccordionItem value="1">
         <AccordionHeader>{title}</AccordionHeader>
         <AccordionPanel>

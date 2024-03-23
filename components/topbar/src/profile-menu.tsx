@@ -27,6 +27,7 @@ const NotificationIcon = bundleIcon(CircleRegular, CircleFilled);
 
 export const ProfileMenu = ({
   customContent,
+  showCustomContentTopDivider = true,
   language,
   name,
   email,
@@ -49,6 +50,7 @@ export const ProfileMenu = ({
             <Avatar
               name={name}
               size={24}
+              active={hasNotification ? "active" : "unset"}
               badge={hasNotification
                 ? {
                   icon: notificationIcon !== undefined
@@ -72,7 +74,9 @@ export const ProfileMenu = ({
       <MenuPopover>
         <MenuList>
           <UserInformation name={name} email={email} tag={tag} />
-          <MenuDivider />
+          {(customContent === undefined || showCustomContentTopDivider) && (
+            <MenuDivider />
+          )}
           {customContent !== undefined && (
             <>
               {customContent}

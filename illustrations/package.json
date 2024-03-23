@@ -1,7 +1,6 @@
 {
   "name": "@axiscommunications/fluent-illustrations",
-  "private": true,
-  "version": "8.18.0",
+  "version": "8.20.1",
   "description": "Illustrations",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -29,6 +28,7 @@
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && eslint . --cache",
+    "illustrations:deploy": "mkdir -p src && pnpm illustrations:build-react && cp -a dist/react/* src",
     "illustrations:build-react": "pnpm run illustrations:generate-svg && pnpm run illustrations:optimize-svg && pnpm illustrations:generate-react",
     "illustrations:generate-svg": "ts-node src/scripts/generate-svg.ts --from ./assets --to ./dist/svg",
     "illustrations:optimize-svg": "svgo --config=.svgo.yml -f ./dist/svg",
@@ -44,7 +44,6 @@
     "@types/react-dom": "^18.2.8",
     "eslint": "^8.56.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "ts-node": "^10.9.2",
     "typescript": "^4.5.5",
     "svgo": "1.3.2",
@@ -53,7 +52,6 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0",
     "@fluentui/react-components": "^9.43.2"
   },
   "packageManager": "pnpm@8.1.0",

@@ -1,4 +1,5 @@
 import {
+  ANSI_BOLD,
   ANSI_GREEN,
   ANSI_RED,
   ANSI_RESET,
@@ -14,13 +15,22 @@ export enum LOG_LEVEL {
   ERROR = 10,
 }
 
-export type TLogger = Pick<Console, "error" | "warn" | "info" | "log">;
+export type TLogger = Pick<Console, "error" | "warn" | "info" | "trace">;
 
 export class Logger implements TLogger {
   constructor(
     private readonly logPrefix: string,
     private readonly logLevel: () => LOG_LEVEL
   ) {}
+
+  trace(...args: unknown[]) {
+    if (this.logLevel() >= LOG_LEVEL.INFO) {
+      console.info(
+        `${ANSI_BOLD + this.logPrefix}:trace>${ANSI_RESET}`,
+        ...this.prettyPrint(args)
+      );
+    }
+  }
 
   info(...args: unknown[]) {
     if (this.logLevel() >= LOG_LEVEL.INFO) {

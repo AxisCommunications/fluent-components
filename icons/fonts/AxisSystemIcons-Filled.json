@@ -193,5 +193,7 @@
     "ic_axis_analytics_24_filled": "0xf1c0",
     "ic_axis_analytics_28_filled": "0xf1c1",
     "ic_axis_analytics_32_filled": "0xf1c2",
-    "ic_axis_analytics_48_filled": "0xf1c3"
+    "ic_axis_analytics_48_filled": "0xf1c3",
+    "ic_axis_devices_48_filled": "0xf1c4",
+    "ic_axis_my_systems_24_filled": "0xf1c5"
 }

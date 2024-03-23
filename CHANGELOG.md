@@ -1,6 +1,9 @@
-## [8.18.0](https://github.com/AxisCommunications/fluent-components/compare/f5b6b274dacd01e30374f6e1a60798b9a411f511..703ba4dbf8a00c1b6791ee548753cd9a94b1bf47) (2024-03-14T14:05:47.206Z)
+## [8.20.1](https://github.com/AxisCommunications/fluent-components/compare/14e5f2a9f4550edd1db4178bb0f4267e85752499..7e4ba4f09c7153e2deadc21dec26f3799993d0c5) (2024-03-22T15:40:38.457Z)
 
-### 🚧 Maintenance
+### 🐛 Bug fixes
 
-  - add classNames for stepper part (#224) ([703ba4d](https://github.com/AxisCommunications/fluent-components/commit/703ba4dbf8a00c1b6791ee548753cd9a94b1bf47))
-  - bump react in examples (#223) ([5dc135a](https://github.com/AxisCommunications/fluent-components/commit/5dc135a550c835b2f026bcd3871db469a5cbd004))
+  - **topbar**: do not use ToggleButton in drawer (#235) ([7e4ba4f](https://github.com/AxisCommunications/fluent-components/commit/7e4ba4f09c7153e2deadc21dec26f3799993d0c5))
+
+### 💄 Styling
+
+  - new illustrations (#234) ([c243ebb](https://github.com/AxisCommunications/fluent-components/commit/c243ebb2cdf9317634513942348689798a32f2c8))

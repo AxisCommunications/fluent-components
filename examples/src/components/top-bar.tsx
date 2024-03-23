@@ -96,6 +96,7 @@ export const Navbar = () => {
     {
       icon: <AddSubIcon />,
       label: "Add",
+      triggerLabel: "ADD trigger",
       id: "add",
     },
   ];
@@ -220,6 +221,7 @@ export const Navbar = () => {
           value: currentOrganizationId,
         }}
         profileMenu={{
+          // showCustomContentTopDivider: false,
           customContent: (
             <MenuItem
               icon={<OpenRegular />}

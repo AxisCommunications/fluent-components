@@ -8,6 +8,7 @@ import { FluentUiTabStylesPage } from "../stories/tab-list-utilities/tab-list-ut
 import { ThemePage } from "../stories/theme-page";
 import { routes, TRoute } from "./routes";
 import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
+import { IllustrationPage } from "../stories/illustrations/illustration-page";
 
 export enum RouteGroup {
   MISC,
@@ -135,6 +136,20 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
         url:
           "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
         packageName: "@axiscommunications/fluent-styles",
+      },
+    },
+  ],
+  [
+    routes.Illustrations,
+    {
+      label: "Illustrations",
+      element: <IllustrationPage />,
+      group: RouteGroup.STORY,
+      category: RouteCategory.MISC,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-illustrations",
+        packageName: "@axiscommunications/fluent-illustrations",
       },
     },
   ],
