@@ -7,7 +7,7 @@ import { ChangeEvent } from "react";
 
 export type ThumbSlots = {
   root: Slot<"div">;
-  input: NonNullable<Slot<"input">>;
+  input: NonNullable<Slot<"input">> & { children?: never };
   label: NonNullable<Slot<"span">>;
 };
 
@@ -17,6 +17,7 @@ export type ThumbProps =
     "value"
   >
   & {
+    children?: never;
     value: number;
     handleFocus: () => void;
     handleBlur: () => void;

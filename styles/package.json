@@ -30,7 +30,7 @@
     "lint": "tsc --noEmit && eslint . --cache"
   },
   "devDependencies": {
-    "@types/react": "^18.2.24",
+    "@types/react": "^18.2.65",
     "eslint": "^8.56.0",
     "react": "^18.2.0",
     "typescript": "^4.5.5"
