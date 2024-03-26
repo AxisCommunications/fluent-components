@@ -55,13 +55,13 @@ importers:
   components/password-input:
     dependencies:
       '@fluentui/react-components':
-        specifier: ^9.43.2
+        specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)
       '@fluentui/react-icons':
-        specifier: ^2.0.224
+        specifier: ^2.0.233
         version: 2.0.233(react@18.2.0)
       '@fluentui/react-utilities':
-        specifier: ^9.15.4
+        specifier: ^9.18.5
         version: 9.18.5(@types/react@18.2.65)(react@18.2.0)
     devDependencies:
       '@testing-library/jest-dom':
@@ -98,13 +98,13 @@ importers:
   components/slider:
     dependencies:
       '@fluentui/react-components':
-        specifier: ^9.43.2
+        specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.20.0)
       '@fluentui/react-icons':
-        specifier: ^2.0.224
+        specifier: ^2.0.233
         version: 2.0.233(react@18.2.0)
       '@fluentui/react-utilities':
-        specifier: ^9.15.4
+        specifier: ^9.18.5
         version: 9.18.5(@types/react@18.2.65)(react@18.2.0)
       scheduler:
         specifier: ^0.20.0
@@ -150,13 +150,13 @@ importers:
   components/stepper:
     dependencies:
       '@fluentui/react-components':
-        specifier: ^9.43.2
+        specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.20.0)
       '@fluentui/react-icons':
-        specifier: ^2.0.224
+        specifier: ^2.0.233
         version: 2.0.233(react@18.2.0)
       '@fluentui/react-utilities':
-        specifier: ^9.15.4
+        specifier: ^9.18.5
         version: 9.18.5(@types/react@18.2.65)(react@18.2.0)
       scheduler:
         specifier: ^0.20.0
@@ -202,13 +202,13 @@ importers:
         specifier: workspace:*
         version: link:../../icons
       '@fluentui/react-components':
-        specifier: ^9.43.2
+        specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.20.0)
       '@fluentui/react-icons':
-        specifier: ^2.0.224
+        specifier: ^2.0.233
         version: 2.0.233(react@18.2.0)
       '@fluentui/react-utilities':
-        specifier: ^9.15.4
+        specifier: ^9.18.5
         version: 9.18.5(@types/react@18.2.65)(react@18.2.0)
       scheduler:
         specifier: ^0.20.0
@@ -278,13 +278,13 @@ importers:
         specifier: workspace:*
         version: link:../components/topbar
       '@fluentui/react-components':
-        specifier: ^9.43.2
+        specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)
       '@fluentui/react-context-selector':
-        specifier: ^9.1.42
+        specifier: ^9.1.56
         version: 9.1.56(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)
       '@fluentui/react-icons':
-        specifier: ^2.0.224
+        specifier: ^2.0.233
         version: 2.0.233(react@18.2.0)
       '@vitejs/plugin-react':
         specifier: ^1.3.2
@@ -390,9 +390,6 @@ importers:
 
   illustrations:
     dependencies:
-      '@fluentui/react-components':
-        specifier: ^9.43.2
-        version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)
       lodash:
         specifier: 4.17.21
         version: 4.17.21
@@ -431,10 +428,10 @@ importers:
   styles:
     dependencies:
       '@fluentui/react-components':
-        specifier: ^9.43.2
+        specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.18)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)
       '@fluentui/react-icons':
-        specifier: ^2.0.224
+        specifier: ^2.0.233
         version: 2.0.233(react@18.2.0)
     devDependencies:
       '@types/react':
@@ -453,7 +450,7 @@ importers:
   theme:
     dependencies:
       '@fluentui/react-components':
-        specifier: ^9.43.2
+        specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.20.0)
       scheduler:
         specifier: ^0.20.0
