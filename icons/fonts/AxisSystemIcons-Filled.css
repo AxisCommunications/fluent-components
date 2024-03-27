@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Filled";
-    src: url("./AxisSystemIcons-Filled.ttf?68a7ec62542f1a3928f96e2f26887ee1") format("truetype");
+    src: url("./AxisSystemIcons-Filled.ttf?473f782ccbb09a6433606ad273054c27") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -604,4 +604,10 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_my_systems_24_filled:before {
     content: "\f1c5";
+}
+.icon-ic_axis_jump_next_20_filled:before {
+    content: "\f1c6";
+}
+.icon-ic_axis_jump_previous_20_filled:before {
+    content: "\f1c7";
 }
