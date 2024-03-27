@@ -210,5 +210,7 @@
     "ic_axis_analytics_28_regular": "0xf1d1",
     "ic_axis_analytics_32_regular": "0xf1d2",
     "ic_axis_analytics_48_regular": "0xf1d3",
-    "ic_axis_devices_48_regular": "0xf1d4"
+    "ic_axis_devices_48_regular": "0xf1d4",
+    "ic_axis_jump_next_20_regular": "0xf1d5",
+    "ic_axis_jump_previous_20_regular": "0xf1d6"
 }
