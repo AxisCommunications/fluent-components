@@ -241,7 +241,10 @@ export const ApplicationDrawer = ({
         open={isOpen}
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >
-        <DrawerHeader className={styles.header}>
+        <DrawerHeader
+          className={styles.header}
+          onClick={() => setIsOpen(false)}
+        >
           <div className={styles.headerTitle}>
             <ApplicationAreaIcon applicationArea={applicationArea} />
             <Body1Strong>
