@@ -11,6 +11,9 @@ export const useApplicationDrawrStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground3,
     ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   body: {
     backgroundColor: tokens.colorNeutralBackground2,
