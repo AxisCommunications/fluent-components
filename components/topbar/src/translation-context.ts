@@ -12,7 +12,12 @@ export type Translations = { readonly [key in TranslationKey]: string };
 export type TranslationFn = (key: keyof Translations) => string;
 export type TranslateLocaleFn = (lc: string | undefined) => string;
 
-export const TranslationContext = createContext<
+export const TranslationContext: React.Context<
+  {
+    readonly t: TranslationFn;
+    readonly tLocale: TranslateLocaleFn;
+  } | undefined
+> = createContext<
   { readonly t: TranslationFn; readonly tLocale: TranslateLocaleFn } | undefined
 >(undefined);
 
