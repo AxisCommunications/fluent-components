@@ -1,9 +1,9 @@
-## [8.20.3](https://github.com/AxisCommunications/fluent-components/compare/356559ec1b3ceaaebf3ff0c1d6a49224b95e20dd..871e53e41fba3fc3fbdb676e4e7f3c2cd6f04dae) (2024-03-28T12:00:32.726Z)
-
-### 🚧 Maintenance
-
-  - **icons**: update jump next and prev svg (#243) ([871e53e](https://github.com/AxisCommunications/fluent-components/commit/871e53e41fba3fc3fbdb676e4e7f3c2cd6f04dae))
+## [8.21.0](https://github.com/AxisCommunications/fluent-components/compare/f936c9426c788f0a03ca79678b050daf67747873..7232574a1d637432ee509b1d520d23cb00da51b8) (2024-04-02T10:58:44.009Z)
 
 ### ✨ Features
 
-  - **styles**: add icon style to navigation style (#242) ([99ed14a](https://github.com/AxisCommunications/fluent-components/commit/99ed14a25a255cc3efde808c25245159c1df166e))
+  - **topbar**: close drawer on header click (#246) ([7232574](https://github.com/AxisCommunications/fluent-components/commit/7232574a1d637432ee509b1d520d23cb00da51b8))
+
+### 🐛 Bug fixes
+
+  - **topbar**: Fix topbar types (#245) ([6d40361](https://github.com/AxisCommunications/fluent-components/commit/6d403614b843ea3c0753fead703487dda44601f4))
