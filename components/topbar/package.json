@@ -23,7 +23,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "pnpm build:cjs && pnpm build:esm",
+    "prebuild": "pnpm run -C ../../icons build",
+    "build": "pnpm prebuild && pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
