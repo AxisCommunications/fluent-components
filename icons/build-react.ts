@@ -96,6 +96,9 @@ function processFiles(src, dest) {
   indexContents.push(
     "export { iconFilledClassName, iconRegularClassName } from './utils/constants'"
   );
+  indexContents.push(
+    "export { createFluentIcon } from './utils/createFluentIcon'"
+  );
 
   try {
     fs.writeFileSync(indexPath, indexContents.join("\n"));
