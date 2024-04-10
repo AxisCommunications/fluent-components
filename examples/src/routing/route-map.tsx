@@ -9,6 +9,7 @@ import { ThemePage } from "../stories/theme-page";
 import { routes, TRoute } from "./routes";
 import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
 import { IllustrationPage } from "../stories/illustrations/illustration-page";
+import { FluentImplementationPage } from "../stories/fluent-implementations/fluent-implementation-page";
 
 export enum RouteGroup {
   MISC,
@@ -33,6 +34,20 @@ type TRouteData = {
 };
 
 export const routeMap: Map<TRoute, TRouteData> = new Map([
+  [
+    routes.fluentImplementations,
+    {
+      label: "Fluent implementations",
+      element: <FluentImplementationPage />,
+      group: RouteGroup.STORY,
+      category: RouteCategory.STYLE,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
+        packageName: "@axiscommunications/fluent-styles",
+      },
+    },
+  ],
   [
     routes.Home,
     {

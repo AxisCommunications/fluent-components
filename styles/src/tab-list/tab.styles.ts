@@ -1,4 +1,9 @@
-import { makeStyles, mergeClasses, tokens } from "@fluentui/react-components";
+import {
+  makeStyles,
+  mergeClasses,
+  tabClassNames,
+  tokens,
+} from "@fluentui/react-components";
 
 import {
   iconFilledClassName,
@@ -10,11 +15,23 @@ const useStyles = makeStyles({
     [`& .${iconFilledClassName}`]: {
       color: tokens.colorNeutralForeground1,
     },
-    [`& .${iconRegularClassName}`]: {
+    [`& .${iconRegularClassName} `]: {
+      color: tokens.colorNeutralForeground1,
+    },
+    [`& .${tabClassNames.icon} `]: {
       color: tokens.colorNeutralForeground1,
     },
     "&:hover": {
       backgroundColor: tokens.colorNeutralBackground3Hover,
+      [`& .${tabClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground1,
+      },
+    },
+    "&:active": {
+      backgroundColor: tokens.colorNeutralBackground3Hover,
+      [`& .${tabClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground1,
+      },
     },
   },
   selected: {
