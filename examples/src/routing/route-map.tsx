@@ -6,10 +6,10 @@ import { PasswordInputPage } from "../stories/password-input/password-input-page
 import { SliderPage } from "../stories/slider/slider-page";
 import { StepperPage } from "../stories/stepper/stepper-page";
 import { FluentUiTabStylesPage } from "../stories/tab-list-utilities/tab-list-utilities-page";
-import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
-import { ThemePage } from "../stories/theme-page";
+import { ThemePage } from "../stories/theme/theme-page";
 import { routes, TRoute } from "./routes";
 import { IconPage } from "../stories/icons/icon-page";
+import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
 
 export enum RouteGroup {
   MISC,
