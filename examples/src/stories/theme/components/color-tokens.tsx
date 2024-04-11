@@ -72,7 +72,6 @@ export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
 const useColorPaletteStyles = makeStyles({
   root: {
     width: "100%",
-    // textShadow: "#fff 0px 0 1px",
     textShadow: "0px 0px 1px #fff, 0 0px 1px #000, 0 0 0px",
   },
 });

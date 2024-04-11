@@ -9,7 +9,7 @@ import { FluentUiTabStylesPage } from "../stories/tab-list-utilities/tab-list-ut
 import { ThemePage } from "../stories/theme/theme-page";
 import { routes, TRoute } from "./routes";
 import { IconPage } from "../stories/icons/icon-page";
-import { TableUtilitiesPage } from '../stories/table-utilities/table-utlities-page';
+import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
 
 export enum RouteGroup {
   MISC,
