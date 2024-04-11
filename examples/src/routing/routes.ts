@@ -8,7 +8,7 @@ export const routes = {
   PasswordInput: "/password-input",
   TabListUtilities: "/tab-list-utilities",
   Illustrations: "/illustrations-catalog",
-  fluentImplementations: "/fluent-implementations",
+  mainMenu: "/main-menu",
 } as const;
 
 export type TRoute = (typeof routes)[keyof typeof routes];

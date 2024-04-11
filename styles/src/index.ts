@@ -1,3 +1,4 @@
+export * from "./main-menu/main-menu.styles";
 export * from "./navigation/navigation.styles";
 export * from "./static/static.styles";
 export * from "./tab-list/tab-list.styles";
