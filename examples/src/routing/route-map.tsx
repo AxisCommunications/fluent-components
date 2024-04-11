@@ -5,7 +5,7 @@ import { PasswordInputPage } from "../stories/password-input/password-input-page
 import { SliderPage } from "../stories/slider/slider-page";
 import { StepperPage } from "../stories/stepper/stepper-page";
 import { FluentUiTabStylesPage } from "../stories/tab-list-utilities/tab-list-utilities-page";
-import { ThemePage } from "../stories/theme-page";
+import { ThemePage } from "../stories/theme/theme-page";
 import { routes, TRoute } from "./routes";
 import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
 import { IllustrationPage } from "../stories/illustrations/illustration-page";

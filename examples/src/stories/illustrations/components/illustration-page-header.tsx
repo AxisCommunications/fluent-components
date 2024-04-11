@@ -14,6 +14,7 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     flexWrap: "wrap",
+    alignItems: "center",
     ...shorthands.gap(tokens.spacingHorizontalM),
   },
   slider: {
@@ -42,14 +43,16 @@ export function IllustrationPageHeader(
 
   return (
     <div className={styles.root}>
-      <Input
-        size="small"
-        type="search"
-        placeholder="Search illustrations"
-        value={search}
-        aria-label="search"
-        onChange={onSearchQueryChanged}
-      />
+      <div>
+        <Input
+          size="small"
+          type="search"
+          placeholder="Search illustrations"
+          value={search}
+          aria-label="search"
+          onChange={onSearchQueryChanged}
+        />
+      </div>
       <RadioGroup
         layout="horizontal"
         defaultValue={DEFAULT_VARIANT_FILTER}
