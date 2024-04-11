@@ -1,15 +1,15 @@
 import React from "react";
 import { WelcomePage } from "../landingpage";
-import { IconPage } from "../stories/icon-page";
+import { IllustrationPage } from "../stories/illustrations/illustration-page";
+import { MainMenuPage } from "../stories/main-menu/main-menu-page";
 import { PasswordInputPage } from "../stories/password-input/password-input-page";
 import { SliderPage } from "../stories/slider/slider-page";
 import { StepperPage } from "../stories/stepper/stepper-page";
 import { FluentUiTabStylesPage } from "../stories/tab-list-utilities/tab-list-utilities-page";
 import { ThemePage } from "../stories/theme/theme-page";
 import { routes, TRoute } from "./routes";
-import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
-import { IllustrationPage } from "../stories/illustrations/illustration-page";
-import { MainMenuPage } from "../stories/main-menu/main-menu-page";
+import { IconPage } from "../stories/icons/icon-page";
+import { TableUtilitiesPage } from '../stories/table-utilities/table-utlities-page';
 
 export enum RouteGroup {
   MISC,

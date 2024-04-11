@@ -9,6 +9,8 @@ export const useStyles = makeStyles({
   iconWrapper: {
     alignItems: "center",
     display: "flex",
+    flexBasis: "20%",
+    flexGrow: 0,
     flexDirection: "column",
     justifyContent: "space-around",
     ...shorthands.padding("8px"),
