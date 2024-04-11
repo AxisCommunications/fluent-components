@@ -9,7 +9,7 @@ import { ThemePage } from "../stories/theme-page";
 import { routes, TRoute } from "./routes";
 import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
 import { IllustrationPage } from "../stories/illustrations/illustration-page";
-import { FluentImplementationPage } from "../stories/fluent-implementations/fluent-implementation-page";
+import { MainMenuPage } from "../stories/main-menu/main-menu-page";
 
 export enum RouteGroup {
   MISC,
@@ -35,10 +35,10 @@ type TRouteData = {
 
 export const routeMap: Map<TRoute, TRouteData> = new Map([
   [
-    routes.fluentImplementations,
+    routes.mainMenu,
     {
-      label: "Fluent implementations",
-      element: <FluentImplementationPage />,
+      label: "Main menu",
+      element: <MainMenuPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.STYLE,
       ghInfo: {

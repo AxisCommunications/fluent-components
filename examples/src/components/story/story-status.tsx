@@ -24,7 +24,7 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   [EStoryStatus.WIP]: (
     <Tooltip
       key={EStoryStatus.PUBLIC}
-      content={"Packages is not yet fully completed. Work is still in progress."}
+      content={"Feature(s) is not yet fully completed. Work is still in progress."}
       withArrow
       relationship={"label"}
     >
@@ -34,7 +34,7 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   [EStoryStatus.NEW]: (
     <Tooltip
       key={EStoryStatus.NEW}
-      content={"Packages was newly added, beware of hick-ups!"}
+      content={"Feature(s) was newly added, beware of hick-ups!"}
       withArrow
       relationship={"label"}
     >
@@ -44,7 +44,7 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   [EStoryStatus.STABLE]: (
     <Tooltip
       key={EStoryStatus.STABLE}
-      content={"Packages is considered stable, tho please report problems if found!"}
+      content={"Feature(s) is considered stable, tho please report problems if found!"}
       withArrow
       relationship={"label"}
     >
@@ -54,7 +54,7 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   [EStoryStatus.UNSTABLE]: (
     <Tooltip
       key={EStoryStatus.UNSTABLE}
-      content={"Packages is considered unstable, experimental."}
+      content={"Feature(s) is considered unstable, experimental."}
       withArrow
       relationship={"label"}
     >
