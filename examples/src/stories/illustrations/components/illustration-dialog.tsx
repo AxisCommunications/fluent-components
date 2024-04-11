@@ -29,7 +29,7 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground1,
     },
   },
-  illustrationBootstrap: {
+  iconBootstrap: {
     resize: "both",
     width: "250px",
     maxWidth: "500px",
