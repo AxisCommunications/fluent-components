@@ -21,4 +21,10 @@ export const useStyles = makeStyles({
     height: "auto",
     ...shorthands.padding("0px 8px"),
   },
+  displayName: {
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
 });

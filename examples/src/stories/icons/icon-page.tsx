@@ -31,7 +31,7 @@ export const IconPage = (): JSX.Element => {
         className={styles.iconWrapper}
       >
         <Icon />
-        <div>
+        <div className={styles.displayName}>
           <Caption1 className={styles.text}>
             {Icon.displayName}
           </Caption1>
