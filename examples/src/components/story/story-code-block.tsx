@@ -1,7 +1,7 @@
-import { Button, makeStyles, tokens } from "@fluentui/react-components";
-import { RectangleLandscapeHintCopyRegular } from "@fluentui/react-icons";
-import React, { useCallback } from "react";
+import { makeStyles, tokens } from "@fluentui/react-components";
+import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
+import { CopyButton } from "./story-code-copy";
 
 const useStyles = makeStyles({
   root: {
@@ -19,20 +19,13 @@ export const StoryCodeBlock = (
 ) => {
   const styles = useStyles();
 
-  const copyCode = useCallback(async () => {
-    await copyToClipboard(codeString);
-  }, []);
-
   return (
     <div className={styles.root}>
       {canCopy && (
-        <Button
-          onClick={copyCode}
+        <CopyButton
+          codeString={codeString}
           className={styles.copy}
-          icon={<RectangleLandscapeHintCopyRegular />}
-        >
-          copy snippet
-        </Button>
+        />
       )}
       <SyntaxHighlighter language="typescript">
         {codeString}
@@ -40,11 +33,3 @@ export const StoryCodeBlock = (
     </div>
   );
 };
-
-async function copyToClipboard(text: string): Promise<void> {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch (error) {
-    console.error("Error copying to clipboard:", error);
-  }
-}

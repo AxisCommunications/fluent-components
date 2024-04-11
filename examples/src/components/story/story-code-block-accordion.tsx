@@ -9,11 +9,18 @@ import {
 } from "@fluentui/react-components";
 import React from "react";
 import { StoryCodeBlock } from "./story-code-block";
+import { CopyButton } from "./story-code-copy";
 
 const useStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.borderRadius(tokens.borderRadiusLarge),
+  },
+  title: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });
 
@@ -33,9 +40,14 @@ export const StoryCodeBlockAccordion = (
       defaultOpenItems={defaultOpen ? "1" : null}
     >
       <AccordionItem value="1">
-        <AccordionHeader>{title}</AccordionHeader>
+        <AccordionHeader>
+          <div className={styles.title}>
+            {title}
+            <CopyButton codeString={codeString} />
+          </div>
+        </AccordionHeader>
         <AccordionPanel>
-          <StoryCodeBlock codeString={codeString} />
+          <StoryCodeBlock codeString={codeString} canCopy={false} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
