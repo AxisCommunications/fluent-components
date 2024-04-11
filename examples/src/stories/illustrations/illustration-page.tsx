@@ -39,7 +39,7 @@ export const IllustrationPage = (): JSX.Element => {
         >
           <Illustration />
         </IllustrationDialog>
-        <div>
+        <div className={styles.displayName}>
           <Caption1 className={styles.text}>
             {Illustration.displayName}
           </Caption1>
