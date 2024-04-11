@@ -4,7 +4,7 @@ export const useProfileLanguageSubmenuStyles = makeStyles({
   languageSelection: {
     overflowY: "auto",
     overflowX: "hidden",
-    minHeight: "60px",
+    minHeight: "32px",
     maxHeight: "30vh",
   },
 });
