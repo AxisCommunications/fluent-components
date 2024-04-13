@@ -13,14 +13,15 @@ import { CopyButton } from "./story-code-copy";
 
 const useStyles = makeStyles({
   root: {
+    position: "relative",
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.borderRadius(tokens.borderRadiusLarge),
   },
-  title: {
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
+  copyBootstrap: {
+    position: "absolute",
+    zIndex: 5,
+    top: "5px",
+    right: "5px",
   },
 });
 
@@ -40,11 +41,13 @@ export const StoryCodeBlockAccordion = (
       defaultOpenItems={defaultOpen ? "1" : null}
     >
       <AccordionItem value="1">
+        <CopyButton
+          appearance="transparent"
+          className={styles.copyBootstrap}
+          codeString={codeString}
+        />
         <AccordionHeader>
-          <div className={styles.title}>
-            {title}
-            <CopyButton codeString={codeString} />
-          </div>
+          {title}
         </AccordionHeader>
         <AccordionPanel>
           <StoryCodeBlock codeString={codeString} canCopy={false} />
