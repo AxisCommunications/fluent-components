@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonProps,
   makeStyles,
   mergeClasses,
   tokens,
@@ -34,7 +35,7 @@ export function useCopyStyles({ className }: TUseCopyStyles) {
 type TCopy = {
   codeString: string;
   className?: string;
-};
+} & Pick<ButtonProps, "shape" | "appearance">;
 
 export function CopyButton({ className, codeString, ...rest }: TCopy) {
   const { rootStyle } = useCopyStyles({ className });
@@ -52,10 +53,10 @@ export function CopyButton({ className, codeString, ...rest }: TCopy) {
     <Tooltip withArrow content={"copy codeblock"} relationship={"label"}>
       <Button
         className={rootStyle}
-        {...rest}
         shape="circular"
         onClick={copyCode}
         icon={<RectangleLandscapeHintCopyFilled />}
+        {...rest}
       >
       </Button>
     </Tooltip>
