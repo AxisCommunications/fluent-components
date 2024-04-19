@@ -12,6 +12,7 @@ import { useIllustrationPage } from "./illustration-page.hooks";
 import { useStyles } from "./illustration-page.styles";
 import { EStoryStatus } from "../../components/story/story-status";
 import { DEFAULT_ILLUSTRATION_WIDTH } from "./illustration-page.types";
+import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 
 export const IllustrationPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.Illustrations);
@@ -68,6 +69,7 @@ export const IllustrationPage = (): JSX.Element => {
       }
     >
       <StorySection>
+        <StoryCodeBlockAccordion codeString={illustrationCodeAsString} />
         <div className={styles.root}>
           {filteredIllustrations.map(_renderIllustration)}
         </div>
@@ -75,3 +77,7 @@ export const IllustrationPage = (): JSX.Element => {
     </StoryPage>
   );
 };
+
+export const illustrationCodeAsString = `
+import { ... } from "@axiscommunications/fluent-illustrations"
+`;

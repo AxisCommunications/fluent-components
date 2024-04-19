@@ -9,6 +9,7 @@ import { IIconCopy } from "./components/icon-copy";
 import { IconPageHeader } from "./components/icon-page-header";
 import { useIconPage } from "./icon-page.hooks";
 import { useStyles } from "./icon-page.styles";
+import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 
 export const IconPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.IconCatalog);
@@ -59,6 +60,7 @@ export const IconPage = (): JSX.Element => {
       }
     >
       <StorySection>
+        <StoryCodeBlockAccordion codeString={iconCodeAsString} />
         <div className={styles.root}>
           {filterIcons.map(_renderIcon)}
         </div>
@@ -66,3 +68,7 @@ export const IconPage = (): JSX.Element => {
     </StoryPage>
   );
 };
+
+export const iconCodeAsString = `
+import { ... } from "@axiscommunications/fluent-icons"
+`;
