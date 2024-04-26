@@ -48,8 +48,7 @@
   "peerDependencies": {
     "@fluentui/react-components": "^9.47.1",
     "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0",
-    "scheduler": "^0.20.0"
+    "react-dom": ">=16.8.0 <19.0.0"
   },
   "packageManager": "pnpm@8.1.0",
   "publishConfig": {
