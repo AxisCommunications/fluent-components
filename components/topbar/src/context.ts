@@ -12,7 +12,7 @@ export function buildUrlWithContext(url: string, ctx: TopBarContext) {
   for (const key of topBarContextKeys) {
     const value = ctx[key];
     if (value !== undefined) {
-      urlWithSettings.searchParams.append(key, value);
+      urlWithSettings.searchParams.set(key, value);
     }
   }
   return urlWithSettings.href;
