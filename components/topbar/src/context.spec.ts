@@ -56,4 +56,26 @@ describe("topbar settings", () => {
     const urlWithSettings = buildUrlWithContext(url, searchParams);
     expect(urlWithSettings).toBe("https://app.my.axis.com/");
   });
+
+  it("serializer should not duplicate parameters", () => {
+    const url = "https://app.my.axis.com";
+    const searchParams = {
+      lang,
+      org,
+      theme,
+      rg,
+    };
+    const urlWithSettings = buildUrlWithContext(url, searchParams);
+    expect(urlWithSettings).toBe(
+      "https://app.my.axis.com/?lang=en&org=arn%3Aorganization%3A0000&theme=dark&rg=resourcegroup"
+    );
+
+    const updatedUrlWithSettings = buildUrlWithContext(
+      urlWithSettings,
+      searchParams
+    );
+    expect(updatedUrlWithSettings).toBe(
+      "https://app.my.axis.com/?lang=en&org=arn%3Aorganization%3A0000&theme=dark&rg=resourcegroup"
+    );
+  });
 });
