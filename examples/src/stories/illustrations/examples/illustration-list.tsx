@@ -1,5 +1,4 @@
 import React from "react";
-import { useIllustrationPage } from "../illustration-page.hooks";
 import { AxisIllustrationProps } from "@axiscommunications/fluent-illustrations";
 import {
   Caption1,
@@ -38,11 +37,9 @@ export const useStyles = makeStyles({
   },
 });
 
-export function IllustrationList() {
-  const {
-    filteredIllustrations,
-  } = useIllustrationPage();
-
+export function IllustrationList(
+  { illustrations }: { illustrations: React.FC<AxisIllustrationProps>[] }
+) {
   const styles = useStyles();
 
   const _renderIllustration = (
@@ -75,7 +72,7 @@ export function IllustrationList() {
 
   return (
     <div className={styles.root}>
-      {filteredIllustrations.map(_renderIllustration)}
+      {illustrations.map(_renderIllustration)}
     </div>
   );
 }

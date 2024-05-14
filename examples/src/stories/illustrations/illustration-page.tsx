@@ -5,43 +5,35 @@ import { routes } from "../../routing/routes";
 import { IllustrationPageHeader } from "./components/illustration-page-header";
 import { useIllustrationPage } from "./illustration-page.hooks";
 import { EStoryStatus } from "../../components/story/story-status";
-import {
-  pageData,
-  useExampleWithNavigation,
-} from "../../components/story/story.utils";
+import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { IllustrationList } from "./examples/illustration-list";
 import {
   BundleIllustration,
   BundleIllustrationExampleAsString,
 } from "./examples/bundle-illustration";
 
-const examples: pageData[] = [
-  {
-    title: "IllustrationList",
-    anchor: "IllustrationList",
-    example: <IllustrationList />,
-    codeString: "",
-  },
-  {
-    title: "BundleIllustration",
-    anchor: "BundleIllustration",
-    example: <BundleIllustration />,
-    codeString: BundleIllustrationExampleAsString,
-  },
-];
-
 export const IllustrationPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.Illustrations);
-  const { renderSections, renderNavigation } = useExampleWithNavigation(
-    examples
-  );
 
   const {
     search,
+    filteredIllustrations,
     onSearchQueryChanged,
     filterByVariant,
   } = useIllustrationPage();
 
+  const { renderSections, renderNavigation } = useExampleWithNavigation(
+    [{
+      title: "IllustrationList",
+      anchor: "IllustrationList",
+      example: <IllustrationList illustrations={filteredIllustrations} />,
+    }, {
+      title: "BundleIllustration",
+      anchor: "BundleIllustration",
+      example: <BundleIllustration />,
+      codeString: BundleIllustrationExampleAsString,
+    }]
+  );
   return (
     <StoryPage
       title="Illustrations"
