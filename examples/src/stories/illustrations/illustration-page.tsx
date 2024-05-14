@@ -1,57 +1,46 @@
-import { AxisIllustrationProps } from "@axiscommunications/fluent-illustrations";
-import { Caption1 } from "@fluentui/react-components";
 import React from "react";
 import { StoryPage } from "../../components/story/story-page";
-import { StorySection } from "../../components/story/story-section";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
-import { IllustrationCopy } from "./components/illustration-copy";
-import { IllustrationDialog } from "./components/illustration-dialog";
 import { IllustrationPageHeader } from "./components/illustration-page-header";
 import { useIllustrationPage } from "./illustration-page.hooks";
-import { useStyles } from "./illustration-page.styles";
 import { EStoryStatus } from "../../components/story/story-status";
-import { DEFAULT_ILLUSTRATION_WIDTH } from "./illustration-page.types";
-import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
+import {
+  pageData,
+  useExampleWithNavigation,
+} from "../../components/story/story.utils";
+import { IllustrationList } from "./examples/illustration-list";
+import {
+  BundleIllustration,
+  BundleIllustrationExampleAsString,
+} from "./examples/bundle-illustration";
+
+const examples: pageData[] = [
+  {
+    title: "IllustrationList",
+    anchor: "IllustrationList",
+    example: <IllustrationList />,
+    codeString: "",
+  },
+  {
+    title: "BundleIllustration",
+    anchor: "BundleIllustration",
+    example: <BundleIllustration />,
+    codeString: BundleIllustrationExampleAsString,
+  },
+];
 
 export const IllustrationPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.Illustrations);
+  const { renderSections, renderNavigation } = useExampleWithNavigation(
+    examples
+  );
+
   const {
     search,
     onSearchQueryChanged,
     filterByVariant,
-    filteredIllustrations,
   } = useIllustrationPage();
-
-  const styles = useStyles();
-
-  const _renderIllustration = (
-    Illustration: React.FC<AxisIllustrationProps>
-  ): JSX.Element => {
-    return (
-      <div
-        key={Illustration.displayName}
-        aria-label={Illustration.displayName}
-        className={styles.iconWrapper}
-      >
-        <IllustrationDialog
-          thumbnail={<Illustration width={DEFAULT_ILLUSTRATION_WIDTH} />}
-          title={Illustration.displayName}
-        >
-          <Illustration />
-        </IllustrationDialog>
-        <div className={styles.displayName}>
-          <Caption1 className={styles.text}>
-            {Illustration.displayName}
-          </Caption1>
-          <IllustrationCopy
-            toolTip={"copy react component to clipboard"}
-            toCopy={Illustration.displayName}
-          />
-        </div>
-      </div>
-    );
-  };
 
   return (
     <StoryPage
@@ -60,6 +49,7 @@ export const IllustrationPage = (): JSX.Element => {
       ghPackage={gh.packageName}
       description={"Axis branded illustrations"}
       status={[EStoryStatus.NEW]}
+      navigation={renderNavigation}
       customHeader={
         <IllustrationPageHeader
           search={search}
@@ -68,16 +58,7 @@ export const IllustrationPage = (): JSX.Element => {
         />
       }
     >
-      <StorySection>
-        <StoryCodeBlockAccordion codeString={illustrationCodeAsString} />
-        <div className={styles.root}>
-          {filteredIllustrations.map(_renderIllustration)}
-        </div>
-      </StorySection>
+      {renderSections}
     </StoryPage>
   );
 };
-
-export const illustrationCodeAsString = `
-import { ... } from "@axiscommunications/fluent-illustrations"
-`;

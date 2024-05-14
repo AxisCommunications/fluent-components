@@ -8,7 +8,7 @@ import React, { useMemo } from "react";
 
 export type pageData = {
   example: JSX.Element;
-  codeString: string;
+  codeString?: string;
 } & TStoryNavigationLink;
 
 export function useExampleWithNavigation(examples: pageData[]) {
@@ -23,7 +23,7 @@ export function useExampleWithNavigation(examples: pageData[]) {
         return (
           <StorySection key={anchor} title={title} id={anchor}>
             {example}
-            <StoryCodeBlockAccordion codeString={codeString} />
+            {codeString && <StoryCodeBlockAccordion codeString={codeString} />}
           </StorySection>
         );
       }),
