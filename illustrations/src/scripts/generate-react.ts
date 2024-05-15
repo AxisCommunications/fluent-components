@@ -60,6 +60,14 @@ function createIndexFile(dest: string, illustrationContents: string[]) {
     "export type { AxisIllustrationProps } from './utils/types'"
   );
 
+  indexContent.push(
+    "export { bundleIllustration } from './utils/bundleIllustration'"
+  );
+
+  indexContent.push(
+    "export type { TBundleIllustration, TBundleIllustrationVariant} from './utils/bundleIllustration'"
+  );
+
   writeToFile(indexPath, indexContent.join("\n"));
 }
 
@@ -107,8 +115,7 @@ function processFolder(from: TGenerateREACTConfig["from"]): string[] {
   for (const file of readAllFiles(from)) {
     const illustrationName = toIllustrationName(file.fileName);
     const fileContentAsString = `\`${file.content}\``;
-    const jsCode =
-      `export const ${illustrationName} = (/*#__PURE__*/createFluentIllustration('${illustrationName}', ${fileContentAsString}));`;
+    const jsCode = `export const ${illustrationName} = (/*#__PURE__*/createFluentIllustration('${illustrationName}', ${fileContentAsString}));`;
     illustrations.push(jsCode);
   }
   return illustrations;
