@@ -1,10 +1,10 @@
 import {
-  ArrowWrap20Filled,
   BoxFilled,
   BoxRegular,
   bundleIcon,
-  CatchUp20Filled,
-  Search20Filled,
+  Circle20Filled,
+  DataBarVertical20Filled,
+  HomeMore20Filled,
 } from "@fluentui/react-icons";
 import { defaultMySystemsAppData, isMySystemsAppId } from "./applications";
 import { TranslationFn } from "./translation-context";
@@ -84,11 +84,11 @@ export const ApplicationAreaIcon = ({
   const applicationAreaIcon = (applicationArea?: ApplicationArea) => {
     switch (applicationArea) {
       case appAreas.MY_AXIS:
-        return <CatchUp20Filled />;
+        return <HomeMore20Filled />;
       case appAreas.MY_BUSINESS:
-        return <Search20Filled />;
+        return <DataBarVertical20Filled />;
       case appAreas.MY_PARTNERS:
-        return <ArrowWrap20Filled />;
+        return <Circle20Filled />;
       case appAreas.MY_SYSTEMS:
         return <MySystems24Filled />;
     }
