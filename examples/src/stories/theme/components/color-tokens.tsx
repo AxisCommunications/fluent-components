@@ -16,7 +16,7 @@ export const colorTokensClassNames = {
 const useStyles = makeStyles({
   root: {
     display: "grid",
-    gridTemplateColumns: "max-content auto auto",
+    gridTemplateColumns: "2fr 1fr 1fr",
     ...shorthands.gap(tokens.spacingHorizontalXS),
     fontFamily: "monospace",
     "> :nth-child(1)": {
@@ -57,15 +57,59 @@ export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
       ],
     }));
 
+  const customColorTokens = Object.entries(light).filter(([token]) =>
+    token.startsWith("axisCustomColor")
+  ).map(([token, value]) => ({
+    token,
+    lightValue: value as string,
+    darkValue: (dark as unknown as Record<string, string>)[
+      token
+    ],
+  }));
+
+  const customUtilityTokens = Object.entries(light).filter(([token]) =>
+    token.startsWith("axisCustomUtility")
+  ).map(([token, value]) => ({
+    token,
+    lightValue: value as string,
+    darkValue: (dark as unknown as Record<string, string>)[
+      token
+    ],
+  }));
+
   const { rootStyle } = useColorTokensStyles();
 
   return (
-    <div data-testid={componentId} className={rootStyle} {...rest}>
-      <b>token</b>
-      <b>light</b>
-      <b>dark</b>
-      {tokens.map((args, i) => <ColorPalette key={i} {...args} />)}
-    </div>
+    <>
+      <div data-testid={componentId} className={rootStyle} {...rest}>
+        <b>token</b>
+        <b>light</b>
+        <b>dark</b>
+        {tokens.map((args, i) => <ColorPalette key={i} {...args} />)}
+      </div>
+      <div data-testid={componentId} className={rootStyle} {...rest}>
+        <b>custom color token</b>
+        <b>light</b>
+        <b>dark</b>
+        {customColorTokens.map((args, i) => (
+          <ColorPalette
+            key={i}
+            {...args}
+          />
+        ))}
+      </div>
+      <div data-testid={componentId} className={rootStyle} {...rest}>
+        <b>custom utility token</b>
+        <b>light</b>
+        <b>dark</b>
+        {customUtilityTokens.map((args, i) => (
+          <ColorPalette
+            key={i}
+            {...args}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
