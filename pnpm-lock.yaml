@@ -195,6 +195,9 @@ importers:
       '@axiscommunications/fluent-icons':
         specifier: workspace:*
         version: link:../../icons
+      '@axiscommunications/fluent-theme':
+        specifier: workspace:*
+        version: link:../../theme
       '@fluentui/react-components':
         specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)
