@@ -120,7 +120,9 @@
   ],
   "#4c381e": [
     "dark.colorBrandBackgroundPressed",
-    "dark.colorBrandBackground2Hover"
+    "dark.colorBrandBackground2Hover",
+    "dark.colorBrandBackground4Static",
+    "light.colorBrandBackground4Static"
   ],
   "#4d4d4d": [
     "light.colorNeutralStrokeAccessiblePressed"
@@ -169,10 +171,12 @@
     "dark.colorBrandForegroundInvertedPressed",
     "dark.colorBrandForegroundOnLightSelected",
     "dark.colorBrandBackgroundSelected",
+    "dark.colorBrandBackground3Static",
     "light.colorBrandForeground2Hover",
     "light.colorBrandForegroundOnLightSelected",
     "light.colorBrandBackgroundPressed",
     "light.colorBrandBackgroundSelected",
+    "light.colorBrandBackground3Static",
     "light.colorCompoundBrandForeground1Pressed",
     "light.colorCompoundBrandStrokePressed"
   ],

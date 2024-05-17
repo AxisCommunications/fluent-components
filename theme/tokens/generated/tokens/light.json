@@ -40,6 +40,14 @@
       "Border2": {
         "value": "#c50f1f",
         "type": "color"
+      },
+      "Background3Hover": {
+        "value": "#b10e1c",
+        "type": "color"
+      },
+      "Background3Pressed": {
+        "value": "#960b18",
+        "type": "color"
       }
     },
     "Warning": {
@@ -607,6 +615,14 @@
       },
       "Background2Pressed": {
         "value": "#FFE79B",
+        "type": "color"
+      },
+      "Background3Static": {
+        "value": "#B07A0F",
+        "type": "color"
+      },
+      "Background4Static": {
+        "value": "#4C381E",
         "type": "color"
       },
       "BackgroundInverted": {

@@ -1,11 +1,20 @@
 /**
  * Do not edit directly
- * Generated on Sat, 11 Nov 2023 09:34:30 GMT
+ * Generated on Fri, 17 May 2024 13:10:01 GMT
  */ 
 
 import { Theme } from "@fluentui/react-components";
 
 export const AxisLightTheme: Theme = {
+  axisCustomColorMyAxisBackground: "#DFA001",
+  axisCustomColorMyAxisForeground: "#FFF5D6",
+  axisCustomColorMyBusinessBackground: "#C10B7E",
+  axisCustomColorMyBusinessForeground: "#F7CEE8",
+  axisCustomColorMyProductsBackground: "#7FB239",
+  axisCustomColorMyProductsForeground: "#E8F4D9",
+  axisCustomColorMySystemsBackground: "#008DC6",
+  axisCustomColorMySystemsForeground: "#CCEBF8",
+  axisCustomUtilityThemeName: "axisLightTheme",
   borderRadiusCircular: "10000px",
   borderRadiusLarge: "6px",
   borderRadiusMedium: "4px",
@@ -17,6 +26,8 @@ export const AxisLightTheme: Theme = {
   colorBrandBackground2: "#FFFCF1",
   colorBrandBackground2Hover: "#FFF6D7",
   colorBrandBackground2Pressed: "#FFE79B",
+  colorBrandBackground3Static: "#B07A0F",
+  colorBrandBackground4Static: "#4C381E",
   colorBrandBackgroundHover: "#FEC10C",
   colorBrandBackgroundInverted: "#ffffff",
   colorBrandBackgroundInvertedHover: "#FFFCF1",
@@ -83,6 +94,11 @@ export const AxisLightTheme: Theme = {
   colorNeutralBackgroundInverted: "#292929",
   colorNeutralBackgroundInvertedDisabled: "rgba(255, 255, 255, 0.1)",
   colorNeutralBackgroundStatic: "#333333",
+  colorNeutralCardBackground: "#fafafa",
+  colorNeutralCardBackgroundDisabled: "#f0f0f0",
+  colorNeutralCardBackgroundHover: "#ffffff",
+  colorNeutralCardBackgroundPressed: "#f5f5f5",
+  colorNeutralCardBackgroundSelected: "#ebebeb",
   colorNeutralForeground1: "#242424",
   colorNeutralForeground1Hover: "#242424",
   colorNeutralForeground1Pressed: "#242424",
@@ -304,6 +320,8 @@ export const AxisLightTheme: Theme = {
   colorStatusDangerBackground1: "#fdf3f4",
   colorStatusDangerBackground2: "#eeacb2",
   colorStatusDangerBackground3: "#c50f1f",
+  colorStatusDangerBackground3Hover: "#b10e1c",
+  colorStatusDangerBackground3Pressed: "#960b18",
   colorStatusDangerBorder1: "#eeacb2",
   colorStatusDangerBorder2: "#c50f1f",
   colorStatusDangerBorderActive: "#c50f1f",

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 11 Nov 2023 09:34:28 GMT
+ * Generated on Fri, 17 May 2024 13:10:00 GMT
  */
 
 import { LineHeightTokens, FontFamilyTokens, FontSizeTokens, FontWeightTokens, BorderRadiusTokens, StrokeWidthTokens } from "@fluentui/react-components";
