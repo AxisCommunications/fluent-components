@@ -8,6 +8,7 @@ import {
   iconFilledClassName,
   iconRegularClassName,
 } from "@fluentui/react-icons";
+import { axisCustomTokens } from "@axiscommunications/fluent-theme";
 
 export const useApplicationStyles = makeStyles({
   headerLabel: {
@@ -92,20 +93,20 @@ export const useApplicationStyles = makeStyles({
     },
   },
   mySystemsMenuRectangle: {
-    color: "#CCEBF8",
-    backgroundColor: "#008DC6",
+    color: axisCustomTokens.axisCustomColorMySystemsForeground,
+    backgroundColor: axisCustomTokens.axisCustomColorMySystemsBackground,
   },
   myAxisMenuRectangle: {
-    color: "#FFF5D6",
-    backgroundColor: "#DFA001",
+    color: axisCustomTokens.axisCustomColorMyAxisForeground,
+    backgroundColor: axisCustomTokens.axisCustomColorMyAxisBackground,
   },
   myPartnersMenuRectangle: {
-    color: "#E8F4D9",
-    backgroundColor: "#7FB239",
+    color: axisCustomTokens.axisCustomColorMyProductsForeground,
+    backgroundColor: axisCustomTokens.axisCustomColorMyProductsBackground,
   },
   myBusinessMenuRectangle: {
-    color: "#F7CEE8",
-    backgroundColor: "#C10B7E",
+    color: axisCustomTokens.axisCustomColorMyBusinessForeground,
+    backgroundColor: axisCustomTokens.axisCustomColorMyBusinessBackground,
   },
   selectedAppLabel: {
     ...typographyStyles.body1Strong,

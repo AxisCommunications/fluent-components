@@ -48,10 +48,22 @@ export const ThemePage = () => {
 };
 
 export const themeCodeAsString = `
+import { makeStyles, FluentProvider } from "@fluentui/react-components";
 import {
   axisLightTheme,
   axisDarkTheme,
   axisBlueLightTheme,
   axisBlueDarkTheme,
 } from "@axiscommunications/fluent-theme";
+import { axisCustomTokens } from "@axiscommunications/fluent-theme";
+
+export const useApplicationStyles = makeStyles({
+  root: {
+    backgroundColor: axisCustomTokens.axisCustomColorMyBusinessBackground
+  }
+});
+
+<FluentProvider theme={axisDarkTheme}>
+  <App/>
+</FluentProvider>
 `;

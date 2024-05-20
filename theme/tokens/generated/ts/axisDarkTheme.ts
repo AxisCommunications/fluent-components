@@ -1,11 +1,20 @@
 /**
  * Do not edit directly
- * Generated on Sat, 11 Nov 2023 09:34:30 GMT
+ * Generated on Fri, 17 May 2024 13:10:01 GMT
  */ 
 
 import { Theme } from "@fluentui/react-components";
 
 export const AxisDarkTheme: Theme = {
+  axisCustomColorMyAxisBackground: "#BC8D00",
+  axisCustomColorMyAxisForeground: "#FFEBAD",
+  axisCustomColorMyBusinessBackground: "#6B0646",
+  axisCustomColorMyBusinessForeground: "#EF9BD1",
+  axisCustomColorMyProductsBackground: "#476320",
+  axisCustomColorMyProductsForeground: "#D1E8B2",
+  axisCustomColorMySystemsBackground: "#004F6E",
+  axisCustomColorMySystemsForeground: "#99D8F1",
+  axisCustomUtilityThemeName: "axisDarkTheme",
   borderRadiusCircular: "10000px",
   borderRadiusLarge: "6px",
   borderRadiusMedium: "4px",
@@ -17,6 +26,8 @@ export const AxisDarkTheme: Theme = {
   colorBrandBackground2: "#342818",
   colorBrandBackground2Hover: "#4C381E",
   colorBrandBackground2Pressed: "#281E03",
+  colorBrandBackground3Static: "#B07A0F",
+  colorBrandBackground4Static: "#4C381E",
   colorBrandBackgroundHover: "#EFAB01",
   colorBrandBackgroundInverted: "#ffffff",
   colorBrandBackgroundInvertedHover: "#FFFCF1",
@@ -83,6 +94,11 @@ export const AxisDarkTheme: Theme = {
   colorNeutralBackgroundInverted: "#ffffff",
   colorNeutralBackgroundInvertedDisabled: "rgba(255, 255, 255, 0.1)",
   colorNeutralBackgroundStatic: "#3d3d3d",
+  colorNeutralCardBackground: "#333333",
+  colorNeutralCardBackgroundDisabled: "#141414",
+  colorNeutralCardBackgroundHover: "#3d3d3d",
+  colorNeutralCardBackgroundPressed: "#2e2e2e",
+  colorNeutralCardBackgroundSelected: "#383838",
   colorNeutralForeground1: "#ffffff",
   colorNeutralForeground1Hover: "#ffffff",
   colorNeutralForeground1Pressed: "#ffffff",
@@ -304,12 +320,14 @@ export const AxisDarkTheme: Theme = {
   colorStatusDangerBackground1: "#481D20",
   colorStatusDangerBackground2: "#6e0811",
   colorStatusDangerBackground3: "#c50f1f",
+  colorStatusDangerBackground3Hover: "#b10e1c",
+  colorStatusDangerBackground3Pressed: "#960b18",
   colorStatusDangerBorder1: "#901c27",
   colorStatusDangerBorder2: "#dc626d",
   colorStatusDangerBorderActive: "#dc626d",
   colorStatusDangerForeground1: "#dc626d",
   colorStatusDangerForeground2: "#eeacb2",
-  colorStatusDangerForeground3: "#dc626d",
+  colorStatusDangerForeground3: "#eeacb2",
   colorStatusDangerForegroundInverted: "#b10e1c",
   colorStatusSuccessBackground1: "#113711",
   colorStatusSuccessBackground2: "#094509",

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 11 Nov 2023 09:34:28 GMT
+ * Generated on Fri, 17 May 2024 13:10:00 GMT
  */
 
 .dark {
@@ -9,11 +9,13 @@
   --color-status-danger-background3: #c50f1f;
   --color-status-danger-foreground1: #dc626d;
   --color-status-danger-foreground2: #eeacb2;
-  --color-status-danger-foreground3: #dc626d;
+  --color-status-danger-foreground3: #eeacb2;
   --color-status-danger-border-active: #dc626d;
   --color-status-danger-foreground-inverted: #b10e1c;
   --color-status-danger-border1: #901c27;
   --color-status-danger-border2: #dc626d;
+  --color-status-danger-background3-hover: #b10e1c;
+  --color-status-danger-background3-pressed: #960b18;
   --color-status-warning-background1: #492D1D;
   --color-status-warning-background2: #8a3707;
   --color-status-warning-background3: #f7630c;
@@ -151,6 +153,8 @@
   --color-brand-background2: #342818;
   --color-brand-background2-hover: #4C381E;
   --color-brand-background2-pressed: #281E03;
+  --color-brand-background3-static: #B07A0F;
+  --color-brand-background4-static: #4C381E;
   --color-brand-background-inverted: #ffffff;
   --color-brand-background-inverted-hover: #FFFCF1;
   --color-brand-background-inverted-pressed: #FFEEBA;

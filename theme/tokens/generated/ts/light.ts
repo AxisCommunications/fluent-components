@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 11 Nov 2023 09:34:28 GMT
+ * Generated on Fri, 17 May 2024 13:10:00 GMT
  */
 
 import { ColorTokens, ShadowTokens, ShadowBrandTokens } from "@fluentui/react-components";
@@ -11,6 +11,8 @@ export const colorTokens: ColorTokens = {
   colorBrandBackground2: "#fffcf1",
   colorBrandBackground2Hover: "#fff6d7",
   colorBrandBackground2Pressed: "#ffe79b",
+  colorBrandBackground3Static: "#b07a0f",
+  colorBrandBackground4Static: "#4c381e",
   colorBrandBackgroundHover: "#fec10c",
   colorBrandBackgroundInverted: "#ffffff",
   colorBrandBackgroundInvertedHover: "#fffcf1",
@@ -171,6 +173,8 @@ export const colorStatusTokens: Record<string, string> = {
   colorStatusDangerBackground1: "#fdf3f4",
   colorStatusDangerBackground2: "#eeacb2",
   colorStatusDangerBackground3: "#c50f1f",
+  colorStatusDangerBackground3Hover: "#b10e1c",
+  colorStatusDangerBackground3Pressed: "#960b18",
   colorStatusDangerBorder1: "#eeacb2",
   colorStatusDangerBorder2: "#c50f1f",
   colorStatusDangerBorderActive: "#c50f1f",

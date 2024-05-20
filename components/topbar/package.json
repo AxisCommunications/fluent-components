@@ -23,7 +23,7 @@
     "lib"
   ],
   "scripts": {
-    "prebuild": "pnpm run -C ../../icons build",
+    "prebuild": "pnpm run -C ../../icons build && pnpm run -C ../../theme build ",
     "build": "pnpm prebuild && pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc",
@@ -47,6 +47,7 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
+    "@axiscommunications/fluent-theme": ">=9.0.0",
     "@fluentui/react-components": "^9.47.1",
     "@fluentui/react-icons": "^2.0.233",
     "@fluentui/react-utilities": "^9.18.5",
@@ -54,7 +55,8 @@
     "react-dom": ">=16.8.0 <19.0.0"
   },
   "dependencies": {
-    "@axiscommunications/fluent-icons": "workspace:*"
+    "@axiscommunications/fluent-icons": "workspace:*",
+    "@axiscommunications/fluent-theme": "workspace:*"
   },
   "packageManager": "pnpm@8.1.0",
   "publishConfig": {

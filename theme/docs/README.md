@@ -1,13 +1,12 @@
 # Theme - @axiscommunications/fluent-theme
 
-An Axis branded theme for Fluent UI v9.
-
+An Axis branded theme for Fluent UI v9. Extended with custom tokens.
 Axis themes in this package are consumed via `npm.pkg.github.com` as `@axiscommunications/fluent-theme`.
 
 ```tsx
 import React from "react";
 import { FluentProvider } from "@fluentui/react-components";
-import { axisDarkTheme } from "@axiscommunications/fluent-theme";
+import { axisDarkTheme, axisCustomTokens } from "@axiscommunications/fluent-theme";
 import { createRoot } from "react-dom/client";
 
 const container = document.getElementById("root");
@@ -16,11 +15,23 @@ const root = createRoot(container!);
 root.render(
   <React.StrictMode>
     <FluentProvider theme={axisDarkTheme}>
-      <App />
+      <App/>
     </FluentProvider>
   </React.StrictMode>
 );
 ```
+```tsx
+import React from "react";
+import { makeStyles } from "@fluentui/react-components";
+import { axisCustomTokens } from "@axiscommunications/fluent-theme";
+
+export const useApplicationStyles = makeStyles({
+  root: {
+    backgroundColor: axisCustomTokens.axisCustomColorMyBusinessBackground
+  }
+});
+```
+
 
 # Tokens
 

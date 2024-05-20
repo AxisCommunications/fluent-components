@@ -1,6 +1,6 @@
 <!--
   Do not edit directly
-  Generated on Sat, 11 Nov 2023 09:34:28 GMT
+  Generated on Fri, 17 May 2024 13:10:00 GMT
 -->
 <ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -11,11 +11,13 @@
   <Color x:Key="Dark.ColorStatusDangerBackground3">#c50f1f</Color>
   <Color x:Key="Dark.ColorStatusDangerForeground1">#dc626d</Color>
   <Color x:Key="Dark.ColorStatusDangerForeground2">#eeacb2</Color>
-  <Color x:Key="Dark.ColorStatusDangerForeground3">#dc626d</Color>
+  <Color x:Key="Dark.ColorStatusDangerForeground3">#eeacb2</Color>
   <Color x:Key="Dark.ColorStatusDangerBorderActive">#dc626d</Color>
   <Color x:Key="Dark.ColorStatusDangerForegroundInverted">#b10e1c</Color>
   <Color x:Key="Dark.ColorStatusDangerBorder1">#901c27</Color>
   <Color x:Key="Dark.ColorStatusDangerBorder2">#dc626d</Color>
+  <Color x:Key="Dark.ColorStatusDangerBackground3Hover">#b10e1c</Color>
+  <Color x:Key="Dark.ColorStatusDangerBackground3Pressed">#960b18</Color>
   <Color x:Key="Dark.ColorStatusWarningBackground1">#492D1D</Color>
   <Color x:Key="Dark.ColorStatusWarningBackground2">#8a3707</Color>
   <Color x:Key="Dark.ColorStatusWarningBackground3">#f7630c</Color>
@@ -153,6 +155,8 @@
   <Color x:Key="Dark.ColorBrandBackground2">#342818</Color>
   <Color x:Key="Dark.ColorBrandBackground2Hover">#4C381E</Color>
   <Color x:Key="Dark.ColorBrandBackground2Pressed">#281E03</Color>
+  <Color x:Key="Dark.ColorBrandBackground3Static">#B07A0F</Color>
+  <Color x:Key="Dark.ColorBrandBackground4Static">#4C381E</Color>
   <Color x:Key="Dark.ColorBrandBackgroundInverted">#ffffff</Color>
   <Color x:Key="Dark.ColorBrandBackgroundInvertedHover">#FFFCF1</Color>
   <Color x:Key="Dark.ColorBrandBackgroundInvertedPressed">#FFEEBA</Color>
@@ -205,6 +209,8 @@
   <Color x:Key="Light.ColorStatusDangerBorderActive">#c50f1f</Color>
   <Color x:Key="Light.ColorStatusDangerBorder1">#eeacb2</Color>
   <Color x:Key="Light.ColorStatusDangerBorder2">#c50f1f</Color>
+  <Color x:Key="Light.ColorStatusDangerBackground3Hover">#b10e1c</Color>
+  <Color x:Key="Light.ColorStatusDangerBackground3Pressed">#960b18</Color>
   <Color x:Key="Light.ColorStatusWarningBackground1">#fff9f5</Color>
   <Color x:Key="Light.ColorStatusWarningBackground2">#fdcfb4</Color>
   <Color x:Key="Light.ColorStatusWarningBackground3">#f7630c</Color>
@@ -342,6 +348,8 @@
   <Color x:Key="Light.ColorBrandBackground2">#FFFCF1</Color>
   <Color x:Key="Light.ColorBrandBackground2Hover">#FFF6D7</Color>
   <Color x:Key="Light.ColorBrandBackground2Pressed">#FFE79B</Color>
+  <Color x:Key="Light.ColorBrandBackground3Static">#B07A0F</Color>
+  <Color x:Key="Light.ColorBrandBackground4Static">#4C381E</Color>
   <Color x:Key="Light.ColorBrandBackgroundInverted">#ffffff</Color>
   <Color x:Key="Light.ColorBrandBackgroundInvertedHover">#FFFCF1</Color>
   <Color x:Key="Light.ColorBrandBackgroundInvertedPressed">#FFEEBA</Color>

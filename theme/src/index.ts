@@ -27,7 +27,50 @@ export const brand: BrandVariants = {
   160: "#FFFCF1",
 };
 
-export const axisDarkTheme: Theme = {
+export type AxisCustomColorTokens = {
+  axisCustomColorMySystemsBackground: string;
+  axisCustomColorMySystemsForeground: string;
+  axisCustomColorMyAxisBackground: string;
+  axisCustomColorMyAxisForeground: string;
+  axisCustomColorMyBusinessBackground: string;
+  axisCustomColorMyBusinessForeground: string;
+  axisCustomColorMyProductsBackground: string;
+  axisCustomColorMyProductsForeground: string;
+};
+
+export type AxisCustomUtilityTokens = {
+  axisCustomUtilityThemeName:
+    | "axisDarkTheme"
+    | "axisLightTheme"
+    | "axisBlueDarkTheme"
+    | "axisBlueLightTheme";
+};
+
+export type AxisCustomTokens = AxisCustomColorTokens & AxisCustomUtilityTokens;
+export type AxisTheme = Theme & AxisCustomTokens;
+
+export const axisCustomTokens: Record<
+  keyof AxisCustomTokens,
+  string
+> = {
+  axisCustomColorMyAxisBackground: "var(--axisCustomColorMyAxisBackground)",
+  axisCustomColorMyAxisForeground: "var(--axisCustomColorMyAxisForeground)",
+  axisCustomColorMySystemsBackground:
+    "var(--axisCustomColorMySystemsBackground)",
+  axisCustomColorMySystemsForeground:
+    "var(--axisCustomColorMySystemsForeground)",
+  axisCustomColorMyBusinessBackground:
+    "var(--axisCustomColorMyBusinessBackground)",
+  axisCustomColorMyBusinessForeground:
+    "var(--axisCustomColorMyBusinessForeground)",
+  axisCustomColorMyProductsBackground:
+    "var(--axisCustomColorMyProductsBackground)",
+  axisCustomColorMyProductsForeground:
+    "var(--axisCustomColorMyProductsForeground)",
+  axisCustomUtilityThemeName: "var(--axisCustomUtilityThemeName",
+};
+
+export const axisDarkTheme: AxisTheme = {
   ...createDarkTheme(brand),
   colorNeutralForegroundOnBrand: "#000000",
   colorNeutralStroke3: "#2E2E2E",
@@ -44,9 +87,18 @@ export const axisDarkTheme: Theme = {
   colorStatusWarningBorder1: "#884228",
   colorStatusSuccessBackground1: "#113711",
   colorStatusSuccessBorder1: "#116811",
+  axisCustomColorMySystemsBackground: "#004F6E",
+  axisCustomColorMySystemsForeground: "#99D8F1",
+  axisCustomColorMyAxisBackground: "#BC8D00",
+  axisCustomColorMyAxisForeground: "#FFEBAD",
+  axisCustomColorMyBusinessBackground: "#6B0646",
+  axisCustomColorMyBusinessForeground: "#EF9BD1",
+  axisCustomColorMyProductsBackground: "#476320",
+  axisCustomColorMyProductsForeground: "#D1E8B2",
+  axisCustomUtilityThemeName: "axisDarkTheme",
 };
 
-export const axisLightTheme: Theme = {
+export const axisLightTheme: AxisTheme = {
   ...createLightTheme(brand),
   colorNeutralForegroundOnBrand: "#000000",
   colorBrandBackground: "#ffcc33",
@@ -62,6 +114,15 @@ export const axisLightTheme: Theme = {
   colorBrandForegroundLinkPressed: "#026690",
   colorBrandForegroundLinkSelected: "#028fcc",
   colorScrollbarOverlay: "rgba(0,0,0,0.2)",
+  axisCustomColorMyAxisBackground: "#DFA001",
+  axisCustomColorMyAxisForeground: "#FFF5D6",
+  axisCustomColorMySystemsBackground: "#008DC6",
+  axisCustomColorMySystemsForeground: "#CCEBF8",
+  axisCustomColorMyBusinessBackground: "#C10B7E",
+  axisCustomColorMyBusinessForeground: "#F7CEE8",
+  axisCustomColorMyProductsBackground: "#7FB239",
+  axisCustomColorMyProductsForeground: "#E8F4D9",
+  axisCustomUtilityThemeName: "axisLightTheme",
 };
 
 export const blueBrand: BrandVariants = {
@@ -83,6 +144,28 @@ export const blueBrand: BrandVariants = {
   160: "#D4F3FF",
 };
 
-export const axisBlueDarkTheme: Theme = { ...createDarkTheme(blueBrand) };
+export const axisBlueDarkTheme: AxisTheme = {
+  ...createDarkTheme(blueBrand),
+  axisCustomColorMySystemsBackground: "#004F6E",
+  axisCustomColorMySystemsForeground: "#99D8F1",
+  axisCustomColorMyAxisBackground: "#BC8D00",
+  axisCustomColorMyAxisForeground: "#FFEBAD",
+  axisCustomColorMyBusinessBackground: "#6B0646",
+  axisCustomColorMyBusinessForeground: "#EF9BD1",
+  axisCustomColorMyProductsBackground: "#476320",
+  axisCustomColorMyProductsForeground: "#D1E8B2",
+  axisCustomUtilityThemeName: "axisBlueDarkTheme",
+};
 
-export const axisBlueLightTheme: Theme = { ...createLightTheme(blueBrand) };
+export const axisBlueLightTheme: AxisTheme = {
+  ...createLightTheme(blueBrand),
+  axisCustomColorMyAxisBackground: "#DFA001",
+  axisCustomColorMyAxisForeground: "#FFF5D6",
+  axisCustomColorMySystemsBackground: "#008DC6",
+  axisCustomColorMySystemsForeground: "#CCEBF8",
+  axisCustomColorMyBusinessBackground: "#C10B7E",
+  axisCustomColorMyBusinessForeground: "#F7CEE8",
+  axisCustomColorMyProductsBackground: "#7FB239",
+  axisCustomColorMyProductsForeground: "#E8F4D9",
+  axisCustomUtilityThemeName: "axisBlueLightTheme",
+};
