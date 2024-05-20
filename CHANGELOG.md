@@ -1,13 +1,16 @@
-## [8.24.0](https://github.com/AxisCommunications/fluent-components/compare/f335e698c3bcaf2f32a5e223b6625c4008230fe9..2d6c730f6c05961613bf2a12c159b1cd54158c55) (2024-05-02T06:10:53.095Z)
+## [9.0.0](https://github.com/AxisCommunications/fluent-components/compare/a52521a8c3a8b9df287ca139d71852fe123fdac3..32669dfe8c589a8c956ce0156e231a3b30ebec8a) (2024-05-20T12:59:56.209Z)
 
-### 🚧 Maintenance
+### ✨ Features
 
-  - remove scheduler from peerDependencies (#266) ([2d6c730](https://github.com/AxisCommunications/fluent-components/commit/2d6c730f6c05961613bf2a12c159b1cd54158c55))
-  - add import statement to illustration and icon page (#262) ([3d3ee93](https://github.com/AxisCommunications/fluent-components/commit/3d3ee9357f28ea840288c714fc677d8c95ba1b97))
-  - redesign copy code block icon example-page (#261) ([21c50b8](https://github.com/AxisCommunications/fluent-components/commit/21c50b82e8568fa5e3b5095e27a94c4c36014676))
+  - add bundleIllustration component (#272) ([ac2b6b2](https://github.com/AxisCommunications/fluent-components/commit/ac2b6b289f798c02f73328dd919e8c0df38df780))
+  - **theme**: add axis custom color tokens and custom utility tokens (#274) ([32669df](https://github.com/AxisCommunications/fluent-components/commit/32669dfe8c589a8c956ce0156e231a3b30ebec8a))
+  - **topbar**: **BREAKING** use axis custom color tokens for application flawor. requires @axiscommunications/fluent-theme version 9.0.0 or later (#274) ([32669df](https://github.com/AxisCommunications/fluent-components/commit/32669dfe8c589a8c956ce0156e231a3b30ebec8a))
+
+### 🐛 Bug fixes
+
+  - **topbar**: update myX icons (#273) ([ce4949d](https://github.com/AxisCommunications/fluent-components/commit/ce4949d87af36aa742f92815ddffe5f7c2a034c7))
+  - **topbar**: buildUrl utility function should not duplicate query parameters (#268) ([50448a4](https://github.com/AxisCommunications/fluent-components/commit/50448a40c93dfe6a65710fc5b9657b8df79ece50))
 
 ### 💄 Styling
 
-  - added location illustration (#265) ([ff5d0f0](https://github.com/AxisCommunications/fluent-components/commit/ff5d0f0fceeffb0055d832dd64ef31864da492f4))
-  - New illustrations (#264) ([32ddc35](https://github.com/AxisCommunications/fluent-components/commit/32ddc3506ef9db4beaa42d1a8679cd18f9b53bd1))
-  - New and adjusted Illustrations (#263) ([d9359c7](https://github.com/AxisCommunications/fluent-components/commit/d9359c733e5c5ac21f622fba66594996344e9205))
+  - new batch of illustrations (#271) ([674d79a](https://github.com/AxisCommunications/fluent-components/commit/674d79a70ed20bcefc6d3b5c800092a966d3f7bd))
