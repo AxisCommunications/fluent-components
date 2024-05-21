@@ -7,8 +7,8 @@ import { AxisThemeName } from "../index";
 import React from "react";
 
 type Result = {
-  name: AxisThemeName;
-  variant: AxisThemeVariant;
+  name?: AxisThemeName;
+  variant?: AxisThemeVariant;
 };
 
 export function useIdentifyCurrentAxisTheme(): Result {
@@ -17,7 +17,7 @@ export function useIdentifyCurrentAxisTheme(): Result {
   const AxisCustomUtilityThemeTokens = theme as AxisCustomUtilityTokens;
 
   return {
-    name: AxisCustomUtilityThemeTokens.axisCustomUtilityThemeName,
-    variant: AxisCustomUtilityThemeTokens.axisCustomUtilityThemeVariant,
+    name: AxisCustomUtilityThemeTokens?.axisCustomUtilityThemeName,
+    variant: AxisCustomUtilityThemeTokens?.axisCustomUtilityThemeVariant,
   };
 }
