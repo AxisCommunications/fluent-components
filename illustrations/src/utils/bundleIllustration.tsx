@@ -34,7 +34,7 @@ export const bundleIllustrationSmart = (DarkIllustration: React.FC<AxisIllustrat
     const { variant } = useIdentifyCurrentAxisTheme()
 
     return (
-      <BundledIllustration variant={variant}  {...rest} />
+      <BundledIllustration variant={variant || fallback}  {...rest} />
     )
   }
 
