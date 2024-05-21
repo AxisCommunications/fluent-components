@@ -61,11 +61,11 @@ function createIndexFile(dest: string, illustrationContents: string[]) {
   );
 
   indexContent.push(
-    "export { bundleIllustration } from './utils/bundleIllustration'"
+    "export { bundleIllustration, bundleIllustrationSmart } from './utils/bundleIllustration'"
   );
 
   indexContent.push(
-    "export type { TBundleIllustration, TBundleIllustrationVariant} from './utils/bundleIllustration'"
+    "export type { TBundleIllustration, TBundleIllustrationVariant, TBundleIllustrationSmart} from './utils/bundleIllustration'"
   );
 
   writeToFile(indexPath, indexContent.join("\n"));

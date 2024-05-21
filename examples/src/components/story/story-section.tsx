@@ -35,7 +35,7 @@ export function useStorySectionStyles() {
   return { styles, rootStyle };
 }
 
-type TStorySection = {
+export type TStorySection = {
   title?: string;
   description?: string;
 } & JSX.IntrinsicElements["div"];

@@ -1,3 +1,4 @@
+import { AxisIllustrationProps } from "@axiscommunications/fluent-illustrations";
 import {
   Button,
   Dialog,
@@ -8,11 +9,12 @@ import {
   DialogTrigger,
   makeStyles,
   shorthands,
+  Subtitle2,
   tokens,
 } from "@fluentui/react-components";
 import { DismissRegular } from "@fluentui/react-icons";
 import * as React from "react";
-import { PropsWithChildren } from "react";
+import { useFindVariantsByIllustrationName } from "../illustration-page.hooks";
 import { IllustrationCopy } from "./illustration-copy";
 
 const useStyles = makeStyles({
@@ -21,6 +23,8 @@ const useStyles = makeStyles({
   },
   dialogContent: {
     display: "flex",
+    flexWrap: "wrap",
+    ...shorthands.gap(tokens.spacingVerticalXXL),
   },
   dialogButton: {
     ...shorthands.transition("all", "250ms"),
@@ -30,11 +34,12 @@ const useStyles = makeStyles({
     },
   },
   illustrationBootstrap: {
-    resize: "both",
-    width: "250px",
-    maxWidth: "500px",
-    maxHeight: "500px",
-    ...shorthands.overflow("auto"),
+    resize: "horizontal",
+    width: "500px",
+    aspectRatio: 1,
+    maxWidth: "800px",
+    maxHeight: "800px",
+    ...shorthands.overflow("hidden"),
     ...shorthands.border(
       tokens.strokeWidthThick,
       "solid",
@@ -46,15 +51,35 @@ const useStyles = makeStyles({
     maxWidth: "8000px",
     maxHeight: "8000px",
   },
+  variantPreview: {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+    ...shorthands.gap(tokens.spacingVerticalM),
+  },
+  preview: {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+    alignItems: "center",
+    ...shorthands.gap(tokens.spacingVerticalM),
+  },
+  copyVariant: {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 type TIllustrationDialog = {
   thumbnail: JSX.Element;
   title?: string;
+  Illustration: React.FC<AxisIllustrationProps>;
 };
 
 export const IllustrationDialog = (
-  { thumbnail, children, title }: PropsWithChildren<TIllustrationDialog>
+  { thumbnail, Illustration, title }: TIllustrationDialog
 ) => {
   const styles = useStyles();
 
@@ -86,8 +111,9 @@ export const IllustrationDialog = (
           </DialogTitle>
           <DialogContent className={styles.dialogContent}>
             <div className={styles.illustrationBootstrap}>
-              {children}
+              <Illustration />
             </div>
+            <VariantPreview Illustration={Illustration} />
           </DialogContent>
         </DialogBody>
       </DialogSurface>
@@ -95,6 +121,45 @@ export const IllustrationDialog = (
   );
 };
 
-export const codeString = `
-hej
-`;
+function VariantPreview(
+  { Illustration }: Pick<TIllustrationDialog, "Illustration">
+) {
+  const styles = useStyles();
+
+  if (!Illustration.displayName) {
+    return <div />;
+  }
+
+  const { DarkVariant, LightVariant, currentVariant } =
+    useFindVariantsByIllustrationName(Illustration.displayName);
+  const OtherVariant = currentVariant === "Dark" ? LightVariant : DarkVariant;
+
+  return (
+    <div className={styles.variantPreview}>
+      {OtherVariant && <Preview Illustration={OtherVariant} />}
+    </div>
+  );
+}
+
+type TPreview = {
+  title?: string;
+  toCopy?: string;
+  Illustration: React.FC<AxisIllustrationProps>;
+};
+
+function Preview({ Illustration, title, toCopy }: TPreview) {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.preview}>
+      {<Illustration width={200} />}
+      <div className={styles.copyVariant}>
+        <Subtitle2>{title || Illustration.displayName}</Subtitle2>
+        <IllustrationCopy
+          toolTip={"copy react component to clipboard"}
+          toCopy={toCopy || Illustration.displayName}
+        />
+      </div>
+    </div>
+  );
+}

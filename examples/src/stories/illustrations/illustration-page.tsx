@@ -11,6 +11,10 @@ import {
   BundleIllustration,
   BundleIllustrationExampleAsString,
 } from "./examples/bundle-illustration";
+import {
+  BundleIllustrationSmart,
+  BundleIllustrationSmartExampleAsString,
+} from "./examples/bundle-illustration-smart";
 
 export const IllustrationPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.Illustrations);
@@ -27,11 +31,27 @@ export const IllustrationPage = (): JSX.Element => {
       title: "IllustrationList",
       anchor: "IllustrationList",
       example: <IllustrationList illustrations={filteredIllustrations} />,
+      storySectionProps: {
+        description: "Click illustration for preview.",
+      },
     }, {
       title: "BundleIllustration",
       anchor: "BundleIllustration",
       example: <BundleIllustration />,
       codeString: BundleIllustrationExampleAsString,
+      storySectionProps: {
+        description:
+          "Pre-bundles 2 illustrations and enables a controlled switch between variants.",
+      },
+    }, {
+      title: "BundleIllustrationSmart",
+      anchor: "BundleIllustrationSmart",
+      example: <BundleIllustrationSmart />,
+      codeString: BundleIllustrationSmartExampleAsString,
+      storySectionProps: {
+        description:
+          "Smart bundleIllustration will auto toggle bundled illustrations when fluent theme changes, please change theme in profile-menu. Uses bundleIllustration internally, and only work within a FluentProvider using axis-themes. You may provide a fallback value.",
+      },
     }]
   );
   return (
