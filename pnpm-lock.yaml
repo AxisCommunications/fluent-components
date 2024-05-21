@@ -461,6 +461,12 @@ importers:
         specifier: ^9.47.1
         version: 9.47.1(@types/react-dom@18.2.8)(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)(scheduler@0.23.0)
     devDependencies:
+      '@testing-library/jest-dom':
+        specifier: ^6.4.2
+        version: 6.4.2(vitest@0.34.6)
+      '@testing-library/react':
+        specifier: ^14.2.1
+        version: 14.2.1(react-dom@18.2.0)(react@18.2.0)
       '@types/node':
         specifier: ^20.11.18
         version: 20.11.18
@@ -470,9 +476,15 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.8
         version: 18.2.8
+      '@vitest/coverage-c8':
+        specifier: ^0.33.0
+        version: 0.33.0(vitest@0.34.6)
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
+      jsdom:
+        specifier: ^22.1.0
+        version: 22.1.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -491,6 +503,9 @@ importers:
       typescript:
         specifier: ^4.5.5
         version: 4.5.5
+      vitest:
+        specifier: ^0.34.6
+        version: 0.34.6(jsdom@22.1.0)
 
   tools:
     dependencies:

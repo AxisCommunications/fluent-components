@@ -31,10 +31,11 @@ export const bundleIllustrationSmart = (DarkIllustration: React.FC<AxisIllustrat
   const BundledIllustration = bundleIllustration(DarkIllustration, LightIllustration)
 
   const Component: React.FC<AxisIllustrationProps & TBundleIllustrationSmart> = ({ fallback = "light", ...rest }) => {
-    const { variant } = useIdentifyCurrentAxisTheme()
+    const currentTheme = useIdentifyCurrentAxisTheme()
+    const variant = currentTheme ? currentTheme.variant : fallback
 
     return (
-      <BundledIllustration variant={variant || fallback}  {...rest} />
+      <BundledIllustration variant={variant}  {...rest} />
     )
   }
 
