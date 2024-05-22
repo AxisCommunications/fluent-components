@@ -23,11 +23,15 @@
     "lib"
   ],
   "scripts": {
-    "build": "pnpm build:cjs && pnpm build:esm",
+    "prebuild": "pnpm run -C ../theme build",
+    "build": "pnpm prebuild && pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && eslint . --cache",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest watch",
     "illustrations:deploy": "mkdir -p src && pnpm illustrations:build-react && cp -a dist/react/* src",
     "illustrations:build-react": "pnpm run illustrations:generate-svg && pnpm run illustrations:optimize-svg && pnpm illustrations:generate-react",
     "illustrations:generate-svg": "ts-node src/scripts/generate-svg.ts --from ./assets --to ./dist/svg",
@@ -39,6 +43,9 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
+    "@axiscommunications/fluent-theme": "workspace:*",
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.65",
     "eslint": "^8.56.0",
@@ -47,9 +54,13 @@
     "typescript": "^4.5.5",
     "svgo": "1.3.2",
     "@types/yargs": "17.0.32",
-    "@types/lodash": "4.14.202"
+    "@types/lodash": "4.14.202",
+    "@vitest/coverage-c8": "^0.33.0",
+    "vitest": "^0.34.6",
+    "jsdom": "^22.1.0"
   },
   "peerDependencies": {
+    "@axiscommunications/fluent-theme": ">=9.0.0",
     "react": ">=16.8.0 <19.0.0"
   },
   "packageManager": "pnpm@8.1.0",

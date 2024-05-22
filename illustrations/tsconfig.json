@@ -1,7 +1,8 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "lib"
+    "outDir": "lib",
+    "types": ["vitest/globals"]
   },
   "include": ["src"],
   "ts-node": {
@@ -18,6 +19,6 @@
       "strict": true
     },
     "include": ["src/@types/svg.d.ts"],
-    "exclude": ["src", "node_modules"]
+    "exclude": ["src", "node_modules", "vitest.config.ts", "**/*.spec.*"]
   }
 }

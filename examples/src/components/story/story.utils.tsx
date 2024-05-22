@@ -3,12 +3,13 @@ import {
   StoryPageNavigation,
   TStoryNavigationLink,
 } from "./story-navigation/story-page-navigation";
-import { StorySection } from "./story-section";
+import { StorySection, TStorySection } from "./story-section";
 import React, { useMemo } from "react";
 
 export type pageData = {
   example: JSX.Element;
   codeString?: string;
+  storySectionProps?: TStorySection;
 } & TStoryNavigationLink;
 
 export function useExampleWithNavigation(examples: pageData[]) {
@@ -19,14 +20,25 @@ export function useExampleWithNavigation(examples: pageData[]) {
 
   const renderSections = useMemo(
     () =>
-      examples.map(({ title, example, codeString, anchor }) => {
-        return (
-          <StorySection key={anchor} title={title} id={anchor}>
-            {example}
-            {codeString && <StoryCodeBlockAccordion codeString={codeString} />}
-          </StorySection>
-        );
-      }),
+      examples.map(
+        ({ title, example, codeString, anchor, storySectionProps }) => {
+          return (
+            <StorySection
+              key={anchor}
+              title={title}
+              id={anchor}
+              {...storySectionProps}
+            >
+              {example}
+              {codeString && (
+                <StoryCodeBlockAccordion
+                  codeString={codeString}
+                />
+              )}
+            </StorySection>
+          );
+        }
+      ),
     [examples]
   );
 

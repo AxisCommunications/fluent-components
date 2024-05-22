@@ -1,7 +1,8 @@
 import React from "react";
 import { AxisIllustrationProps } from "./types";
+import { AxisThemeVariant, useIdentifyCurrentAxisTheme } from '@axiscommunications/fluent-theme';
 
-export type TBundleIllustrationVariant = "dark" | "light"
+export type TBundleIllustrationVariant = AxisThemeVariant
 
 export type TBundleIllustration = {
   variant: TBundleIllustrationVariant
@@ -11,14 +12,34 @@ export const bundleIllustration = (DarkIllustration: React.FC<AxisIllustrationPr
   const Component: React.FC<AxisIllustrationProps & TBundleIllustration> = ({ variant, ...rest }) => {
     return (
       variant === "dark" ?
-        <DarkIllustration {...rest}
+        <DarkIllustration data-testid="bundleIllustration-dark" {...rest}
         /> :
-        <LightIllustration {...rest}
+        <LightIllustration data-testid="bundleIllustration-light" {...rest}
         />
     )
   }
 
   Component.displayName = "CompoundIllustration";
+  return Component;
+}
+
+export type TBundleIllustrationSmart = {
+  fallback?: TBundleIllustrationVariant
+}
+
+export const bundleIllustrationSmart = (DarkIllustration: React.FC<AxisIllustrationProps>, LightIllustration: React.FC<AxisIllustrationProps>) => {
+  const BundledIllustration = bundleIllustration(DarkIllustration, LightIllustration)
+
+  const Component: React.FC<AxisIllustrationProps & TBundleIllustrationSmart> = ({ fallback = "light", ...rest }) => {
+    const currentTheme = useIdentifyCurrentAxisTheme()
+    const variant = currentTheme ? currentTheme.variant : fallback
+
+    return (
+      <BundledIllustration variant={variant}  {...rest} />
+    )
+  }
+
+  Component.displayName = "CompoundIllustrationSmart";
   return Component;
 }
 

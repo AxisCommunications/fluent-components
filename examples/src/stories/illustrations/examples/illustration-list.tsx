@@ -54,9 +54,8 @@ export function IllustrationList(
         <IllustrationDialog
           thumbnail={<Illustration width={DEFAULT_ILLUSTRATION_WIDTH} />}
           title={Illustration.displayName}
-        >
-          <Illustration />
-        </IllustrationDialog>
+          Illustration={Illustration}
+        />
         <div className={styles.displayName}>
           <Caption1 className={styles.text}>
             {Illustration.displayName}
