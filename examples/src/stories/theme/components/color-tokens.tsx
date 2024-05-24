@@ -29,12 +29,17 @@ const useStyles = makeStyles({
       gridColumnStart: "span 1",
     },
   },
+  tableHeader: {
+    fontSize: "16px",
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
 });
 
 export function useColorTokensStyles() {
   const styles = useStyles();
   const rootStyle = mergeClasses(colorTokensClassNames.root, styles.root);
-  return { styles, rootStyle };
+  const headerStyle = mergeClasses(styles.root, styles.tableHeader);
+  return { styles, headerStyle, rootStyle };
 }
 
 type TColorTokens = {
@@ -81,16 +86,8 @@ export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
 
   return (
     <>
+      <Header title="custom color token" />
       <div data-testid={componentId} className={rootStyle} {...rest}>
-        <b>token</b>
-        <b>light</b>
-        <b>dark</b>
-        {tokens.map((args, i) => <ColorPalette key={i} {...args} />)}
-      </div>
-      <div data-testid={componentId} className={rootStyle} {...rest}>
-        <b>custom color token</b>
-        <b>light</b>
-        <b>dark</b>
         {customColorTokens.map((args, i) => (
           <ColorPalette
             key={i}
@@ -98,16 +95,20 @@ export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
           />
         ))}
       </div>
+
+      <Header title="custom utility token" />
       <div data-testid={componentId} className={rootStyle} {...rest}>
-        <b>custom utility token</b>
-        <b>light</b>
-        <b>dark</b>
         {customUtilityTokens.map((args, i) => (
           <ColorPalette
             key={i}
             {...args}
           />
         ))}
+      </div>
+
+      <Header title="token" />
+      <div data-testid={componentId} className={rootStyle} {...rest}>
+        {tokens.map((args, i) => <ColorPalette key={i} {...args} />)}
       </div>
     </>
   );
@@ -147,5 +148,16 @@ function ColorPalette({ token, lightValue, darkValue }: TColorPalette) {
         {darkValue}
       </div>
     </>
+  );
+}
+
+function Header({ title }: { title: string }) {
+  const { headerStyle } = useColorTokensStyles();
+  return (
+    <div className={headerStyle}>
+      <b>{title}</b>
+      <b>light value</b>
+      <b>dark value</b>
+    </div>
   );
 }
