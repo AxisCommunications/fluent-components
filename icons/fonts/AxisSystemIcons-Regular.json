@@ -212,5 +212,13 @@
     "ic_axis_analytics_48_regular": "0xf1d3",
     "ic_axis_devices_48_regular": "0xf1d4",
     "ic_axis_jump_next_20_regular": "0xf1d5",
-    "ic_axis_jump_previous_20_regular": "0xf1d6"
+    "ic_axis_jump_previous_20_regular": "0xf1d6",
+    "ic_axis_body_worn_cloud_20_regular": "0xf1d7",
+    "ic_axis_body_worn_cloud_24_regular": "0xf1d8",
+    "ic_axis_body_worn_cloud_28_regular": "0xf1d9",
+    "ic_axis_body_worn_cloud_32_regular": "0xf1da",
+    "ic_axis_body_worn_standalone_20_regular": "0xf1db",
+    "ic_axis_body_worn_standalone_24_regular": "0xf1dc",
+    "ic_axis_body_worn_standalone_28_regular": "0xf1dd",
+    "ic_axis_body_worn_standalone_32_regular": "0xf1de"
 }
