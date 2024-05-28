@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Filled";
-    src: url("./AxisSystemIcons-Filled.ttf?1be7077960f04d5aa35da8f4e54f3060") format("truetype");
+    src: url("./AxisSystemIcons-Filled.ttf?5b71064adad27c1c855feaec7d9e8d61") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -610,4 +610,28 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_jump_previous_20_filled:before {
     content: "\f1c7";
+}
+.icon-ic_axis_body_worn_cloud_20_filled:before {
+    content: "\f1c8";
+}
+.icon-ic_axis_body_worn_cloud_24_filled:before {
+    content: "\f1c9";
+}
+.icon-ic_axis_body_worn_cloud_28_filled:before {
+    content: "\f1ca";
+}
+.icon-ic_axis_body_worn_cloud_32_filled:before {
+    content: "\f1cb";
+}
+.icon-ic_axis_body_worn_standalone_20_filled:before {
+    content: "\f1cc";
+}
+.icon-ic_axis_body_worn_standalone_24_filled:before {
+    content: "\f1cd";
+}
+.icon-ic_axis_body_worn_standalone_28_filled:before {
+    content: "\f1ce";
+}
+.icon-ic_axis_body_worn_standalone_32_filled:before {
+    content: "\f1cf";
 }
