@@ -6,7 +6,7 @@ exports[`range-slider > should render 1`] = `
   "baseElement": <body>
     <div>
       <span
-        class="axis-Slider ___1yr5lqm_13alxsp fp2oml8 fifp7yv fwrwuds f1asdtw4 f4aqd28 f22iagw f10pi13n fly5x3f f3er7iy f1lx44mx fke05om ftqa4ok f2hkw1w f1b1k54r f4ne723 fh7aioi fqqcjud f1k55ka9 fgclinu fycbxed f16pcs8n ffht0p2 f1p0ul1q f1c901ms f1alokd7 f78i1la f1kvsw7t f8k7e5g f1bw8brt f1pmxfrl fszkfcr f57dp0y f1ap5ily f11dm2qb f136rfnd fdsq1qd f1khssms fq4eyks f1ya6x16 f1e2iu44 ftuszwa f1pffoy2 f1bmyog6 fs6b7xr f15fv2gd"
+        class="axis-Slider ___16lm6va_1th6fmc fp2oml8 fifp7yv fwrwuds f1asdtw4 f4aqd28 f22iagw f10pi13n fly5x3f f3er7iy f1lx44mx fke05om ftqa4ok f2hkw1w f1b1k54r f4ne723 fh7aioi fqqcjud f1ufm4qn f1qnwcb4 fi52z01 fgrk5zm ffht0p2 f1p0ul1q f1c901ms f1alokd7 fmj8fco f1iwowo3 f1pffoy2 f1bmyog6 fs6b7xr f15fv2gd"
       >
         <span
           class="axis-Slider__control ___144j0yg_julj5g0 f10pi13n f14t3ns0 f1l02sjl fcgxt0o f1ujusj6 fz0d3q9 f1k6fduh fdwl3z2"
@@ -61,7 +61,7 @@ exports[`range-slider > should render 1`] = `
   </body>,
   "container": <div>
     <span
-      class="axis-Slider ___1yr5lqm_13alxsp fp2oml8 fifp7yv fwrwuds f1asdtw4 f4aqd28 f22iagw f10pi13n fly5x3f f3er7iy f1lx44mx fke05om ftqa4ok f2hkw1w f1b1k54r f4ne723 fh7aioi fqqcjud f1k55ka9 fgclinu fycbxed f16pcs8n ffht0p2 f1p0ul1q f1c901ms f1alokd7 f78i1la f1kvsw7t f8k7e5g f1bw8brt f1pmxfrl fszkfcr f57dp0y f1ap5ily f11dm2qb f136rfnd fdsq1qd f1khssms fq4eyks f1ya6x16 f1e2iu44 ftuszwa f1pffoy2 f1bmyog6 fs6b7xr f15fv2gd"
+      class="axis-Slider ___16lm6va_1th6fmc fp2oml8 fifp7yv fwrwuds f1asdtw4 f4aqd28 f22iagw f10pi13n fly5x3f f3er7iy f1lx44mx fke05om ftqa4ok f2hkw1w f1b1k54r f4ne723 fh7aioi fqqcjud f1ufm4qn f1qnwcb4 fi52z01 fgrk5zm ffht0p2 f1p0ul1q f1c901ms f1alokd7 fmj8fco f1iwowo3 f1pffoy2 f1bmyog6 fs6b7xr f15fv2gd"
     >
       <span
         class="axis-Slider__control ___144j0yg_julj5g0 f10pi13n f14t3ns0 f1l02sjl fcgxt0o f1ujusj6 fz0d3q9 f1k6fduh fdwl3z2"

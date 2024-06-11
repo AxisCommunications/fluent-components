@@ -46,7 +46,6 @@ export function MainMenu() {
         <TabList
           className={rootStyle}
           size="large"
-          defaultSelectedValue={selectedTab}
           selectedValue={selectedTab}
           onTabSelect={(_, { value }) => {
             setSelectedTab(value as unknown as string);
@@ -119,7 +118,6 @@ export function MainMenu() {
         <TabList
           className={rootStyle}
           size="large"
-          defaultSelectedValue={selectedTab}
           selectedValue={selectedTab}
           onTabSelect={(_, { value }) => {
             setSelectedTab(value as unknown as string);

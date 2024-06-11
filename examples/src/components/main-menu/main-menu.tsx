@@ -48,7 +48,6 @@ export function MainMenu() {
         className={rootStyle}
         size="large"
         vertical
-        defaultSelectedValue={selectedTab}
         selectedValue={selectedTab}
         onTabSelect={(_, { value }) => {
           setSelectedTab(value as unknown as string);
