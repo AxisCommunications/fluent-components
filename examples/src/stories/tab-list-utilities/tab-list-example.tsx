@@ -27,7 +27,6 @@ export function StyledTabListComponent(
     <TabList
       selectedValue={selectedTab}
       className={rootStyle}
-      defaultSelectedValue={selectedTab}
       onTabSelect={(_, { value }) => {
         setSelectedTab(value as unknown as string);
       }}
@@ -100,7 +99,6 @@ export function StyledTabListComponent(
     <TabList
       selectedValue={selectedTab}
       className={rootStyle}
-      defaultSelectedValue={selectedTab}
       onTabSelect={(_, { value }) => {
         setSelectedTab(value as unknown as string);
       }}

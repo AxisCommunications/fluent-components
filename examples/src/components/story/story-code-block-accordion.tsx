@@ -38,9 +38,9 @@ export const StoryCodeBlockAccordion = (
     <Accordion
       collapsible
       className={styles.root}
-      defaultOpenItems={defaultOpen ? "1" : null}
+      defaultOpenItems={defaultOpen ? [1] : []}
     >
-      <AccordionItem value="1">
+      <AccordionItem value={1}>
         <CopyButton
           appearance="transparent"
           className={styles.copyBootstrap}
