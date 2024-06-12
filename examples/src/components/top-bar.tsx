@@ -85,6 +85,7 @@ export const Navbar = () => {
           icon: <FishIcon />,
           label: "Fisk",
           id: "fisk",
+          triggerGroupShortName: "FISH",
         },
         {
           icon: <CatIcon />,
@@ -98,6 +99,7 @@ export const Navbar = () => {
       label: "Add",
       triggerLabel: "ADD trigger",
       id: "add",
+      triggerGroupShortName: "ADD",
     },
   ];
 

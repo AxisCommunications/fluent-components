@@ -49,10 +49,25 @@ const DrawerTrigger = (
         onMouseLeave={() => setHover(false)}
       >
         {<ApplicationAreaIcon applicationArea={applicationArea} />}
-        <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
+        {currentSelection?.triggerGroupShortName
+          ? (
+            <>
+              <Body1Strong className={styles.drawerTriggerTextWithGroup}>
+                {currentSelection?.triggerGroupShortName}
+              </Body1Strong>
+              <div className={styles.triggerDividerWithGroup}></div>
+            </>
+          )
+          : <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>}
         {currentSelection
           ? (
-            <div className={styles.drawerTriggerApplication}>
+            <div
+              className={mergeClasses(
+                styles.drawerTriggerApplication,
+                currentSelection?.triggerGroupShortName
+                  && styles.drawerTriggerApplicationWithGroup
+              )}
+            >
               <div
                 className={mergeClasses(
                   styles.drawerTriggerApplicationIcon,
