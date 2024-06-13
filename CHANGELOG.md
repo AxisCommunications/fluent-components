@@ -1,16 +1,19 @@
-## [9.0.0](https://github.com/AxisCommunications/fluent-components/compare/a52521a8c3a8b9df287ca139d71852fe123fdac3..32669dfe8c589a8c956ce0156e231a3b30ebec8a) (2024-05-20T12:59:56.209Z)
+## [9.1.0](https://github.com/AxisCommunications/fluent-components/compare/59237c7b03f045b1acdde9a198a381abc275765f..c2ed8cb91f5c5f318026a1be8a5276391c1e816d) (2024-06-13T08:31:53.096Z)
+
+### 🚧 Maintenance
+
+  - bump fluent peer deps (#280) ([bc7fb66](https://github.com/AxisCommunications/fluent-components/commit/bc7fb6680ce094837cfb7f19ff20ead21d5ee757))
+  - theme example updates (#277) ([142d78b](https://github.com/AxisCommunications/fluent-components/commit/142d78bb8a708ecea07747a08e703c286d86cd9f))
 
 ### ✨ Features
 
-  - add bundleIllustration component (#272) ([ac2b6b2](https://github.com/AxisCommunications/fluent-components/commit/ac2b6b289f798c02f73328dd919e8c0df38df780))
-  - **theme**: add axis custom color tokens and custom utility tokens (#274) ([32669df](https://github.com/AxisCommunications/fluent-components/commit/32669dfe8c589a8c956ce0156e231a3b30ebec8a))
-  - **topbar**: **BREAKING** use axis custom color tokens for application flawor. requires @axiscommunications/fluent-theme version 9.0.0 or later (#274) ([32669df](https://github.com/AxisCommunications/fluent-components/commit/32669dfe8c589a8c956ce0156e231a3b30ebec8a))
+  - **topbar**: add new look for application drawer trigger button when triggerGroupShortName is set (#282) ([c2ed8cb](https://github.com/AxisCommunications/fluent-components/commit/c2ed8cb91f5c5f318026a1be8a5276391c1e816d))
+  - add smart bundleIllustration (#276) ([811aa2c](https://github.com/AxisCommunications/fluent-components/commit/811aa2c68c87b6ea19e88e32815944e4fc93d3cb))
 
 ### 🐛 Bug fixes
 
-  - **topbar**: update myX icons (#273) ([ce4949d](https://github.com/AxisCommunications/fluent-components/commit/ce4949d87af36aa742f92815ddffe5f7c2a034c7))
-  - **topbar**: buildUrl utility function should not duplicate query parameters (#268) ([50448a4](https://github.com/AxisCommunications/fluent-components/commit/50448a40c93dfe6a65710fc5b9657b8df79ece50))
+  - **illustrations**: don't bundle lodash and yargs (#279) ([af3366d](https://github.com/AxisCommunications/fluent-components/commit/af3366de5073873c1c9ece83233fadfa7710ae03))
 
 ### 💄 Styling
 
-  - new batch of illustrations (#271) ([674d79a](https://github.com/AxisCommunications/fluent-components/commit/674d79a70ed20bcefc6d3b5c800092a966d3f7bd))
+  - New Bodyworn icons (#278) ([08c856f](https://github.com/AxisCommunications/fluent-components/commit/08c856f5723506b1808100cb108e56d4a5147e80))
