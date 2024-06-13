@@ -1,5 +1,7 @@
 import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 
+const triggerSpacingWithGroup = tokens.spacingHorizontalS;
+
 export const useApplicationDrawrStyles = makeStyles({
   drawer: {
     ...shorthands.borderRight(0),
@@ -48,6 +50,10 @@ export const useApplicationDrawrStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalM),
   },
+  drawerTriggerApplicationWithGroup: {
+    ...shorthands.gap(triggerSpacingWithGroup),
+    ...shorthands.padding(tokens.spacingVerticalXS, triggerSpacingWithGroup),
+  },
   drawerTriggerApplicationIcon: {
     display: "flex",
     color: tokens.colorNeutralForeground2,
@@ -60,6 +66,18 @@ export const useApplicationDrawrStyles = makeStyles({
   },
   drawerTriggerApplicationText: {
     color: tokens.colorNeutralForeground2,
+  },
+  drawerTriggerTextWithGroup: {
+    marginLeft: triggerSpacingWithGroup,
+    color: tokens.colorNeutralForeground2,
+  },
+  triggerDividerWithGroup: {
+    ...shorthands.border("0.5px", "solid", tokens.colorNeutralForeground2),
+    ...shorthands.borderRadius("1px"),
+    height: "12px",
+    boxSizing: "border-box",
+    marginTop: "1px",
+    marginLeft: triggerSpacingWithGroup,
   },
   applicationGroupTitle: {
     display: "flex",
