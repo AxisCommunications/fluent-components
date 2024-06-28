@@ -32,8 +32,7 @@ import {
   FoodCarrot20Filled,
   FoodFish20Filled,
   FoodFish20Regular,
-  MailFilled,
-  MailRegular,
+  MailUnreadFilled,
   Megaphone24Filled,
   OpenRegular,
   QuestionCircleRegular,
@@ -44,7 +43,6 @@ import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/ApplicationStateProvider";
 
 const ApplicationIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
-const MailIcon = bundleIcon(MailFilled, MailRegular);
 const ZoomIcon = bundleIcon(ZoomFit16Filled, ZoomFit16Regular);
 const FishIcon = bundleIcon(FoodFish20Filled, FoodFish20Regular);
 const CatIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
@@ -252,7 +250,7 @@ export const Navbar = () => {
             options: themes,
           },
           hasNotification: true,
-          notificationIcon: <MailIcon />,
+          notificationIcon: <MailUnreadFilled />,
         }}
       />
     </div>

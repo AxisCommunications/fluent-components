@@ -48,9 +48,9 @@ export const ProfileMenu = ({
           data-testid="profile-menu-button"
           icon={
             <Avatar
+              color="mink"
               name={name}
               size={24}
-              active={hasNotification ? "active" : "unset"}
               badge={hasNotification
                 ? {
                   icon: notificationIcon !== undefined
@@ -60,6 +60,7 @@ export const ProfileMenu = ({
                     Since this is not a Badge but a PresenceBadge, we only
                     have the option to change the color through "status".
                     "away" gives us the orange color that we want.
+                    Can be overriden by user by setting color on the notificationIcon property
                   */
                   status: "away",
                   size: "extra-small",
