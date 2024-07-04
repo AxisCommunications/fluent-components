@@ -31,7 +31,7 @@ export const navigationMenuClassNames = {
 const useStyles = makeStyles({
   root: {
     height: "100%",
-    width: "300px",
+    width: "200px",
     ...shorthands.border(0),
   },
   body: {

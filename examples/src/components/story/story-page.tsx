@@ -24,7 +24,6 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground3,
     display: "grid",
     gridTemplateColumns: "1fr min-content",
-    ...shorthands.padding(0, "15%", 0, "5%"),
   },
   header: {
     ...shorthands.padding(
