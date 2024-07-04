@@ -29,6 +29,8 @@ import { toPercent } from "./utils";
 import { MarkLabelProps } from "./mark/label/mark-label.types";
 import { MarkLabel } from "./mark/label/mark-label";
 import { sliderClassNames } from "./use-slider-styles";
+import type { SectionLabelProps } from "./section/label/section-label.types";
+import { SectionLabel } from "./section/label/section-label";
 
 const asc = (a: number, b: number): number => a - b;
 
@@ -94,6 +96,19 @@ const isMarkLabelElement = (target: EventTarget | null): boolean => {
   return isMarkLabelElement(target.parentNode);
 };
 
+const isSectionLabelElement = (target: EventTarget | null): boolean => {
+  if (
+    !target || !(target instanceof Element)
+    || target.classList.contains(sliderClassNames.root)
+  ) {
+    return false;
+  }
+  if (target.classList.contains(sliderClassNames.section.label)) {
+    return true;
+  }
+  return isSectionLabelElement(target.parentNode);
+};
+
 export const useRangeSlider_unstable = (
   props: RangeSliderProps,
   ref: React.Ref<HTMLElement>
@@ -103,6 +118,7 @@ export const useRangeSlider_unstable = (
     disabled,
     size,
     marks: markDefs,
+    sectionLabels: sectionDefs,
     step: stepProp,
     min,
     max,
@@ -155,12 +171,30 @@ export const useRangeSlider_unstable = (
           markLabels.push({
             value: markDef.value,
             label: markDef.label,
+            activeEqual: markDef.labelEqualActive,
           });
         }
       }
     }
     return { marks, markLabels };
   }, [markDefs, stepProp, steps]);
+
+  const sectionLabels: SectionLabelProps[] = useMemo(() => {
+    const sectionLabels: SectionLabelProps[] = [];
+    if (Array.isArray(sectionDefs)) {
+      for (const sectionDef of sectionDefs) {
+        sectionLabels.push({
+          ...sectionDef,
+          edges: {
+            left: sectionDef.edges.left ?? min,
+            right: sectionDef.edges.right ?? max,
+          },
+        });
+      }
+    }
+
+    return sectionLabels;
+  }, [sectionDefs, min, max]);
 
   const markValues = useMemo(() => marks.map((m) => m.value), [marks]);
 
@@ -233,6 +267,10 @@ export const useRangeSlider_unstable = (
 
       // avoid text selection
       e.preventDefault();
+
+      if (isSectionLabelElement(e.target)) {
+        return;
+      }
 
       const closestThumbIndex = findClosest(newValue, internalValues).index;
 
@@ -310,6 +348,10 @@ export const useRangeSlider_unstable = (
       touchId.current = touch.identifier;
     }
 
+    if (isSectionLabelElement(event.target)) {
+      return;
+    }
+
     const newValue = getNewValue(
       touch.clientX,
       isMarkLabelElement(event.target)
@@ -351,6 +393,7 @@ export const useRangeSlider_unstable = (
     };
   }, [controlRef, handleTouchStart, removeListeners]);
 
+  // Range slider values, *from* and *to* values?
   const minValue = internalValues.length > 1 ? Math.min(...internalValues) : 0;
   const maxValue = Math.max(...internalValues);
 
@@ -441,6 +484,7 @@ export const useRangeSlider_unstable = (
     }),
     mark: resolveShorthand(props.mark, { required: true }),
     markLabel: resolveShorthand(props.markLabel, { required: true }),
+    sectionLabel: resolveShorthand(props.sectionLabel, { required: true }),
     components: {
       root: "span",
       control: "span",
@@ -449,9 +493,11 @@ export const useRangeSlider_unstable = (
       thumb: Thumb as React.FC<Partial<ThumbProps>>,
       mark: Mark as React.FC<Partial<MarkProps>>,
       markLabel: MarkLabel as React.FC<Partial<MarkLabelProps>>,
+      sectionLabel: SectionLabel as React.FC<Partial<SectionLabelProps>>,
     },
     marks,
     markLabels,
+    sectionLabels,
     thumbs: internalValues.map((value, index) => ({
       value,
       valueLabelTransform,

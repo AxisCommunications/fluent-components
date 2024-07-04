@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import {
   createFocusOutlineStyle,
   makeStyles,
@@ -8,6 +10,7 @@ import {
 } from "@fluentui/react-components";
 
 import { SliderState } from "./slider.types";
+import { toPercent } from "./utils";
 
 export const sliderClassNames = {
   root: "axis-Slider",
@@ -21,6 +24,10 @@ export const sliderClassNames = {
   mark: {
     root: "axis-Slider__mark",
     label: "axis-Slider__mark__label",
+  },
+  section: {
+    root: "axis-Slider__section",
+    label: "axis-Slider__section__label",
   },
 };
 
@@ -44,6 +51,9 @@ export const sliderVars = {
   },
   mark: {
     color: "--axis-Slider__mark--color",
+  },
+  section: {
+    color: "--axis-Slider__section--color",
   },
 };
 
@@ -90,6 +100,9 @@ const useRootStyles = makeStyles({
     },
   }),
   hasMarkLabel: {
+    [sliderVars.root.paddingBottom]: "1rem",
+  },
+  hasSectionLabels: {
     [sliderVars.root.paddingBottom]: "1rem",
   },
 });
@@ -154,13 +167,23 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const trackStyles = useTrackStyles();
 
-  const { disabled, trackOffset, trackWidth, active, markLabels, size } = state;
+  const {
+    disabled,
+    trackOffset,
+    trackWidth,
+    active,
+    markLabels,
+    sectionLabels,
+    size,
+    values,
+  } = state;
 
   const { dir } = useFluent();
 
   const rtl = dir === "rtl";
 
   const hasMarkLabel = markLabels.length > 0;
+  const hasSectionLabels = sectionLabels.length > 0;
 
   state.root.className = mergeClasses(
     sliderClassNames.root,
@@ -169,6 +192,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     size === "medium" && rootStyles.medium,
     rootStyles.focusIndicator,
     hasMarkLabel && rootStyles.hasMarkLabel,
+    hasSectionLabels && rootStyles.hasSectionLabels,
     state.root.className
   );
 
@@ -192,6 +216,64 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     active && trackStyles.active,
     state.track.className
   );
+
+  const hasSectionLabelsAndColors = sectionLabels.length > 0;
+
+  if (hasSectionLabelsAndColors) {
+    const gradientDirection = !rtl ? "right" : "left";
+
+    const trackColorGradient = useMemo(() => {
+      const value = values[0]; // note: no tested support for range sliders using sections
+
+      const defaultColor = tokens.colorCompoundBrandBackground;
+      const { min, max } = state;
+
+      let styleValue = `linear-gradient(to ${gradientDirection}, `;
+      for (const sl of state.sectionLabels) {
+        const color = sl.trackColor ?? defaultColor;
+        if (value > (sl.edges.right ?? max)) {
+          styleValue += `${color} ${toPercent(sl.edges.left, min, max)}%, `;
+          styleValue += `${color} ${toPercent(sl.edges.right, min, max)}%, `;
+        } else {
+          styleValue += `${color} ${toPercent(sl.edges.left, min, max)}%, `;
+          styleValue += `${color} ${toPercent(value, min, max)}%, `;
+
+          styleValue += `transparent ${toPercent(value, min, max)}%, `;
+          styleValue += `transparent ${toPercent(sl.edges.right, min, max)}%, `;
+        }
+      }
+      styleValue = styleValue.substring(0, styleValue.length - 2); // remove trailing ", "
+      styleValue += ")";
+
+      return styleValue;
+    }, [values[0], state, gradientDirection]);
+
+    const thumbColor = useMemo(() => {
+      const value = values[0];
+
+      const defaultColor = tokens.colorCompoundBrandBackground;
+      let color = tokens.colorCompoundBrandBackground;
+
+      for (const sl of state.sectionLabels) {
+        const tempColor = sl.trackColor ?? defaultColor;
+        if (value > (sl.edges.left ?? 100)) {
+          color = tempColor;
+        }
+      }
+
+      return color;
+    }, [values[0], state]);
+
+    state.thumb = {
+      style: {
+        backgroundColor: thumbColor,
+      },
+    };
+    state.track.style = {
+      width: "100%",
+      backgroundImage: trackColorGradient,
+    };
+  }
 
   const offsetDirection = rtl ? "right" : "left";
   state.track.style = {

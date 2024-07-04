@@ -14,6 +14,10 @@ export const useMarkLabel_unstable = (
   const minValue = values.length > 1 ? Math.min(...values) : 0;
   const maxValue = Math.max(...values);
 
+  const active = props.activeEqual
+    ? minValue === 0 && maxValue === props.value
+    : props.value >= minValue && props.value <= maxValue;
+
   return {
     root: getNativeElementProps("span", {
       ref,
@@ -26,6 +30,6 @@ export const useMarkLabel_unstable = (
     offset: toPercent(props.value, min, max),
     value: props.value,
     disabled,
-    active: props.value >= minValue && props.value <= maxValue,
+    active,
   };
 };

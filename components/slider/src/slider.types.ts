@@ -8,6 +8,10 @@ import { SliderContextValue } from "./context/slider-context";
 import { MarkDef, MarkProps } from "./mark/mark.types";
 import { ThumbProps } from "./thumb/thumb.types";
 import { MarkLabelProps } from "./mark/label/mark-label.types";
+import {
+  SectionLabelDef,
+  SectionLabelProps,
+} from "./section/label/section-label.types";
 
 export type SliderContextValues = {
   slider: SliderContextValue;
@@ -21,6 +25,7 @@ export type SliderSlots = {
   thumb: Slot<Partial<ThumbProps>>;
   mark: Slot<Partial<MarkProps>>;
   markLabel: Slot<Partial<MarkLabelProps>>;
+  sectionLabel: Slot<Partial<SectionLabelProps>>;
 };
 
 export type SliderOnChangeData = {
@@ -39,6 +44,7 @@ export type RangeSliderProps =
   & {
     disabled?: boolean;
     marks?: boolean | MarkDef[];
+    sectionLabels?: boolean | SectionLabelDef[]; // why ever boolean??
     step?: number | "marks";
     size?: "small" | "medium";
     min: number;
@@ -69,6 +75,7 @@ export type SliderState =
     values: number[];
     marks: MarkProps[];
     markLabels: MarkLabelProps[];
+    sectionLabels: SectionLabelProps[];
     thumbs: ThumbProps[];
     trackOffset: number;
     trackWidth: number;
