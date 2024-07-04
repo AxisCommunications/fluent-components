@@ -1,7 +1,11 @@
 import { getSlots } from "@fluentui/react-utilities";
 
 import { SliderContextProvider } from "./context/slider-context";
-import { SliderContextValues, SliderSlots, SliderState } from "./slider.types";
+import type {
+  SliderContextValues,
+  SliderSlots,
+  SliderState,
+} from "./slider.types";
 import React from "react";
 
 export const renderSlider_unstable = (

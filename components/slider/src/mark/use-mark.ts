@@ -1,8 +1,8 @@
 import { getNativeElementProps } from "@fluentui/react-utilities";
-import React from "react";
+import type React from "react";
 
 import { useSliderContext } from "../context/slider-context";
-import { MarkProps, MarkState } from "./mark.types";
+import type { MarkProps, MarkState } from "./mark.types";
 import { toPercent } from "../utils";
 
 export const useMark_unstable = (

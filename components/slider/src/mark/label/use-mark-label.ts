@@ -1,8 +1,8 @@
 import { getNativeElementProps } from "@fluentui/react-utilities";
-import React from "react";
+import type React from "react";
 
 import { useSliderContext } from "../../context/slider-context";
-import { MarkLabelProps, MarkLabelState } from "./mark-label.types";
+import type { MarkLabelProps, MarkLabelState } from "./mark-label.types";
 import { toPercent } from "../../utils";
 
 export const useMarkLabel_unstable = (

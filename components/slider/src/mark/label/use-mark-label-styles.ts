@@ -12,7 +12,7 @@ import {
   sliderEasings,
   sliderVars,
 } from "../../use-slider-styles";
-import { MarkLabelState } from "./mark-label.types";
+import type { MarkLabelState } from "./mark-label.types";
 
 const useStyles = makeStyles({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     position: "absolute",
     color: `var(${sliderVars.mark.color})`,
     top: `var(${sliderVars.thumb.size})`,
-    transform: `translateX(-50%)`,
+    transform: "translateX(-50%)",
     whiteSpace: "nowrap",
   },
   active: {

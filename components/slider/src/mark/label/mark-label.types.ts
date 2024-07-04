@@ -1,9 +1,9 @@
-import {
+import type {
   ComponentProps,
   ComponentState,
   Slot,
 } from "@fluentui/react-utilities";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type MarkLabelSlots = {
   root: Slot<"span">;

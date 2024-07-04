@@ -10,9 +10,10 @@ import {
   useControllableState,
   useEventCallback,
 } from "@fluentui/react-utilities";
-import React, {
-  ChangeEvent,
-  RefObject,
+import type React from "react";
+import {
+  type ChangeEvent,
+  type RefObject,
   useCallback,
   useEffect,
   useMemo,
@@ -21,12 +22,12 @@ import React, {
 } from "react";
 
 import { Mark } from "./mark/mark";
-import { MarkProps } from "./mark/mark.types";
-import { RangeSliderProps, SliderState } from "./slider.types";
+import type { MarkProps } from "./mark/mark.types";
+import type { RangeSliderProps, SliderState } from "./slider.types";
 import { Thumb } from "./thumb/thumb";
-import { ThumbProps } from "./thumb/thumb.types";
+import type { ThumbProps } from "./thumb/thumb.types";
 import { toPercent } from "./utils";
-import { MarkLabelProps } from "./mark/label/mark-label.types";
+import type { MarkLabelProps } from "./mark/label/mark-label.types";
 import { MarkLabel } from "./mark/label/mark-label";
 import { sliderClassNames } from "./use-slider-styles";
 
@@ -63,7 +64,8 @@ const snapToNextValue = (
 
   if (newValue < currentValue) {
     return currentMarkIndex > 0 ? values[currentMarkIndex - 1] : undefined;
-  } else if (newValue > currentValue) {
+  }
+  if (newValue > currentValue) {
     return currentMarkIndex < values.length - 1
       ? values[currentMarkIndex + 1]
       : undefined;
@@ -167,7 +169,8 @@ export const useRangeSlider_unstable = (
   const snapValues = useMemo(() => {
     if (stepProp === "marks" && markValues.length > 0) {
       return markValues;
-    } else if (typeof stepProp === "number") {
+    }
+    if (typeof stepProp === "number") {
       return steps;
     }
     return undefined;

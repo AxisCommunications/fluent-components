@@ -1,7 +1,7 @@
-import { ForwardRefComponent } from "@fluentui/react-utilities";
+import type { ForwardRefComponent } from "@fluentui/react-utilities";
 import React from "react";
 
-import { MarkLabelProps } from "./mark-label.types";
+import type { MarkLabelProps } from "./mark-label.types";
 import { useMarkLabel_unstable } from "./use-mark-label";
 import { useMarkLabelStyles_unstable } from "./use-mark-label-styles";
 import { renderMarkLabel_unstable } from "./render-mark-label";

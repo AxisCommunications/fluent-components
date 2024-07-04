@@ -1,13 +1,13 @@
-import {
+import type {
   ComponentProps,
   ComponentState,
   Slot,
 } from "@fluentui/react-utilities";
 
-import { SliderContextValue } from "./context/slider-context";
-import { MarkDef, MarkProps } from "./mark/mark.types";
-import { ThumbProps } from "./thumb/thumb.types";
-import { MarkLabelProps } from "./mark/label/mark-label.types";
+import type { SliderContextValue } from "./context/slider-context";
+import type { MarkDef, MarkProps } from "./mark/mark.types";
+import type { ThumbProps } from "./thumb/thumb.types";
+import type { MarkLabelProps } from "./mark/label/mark-label.types";
 
 export type SliderContextValues = {
   slider: SliderContextValue;

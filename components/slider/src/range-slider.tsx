@@ -1,8 +1,8 @@
-import { ForwardRefComponent } from "@fluentui/react-utilities";
+import type { ForwardRefComponent } from "@fluentui/react-utilities";
 import React from "react";
 
 import { renderSlider_unstable } from "./render-slider";
-import { RangeSliderProps } from "./slider.types";
+import type { RangeSliderProps } from "./slider.types";
 import { useSliderContextValues } from "./use-slider-context-values";
 import { useSliderStyles_unstable } from "./use-slider-styles";
 import { useRangeSlider_unstable } from "./use-range-slider";

@@ -5,7 +5,7 @@ import {
   useFluent,
 } from "@fluentui/react-components";
 
-import { MarkState } from "./mark.types";
+import type { MarkState } from "./mark.types";
 import { sliderClassNames, sliderVars } from "../use-slider-styles";
 
 const useStyles = makeStyles({

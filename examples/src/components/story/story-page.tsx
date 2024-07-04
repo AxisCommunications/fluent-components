@@ -9,9 +9,9 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import React, { PropsWithChildren } from "react";
+import React, { type PropsWithChildren } from "react";
 import { StoryPageHeader } from "./story-page-header";
-import { EStoryStatus } from "./story-status";
+import type { EStoryStatus } from "./story-status";
 
 const componentId = "story-page";
 export const storyPageClassNames = {

@@ -4,7 +4,7 @@ Private package providing tools for the monorepo.
 
 Scripts are written in TypeScript, but the generated JS is committed
 to the repo to avoid the need for transpilation when running them.
-When adding new tools, run `pnpm run generate` and then commit everyting.
+When adding new tools, run `pnpm run generate` and then commit everything.
 There is a `lint` step that also checks that generated code was committed.
 
 ## Release

@@ -7,7 +7,7 @@ import {
   useFluent,
 } from "@fluentui/react-components";
 
-import { SliderState } from "./slider.types";
+import type { SliderState } from "./slider.types";
 
 export const sliderClassNames = {
   root: "axis-Slider",
@@ -59,14 +59,14 @@ const useRootStyles = makeStyles({
   root: {
     ...shorthands.padding(
       tokens.spacingVerticalSNudge,
-      `0px`,
+      '0px',
       `calc(var(${sliderVars.root.paddingBottom}) + ${tokens.spacingVerticalSNudge})`,
-      `0px`
+      '0px'
     ),
     height: `var(${sliderVars.thumb.size})`,
     display: "flex",
     position: "relative",
-    width: `100%`,
+    width: '100%',
 
     [sliderVars.root.paddingBottom]: "0px",
   },
@@ -154,7 +154,14 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const trackStyles = useTrackStyles();
 
-  const { disabled, trackOffset, trackWidth, active, markLabels, size } = state;
+  const {
+    disabled,
+    trackOffset,
+    trackWidth,
+    active,
+    markLabels,
+    size,
+  } = state;
 
   const { dir } = useFluent();
 
