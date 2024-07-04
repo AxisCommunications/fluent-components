@@ -58,7 +58,7 @@ import {
 
 const useStyles = makeStyles({
   example: {
-    maxWidth: "400px",
+    maxWidth: "auto",
   },
 });
 
