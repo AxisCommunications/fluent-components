@@ -115,7 +115,7 @@ function parseConventionalCommitMessage(msg: string): ConventionalCommit {
     if (match === null) {
       throw new Error("no matches found");
     }
-    const [_, group, scope, breaking, title] = match;
+    const [, group, scope, breaking, title] = match;
     return {
       group,
       scope,

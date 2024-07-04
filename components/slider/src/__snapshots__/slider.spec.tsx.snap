@@ -16,7 +16,7 @@ exports[`slider > should render 1`] = `
           >
             <span
               class="axis-Slider__track ___pq61zr0_1xft6bt fnivh3a fc7yr5o f1el4m67 f8yange ftgm304 f1euv43f f1erzq44 f1i1t8d1 f188r07x f1yrba31 f174n9yu"
-              style="left: 0%; width: 20%;"
+              style="width: 20%; left: 0%;"
             />
           </span>
           <div
@@ -53,7 +53,7 @@ exports[`slider > should render 1`] = `
         >
           <span
             class="axis-Slider__track ___pq61zr0_1xft6bt fnivh3a fc7yr5o f1el4m67 f8yange ftgm304 f1euv43f f1erzq44 f1i1t8d1 f188r07x f1yrba31 f174n9yu"
-            style="left: 0%; width: 20%;"
+            style="width: 20%; left: 0%;"
           />
         </span>
         <div
