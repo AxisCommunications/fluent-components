@@ -1,16 +1,16 @@
 import { commitUrl, compareUrl, gitLogFromRange, shortSha } from "./git.js";
 const GroupTitles = {
-    "build": "👷 Build",
-    "chore": "🚧 Maintenance",
-    "ci": "🚦 Continous integration",
-    "docs": "📝 Documentation",
-    "feat": "✨ Features",
-    "fix": "🐛 Bug fixes",
-    "perf": "🏎️ Performance",
-    "refactor": "♻️ Refactoring",
-    "revert": "⏪️ Reverts",
-    "style": "💄 Styling",
-    "test": "🧪 Test",
+    build: "👷 Build",
+    chore: "🚧 Maintenance",
+    ci: "🚦 Continuous integration",
+    docs: "📝 Documentation",
+    feat: "✨ Features",
+    fix: "🐛 Bug fixes",
+    perf: "🏎️ Performance",
+    refactor: "♻️ Refactoring",
+    revert: "⏪️ Reverts",
+    style: "💄 Styling",
+    test: "🧪 Test",
 };
 const GroupKeys = new Set(Object.keys(GroupTitles));
 export function changeset({ date, name, range, scope, url, }) {

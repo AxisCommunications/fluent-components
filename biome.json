@@ -1,0 +1,7 @@
+{
+  "tools": {
+    "lint": {
+      "disabledRules": ["lint/style/useImportType"]
+    }
+  }
+}

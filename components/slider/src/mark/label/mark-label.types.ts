@@ -12,6 +12,8 @@ export type MarkLabelSlots = {
 export type MarkLabelProps = ComponentProps<MarkLabelSlots> & {
   value: number;
   label: ReactNode;
+  /** Label is ***active*** only when slider value is **equal** to mark value. */
+  activeEqual?: boolean;
 };
 
 export type MarkLabelState =

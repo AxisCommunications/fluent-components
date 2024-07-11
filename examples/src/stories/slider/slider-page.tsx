@@ -55,10 +55,18 @@ import {
   WithStepsAndMarksRangeSliderExample,
   WithStepsAndMarksRangeSliderExampleAsString,
 } from "./examples/range-slider-with-streps-and-marks-example";
+import {
+  DualSectionSliderExample,
+  DualSectionSliderExampleAsString,
+} from "./examples/dual-section-example";
+import {
+  TripleSectionSliderExample,
+  TripleSectionSliderExampleAsString,
+} from "./examples/triple-section-example";
 
 const useStyles = makeStyles({
   example: {
-    maxWidth: "400px",
+    maxWidth: "auto",
   },
 });
 
@@ -134,6 +142,18 @@ const examples: pageData[] = [
     anchor: "WithStepsRangeSliderExample",
     example: <WithStepsRangeSliderExample />,
     codeString: WithStepsRangeSliderExampleAsString,
+  },
+  {
+    title: "Dual section",
+    anchor: "DualSectionSliderExample",
+    example: <DualSectionSliderExample />,
+    codeString: DualSectionSliderExampleAsString,
+  },
+  {
+    title: "Triple section",
+    anchor: "TripleSectionSliderExample",
+    example: <TripleSectionSliderExample />,
+    codeString: TripleSectionSliderExampleAsString,
   },
 ];
 
