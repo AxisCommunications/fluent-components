@@ -76,8 +76,7 @@
   "#292929": [
     "dark.colorNeutralBackground1",
     "dark.colorNeutralBackground3Hover",
-    "dark.colorNeutralStrokeOnBrand",
-    "light.colorNeutralBackgroundInverted"
+    "dark.colorNeutralStrokeOnBrand"
   ],
   "#29c7ff": [
     "dark.colorBrandForegroundLinkHover"
@@ -179,6 +178,9 @@
     "light.colorBrandBackground3Static",
     "light.colorCompoundBrandForeground1Pressed",
     "light.colorCompoundBrandStrokePressed"
+  ],
+  "#b2d3fb": [
+    "light.colorNeutralBackgroundInverted"
   ],
   "#b3b3b3": [
     "dark.colorNeutralStrokeAccessiblePressed",
