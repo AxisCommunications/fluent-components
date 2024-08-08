@@ -220,5 +220,8 @@
     "ic_axis_body_worn_standalone_20_regular": "0xf1db",
     "ic_axis_body_worn_standalone_24_regular": "0xf1dc",
     "ic_axis_body_worn_standalone_28_regular": "0xf1dd",
-    "ic_axis_body_worn_standalone_32_regular": "0xf1de"
+    "ic_axis_body_worn_standalone_32_regular": "0xf1de",
+    "ic_axis_frame_all_20_regular": "0xf1df",
+    "ic_axis_settings_checkmark_20_regular": "0xf1e0",
+    "ic_axis_settings_checkmark_24_regular": "0xf1e1"
 }

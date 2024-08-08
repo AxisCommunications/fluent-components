@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 17 May 2024 13:10:00 GMT
+ * Generated on Thu, 08 Aug 2024 09:33:24 GMT
  */
 
 import { ColorTokens, ShadowTokens, ShadowBrandTokens } from "@fluentui/react-components";
@@ -76,7 +76,7 @@ export const colorTokens: ColorTokens = {
   colorNeutralBackgroundAlpha: "rgba(255, 255, 255, 0.5)",
   colorNeutralBackgroundAlpha2: "rgba(255, 255, 255, 0.8)",
   colorNeutralBackgroundDisabled: "#f0f0f0",
-  colorNeutralBackgroundInverted: "#292929",
+  colorNeutralBackgroundInverted: "#b2d3fb",
   colorNeutralBackgroundInvertedDisabled: "rgba(255, 255, 255, 0.1)",
   colorNeutralBackgroundStatic: "#333333",
   colorNeutralForeground1: "#242424",

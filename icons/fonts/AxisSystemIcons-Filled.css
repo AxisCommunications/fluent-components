@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Filled";
-    src: url("./AxisSystemIcons-Filled.ttf?5b71064adad27c1c855feaec7d9e8d61") format("truetype");
+    src: url("./AxisSystemIcons-Filled.ttf?d7bf0014d6c81e9bdb2f9b5996dd402b") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -634,4 +634,13 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_body_worn_standalone_32_filled:before {
     content: "\f1cf";
+}
+.icon-ic_axis_frame_all_20_filled:before {
+    content: "\f1d0";
+}
+.icon-ic_axis_settings_checkmark_20_filled:before {
+    content: "\f1d1";
+}
+.icon-ic_axis_settings_checkmark_24_filled:before {
+    content: "\f1d2";
 }

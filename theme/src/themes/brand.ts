@@ -56,6 +56,7 @@ export const axisDarkTheme: AxisTheme = {
 export const axisLightTheme: AxisTheme = {
   ...createLightTheme(brand),
   colorNeutralForegroundOnBrand: "#000000",
+  colorNeutralBackgroundInverted:"#B2D3FB",
   colorBrandBackground: "#ffcc33",
   colorBrandBackgroundHover: "#FEC10C",
   colorBrandBackgroundPressed: "#B07A0F",

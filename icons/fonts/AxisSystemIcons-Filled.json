@@ -205,5 +205,8 @@
     "ic_axis_body_worn_standalone_20_filled": "0xf1cc",
     "ic_axis_body_worn_standalone_24_filled": "0xf1cd",
     "ic_axis_body_worn_standalone_28_filled": "0xf1ce",
-    "ic_axis_body_worn_standalone_32_filled": "0xf1cf"
+    "ic_axis_body_worn_standalone_32_filled": "0xf1cf",
+    "ic_axis_frame_all_20_filled": "0xf1d0",
+    "ic_axis_settings_checkmark_20_filled": "0xf1d1",
+    "ic_axis_settings_checkmark_24_filled": "0xf1d2"
 }
