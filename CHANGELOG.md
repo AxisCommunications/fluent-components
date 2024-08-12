@@ -1,5 +1,5 @@
-## [9.1.1](https://github.com/AxisCommunications/fluent-components/compare/07cf19b7a3fe5f7204eaf4b1991f74beda7c2000..57782c83e43af5fc5bf9911f42699d652b1b1bed) (2024-06-28T10:52:49.261Z)
+## [9.1.2](https://github.com/AxisCommunications/fluent-components/compare/6e299c6f895902e0be1f87872d09c1e0190a2610..941a04dc117defe36e9e21f199bdab52bed0840d) (2024-08-12T09:24:16.768Z)
 
-### 🐛 Bug fixes
+### 💄 Styling
 
-  - **topbar**: remove active ring and update color of profile badge (#286) ([57782c8](https://github.com/AxisCommunications/fluent-components/commit/57782c83e43af5fc5bf9911f42699d652b1b1bed))
+  - new icons and new color override (#291) ([941a04d](https://github.com/AxisCommunications/fluent-components/commit/941a04dc117defe36e9e21f199bdab52bed0840d))
