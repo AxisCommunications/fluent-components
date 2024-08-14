@@ -7,7 +7,8 @@ export const useStyles = makeStyles({
   organizationSelection: {
     overflowY: "auto",
     overflowX: "hidden",
-    maxHeight: "30vh",
+    height: "30vh",
+    width: "290px",
   },
   singleLine: {
     overflowX: "hidden",
@@ -17,5 +18,11 @@ export const useStyles = makeStyles({
     "@media (min-width: 550px)": {
       display: "block",
     },
+  },
+  searchInput: {
+    width: "100%",
+  },
+  bold: {
+    fontWeight: "bold",
   },
 });

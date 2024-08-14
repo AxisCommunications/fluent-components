@@ -10,4 +10,5 @@ export type OrganizationMenuProps = PropsWithChildren<{
   readonly customContent?: JSX.Element;
   readonly onChange: (id: string) => void;
   readonly options?: OrganizationOption[];
+  readonly filter?: { showFilter: boolean; placeholderText: string };
 }>;
