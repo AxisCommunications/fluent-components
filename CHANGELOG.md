@@ -1,9 +1,5 @@
-## [9.2.0](https://github.com/AxisCommunications/fluent-components/compare/506288d410bd523d862b0e753cc79f7fb6856ae6..5b3f7d0a2d5495018eca2c5b3d5bb9c82097e41b) (2024-08-14T14:38:46.860Z)
+## [9.2.1](https://github.com/AxisCommunications/fluent-components/compare/f7ce520a71ba3645deadd7407ae3ce9e4bbb8338..5bfaf6231d1205abed7e2afa0447be4db7327914) (2024-08-16T06:50:14.548Z)
 
-### ✨ Features
+### 🐛 Bug fixes
 
-  - **topbar**: add ability to search organizations (#294) ([5b3f7d0](https://github.com/AxisCommunications/fluent-components/commit/5b3f7d0a2d5495018eca2c5b3d5bb9c82097e41b))
-
-### 💄 Styling
-
-  - New smartsearch icon (#293) ([34cfaac](https://github.com/AxisCommunications/fluent-components/commit/34cfaac79b0dfc93afbd9432d1709f10eeb1c47a))
+  - **topbar**: use fluents own searchbox component (#296) ([5bfaf62](https://github.com/AxisCommunications/fluent-components/commit/5bfaf6231d1205abed7e2afa0447be4db7327914))
