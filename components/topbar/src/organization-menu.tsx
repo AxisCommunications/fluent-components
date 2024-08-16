@@ -1,6 +1,4 @@
 import {
-  Button,
-  Input,
   InputOnChangeData,
   Menu,
   MenuButton,
@@ -10,13 +8,14 @@ import {
   MenuPopover,
   MenuTrigger,
   mergeClasses,
+  SearchBox,
+  SearchBoxChangeEvent,
 } from "@fluentui/react-components";
+
 import {
   BuildingMultipleFilled,
   BuildingMultipleRegular,
   bundleIcon,
-  Dismiss16Regular,
-  Search16Regular,
 } from "@fluentui/react-icons";
 import React, { useCallback, useRef, useState } from "react";
 import { OrganizationMenuProps } from "./organization-menu.types";
@@ -58,7 +57,7 @@ export const OrganizationMenu = ({
     );
 
   const onFilterChange = useCallback(
-    (_: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
+    (_: SearchBoxChangeEvent, data: InputOnChangeData) => {
       if (data.value.length) {
         setFilterText(data.value.toLowerCase());
       } else {
@@ -90,30 +89,23 @@ export const OrganizationMenu = ({
       <MenuPopover>
         {filter?.showFilter && (
           <>
-            <Input
-              ref={filterRef}
-              contentBefore={<Search16Regular />}
+            <SearchBox
               placeholder={filter.placeholderText}
-              contentAfter={filterText.length
-                ? (
-                  <Button
-                    icon={<Dismiss16Regular />}
-                    appearance="transparent"
-                    onClick={() => {
-                      setFilterText("");
-                      filterRef.current?.focus();
-                    }}
-                  />
-                )
-                : undefined}
+              ref={filterRef}
+              value={filterText}
+              onChange={onFilterChange}
+              appearance="filled-lighter"
+              className={styles.searchInput}
               // To not get focus in search on open
               tabIndex={-1}
               // To keep focus on search when hovering menu items
-              onBlur={() => filterRef.current?.focus()}
-              className={styles.searchInput}
-              appearance="filled-lighter"
-              value={filterText}
-              onChange={onFilterChange}
+              onBlur={() => {
+                // Delay focus change one frame since SearchBox won't be able to react properly e.g.
+                // hide/show its X-button
+                window.requestAnimationFrame(() => {
+                  filterRef.current?.focus();
+                });
+              }}
             />
             <MenuDivider />
           </>
