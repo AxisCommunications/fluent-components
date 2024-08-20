@@ -17,7 +17,13 @@ import {
   BuildingMultipleRegular,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React, { useCallback, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { OrganizationMenuProps } from "./organization-menu.types";
 import { useStyles } from "./organization.styles";
 
@@ -67,8 +73,51 @@ export const OrganizationMenu = ({
     []
   );
 
+  const menuListRef = useRef<HTMLInputElement>(null);
+  const [showSearch, setShowSearch] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
+  const updateShowSearchStatusOnResize = () => {
+    // Only look for overflow if the search input is empty
+    if (filterText.length <= 0) {
+      updateShowSearchStatus();
+    }
+  };
+
+  const updateShowSearchStatus = () => {
+    if (!menuListRef.current) return;
+    if (menuListRef.current.clientHeight < menuListRef.current.scrollHeight) {
+      setShowSearch(true);
+    } else if (
+      menuListRef.current.clientHeight >= menuListRef.current.scrollHeight
+    ) {
+      setShowSearch(false);
+      setFilterText("");
+    }
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener("resize", updateShowSearchStatusOnResize);
+    return () =>
+      window.removeEventListener("resize", updateShowSearchStatusOnResize);
+  }, [filterText]);
+
+  useLayoutEffect(() => {
+    updateShowSearchStatus();
+  }, [menuListRef, menuOpen, options]);
+
+  useEffect(() => {
+    if (filterText.length === 0) updateShowSearchStatus();
+  }, [filterText]);
+
   return (
-    <Menu checkedValues={checkedValues} positioning={"below-end"}>
+    <Menu
+      checkedValues={checkedValues}
+      positioning={"below-end"}
+      onOpenChange={(_, data) => {
+        setMenuOpen(data.open);
+      }}
+    >
       <MenuTrigger>
         <MenuButton
           appearance="subtle"
@@ -87,7 +136,7 @@ export const OrganizationMenu = ({
         </MenuButton>
       </MenuTrigger>
       <MenuPopover>
-        {filter?.showFilter && (
+        {filter?.showFilter && showSearch && (
           <>
             <SearchBox
               placeholder={filter.placeholderText}
@@ -112,7 +161,7 @@ export const OrganizationMenu = ({
         )}
         <MenuList>
           {!onlyCustomContent && (
-            <div className={styles.organizationSelection}>
+            <div ref={menuListRef} className={styles.organizationSelection}>
               {filteredOptions?.map(({ id, label }) => {
                 const match = label.toLowerCase().indexOf(filterText);
                 return (
