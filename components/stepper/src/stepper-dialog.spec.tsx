@@ -1,10 +1,14 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import { StepperDialog } from "./stepper-dialog";
-import { DialogStep } from "./stepper-dialog.types";
+import { DialogStep, StepperDialogProps } from "./stepper-dialog.types";
 import { vi } from "vitest";
 
-describe("StepperDialog", () => {
+describe.each<[Pick<StepperDialogProps, "version">]>(
+  [[{ version: undefined }], [{ version: "v1" }], [{ version: "v2" }]]
+)("StepperDialog %s", (input) => {
+  const version = input.version;
+
   const steps: DialogStep[] = [
     {
       name: "First step",
@@ -33,6 +37,7 @@ describe("StepperDialog", () => {
         nextLabel={""}
         previousLabel={""}
         finishLabel={""}
+        version={version}
       />
     );
 
@@ -52,6 +57,7 @@ describe("StepperDialog", () => {
         nextLabel={""}
         previousLabel={""}
         finishLabel={""}
+        version={version}
       />
     );
 
@@ -73,6 +79,7 @@ describe("StepperDialog", () => {
         nextLabel={""}
         previousLabel={""}
         finishLabel={""}
+        version={version}
       />
     );
 
@@ -94,6 +101,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
 
@@ -116,6 +124,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
 
@@ -138,6 +147,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
 
@@ -159,6 +169,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
 
@@ -181,6 +192,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
     expect(getByRole("button", { name: "Cancel" })).toBeVisible();
@@ -200,6 +212,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
     expect(getByRole("button", { name: "Cancel" })).toBeVisible();
@@ -221,6 +234,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
 
@@ -244,6 +258,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
 
@@ -267,6 +282,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
 
@@ -290,6 +306,7 @@ describe("StepperDialog", () => {
         nextLabel={"Next"}
         previousLabel={"Previous"}
         finishLabel={"Finish"}
+        version={version}
       />
     );
 

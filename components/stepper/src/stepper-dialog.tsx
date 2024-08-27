@@ -1,8 +1,9 @@
-import { Button } from "@fluentui/react-components";
 import React, { useCallback } from "react";
 import { Stepper } from "./stepper";
 import { useStepperDialogStyles } from "./stepper-dialog.styles";
 import { StepperDialogProps } from "./stepper-dialog.types";
+import { StepperDialogFooterV1 } from "./stepper-dialog-footer-v1";
+import { StepperDialogFooterV2 } from "./stepper-dialog-footer-v2";
 
 export const StepperDialog = ({
   currentStep,
@@ -17,17 +18,13 @@ export const StepperDialog = ({
   previousLabel,
   finishLabel,
   className,
+  version,
 }: StepperDialogProps) => {
   const {
     rootStyles,
     containerStyles,
     contentStyles,
     buttonContainerStyles,
-    buttonStyles,
-    buttonCancel,
-    buttonPrevious,
-    buttonNext,
-    buttonFinish,
   } = useStepperDialogStyles({ vertical, className });
 
   const onNext = useCallback(
@@ -52,40 +49,38 @@ export const StepperDialog = ({
         <div className={contentStyles}>{steps[currentStep].content}</div>
       </div>
       <div className={buttonContainerStyles}>
-        <div className={buttonStyles}>
-          {cancelLabel && onCancel && (
-            <Button className={buttonCancel} onClick={onCancel}>
-              {cancelLabel}
-            </Button>
+        {(version === undefined || version === "v1")
+          && (
+            <StepperDialogFooterV1
+              currentStep={currentStep}
+              steps={steps}
+              disableProgression={disableProgression}
+              onFinish={onFinish}
+              onCancel={onCancel}
+              cancelLabel={cancelLabel}
+              nextLabel={nextLabel}
+              previousLabel={previousLabel}
+              finishLabel={finishLabel}
+              onNext={onNext}
+              onPrevious={onPrevious}
+            />
           )}
-        </div>
-        <div className={buttonStyles}>
-          {currentStep > 0 && previousLabel && (
-            <Button className={buttonPrevious} onClick={onPrevious}>
-              {previousLabel}
-            </Button>
+        {(version === "v2")
+          && (
+            <StepperDialogFooterV2
+              currentStep={currentStep}
+              steps={steps}
+              disableProgression={disableProgression}
+              onFinish={onFinish}
+              onCancel={onCancel}
+              cancelLabel={cancelLabel}
+              nextLabel={nextLabel}
+              previousLabel={previousLabel}
+              finishLabel={finishLabel}
+              onNext={onNext}
+              onPrevious={onPrevious}
+            />
           )}
-          {currentStep !== steps.length - 1 && nextLabel && (
-            <Button
-              className={buttonNext}
-              disabled={disableProgression}
-              onClick={onNext}
-              appearance="primary"
-            >
-              {nextLabel}
-            </Button>
-          )}
-          {currentStep === steps.length - 1 && (
-            <Button
-              className={buttonFinish}
-              onClick={onFinish}
-              disabled={disableProgression}
-              appearance="primary"
-            >
-              {finishLabel}
-            </Button>
-          )}
-        </div>
       </div>
     </div>
   );

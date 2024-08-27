@@ -18,13 +18,23 @@ import {
   CustomStepperDialogExample,
   CustomStepperDialogExampleAsString,
 } from "./examples/custom-style-example";
+import {
+  StepperDialogV2Example,
+  StepperDialogV2ExampleAsString,
+} from "./examples/stepper-dialog-v2-example";
 
 const examples: pageData[] = [
   {
-    title: "Stepper dialog",
+    title: "Stepper dialog V1 (default)",
     anchor: "StepperDialogExample",
     example: <StepperDialogExample />,
     codeString: StepperDialogExampleAsString,
+  },
+  {
+    title: "Stepper dialog V2 (different button layout)",
+    anchor: "StepperDialogV2Example",
+    example: <StepperDialogV2Example />,
+    codeString: StepperDialogV2ExampleAsString,
   },
   {
     title: "Vertical stepper dialog",

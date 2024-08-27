@@ -1,9 +1,4 @@
-import {
-  makeStyles,
-  mergeClasses,
-  shorthands,
-  tokens,
-} from "@fluentui/react-components";
+import { makeStyles, mergeClasses, tokens } from "@fluentui/react-components";
 
 const ROOT_CLASS_NAME = "axis-StepperDialog";
 
@@ -23,7 +18,7 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     flexDirection: "column",
-    ...shorthands.gap(tokens.spacingVerticalL),
+    gap: tokens.spacingVerticalL,
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightRegular,
     height: "100%",
@@ -33,12 +28,12 @@ const useStyles = makeStyles({
   stepperContainer: {
     display: "grid",
     overflowY: "hidden",
-    ...shorthands.gap(tokens.spacingVerticalL),
+    gap: tokens.spacingVerticalL,
   },
   stepperContainerVertical: {
     gridAutoFlow: "column",
     gridTemplateColumns: "1fr 6fr",
-    ...shorthands.gap(tokens.spacingHorizontalL),
+    gap: tokens.spacingHorizontalL,
   },
   stepContent: {
     display: "flex",
@@ -46,12 +41,8 @@ const useStyles = makeStyles({
   },
   buttonContainer: {
     display: "flex",
-    ...shorthands.gap(tokens.spacingHorizontalL),
+    gap: tokens.spacingHorizontalL,
     justifyContent: "space-between",
-  },
-  buttons: {
-    display: "flex",
-    ...shorthands.gap(tokens.spacingHorizontalL),
   },
 });
 
@@ -84,15 +75,6 @@ export function useStepperDialogStyles({
     StepperDialogClassNames.buttonContainer,
     styles.buttonContainer
   );
-  const buttonStyles = mergeClasses(
-    StepperDialogClassNames.buttons,
-    styles.buttons
-  );
-
-  const buttonCancel = mergeClasses(StepperDialogClassNames.cancel);
-  const buttonPrevious = mergeClasses(StepperDialogClassNames.previous);
-  const buttonNext = mergeClasses(StepperDialogClassNames.next);
-  const buttonFinish = mergeClasses(StepperDialogClassNames.finish);
 
   return {
     styles,
@@ -100,10 +82,5 @@ export function useStepperDialogStyles({
     containerStyles,
     contentStyles,
     buttonContainerStyles,
-    buttonStyles,
-    buttonCancel,
-    buttonPrevious,
-    buttonNext,
-    buttonFinish,
   };
 }
