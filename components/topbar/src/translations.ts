@@ -16,7 +16,7 @@ export const languageName: Record<SupportedLocale, string> = {
   ko: "한국어",
   nl: "Nederlands",
   pl: "Polski",
-  "pt-BR": "Português (Brasil)",
+  pt: "Português (Brasil)",
   ru: "Pусский",
   sv: "Svenska",
   th: "ไทย",
@@ -124,7 +124,7 @@ export const translations: Record<SupportedLocale, Translations> = {
     light: "Oświetlenie",
     logout: "Wyloguj",
   },
-  "pt-BR": {
+  pt: {
     ...englishDefaults,
     dark: "Escuro",
     light: "Claro",

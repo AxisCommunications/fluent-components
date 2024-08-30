@@ -13,7 +13,7 @@ const supportedLocales = [
   "ko",
   "nl",
   "pl",
-  "pt-BR",
+  "pt",
   "ru",
   "sv",
   "th",
