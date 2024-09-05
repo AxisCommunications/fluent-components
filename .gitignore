@@ -1,6 +1,7 @@
 # Tools
 .DS_Store
 .eslintcache
+.gitconfig
 
 node_modules/
 lib
