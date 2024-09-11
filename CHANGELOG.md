@@ -1,5 +1,5 @@
-## [9.2.2](https://github.com/AxisCommunications/fluent-components/compare/9534b2fc7f836b66963e85a8b5aa5ccb77fd5335..e5e4e2179153096d2beddd5bce2c100cede960f3) (2024-08-20T11:28:47.934Z)
+## [9.3.0](https://github.com/AxisCommunications/fluent-components/compare/473cb26d4ff238d7f685625101bbd9ad845317d5..338b152b7334629ec67f86f109c87d95e490d672) (2024-09-11T07:44:42.424Z)
 
-### 🐛 Bug fixes
+### 💄 Styling
 
-  - **topbar**: only show organization searchbox if needed (#298) ([e5e4e21](https://github.com/AxisCommunications/fluent-components/commit/e5e4e2179153096d2beddd5bce2c100cede960f3))
+  - new illustrations (#302) ([338b152](https://github.com/AxisCommunications/fluent-components/commit/338b152b7334629ec67f86f109c87d95e490d672))
