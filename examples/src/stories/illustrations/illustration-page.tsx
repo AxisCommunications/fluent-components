@@ -4,7 +4,6 @@ import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import { IllustrationPageHeader } from "./components/illustration-page-header";
 import { useIllustrationPage } from "./illustration-page.hooks";
-import { EStoryStatus } from "../../components/story/story-status";
 import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { IllustrationList } from "./examples/illustration-list";
 import {
