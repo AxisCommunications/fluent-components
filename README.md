@@ -2,8 +2,6 @@
 
 [![ci](https://github.com/AxisCommunications/fluent-components/actions/workflows/verify.yml/badge.svg)](https://github.com/AxisCommunications/fluent-components/actions/workflows/verify.yml)
 
-**Warning**: _The code and packages developed here should be considered experimental. Some Fluent UI v9 components are release candidates, and some are still in beta/alpha, and others are not in a usable state or not developed yet._
-
 **React**: The components work with a range of React versions as specified in the peer dependencies. However, we've experienced type errors in slots when using a `@types/react` version other than 17 (which is the version used by Fluent v9).
 
 The React packages are based on the `@fluentui/react-*` **v9** packages.

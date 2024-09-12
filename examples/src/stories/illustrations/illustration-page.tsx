@@ -60,7 +60,6 @@ export const IllustrationPage = (): JSX.Element => {
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       description={"Axis branded illustrations"}
-      status={[EStoryStatus.NEW]}
       navigation={renderNavigation}
       customHeader={
         <IllustrationPageHeader
