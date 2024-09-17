@@ -8,6 +8,8 @@ import {
 export type MarkDef = {
   value: number;
   label?: ReactNode;
+  /** Mark label is ***active*** only when slider value is **equal** to mark value. */
+  labelEqualActive?: boolean;
 };
 
 export type MarkSlots = {
