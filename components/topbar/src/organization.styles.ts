@@ -7,7 +7,7 @@ export const useStyles = makeStyles({
   organizationSelection: {
     overflowY: "auto",
     overflowX: "hidden",
-    height: "30vh",
+    maxHeight: "30vh",
     width: "290px",
   },
   singleLine: {
