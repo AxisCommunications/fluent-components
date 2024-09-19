@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Regular";
-    src: url("./AxisSystemIcons-Regular.ttf?6b8fe0d9fd8be95d0d4fcfd4f04b3980") format("truetype");
+    src: url("./AxisSystemIcons-Regular.ttf?87032d32944571efe6fad79bd2ea154d") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -970,4 +970,127 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_ten_k_split_28_regular:before {
     content: "\f23f";
+}
+.icon-ic_axis_caret_down_12_regular:before {
+    content: "\f240";
+}
+.icon-ic_axis_caret_down_16_regular:before {
+    content: "\f241";
+}
+.icon-ic_axis_caret_down_20_regular:before {
+    content: "\f242";
+}
+.icon-ic_axis_caret_down_24_regular:before {
+    content: "\f243";
+}
+.icon-ic_axis_caret_down_left_12_regular:before {
+    content: "\f244";
+}
+.icon-ic_axis_caret_down_left_16_regular:before {
+    content: "\f245";
+}
+.icon-ic_axis_caret_down_left_20_regular:before {
+    content: "\f246";
+}
+.icon-ic_axis_caret_down_left_24_regular:before {
+    content: "\f247";
+}
+.icon-ic_axis_caret_down_right_12_regular:before {
+    content: "\f248";
+}
+.icon-ic_axis_caret_down_right_16_regular:before {
+    content: "\f249";
+}
+.icon-ic_axis_caret_down_right_20_regular:before {
+    content: "\f24a";
+}
+.icon-ic_axis_caret_down_right_24_regular:before {
+    content: "\f24b";
+}
+.icon-ic_axis_caret_left_12_regular:before {
+    content: "\f24c";
+}
+.icon-ic_axis_caret_left_16_regular:before {
+    content: "\f24d";
+}
+.icon-ic_axis_caret_left_20_regular:before {
+    content: "\f24e";
+}
+.icon-ic_axis_caret_left_24_regular:before {
+    content: "\f24f";
+}
+.icon-ic_axis_caret_right_12_regular:before {
+    content: "\f250";
+}
+.icon-ic_axis_caret_right_16_regular:before {
+    content: "\f251";
+}
+.icon-ic_axis_caret_right_20_regular:before {
+    content: "\f252";
+}
+.icon-ic_axis_caret_right_24_regular:before {
+    content: "\f253";
+}
+.icon-ic_axis_caret_up_12_regular:before {
+    content: "\f254";
+}
+.icon-ic_axis_caret_up_16_regular:before {
+    content: "\f255";
+}
+.icon-ic_axis_caret_up_20_regular:before {
+    content: "\f256";
+}
+.icon-ic_axis_caret_up_24_regular:before {
+    content: "\f257";
+}
+.icon-ic_axis_caret_up_left_12_regular:before {
+    content: "\f258";
+}
+.icon-ic_axis_caret_up_left_16_regular:before {
+    content: "\f259";
+}
+.icon-ic_axis_caret_up_left_20_regular:before {
+    content: "\f25a";
+}
+.icon-ic_axis_caret_up_left_24_regular:before {
+    content: "\f25b";
+}
+.icon-ic_axis_caret_up_right_12_regular:before {
+    content: "\f25c";
+}
+.icon-ic_axis_caret_up_right_16_regular:before {
+    content: "\f25d";
+}
+.icon-ic_axis_caret_up_right_20_regular:before {
+    content: "\f25e";
+}
+.icon-ic_axis_caret_up_right_24_regular:before {
+    content: "\f25f";
+}
+.icon-ic_axis_network_port_down_20_regular:before {
+    content: "\f260";
+}
+.icon-ic_axis_network_port_down_32_regular:before {
+    content: "\f261";
+}
+.icon-ic_axis_network_port_down_64_regular:before {
+    content: "\f262";
+}
+.icon-ic_axis_network_port_warning_down_20_regular:before {
+    content: "\f263";
+}
+.icon-ic_axis_network_port_warning_down_32_regular:before {
+    content: "\f264";
+}
+.icon-ic_axis_scan_object_add_20_regular:before {
+    content: "\f265";
+}
+.icon-ic_axis_scan_object_add_24_regular:before {
+    content: "\f266";
+}
+.icon-ic_axis_scan_object_remove_20_regular:before {
+    content: "\f267";
+}
+.icon-ic_axis_scan_object_remove_24_regular:before {
+    content: "\f268";
 }
