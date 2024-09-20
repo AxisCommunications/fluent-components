@@ -1,11 +1,12 @@
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import "@testing-library/jest-dom";
 import React from "react";
 import { sliderClassNames } from "./use-slider-styles";
 import { FluentProvider } from "@fluentui/react-components";
 import { Slider } from "./slider";
 import { getControlRoot } from "./test-helpers";
-import { vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 const expectSliderValue = (element: HTMLElement, value: number) => {
   expect(element.getAttribute("value")).toEqual(value.toString());
@@ -128,6 +129,14 @@ describe("slider", () => {
       fireEvent.mouseDown(controlRoot, { button: 0, clientX: 0 });
 
       expect(document.activeElement).toEqual(slider);
+    });
+
+    it("should be disabled", () => {
+      const { getByTestId } = render(
+        <Slider min={0} max={100} data-testid="slider-root" disabled />
+      );
+
+      expect(getByTestId("slider-root").querySelector("input")).toBeDisabled();
     });
 
     it("should ignore non-left click", () => {
