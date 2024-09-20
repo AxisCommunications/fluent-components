@@ -20,8 +20,8 @@
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && eslint . --cache",
     "test": "vitest run",
-    "test:update-snapshots": "vitest -u",
     "test:coverage": "vitest run --coverage",
+    "test:update-snapshots": "vitest -u",
     "test:watch": "vitest watch"
   },
   "devDependencies": {

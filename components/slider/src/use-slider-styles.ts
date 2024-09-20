@@ -319,7 +319,9 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   }, [values]);
 
   state.thumb = {
+    ...state.thumb,
     style: {
+      ...state.thumb?.style,
       backgroundColor: sectionStyles?.thumbColor,
     },
   };
