@@ -1,5 +1,5 @@
-## [9.1.1](https://github.com/AxisCommunications/fluent-components/compare/07cf19b7a3fe5f7204eaf4b1991f74beda7c2000..57782c83e43af5fc5bf9911f42699d652b1b1bed) (2024-06-28T10:52:49.261Z)
+## [9.5.0](https://github.com/AxisCommunications/fluent-components/compare/7377588c127621d8e384f8d82f5b112a200da6af..9b678787dffcd96d31b2b6bbed8507d80a6340a8) (2024-09-20T06:05:40.861Z)
 
-### 🐛 Bug fixes
+### 💄 Styling
 
-  - **topbar**: remove active ring and update color of profile badge (#286) ([57782c8](https://github.com/AxisCommunications/fluent-components/commit/57782c83e43af5fc5bf9911f42699d652b1b1bed))
+  - Added new ADA icons (#311) ([9b67878](https://github.com/AxisCommunications/fluent-components/commit/9b678787dffcd96d31b2b6bbed8507d80a6340a8))

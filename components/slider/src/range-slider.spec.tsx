@@ -1,9 +1,11 @@
+import React from "react";
+import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import "@testing-library/jest-dom";
+
 import { RangeSlider } from "./range-slider";
-import React from "react";
 import { getControlRoot } from "./test-helpers";
-import { expect, vi } from "vitest";
 
 const expectSliderValues = (elements: HTMLElement[], values: number[]) => {
   expect(elements).toHaveLength(values.length);
@@ -33,6 +35,14 @@ describe("range-slider", () => {
       <RangeSlider min={0} max={100} defaultValue={[10, 20]} />
     );
     expectSliderValues(getAllByRole("slider"), [10, 20]);
+  });
+
+  it("should be disabled", () => {
+    const { getByTestId } = render(
+      <RangeSlider min={0} max={100} data-testid="slider-root" disabled />
+    );
+
+    expect(getByTestId("slider-root").querySelector("input")).toBeDisabled();
   });
 
   describe("mouse interaction", () => {

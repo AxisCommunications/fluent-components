@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import {
   createFocusOutlineStyle,
   makeStyles,
@@ -8,6 +10,7 @@ import {
 } from "@fluentui/react-components";
 
 import { SliderState } from "./slider.types";
+import { toPercent } from "./utils";
 
 export const sliderClassNames = {
   root: "axis-Slider",
@@ -21,6 +24,10 @@ export const sliderClassNames = {
   mark: {
     root: "axis-Slider__mark",
     label: "axis-Slider__mark__label",
+  },
+  section: {
+    root: "axis-Slider__section",
+    label: "axis-Slider__section__label",
   },
 };
 
@@ -44,6 +51,9 @@ export const sliderVars = {
   },
   mark: {
     color: "--axis-Slider__mark--color",
+  },
+  section: {
+    color: "--axis-Slider__section--color",
   },
 };
 
@@ -90,6 +100,9 @@ const useRootStyles = makeStyles({
     },
   }),
   hasMarkLabel: {
+    [sliderVars.root.paddingBottom]: "1rem",
+  },
+  hasSectionLabels: {
     [sliderVars.root.paddingBottom]: "1rem",
   },
 });
@@ -154,13 +167,23 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const railStyles = useRailStyles();
   const trackStyles = useTrackStyles();
 
-  const { disabled, trackOffset, trackWidth, active, markLabels, size } = state;
+  const {
+    disabled,
+    trackOffset,
+    trackWidth,
+    active,
+    markLabels,
+    sectionLabels,
+    size,
+    values,
+  } = state;
 
   const { dir } = useFluent();
 
   const rtl = dir === "rtl";
 
   const hasMarkLabel = markLabels.length > 0;
+  const hasSectionLabels = sectionLabels.length > 0;
 
   state.root.className = mergeClasses(
     sliderClassNames.root,
@@ -169,6 +192,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     size === "medium" && rootStyles.medium,
     rootStyles.focusIndicator,
     hasMarkLabel && rootStyles.hasMarkLabel,
+    hasSectionLabels && rootStyles.hasSectionLabels,
     state.root.className
   );
 
@@ -193,10 +217,118 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     state.track.className
   );
 
+  const hasSectionLabelsAndColors = sectionLabels.length > 0;
+
   const offsetDirection = rtl ? "right" : "left";
+  const offset = hasSectionLabelsAndColors
+    ? undefined
+    : {
+      [offsetDirection]: `${trackOffset}%`,
+    };
+
+  const sectionStyles = useMemo(() => {
+    /** trackColorGradient */
+    let tcg;
+    let thumbColor;
+
+    if (hasSectionLabelsAndColors) {
+      const { min, max } = state;
+      const rangeStart = values[0];
+      const rangeEnd = values.length > 1
+        ? values[values.length - 1]
+        : undefined;
+
+      const trackStart = rangeEnd === undefined ? min : rangeStart;
+      const trackEnd = rangeEnd === undefined ? rangeStart : rangeEnd;
+
+      const defaultColor = tokens.colorCompoundBrandBackground;
+
+      const gradientDirection = !rtl ? "right" : "left";
+
+      tcg = `linear-gradient(to ${gradientDirection}, `;
+      for (const sl of state.sectionLabels) {
+        const color = sl.trackColor ?? defaultColor;
+
+        // start
+        if (sl.edges.from <= trackStart) {
+          if (sl.edges.from < trackStart) {
+            // transparent block before track
+            tcg += `transparent ${toPercent(sl.edges.from, min, max)}%, `;
+            tcg += `transparent ${toPercent(trackStart, min, max)}%, `;
+          }
+
+          if (sl.edges.to > trackStart && sl.edges.to < trackEnd) {
+            tcg += `${color} ${toPercent(trackStart, min, max)}%, `;
+            tcg += `${color} ${toPercent(sl.edges.to, min, max)}%, `;
+          }
+        }
+
+        // middle full
+        if (
+          (sl.edges.from ?? max) >= trackStart
+          && (sl.edges.to ?? max) <= trackEnd
+        ) {
+          tcg += `${color} ${toPercent(sl.edges.from, min, max)}%, `;
+          tcg += `${color} ${toPercent(sl.edges.to, min, max)}%, `;
+        }
+        // middle inside
+        if (
+          (sl.edges.from ?? max) <= trackStart
+          && (sl.edges.to ?? max) >= trackEnd
+        ) {
+          tcg += `${color} ${toPercent(trackStart, min, max)}%, `;
+          tcg += `${color} ${toPercent(trackEnd, min, max)}%, `;
+
+          // transparent block after track
+          tcg += `transparent ${toPercent(trackEnd, min, max)}%, `;
+          tcg += `transparent ${toPercent(sl.edges.to, min, max)}%, `;
+        }
+
+        // end
+        if (sl.edges.from > trackStart && sl.edges.to > trackEnd) {
+          // colored block of track
+          tcg += `${color} ${toPercent(sl.edges.from, min, max)}%, `;
+          tcg += `${color} ${toPercent(trackEnd, min, max)}%, `;
+
+          // transparent block after track
+          tcg += `transparent ${toPercent(trackEnd, min, max)}%, `;
+          tcg += `transparent ${toPercent(sl.edges.to, min, max)}%, `;
+        }
+
+        if (sl.edges.from > trackEnd) {
+          // transparent block after track
+          tcg += `transparent ${toPercent(sl.edges.from, min, max)}%, `;
+          tcg += `transparent ${toPercent(sl.edges.to, min, max)}%, `;
+        }
+      }
+      tcg = tcg.substring(0, tcg.length - 2); // remove trailing ", "
+      tcg += ")";
+
+      thumbColor = tokens.colorCompoundBrandBackground;
+
+      for (const [index, sectionLabel] of state.sectionLabels.entries()) {
+        if (
+          trackEnd === min ? index === 0 : trackEnd > sectionLabel.edges.from
+        ) {
+          thumbColor = sectionLabel.trackColor ?? defaultColor;
+        }
+      }
+
+      return { trackColorGradient: tcg, thumbColor };
+    }
+  }, [values]);
+
+  state.thumb = {
+    ...state.thumb,
+    style: {
+      ...state.thumb?.style,
+      backgroundColor: sectionStyles?.thumbColor,
+    },
+  };
   state.track.style = {
-    [offsetDirection]: `${trackOffset}%`,
-    width: `${trackWidth}%`,
+    backgroundImage: sectionStyles?.trackColorGradient,
+    width: hasSectionLabelsAndColors ? "100%" : `${trackWidth}%`,
+    ...offset,
     ...state.track.style,
   };
 

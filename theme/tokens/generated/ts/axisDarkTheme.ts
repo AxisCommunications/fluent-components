@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 17 May 2024 13:10:01 GMT
+ * Generated on Thu, 08 Aug 2024 09:33:26 GMT
  */ 
 
 import { Theme } from "@fluentui/react-components";
@@ -15,6 +15,7 @@ export const AxisDarkTheme: Theme = {
   axisCustomColorMySystemsBackground: "#004F6E",
   axisCustomColorMySystemsForeground: "#99D8F1",
   axisCustomUtilityThemeName: "axisDarkTheme",
+  axisCustomUtilityThemeVariant: "dark",
   borderRadiusCircular: "10000px",
   borderRadiusLarge: "6px",
   borderRadiusMedium: "4px",

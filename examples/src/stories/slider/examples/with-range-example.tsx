@@ -7,7 +7,7 @@ export function RangeSliderExample() {
       title="Range Slider"
       min={0}
       max={100}
-      defaultValue={[25, 75]}
+      defaultValue={[25, 50, 75]}
       marks={[
         { value: 20, label: "20" },
         { value: 40, label: "40" },

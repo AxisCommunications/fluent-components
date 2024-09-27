@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Filled";
-    src: url("./AxisSystemIcons-Filled.ttf?5b71064adad27c1c855feaec7d9e8d61") format("truetype");
+    src: url("./AxisSystemIcons-Filled.ttf?f1aa70d64a3ce79a6bbd939c67cf21c6") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -634,4 +634,418 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_body_worn_standalone_32_filled:before {
     content: "\f1cf";
+}
+.icon-ic_axis_frame_all_20_filled:before {
+    content: "\f1d0";
+}
+.icon-ic_axis_settings_checkmark_20_filled:before {
+    content: "\f1d1";
+}
+.icon-ic_axis_settings_checkmark_24_filled:before {
+    content: "\f1d2";
+}
+.icon-ic_axis_10k_split_20_filled:before {
+    content: "\f1d3";
+}
+.icon-ic_axis_10k_split_24_filled:before {
+    content: "\f1d4";
+}
+.icon-ic_axis_10k_split_28_filled:before {
+    content: "\f1d5";
+}
+.icon-ic_axis_bounding_box_dashed_20_filled:before {
+    content: "\f1d6";
+}
+.icon-ic_axis_bounding_box_dashed_24_filled:before {
+    content: "\f1d7";
+}
+.icon-ic_axis_camera_dome_16_filled:before {
+    content: "\f1d8";
+}
+.icon-ic_axis_camera_dome_20_filled:before {
+    content: "\f1d9";
+}
+.icon-ic_axis_camera_dome_24_filled:before {
+    content: "\f1da";
+}
+.icon-ic_axis_camera_dome_28_filled:before {
+    content: "\f1db";
+}
+.icon-ic_axis_camera_dome_48_filled:before {
+    content: "\f1dc";
+}
+.icon-ic_axis_camera_dome_desk_position_16_filled:before {
+    content: "\f1dd";
+}
+.icon-ic_axis_camera_dome_desk_position_20_filled:before {
+    content: "\f1de";
+}
+.icon-ic_axis_camera_dome_desk_position_24_filled:before {
+    content: "\f1df";
+}
+.icon-ic_axis_camera_dome_desk_position_28_filled:before {
+    content: "\f1e0";
+}
+.icon-ic_axis_camera_dome_desk_position_48_filled:before {
+    content: "\f1e1";
+}
+.icon-ic_axis_camera_dome_wall_position_16_filled:before {
+    content: "\f1e2";
+}
+.icon-ic_axis_camera_dome_wall_position_20_filled:before {
+    content: "\f1e3";
+}
+.icon-ic_axis_camera_dome_wall_position_24_filled:before {
+    content: "\f1e4";
+}
+.icon-ic_axis_camera_dome_wall_position_28_filled:before {
+    content: "\f1e5";
+}
+.icon-ic_axis_camera_dome_wall_position_48_filled:before {
+    content: "\f1e6";
+}
+.icon-ic_axis_circuit_closed_20_filled:before {
+    content: "\f1e7";
+}
+.icon-ic_axis_circuit_closed_24_filled:before {
+    content: "\f1e8";
+}
+.icon-ic_axis_circuit_open_20_filled:before {
+    content: "\f1e9";
+}
+.icon-ic_axis_circuit_open_24_filled:before {
+    content: "\f1ea";
+}
+.icon-ic_axis_compass_16_filled:before {
+    content: "\f1eb";
+}
+.icon-ic_axis_compass_20_filled:before {
+    content: "\f1ec";
+}
+.icon-ic_axis_compass_24_filled:before {
+    content: "\f1ed";
+}
+.icon-ic_axis_compass_28_filled:before {
+    content: "\f1ee";
+}
+.icon-ic_axis_dewarped_corner_left_20_filled:before {
+    content: "\f1ef";
+}
+.icon-ic_axis_dewarped_corner_left_24_filled:before {
+    content: "\f1f0";
+}
+.icon-ic_axis_dewarped_corner_right_20_filled:before {
+    content: "\f1f1";
+}
+.icon-ic_axis_dewarped_corner_right_24_filled:before {
+    content: "\f1f2";
+}
+.icon-ic_axis_dewarped_corridor_20_filled:before {
+    content: "\f1f3";
+}
+.icon-ic_axis_dewarped_corridor_24_filled:before {
+    content: "\f1f4";
+}
+.icon-ic_axis_dewarped_double_corner_20_filled:before {
+    content: "\f1f5";
+}
+.icon-ic_axis_dewarped_double_corner_24_filled:before {
+    content: "\f1f6";
+}
+.icon-ic_axis_dewarped_double_panorama_20_filled:before {
+    content: "\f1f7";
+}
+.icon-ic_axis_dewarped_double_panorama_24_filled:before {
+    content: "\f1f8";
+}
+.icon-ic_axis_dewarped_overview_20_filled:before {
+    content: "\f1f9";
+}
+.icon-ic_axis_dewarped_overview_24_filled:before {
+    content: "\f1fa";
+}
+.icon-ic_axis_dewarped_panorama_20_filled:before {
+    content: "\f1fb";
+}
+.icon-ic_axis_dewarped_panorama_24_filled:before {
+    content: "\f1fc";
+}
+.icon-ic_axis_dewarped_quad_view_20_filled:before {
+    content: "\f1fd";
+}
+.icon-ic_axis_dewarped_quad_view_24_filled:before {
+    content: "\f1fe";
+}
+.icon-ic_axis_dewarped_view_area_20_filled:before {
+    content: "\f1ff";
+}
+.icon-ic_axis_dewarped_view_area_24_filled:before {
+    content: "\f200";
+}
+.icon-ic_axis_fan_20_filled:before {
+    content: "\f201";
+}
+.icon-ic_axis_fan_24_filled:before {
+    content: "\f202";
+}
+.icon-ic_axis_heat_20_filled:before {
+    content: "\f203";
+}
+.icon-ic_axis_heat_24_filled:before {
+    content: "\f204";
+}
+.icon-ic_axis_input_20_filled:before {
+    content: "\f205";
+}
+.icon-ic_axis_input_24_filled:before {
+    content: "\f206";
+}
+.icon-ic_axis_lightbulb_ir_20_filled:before {
+    content: "\f207";
+}
+.icon-ic_axis_lightbulb_ir_24_filled:before {
+    content: "\f208";
+}
+.icon-ic_axis_location_text_20_filled:before {
+    content: "\f209";
+}
+.icon-ic_axis_location_text_24_filled:before {
+    content: "\f20a";
+}
+.icon-ic_axis_mqtt_20_filled:before {
+    content: "\f20b";
+}
+.icon-ic_axis_mqtt_24_filled:before {
+    content: "\f20c";
+}
+.icon-ic_axis_network_port_20_filled:before {
+    content: "\f20d";
+}
+.icon-ic_axis_network_port_32_filled:before {
+    content: "\f20e";
+}
+.icon-ic_axis_network_port_64_filled:before {
+    content: "\f20f";
+}
+.icon-ic_axis_network_port_warning_20_filled:before {
+    content: "\f210";
+}
+.icon-ic_axis_network_port_warning_32_filled:before {
+    content: "\f211";
+}
+.icon-ic_axis_output_20_filled:before {
+    content: "\f212";
+}
+.icon-ic_axis_output_24_filled:before {
+    content: "\f213";
+}
+.icon-ic_axis_scan_auto_focus_20_filled:before {
+    content: "\f214";
+}
+.icon-ic_axis_scan_auto_focus_24_filled:before {
+    content: "\f215";
+}
+.icon-ic_axis_scan_m_20_filled:before {
+    content: "\f216";
+}
+.icon-ic_axis_scan_m_24_filled:before {
+    content: "\f217";
+}
+.icon-ic_axis_sd_card_20_filled:before {
+    content: "\f218";
+}
+.icon-ic_axis_sd_card_24_filled:before {
+    content: "\f219";
+}
+.icon-ic_axis_settings_a_20_filled:before {
+    content: "\f21a";
+}
+.icon-ic_axis_settings_a_24_filled:before {
+    content: "\f21b";
+}
+.icon-ic_axis_shape_cone_20_filled:before {
+    content: "\f21c";
+}
+.icon-ic_axis_shape_cone_24_filled:before {
+    content: "\f21d";
+}
+.icon-ic_axis_sip_20_filled:before {
+    content: "\f21e";
+}
+.icon-ic_axis_sip_24_filled:before {
+    content: "\f21f";
+}
+.icon-ic_axis_speed_dry_20_filled:before {
+    content: "\f220";
+}
+.icon-ic_axis_speed_dry_24_filled:before {
+    content: "\f221";
+}
+.icon-ic_axis_stateful_signal_20_filled:before {
+    content: "\f222";
+}
+.icon-ic_axis_stateful_signal_24_filled:before {
+    content: "\f223";
+}
+.icon-ic_axis_stateless_signal_20_filled:before {
+    content: "\f224";
+}
+.icon-ic_axis_stateless_signal_24_filled:before {
+    content: "\f225";
+}
+.icon-ic_axis_table_off_20_filled:before {
+    content: "\f226";
+}
+.icon-ic_axis_table_off_24_filled:before {
+    content: "\f227";
+}
+.icon-ic_axis_view_area_left_20_filled:before {
+    content: "\f228";
+}
+.icon-ic_axis_view_area_left_24_filled:before {
+    content: "\f229";
+}
+.icon-ic_axis_view_area_right_20_filled:before {
+    content: "\f22a";
+}
+.icon-ic_axis_view_area_right_24_filled:before {
+    content: "\f22b";
+}
+.icon-ic_axis_windshield_wiper_20_filled:before {
+    content: "\f22c";
+}
+.icon-ic_axis_windshield_wiper_24_filled:before {
+    content: "\f22d";
+}
+.icon-ic_axis_ten_k_split_20_filled:before {
+    content: "\f22e";
+}
+.icon-ic_axis_ten_k_split_24_filled:before {
+    content: "\f22f";
+}
+.icon-ic_axis_ten_k_split_28_filled:before {
+    content: "\f230";
+}
+.icon-ic_axis_caret_down_12_filled:before {
+    content: "\f231";
+}
+.icon-ic_axis_caret_down_16_filled:before {
+    content: "\f232";
+}
+.icon-ic_axis_caret_down_20_filled:before {
+    content: "\f233";
+}
+.icon-ic_axis_caret_down_24_filled:before {
+    content: "\f234";
+}
+.icon-ic_axis_caret_down_left_12_filled:before {
+    content: "\f235";
+}
+.icon-ic_axis_caret_down_left_16_filled:before {
+    content: "\f236";
+}
+.icon-ic_axis_caret_down_left_20_filled:before {
+    content: "\f237";
+}
+.icon-ic_axis_caret_down_left_24_filled:before {
+    content: "\f238";
+}
+.icon-ic_axis_caret_down_right_12_filled:before {
+    content: "\f239";
+}
+.icon-ic_axis_caret_down_right_16_filled:before {
+    content: "\f23a";
+}
+.icon-ic_axis_caret_down_right_20_filled:before {
+    content: "\f23b";
+}
+.icon-ic_axis_caret_down_right_24_filled:before {
+    content: "\f23c";
+}
+.icon-ic_axis_caret_left_12_filled:before {
+    content: "\f23d";
+}
+.icon-ic_axis_caret_left_16_filled:before {
+    content: "\f23e";
+}
+.icon-ic_axis_caret_left_20_filled:before {
+    content: "\f23f";
+}
+.icon-ic_axis_caret_left_24_filled:before {
+    content: "\f240";
+}
+.icon-ic_axis_caret_right_12_filled:before {
+    content: "\f241";
+}
+.icon-ic_axis_caret_right_16_filled:before {
+    content: "\f242";
+}
+.icon-ic_axis_caret_right_20_filled:before {
+    content: "\f243";
+}
+.icon-ic_axis_caret_right_24_filled:before {
+    content: "\f244";
+}
+.icon-ic_axis_caret_up_12_filled:before {
+    content: "\f245";
+}
+.icon-ic_axis_caret_up_16_filled:before {
+    content: "\f246";
+}
+.icon-ic_axis_caret_up_20_filled:before {
+    content: "\f247";
+}
+.icon-ic_axis_caret_up_24_filled:before {
+    content: "\f248";
+}
+.icon-ic_axis_caret_up_left_12_filled:before {
+    content: "\f249";
+}
+.icon-ic_axis_caret_up_left_16_filled:before {
+    content: "\f24a";
+}
+.icon-ic_axis_caret_up_left_20_filled:before {
+    content: "\f24b";
+}
+.icon-ic_axis_caret_up_left_24_filled:before {
+    content: "\f24c";
+}
+.icon-ic_axis_caret_up_right_12_filled:before {
+    content: "\f24d";
+}
+.icon-ic_axis_caret_up_right_16_filled:before {
+    content: "\f24e";
+}
+.icon-ic_axis_caret_up_right_20_filled:before {
+    content: "\f24f";
+}
+.icon-ic_axis_caret_up_right_24_filled:before {
+    content: "\f250";
+}
+.icon-ic_axis_network_port_down_20_filled:before {
+    content: "\f251";
+}
+.icon-ic_axis_network_port_down_32_filled:before {
+    content: "\f252";
+}
+.icon-ic_axis_network_port_down_64_filled:before {
+    content: "\f253";
+}
+.icon-ic_axis_network_port_warning_down_20_filled:before {
+    content: "\f254";
+}
+.icon-ic_axis_network_port_warning_down_32_filled:before {
+    content: "\f255";
+}
+.icon-ic_axis_scan_object_add_20_filled:before {
+    content: "\f256";
+}
+.icon-ic_axis_scan_object_add_24_filled:before {
+    content: "\f257";
+}
+.icon-ic_axis_scan_object_remove_20_filled:before {
+    content: "\f258";
+}
+.icon-ic_axis_scan_object_remove_24_filled:before {
+    content: "\f259";
 }

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 17 May 2024 13:10:01 GMT
+ * Generated on Thu, 08 Aug 2024 09:33:26 GMT
  */ 
 
 import { Theme } from "@fluentui/react-components";
@@ -15,6 +15,7 @@ export const AxisLightTheme: Theme = {
   axisCustomColorMySystemsBackground: "#008DC6",
   axisCustomColorMySystemsForeground: "#CCEBF8",
   axisCustomUtilityThemeName: "axisLightTheme",
+  axisCustomUtilityThemeVariant: "light",
   borderRadiusCircular: "10000px",
   borderRadiusLarge: "6px",
   borderRadiusMedium: "4px",
@@ -91,7 +92,7 @@ export const AxisLightTheme: Theme = {
   colorNeutralBackgroundAlpha: "rgba(255, 255, 255, 0.5)",
   colorNeutralBackgroundAlpha2: "rgba(255, 255, 255, 0.8)",
   colorNeutralBackgroundDisabled: "#f0f0f0",
-  colorNeutralBackgroundInverted: "#292929",
+  colorNeutralBackgroundInverted: "#B2D3FB",
   colorNeutralBackgroundInvertedDisabled: "rgba(255, 255, 255, 0.1)",
   colorNeutralBackgroundStatic: "#333333",
   colorNeutralCardBackground: "#fafafa",

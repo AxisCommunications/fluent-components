@@ -56,9 +56,26 @@ import {
   WithStepsAndMarksRangeSliderExampleAsString,
 } from "./examples/range-slider-with-streps-and-marks-example";
 
+import {
+  DualSectionSliderExample,
+  DualSectionSliderExampleAsString,
+} from "./examples/dual-section-example";
+import {
+  TripleSectionSliderExample,
+  TripleSectionSliderExampleAsString,
+} from "./examples/triple-section-example";
+import {
+  TripleSectionSliderNoZeroStartExample,
+  TripleSectionSliderNoZeroStartExampleAsString,
+} from "./examples/triple-section-no-zero-start-example";
+import {
+  RangeSliderWithSectionExample,
+  RangeSliderWithSectionExampleAsString,
+} from "./examples/range-slider-with-section-example";
+
 const useStyles = makeStyles({
   example: {
-    maxWidth: "400px",
+    maxWidth: "auto",
   },
 });
 
@@ -135,6 +152,31 @@ const examples: pageData[] = [
     example: <WithStepsRangeSliderExample />,
     codeString: WithStepsRangeSliderExampleAsString,
   },
+
+  {
+    title: "Dual section",
+    anchor: "DualSectionSliderExample",
+    example: <DualSectionSliderExample />,
+    codeString: DualSectionSliderExampleAsString,
+  },
+  {
+    title: "Triple section",
+    anchor: "TripleSectionSliderExample",
+    example: <TripleSectionSliderExample />,
+    codeString: TripleSectionSliderExampleAsString,
+  },
+  {
+    title: "Triple section with negative section",
+    anchor: "TripleSectionSliderNoZeroStartExample",
+    example: <TripleSectionSliderNoZeroStartExample />,
+    codeString: TripleSectionSliderNoZeroStartExampleAsString,
+  },
+  {
+    title: "Range slider with section",
+    anchor: "RangeSliderWithSliderExample",
+    example: <RangeSliderWithSectionExample />,
+    codeString: RangeSliderWithSectionExampleAsString,
+  },
 ];
 
 export const SliderPage = () => {
@@ -142,14 +184,10 @@ export const SliderPage = () => {
   const styles = useStyles();
 
   const { renderSections, renderNavigation } = useExampleWithNavigation(
-    examples.map(d => {
+    examples.map((d) => {
       return {
         ...d,
-        example: (
-          <div className={styles.example}>
-            {d.example}
-          </div>
-        ),
+        example: <div className={styles.example}>{d.example}</div>,
       };
     })
   );

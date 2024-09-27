@@ -104,6 +104,7 @@ export const Navbar = () => {
   const organizations: OrganizationOption[] = [
     { id: "1", label: "organizationenn2" },
     { id: "2", label: "organizationen AB" },
+    { id: "3", label: "A very long organization name AB" },
     ...new Array(50).fill(0).map((_, i) => ({
       id: "extra" + i,
       label: "organization-" + i,
@@ -219,6 +220,10 @@ export const Navbar = () => {
           onChange: setCurrentOrganizationId,
           options: organizations,
           value: currentOrganizationId,
+          filter: {
+            showFilter: true,
+            placeholderText: "Search organization",
+          },
         }}
         profileMenu={{
           // showCustomContentTopDivider: false,
