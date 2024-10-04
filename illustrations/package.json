@@ -48,7 +48,7 @@
     "@types/react": "^18.2.65",
     "@types/yargs": "17.0.32",
     "@vitest/coverage-c8": "^0.33.0",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.1",
     "jsdom": "^22.1.0",
     "lodash": "4.17.21",
     "react": "^18.2.0",
