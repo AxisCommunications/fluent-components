@@ -29,7 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "depcheck": "1.4.7",
-    "dprint": "0.47.2",
+    "dprint": "0.47.4",
     "eslint": "^8.57.1",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-deprecation": "^2.0.0",
