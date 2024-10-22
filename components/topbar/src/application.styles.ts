@@ -28,12 +28,6 @@ export const useApplicationStyles = makeStyles({
     textOverflow: "ellipsis",
     marginLeft: tokens.spacingHorizontalXXXL,
   },
-  beta: {
-    marginLeft: "8px",
-  },
-  disabled: {
-    opacity: 0.3,
-  },
   selectedApp: {
     [`& .${iconRegularClassName}`]: {
       display: "none",
