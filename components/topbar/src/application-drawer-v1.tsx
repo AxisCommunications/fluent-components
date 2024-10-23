@@ -15,7 +15,7 @@ import {
   mergeClasses,
   tokens,
 } from "@fluentui/react-components";
-import { useApplicationDrawrStyles as useApplicationDrawerStyles } from "./application-drawer.styles";
+import { useApplicationDrawerStyles } from "./application-drawer-v1.styles";
 import {
   ApplicationAreaFlaworedIcon,
   ApplicationAreaIcon,

@@ -2,7 +2,7 @@ import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 
 const triggerSpacingWithGroup = tokens.spacingHorizontalS;
 
-export const useApplicationDrawrStyles = makeStyles({
+export const useApplicationDrawerStyles = makeStyles({
   drawer: {
     ...shorthands.borderRight(0),
   },
