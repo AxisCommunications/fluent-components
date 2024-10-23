@@ -236,11 +236,10 @@ export const ApplicationDrawer = ({
   const currentSelection = findCurrent(applicationId, content);
 
   const onClickItem = (id: string) => {
-    if (id === currentSelection?.id) {
-      setIsOpen(false);
-    } else {
+    if (id !== currentSelection?.id) {
       onChange(id);
     }
+    setIsOpen(false);
   };
 
   return (
