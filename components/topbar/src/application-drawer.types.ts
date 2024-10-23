@@ -26,6 +26,11 @@ export type SingleApplicationDrawerContent = {
 };
 
 export type ApplicationDrawerProps = {
+  /**
+   * Selecting version will change the style of the drawer.
+   * @default: `"v1"`
+   */
+  version?: "v1" | "v2";
   link?: { text: string; url: string };
   title: JSX.Element;
   content?: ApplicationDrawerContent[];

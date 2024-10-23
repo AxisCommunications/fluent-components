@@ -1,14 +1,9 @@
 import React from "react";
-import { ApplicationDrawerV1 } from "./application-drawer-v1";
 import { ApplicationDrawerProps } from "./application-drawer.types";
 import { ApplicationArea } from "./top-bar.types";
 
-export const ApplicationDrawer = (
+export const ApplicationDrawerV2 = (
   props: ApplicationDrawerProps & { applicationArea: ApplicationArea }
 ) => {
-  if (props.version === "v2") {
-    return <></>;
-  } else {
-    return <ApplicationDrawerV1 {...props} />;
-  }
+  return <>V2</>;
 };

@@ -4,6 +4,7 @@ import {
 } from "@axiscommunications/fluent-theme";
 import {
   ApplicationDrawerContent,
+  ApplicationDrawerProps,
   ApplicationOption,
   LanguageOption,
   OrganizationOption,
@@ -28,6 +29,7 @@ import {
   AnimalCat20Filled,
   AnimalCat20Regular,
   bundleIcon,
+  Drawer24Filled,
   FoodApple24Regular,
   FoodCarrot20Filled,
   FoodFish20Filled,
@@ -160,12 +162,16 @@ export const Navbar = () => {
   );
 
   const [showDrawer, setShowDrawer] = useState(true);
+  const [drawerVersion, setDrawerVersion] = useState<
+    ApplicationDrawerProps["version"]
+  >("v1");
 
   return (
     <div className={styles.topBar}>
       <TopBar
         appDrawer={showDrawer
           ? {
+            version: drawerVersion,
             link: { text: "Learn more", url: "https://example.com" },
             applicationId: drawerSelectedApp,
             title: <Title1>My Apps</Title1>,
@@ -185,14 +191,30 @@ export const Navbar = () => {
         }}
         applicationArea={"mySystems"}
         leftCustomContent={
-          <Button
-            appearance="subtle"
-            icon={<Megaphone24Filled />}
-            iconPosition="before"
-            onClick={() => setShowDrawer(!showDrawer)}
-          >
-            {showDrawer ? "Use application menu" : "Use application drawer"}
-          </Button>
+          <>
+            <Button
+              appearance="subtle"
+              icon={<Megaphone24Filled />}
+              iconPosition="before"
+              onClick={() => setShowDrawer(!showDrawer)}
+            >
+              {showDrawer ? "Use application menu" : "Use application drawer"}
+            </Button>
+            <Button
+              appearance="subtle"
+              icon={<Drawer24Filled />}
+              onClick={() =>
+                setDrawerVersion((prev) => {
+                  return prev === "v1"
+                    ? "v2"
+                    : prev === "v2"
+                    ? undefined
+                    : "v1";
+                })}
+            >
+              {`Drawer version: ${drawerVersion}`}
+            </Button>
+          </>
         }
         customContent={
           <Menu>
