@@ -3,7 +3,6 @@ export type ApplicationOption = {
   icon?: JSX.Element;
   label?: string;
   url?: string;
-  beta?: boolean;
   group?: string;
 };
 

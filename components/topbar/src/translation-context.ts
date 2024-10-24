@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 import { MySystemsAppId } from "./applications";
 import { ApplicationArea } from ".";
 
-export const translationKeys = ["beta", "dark", "light", "logout"] as const;
+export const translationKeys = ["dark", "light", "logout"] as const;
 export type TranslationKey =
   | (typeof translationKeys)[number]
   | `app_${MySystemsAppId}`

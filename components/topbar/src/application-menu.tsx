@@ -1,5 +1,4 @@
 import {
-  Badge,
   Menu,
   MenuButton,
   MenuDivider,
@@ -77,7 +76,6 @@ export const ApplicationMenu = ({
                 ? currentSelection.label ?? appLabel(t, currentSelection.id)
                 // FIXME: use translateable placeholder
                 : ""}
-              {currentSelection?.beta && <BetaBadge />}
             </span>
           </MenuButton>
         </MenuTrigger>
@@ -89,7 +87,7 @@ export const ApplicationMenu = ({
                 {!onlyCustomContent && <MenuDivider />}
               </>
             )}
-            {options?.map(({ id, icon, label, beta }) => (
+            {options?.map(({ id, icon, label }) => (
               <MenuItem
                 data-testid={`application-menu-item-${id}`}
                 icon={
@@ -114,7 +112,6 @@ export const ApplicationMenu = ({
                 >
                   {label ?? appLabel(t, id)}
                 </Text>
-                {beta && <BetaBadge />}
               </MenuItem>
             ))}
           </MenuList>
@@ -123,21 +120,5 @@ export const ApplicationMenu = ({
     </>
   );
 };
-
-function BetaBadge({ disabled }: { disabled?: boolean }) {
-  const styles = useApplicationStyles();
-  const { t } = useTranslation();
-
-  return (
-    <Badge
-      appearance="outline"
-      color="success"
-      shape="rounded"
-      className={mergeClasses(styles.beta, disabled && styles.disabled)}
-    >
-      {t("beta")}
-    </Badge>
-  );
-}
 
 ApplicationMenu.displayName = "ApplicationMenu";
