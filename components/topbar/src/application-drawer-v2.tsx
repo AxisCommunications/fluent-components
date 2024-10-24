@@ -86,10 +86,7 @@ const ApplicationGroupTitle = ({ application }: {
   );
 };
 
-const SingleApplication = ({
-  application,
-  onChange,
-}: {
+const SingleApplication = ({ application, onChange }: {
   application: SingleApplicationDrawerContent;
   onChange: (id: string) => void;
 }): JSX.Element => {
@@ -97,13 +94,15 @@ const SingleApplication = ({
 
   return (
     <div className={styles.tabWrap}>
-      <Tab
+      {
+        /* <Tab
         value={application.id}
         className={styles.tab}
         icon={application.icon}
       >
         {application.label}
-      </Tab>
+      </Tab> */
+      }
 
       <Tab
         value={application.id}
@@ -115,7 +114,7 @@ const SingleApplication = ({
           as="a"
           href={application.link ?? undefined}
           icon={application.icon}
-          appearance="transparent"
+          appearance="outline"
           onClick={(e) => {
             e.preventDefault(); // Prevent navigation
             onChange(application.id);
@@ -142,10 +141,7 @@ const SingleApplication = ({
   );
 };
 
-const ApplicationWithChildren = ({
-  application,
-  onChange,
-}: {
+const ApplicationWithChildren = ({ application, onChange }: {
   application: ApplicationDrawerContent;
   onChange: (id: string) => void;
 }): JSX.Element => {
@@ -174,7 +170,6 @@ export const ApplicationDrawerV2 = (
     applicationId,
     content,
     onChange,
-    applicationArea,
   }: ApplicationDrawerProps & { applicationArea: ApplicationArea }
 ) => {
   const [isOpen, setIsOpen] = useState(false);
