@@ -17,6 +17,8 @@ import {
   DrawerHeaderTitle,
   Link,
   mergeClasses,
+  Tab,
+  TabList,
   tokens,
 } from "@fluentui/react-components";
 import { useApplicationDrawerV2Styles } from "./application-drawer-v2.styles";
@@ -86,31 +88,43 @@ const ApplicationGroupTitle = ({ application }: {
 
 const SingleApplication = ({
   application,
-  currentSelectionId,
   onChange,
-  applicationArea,
 }: {
   application: SingleApplicationDrawerContent;
-  currentSelectionId: string;
   onChange: (id: string) => void;
-  applicationArea: ApplicationArea;
 }): JSX.Element => {
   const styles = useApplicationDrawerV2Styles();
 
   return (
-    <Button
-      data-testid={`application-drawer-item-${application.id}`}
-      as="a"
-      href={application.link ?? undefined}
-      icon={application.icon}
-      appearance="subtle"
-      onClick={(e) => {
-        e.preventDefault(); // Prevent navigation
-        onChange(application.id);
-      }}
-    >
-      {application.label}
-    </Button>
+    <div className={styles.tabWrap}>
+      <Tab
+        value={application.id}
+        className={styles.tab}
+        icon={application.icon}
+      >
+        {application.label}
+      </Tab>
+
+      <Tab
+        value={application.id}
+        className={styles.tab}
+      >
+        <Button
+          className={styles.contentButton}
+          data-testid={`application-drawer-item-${application.id}`}
+          as="a"
+          href={application.link ?? undefined}
+          icon={application.icon}
+          appearance="transparent"
+          onClick={(e) => {
+            e.preventDefault(); // Prevent navigation
+            onChange(application.id);
+          }}
+        >
+          {application.label}
+        </Button>
+      </Tab>
+    </div>
     // <Button
     //   data-testid={`application-drawer-item-${application.id}`}
     //   className={mergeClasses(
@@ -130,33 +144,25 @@ const SingleApplication = ({
 
 const ApplicationWithChildren = ({
   application,
-  currentSelectionId,
   onChange,
-  applicationArea,
 }: {
   application: ApplicationDrawerContent;
-  currentSelectionId: string;
   onChange: (id: string) => void;
-  applicationArea: ApplicationArea;
 }): JSX.Element => {
   const styles = useApplicationDrawerV2Styles();
 
   return (
     <>
       <ApplicationGroupTitle application={application} />
-      <div className={styles.contentChildren}>
-        {application.children?.map((child) => {
-          return (
-            <SingleApplication
-              key={child.id}
-              application={child}
-              applicationArea={applicationArea}
-              currentSelectionId={currentSelectionId}
-              onChange={onChange}
-            />
-          );
-        })}
-      </div>
+      {application.children?.map((child) => {
+        return (
+          <SingleApplication
+            key={child.id}
+            application={child}
+            onChange={onChange}
+          />
+        );
+      })}
     </>
   );
 };
@@ -222,31 +228,34 @@ export const ApplicationDrawerV2 = (
           <div className={styles.content}>
             <div className={styles.title}>{title}</div>
             <Divider />
-            {content?.map((c) => {
-              return (
-                <div key={c.id}>
-                  {c.children
-                    ? (
-                      <ApplicationWithChildren
-                        application={c}
-                        currentSelectionId={currentSelection?.id ?? ""}
-                        onChange={onClickItem}
-                        applicationArea={applicationArea ?? ""}
-                      />
-                    )
-                    : (
-                      <SingleApplication
-                        application={c}
-                        currentSelectionId={currentSelection?.id ?? ""}
-                        onChange={onClickItem}
-                        applicationArea={applicationArea}
-                      />
-                    )}
+            <TabList
+              defaultSelectedValue={currentSelection?.id}
+              vertical
+              className={styles.tabList}
+              appearance="subtle"
+            >
+              {content?.map((c) => {
+                return (
+                  <div key={c.id}>
+                    {c.children
+                      ? (
+                        <ApplicationWithChildren
+                          application={c}
+                          onChange={onClickItem}
+                        />
+                      )
+                      : (
+                        <SingleApplication
+                          application={c}
+                          onChange={onClickItem}
+                        />
+                      )}
 
-                  <Divider className={styles.contentDivider} />
-                </div>
-              );
-            })}
+                    <Divider className={styles.contentDivider} />
+                  </div>
+                );
+              })}
+            </TabList>
           </div>
         </DrawerBody>
       </Drawer>

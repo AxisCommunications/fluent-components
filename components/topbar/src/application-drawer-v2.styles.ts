@@ -60,4 +60,25 @@ export const useApplicationDrawerV2Styles = makeStyles({
     paddingTop: tokens.spacingVerticalS,
     paddingBottom: tokens.spacingVerticalMNudge,
   },
+  tabList: {
+    width: "100%",
+    marginRight: "32px",
+  },
+  tabWrap: {
+    width: "100%",
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    boxSizing: "border-box",
+  },
+  tab: {
+    width: "100%",
+    display: "flex",
+    "& .fui-Tab__content": {
+      display: "flex",
+      flex: 1,
+    },
+  },
+  contentButton: {
+    flex: 1,
+    justifyContent: "flex-start",
+  },
 });
