@@ -4,6 +4,19 @@ export const useApplicationDrawerV2Styles = makeStyles({
   drawer: {
     ...shorthands.borderRight(0),
   },
+  drawerTriggerRoot: {
+    display: "flex",
+    alignItems: "center",
+    flexShrink: 0,
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    color: tokens.colorNeutralForeground2,
+  },
+  drawerTriggerGap: {
+    width: "26px",
+  },
+  drawerTriggerLabel: {
+    marginLeft: tokens.spacingHorizontalXXS,
+  },
   header: {
     display: "flex",
     flexDirection: "row",

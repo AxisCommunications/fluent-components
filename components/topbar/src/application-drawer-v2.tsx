@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { ApplicationDrawerProps } from "./application-drawer.types";
+import {
+  ApplicationDrawerProps,
+  SingleApplicationDrawerContent,
+} from "./application-drawer.types";
 import { ApplicationArea } from "./top-bar.types";
 import {
+  Body1Strong,
   Button,
   Divider,
   Drawer,
@@ -13,14 +17,54 @@ import {
 import { useApplicationDrawerV2Styles } from "./application-drawer-v2.styles";
 import {
   ArrowRightRegular,
+  bundleIcon,
   Dismiss20Regular,
+  DividerShortRegular,
+  DividerTall16Filled,
+  DividerTallFilled,
+  GridDots20Filled,
   GridDots20Regular,
 } from "@fluentui/react-icons";
+import { findCurrent } from "./application-utils";
 
-const DrawerTrigger = ({ setIsOpen }: {
+const GridDots20 = bundleIcon(GridDots20Filled, GridDots20Regular);
+
+const DrawerTrigger = ({ setIsOpen, currentSelection }: {
   setIsOpen: (isOpen: boolean) => void;
+  currentSelection: SingleApplicationDrawerContent | undefined;
 }) => {
-  return <Button onClick={() => setIsOpen(true)}>TRIGGER</Button>;
+  const styles = useApplicationDrawerV2Styles();
+  return (
+    <div className={styles.drawerTriggerRoot}>
+      <Button
+        appearance="subtle"
+        icon={<GridDots20 />}
+        onClick={() => setIsOpen(true)}
+      />
+      <div className={styles.drawerTriggerGap}></div>
+      {currentSelection === undefined
+        ? null
+        : (
+          <>
+            {currentSelection?.triggerGroupShortName
+              ? (
+                <>
+                  <Body1Strong>
+                    {currentSelection?.triggerGroupShortName}
+                  </Body1Strong>
+                  <DividerTall16Filled />
+                </>
+              )
+              : null}
+
+            {currentSelection.icon}
+            <Body1Strong className={styles.drawerTriggerLabel}>
+              {currentSelection.label}
+            </Body1Strong>
+          </>
+        )}
+    </div>
+  );
 };
 
 export const ApplicationDrawerV2 = (
@@ -35,10 +79,21 @@ export const ApplicationDrawerV2 = (
 ) => {
   const [isOpen, setIsOpen] = useState(false);
   const styles = useApplicationDrawerV2Styles();
+  const currentSelection = findCurrent(applicationId, content);
+
+  const onClickItem = (id: string) => {
+    if (id !== currentSelection?.id) {
+      onChange(id);
+    }
+    setIsOpen(false);
+  };
 
   return (
     <>
-      <DrawerTrigger setIsOpen={setIsOpen} />
+      <DrawerTrigger
+        setIsOpen={setIsOpen}
+        currentSelection={currentSelection}
+      />
 
       <Drawer
         className={styles.drawer}
@@ -81,7 +136,16 @@ export const ApplicationDrawerV2 = (
             {content?.map((c) => {
               return (
                 <div key={c.id}>
-                  {c.label}
+                  <Button
+                    as="a"
+                    href={c.link ?? undefined}
+                    onClick={(e) => {
+                      e.preventDefault(); // Prevent navigation
+                      onClickItem(c.id);
+                    }}
+                  >
+                    {c.label}
+                  </Button>
                   <Divider className={styles.contentDivider} />
                 </div>
               );

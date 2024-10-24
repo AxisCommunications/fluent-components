@@ -23,6 +23,11 @@ export type SingleApplicationDrawerContent = {
    * Group label to show before triggerLabel
    */
   triggerGroupShortName?: string;
+  /**
+   * Only available in `drawer v2`.
+   * If link is set, the selector in the drawer will have link properties.
+   */
+  link?: string;
 };
 
 export type ApplicationDrawerProps = {

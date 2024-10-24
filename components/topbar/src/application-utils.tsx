@@ -13,6 +13,10 @@ import { ApplicationArea } from "./top-bar.types";
 import { useApplicationStyles } from "./application.styles";
 import { mergeClasses } from "@fluentui/react-components";
 import { MySystems24Filled } from "@axiscommunications/fluent-icons";
+import {
+  ApplicationDrawerContent,
+  SingleApplicationDrawerContent,
+} from "./application-drawer.types";
 
 enum appAreas {
   MY_SYSTEMS = "mySystems",
@@ -107,4 +111,29 @@ export const applicationAreaLabel = (
   applicationArea?: ApplicationArea
 ) => {
   return applicationArea ? t(applicationArea) : "";
+};
+
+export const findCurrent = (
+  applicationId: string,
+  content?: ApplicationDrawerContent[]
+): SingleApplicationDrawerContent | undefined => {
+  if (!content) {
+    return undefined;
+  }
+
+  let currentApplication: SingleApplicationDrawerContent | undefined =
+    undefined;
+
+  content.forEach((c) => {
+    if (c.id === applicationId) {
+      currentApplication = c;
+    }
+    return c.children?.forEach((child) => {
+      if (child.id === applicationId) {
+        currentApplication = child;
+      }
+    });
+  });
+
+  return currentApplication;
 };

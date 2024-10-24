@@ -28,6 +28,7 @@ import {
   AddSubtractCircle20Regular,
   AnimalCat20Filled,
   AnimalCat20Regular,
+  BuildingBank20Regular,
   bundleIcon,
   Drawer24Filled,
   FoodApple24Regular,
@@ -38,20 +39,16 @@ import {
   Megaphone24Filled,
   OpenRegular,
   QuestionCircleRegular,
-  ZoomFit16Filled,
-  ZoomFit16Regular,
+  ZoomFit20Filled,
+  ZoomFit20Regular,
 } from "@fluentui/react-icons";
 import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/ApplicationStateProvider";
 
 const ApplicationIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
-const ZoomIcon = bundleIcon(ZoomFit16Filled, ZoomFit16Regular);
+const ZoomIcon = bundleIcon(ZoomFit20Filled, ZoomFit20Regular);
 const FishIcon = bundleIcon(FoodFish20Filled, FoodFish20Regular);
 const CatIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
-const AddSubIcon = bundleIcon(
-  AddSubtractCircle20Filled,
-  AddSubtractCircle20Regular
-);
 
 const useStyles = makeStyles({
   topBar: {
@@ -79,6 +76,7 @@ export const Navbar = () => {
       icon: <ZoomIcon />,
       label: "Zoo",
       id: "zoo",
+      link: "http://zoo.com",
       children: [
         {
           icon: <FishIcon />,
@@ -94,8 +92,8 @@ export const Navbar = () => {
       ],
     },
     {
-      icon: <AddSubIcon />,
-      label: "Add",
+      icon: <BuildingBank20Regular />,
+      label: "Add  trigger trigger",
       triggerLabel: "ADD trigger",
       id: "add",
       triggerGroupShortName: "ADD",

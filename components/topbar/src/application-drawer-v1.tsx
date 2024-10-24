@@ -20,6 +20,7 @@ import {
   ApplicationAreaFlaworedIcon,
   ApplicationAreaIcon,
   applicationAreaLabel,
+  findCurrent,
 } from "./application-utils";
 import {
   ApplicationDrawerContent,
@@ -110,31 +111,6 @@ const ApplicationGroupTitle = ({ application }: {
       </Caption1Stronger>
     </div>
   );
-};
-
-const findCurrent = (
-  applicationId: string,
-  content?: ApplicationDrawerContent[]
-): SingleApplicationDrawerContent | undefined => {
-  if (!content) {
-    return undefined;
-  }
-
-  let currentApplication: SingleApplicationDrawerContent | undefined =
-    undefined;
-
-  content.forEach((c) => {
-    if (c.id === applicationId) {
-      currentApplication = c;
-    }
-    return c.children?.forEach((child) => {
-      if (child.id === applicationId) {
-        currentApplication = child;
-      }
-    });
-  });
-
-  return currentApplication;
 };
 
 const iconConverter = (
