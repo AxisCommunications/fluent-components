@@ -3,6 +3,7 @@ import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 export const useApplicationDrawerV2Styles = makeStyles({
   drawer: {
     ...shorthands.borderRight(0),
+    backgroundColor: tokens.colorNeutralBackground2,
   },
   drawerTriggerRoot: {
     display: "flex",
@@ -21,22 +22,13 @@ export const useApplicationDrawerV2Styles = makeStyles({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground3,
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
-    "&:hover": {
-      cursor: "pointer",
-    },
-  },
-  headerTitle: {
-    display: "flex",
-    flexDirection: "row",
     alignItems: "center",
-    ...shorthands.gap(tokens.spacingHorizontalS),
+    height: "46px",
+    padding: "0 8px 0 19px",
   },
   body: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    backgroundImage: "none",
+    paddingLeft: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalM,
   },
   linkWrapper: {
     display: "flex",
@@ -53,9 +45,19 @@ export const useApplicationDrawerV2Styles = makeStyles({
     flexDirection: "column",
     width: "100%",
     ...shorthands.gap(tokens.spacingVerticalS),
-    paddingTop: "48px",
+    paddingTop: "40px",
+  },
+  title: {
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingRight: tokens.spacingHorizontalSNudge,
   },
   contentDivider: {
     paddingTop: tokens.spacingVerticalS,
+  },
+  applicationGroupTitleText: {
+    color: tokens.colorNeutralForeground4,
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingTop: tokens.spacingVerticalS,
+    paddingBottom: tokens.spacingVerticalMNudge,
   },
 });

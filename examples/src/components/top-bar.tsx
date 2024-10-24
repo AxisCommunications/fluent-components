@@ -24,8 +24,6 @@ import {
 } from "@fluentui/react-components";
 import {
   AddRegular,
-  AddSubtractCircle20Filled,
-  AddSubtractCircle20Regular,
   AnimalCat20Filled,
   AnimalCat20Regular,
   BuildingBank20Regular,
@@ -74,7 +72,7 @@ export const Navbar = () => {
   const appDrawerContent: ApplicationDrawerContent[] = [
     {
       icon: <ZoomIcon />,
-      label: "Zoo",
+      label: "Zoo camera station",
       id: "zoo",
       link: "http://zoo.com",
       children: [
@@ -170,7 +168,7 @@ export const Navbar = () => {
         appDrawer={showDrawer
           ? {
             version: drawerVersion,
-            link: { text: "Learn more", url: "https://example.com" },
+            // link: { text: "Learn more", url: "https://example.com" },
             applicationId: drawerSelectedApp,
             title: <Title1>My Apps</Title1>,
             content: appDrawerContent,

@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import {
+  ApplicationDrawerContent,
   ApplicationDrawerProps,
   SingleApplicationDrawerContent,
 } from "./application-drawer.types";
 import { ApplicationArea } from "./top-bar.types";
 import {
+  Body1,
   Body1Strong,
   Button,
+  Caption1Stronger,
   Divider,
   Drawer,
   DrawerBody,
   DrawerHeader,
+  DrawerHeaderTitle,
   Link,
+  mergeClasses,
   tokens,
 } from "@fluentui/react-components";
 import { useApplicationDrawerV2Styles } from "./application-drawer-v2.styles";
@@ -26,6 +31,7 @@ import {
   GridDots20Regular,
 } from "@fluentui/react-icons";
 import { findCurrent } from "./application-utils";
+import { useApplicationDrawerStyles } from "./application-drawer-v1.styles";
 
 const GridDots20 = bundleIcon(GridDots20Filled, GridDots20Regular);
 
@@ -67,6 +73,94 @@ const DrawerTrigger = ({ setIsOpen, currentSelection }: {
   );
 };
 
+const ApplicationGroupTitle = ({ application }: {
+  application: ApplicationDrawerContent;
+}): JSX.Element => {
+  const styles = useApplicationDrawerV2Styles();
+  return (
+    <Caption1Stronger className={styles.applicationGroupTitleText}>
+      {application.label.toLocaleUpperCase()}
+    </Caption1Stronger>
+  );
+};
+
+const SingleApplication = ({
+  application,
+  currentSelectionId,
+  onChange,
+  applicationArea,
+}: {
+  application: SingleApplicationDrawerContent;
+  currentSelectionId: string;
+  onChange: (id: string) => void;
+  applicationArea: ApplicationArea;
+}): JSX.Element => {
+  const styles = useApplicationDrawerV2Styles();
+
+  return (
+    <Button
+      data-testid={`application-drawer-item-${application.id}`}
+      as="a"
+      href={application.link ?? undefined}
+      icon={application.icon}
+      appearance="subtle"
+      onClick={(e) => {
+        e.preventDefault(); // Prevent navigation
+        onChange(application.id);
+      }}
+    >
+      {application.label}
+    </Button>
+    // <Button
+    //   data-testid={`application-drawer-item-${application.id}`}
+    //   className={mergeClasses(
+    //     styles.contentButton,
+    //     application.id === currentSelectionId && styles.contentButtonChecked
+    //   )}
+    //   appearance="subtle"
+    //   icon={application.icon}
+    //   onClick={() => onChange(application.id)}
+    // >
+    //   <Body1 className={styles.applicationButton}>
+    //     {application.label}
+    //   </Body1>
+    // </Button>
+  );
+};
+
+const ApplicationWithChildren = ({
+  application,
+  currentSelectionId,
+  onChange,
+  applicationArea,
+}: {
+  application: ApplicationDrawerContent;
+  currentSelectionId: string;
+  onChange: (id: string) => void;
+  applicationArea: ApplicationArea;
+}): JSX.Element => {
+  const styles = useApplicationDrawerV2Styles();
+
+  return (
+    <>
+      <ApplicationGroupTitle application={application} />
+      <div className={styles.contentChildren}>
+        {application.children?.map((child) => {
+          return (
+            <SingleApplication
+              key={child.id}
+              application={child}
+              applicationArea={applicationArea}
+              currentSelectionId={currentSelectionId}
+              onChange={onChange}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
 export const ApplicationDrawerV2 = (
   {
     link,
@@ -100,13 +194,8 @@ export const ApplicationDrawerV2 = (
         open={isOpen}
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >
-        <DrawerHeader
-          className={styles.header}
-          onClick={() => setIsOpen(false)}
-        >
-          <div className={styles.headerTitle}>
-            <GridDots20Regular />
-          </div>
+        <DrawerHeader className={styles.header}>
+          <GridDots20Regular color={tokens.colorNeutralForegroundDisabled} />
           <Button
             data-testid={"application-drawer-dismiss"}
             size="small"
@@ -131,21 +220,29 @@ export const ApplicationDrawerV2 = (
             </div>
           )}
           <div className={styles.content}>
-            {title}
+            <div className={styles.title}>{title}</div>
             <Divider />
             {content?.map((c) => {
               return (
                 <div key={c.id}>
-                  <Button
-                    as="a"
-                    href={c.link ?? undefined}
-                    onClick={(e) => {
-                      e.preventDefault(); // Prevent navigation
-                      onClickItem(c.id);
-                    }}
-                  >
-                    {c.label}
-                  </Button>
+                  {c.children
+                    ? (
+                      <ApplicationWithChildren
+                        application={c}
+                        currentSelectionId={currentSelection?.id ?? ""}
+                        onChange={onClickItem}
+                        applicationArea={applicationArea ?? ""}
+                      />
+                    )
+                    : (
+                      <SingleApplication
+                        application={c}
+                        currentSelectionId={currentSelection?.id ?? ""}
+                        onChange={onClickItem}
+                        applicationArea={applicationArea}
+                      />
+                    )}
+
                   <Divider className={styles.contentDivider} />
                 </div>
               );
