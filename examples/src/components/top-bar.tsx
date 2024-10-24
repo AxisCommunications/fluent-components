@@ -74,18 +74,19 @@ export const Navbar = () => {
       icon: <ZoomIcon />,
       label: "Zoo camera station",
       id: "zoo",
-      link: "http://zoo.com",
       children: [
         {
           icon: <FishIcon />,
           label: "Fisk",
           id: "fisk",
+          link: "https://en.wikipedia.org/wiki/Bass_(fish)",
           triggerGroupShortName: "FISH",
         },
         {
           icon: <CatIcon />,
           label: "Cat",
           id: "cat",
+          link: "http://cats.com",
         },
       ],
     },
