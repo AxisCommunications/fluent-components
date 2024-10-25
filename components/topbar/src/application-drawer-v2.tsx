@@ -33,7 +33,10 @@ import { findCurrent } from "./application-utils";
 
 const GridDots20 = bundleIcon(GridDots20Filled, GridDots20Regular);
 
-const DrawerTrigger = ({ setIsOpen, currentSelection }: {
+const DrawerTrigger = ({
+  setIsOpen,
+  currentSelection,
+}: {
   setIsOpen: (isOpen: boolean) => void;
   currentSelection: SingleApplicationDrawerContent | undefined;
 }) => {
@@ -49,36 +52,33 @@ const DrawerTrigger = ({ setIsOpen, currentSelection }: {
         icon={<GridDots20 />}
         onClick={() => setIsOpen(true)}
       />
-      <div
-        className={styles.drawerTriggerGap}
-      >
-      </div>
-      {currentSelection === undefined
-        ? null
-        : (
-          <>
-            {currentSelection?.triggerGroupShortName
-              ? (
-                <>
-                  <Body1Strong>
-                    {currentSelection?.triggerGroupShortName}
-                  </Body1Strong>
-                  <DividerTall16Filled />
-                </>
-              )
-              : null}
+      <div className={styles.drawerTriggerGap}></div>
+      {currentSelection === undefined ? null : (
+        <>
+          {currentSelection?.triggerGroupShortName
+            ? (
+              <>
+                <Body1Strong>
+                  {currentSelection?.triggerGroupShortName}
+                </Body1Strong>
+                <DividerTall16Filled />
+              </>
+            )
+            : null}
 
-            {currentSelection.icon}
-            <Body1Strong className={styles.drawerTriggerLabel}>
-              {currentSelection.label}
-            </Body1Strong>
-          </>
-        )}
+          {currentSelection.icon}
+          <Body1Strong className={styles.drawerTriggerLabel}>
+            {currentSelection.label}
+          </Body1Strong>
+        </>
+      )}
     </div>
   );
 };
 
-const ApplicationGroupTitle = ({ application }: {
+const ApplicationGroupTitle = ({
+  application,
+}: {
   application: ApplicationDrawerContent;
 }): JSX.Element => {
   const styles = useApplicationDrawerV2Styles();
@@ -89,7 +89,11 @@ const ApplicationGroupTitle = ({ application }: {
   );
 };
 
-const SingleApplication = ({ application, onChange, isSelected }: {
+const SingleApplication = ({
+  application,
+  onChange,
+  isSelected,
+}: {
   application: SingleApplicationDrawerContent;
   onChange: (id: string) => void;
   isSelected: boolean;
@@ -105,9 +109,9 @@ const SingleApplication = ({ application, onChange, isSelected }: {
   };
 
   const AppLabel = (): JSX.Element => {
-    return (isSelected
+    return isSelected
       ? <Body1Strong>{application.label}</Body1Strong>
-      : <Body1>{application.label}</Body1>);
+      : <Body1>{application.label}</Body1>;
   };
 
   return (
@@ -135,7 +139,11 @@ const SingleApplication = ({ application, onChange, isSelected }: {
   );
 };
 
-const ApplicationWithChildren = ({ application, onChange, selectedId }: {
+const ApplicationWithChildren = ({
+  application,
+  onChange,
+  selectedId,
+}: {
   application: ApplicationDrawerContent;
   onChange: (id: string) => void;
   selectedId: string;
@@ -157,15 +165,13 @@ const ApplicationWithChildren = ({ application, onChange, selectedId }: {
   );
 };
 
-export const ApplicationDrawerV2 = (
-  {
-    link,
-    title,
-    applicationId,
-    content,
-    onChange,
-  }: ApplicationDrawerProps & { applicationArea: ApplicationArea }
-) => {
+export const ApplicationDrawerV2 = ({
+  link,
+  title,
+  applicationId,
+  content,
+  onChange,
+}: ApplicationDrawerProps & { applicationArea: ApplicationArea }) => {
   const [isOpen, setIsOpen] = useState(false);
   const styles = useApplicationDrawerV2Styles();
   const currentSelection = findCurrent(applicationId, content);
@@ -216,7 +222,6 @@ export const ApplicationDrawerV2 = (
           )}
           <div className={styles.content}>
             <div className={styles.title}>{title}</div>
-            <Divider className={styles.contentDivider} />
             <TabList
               defaultSelectedValue={currentSelection?.id}
               reserveSelectedTabSpace={false}
@@ -227,6 +232,8 @@ export const ApplicationDrawerV2 = (
               {content?.map((c) => {
                 return (
                   <div key={c.id}>
+                    <Divider className={styles.contentDivider} />
+
                     {c.children
                       ? (
                         <ApplicationWithChildren
@@ -242,8 +249,6 @@ export const ApplicationDrawerV2 = (
                           isSelected={c.id === currentSelection?.id}
                         />
                       )}
-
-                    <Divider className={styles.contentDivider} />
                   </div>
                 );
               })}
