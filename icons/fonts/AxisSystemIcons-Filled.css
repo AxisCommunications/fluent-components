@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Filled";
-    src: url("./AxisSystemIcons-Filled.ttf?f1aa70d64a3ce79a6bbd939c67cf21c6") format("truetype");
+    src: url("./AxisSystemIcons-Filled.ttf?f3d2794607986c388270ef193102c639") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -1048,4 +1048,112 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_scan_object_remove_24_filled:before {
     content: "\f259";
+}
+.icon-ic_axis_autodesk_revit_12_filled:before {
+    content: "\f25a";
+}
+.icon-ic_axis_autodesk_revit_16_filled:before {
+    content: "\f25b";
+}
+.icon-ic_axis_autodesk_revit_20_filled:before {
+    content: "\f25c";
+}
+.icon-ic_axis_autodesk_revit_24_filled:before {
+    content: "\f25d";
+}
+.icon-ic_axis_autodesk_revit_28_filled:before {
+    content: "\f25e";
+}
+.icon-ic_axis_autodesk_revit_32_filled:before {
+    content: "\f25f";
+}
+.icon-ic_axis_autodesk_revit_48_filled:before {
+    content: "\f260";
+}
+.icon-ic_axis_bluebeam_12_filled:before {
+    content: "\f261";
+}
+.icon-ic_axis_bluebeam_16_filled:before {
+    content: "\f262";
+}
+.icon-ic_axis_bluebeam_20_filled:before {
+    content: "\f263";
+}
+.icon-ic_axis_bluebeam_24_filled:before {
+    content: "\f264";
+}
+.icon-ic_axis_bluebeam_28_filled:before {
+    content: "\f265";
+}
+.icon-ic_axis_bluebeam_32_filled:before {
+    content: "\f266";
+}
+.icon-ic_axis_bluebeam_48_filled:before {
+    content: "\f267";
+}
+.icon-ic_axis_image_health_analythics_20_filled:before {
+    content: "\f268";
+}
+.icon-ic_axis_image_health_analythics_24_filled:before {
+    content: "\f269";
+}
+.icon-ic_axis_image_health_analythics_28_filled:before {
+    content: "\f26a";
+}
+.icon-ic_axis_image_health_analythics_32_filled:before {
+    content: "\f26b";
+}
+.icon-ic_axis_image_health_analythics_48_filled:before {
+    content: "\f26c";
+}
+.icon-ic_axis_step_file_12_filled:before {
+    content: "\f26d";
+}
+.icon-ic_axis_step_file_16_filled:before {
+    content: "\f26e";
+}
+.icon-ic_axis_step_file_20_filled:before {
+    content: "\f26f";
+}
+.icon-ic_axis_step_file_24_filled:before {
+    content: "\f270";
+}
+.icon-ic_axis_step_file_28_filled:before {
+    content: "\f271";
+}
+.icon-ic_axis_step_file_32_filled:before {
+    content: "\f272";
+}
+.icon-ic_axis_step_file_48_filled:before {
+    content: "\f273";
+}
+.icon-ic_axis_topology_diagram_12_filled:before {
+    content: "\f274";
+}
+.icon-ic_axis_topology_diagram_16_filled:before {
+    content: "\f275";
+}
+.icon-ic_axis_topology_diagram_20_filled:before {
+    content: "\f276";
+}
+.icon-ic_axis_topology_diagram_24_filled:before {
+    content: "\f277";
+}
+.icon-ic_axis_topology_diagram_28_filled:before {
+    content: "\f278";
+}
+.icon-ic_axis_topology_diagram_32_filled:before {
+    content: "\f279";
+}
+.icon-ic_axis_topology_diagram_48_filled:before {
+    content: "\f27a";
+}
+.icon-ic_axis_wrong_way_detection_16_filled:before {
+    content: "\f27b";
+}
+.icon-ic_axis_wrong_way_detection_20_filled:before {
+    content: "\f27c";
+}
+.icon-ic_axis_wrong_way_detection_24_filled:before {
+    content: "\f27d";
 }
