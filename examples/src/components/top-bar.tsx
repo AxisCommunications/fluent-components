@@ -4,6 +4,7 @@ import {
 } from "@axiscommunications/fluent-theme";
 import {
   ApplicationDrawerContent,
+  ApplicationDrawerProps,
   ApplicationOption,
   LanguageOption,
   OrganizationOption,
@@ -23,11 +24,11 @@ import {
 } from "@fluentui/react-components";
 import {
   AddRegular,
-  AddSubtractCircle20Filled,
-  AddSubtractCircle20Regular,
   AnimalCat20Filled,
   AnimalCat20Regular,
+  BuildingBank20Regular,
   bundleIcon,
+  Drawer24Filled,
   FoodApple24Regular,
   FoodCarrot20Filled,
   FoodFish20Filled,
@@ -36,20 +37,16 @@ import {
   Megaphone24Filled,
   OpenRegular,
   QuestionCircleRegular,
-  ZoomFit16Filled,
-  ZoomFit16Regular,
+  ZoomFit20Filled,
+  ZoomFit20Regular,
 } from "@fluentui/react-icons";
 import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/ApplicationStateProvider";
 
 const ApplicationIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
-const ZoomIcon = bundleIcon(ZoomFit16Filled, ZoomFit16Regular);
+const ZoomIcon = bundleIcon(ZoomFit20Filled, ZoomFit20Regular);
 const FishIcon = bundleIcon(FoodFish20Filled, FoodFish20Regular);
 const CatIcon = bundleIcon(AnimalCat20Filled, AnimalCat20Regular);
-const AddSubIcon = bundleIcon(
-  AddSubtractCircle20Filled,
-  AddSubtractCircle20Regular
-);
 
 const useStyles = makeStyles({
   topBar: {
@@ -75,25 +72,27 @@ export const Navbar = () => {
   const appDrawerContent: ApplicationDrawerContent[] = [
     {
       icon: <ZoomIcon />,
-      label: "Zoo",
+      label: "Zoo camera station",
       id: "zoo",
       children: [
         {
           icon: <FishIcon />,
           label: "Fisk",
           id: "fisk",
+          link: "https://en.wikipedia.org/wiki/Bass_(fish)",
           triggerGroupShortName: "FISH",
         },
         {
           icon: <CatIcon />,
           label: "Cat",
           id: "cat",
+          link: "http://cats.com",
         },
       ],
     },
     {
-      icon: <AddSubIcon />,
-      label: "Add",
+      icon: <BuildingBank20Regular />,
+      label: "Add  trigger trigger",
       triggerLabel: "ADD trigger",
       id: "add",
       triggerGroupShortName: "ADD",
@@ -160,12 +159,16 @@ export const Navbar = () => {
   );
 
   const [showDrawer, setShowDrawer] = useState(true);
+  const [drawerVersion, setDrawerVersion] = useState<
+    ApplicationDrawerProps["version"]
+  >("v1");
 
   return (
     <div className={styles.topBar}>
       <TopBar
         appDrawer={showDrawer
           ? {
+            version: drawerVersion,
             link: { text: "Learn more", url: "https://example.com" },
             applicationId: drawerSelectedApp,
             title: <Title1>My Apps</Title1>,
@@ -185,14 +188,30 @@ export const Navbar = () => {
         }}
         applicationArea={"mySystems"}
         leftCustomContent={
-          <Button
-            appearance="subtle"
-            icon={<Megaphone24Filled />}
-            iconPosition="before"
-            onClick={() => setShowDrawer(!showDrawer)}
-          >
-            {showDrawer ? "Use application menu" : "Use application drawer"}
-          </Button>
+          <>
+            <Button
+              appearance="subtle"
+              icon={<Megaphone24Filled />}
+              iconPosition="before"
+              onClick={() => setShowDrawer(!showDrawer)}
+            >
+              {showDrawer ? "Use application menu" : "Use application drawer"}
+            </Button>
+            <Button
+              appearance="subtle"
+              icon={<Drawer24Filled />}
+              onClick={() =>
+                setDrawerVersion((prev) => {
+                  return prev === "v1"
+                    ? "v2"
+                    : prev === "v2"
+                    ? undefined
+                    : "v1";
+                })}
+            >
+              {`Drawer version: ${drawerVersion}`}
+            </Button>
+          </>
         }
         customContent={
           <Menu>

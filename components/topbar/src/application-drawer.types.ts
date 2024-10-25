@@ -23,9 +23,19 @@ export type SingleApplicationDrawerContent = {
    * Group label to show before triggerLabel
    */
   triggerGroupShortName?: string;
+  /**
+   * Only available in `drawer v2`.
+   * If link is set, the selector in the drawer will have link properties.
+   */
+  link?: string;
 };
 
 export type ApplicationDrawerProps = {
+  /**
+   * Selecting version will change the style of the drawer.
+   * @default: `"v1"`
+   */
+  version?: "v1" | "v2";
   link?: { text: string; url: string };
   title: JSX.Element;
   content?: ApplicationDrawerContent[];
