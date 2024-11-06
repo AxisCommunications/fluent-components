@@ -33,7 +33,7 @@
     "@axiscommunications/fluent-illustrations": "workspace:*",
     "@fluentui/react-components": "^9.55.1",
     "@fluentui/react-context-selector": "^9.1.68",
-    "@fluentui/react-icons": "^2.0.261",
+    "@fluentui/react-icons": "^2.0.264",
     "@vitejs/plugin-react": "^4.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
