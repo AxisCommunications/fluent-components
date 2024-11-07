@@ -11,4 +11,5 @@ export type OrganizationMenuProps = PropsWithChildren<{
   readonly onChange: (id: string) => void;
   readonly options?: OrganizationOption[];
   readonly filter?: { showFilter: boolean; placeholderText: string };
+  readonly popoverInfo?: { title: string; body: string };
 }>;
