@@ -196,7 +196,16 @@ export const ApplicationDrawerV2 = ({
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >
         <DrawerHeader className={styles.header}>
-          <GridDots20Regular color={tokens.colorNeutralForegroundDisabled} />
+          <Button
+            size="small"
+            appearance="subtle"
+            icon={
+              <GridDots20Regular
+                color={tokens.colorNeutralForegroundDisabled}
+              />
+            }
+            onClick={() => setIsOpen(false)}
+          />
           <Button
             data-testid={"application-drawer-dismiss"}
             size="small"
