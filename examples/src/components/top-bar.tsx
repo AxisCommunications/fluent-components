@@ -242,6 +242,9 @@ export const Navbar = () => {
             showFilter: true,
             placeholderText: "Search organization",
           },
+          popoverInfo: currentOrganizationId === "2"
+            ? { title: "PopOver", body: "Say something about the org item!" }
+            : undefined,
         }}
         profileMenu={{
           // showCustomContentTopDivider: false,

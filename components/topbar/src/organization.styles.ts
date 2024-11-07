@@ -1,4 +1,4 @@
-import { makeStyles } from "@fluentui/react-components";
+import { makeStyles, tokens } from "@fluentui/react-components";
 
 export const useStyles = makeStyles({
   standalone: {
@@ -24,5 +24,16 @@ export const useStyles = makeStyles({
   },
   bold: {
     fontWeight: "bold",
+  },
+  popoverRoot: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalM,
+    maxWidth: "360px",
+  },
+  popoverTitle: {
+    display: "flex",
+    justifyContent: "space-between",
+    gap: tokens.spacingHorizontalL,
   },
 });
