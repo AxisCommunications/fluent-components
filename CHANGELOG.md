@@ -1,9 +1,5 @@
-## [10.1.0](https://github.com/AxisCommunications/fluent-components/compare/038f81b30d855ede99620e303a0de93bd51b351c..8ff8733d25c4ff8379fa28443f2e26898fe51e97) (2024-11-07T12:19:09.223Z)
+## [10.2.0](https://github.com/AxisCommunications/fluent-components/compare/88b3db0889c7bd1d058367609bfd4594f48fb669..db3eab40384aa8b45c478a0b70af8fa31f6bea5f) (2024-11-12T13:32:19.863Z)
 
-### ✨ Features
+### 💄 Styling
 
-  - **topbar**: add popover to organization menu (#345) ([a2fac3b](https://github.com/AxisCommunications/fluent-components/commit/a2fac3b57eb7bcbfab92a4301069e53717da6d25))
-
-### 🐛 Bug fixes
-
-  - **topbar**: close drawer on grid dots (#346) ([8ff8733](https://github.com/AxisCommunications/fluent-components/commit/8ff8733d25c4ff8379fa28443f2e26898fe51e97))
+  - New icons (#349) ([db3eab4](https://github.com/AxisCommunications/fluent-components/commit/db3eab40384aa8b45c478a0b70af8fa31f6bea5f))
