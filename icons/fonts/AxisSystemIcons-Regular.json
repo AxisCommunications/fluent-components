@@ -394,5 +394,9 @@
     "ic_axis_topology_diagram_48_regular": "0xf289",
     "ic_axis_wrong_way_detection_16_regular": "0xf28a",
     "ic_axis_wrong_way_detection_20_regular": "0xf28b",
-    "ic_axis_wrong_way_detection_24_regular": "0xf28c"
+    "ic_axis_wrong_way_detection_24_regular": "0xf28c",
+    "ic_axis_set_end_point_16_regular": "0xf28d",
+    "ic_axis_set_end_point_20_regular": "0xf28e",
+    "ic_axis_set_start_point_16_regular": "0xf28f",
+    "ic_axis_set_start_point_20_regular": "0xf290"
 }

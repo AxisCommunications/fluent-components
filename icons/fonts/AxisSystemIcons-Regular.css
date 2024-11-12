@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Regular";
-    src: url("./AxisSystemIcons-Regular.ttf?1ab47482d4c95e654df06d8c004d4e05") format("truetype");
+    src: url("./AxisSystemIcons-Regular.ttf?8f8708f91ab634c82340d6566dad5b24") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -1201,4 +1201,16 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_wrong_way_detection_24_regular:before {
     content: "\f28c";
+}
+.icon-ic_axis_set_end_point_16_regular:before {
+    content: "\f28d";
+}
+.icon-ic_axis_set_end_point_20_regular:before {
+    content: "\f28e";
+}
+.icon-ic_axis_set_start_point_16_regular:before {
+    content: "\f28f";
+}
+.icon-ic_axis_set_start_point_20_regular:before {
+    content: "\f290";
 }
