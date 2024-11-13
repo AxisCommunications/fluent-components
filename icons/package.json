@@ -37,7 +37,7 @@
     "react:svg:unfill": "find ./dist/react-svg -type f -name '*.svg' -exec sed -i.bak 's/fill=\"none\"//g' '{}' \\; && find ./dist/react-svg -type f -name '*.bak' -delete"
   },
   "dependencies": {
-    "@griffel/react": "^1.5.25"
+    "@griffel/react": "^1.5.27"
   },
   "devDependencies": {
     "@svgr/core": "^5.5.0",
