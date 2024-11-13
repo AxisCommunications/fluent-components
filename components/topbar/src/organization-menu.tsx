@@ -240,7 +240,10 @@ export const OrganizationMenu = ({
         unstable_disableAutoFocus
       >
         <PopoverSurface tabIndex={-1}>
-          <div className={styles.popoverRoot}>
+          <div
+            className={styles.popoverRoot}
+            data-testid="organization-menu-popover"
+          >
             <div className={styles.popoverTitle}>
               <Subtitle1>{popoverInfo?.title}</Subtitle1>
               <Button
