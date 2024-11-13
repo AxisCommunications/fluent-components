@@ -1,5 +1,5 @@
-## [10.2.0](https://github.com/AxisCommunications/fluent-components/compare/88b3db0889c7bd1d058367609bfd4594f48fb669..db3eab40384aa8b45c478a0b70af8fa31f6bea5f) (2024-11-12T13:32:19.863Z)
+## [10.2.1](https://github.com/AxisCommunications/fluent-components/compare/ead4f8f8e31e3981cfed01b20dcd2a5f51aa5820..8f409600a09fadb4c8882a076bc9c3b47bcfb1d9) (2024-11-13T09:34:53.306Z)
 
-### 💄 Styling
+### 🚧 Maintenance
 
-  - New icons (#349) ([db3eab4](https://github.com/AxisCommunications/fluent-components/commit/db3eab40384aa8b45c478a0b70af8fa31f6bea5f))
+  - **topbar**: add test id in organization menu (#353) ([8f40960](https://github.com/AxisCommunications/fluent-components/commit/8f409600a09fadb4c8882a076bc9c3b47bcfb1d9))
