@@ -207,6 +207,7 @@ export const ApplicationDrawerV1 = ({
   applicationId,
   content,
   onChange,
+  onChangeAndClose,
   applicationArea,
 }: ApplicationDrawerProps & { applicationArea: ApplicationArea }) => {
   const { t } = useTranslation();
@@ -216,9 +217,15 @@ export const ApplicationDrawerV1 = ({
 
   const onClickItem = (id: string) => {
     if (id !== currentSelection?.id) {
-      onChange(id);
+      if (onChangeAndClose) {
+        onChangeAndClose(id);
+        setIsOpen(false);
+      } else {
+        onChange?.(id);
+      }
+    } else {
+      setIsOpen(false);
     }
-    setIsOpen(false);
   };
 
   return (

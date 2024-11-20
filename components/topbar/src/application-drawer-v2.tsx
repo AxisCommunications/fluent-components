@@ -171,6 +171,7 @@ export const ApplicationDrawerV2 = ({
   applicationId,
   content,
   onChange,
+  onChangeAndClose,
 }: ApplicationDrawerProps & { applicationArea: ApplicationArea }) => {
   const [isOpen, setIsOpen] = useState(false);
   const styles = useApplicationDrawerV2Styles();
@@ -178,9 +179,15 @@ export const ApplicationDrawerV2 = ({
 
   const onClickItem = (id: string) => {
     if (id !== currentSelection?.id) {
-      onChange(id);
+      if (onChangeAndClose) {
+        onChangeAndClose(id);
+        setIsOpen(false);
+      } else {
+        onChange?.(id);
+      }
+    } else {
+      setIsOpen(false);
     }
-    setIsOpen(false);
   };
 
   return (
