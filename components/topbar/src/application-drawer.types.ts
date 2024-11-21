@@ -40,5 +40,10 @@ export type ApplicationDrawerProps = {
   title: JSX.Element;
   content?: ApplicationDrawerContent[];
   applicationId: string;
-  onChange: (id: string) => void;
+  onChange?: (id: string) => void;
+  /**
+   * Supply this function if you want the drawer to close the drawer after the action.
+   * Supplying this function will cause onChange callback function to be ignored.
+   */
+  onChangeAndClose?: (id: string) => void;
 };
