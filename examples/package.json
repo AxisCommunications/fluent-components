@@ -22,6 +22,7 @@
     "stest:ui": "pnpm playwright test --ui"
   },
   "dependencies": {
+    "@axiscommunications/fluent-empty-view": "workspace:*",
     "@axiscommunications/fluent-hooks": "workspace:*",
     "@axiscommunications/fluent-icons": "workspace:*",
     "@axiscommunications/fluent-password-input": "workspace:*",

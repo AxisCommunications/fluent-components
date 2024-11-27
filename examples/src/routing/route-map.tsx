@@ -10,6 +10,7 @@ import { ThemePage } from "../stories/theme/theme-page";
 import { routes, TRoute } from "./routes";
 import { IconPage } from "../stories/icons/icon-page";
 import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
+import { EmptyViewPage } from "../stories/empty-view/page";
 
 export enum RouteGroup {
   MISC,
@@ -122,7 +123,21 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
       ghInfo: {
         url:
           "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-password-input",
-        packageName: "@axiscommunications/fluent-password-input ",
+        packageName: "@axiscommunications/fluent-password-input",
+      },
+    },
+  ],
+  [
+    routes.EmptyView,
+    {
+      label: "Empty view",
+      element: <EmptyViewPage />,
+      group: RouteGroup.STORY,
+      category: RouteCategory.COMPONENT,
+      ghInfo: {
+        url:
+          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-empty-view",
+        packageName: "@axiscommunications/fluent-empty-view",
       },
     },
   ],

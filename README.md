@@ -13,6 +13,7 @@ The React packages are based on the `@fluentui/react-*` **v9** packages.
 - [`@axiscommunications/fluent-stepper`](components/stepper/docs/README.md) - a stepper component for building e.g. wizards
 - [`@axiscommunications/fluent-slider`](components/slider/docs/README.md) - various slider components
 - [`@axiscommunications/fluent-topbar`](components/topbar/docs/README.md) - top level bar that hosts app and organization selection and menus
+- [`@axiscommunications/fluent-empty-view`](components/empty-view/docs/README.md) - Empty view component that displays when there is no data
 - [`@axiscommunications/fluent-password-input`](components/password-input/docs/README.md) - a password input that lets you reveal the password
 - [`@axiscommunications/fluent-illustrations`](illustrations/docs/README.md) - axis branded illustrations
 
