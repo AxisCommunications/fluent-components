@@ -6,6 +6,7 @@ export const routes = {
   TableUtilities: "/table-utilities",
   Slider: "/slider",
   PasswordInput: "/password-input",
+  EmptyView: "/empty-view",
   TabListUtilities: "/tab-list-utilities",
   Illustrations: "/illustrations-catalog",
   mainMenu: "/main-menu",

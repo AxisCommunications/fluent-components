@@ -32,3 +32,14 @@ const pageController = usePageController({ total: data.length, skip, take });
     setTake={setTake}
   />
 ```
+
+```ts
+import { useMediaQuery } from "@axiscommunications/fluent-hooks";
+
+const media = useMediaQuery();
+
+if (media === "small"){
+  return <Small />
+}
+return <Large />
+```

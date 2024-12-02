@@ -1,0 +1,47 @@
+{
+  "name": "@axiscommunications/fluent-empty-view",
+  "version": "10.3.0",
+  "description": "Empty view for Fluent UI v9",
+  "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AxisCommunications/fluent-components.git",
+    "directory": "components/empty-view"
+  },
+  "license": "MIT",
+  "author": "Axis Communications AB",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "pnpm run -C ../../illustrations build",
+    "build": "pnpm prebuild && pnpm build:cjs && pnpm build:esm",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "build:esm": "tsc",
+    "check:unused-deps": "depcheck . --config=depcheck.yml",
+    "lint": "tsc --noEmit && eslint . --cache"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^8.57.1",
+    "jsdom": "^22.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.5.5"
+  },
+  "peerDependencies": {
+    "@fluentui/react-components": "^9.55.1",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
+  },
+  "dependencies": {
+    "@axiscommunications/fluent-hooks": "workspace: *",
+    "@axiscommunications/fluent-illustrations": "workspace:*"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
