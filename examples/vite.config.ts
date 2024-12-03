@@ -11,6 +11,9 @@ export default defineConfig({
   base: "/fluent-components/",
   resolve: {
     alias: {
+      "@axiscommunications/fluent-empty-view": path.resolve(
+        "../components/empty-view/src/index.ts"
+      ),
       "@axiscommunications/fluent-icons": path.resolve("../icons/src/index.ts"),
       "@axiscommunications/fluent-stepper": path.resolve(
         "../components/stepper/src/index.ts"

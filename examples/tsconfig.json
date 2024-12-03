@@ -4,6 +4,7 @@
     "lib": ["es5", "es6", "dom", "dom.iterable", "ES2015", "es2017"],
     "types": ["node"],
     "paths": {
+      "@axiscommunications/fluent-empty-view": ["components/empty-view/src"],
       "@axiscommunications/fluent-hooks": ["hooks/src"],
       "@axiscommunications/fluent-password-input": [
         "components/password-input/src"
