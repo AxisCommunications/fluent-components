@@ -24,7 +24,7 @@ function ContainerSpacious(
     HtmlDivAttributesRestProps
   >
 ) {
-  const styles = useStyles()
+  const styles = useStyles();
   const containerStyle = useContainerStyle({ className });
 
   return (
@@ -42,7 +42,7 @@ function ContainerCompact(
     HtmlDivAttributesRestProps
   >
 ) {
-  const styles = useStyles()
+  const styles = useStyles();
   const containerStyle = useContainerStyle({ className });
 
   return (
@@ -59,7 +59,7 @@ function ContainerTop(
     HtmlDivAttributesRestProps
   >
 ) {
-  const styles = useStyles()
+  const styles = useStyles();
   const containerStyle = useContainerStyle({ className });
 
   return (
