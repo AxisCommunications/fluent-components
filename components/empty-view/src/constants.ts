@@ -37,8 +37,12 @@ import {
   MediaLight,
   MediaDark,
 } from "@axiscommunications/fluent-illustrations";
+import { IllustrationKind } from "./types";
 
-export const Illustration = {
+export const Illustration: Record<
+  IllustrationKind,
+  ReturnType<typeof bundleIllustrationSmart>
+> = {
   "add-user-profile": bundleIllustrationSmart(
     AddUserProfileDark,
     AddUserProfileLight

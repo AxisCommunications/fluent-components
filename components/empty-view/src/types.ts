@@ -1,8 +1,24 @@
 import { HTMLAttributes, PropsWithChildren, ReactNode } from "react";
 
-import { Illustration } from "./constants";
-
-export type IllustrationKind = keyof typeof Illustration;
+export type IllustrationKind =
+  | "add-user-profile"
+  | "data"
+  | "devices"
+  | "empty-folder"
+  | "empty-space"
+  | "file-missing"
+  | "general"
+  | "no-access"
+  | "no-connection"
+  | "no-content"
+  | "no-match"
+  | "no-sites"
+  | "not-found"
+  | "settings"
+  | "success"
+  | "media"
+  | "team"
+  | "under-construction";
 
 export interface ContentProps {
   readonly body: ReactNode;
