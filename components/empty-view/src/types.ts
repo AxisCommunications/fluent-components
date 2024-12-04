@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { HTMLAttributes, PropsWithChildren, ReactNode } from "react";
 
 import { Illustration } from "./constants";
 
@@ -10,8 +10,15 @@ export interface ContentProps {
   readonly title: string;
 }
 
-export type EmptyViewProps = PropsWithChildren<{
-  readonly after?: ReactNode;
-  readonly illustration: IllustrationKind;
-  readonly title: string;
-}>;
+export type EmptyViewProps = PropsWithChildren<
+  {
+    readonly after?: ReactNode;
+    readonly illustration: IllustrationKind;
+    readonly title: string;
+  } & HtmlDivAttributesRestProps
+>;
+
+export type HtmlDivAttributesRestProps = Pick<
+  HTMLAttributes<HTMLDivElement>,
+  "className" | "style"
+>;

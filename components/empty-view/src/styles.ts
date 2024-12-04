@@ -1,4 +1,10 @@
-import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
+import {
+  makeStyles,
+  mergeClasses,
+  shorthands,
+  tokens,
+} from "@fluentui/react-components";
+import { HtmlDivAttributesRestProps } from "./types";
 
 export const useStyles = makeStyles({
   container: {
@@ -48,3 +54,12 @@ export const useStyles = makeStyles({
     verticalAlign: "middle",
   },
 });
+
+export function useScreenStylesStyles({
+  className,
+}: HtmlDivAttributesRestProps) {
+  const styles = useStyles();
+  const containerStyle = mergeClasses(styles.container, className);
+
+  return { styles, containerStyle };
+}

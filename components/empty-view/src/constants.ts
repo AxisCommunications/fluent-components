@@ -34,12 +34,11 @@ import {
   TeamLight,
   UnderConstructionDark,
   UnderConstructionLight,
+  MediaLight,
+  MediaDark,
 } from "@axiscommunications/fluent-illustrations";
 
-export const Illustration: Record<
-  string,
-  ReturnType<typeof bundleIllustrationSmart>
-> = {
+export const Illustration = {
   "add-user-profile": bundleIllustrationSmart(
     AddUserProfileDark,
     AddUserProfileLight
@@ -58,6 +57,7 @@ export const Illustration: Record<
   "not-found": bundleIllustrationSmart(NotFoundDark, NotFoundLight),
   settings: bundleIllustrationSmart(SettingsDark, SettingsLight),
   success: bundleIllustrationSmart(SuccessDark, SuccessLight),
+  media: bundleIllustrationSmart(MediaDark, MediaLight),
   team: bundleIllustrationSmart(TeamDark, TeamLight),
   "under-construction": bundleIllustrationSmart(
     UnderConstructionDark,
