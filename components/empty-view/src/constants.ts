@@ -14,6 +14,8 @@ import {
   EmptySpaceLight,
   FileMissingDark,
   FileMissingLight,
+  MediaDark,
+  MediaLight,
   NoAccessDark,
   NoAccessLight,
   NoConnectionDark,
@@ -35,9 +37,10 @@ import {
   UnderConstructionDark,
   UnderConstructionLight,
 } from "@axiscommunications/fluent-illustrations";
+import { IllustrationKind } from "./types";
 
 export const Illustration: Record<
-  string,
+  IllustrationKind,
   ReturnType<typeof bundleIllustrationSmart>
 > = {
   "add-user-profile": bundleIllustrationSmart(
@@ -50,6 +53,7 @@ export const Illustration: Record<
   "empty-space": bundleIllustrationSmart(EmptySpaceDark, EmptySpaceLight),
   "file-missing": bundleIllustrationSmart(FileMissingDark, FileMissingLight),
   general: bundleIllustrationSmart(EmptyGeneralDark, EmptyGeneralLight),
+  media: bundleIllustrationSmart(MediaDark, MediaLight),
   "no-access": bundleIllustrationSmart(NoAccessDark, NoAccessLight),
   "no-connection": bundleIllustrationSmart(NoConnectionDark, NoConnectionLight),
   "no-content": bundleIllustrationSmart(NoContentDark, NoContentLight),

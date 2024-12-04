@@ -11,38 +11,60 @@ import {
 
 import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 
-import { useStyles } from "./styles";
-import { ContentProps, EmptyViewProps } from "./types";
+import { useContainerStyle, useStyles } from "./styles";
+import {
+  ContentProps,
+  EmptyViewProps,
+  HtmlDivAttributesRestProps,
+} from "./types";
 import { Illustration } from "./constants";
 
-function ContainerSpacious({ children }: PropsWithChildren) {
-  const screenStyles = useStyles();
+function ContainerSpacious(
+  { children, className, ...rest }: PropsWithChildren<
+    HtmlDivAttributesRestProps
+  >
+) {
+  const styles = useStyles();
+  const containerStyle = useContainerStyle({ className });
+
   return (
-    <div className={screenStyles.container}>
-      <div className={screenStyles.spacer} />
+    <div className={containerStyle} {...rest}>
+      <div className={styles.spacer} />
       {children}
-      <div className={screenStyles.spacer} />
-      <div className={screenStyles.spacer} />
+      <div className={styles.spacer} />
+      <div className={styles.spacer} />
     </div>
   );
 }
 
-function ContainerCompact({ children }: PropsWithChildren) {
-  const screenStyles = useStyles();
+function ContainerCompact(
+  { children, className, ...rest }: PropsWithChildren<
+    HtmlDivAttributesRestProps
+  >
+) {
+  const styles = useStyles();
+  const containerStyle = useContainerStyle({ className });
+
   return (
-    <div className={screenStyles.container}>
-      <div className={screenStyles.spacer} />
+    <div className={containerStyle} {...rest}>
+      <div className={styles.spacer} />
       {children}
-      <div className={screenStyles.spacer} />
+      <div className={styles.spacer} />
     </div>
   );
 }
 
-function ContainerTop({ children }: PropsWithChildren) {
-  const screenStyles = useStyles();
+function ContainerTop(
+  { children, className, ...rest }: PropsWithChildren<
+    HtmlDivAttributesRestProps
+  >
+) {
+  const styles = useStyles();
+  const containerStyle = useContainerStyle({ className });
+
   return (
-    <div className={screenStyles.container}>
-      <div className={screenStyles.fixedSpacer} />
+    <div className={containerStyle} {...rest}>
+      <div className={styles.fixedSpacer} />
       {children}
     </div>
   );
@@ -97,12 +119,12 @@ function ContentExtraSmall(
 }
 
 export function MainEmptyView(
-  { after, illustration, title, children }: EmptyViewProps
+  { after, illustration, title, children, ...rest }: EmptyViewProps
 ) {
   const screenStyles = useStyles();
   const media = useMediaQuery();
   return (
-    <ContainerSpacious>
+    <ContainerSpacious {...rest}>
       {media === "small"
         ? (
           <ContentMedium
@@ -124,11 +146,11 @@ export function MainEmptyView(
 }
 
 export function PanelEmptyView(
-  { after, illustration, title, children }: EmptyViewProps
+  { after, illustration, title, children, ...rest }: EmptyViewProps
 ) {
   const screenStyles = useStyles();
   return (
-    <ContainerTop>
+    <ContainerTop {...rest}>
       <ContentMedium
         illustration={illustration}
         title={title}
@@ -140,10 +162,10 @@ export function PanelEmptyView(
 }
 
 export function SubmenuEmptyView(
-  { illustration, title, children }: Omit<EmptyViewProps, "after">
+  { illustration, title, children, ...rest }: Omit<EmptyViewProps, "after">
 ) {
   return (
-    <ContainerTop>
+    <ContainerTop {...rest}>
       <ContentSmall illustration={illustration} title={title} body={children} />
     </ContainerTop>
   );
@@ -163,11 +185,11 @@ export function SubmenuEmptyView(
  * ```
  */
 export function DialogEmptyView(
-  { after, title, children }: Omit<EmptyViewProps, "illustration">
+  { after, title, children, ...rest }: Omit<EmptyViewProps, "illustration">
 ) {
   const screenStyles = useStyles();
   return (
-    <ContainerCompact>
+    <ContainerCompact {...rest}>
       <ContentExtraSmall title={title} body={children} />
       <div className={screenStyles.after}>{after}</div>
     </ContainerCompact>
