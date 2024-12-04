@@ -55,11 +55,9 @@ export const useStyles = makeStyles({
   },
 });
 
-export function useScreenStylesStyles({
-  className,
-}: HtmlDivAttributesRestProps) {
+export function useContainerStyle({ className }: HtmlDivAttributesRestProps) {
   const styles = useStyles();
   const containerStyle = mergeClasses(styles.container, className);
 
-  return { styles, containerStyle };
+  return containerStyle;
 }

@@ -53,6 +53,7 @@ export const Illustration: Record<
   "empty-space": bundleIllustrationSmart(EmptySpaceDark, EmptySpaceLight),
   "file-missing": bundleIllustrationSmart(FileMissingDark, FileMissingLight),
   general: bundleIllustrationSmart(EmptyGeneralDark, EmptyGeneralLight),
+  media: bundleIllustrationSmart(MediaDark, MediaLight),
   "no-access": bundleIllustrationSmart(NoAccessDark, NoAccessLight),
   "no-connection": bundleIllustrationSmart(NoConnectionDark, NoConnectionLight),
   "no-content": bundleIllustrationSmart(NoContentDark, NoContentLight),
@@ -61,7 +62,6 @@ export const Illustration: Record<
   "not-found": bundleIllustrationSmart(NotFoundDark, NotFoundLight),
   settings: bundleIllustrationSmart(SettingsDark, SettingsLight),
   success: bundleIllustrationSmart(SuccessDark, SuccessLight),
-  media: bundleIllustrationSmart(MediaDark, MediaLight),
   team: bundleIllustrationSmart(TeamDark, TeamLight),
   "under-construction": bundleIllustrationSmart(
     UnderConstructionDark,

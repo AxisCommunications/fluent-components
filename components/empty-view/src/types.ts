@@ -8,6 +8,7 @@ export type IllustrationKind =
   | "empty-space"
   | "file-missing"
   | "general"
+  | "media"
   | "no-access"
   | "no-connection"
   | "no-content"
@@ -16,7 +17,6 @@ export type IllustrationKind =
   | "not-found"
   | "settings"
   | "success"
-  | "media"
   | "team"
   | "under-construction";
 

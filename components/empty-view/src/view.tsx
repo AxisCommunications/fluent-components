@@ -11,7 +11,7 @@ import {
 
 import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 
-import { useScreenStylesStyles, useStyles } from "./styles";
+import { useContainerStyle, useStyles } from "./styles";
 import {
   ContentProps,
   EmptyViewProps,
@@ -24,7 +24,8 @@ function ContainerSpacious(
     HtmlDivAttributesRestProps
   >
 ) {
-  const { styles, containerStyle } = useScreenStylesStyles({ className });
+  const styles = useStyles()
+  const containerStyle = useContainerStyle({ className });
 
   return (
     <div className={containerStyle} {...rest}>
@@ -41,7 +42,8 @@ function ContainerCompact(
     HtmlDivAttributesRestProps
   >
 ) {
-  const { styles, containerStyle } = useScreenStylesStyles({ className });
+  const styles = useStyles()
+  const containerStyle = useContainerStyle({ className });
 
   return (
     <div className={containerStyle} {...rest}>
@@ -57,7 +59,8 @@ function ContainerTop(
     HtmlDivAttributesRestProps
   >
 ) {
-  const { styles, containerStyle } = useScreenStylesStyles({ className });
+  const styles = useStyles()
+  const containerStyle = useContainerStyle({ className });
 
   return (
     <div className={containerStyle} {...rest}>
