@@ -14,6 +14,8 @@ import {
   EmptySpaceLight,
   FileMissingDark,
   FileMissingLight,
+  MediaDark,
+  MediaLight,
   NoAccessDark,
   NoAccessLight,
   NoConnectionDark,
@@ -34,8 +36,6 @@ import {
   TeamLight,
   UnderConstructionDark,
   UnderConstructionLight,
-  MediaLight,
-  MediaDark,
 } from "@axiscommunications/fluent-illustrations";
 import { IllustrationKind } from "./types";
 

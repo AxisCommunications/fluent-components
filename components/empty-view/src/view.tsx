@@ -12,10 +12,18 @@ import {
 import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 
 import { useScreenStylesStyles, useStyles } from "./styles";
-import { HtmlDivAttributesRestProps, ContentProps, EmptyViewProps } from "./types";
+import {
+  ContentProps,
+  EmptyViewProps,
+  HtmlDivAttributesRestProps,
+} from "./types";
 import { Illustration } from "./constants";
 
-function ContainerSpacious({ children, className, ...rest }: PropsWithChildren<HtmlDivAttributesRestProps>) {
+function ContainerSpacious(
+  { children, className, ...rest }: PropsWithChildren<
+    HtmlDivAttributesRestProps
+  >
+) {
   const { styles, containerStyle } = useScreenStylesStyles({ className });
 
   return (
@@ -28,7 +36,11 @@ function ContainerSpacious({ children, className, ...rest }: PropsWithChildren<H
   );
 }
 
-function ContainerCompact({ children, className, ...rest }: PropsWithChildren<HtmlDivAttributesRestProps>) {
+function ContainerCompact(
+  { children, className, ...rest }: PropsWithChildren<
+    HtmlDivAttributesRestProps
+  >
+) {
   const { styles, containerStyle } = useScreenStylesStyles({ className });
 
   return (
@@ -40,7 +52,11 @@ function ContainerCompact({ children, className, ...rest }: PropsWithChildren<Ht
   );
 }
 
-function ContainerTop({ children, className, ...rest }: PropsWithChildren<HtmlDivAttributesRestProps>) {
+function ContainerTop(
+  { children, className, ...rest }: PropsWithChildren<
+    HtmlDivAttributesRestProps
+  >
+) {
   const { styles, containerStyle } = useScreenStylesStyles({ className });
 
   return (
@@ -131,7 +147,7 @@ export function PanelEmptyView(
 ) {
   const screenStyles = useStyles();
   return (
-    <ContainerTop  {...rest}>
+    <ContainerTop {...rest}>
       <ContentMedium
         illustration={illustration}
         title={title}
@@ -146,7 +162,7 @@ export function SubmenuEmptyView(
   { illustration, title, children, ...rest }: Omit<EmptyViewProps, "after">
 ) {
   return (
-    <ContainerTop  {...rest}>
+    <ContainerTop {...rest}>
       <ContentSmall illustration={illustration} title={title} body={children} />
     </ContainerTop>
   );
@@ -170,7 +186,7 @@ export function DialogEmptyView(
 ) {
   const screenStyles = useStyles();
   return (
-    <ContainerCompact  {...rest}>
+    <ContainerCompact {...rest}>
       <ContentExtraSmall title={title} body={children} />
       <div className={screenStyles.after}>{after}</div>
     </ContainerCompact>
