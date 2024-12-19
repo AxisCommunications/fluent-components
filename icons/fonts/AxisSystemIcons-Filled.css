@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Filled";
-    src: url("./AxisSystemIcons-Filled.ttf?2099b85a18225c7bb5707b3b07edc502") format("truetype");
+    src: url("./AxisSystemIcons-Filled.ttf?61f61cb67c6cbb2771dd48862c1c5e24") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -1168,4 +1168,214 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_set_start_point_20_filled:before {
     content: "\f281";
+}
+.icon-ic_axis_accessory_selector_16_filled:before {
+    content: "\f282";
+}
+.icon-ic_axis_accessory_selector_20_filled:before {
+    content: "\f283";
+}
+.icon-ic_axis_accessory_selector_24_filled:before {
+    content: "\f284";
+}
+.icon-ic_axis_accessory_selector_28_filled:before {
+    content: "\f285";
+}
+.icon-ic_axis_accessory_selector_48_filled:before {
+    content: "\f286";
+}
+.icon-ic_axis_camera_cursor_16_filled:before {
+    content: "\f287";
+}
+.icon-ic_axis_camera_cursor_20_filled:before {
+    content: "\f288";
+}
+.icon-ic_axis_camera_cursor_24_filled:before {
+    content: "\f289";
+}
+.icon-ic_axis_camera_cursor_28_filled:before {
+    content: "\f28a";
+}
+.icon-ic_axis_camera_cursor_48_filled:before {
+    content: "\f28b";
+}
+.icon-ic_axis_camera_dome_cursor_16_filled:before {
+    content: "\f28c";
+}
+.icon-ic_axis_camera_dome_cursor_20_filled:before {
+    content: "\f28d";
+}
+.icon-ic_axis_camera_dome_cursor_24_filled:before {
+    content: "\f28e";
+}
+.icon-ic_axis_camera_dome_cursor_28_filled:before {
+    content: "\f28f";
+}
+.icon-ic_axis_camera_dome_cursor_48_filled:before {
+    content: "\f290";
+}
+.icon-ic_axis_camera_dome_launch_16_filled:before {
+    content: "\f291";
+}
+.icon-ic_axis_camera_dome_launch_20_filled:before {
+    content: "\f292";
+}
+.icon-ic_axis_camera_dome_launch_24_filled:before {
+    content: "\f293";
+}
+.icon-ic_axis_camera_dome_launch_28_filled:before {
+    content: "\f294";
+}
+.icon-ic_axis_camera_dome_launch_48_filled:before {
+    content: "\f295";
+}
+.icon-ic_axis_camera_dome_off_16_filled:before {
+    content: "\f296";
+}
+.icon-ic_axis_camera_dome_off_20_filled:before {
+    content: "\f297";
+}
+.icon-ic_axis_camera_dome_off_24_filled:before {
+    content: "\f298";
+}
+.icon-ic_axis_camera_dome_off_28_filled:before {
+    content: "\f299";
+}
+.icon-ic_axis_camera_dome_off_48_filled:before {
+    content: "\f29a";
+}
+.icon-ic_axis_camera_dome_settings_16_filled:before {
+    content: "\f29b";
+}
+.icon-ic_axis_camera_dome_settings_20_filled:before {
+    content: "\f29c";
+}
+.icon-ic_axis_camera_dome_settings_24_filled:before {
+    content: "\f29d";
+}
+.icon-ic_axis_camera_dome_settings_28_filled:before {
+    content: "\f29e";
+}
+.icon-ic_axis_camera_dome_settings_48_filled:before {
+    content: "\f29f";
+}
+.icon-ic_axis_camera_dome_sparkles_16_filled:before {
+    content: "\f2a0";
+}
+.icon-ic_axis_camera_dome_sparkles_20_filled:before {
+    content: "\f2a1";
+}
+.icon-ic_axis_camera_dome_sparkles_24_filled:before {
+    content: "\f2a2";
+}
+.icon-ic_axis_camera_dome_sparkles_28_filled:before {
+    content: "\f2a3";
+}
+.icon-ic_axis_camera_dome_sparkles_48_filled:before {
+    content: "\f2a4";
+}
+.icon-ic_axis_design_tool_for_axis_perimiter_defender_16_filled:before {
+    content: "\f2a5";
+}
+.icon-ic_axis_design_tool_for_axis_perimiter_defender_20_filled:before {
+    content: "\f2a6";
+}
+.icon-ic_axis_design_tool_for_axis_perimiter_defender_24_filled:before {
+    content: "\f2a7";
+}
+.icon-ic_axis_design_tool_for_axis_perimiter_defender_28_filled:before {
+    content: "\f2a8";
+}
+.icon-ic_axis_design_tool_for_axis_perimiter_defender_48_filled:before {
+    content: "\f2a9";
+}
+.icon-ic_axis_device_software_12_filled:before {
+    content: "\f2aa";
+}
+.icon-ic_axis_device_software_16_filled:before {
+    content: "\f2ab";
+}
+.icon-ic_axis_device_software_20_filled:before {
+    content: "\f2ac";
+}
+.icon-ic_axis_device_software_24_filled:before {
+    content: "\f2ad";
+}
+.icon-ic_axis_device_software_28_filled:before {
+    content: "\f2ae";
+}
+.icon-ic_axis_device_software_32_filled:before {
+    content: "\f2af";
+}
+.icon-ic_axis_device_software_48_filled:before {
+    content: "\f2b0";
+}
+.icon-ic_axis_fiveg_back_box_12_filled:before {
+    content: "\f2b1";
+}
+.icon-ic_axis_fiveg_back_box_16_filled:before {
+    content: "\f2b2";
+}
+.icon-ic_axis_fiveg_back_box_20_filled:before {
+    content: "\f2b3";
+}
+.icon-ic_axis_fiveg_back_box_24_filled:before {
+    content: "\f2b4";
+}
+.icon-ic_axis_fiveg_back_box_28_filled:before {
+    content: "\f2b5";
+}
+.icon-ic_axis_fiveg_back_box_32_filled:before {
+    content: "\f2b6";
+}
+.icon-ic_axis_fiveg_back_box_48_filled:before {
+    content: "\f2b7";
+}
+.icon-ic_axis_image_health_analytics_20_filled:before {
+    content: "\f2b8";
+}
+.icon-ic_axis_image_health_analytics_24_filled:before {
+    content: "\f2b9";
+}
+.icon-ic_axis_image_health_analytics_28_filled:before {
+    content: "\f2ba";
+}
+.icon-ic_axis_image_health_analytics_32_filled:before {
+    content: "\f2bb";
+}
+.icon-ic_axis_image_health_analytics_48_filled:before {
+    content: "\f2bc";
+}
+.icon-ic_axis_site_designer_16_filled:before {
+    content: "\f2bd";
+}
+.icon-ic_axis_site_designer_20_filled:before {
+    content: "\f2be";
+}
+.icon-ic_axis_site_designer_24_filled:before {
+    content: "\f2bf";
+}
+.icon-ic_axis_site_designer_28_filled:before {
+    content: "\f2c0";
+}
+.icon-ic_axis_site_designer_48_filled:before {
+    content: "\f2c1";
+}
+.icon-ic_axis_specification_compiler_16_filled:before {
+    content: "\f2c2";
+}
+.icon-ic_axis_specification_compiler_20_filled:before {
+    content: "\f2c3";
+}
+.icon-ic_axis_specification_compiler_24_filled:before {
+    content: "\f2c4";
+}
+.icon-ic_axis_specification_compiler_28_filled:before {
+    content: "\f2c5";
+}
+.icon-ic_axis_specification_compiler_32_filled:before {
+    content: "\f2c6";
+}
+.icon-ic_axis_specification_compiler_48_filled:before {
+    content: "\f2c7";
 }
