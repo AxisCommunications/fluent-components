@@ -7,8 +7,8 @@ import {
 } from "@fluentui/react-components";
 import { EyeOffRegular, EyeRegular } from "@fluentui/react-icons";
 
-import { PasswordInputProps } from "./password-input.types";
-import { usePasswordInputStyles } from "./password-input.styles";
+import { PasswordInputProps } from "./password-input.types.js";
+import { usePasswordInputStyles } from "./password-input.styles.js";
 
 export const PasswordInput: ForwardRefComponent<PasswordInputProps> = React
   .forwardRef((props: PasswordInputProps, ref) => {
