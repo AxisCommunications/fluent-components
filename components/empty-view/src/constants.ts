@@ -37,7 +37,7 @@ import {
   UnderConstructionDark,
   UnderConstructionLight,
 } from "@axiscommunications/fluent-illustrations";
-import { IllustrationKind } from "./types";
+import { IllustrationKind } from "./types.js";
 
 export const Illustration: Record<
   IllustrationKind,

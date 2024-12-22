@@ -11,13 +11,13 @@ import {
 
 import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 
-import { useContainerStyle, useStyles } from "./styles";
+import { useContainerStyle, useStyles } from "./styles.js";
 import {
   ContentProps,
   EmptyViewProps,
   HtmlDivAttributesRestProps,
-} from "./types";
-import { Illustration } from "./constants";
+} from "./types.js";
+import { Illustration } from "./constants.js";
 
 function ContainerSpacious(
   { children, className, ...rest }: PropsWithChildren<
