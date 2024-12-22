@@ -1,2 +1,2 @@
-export { useMediaQuery } from "./use-media-query";
-export { usePageController } from "./use-page-controller";
+export { useMediaQuery } from "./use-media-query.js";
+export { usePageController } from "./use-page-controller.js";
