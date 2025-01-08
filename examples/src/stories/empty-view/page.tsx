@@ -26,6 +26,10 @@ import {
   DialogEmptyViewExample,
   DialogEmptyViewExampleAsString,
 } from "./examples/dialog";
+import {
+  MainEmptyViewWithCustomIllustrationExample,
+  MainEmptyViewWithCustomIllustrationExampleAsString,
+} from "./examples/custom-illustration";
 
 const useStyles = makeStyles({
   height: {
@@ -57,6 +61,12 @@ const examples: pageData[] = [
     anchor: "DialogEmptyViewExample",
     example: <DialogEmptyViewExample />,
     codeString: DialogEmptyViewExampleAsString,
+  },
+  {
+    title: "Main empty with with custom illustration",
+    anchor: "MainEmptyViewWithCustomIllustrationExample",
+    example: <MainEmptyViewWithCustomIllustrationExample />,
+    codeString: MainEmptyViewWithCustomIllustrationExampleAsString,
   },
 ];
 

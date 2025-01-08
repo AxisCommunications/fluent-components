@@ -72,7 +72,9 @@ function ContainerTop(
 
 function ContentLarge({ body, illustration, title }: ContentProps) {
   const screenStyles = useStyles();
-  const IllustrationComponent = Illustration[illustration];
+  const IllustrationComponent = typeof illustration === "string"
+    ? Illustration[illustration]
+    : illustration;
   return (
     <>
       <IllustrationComponent className={screenStyles.illustrationLarge} />
@@ -84,7 +86,9 @@ function ContentLarge({ body, illustration, title }: ContentProps) {
 
 function ContentMedium({ body, illustration, title }: ContentProps) {
   const screenStyles = useStyles();
-  const IllustrationComponent = Illustration[illustration];
+  const IllustrationComponent = typeof illustration === "string"
+    ? Illustration[illustration]
+    : illustration;
   return (
     <>
       <IllustrationComponent className={screenStyles.illustrationMedium} />
@@ -96,7 +100,9 @@ function ContentMedium({ body, illustration, title }: ContentProps) {
 
 function ContentSmall({ body, illustration, title }: ContentProps) {
   const screenStyles = useStyles();
-  const IllustrationComponent = Illustration[illustration];
+  const IllustrationComponent = typeof illustration === "string"
+    ? Illustration[illustration]
+    : illustration;
   return (
     <>
       <IllustrationComponent className={screenStyles.illustrationSmall} />

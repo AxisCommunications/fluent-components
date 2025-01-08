@@ -1,4 +1,5 @@
 import { HTMLAttributes, PropsWithChildren, ReactNode } from "react";
+import { bundleIllustrationSmart } from "@axiscommunications/fluent-illustrations";
 
 export type IllustrationKind =
   | "add-user-profile"
@@ -24,14 +25,18 @@ export type IllustrationKind =
 
 export interface ContentProps {
   readonly body: ReactNode;
-  readonly illustration: IllustrationKind;
+  readonly illustration:
+    | IllustrationKind
+    | ReturnType<typeof bundleIllustrationSmart>;
   readonly title: string;
 }
 
 export type EmptyViewProps = PropsWithChildren<
   {
     readonly after?: ReactNode;
-    readonly illustration: IllustrationKind;
+    readonly illustration:
+      | IllustrationKind
+      | ReturnType<typeof bundleIllustrationSmart>;
     readonly title: string;
   } & HtmlDivAttributesRestProps
 >;
