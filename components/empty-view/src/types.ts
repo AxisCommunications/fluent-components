@@ -2,6 +2,7 @@ import { HTMLAttributes, PropsWithChildren, ReactNode } from "react";
 
 export type IllustrationKind =
   | "add-user-profile"
+  | "code-error"
   | "data"
   | "devices"
   | "empty-folder"
