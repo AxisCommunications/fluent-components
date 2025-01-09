@@ -2,6 +2,8 @@ import {
   AddUserProfileDark,
   AddUserProfileLight,
   bundleIllustrationSmart,
+  CodeErrorDark,
+  CodeErrorLight,
   DataDark,
   DataLight,
   DevicesDark,
@@ -51,6 +53,7 @@ export const Illustration: Record<
     AddUserProfileDark,
     AddUserProfileLight
   ),
+  "code-error": bundleIllustrationSmart(CodeErrorDark, CodeErrorLight),
   data: bundleIllustrationSmart(DataDark, DataLight),
   devices: bundleIllustrationSmart(DevicesDark, DevicesLight),
   "empty-folder": bundleIllustrationSmart(EmptyFolderDark, EmptyFolderLight),
