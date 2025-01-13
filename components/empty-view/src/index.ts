@@ -3,4 +3,4 @@ export {
   MainEmptyView,
   PanelEmptyView,
   SubmenuEmptyView,
-} from "./view";
+} from "./view.js";

@@ -4,7 +4,7 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import { HtmlDivAttributesRestProps } from "./types";
+import { HtmlDivAttributesRestProps } from "./types.js";
 
 export const useStyles = makeStyles({
   container: {
