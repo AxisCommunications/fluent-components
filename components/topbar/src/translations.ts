@@ -17,6 +17,7 @@ export const languageName: Record<SupportedLocale, string> = {
   nl: "Nederlands",
   pl: "Polski",
   "pt-BR": "Português (Brasil)",
+  ro: "Română",
   ru: "Pусский",
   sv: "Svenska",
   th: "ไทย",
@@ -134,6 +135,12 @@ export const translations: Record<SupportedLocale, Translations> = {
     dark: "Темная",
     light: "Светлая",
     logout: "Выход",
+  },
+  ro: {
+    ...englishDefaults,
+    dark: "Închisă",
+    light: "Deschisă",
+    logout: "Deconectare",
   },
   sv: {
     ...englishDefaults,
