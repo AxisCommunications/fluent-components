@@ -1,3 +1,3 @@
-export { PasswordInput } from "./password-input";
-export { usePasswordInputStyles } from "./password-input.styles";
-export type { PasswordInputProps } from "./password-input.types";
+export { PasswordInput } from "./password-input.js";
+export { usePasswordInputStyles } from "./password-input.styles.js";
+export type { PasswordInputProps } from "./password-input.types.js";

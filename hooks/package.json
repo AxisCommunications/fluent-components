@@ -10,22 +10,18 @@
   },
   "license": "MIT",
   "author": "Axis Communications AB",
+  "type": "module",
   "exports": {
     ".": {
       "require": "./lib/cjs/index.js",
       "import": "./lib/index.js"
     }
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "pnpm build:cjs && pnpm build:esm",
-    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
-    "build:esm": "tsc",
+    "build": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && eslint . --cache"
   },
