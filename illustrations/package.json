@@ -43,7 +43,7 @@
     "@axiscommunications/fluent-theme": "workspace:*",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.2.1",
-    "@types/lodash": "4.17.13",
+    "@types/lodash": "4.17.14",
     "@types/node": "^20.10.6",
     "@types/react": "^18.3.12",
     "@types/yargs": "17.0.32",
