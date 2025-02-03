@@ -10,8 +10,10 @@
   },
   "license": "MIT",
   "author": "Axis Communications AB",
+  "type": "module",
   "exports": {
     ".": {
+      "types": "./lib/index.d.ts",
       "require": "./lib/cjs/index.js",
       "import": "./lib/index.js"
     }
@@ -19,9 +21,7 @@
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "build": "pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
