@@ -3,6 +3,6 @@
   "root": true,
   "ignorePatterns": ["lib", "**/*.js"],
   "parserOptions": {
-    "project": ["./tsconfig.src.json"]
+    "project": ["./tsconfig.json"]
   }
 }
