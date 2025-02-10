@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
 import React from "react";
+import { vi } from "vitest";
 import { StepperDialog } from "./stepper-dialog";
 import { DialogStep } from "./stepper-dialog.types";
-import { vi } from "vitest";
 
 describe("StepperDialog", () => {
   const steps: DialogStep[] = [

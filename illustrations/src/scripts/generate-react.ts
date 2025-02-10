@@ -1,7 +1,9 @@
+import path from "path";
+import { camelCase, upperFirst } from "lodash";
 import { DEFAULT_CHUNK_SIZE, FILE_PREFIX } from "../utils/constants";
 import {
-  parseParamsGenerateREACT,
   TGenerateREACTConfig,
+  parseParamsGenerateREACT,
 } from "../utils/params";
 import {
   checkDirectory,
@@ -10,8 +12,6 @@ import {
   writeToFile,
 } from "./file-processor";
 import { LOG_LEVEL, Logger } from "./logger";
-import { camelCase, upperFirst } from "lodash";
-import path from "path";
 
 const logger = new Logger("generate-react", () => LOG_LEVEL.INFO);
 

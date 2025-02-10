@@ -11,7 +11,12 @@ export function MainEmptyViewExample() {
       illustration="no-connection"
       title="There's no connection"
       after={
-        <Button icon={<ArrowSyncRegular />} onClick={() => {/** */}}>
+        <Button
+          icon={<ArrowSyncRegular />}
+          onClick={() => {
+            /** */
+          }}
+        >
           "Try again"
         </Button>
       }

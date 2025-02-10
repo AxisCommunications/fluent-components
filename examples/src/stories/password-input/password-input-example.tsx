@@ -1,5 +1,5 @@
-import React from "react";
 import { PasswordInput } from "@axiscommunications/fluent-password-input";
+import React from "react";
 
 export function PasswordInputExample() {
   return <PasswordInput />;

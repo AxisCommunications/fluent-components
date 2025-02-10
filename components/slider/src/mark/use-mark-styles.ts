@@ -5,8 +5,8 @@ import {
   useFluent,
 } from "@fluentui/react-components";
 
-import { MarkState } from "./mark.types";
 import { sliderClassNames, sliderVars } from "../use-slider-styles";
+import { MarkState } from "./mark.types";
 
 const useStyles = makeStyles({
   root: {
@@ -36,8 +36,8 @@ export const useMarkStyles_unstable = (state: MarkState): MarkState => {
   const colorStyles = disabled
     ? styles.disabled
     : active
-    ? styles.active
-    : styles.enabled;
+      ? styles.active
+      : styles.enabled;
 
   state.root.className = mergeClasses(
     sliderClassNames.mark.root,

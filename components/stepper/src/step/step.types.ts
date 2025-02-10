@@ -14,6 +14,5 @@ export type StepProps = ComponentProps<StepSlots> & {
   name: string;
 };
 
-export type StepState =
-  & ComponentState<StepSlots>
-  & Required<Pick<StepProps, "currentStep" | "step" | "name">>;
+export type StepState = ComponentState<StepSlots> &
+  Required<Pick<StepProps, "currentStep" | "step" | "name">>;

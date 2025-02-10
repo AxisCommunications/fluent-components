@@ -1,12 +1,12 @@
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-import React from "react";
-import { sliderClassNames } from "./use-slider-styles";
 import { FluentProvider } from "@fluentui/react-components";
+import React from "react";
+import { describe, expect, it, vi } from "vitest";
 import { Slider } from "./slider";
 import { getControlRoot } from "./test-helpers";
-import { describe, expect, it, vi } from "vitest";
+import { sliderClassNames } from "./use-slider-styles";
 
 const expectSliderValue = (element: HTMLElement, value: number) => {
   expect(element.getAttribute("value")).toEqual(value.toString());

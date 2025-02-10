@@ -1,11 +1,9 @@
 import React from "react";
 import { StoryPage } from "../../components/story/story-page";
+import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import { IllustrationPageHeader } from "./components/illustration-page-header";
-import { useIllustrationPage } from "./illustration-page.hooks";
-import { useExampleWithNavigation } from "../../components/story/story.utils";
-import { IllustrationList } from "./examples/illustration-list";
 import {
   BundleIllustration,
   BundleIllustrationExampleAsString,
@@ -14,6 +12,8 @@ import {
   BundleIllustrationSmart,
   BundleIllustrationSmartExampleAsString,
 } from "./examples/bundle-illustration-smart";
+import { IllustrationList } from "./examples/illustration-list";
+import { useIllustrationPage } from "./illustration-page.hooks";
 
 export const IllustrationPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.Illustrations);
@@ -25,15 +25,16 @@ export const IllustrationPage = (): JSX.Element => {
     filterByVariant,
   } = useIllustrationPage();
 
-  const { renderSections, renderNavigation } = useExampleWithNavigation(
-    [{
+  const { renderSections, renderNavigation } = useExampleWithNavigation([
+    {
       title: "IllustrationList",
       anchor: "IllustrationList",
       example: <IllustrationList illustrations={filteredIllustrations} />,
       storySectionProps: {
         description: "Click illustration for preview.",
       },
-    }, {
+    },
+    {
       title: "BundleIllustration",
       anchor: "BundleIllustration",
       example: <BundleIllustration />,
@@ -42,7 +43,8 @@ export const IllustrationPage = (): JSX.Element => {
         description:
           "Pre-bundles 2 illustrations and enables a controlled switch between variants.",
       },
-    }, {
+    },
+    {
       title: "BundleIllustrationSmart",
       anchor: "BundleIllustrationSmart",
       example: <BundleIllustrationSmart />,
@@ -51,8 +53,8 @@ export const IllustrationPage = (): JSX.Element => {
         description:
           "Smart bundleIllustration will auto toggle bundled illustrations when fluent theme changes, please change theme in profile-menu. Uses bundleIllustration internally, and only work within a FluentProvider using axis-themes. You may provide a fallback value.",
       },
-    }]
-  );
+    },
+  ]);
   return (
     <StoryPage
       title="Illustrations"

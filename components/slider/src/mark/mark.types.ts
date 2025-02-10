@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
 import {
   ComponentProps,
   ComponentState,
   Slot,
 } from "@fluentui/react-utilities";
+import { ReactNode } from "react";
 
 export type MarkDef = {
   value: number;
@@ -20,10 +20,8 @@ export type MarkProps = ComponentProps<MarkSlots> & {
   value: number;
 };
 
-export type MarkState =
-  & ComponentState<MarkSlots>
-  & Required<Pick<MarkProps, "value">>
-  & {
+export type MarkState = ComponentState<MarkSlots> &
+  Required<Pick<MarkProps, "value">> & {
     offset: number;
     disabled: boolean;
     active: boolean;

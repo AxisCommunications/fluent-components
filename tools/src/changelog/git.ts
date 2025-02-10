@@ -1,7 +1,7 @@
 import { execSync } from "node:child_process";
 
 function sanitizeGitHubUrl(url: string) {
-  if ((new URL(url)).hostname !== "github.com") {
+  if (new URL(url).hostname !== "github.com") {
     throw new Error("not implemented: only GitHub repositories are supported");
   }
   return url.replace(/\.git$/, "");
@@ -19,7 +19,7 @@ export function gitLogFromRange(range: string) {
     const lines = logOut.toString().trim().split("\n");
     const shaMessagePairs = lines.map((line) => line.split("\t"));
     return shaMessagePairs;
-  } catch (err) {
+  } catch {
     console.warn(
       `git log failed on range ${range}, one of those tags probably does not exist`
     );

@@ -24,7 +24,7 @@ const supportedLocales = [
   "zh-TW",
 ] as const;
 
-export type SupportedLocale = typeof supportedLocales[number];
+export type SupportedLocale = (typeof supportedLocales)[number];
 
 const _supportedLocaleSet = new Set<string>(supportedLocales);
 export function isSupportedLocale(lc: unknown): lc is SupportedLocale {

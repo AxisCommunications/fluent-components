@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from "react";
 import {
   DialogStep,
   StepperDialog,
   StepperDialogClassNames,
 } from "@axiscommunications/fluent-stepper";
 import { makeStyles } from "@fluentui/react-components";
+import React, { useCallback, useState } from "react";
 
 const useOverrideStyles = makeStyles({
   root: {

@@ -3,7 +3,14 @@
  * Generated on Thu, 08 Aug 2024 09:33:24 GMT
  */
 
-import { LineHeightTokens, FontFamilyTokens, FontSizeTokens, FontWeightTokens, BorderRadiusTokens, StrokeWidthTokens } from "@fluentui/react-components";
+import {
+  LineHeightTokens,
+  FontFamilyTokens,
+  FontSizeTokens,
+  FontWeightTokens,
+  BorderRadiusTokens,
+  StrokeWidthTokens,
+} from "@fluentui/react-components";
 
 export const lineHeightTokens: LineHeightTokens = {
   lineHeightBase100: "14px",
@@ -19,9 +26,11 @@ export const lineHeightTokens: LineHeightTokens = {
 };
 
 export const fontFamilyTokens: FontFamilyTokens = {
-  fontFamilyBase: "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+  fontFamilyBase:
+    "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
   fontFamilyMonospace: "Consolas, 'Courier New', Courier, monospace",
-  fontFamilyNumeric: "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+  fontFamilyNumeric:
+    "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
 };
 
 export const fontSizeTokens: FontSizeTokens = {

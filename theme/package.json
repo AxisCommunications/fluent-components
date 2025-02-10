@@ -19,15 +19,13 @@
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "build": "pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
-    "lint": "tsc --noEmit && eslint . --cache",
+    "lint": "tsc --noEmit && biome check",
     "tokens:build": "node --require ts-node/register tokens/build.ts && pnpm tokens:build-ts-theme",
     "tokens:build-ts-theme": "node --require ts-node/register tokens/build-ts-theme.ts",
     "tokens:runall": "pnpm tokens:transform && pnpm tokens:build",
@@ -40,7 +38,6 @@
     "@types/node": "^20.11.18",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "eslint": "^8.57.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "style-dictionary": "^3.9.2",

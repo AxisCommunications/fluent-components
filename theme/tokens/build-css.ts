@@ -1,4 +1,4 @@
-import StyleDictionaryPackage, { Platform } from "style-dictionary";
+import { Platform } from "style-dictionary";
 
 export const getCssPlatform: (theme: string) => Platform = (theme) => ({
   transforms: [

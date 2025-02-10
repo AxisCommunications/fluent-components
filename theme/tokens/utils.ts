@@ -48,6 +48,7 @@ const parseTokenValue = (value: string | number): string | number => {
 
   const result = Number.parseInt(value, 10);
 
+  // biome-ignore lint/suspicious/noGlobalIsFinite: FIXME
   return isFinite(result) ? result : value;
 };
 

@@ -13,7 +13,7 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import { bundleIcon, HomeFilled, HomeRegular } from "@fluentui/react-icons";
+import { HomeFilled, HomeRegular, bundleIcon } from "@fluentui/react-icons";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { RouteCategory } from "../../routing/route-map";
@@ -35,8 +35,7 @@ const useStyles = makeStyles({
     ...shorthands.border(0),
   },
   body: {
-    backgroundImage:
-      `linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
+    backgroundImage: `linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
     linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
     linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
     linear-gradient(to bottom, ${tokens.colorNeutralStroke1}, ${tokens.colorNeutralBackground3})`,

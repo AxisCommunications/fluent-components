@@ -1,9 +1,9 @@
 import { RadioGroupOnChangeData } from "@fluentui/react-components";
 import React from "react";
 import {
-  axisIllustrations,
   DEFAULT_VARIANT_FILTER,
   TVariant,
+  axisIllustrations,
 } from "./illustration-page.types";
 
 export function useIllustrationPage() {

@@ -10,8 +10,8 @@ import {
 import React from "react";
 
 import { useSliderContext } from "../context/slider-context";
-import { ThumbProps, ThumbState } from "./thumb.types";
 import { toPercent } from "../utils";
+import { ThumbProps, ThumbState } from "./thumb.types";
 
 export const useThumb_unstable = (
   props: ThumbProps,

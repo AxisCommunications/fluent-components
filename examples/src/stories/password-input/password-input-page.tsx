@@ -30,14 +30,10 @@ export const PasswordInputPage = () => {
   const styles = useStyles();
 
   const { renderSections, renderNavigation } = useExampleWithNavigation(
-    examples.map(d => {
+    examples.map((d) => {
       return {
         ...d,
-        example: (
-          <div className={styles.example}>
-            {d.example}
-          </div>
-        ),
+        example: <div className={styles.example}>{d.example}</div>,
       };
     })
   );
@@ -45,7 +41,9 @@ export const PasswordInputPage = () => {
   return (
     <StoryPage
       title="Password input"
-      description={"Input field witch use case is for hiding sensitive information"}
+      description={
+        "Input field witch use case is for hiding sensitive information"
+      }
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       navigation={renderNavigation}

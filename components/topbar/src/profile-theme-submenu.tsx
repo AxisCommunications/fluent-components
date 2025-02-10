@@ -8,9 +8,9 @@ import {
   MenuTrigger,
 } from "@fluentui/react-components";
 import {
-  bundleIcon,
   DarkThemeFilled,
   DarkThemeRegular,
+  bundleIcon,
 } from "@fluentui/react-icons";
 import React from "react";
 import { ThemeSubmenuProps } from "./profile-menu.types";
@@ -23,9 +23,11 @@ function isKnownTheme(theme: unknown): theme is KnownTheme {
   return theme === "light" || theme === "dark";
 }
 
-export const ThemeSubmenu = (
-  { options, value, onChange }: ThemeSubmenuProps
-) => {
+export const ThemeSubmenu = ({
+  options,
+  value,
+  onChange,
+}: ThemeSubmenuProps) => {
   const { t } = useTranslation();
 
   const currentTheme = options?.find(({ id }) => id === value);
@@ -52,7 +54,6 @@ export const ThemeSubmenu = (
                 data-testid={`theme-menu-item-${id}`}
                 key={id}
                 value={id}
-                // eslint-disable-next-line react/jsx-no-bind
                 onClick={() => onChange(id)}
               >
                 {label ?? translatedLabel}

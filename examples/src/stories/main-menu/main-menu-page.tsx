@@ -1,6 +1,7 @@
 import { pageData } from "examples/src/components/story/story.utils";
 import React from "react";
 import { StoryPage } from "../../components/story/story-page";
+import { EStoryStatus } from "../../components/story/story-status";
 import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
@@ -9,7 +10,6 @@ import {
   MainMenuExampleStringVertical,
   MainMenuVertical,
 } from "./examples/main-menu-vertical";
-import { EStoryStatus } from "../../components/story/story-status";
 
 const examples: pageData[] = [
   {
@@ -29,15 +29,16 @@ const examples: pageData[] = [
 export const MainMenuPage = () => {
   const gh = getGhInfoByKey(routes.mainMenu);
 
-  const { renderSections, renderNavigation } = useExampleWithNavigation(
-    examples
-  );
+  const { renderSections, renderNavigation } =
+    useExampleWithNavigation(examples);
 
   return (
     <StoryPage
       status={[EStoryStatus.NEW]}
       title="Main menu"
-      description={"Variant of a main menu using fluent TabList and axis styling"}
+      description={
+        "Variant of a main menu using fluent TabList and axis styling"
+      }
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       navigation={renderNavigation}

@@ -5,13 +5,13 @@ import {
   tokens,
 } from "@fluentui/react-components";
 
-import { ThumbState } from "./thumb.types";
 import {
   sliderClassNames,
   sliderDurations,
   sliderEasings,
   sliderVars,
 } from "../use-slider-styles";
+import { ThumbState } from "./thumb.types";
 
 const useRootStyles = makeStyles({
   root: {
@@ -27,8 +27,7 @@ const useRootStyles = makeStyles({
     transform: "translate(-50%, -50%) /* @noflip */",
     backgroundColor: `var(${sliderVars.thumb.color})`,
     boxSizing: "border-box",
-    boxShadow:
-      `0 0 0 calc(var(${sliderVars.thumb.size}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(${sliderVars.thumb.size}) * .2) ${tokens.colorNeutralBackground1} inset`,
 
     "::before": {
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
@@ -44,7 +43,7 @@ const useRootStyles = makeStyles({
       bottom: "0px",
       right: "0px",
       boxSizing: "border-box",
-      content: "\"\"",
+      content: '""',
     },
 
     // create an invisible circular block around the thumb that captures hover
@@ -54,7 +53,7 @@ const useRootStyles = makeStyles({
       left: "50%",
       width: `calc(var(${sliderVars.thumb.size}) + 22px)`,
       height: `calc(var(${sliderVars.thumb.size}) + 22px)`,
-      content: "\"\"",
+      content: '""',
       transform: "translate(-50%, -50%)",
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
     },
@@ -97,13 +96,12 @@ const useLabelStyles = makeStyles({
     justifyContent: "center",
     backgroundColor: tokens.colorNeutralBackground1,
     transformOrigin: "center bottom 0px",
-    filter:
-      `drop-shadow(0 0 2px ${tokens.colorNeutralShadowAmbient}) drop-shadow(0 4px 8px ${tokens.colorNeutralShadowKey})`,
+    filter: `drop-shadow(0 0 2px ${tokens.colorNeutralShadowAmbient}) drop-shadow(0 4px 8px ${tokens.colorNeutralShadowKey})`,
 
     // this is the little arrow thingy below the label box
     "::before": {
       position: "absolute",
-      content: "\"\"",
+      content: '""',
       width: "8px",
       height: "8px",
       transform: "translate(-50%, 50%) rotate(45deg)",
@@ -132,8 +130,8 @@ export const useThumbStyles_unstable = (state: ThumbState): ThumbState => {
     disabled
       ? rootStyles.disabled
       : active
-      ? rootStyles.active
-      : rootStyles.enabled,
+        ? rootStyles.active
+        : rootStyles.enabled,
     state.root.className
   );
   state.root.style = { left: `${offset}%`, ...state.root.style };

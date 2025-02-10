@@ -9,18 +9,18 @@ import {
   MenuTrigger,
 } from "@fluentui/react-components";
 import {
-  bundleIcon,
   CircleFilled,
   CircleRegular,
   SignOutFilled,
   SignOutRegular,
+  bundleIcon,
 } from "@fluentui/react-icons";
 import React, { useCallback } from "react";
 import { LanguageSubmenu } from "./profile-language-submenu";
 import { ProfileMenuProps } from "./profile-menu.types";
 import { ThemeSubmenu } from "./profile-theme-submenu";
-import { useTranslation } from "./translation-context";
 import { UserInformation } from "./profile-user-information";
+import { useTranslation } from "./translation-context";
 
 const SignOutIcon = bundleIcon(SignOutFilled, SignOutRegular);
 const NotificationIcon = bundleIcon(CircleRegular, CircleFilled);
@@ -51,21 +51,26 @@ export const ProfileMenu = ({
               color="mink"
               name={name}
               size={24}
-              badge={hasNotification
-                ? {
-                  icon: notificationIcon !== undefined
-                    ? notificationIcon
-                    : <NotificationIcon />,
-                  /*
+              badge={
+                hasNotification
+                  ? {
+                      icon:
+                        notificationIcon !== undefined ? (
+                          notificationIcon
+                        ) : (
+                          <NotificationIcon />
+                        ),
+                      /*
                     Since this is not a Badge but a PresenceBadge, we only
                     have the option to change the color through "status".
                     "away" gives us the orange color that we want.
                     Can be overriden by user by setting color on the notificationIcon property
                   */
-                  status: "away",
-                  size: "extra-small",
-                }
-                : undefined}
+                      status: "away",
+                      size: "extra-small",
+                    }
+                  : undefined
+              }
             />
           }
           shape="circular"

@@ -7,6 +7,6 @@ export const variants: TVariant[] = [16, 20, 24, 28, 32, 48, "Unsized", "All"];
 export const DEFAULT_VARIANT_FILTER: TVariant = "All";
 
 export const axisIcons: React.FC<AxisIconProps>[] = Object.keys(AxisIcons)
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
+
   .map((name) => (AxisIcons as any)[name])
   .filter((illustration) => !!illustration && !!illustration.displayName);

@@ -1,10 +1,10 @@
 import {
   Badge,
+  Tooltip,
   makeStyles,
   mergeClasses,
   shorthands,
   tokens,
-  Tooltip,
 } from "@fluentui/react-components";
 import React from "react";
 
@@ -24,11 +24,15 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
   [EStoryStatus.WIP]: (
     <Tooltip
       key={EStoryStatus.PUBLIC}
-      content={"Feature(s) is not yet fully completed. Work is still in progress."}
+      content={
+        "Feature(s) is not yet fully completed. Work is still in progress."
+      }
       withArrow
       relationship={"label"}
     >
-      <Badge appearance="filled" color="warning">wip</Badge>
+      <Badge appearance="filled" color="warning">
+        wip
+      </Badge>
     </Tooltip>
   ),
   [EStoryStatus.NEW]: (
@@ -38,17 +42,23 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
       withArrow
       relationship={"label"}
     >
-      <Badge appearance="filled" color="success">new</Badge>
+      <Badge appearance="filled" color="success">
+        new
+      </Badge>
     </Tooltip>
   ),
   [EStoryStatus.STABLE]: (
     <Tooltip
       key={EStoryStatus.STABLE}
-      content={"Feature(s) is considered stable, tho please report problems if found!"}
+      content={
+        "Feature(s) is considered stable, tho please report problems if found!"
+      }
       withArrow
       relationship={"label"}
     >
-      <Badge appearance="filled" color="brand">stable</Badge>
+      <Badge appearance="filled" color="brand">
+        stable
+      </Badge>
     </Tooltip>
   ),
   [EStoryStatus.UNSTABLE]: (
@@ -58,17 +68,23 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
       withArrow
       relationship={"label"}
     >
-      <Badge appearance="filled" color="warning">unstable</Badge>
+      <Badge appearance="filled" color="warning">
+        unstable
+      </Badge>
     </Tooltip>
   ),
   [EStoryStatus.PRIVATE]: (
     <Tooltip
       key={EStoryStatus.PRIVATE}
-      content={"Packages is private, not yet published, you may copy from repository if you want."}
+      content={
+        "Packages is private, not yet published, you may copy from repository if you want."
+      }
       withArrow
       relationship={"label"}
     >
-      <Badge appearance="filled" color="severe">private</Badge>
+      <Badge appearance="filled" color="severe">
+        private
+      </Badge>
     </Tooltip>
   ),
   [EStoryStatus.PUBLIC]: (
@@ -78,7 +94,9 @@ const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
       withArrow
       relationship={"label"}
     >
-      <Badge appearance="filled" color="important">public</Badge>
+      <Badge appearance="filled" color="important">
+        public
+      </Badge>
     </Tooltip>
   ),
 };
@@ -110,17 +128,9 @@ export function StoryStatus({ status }: TStoryStatus) {
   const { rootStyle } = useStoryStatusStyles();
   const sortedStatuses = status.sort((a, b) => a - b);
 
-  const _renderStatuses = (
-    status: EStoryStatus
-  ): JSX.Element => {
-    return (
-      STATUS_BADGES[status]
-    );
+  const _renderStatuses = (status: EStoryStatus): JSX.Element => {
+    return STATUS_BADGES[status];
   };
 
-  return (
-    <div className={rootStyle}>
-      {sortedStatuses.map(_renderStatuses)}
-    </div>
-  );
+  return <div className={rootStyle}>{sortedStatuses.map(_renderStatuses)}</div>;
 }

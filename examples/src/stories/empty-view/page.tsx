@@ -2,14 +2,18 @@ import React from "react";
 
 import { makeStyles } from "@fluentui/react-components";
 
-import { getGhInfoByKey } from "../../routing/route-map";
-import { routes } from "../../routing/routes";
+import { StoryPage } from "../../components/story/story-page";
 import {
   pageData,
   useExampleWithNavigation,
 } from "../../components/story/story.utils";
-import { StoryPage } from "../../components/story/story-page";
+import { getGhInfoByKey } from "../../routing/route-map";
+import { routes } from "../../routing/routes";
 
+import {
+  DialogEmptyViewExample,
+  DialogEmptyViewExampleAsString,
+} from "./examples/dialog";
 import {
   MainEmptyViewExample,
   MainEmptyViewExampleAsString,
@@ -22,10 +26,6 @@ import {
   SubmenuEmptyViewExample,
   SubmenuEmptyViewExampleAsString,
 } from "./examples/submenu";
-import {
-  DialogEmptyViewExample,
-  DialogEmptyViewExampleAsString,
-} from "./examples/dialog";
 
 const useStyles = makeStyles({
   height: {
@@ -70,9 +70,9 @@ export const EmptyViewPage = () => {
         ...d,
         example: (
           <div
-            className={d.anchor === "DialogEmptyViewExample"
-              ? undefined
-              : styles.height}
+            className={
+              d.anchor === "DialogEmptyViewExample" ? undefined : styles.height
+            }
           >
             {d.example}
           </div>

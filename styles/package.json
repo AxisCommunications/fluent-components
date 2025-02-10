@@ -19,19 +19,16 @@
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "build": "pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
-    "lint": "tsc --noEmit && eslint . --cache"
+    "lint": "tsc --noEmit && biome check"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
-    "eslint": "^8.57.1",
     "react": "^18.2.0",
     "typescript": "^4.5.5"
   },

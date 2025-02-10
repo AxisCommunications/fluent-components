@@ -65,8 +65,7 @@ const useStyles = makeStyles({
     ...shorthands.border(0),
   },
   navigationBody: {
-    backgroundImage:
-      `linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
+    backgroundImage: `linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
     linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
     linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
     linear-gradient(to bottom, ${tokens.colorNeutralStroke1}, ${tokens.colorNeutralBackground3})`,
@@ -114,19 +113,17 @@ type TStoryPage = {
   status?: EStoryStatus[];
 };
 
-export function StoryPage(
-  {
-    title,
-    description,
-    ghPackage,
-    ghUrl,
-    navigation,
-    children,
-    customHeader,
-    status = [],
-    ...rest
-  }: PropsWithChildren<TStoryPage>
-) {
+export function StoryPage({
+  title,
+  description,
+  ghPackage,
+  ghUrl,
+  navigation,
+  children,
+  customHeader,
+  status = [],
+  ...rest
+}: PropsWithChildren<TStoryPage>) {
   const { styles, rootStyle } = useStoryPageStyles();
   return (
     <div data-testid={componentId} className={rootStyle} {...rest}>
@@ -135,27 +132,23 @@ export function StoryPage(
           <StoryPageHeader title={title} status={status}>
             <div className={styles.headerDescription}>
               <div className={styles.package}>
-                {ghUrl
-                  ? (
-                    <Link href={ghUrl} className={styles.package}>
-                      {ghPackage}
-                    </Link>
-                  )
-                  : ghPackage}
+                {ghUrl ? (
+                  <Link href={ghUrl} className={styles.package}>
+                    {ghPackage}
+                  </Link>
+                ) : (
+                  ghPackage
+                )}
               </div>
               {description}
             </div>
             {customHeader && (
-              <div className={styles.customHeaderSlot}>
-                {customHeader}
-              </div>
+              <div className={styles.customHeaderSlot}>{customHeader}</div>
             )}
           </StoryPageHeader>
         </div>
         <Divider />
-        <div className={styles.body}>
-          {children}
-        </div>
+        <div className={styles.body}>{children}</div>
       </div>
       {navigation && (
         <InlineDrawer

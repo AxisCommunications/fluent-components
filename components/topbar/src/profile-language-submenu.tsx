@@ -8,20 +8,22 @@ import {
   MenuTrigger,
 } from "@fluentui/react-components";
 import {
-  bundleIcon,
   LocalLanguageFilled,
   LocalLanguageRegular,
+  bundleIcon,
 } from "@fluentui/react-icons";
 import React from "react";
+import { useProfileLanguageSubmenuStyles } from "./profile-language-submenu.styles";
 import { LanguageSubmenuProps } from "./profile-menu.types";
 import { useTranslation } from "./translation-context";
-import { useProfileLanguageSubmenuStyles } from "./profile-language-submenu.styles";
 
 const LanguageIcon = bundleIcon(LocalLanguageFilled, LocalLanguageRegular);
 
-export const LanguageSubmenu = (
-  { options, value, onChange }: LanguageSubmenuProps
-) => {
+export const LanguageSubmenu = ({
+  options,
+  value,
+  onChange,
+}: LanguageSubmenuProps) => {
   const selection = options?.find(({ id }) => id === value);
   const { tLocale } = useTranslation();
   const styles = useProfileLanguageSubmenuStyles();
@@ -47,7 +49,6 @@ export const LanguageSubmenu = (
                 data-testid={`language-menu-item-${id}`}
                 key={id}
                 value={id}
-                // eslint-disable-next-line react/jsx-no-bind
                 onClick={() => onChange(id)}
               >
                 {label ?? tLocale(id)}

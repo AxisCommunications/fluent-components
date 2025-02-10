@@ -20,17 +20,17 @@ import React, {
   useState,
 } from "react";
 
+import { MarkLabel } from "./mark/label/mark-label";
+import { MarkLabelProps } from "./mark/label/mark-label.types";
 import { Mark } from "./mark/mark";
 import { MarkProps } from "./mark/mark.types";
+import { Section } from "./section/section";
+import { SectionProps } from "./section/section.types";
 import { RangeSliderProps, SliderState } from "./slider.types";
 import { Thumb } from "./thumb/thumb";
 import { ThumbProps } from "./thumb/thumb.types";
-import { toPercent } from "./utils";
-import { MarkLabelProps } from "./mark/label/mark-label.types";
-import { MarkLabel } from "./mark/label/mark-label";
 import { sliderClassNames } from "./use-slider-styles";
-import { SectionProps } from "./section/section.types";
-import { Section } from "./section/section";
+import { toPercent } from "./utils";
 
 const asc = (a: number, b: number): number => a - b;
 
@@ -85,9 +85,9 @@ const findClosest = (value: number, candidates: number[]) => {
 
 const isMarkLabelElement = (target: EventTarget | null): boolean => {
   if (
-    !target
-    || !(target instanceof Element)
-    || target.classList.contains(sliderClassNames.root)
+    !target ||
+    !(target instanceof Element) ||
+    target.classList.contains(sliderClassNames.root)
   ) {
     return false;
   }
@@ -99,9 +99,9 @@ const isMarkLabelElement = (target: EventTarget | null): boolean => {
 
 const isSectionLabelElement = (target: EventTarget | null): boolean => {
   if (
-    !target
-    || !(target instanceof Element)
-    || target.classList.contains(sliderClassNames.root)
+    !target ||
+    !(target instanceof Element) ||
+    target.classList.contains(sliderClassNames.root)
   ) {
     return false;
   }
@@ -395,9 +395,8 @@ export const useRangeSlider_unstable = (
     };
   }, [controlRef, handleTouchStart, removeListeners]);
 
-  const minValue = internalValues.length > 1
-    ? Math.min(...internalValues)
-    : min;
+  const minValue =
+    internalValues.length > 1 ? Math.min(...internalValues) : min;
   const maxValue = Math.max(...internalValues);
 
   const trackOffset = toPercent(minValue, min, max);

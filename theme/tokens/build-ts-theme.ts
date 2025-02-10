@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs";
-import { axisDarkTheme, axisLightTheme } from "../src";
 import { Theme } from "@fluentui/react-components";
+import { axisDarkTheme, axisLightTheme } from "../src";
 
 type TGenerate = {
   name: string;
@@ -21,9 +21,7 @@ const THEMES: TGenerate[] = [
 ];
 
 const getTsFileHeader = () =>
-  `/**\n * Do not edit directly\n * Generated on ${
-    new Date().toUTCString()
-  }\n */ \n\n`;
+  `/**\n * Do not edit directly\n * Generated on ${new Date().toUTCString()}\n */ \n\n`;
 
 console.log("Start building ts-theme");
 THEMES.forEach(({ name, fileName, theme }) => {
@@ -31,10 +29,9 @@ THEMES.forEach(({ name, fileName, theme }) => {
   const themeJson = JSON.stringify(theme, Object.keys(theme).sort(), 2);
   const themeJsonWithoutQuotes = themeJson.replace(/"([^"]+)":/g, "$1:");
   const importStatement =
-    "import { Theme } from \"@fluentui/react-components\";\n\n";
+    'import { Theme } from "@fluentui/react-components";\n\n';
   const typeDeclaration = `export const ${name}: Theme =`;
-  const themeDeclaration =
-    `${getTsFileHeader()}${importStatement}${typeDeclaration} ${themeJsonWithoutQuotes};\n\n`;
+  const themeDeclaration = `${getTsFileHeader()}${importStatement}${typeDeclaration} ${themeJsonWithoutQuotes};\n\n`;
 
   const destination = `tokens/generated/ts/${fileName}.ts`;
   writeFileSync(destination, themeDeclaration, "utf-8");

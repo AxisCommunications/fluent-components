@@ -12,9 +12,8 @@ updates:
           - "patch"
         patterns:
           - "*vite*"
+          - "*biome*"
           - "depcheck"
-          - "dprint"
-          - "eslint*"
           - "ts-node"
           - "typescript"
       fluent:

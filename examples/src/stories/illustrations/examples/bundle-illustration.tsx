@@ -1,8 +1,8 @@
 import {
   AddUserDark,
   AddUserLight,
-  bundleIllustration,
   TBundleIllustrationVariant,
+  bundleIllustration,
 } from "@axiscommunications/fluent-illustrations";
 import { Switch } from "@fluentui/react-components";
 import React, { useState } from "react";
@@ -19,7 +19,9 @@ export function BundleIllustration() {
         label={isDark ? "Dark active" : "Light active"}
         checked={isDark}
         labelPosition="after"
-        onChange={() => setVariant(prev => prev === "dark" ? "light" : "dark")}
+        onChange={() =>
+          setVariant((prev) => (prev === "dark" ? "light" : "dark"))
+        }
       />
       <AddUserIllustration width={250} variant={variant} />
     </>

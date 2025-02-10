@@ -6,15 +6,12 @@ import {
 } from "@axiscommunications/fluent-styles";
 import {
   Button,
-  makeStyles,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   MenuPopover,
   MenuTrigger,
-  mergeClasses,
-  shorthands,
   SkeletonItem,
   Table,
   TableBody,
@@ -24,14 +21,17 @@ import {
   TableHeaderCell,
   TableRow,
   TableSelectionCell,
+  makeStyles,
+  mergeClasses,
+  shorthands,
   tokens,
 } from "@fluentui/react-components";
 import {
-  bundleIcon,
   ChevronLeft16Filled,
   ChevronLeft16Regular,
   ChevronRight16Filled,
   ChevronRight16Regular,
+  bundleIcon,
 } from "@fluentui/react-icons";
 import React, { useMemo, useState } from "react";
 import { useAppContext } from "../../context/ApplicationStateProvider";
@@ -77,7 +77,10 @@ export function TableExample() {
   return (
     <div className={styles.root}>
       <div>
-        <Button appearance="primary" onClick={() => setLoading(prev => !prev)}>
+        <Button
+          appearance="primary"
+          onClick={() => setLoading((prev) => !prev)}
+        >
           Toggle loading
         </Button>
       </div>
@@ -96,31 +99,29 @@ export function TableExample() {
             </TableHeaderCell>
           </TableRow>
         </TableHeader>
-        {loading
-          ? (
-            <SkeletonTableBody
-              rows={page.length}
-              widths={[undefined, "normal", "wide", "narrow"]}
-            />
-          )
-          : (
-            <TableBody>
-              {page.map((rowContent, index) => (
-                <TableRow className={rowStyles.normal} key={index}>
-                  <TableSelectionCell />
-                  <TableCell className={columnStyles.normal}>
-                    <TableCellLayout>{rowContent.user}</TableCellLayout>
-                  </TableCell>
-                  <TableCell className={columnStyles.wide}>
-                    <TableCellLayout>{rowContent.role}</TableCellLayout>
-                  </TableCell>
-                  <TableCell className={columnStyles.narrow}>
-                    <TableCellLayout>{rowContent.luckyNumber}</TableCellLayout>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          )}
+        {loading ? (
+          <SkeletonTableBody
+            rows={page.length}
+            widths={[undefined, "normal", "wide", "narrow"]}
+          />
+        ) : (
+          <TableBody>
+            {page.map((rowContent, index) => (
+              <TableRow className={rowStyles.normal} key={index}>
+                <TableSelectionCell />
+                <TableCell className={columnStyles.normal}>
+                  <TableCellLayout>{rowContent.user}</TableCellLayout>
+                </TableCell>
+                <TableCell className={columnStyles.wide}>
+                  <TableCellLayout>{rowContent.role}</TableCellLayout>
+                </TableCell>
+                <TableCell className={columnStyles.narrow}>
+                  <TableCellLayout>{rowContent.luckyNumber}</TableCellLayout>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        )}
       </Table>
       <TableFooter
         {...pageController}
@@ -132,12 +133,10 @@ export function TableExample() {
   );
 }
 
-type TableFooterProps =
-  & Pick<
-    ReturnType<typeof usePageController>,
-    "currentPage" | "totalPages" | "nextPage" | "prevPage" | "goToPage"
-  >
-  & { total: number; take: number; setTake: (take: number) => void };
+type TableFooterProps = Pick<
+  ReturnType<typeof usePageController>,
+  "currentPage" | "totalPages" | "nextPage" | "prevPage" | "goToPage"
+> & { total: number; take: number; setTake: (take: number) => void };
 
 const useTableFooterStyles = makeStyles({
   root: {
@@ -184,7 +183,6 @@ function TableFooter({
                 return (
                   <MenuItem
                     key={size}
-                    // eslint-disable-next-line react/jsx-no-bind
                     onClick={() => {
                       setTake(size);
                     }}
@@ -212,7 +210,6 @@ function TableFooter({
                   return (
                     <MenuItem
                       key={index}
-                      // eslint-disable-next-line react/jsx-no-bind
                       onClick={() => {
                         goToPage(index);
                       }}
@@ -224,31 +221,29 @@ function TableFooter({
             </MenuList>
           </MenuPopover>
         </Menu>
-        {dir === "ltr"
-          ? (
-            <>
-              <Button
-                appearance="transparent"
-                icon={<ChevronLeft onClick={prevPage} />}
-              />
-              <Button
-                appearance="transparent"
-                icon={<ChevronRight onClick={nextPage} />}
-              />
-            </>
-          )
-          : (
-            <>
-              <Button
-                appearance="transparent"
-                icon={<ChevronRight onClick={prevPage} />}
-              />
-              <Button
-                appearance="transparent"
-                icon={<ChevronLeft onClick={nextPage} />}
-              />
-            </>
-          )}
+        {dir === "ltr" ? (
+          <>
+            <Button
+              appearance="transparent"
+              icon={<ChevronLeft onClick={prevPage} />}
+            />
+            <Button
+              appearance="transparent"
+              icon={<ChevronRight onClick={nextPage} />}
+            />
+          </>
+        ) : (
+          <>
+            <Button
+              appearance="transparent"
+              icon={<ChevronRight onClick={prevPage} />}
+            />
+            <Button
+              appearance="transparent"
+              icon={<ChevronLeft onClick={nextPage} />}
+            />
+          </>
+        )}
       </div>
     </div>
   );
@@ -300,14 +295,16 @@ interface SkeletonTableBodyProps {
 // <Skeleton> seems to work at any level above <SkeletonItem> in the hierachy,
 // so it could perhaps go outside the whole Table to avoid interfering with the
 // layout, although this is less of a problem when using `noNativeElements`.
-export function SkeletonTableBody(
-  { rows, rowType = "normal", widths }: SkeletonTableBodyProps
-) {
+export function SkeletonTableBody({
+  rows,
+  rowType = "normal",
+  widths,
+}: SkeletonTableBodyProps) {
   const rowCount = useMemo(
     () =>
-      rows
-      || (minRandomRows
-        + Math.floor((maxRandomRows - minRandomRows + 1) * Math.random())),
+      rows ||
+      minRandomRows +
+        Math.floor((maxRandomRows - minRandomRows + 1) * Math.random()),
     [rows]
   );
   const rowKeys = Array.from({ length: rowCount }, (_, k) => k);
@@ -528,7 +525,7 @@ function TableFooter({
                 return (
                   <MenuItem
                     key={size}
-                    // eslint-disable-next-line react/jsx-no-bind
+
                     onClick={() => {
                       setTake(size);
                     }}
@@ -556,7 +553,7 @@ function TableFooter({
                   return (
                     <MenuItem
                       key={index}
-                      // eslint-disable-next-line react/jsx-no-bind
+
                       onClick={() => {
                         goToPage(index);
                       }}

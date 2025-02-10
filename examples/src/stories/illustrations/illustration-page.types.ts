@@ -10,6 +10,6 @@ export const DEFAULT_ILLUSTRATION_WIDTH = 160;
 export const axisIllustrations: React.FC<AxisIllustrationProps>[] = Object.keys(
   AxisIllustrations
 )
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
+
   .map((name) => (AxisIllustrations as any)[name])
   .filter((illustration) => !!illustration && !!illustration.displayName);

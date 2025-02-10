@@ -5,8 +5,8 @@ import {
 import { renderHook } from "@testing-library/react";
 import React, { PropsWithChildren } from "react";
 import { useIdentifyCurrentAxisTheme } from "../hooks/use-identify-current-axis-theme.hook";
-import { axisDarkTheme, axisLightTheme } from "../themes/brand";
 import { axisBlueDarkTheme, axisBlueLightTheme } from "../themes/blue";
+import { axisDarkTheme, axisLightTheme } from "../themes/brand";
 
 describe("useIdentifyCurrentAxisTheme", () => {
   it("should return null values if used with none-axis themes", () => {
@@ -61,9 +61,9 @@ describe("useIdentifyCurrentAxisTheme", () => {
   });
 });
 
-function RenderFluentProviderWithAxisLightTheme(
-  { children }: PropsWithChildren
-): JSX.Element {
+function RenderFluentProviderWithAxisLightTheme({
+  children,
+}: PropsWithChildren): JSX.Element {
   return (
     <RenderFluentProviderDefault theme={axisLightTheme}>
       {children}
@@ -71,9 +71,9 @@ function RenderFluentProviderWithAxisLightTheme(
   );
 }
 
-function RenderFluentProviderWithAxisDarkTheme(
-  { children }: PropsWithChildren
-): JSX.Element {
+function RenderFluentProviderWithAxisDarkTheme({
+  children,
+}: PropsWithChildren): JSX.Element {
   return (
     <RenderFluentProviderDefault theme={axisDarkTheme}>
       {children}
@@ -81,9 +81,9 @@ function RenderFluentProviderWithAxisDarkTheme(
   );
 }
 
-function RenderFluentProviderWithAxisBlueDarkTheme(
-  { children }: PropsWithChildren
-): JSX.Element {
+function RenderFluentProviderWithAxisBlueDarkTheme({
+  children,
+}: PropsWithChildren): JSX.Element {
   return (
     <RenderFluentProviderDefault theme={axisBlueDarkTheme}>
       {children}
@@ -91,9 +91,9 @@ function RenderFluentProviderWithAxisBlueDarkTheme(
   );
 }
 
-function RenderFluentProviderWithAxisBlueLightTheme(
-  { children }: PropsWithChildren
-): JSX.Element {
+function RenderFluentProviderWithAxisBlueLightTheme({
+  children,
+}: PropsWithChildren): JSX.Element {
   return (
     <RenderFluentProviderDefault theme={axisBlueLightTheme}>
       {children}
@@ -101,16 +101,13 @@ function RenderFluentProviderWithAxisBlueLightTheme(
   );
 }
 
-type TRenderFluentProvider =
-  & { theme?: FluentProviderProps["theme"] }
-  & PropsWithChildren;
+type TRenderFluentProvider = {
+  theme?: FluentProviderProps["theme"];
+} & PropsWithChildren;
 
-function RenderFluentProviderDefault(
-  { children, theme }: TRenderFluentProvider
-): JSX.Element {
-  return (
-    <FluentProvider theme={theme}>
-      {children}
-    </FluentProvider>
-  );
+function RenderFluentProviderDefault({
+  children,
+  theme,
+}: TRenderFluentProvider): JSX.Element {
+  return <FluentProvider theme={theme}>{children}</FluentProvider>;
 }

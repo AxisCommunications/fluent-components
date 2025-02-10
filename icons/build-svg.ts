@@ -36,8 +36,8 @@ const processFolder = (
           );
           let locPath = destPath;
           if (
-            folderDepth === 1
-            && folderName.toUpperCase() !== extension.toUpperCase()
+            folderDepth === 1 &&
+            folderName.toUpperCase() !== extension.toUpperCase()
           ) {
             locPath = path.join(locPath, folderName);
           }
@@ -50,8 +50,8 @@ const processFolder = (
           // Skip invalid file names
           return;
         } else if (
-          !file.endsWith(`${ICON_OUTLINE_STYLE}.${extension}`)
-          && !file.endsWith(`${ICON_FILLED_STYLE}.${extension}`)
+          !file.endsWith(`${ICON_OUTLINE_STYLE}.${extension}`) &&
+          !file.endsWith(`${ICON_FILLED_STYLE}.${extension}`)
         ) {
           // Only include icons in the desired configs
           return;

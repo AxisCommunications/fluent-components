@@ -2,9 +2,9 @@ import {
   Caption1,
   Card,
   CardHeader,
+  Text,
   makeStyles,
   shorthands,
-  Text,
   tokens,
 } from "@fluentui/react-components";
 
@@ -32,16 +32,17 @@ type TCardExample = {
   onClick: () => void;
 };
 
-export const WelcomeCard = (
-  { title, description, text, icon, onClick }: TCardExample
-) => {
+export const WelcomeCard = ({
+  title,
+  description,
+  text,
+  icon,
+  onClick,
+}: TCardExample) => {
   const styles = useStyles();
 
   return (
-    <Card
-      className={styles.root}
-      onClick={onClick}
-    >
+    <Card className={styles.root} onClick={onClick}>
       <CardHeader
         header={<Text weight="semibold">{title}</Text>}
         image={icon}
@@ -49,9 +50,7 @@ export const WelcomeCard = (
           <Caption1 className={styles.caption}>{description}</Caption1>
         }
       />
-      <p className={styles.text}>
-        {text}
-      </p>
+      <p className={styles.text}>{text}</p>
     </Card>
   );
 };

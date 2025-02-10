@@ -20,10 +20,10 @@ const getTsTokens = (
     .map((t) =>
       t.attributes?.category === "fontWeight"
         ? `${t.name}: ${t.value},`
-        : t.attributes?.category === "color"
-            || t.attributes?.category === "colorStatus"
-        ? `${t.name}: "${(t.value as string).toLowerCase()}",`
-        : `${t.name}: "${t.value}",`
+        : t.attributes?.category === "color" ||
+            t.attributes?.category === "colorStatus"
+          ? `${t.name}: "${(t.value as string).toLowerCase()}",`
+          : `${t.name}: "${t.value}",`
     )
     .join("\n  ");
 
@@ -56,9 +56,7 @@ const getTsImports = (categories: string[]) => {
 };
 
 const getTsFileHeader = () =>
-  `/**\n * Do not edit directly\n * Generated on ${
-    new Date().toUTCString()
-  }\n */`;
+  `/**\n * Do not edit directly\n * Generated on ${new Date().toUTCString()}\n */`;
 
 StyleDictionaryPackage.registerFormat({
   name: "typescript/fluentui",
@@ -67,11 +65,9 @@ StyleDictionaryPackage.registerFormat({
       .map((c: string) => getTsTokens(options.sortCategories, dictionary, c))
       .filter((t: string | undefined) => !!t)
       .join("\n\n");
-    return `${getTsFileHeader()}\n\n${
-      getTsImports(
-        options.categories
-      )
-    }\n\n${tokens}\n`;
+    return `${getTsFileHeader()}\n\n${getTsImports(
+      options.categories
+    )}\n\n${tokens}\n`;
   },
 });
 
@@ -90,16 +86,17 @@ export const getTsPlatform: (theme: string) => Platform = (theme) => ({
       destination: theme === "global" ? "base.ts" : `${theme}.ts`,
       options: {
         name: theme !== "global" ? theme : undefined,
-        categories: theme === "global"
-          ? [
-            "lineHeight",
-            "fontFamily",
-            "fontSize",
-            "fontWeight",
-            "borderRadius",
-            "strokeWidth",
-          ]
-          : ["color", "colorStatus", "shadow"],
+        categories:
+          theme === "global"
+            ? [
+                "lineHeight",
+                "fontFamily",
+                "fontSize",
+                "fontWeight",
+                "borderRadius",
+                "strokeWidth",
+              ]
+            : ["color", "colorStatus", "shadow"],
         sortCategories: [
           "color",
           "colorStatus",

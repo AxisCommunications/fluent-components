@@ -26,11 +26,13 @@ export function DualSectionSliderExample() {
       min={0}
       max={100}
       title="Click to set zoom level"
-      marks={[{
-        value: markValue,
-        label: "Sweet spot",
-        labelEqualActive: true,
-      }]}
+      marks={[
+        {
+          value: markValue,
+          label: "Sweet spot",
+          labelEqualActive: true,
+        },
+      ]}
       sectionLabels={[
         { edges: { to: markValue }, label: "Lossless zoom" },
         {

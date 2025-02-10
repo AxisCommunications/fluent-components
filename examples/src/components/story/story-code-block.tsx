@@ -14,22 +14,18 @@ const useStyles = makeStyles({
   },
 });
 
-export const StoryCodeBlock = (
-  { codeString, canCopy = true }: { codeString: string; canCopy?: boolean }
-) => {
+export const StoryCodeBlock = ({
+  codeString,
+  canCopy = true,
+}: { codeString: string; canCopy?: boolean }) => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
       {canCopy && (
-        <CopyButton
-          codeString={codeString}
-          className={styles.copy}
-        />
+        <CopyButton codeString={codeString} className={styles.copy} />
       )}
-      <SyntaxHighlighter language="typescript">
-        {codeString}
-      </SyntaxHighlighter>
+      <SyntaxHighlighter language="typescript">{codeString}</SyntaxHighlighter>
     </div>
   );
 };

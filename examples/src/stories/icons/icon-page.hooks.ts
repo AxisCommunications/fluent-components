@@ -1,6 +1,6 @@
 import { RadioGroupOnChangeData } from "@fluentui/react-components";
 import React from "react";
-import { axisIcons, DEFAULT_VARIANT_FILTER, TVariant } from "./icon-page.types";
+import { DEFAULT_VARIANT_FILTER, TVariant, axisIcons } from "./icon-page.types";
 
 export function useIconPage() {
   const [search, setSearch] = React.useState("");
@@ -36,10 +36,7 @@ export function useIconPage() {
 
     if (variant === "Unsized") {
       return filteredBySearch.filter((icon) => {
-        return (
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          icon.displayName! && !/\d/.test(icon.displayName.toLowerCase())
-        );
+        return icon.displayName! && !/\d/.test(icon.displayName.toLowerCase());
       });
     }
 

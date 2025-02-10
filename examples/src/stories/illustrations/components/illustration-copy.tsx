@@ -8,8 +8,9 @@ type TIllustrationCopy = {
 };
 
 export function IllustrationCopy({ toolTip, toCopy }: TIllustrationCopy) {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const copyCode = useCallback(async () => {
-    toCopy && await copyToClipboard(`<${toCopy}/>`);
+    toCopy && (await copyToClipboard(`<${toCopy}/>`));
   }, []);
 
   return (
@@ -18,8 +19,7 @@ export function IllustrationCopy({ toolTip, toCopy }: TIllustrationCopy) {
         appearance="transparent"
         onClick={copyCode}
         icon={<RectangleLandscapeHintCopyRegular />}
-      >
-      </Button>
+      ></Button>
     </Tooltip>
   );
 }

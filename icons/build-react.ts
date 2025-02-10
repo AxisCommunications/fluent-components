@@ -114,12 +114,12 @@ function processFiles(src, dest) {
  * @param {boolean} resizable
  * @returns { string [] } - chunked icon files to insert
  */
-function processFolder(srcPath, destPath, resizable) {
+function processFolder(srcPath, _destPath, resizable) {
   var files = fs.readdirSync(srcPath);
   /** @type string[] */
   const iconExports: string[] = [];
 
-  files.forEach(function(file, index) {
+  files.forEach(function (file, _index) {
     var srcFile = path.join(srcPath, file);
     if (fs.lstatSync(srcFile).isDirectory()) {
       // for now, ignore subdirectories/localization, until we have a plan for handling it
@@ -133,25 +133,24 @@ function processFolder(srcPath, destPath, resizable) {
       if (resizable && !file.includes("20")) {
         return;
       }
-      var iconName = file.substr(0, file.length - 4); // strip '.svg'
+      let iconName = file.substr(0, file.length - 4); // strip '.svg'
 
       iconName = iconName.replace("ic_axis_", ""); // strip ic_axis_
       iconName = resizable ? iconName.replace("20", "") : iconName;
-      var destFilename = _.camelCase(iconName); // We want them to be camelCase, so access_time would become accessTime here
+      let destFilename = _.camelCase(iconName); // We want them to be camelCase, so access_time would become accessTime here
       destFilename = destFilename.replace(
         destFilename.substring(0, 1),
         destFilename.substring(0, 1).toUpperCase()
       ); // capitalize the first letter
 
-      var iconContent = fs.readFileSync(srcFile, { encoding: "utf8" });
+      let iconContent = fs.readFileSync(srcFile, { encoding: "utf8" });
       const getAttr = (key) =>
         [...iconContent.matchAll(new RegExp(`(?<= ${key}=)".+?"`, "g"))].map(
           (v) => v[0]
         );
-      const width = resizable ? "\"1em\"" : getAttr("width")[0];
+      const width = resizable ? '"1em"' : getAttr("width")[0];
       const paths = getAttr("d").join(",");
-      var jsCode =
-        `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]));`;
+      let jsCode = `export const ${destFilename} = (/*#__PURE__*/createFluentIcon('${destFilename}', ${width}, [${paths}]));`;
       iconExports.push(jsCode);
     }
   });

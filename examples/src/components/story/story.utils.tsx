@@ -1,10 +1,10 @@
+import React, { useMemo } from "react";
 import { StoryCodeBlockAccordion } from "./story-code-block-accordion";
 import {
   StoryPageNavigation,
   TStoryNavigationLink,
 } from "./story-navigation/story-page-navigation";
 import { StorySection, TStorySection } from "./story-section";
-import React, { useMemo } from "react";
 
 export type pageData = {
   example: JSX.Element;
@@ -31,9 +31,7 @@ export function useExampleWithNavigation(examples: pageData[]) {
             >
               {example}
               {codeString && (
-                <StoryCodeBlockAccordion
-                  codeString={codeString}
-                />
+                <StoryCodeBlockAccordion codeString={codeString} />
               )}
             </StorySection>
           );

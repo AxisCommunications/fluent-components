@@ -1,10 +1,3 @@
-import React, { useState } from "react";
-import {
-  ApplicationDrawerContent,
-  ApplicationDrawerProps,
-  SingleApplicationDrawerContent,
-} from "./application-drawer.types";
-import { ApplicationArea } from "./top-bar.types";
 import {
   Body1,
   Body1Strong,
@@ -15,21 +8,28 @@ import {
   DrawerBody,
   DrawerHeader,
   Link,
-  mergeClasses,
   Tab,
   TabList,
+  mergeClasses,
   tokens,
 } from "@fluentui/react-components";
-import { useApplicationDrawerV2Styles } from "./application-drawer-v2.styles";
 import {
   ArrowRightRegular,
-  bundleIcon,
   Dismiss20Regular,
   DividerTall16Filled,
   GridDots20Filled,
   GridDots20Regular,
+  bundleIcon,
 } from "@fluentui/react-icons";
+import React, { useState } from "react";
+import { useApplicationDrawerV2Styles } from "./application-drawer-v2.styles";
+import {
+  ApplicationDrawerContent,
+  ApplicationDrawerProps,
+  SingleApplicationDrawerContent,
+} from "./application-drawer.types";
 import { findCurrent } from "./application-utils";
+import { ApplicationArea } from "./top-bar.types";
 
 const GridDots20 = bundleIcon(GridDots20Filled, GridDots20Regular);
 
@@ -55,16 +55,14 @@ const DrawerTrigger = ({
       <div className={styles.drawerTriggerGap}></div>
       {currentSelection === undefined ? null : (
         <>
-          {currentSelection?.triggerGroupShortName
-            ? (
-              <>
-                <Body1Strong>
-                  {currentSelection?.triggerGroupShortName}
-                </Body1Strong>
-                <DividerTall16Filled />
-              </>
-            )
-            : null}
+          {currentSelection?.triggerGroupShortName ? (
+            <>
+              <Body1Strong>
+                {currentSelection?.triggerGroupShortName}
+              </Body1Strong>
+              <DividerTall16Filled />
+            </>
+          ) : null}
 
           {currentSelection.icon}
           <Body1Strong className={styles.drawerTriggerLabel}>
@@ -109,9 +107,11 @@ const SingleApplication = ({
   };
 
   const AppLabel = (): JSX.Element => {
-    return isSelected
-      ? <Body1Strong>{application.label}</Body1Strong>
-      : <Body1>{application.label}</Body1>;
+    return isSelected ? (
+      <Body1Strong>{application.label}</Body1Strong>
+    ) : (
+      <Body1>{application.label}</Body1>
+    );
   };
 
   return (
@@ -250,21 +250,19 @@ export const ApplicationDrawerV2 = ({
                   <div key={c.id}>
                     <Divider className={styles.contentDivider} />
 
-                    {c.children
-                      ? (
-                        <ApplicationWithChildren
-                          application={c}
-                          onChange={onClickItem}
-                          selectedId={currentSelection?.id ?? ""}
-                        />
-                      )
-                      : (
-                        <SingleApplication
-                          application={c}
-                          onChange={onClickItem}
-                          isSelected={c.id === currentSelection?.id}
-                        />
-                      )}
+                    {c.children ? (
+                      <ApplicationWithChildren
+                        application={c}
+                        onChange={onClickItem}
+                        selectedId={currentSelection?.id ?? ""}
+                      />
+                    ) : (
+                      <SingleApplication
+                        application={c}
+                        onChange={onClickItem}
+                        isSelected={c.id === currentSelection?.id}
+                      />
+                    )}
                   </div>
                 );
               })}

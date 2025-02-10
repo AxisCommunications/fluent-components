@@ -24,9 +24,8 @@ export const usePageController = ({
   setSkip,
 }: UsePageControllerOptions) => {
   const currentPage = calcCurrentPage(skip, take);
-  const totalPages = total === undefined || total <= 0
-    ? 1
-    : Math.ceil(total / take);
+  const totalPages =
+    total === undefined || total <= 0 ? 1 : Math.ceil(total / take);
 
   // Keep a ref to the current page
   const pageRef = useRef(currentPage);
@@ -96,9 +95,8 @@ export const usePageController = ({
 
   const canGoForward = currentPage < totalPages - 1;
   const canGoBackward = currentPage > 0;
-  const pageSize = total === undefined
-    ? take
-    : Math.min(take, total - take * currentPage);
+  const pageSize =
+    total === undefined ? take : Math.min(take, total - take * currentPage);
 
   // Persist changes to page size
   return {

@@ -8,7 +8,7 @@ import {
   TabListProps,
   TabProps,
 } from "@fluentui/react-components";
-import { bundleIcon, HomeFilled, HomeRegular } from "@fluentui/react-icons";
+import { HomeFilled, HomeRegular, bundleIcon } from "@fluentui/react-icons";
 import React, { useState } from "react";
 
 const HomeIcon = bundleIcon(HomeFilled, HomeRegular);
@@ -17,9 +17,10 @@ export type TTabListComponent = {
   withText?: boolean;
 } & TabListProps;
 
-export function StyledTabListComponent(
-  { withText = true, ...props }: TTabListComponent
-) {
+export function StyledTabListComponent({
+  withText = true,
+  ...props
+}: TTabListComponent) {
   const [selectedTab, setSelectedTab] = useState("tab1");
   const { rootStyle } = useTabListStyles({ vertical: props.vertical });
 
@@ -61,12 +62,18 @@ export type TStyledTabComponent = {
   selected?: boolean;
 } & TabProps;
 
-function StyledTabComponent(
-  { selected, children, ...props }: TStyledTabComponent
-) {
+function StyledTabComponent({
+  selected,
+  children,
+  ...props
+}: TStyledTabComponent) {
   const { rootStyle } = useTabStyles({ selected });
 
-  return <Tab className={rootStyle} {...props}>{children}</Tab>;
+  return (
+    <Tab className={rootStyle} {...props}>
+      {children}
+    </Tab>
+  );
 }
 
 export const StyledTabListComponentAsJson = `

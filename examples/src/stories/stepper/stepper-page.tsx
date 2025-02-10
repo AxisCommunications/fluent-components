@@ -7,6 +7,10 @@ import {
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import {
+  CustomStepperDialogExample,
+  CustomStepperDialogExampleAsString,
+} from "./examples/custom-style-example";
+import {
   StepperDialogExample,
   StepperDialogExampleAsString,
 } from "./examples/stepper-dialog-example";
@@ -14,10 +18,6 @@ import {
   VerticalStepperDialogExample,
   VerticalStepperDialogExampleAsString,
 } from "./examples/vertical-stepper-dialog-example";
-import {
-  CustomStepperDialogExample,
-  CustomStepperDialogExampleAsString,
-} from "./examples/custom-style-example";
 
 const examples: pageData[] = [
   {
@@ -42,14 +42,15 @@ const examples: pageData[] = [
 
 export const StepperPage = () => {
   const gh = getGhInfoByKey(routes.Stepper);
-  const { renderSections, renderNavigation } = useExampleWithNavigation(
-    examples
-  );
+  const { renderSections, renderNavigation } =
+    useExampleWithNavigation(examples);
 
   return (
     <StoryPage
       title="Stepper"
-      description={"A dialog which common use case is to guide user through instruction or/and information"}
+      description={
+        "A dialog which common use case is to guide user through instruction or/and information"
+      }
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       navigation={renderNavigation}

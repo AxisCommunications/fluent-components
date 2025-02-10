@@ -1,6 +1,5 @@
 import {
   Input,
-  makeStyles,
   Menu,
   MenuButton,
   MenuItem,
@@ -9,16 +8,17 @@ import {
   MenuTrigger,
   SelectTabData,
   SelectTabEvent,
-  shorthands,
   Switch,
   Tab,
   TabList,
+  makeStyles,
+  shorthands,
   tokens,
 } from "@fluentui/react-components";
 import { DarkThemeRegular } from "@fluentui/react-icons";
-import { useAppContext } from "../../../context/ApplicationStateProvider";
 import React, { useCallback } from "react";
-import { axisThemes, TaxisThemes, themeMap } from "../theme-page.types";
+import { useAppContext } from "../../../context/ApplicationStateProvider";
+import { TaxisThemes, axisThemes, themeMap } from "../theme-page.types";
 
 const useStyles = makeStyles({
   root: {
@@ -39,14 +39,12 @@ type ThemePageHeader = {
   onSearchQueryChanged: (ev?: React.FormEvent<HTMLInputElement>) => void;
 };
 
-export function ThemePageHeader(
-  {
-    selectedTab,
-    setSelectedTab,
-    search,
-    onSearchQueryChanged,
-  }: ThemePageHeader
-) {
+export function ThemePageHeader({
+  selectedTab,
+  setSelectedTab,
+  search,
+  onSearchQueryChanged,
+}: ThemePageHeader) {
   const setAppTheme = useAppContext((context) => context.setTheme);
   const toggleDir = useAppContext((context) => context.toggleDir);
   const dir = useAppContext((context) => context.dir);
@@ -62,6 +60,7 @@ export function ThemePageHeader(
     setAppTheme(theme);
   }, [selectedTab, setAppTheme]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const onThemeSelect = useCallback(
     (_: SelectTabEvent, { value }: SelectTabData) =>
       setSelectedTab(value as TaxisThemes),
@@ -80,10 +79,7 @@ export function ThemePageHeader(
           onChange={onSearchQueryChanged}
         />
       </div>
-      <TabList
-        defaultSelectedValue={selectedTab}
-        onTabSelect={onThemeSelect}
-      >
+      <TabList defaultSelectedValue={selectedTab} onTabSelect={onThemeSelect}>
         <Tab value={axisThemes.main}>Main theme</Tab>
         <Tab value={axisThemes.blue}>Blue Theme</Tab>
       </TabList>

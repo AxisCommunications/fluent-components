@@ -1,10 +1,10 @@
-import { AxisCustomUtilityTokens, AxisThemeVariant } from "..";
 import {
-  useFluentProvider_unstable,
   useFluentProviderContextValues_unstable,
+  useFluentProvider_unstable,
 } from "@fluentui/react-components";
-import { AxisThemeName } from "../index";
 import React from "react";
+import { AxisCustomUtilityTokens, AxisThemeVariant } from "..";
+import { AxisThemeName } from "../index";
 
 export type Result = {
   name: AxisThemeName;
@@ -18,8 +18,8 @@ export function useIdentifyCurrentAxisTheme(): Result {
 
   return AxisCustomUtilityThemeTokens
     ? {
-      name: AxisCustomUtilityThemeTokens.axisCustomUtilityThemeName,
-      variant: AxisCustomUtilityThemeTokens.axisCustomUtilityThemeVariant,
-    }
+        name: AxisCustomUtilityThemeTokens.axisCustomUtilityThemeName,
+        variant: AxisCustomUtilityThemeTokens.axisCustomUtilityThemeVariant,
+      }
     : null;
 }

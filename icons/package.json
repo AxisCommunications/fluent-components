@@ -13,9 +13,7 @@
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "all": "pnpm fonts:deploy && pnpm react:deploy",
     "build": "pnpm build:cjs && pnpm build:esm",
@@ -28,9 +26,9 @@
     "fonts:generate:font-regular": "icon-font-generator dist/fonts-svg/*_regular.svg -o dist/fonts --name AxisSystemIcons-Regular --types ttf --codepoints fonts/AxisSystemIcons-Regular.json --height 500",
     "fonts:generate:svg": "node --require ts-node/register build-svg.ts --source=assets --dest=dist/fonts-svg --extension=svg",
     "fonts:optimize:svg": "find dist/fonts-svg -type f -name '*.svg' -exec pnpm svgo --config svgo_config.yml '{}' +",
-    "lint": "tsc --noEmit && eslint . --cache",
+    "lint": "tsc --noEmit && biome check",
     "react:build": "mkdir -p dist/react-svg && pnpm react:generate:svg && pnpm react:svg:optimize && pnpm react:svg:unfill && pnpm react:generate:react",
-    "react:deploy": "mkdir -p src && pnpm react:build && cp -a dist/react/* src",
+    "react:deploy": "mkdir -p src && pnpm react:build && cp -a dist/react/* src && biome format --write src",
     "react:generate:react": "node --require ts-node/register build-react.ts --source=./dist/react-svg --dest=./dist/react",
     "react:generate:svg": "node --require ts-node/register build-svg.ts --source=assets --dest=./dist/react-svg --extension=svg",
     "react:svg:optimize": "svgo --folder=./dist/react-svg --precision=2 --disable=removeViewBox,mergePaths",
@@ -43,7 +41,6 @@
     "@svgr/core": "^5.5.0",
     "@types/node": "^20.11.18",
     "@types/react": "^18.3.12",
-    "eslint": "^8.57.1",
     "icon-font-generator": "^2.1.11",
     "react": "^18.2.0",
     "replace": "^1.2.2",

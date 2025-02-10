@@ -38,9 +38,9 @@ export const useStepStyles_unstable = (state: StepState): StepState => {
   state.root.className = mergeClasses(
     stepClassNames.root,
     rootStyles.base,
-    state.step !== state.currentStep
-      && state.step < state.currentStep
-      && rootStyles.previousStep,
+    state.step !== state.currentStep &&
+      state.step < state.currentStep &&
+      rootStyles.previousStep,
     state.step === state.currentStep && rootStyles.currentStep,
     state.step > state.currentStep && rootStyles.nextStep
   );

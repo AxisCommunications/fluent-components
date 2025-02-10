@@ -4,35 +4,41 @@ import { makeStyles, mergeClasses } from "@griffel/react";
 
 const useRootStyles = makeStyles({
   root: {
-    display: 'inline',
+    display: "inline",
     lineHeight: 0,
 
     "@media (forced-colors: active)": {
-      forcedColorAdjust: 'auto',
-    }
-  }
+      forcedColorAdjust: "auto",
+    },
+  },
 });
 
-export const useIconState = <TBaseAttributes extends (React.SVGAttributes<SVGElement> | React.HTMLAttributes<HTMLElement>) = React.SVGAttributes<SVGElement>>(props: AxisIconProps<TBaseAttributes>): Omit<AxisIconProps<TBaseAttributes>, 'primaryFill'> => {
+export const useIconState = <
+  TBaseAttributes extends
+    | React.SVGAttributes<SVGElement>
+    | React.HTMLAttributes<HTMLElement> = React.SVGAttributes<SVGElement>,
+>(
+  props: AxisIconProps<TBaseAttributes>
+): Omit<AxisIconProps<TBaseAttributes>, "primaryFill"> => {
   const { title, primaryFill = "currentColor", ...rest } = props;
   const state = {
     ...rest,
     title: undefined,
-    fill: primaryFill
-  } as Omit<AxisIconProps<TBaseAttributes>, 'primaryFill'>;
+    fill: primaryFill,
+  } as Omit<AxisIconProps<TBaseAttributes>, "primaryFill">;
 
   const styles = useRootStyles();
 
   state.className = mergeClasses(styles.root, state.className);
 
   if (title) {
-    state['aria-label'] = title;
+    state["aria-label"] = title;
   }
 
-  if (!state['aria-label'] && !state['aria-labelledby']) {
-    state['aria-hidden'] = true;
+  if (!state["aria-label"] && !state["aria-labelledby"]) {
+    state["aria-hidden"] = true;
   } else {
-    state.role = 'img';
+    state.role = "img";
   }
 
   return state;

@@ -1,7 +1,3 @@
-import { ArrowRightRegular, Dismiss20Regular } from "@fluentui/react-icons";
-import React, { useState } from "react";
-import { ApplicationArea } from "./top-bar.types";
-import { useTranslation } from "./translation-context";
 import {
   Body1,
   Body1Strong,
@@ -15,27 +11,33 @@ import {
   mergeClasses,
   tokens,
 } from "@fluentui/react-components";
+import { ArrowRightRegular, Dismiss20Regular } from "@fluentui/react-icons";
+import React, { useState } from "react";
 import { useApplicationDrawerStyles } from "./application-drawer-v1.styles";
+import {
+  ApplicationDrawerContent,
+  ApplicationDrawerProps,
+  SingleApplicationDrawerContent,
+} from "./application-drawer.types";
 import {
   ApplicationAreaFlaworedIcon,
   ApplicationAreaIcon,
   applicationAreaLabel,
   findCurrent,
 } from "./application-utils";
-import {
-  ApplicationDrawerContent,
-  ApplicationDrawerProps,
-  SingleApplicationDrawerContent,
-} from "./application-drawer.types";
 import { useApplicationStyles } from "./application.styles";
+import { ApplicationArea } from "./top-bar.types";
+import { useTranslation } from "./translation-context";
 
-const DrawerTrigger = (
-  { setIsOpen, applicationArea, currentSelection }: {
-    setIsOpen: (isOpen: boolean) => void;
-    applicationArea: ApplicationArea;
-    currentSelection: SingleApplicationDrawerContent | undefined;
-  }
-) => {
+const DrawerTrigger = ({
+  setIsOpen,
+  applicationArea,
+  currentSelection,
+}: {
+  setIsOpen: (isOpen: boolean) => void;
+  applicationArea: ApplicationArea;
+  currentSelection: SingleApplicationDrawerContent | undefined;
+}) => {
   const styles = useApplicationDrawerStyles();
   const [hover, setHover] = useState(false);
 
@@ -53,47 +55,45 @@ const DrawerTrigger = (
         onMouseLeave={() => setHover(false)}
       >
         {<ApplicationAreaIcon applicationArea={applicationArea} />}
-        {currentSelection?.triggerGroupShortName
-          ? (
-            <>
-              <Body1Strong className={styles.drawerTriggerTextWithGroup}>
-                {currentSelection?.triggerGroupShortName}
-              </Body1Strong>
-              <div className={styles.triggerDividerWithGroup}></div>
-            </>
-          )
-          : <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>}
-        {currentSelection
-          ? (
+        {currentSelection?.triggerGroupShortName ? (
+          <>
+            <Body1Strong className={styles.drawerTriggerTextWithGroup}>
+              {currentSelection?.triggerGroupShortName}
+            </Body1Strong>
+            <div className={styles.triggerDividerWithGroup}></div>
+          </>
+        ) : (
+          <Divider vertical style={{ padding: "0 0 0 12px" }}></Divider>
+        )}
+        {currentSelection ? (
+          <div
+            className={mergeClasses(
+              styles.drawerTriggerApplication,
+              currentSelection?.triggerGroupShortName &&
+                styles.drawerTriggerApplicationWithGroup
+            )}
+          >
             <div
               className={mergeClasses(
-                styles.drawerTriggerApplication,
-                currentSelection?.triggerGroupShortName
-                  && styles.drawerTriggerApplicationWithGroup
+                styles.drawerTriggerApplicationIcon,
+                hover && styles.drawerTriggerApplicationIconHovered
               )}
             >
-              <div
-                className={mergeClasses(
-                  styles.drawerTriggerApplicationIcon,
-                  hover && styles.drawerTriggerApplicationIconHovered
-                )}
-              >
-                {currentSelection.icon}
-              </div>
-              <Body1Strong
-                className={styles.drawerTriggerApplicationText}
-              >
-                {currentSelection.triggerLabel ?? currentSelection.label}
-              </Body1Strong>
+              {currentSelection.icon}
             </div>
-          )
-          : null}
+            <Body1Strong className={styles.drawerTriggerApplicationText}>
+              {currentSelection.triggerLabel ?? currentSelection.label}
+            </Body1Strong>
+          </div>
+        ) : null}
       </Button>
     </div>
   );
 };
 
-const ApplicationGroupTitle = ({ application }: {
+const ApplicationGroupTitle = ({
+  application,
+}: {
   application: ApplicationDrawerContent;
 }): JSX.Element => {
   const styles = useApplicationDrawerStyles();
@@ -121,16 +121,14 @@ const iconConverter = (
   isCurrent: boolean,
   applicationArea: ApplicationArea
 ) => {
-  return isCurrent
-    ? (
-      <ApplicationAreaFlaworedIcon
-        applicationArea={applicationArea}
-        icon={icon}
-      />
-    )
-    : (
-      icon
-    );
+  return isCurrent ? (
+    <ApplicationAreaFlaworedIcon
+      applicationArea={applicationArea}
+      icon={icon}
+    />
+  ) : (
+    icon
+  );
 };
 
 const SingleApplication = ({
@@ -161,9 +159,7 @@ const SingleApplication = ({
       )}
       onClick={() => onChange(application.id)}
     >
-      <Body1 className={styles.applicationButton}>
-        {application.label}
-      </Body1>
+      <Body1 className={styles.applicationButton}>{application.label}</Body1>
     </Button>
   );
 };
@@ -280,23 +276,21 @@ export const ApplicationDrawerV1 = ({
             {content?.map((c) => {
               return (
                 <div className={styles.contentGroup} key={c.id}>
-                  {c.children
-                    ? (
-                      <ApplicationWithChildren
-                        application={c}
-                        currentSelectionId={currentSelection?.id ?? ""}
-                        onChange={onClickItem}
-                        applicationArea={applicationArea ?? ""}
-                      />
-                    )
-                    : (
-                      <SingleApplication
-                        application={c}
-                        currentSelectionId={currentSelection?.id ?? ""}
-                        onChange={onClickItem}
-                        applicationArea={applicationArea}
-                      />
-                    )}
+                  {c.children ? (
+                    <ApplicationWithChildren
+                      application={c}
+                      currentSelectionId={currentSelection?.id ?? ""}
+                      onChange={onClickItem}
+                      applicationArea={applicationArea ?? ""}
+                    />
+                  ) : (
+                    <SingleApplication
+                      application={c}
+                      currentSelectionId={currentSelection?.id ?? ""}
+                      onChange={onClickItem}
+                      applicationArea={applicationArea}
+                    />
+                  )}
                   <Divider className={styles.contentDivider} />
                 </div>
               );

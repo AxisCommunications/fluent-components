@@ -2,11 +2,11 @@ import { appendFileSync, existsSync, readFileSync, unlinkSync } from "fs";
 import StyleDictionaryPackage, { Dictionary, Platform } from "style-dictionary";
 
 const resDictStartTag =
-  "<ResourceDictionary\r\n  xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\r\n  xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"\r\n>";
+  '<ResourceDictionary\r\n  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"\r\n  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"\r\n>';
 const resDictBrushesStartTag =
-  "<ResourceDictionary\r\n  xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\r\n  xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"\r\n  xmlns:p=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation/options\"\r\n>\r\n  <ResourceDictionary.MergedDictionaries>\r\n    <ResourceDictionary Source=\"Colors.xaml\" />\r\n  </ResourceDictionary.MergedDictionaries>\r\n";
+  '<ResourceDictionary\r\n  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"\r\n  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"\r\n  xmlns:p="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"\r\n>\r\n  <ResourceDictionary.MergedDictionaries>\r\n    <ResourceDictionary Source="Colors.xaml" />\r\n  </ResourceDictionary.MergedDictionaries>\r\n';
 const resDictGlobalStartTag =
-  "<ResourceDictionary\r\n  xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\r\n  xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"\r\n  xmlns:system=\"clr-namespace:System;assembly=mscorlib\"\r\n>";
+  '<ResourceDictionary\r\n  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"\r\n  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"\r\n  xmlns:system="clr-namespace:System;assembly=mscorlib"\r\n>';
 const resDictEndTag = "</ResourceDictionary>";
 
 const getXamlColorTokens = (
@@ -86,9 +86,7 @@ const getXamlBorderRadiusTokens = (
 };
 
 const getXamlFileHeader = () =>
-  `<!--\r\n  Do not edit directly\r\n  Generated on ${
-    new Date().toUTCString()
-  }\r\n-->`;
+  `<!--\r\n  Do not edit directly\r\n  Generated on ${new Date().toUTCString()}\r\n-->`;
 
 StyleDictionaryPackage.registerFormat({
   name: "xaml/fluentui/color",
@@ -122,41 +120,36 @@ StyleDictionaryPackage.registerFormat({
 export const getXamlPlatform: (theme: string) => Platform = (theme) => ({
   transforms: ["attribute/cti", "name/cti/pascal"],
   buildPath: "tokens/generated/xaml/",
-  files: theme === "global"
-    ? [
-      {
-        format: "xaml/fluentui/global",
-        destination: "ConstantResources.xaml",
-      },
-    ]
-    : [
-      {
-        format: "xaml/fluentui/color",
-        destination: `${theme}.Colors.xaml`,
-        options: {
-          prefix: `${theme[0].toUpperCase()}${
-            theme
+  files:
+    theme === "global"
+      ? [
+          {
+            format: "xaml/fluentui/global",
+            destination: "ConstantResources.xaml",
+          },
+        ]
+      : [
+          {
+            format: "xaml/fluentui/color",
+            destination: `${theme}.Colors.xaml`,
+            options: {
+              prefix: `${theme[0].toUpperCase()}${theme
+                .substring(1)
+                .toLowerCase()}.`,
+            },
+          },
+          {
+            format: "xaml/fluentui/brush",
+            destination: `${theme[0].toUpperCase()}${theme
               .substring(1)
-              .toLowerCase()
-          }.`,
-        },
-      },
-      {
-        format: "xaml/fluentui/brush",
-        destination: `${theme[0].toUpperCase()}${
-          theme
-            .substring(1)
-            .toLowerCase()
-        }.xaml`,
-        options: {
-          prefix: `${theme[0].toUpperCase()}${
-            theme
-              .substring(1)
-              .toLowerCase()
-          }.`,
-        },
-      },
-    ],
+              .toLowerCase()}.xaml`,
+            options: {
+              prefix: `${theme[0].toUpperCase()}${theme
+                .substring(1)
+                .toLowerCase()}.`,
+            },
+          },
+        ],
 });
 
 const concatFiles = (

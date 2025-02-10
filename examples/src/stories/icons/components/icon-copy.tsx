@@ -8,8 +8,9 @@ type TIconCopy = {
 };
 
 export function IIconCopy({ toolTip, toCopy }: TIconCopy) {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const copyCode = useCallback(async () => {
-    toCopy && await copyToClipboard(`<${toCopy}/>`);
+    toCopy && (await copyToClipboard(`<${toCopy}/>`));
   }, []);
 
   return (
@@ -18,8 +19,7 @@ export function IIconCopy({ toolTip, toCopy }: TIconCopy) {
         appearance="transparent"
         onClick={copyCode}
         icon={<RectangleLandscapeHintCopyRegular />}
-      >
-      </Button>
+      ></Button>
     </Tooltip>
   );
 }

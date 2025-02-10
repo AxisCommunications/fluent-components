@@ -38,7 +38,7 @@ export function release(increment: string) {
   const to = sha("HEAD");
 
   const changelog = changeset({
-    date: (new Date()).toISOString(),
+    date: new Date().toISOString(),
     name: nextVersion,
     range: `${from}..${to}`,
     url: repository.url,

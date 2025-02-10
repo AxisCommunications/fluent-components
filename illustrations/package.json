@@ -19,16 +19,14 @@
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "prebuild": "pnpm run -C ../theme build",
     "build": "pnpm prebuild && pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
-    "lint": "tsc --noEmit && eslint . --cache",
+    "lint": "tsc --noEmit && biome check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch",
@@ -48,7 +46,6 @@
     "@types/react": "^18.3.12",
     "@types/yargs": "17.0.32",
     "@vitest/coverage-c8": "^0.33.0",
-    "eslint": "^8.57.1",
     "jsdom": "^26.0.0",
     "lodash": "4.17.21",
     "react": "^18.2.0",
