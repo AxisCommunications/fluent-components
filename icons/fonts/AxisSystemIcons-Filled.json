@@ -453,5 +453,7 @@
     "ic_axis_specification_compiler_24_filled": "0xf2c4",
     "ic_axis_specification_compiler_28_filled": "0xf2c5",
     "ic_axis_specification_compiler_32_filled": "0xf2c6",
-    "ic_axis_specification_compiler_48_filled": "0xf2c7"
+    "ic_axis_specification_compiler_48_filled": "0xf2c7",
+    "ic_axis_auto_roll_20_filled": "0xf2c8",
+    "ic_axis_auto_roll_24_filled": "0xf2c9"
 }
