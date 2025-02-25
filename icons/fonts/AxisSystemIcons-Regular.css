@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Regular";
-    src: url("./AxisSystemIcons-Regular.ttf?678e81d4e13a1804e841b185adad1011") format("truetype");
+    src: url("./AxisSystemIcons-Regular.ttf?ab1a5c9d3942616bf7ea6ae3944a5942") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -1429,4 +1429,10 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_auto_roll_24_regular:before {
     content: "\f2d8";
+}
+.icon-ic_axis_air_quality_monitoring_20_regular:before {
+    content: "\f2d9";
+}
+.icon-ic_axis_air_quality_monitoring_24_regular:before {
+    content: "\f2da";
 }

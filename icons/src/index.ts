@@ -7,6 +7,8 @@ export {
   AddRegular,
   AdmWrenchFilled,
   AdmWrenchRegular,
+  AirQualityMonitoringFilled,
+  AirQualityMonitoringRegular,
   AlfMultipleFilled,
   AlfMultipleRegular,
   AnalyticsFilled,
@@ -266,6 +268,10 @@ export {
   AdmWrench28Regular,
   AdmWrench32Filled,
   AdmWrench32Regular,
+  AirQualityMonitoring20Filled,
+  AirQualityMonitoring20Regular,
+  AirQualityMonitoring24Filled,
+  AirQualityMonitoring24Regular,
   AlfMultiple16Filled,
   AlfMultiple16Regular,
   AlfMultiple20Filled,
@@ -732,12 +738,12 @@ export {
   ImageHealthAnalythics24Regular,
   ImageHealthAnalythics28Filled,
   ImageHealthAnalythics28Regular,
+} from "./sizedIcons/chunk-0";
+export {
   ImageHealthAnalythics32Filled,
   ImageHealthAnalythics32Regular,
   ImageHealthAnalythics48Filled,
   ImageHealthAnalythics48Regular,
-} from "./sizedIcons/chunk-0";
-export {
   ImageHealthAnalytics20Filled,
   ImageHealthAnalytics20Regular,
   ImageHealthAnalytics24Filled,
