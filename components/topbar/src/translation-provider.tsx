@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useCallback } from "react";
-import { isSupportedLocale, SupportedLocale } from "./languages";
+import { SupportedLocale, isSupportedLocale } from "./languages";
 import { TranslationContext, Translations } from "./translation-context";
 import { languageName, translations } from "./translations";
 

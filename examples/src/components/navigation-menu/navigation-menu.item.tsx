@@ -1,7 +1,7 @@
 import {
-  makeStyles,
   MenuItem,
   MenuItemProps,
+  makeStyles,
   mergeClasses,
   tokens,
 } from "@fluentui/react-components";
@@ -14,12 +14,10 @@ export const navigationMenuItemClassNames = {
 
 const useStyles = makeStyles({
   root: {
-    backgroundImage:
-      `linear-gradient(90deg,${tokens.colorNeutralBackground1}0%,${tokens.colorNeutralBackground3}95%)`,
+    backgroundImage: `linear-gradient(90deg,${tokens.colorNeutralBackground1}0%,${tokens.colorNeutralBackground3}95%)`,
   },
   selected: {
-    backgroundImage:
-      `linear-gradient(90deg,${tokens.colorNeutralBackground1}100%,${tokens.colorNeutralBackground3}0%)`,
+    backgroundImage: `linear-gradient(90deg,${tokens.colorNeutralBackground1}100%,${tokens.colorNeutralBackground3}0%)`,
   },
 });
 
@@ -27,9 +25,9 @@ type TUseNavigationMenuItemStyles = {
   selected: boolean;
 };
 
-export function useNavigationMenuItemStyles(
-  { selected }: TUseNavigationMenuItemStyles
-) {
+export function useNavigationMenuItemStyles({
+  selected,
+}: TUseNavigationMenuItemStyles) {
   const styles = useStyles();
   const rootStyle = mergeClasses(
     navigationMenuItemClassNames.root,
@@ -43,9 +41,11 @@ type TNavigationMenuItem = {
   selected: boolean;
 } & MenuItemProps;
 
-export function NavigationMenuItem(
-  { children, selected, ...rest }: TNavigationMenuItem
-) {
+export function NavigationMenuItem({
+  children,
+  selected,
+  ...rest
+}: TNavigationMenuItem) {
   const { rootStyle } = useNavigationMenuItemStyles({ selected });
 
   return (

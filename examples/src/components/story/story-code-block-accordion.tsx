@@ -25,13 +25,15 @@ const useStyles = makeStyles({
   },
 });
 
-export const StoryCodeBlockAccordion = (
-  { codeString, title = "Show code", defaultOpen = false }: {
-    codeString: string;
-    defaultOpen?: boolean;
-    title?: string;
-  }
-) => {
+export const StoryCodeBlockAccordion = ({
+  codeString,
+  title = "Show code",
+  defaultOpen = false,
+}: {
+  codeString: string;
+  defaultOpen?: boolean;
+  title?: string;
+}) => {
   const styles = useStyles();
 
   return (
@@ -46,9 +48,7 @@ export const StoryCodeBlockAccordion = (
           className={styles.copyBootstrap}
           codeString={codeString}
         />
-        <AccordionHeader>
-          {title}
-        </AccordionHeader>
+        <AccordionHeader>{title}</AccordionHeader>
         <AccordionPanel>
           <StoryCodeBlock codeString={codeString} canCopy={false} />
         </AccordionPanel>

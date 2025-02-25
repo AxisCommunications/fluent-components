@@ -223,9 +223,10 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
   const offset = hasSectionLabelsAndColors
     ? undefined
     : {
-      [offsetDirection]: `${trackOffset}%`,
-    };
+        [offsetDirection]: `${trackOffset}%`,
+      };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const sectionStyles = useMemo(() => {
     /** trackColorGradient */
     let tcg;
@@ -234,9 +235,8 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     if (hasSectionLabelsAndColors) {
       const { min, max } = state;
       const rangeStart = values[0];
-      const rangeEnd = values.length > 1
-        ? values[values.length - 1]
-        : undefined;
+      const rangeEnd =
+        values.length > 1 ? values[values.length - 1] : undefined;
 
       const trackStart = rangeEnd === undefined ? min : rangeStart;
       const trackEnd = rangeEnd === undefined ? rangeStart : rangeEnd;
@@ -265,16 +265,16 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
 
         // middle full
         if (
-          (sl.edges.from ?? max) >= trackStart
-          && (sl.edges.to ?? max) <= trackEnd
+          (sl.edges.from ?? max) >= trackStart &&
+          (sl.edges.to ?? max) <= trackEnd
         ) {
           tcg += `${color} ${toPercent(sl.edges.from, min, max)}%, `;
           tcg += `${color} ${toPercent(sl.edges.to, min, max)}%, `;
         }
         // middle inside
         if (
-          (sl.edges.from ?? max) <= trackStart
-          && (sl.edges.to ?? max) >= trackEnd
+          (sl.edges.from ?? max) <= trackStart &&
+          (sl.edges.to ?? max) >= trackEnd
         ) {
           tcg += `${color} ${toPercent(trackStart, min, max)}%, `;
           tcg += `${color} ${toPercent(trackEnd, min, max)}%, `;

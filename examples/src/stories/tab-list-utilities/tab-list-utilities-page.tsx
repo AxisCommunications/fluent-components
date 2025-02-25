@@ -29,14 +29,15 @@ const examples: pageData[] = [
 
 export const FluentUiTabStylesPage = () => {
   const gh = getGhInfoByKey(routes.TabListUtilities);
-  const { renderSections, renderNavigation } = useExampleWithNavigation(
-    examples
-  );
+  const { renderSections, renderNavigation } =
+    useExampleWithNavigation(examples);
 
   return (
     <StoryPage
       title="Tablist"
-      description={"Style utilities that can be used with fluent´s tablist component"}
+      description={
+        "Style utilities that can be used with fluent´s tablist component"
+      }
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       navigation={renderNavigation}

@@ -11,19 +11,19 @@ import {
 
 import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 
+import { Illustration } from "./constants.js";
 import { useContainerStyle, useStyles } from "./styles.js";
 import {
   ContentProps,
   EmptyViewProps,
   HtmlDivAttributesRestProps,
 } from "./types.js";
-import { Illustration } from "./constants.js";
 
-function ContainerSpacious(
-  { children, className, ...rest }: PropsWithChildren<
-    HtmlDivAttributesRestProps
-  >
-) {
+function ContainerSpacious({
+  children,
+  className,
+  ...rest
+}: PropsWithChildren<HtmlDivAttributesRestProps>) {
   const styles = useStyles();
   const containerStyle = useContainerStyle({ className });
 
@@ -37,11 +37,11 @@ function ContainerSpacious(
   );
 }
 
-function ContainerCompact(
-  { children, className, ...rest }: PropsWithChildren<
-    HtmlDivAttributesRestProps
-  >
-) {
+function ContainerCompact({
+  children,
+  className,
+  ...rest
+}: PropsWithChildren<HtmlDivAttributesRestProps>) {
   const styles = useStyles();
   const containerStyle = useContainerStyle({ className });
 
@@ -54,11 +54,11 @@ function ContainerCompact(
   );
 }
 
-function ContainerTop(
-  { children, className, ...rest }: PropsWithChildren<
-    HtmlDivAttributesRestProps
-  >
-) {
+function ContainerTop({
+  children,
+  className,
+  ...rest
+}: PropsWithChildren<HtmlDivAttributesRestProps>) {
   const styles = useStyles();
   const containerStyle = useContainerStyle({ className });
 
@@ -106,9 +106,10 @@ function ContentSmall({ body, illustration, title }: ContentProps) {
   );
 }
 
-function ContentExtraSmall(
-  { title, body }: Omit<ContentProps, "illustration">
-) {
+function ContentExtraSmall({
+  title,
+  body,
+}: Omit<ContentProps, "illustration">) {
   const screenStyles = useStyles();
   return (
     <>
@@ -118,36 +119,42 @@ function ContentExtraSmall(
   );
 }
 
-export function MainEmptyView(
-  { after, illustration, title, children, ...rest }: EmptyViewProps
-) {
+export function MainEmptyView({
+  after,
+  illustration,
+  title,
+  children,
+  ...rest
+}: EmptyViewProps) {
   const screenStyles = useStyles();
   const media = useMediaQuery();
   return (
     <ContainerSpacious {...rest}>
-      {media === "small"
-        ? (
-          <ContentMedium
-            illustration={illustration}
-            title={title}
-            body={children}
-          />
-        )
-        : (
-          <ContentLarge
-            illustration={illustration}
-            title={title}
-            body={children}
-          />
-        )}
+      {media === "small" ? (
+        <ContentMedium
+          illustration={illustration}
+          title={title}
+          body={children}
+        />
+      ) : (
+        <ContentLarge
+          illustration={illustration}
+          title={title}
+          body={children}
+        />
+      )}
       <div className={screenStyles.after}>{after}</div>
     </ContainerSpacious>
   );
 }
 
-export function PanelEmptyView(
-  { after, illustration, title, children, ...rest }: EmptyViewProps
-) {
+export function PanelEmptyView({
+  after,
+  illustration,
+  title,
+  children,
+  ...rest
+}: EmptyViewProps) {
   const screenStyles = useStyles();
   return (
     <ContainerTop {...rest}>
@@ -161,9 +168,12 @@ export function PanelEmptyView(
   );
 }
 
-export function SubmenuEmptyView(
-  { illustration, title, children, ...rest }: Omit<EmptyViewProps, "after">
-) {
+export function SubmenuEmptyView({
+  illustration,
+  title,
+  children,
+  ...rest
+}: Omit<EmptyViewProps, "after">) {
   return (
     <ContainerTop {...rest}>
       <ContentSmall illustration={illustration} title={title} body={children} />
@@ -184,9 +194,12 @@ export function SubmenuEmptyView(
  * </DialogContent>
  * ```
  */
-export function DialogEmptyView(
-  { after, title, children, ...rest }: Omit<EmptyViewProps, "illustration">
-) {
+export function DialogEmptyView({
+  after,
+  title,
+  children,
+  ...rest
+}: Omit<EmptyViewProps, "illustration">) {
   const screenStyles = useStyles();
   return (
     <ContainerCompact {...rest}>

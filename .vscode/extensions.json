@@ -1,8 +1,7 @@
 {
   "recommendations": [
     "arcanis.vscode-zipfs",
-    "dbaeumer.vscode-eslint",
-    "dprint.dprint",
+    "biomejs.biome",
     "streetsidesoftware.code-spell-checker"
   ]
 }

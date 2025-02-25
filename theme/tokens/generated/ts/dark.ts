@@ -3,7 +3,11 @@
  * Generated on Thu, 08 Aug 2024 09:33:24 GMT
  */
 
-import { ColorTokens, ShadowTokens, ShadowBrandTokens } from "@fluentui/react-components";
+import {
+  ColorTokens,
+  ShadowTokens,
+  ShadowBrandTokens,
+} from "@fluentui/react-components";
 
 export const colorTokens: ColorTokens = {
   colorBackgroundOverlay: "rgba(0, 0, 0, 0.5)",

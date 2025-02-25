@@ -3,10 +3,9 @@ import React from "react";
 import { AxisIllustrationProps } from "./types";
 
 export const useIllustrationState = <
-  TBaseAttributes extends (
+  TBaseAttributes extends
     | React.ImgHTMLAttributes<HTMLImageElement>
-    | React.HTMLAttributes<HTMLElement>
-  ) = React.ImgHTMLAttributes<HTMLImageElement>,
+    | React.HTMLAttributes<HTMLElement> = React.ImgHTMLAttributes<HTMLImageElement>,
 >(
   props: AxisIllustrationProps<TBaseAttributes>
 ): Omit<AxisIllustrationProps<TBaseAttributes>, "primaryFill"> => {

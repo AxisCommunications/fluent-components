@@ -1,5 +1,5 @@
-import React from "react";
 import { PanelEmptyView } from "@axiscommunications/fluent-empty-view";
+import React from "react";
 
 export function PanelEmptyViewExample() {
   return (

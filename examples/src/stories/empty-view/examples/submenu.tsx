@@ -1,5 +1,5 @@
-import React from "react";
 import { SubmenuEmptyView } from "@axiscommunications/fluent-empty-view";
+import React from "react";
 
 export function SubmenuEmptyViewExample() {
   return (

@@ -1,7 +1,7 @@
 import {
+  Title2,
   makeStyles,
   shorthands,
-  Title2,
   tokens,
 } from "@fluentui/react-components";
 import {
@@ -14,7 +14,7 @@ import {
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { TestId } from "../../system-test/util/test-id";
-import { getRouteByCategory, RouteCategory } from "../routing/route-map";
+import { RouteCategory, getRouteByCategory } from "../routing/route-map";
 import { routes } from "../routing/routes";
 import { WelcomeCard } from "./welcome-card";
 import { WelcomeImage } from "./welcome-image/welcome-image.component";
@@ -61,7 +61,9 @@ export const WelcomePage = () => {
   return (
     <div data-testid={TestId.welcomePage} className={styles.root}>
       <div className={styles.content}>
-        <Title2 block wrap>Welcome to Axis Fluent Components</Title2>
+        <Title2 block wrap>
+          Welcome to Axis Fluent Components
+        </Title2>
         <div className={styles.cardContainer}>
           <WelcomeCard
             icon={<PuzzlePieceRegular fontSize={tokens.fontSizeBase600} />}
@@ -106,42 +108,27 @@ export const WelcomePage = () => {
 function useWelcomePage() {
   const navigate = useNavigate();
 
-  const navigateToFirstComponent = useCallback(
-    () => {
-      const [firstComponent] = getRouteByCategory(RouteCategory.COMPONENT)[0];
-      navigate(firstComponent);
-    },
-    [navigate]
-  );
+  const navigateToFirstComponent = useCallback(() => {
+    const [firstComponent] = getRouteByCategory(RouteCategory.COMPONENT)[0];
+    navigate(firstComponent);
+  }, [navigate]);
 
-  const navigateToFirstStyle = useCallback(
-    () => {
-      const [firstComponent] = getRouteByCategory(RouteCategory.STYLE)[0];
-      navigate(firstComponent);
-    },
-    [navigate]
-  );
+  const navigateToFirstStyle = useCallback(() => {
+    const [firstComponent] = getRouteByCategory(RouteCategory.STYLE)[0];
+    navigate(firstComponent);
+  }, [navigate]);
 
-  const navigateToIcon = useCallback(
-    () => {
-      navigate(routes.IconCatalog);
-    },
-    [navigate]
-  );
+  const navigateToIcon = useCallback(() => {
+    navigate(routes.IconCatalog);
+  }, [navigate]);
 
-  const navigateToIllustration = useCallback(
-    () => {
-      navigate(routes.Illustrations);
-    },
-    [navigate]
-  );
+  const navigateToIllustration = useCallback(() => {
+    navigate(routes.Illustrations);
+  }, [navigate]);
 
-  const navigateToTheme = useCallback(
-    () => {
-      navigate(routes.Theme);
-    },
-    [navigate]
-  );
+  const navigateToTheme = useCallback(() => {
+    navigate(routes.Theme);
+  }, [navigate]);
 
   return {
     navigateToFirstComponent,

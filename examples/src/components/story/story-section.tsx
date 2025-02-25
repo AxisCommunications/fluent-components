@@ -40,21 +40,20 @@ export type TStorySection = {
   description?: string;
 } & JSX.IntrinsicElements["div"];
 
-export function StorySection(
-  { title, description, children, ...rest }: PropsWithChildren<TStorySection>
-) {
+export function StorySection({
+  title,
+  description,
+  children,
+  ...rest
+}: PropsWithChildren<TStorySection>) {
   const { styles, rootStyle } = useStorySectionStyles();
 
   return (
     <div data-testid={componentId} className={rootStyle} {...rest}>
       {title && (
-        <StorySectionHeader title={title}>
-          {description}
-        </StorySectionHeader>
+        <StorySectionHeader title={title}>{description}</StorySectionHeader>
       )}
-      <div className={styles.body}>
-        {children}
-      </div>
+      <div className={styles.body}>{children}</div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import React from "react";
 import { getNativeElementProps } from "@fluentui/react-utilities";
+import React from "react";
 import type { StepProps, StepState } from "./step.types";
 
 export const useStep_unstable = (

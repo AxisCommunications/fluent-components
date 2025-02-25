@@ -1,8 +1,8 @@
 import {
+  Theme,
   makeStyles,
   mergeClasses,
   shorthands,
-  Theme,
   tokens,
 } from "@fluentui/react-components";
 import React from "react";
@@ -50,37 +50,30 @@ type TColorTokens = {
 export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
   const { light, dark } = theme;
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   const tokens = Object.entries(light)
     .filter(([token]) => token.startsWith("color"))
     .filter(([token]) => token.toLowerCase().includes(filter.toLowerCase()))
     .map(([token, value]) => ({
       token,
       lightValue: value as string,
-      darkValue: (dark as unknown as Record<string, string>)[
-        token
-      ],
+      darkValue: (dark as unknown as Record<string, string>)[token],
     }));
 
-  const customColorTokens = Object.entries(light).filter(([token]) =>
-    token.startsWith("axisCustomColor")
-  ).map(([token, value]) => ({
-    token,
-    lightValue: value as string,
-    darkValue: (dark as unknown as Record<string, string>)[
-      token
-    ],
-  }));
+  const customColorTokens = Object.entries(light)
+    .filter(([token]) => token.startsWith("axisCustomColor"))
+    .map(([token, value]) => ({
+      token,
+      lightValue: value as string,
+      darkValue: (dark as unknown as Record<string, string>)[token],
+    }));
 
-  const customUtilityTokens = Object.entries(light).filter(([token]) =>
-    token.startsWith("axisCustomUtility")
-  ).map(([token, value]) => ({
-    token,
-    lightValue: value as string,
-    darkValue: (dark as unknown as Record<string, string>)[
-      token
-    ],
-  }));
+  const customUtilityTokens = Object.entries(light)
+    .filter(([token]) => token.startsWith("axisCustomUtility"))
+    .map(([token, value]) => ({
+      token,
+      lightValue: value as string,
+      darkValue: (dark as unknown as Record<string, string>)[token],
+    }));
 
   const { rootStyle } = useColorTokensStyles();
 
@@ -89,26 +82,22 @@ export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
       <Header title="custom color token" />
       <div data-testid={componentId} className={rootStyle} {...rest}>
         {customColorTokens.map((args, i) => (
-          <ColorPalette
-            key={i}
-            {...args}
-          />
+          <ColorPalette key={i} {...args} />
         ))}
       </div>
 
       <Header title="custom utility token" />
       <div data-testid={componentId} className={rootStyle} {...rest}>
         {customUtilityTokens.map((args, i) => (
-          <ColorPalette
-            key={i}
-            {...args}
-          />
+          <ColorPalette key={i} {...args} />
         ))}
       </div>
 
       <Header title="token" />
       <div data-testid={componentId} className={rootStyle} {...rest}>
-        {tokens.map((args, i) => <ColorPalette key={i} {...args} />)}
+        {tokens.map((args, i) => (
+          <ColorPalette key={i} {...args} />
+        ))}
       </div>
     </>
   );

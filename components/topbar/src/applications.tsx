@@ -5,7 +5,6 @@ import {
   BoxMultipleRegular,
   BuildingBankFilled,
   BuildingBankRegular,
-  bundleIcon,
   HeartPulseFilled,
   HeartPulseRegular,
   HomeMoreFilled,
@@ -14,6 +13,7 @@ import {
   PeopleRegular,
   VideoClipMultipleFilled,
   VideoClipMultipleRegular,
+  bundleIcon,
 } from "@fluentui/react-icons";
 import { TranslationKey } from "./translation-context";
 

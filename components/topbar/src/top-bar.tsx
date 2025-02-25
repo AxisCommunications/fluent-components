@@ -1,12 +1,12 @@
 import { Divider, mergeClasses } from "@fluentui/react-components";
 import React, { ForwardedRef, forwardRef } from "react";
+import { ApplicationDrawer } from "./application-drawer";
 import { ApplicationMenu } from "./application-menu";
 import { OrganizationMenu } from "./organization-menu";
 import { ProfileMenu } from "./profile-menu";
 import { topBarClassNames, useTopBarStyles } from "./top-bar.styles";
 import { TopBarProps } from "./top-bar.types";
 import { TranslationProvider } from "./translation-provider";
-import { ApplicationDrawer } from "./application-drawer";
 
 export const TopBar = forwardRef(
   (props: TopBarProps, ref: ForwardedRef<HTMLDivElement>) => {

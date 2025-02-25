@@ -39,11 +39,9 @@ StyleDictionaryPackage.registerTransform({
           spread: string;
           color: string;
         }) =>
-          `${
-            [v.x, v.y, v.blur, v.spread]
-              .map((pv) => toPixelValue(pv))
-              .join(" ")
-          } ${v.color}`
+          `${[v.x, v.y, v.blur, v.spread]
+            .map((pv) => toPixelValue(pv))
+            .join(" ")} ${v.color}`
       )
       .join(", "),
 });

@@ -14,6 +14,5 @@ export type StepSymbolProps = Partial<ComponentProps<StepSymbolSlots>> & {
   step: number;
 };
 
-export type StepSymbolState =
-  & ComponentState<StepSymbolSlots>
-  & Required<Pick<StepSymbolProps, "currentStep" | "step">>;
+export type StepSymbolState = ComponentState<StepSymbolSlots> &
+  Required<Pick<StepSymbolProps, "currentStep" | "step">>;

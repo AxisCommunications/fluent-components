@@ -1,16 +1,4 @@
-import React from "react";
-import { WelcomePage } from "../landingpage";
-import { IllustrationPage } from "../stories/illustrations/illustration-page";
-import { MainMenuPage } from "../stories/main-menu/main-menu-page";
-import { PasswordInputPage } from "../stories/password-input/password-input-page";
-import { SliderPage } from "../stories/slider/slider-page";
-import { StepperPage } from "../stories/stepper/stepper-page";
-import { FluentUiTabStylesPage } from "../stories/tab-list-utilities/tab-list-utilities-page";
-import { ThemePage } from "../stories/theme/theme-page";
-import { routes, TRoute } from "./routes";
-import { IconPage } from "../stories/icons/icon-page";
-import { TableUtilitiesPage } from "../stories/table-utilities/table-utlities-page";
-import { EmptyViewPage } from "../stories/empty-view/page";
+import { TRoute, routes } from "./routes";
 
 export enum RouteGroup {
   MISC,
@@ -25,7 +13,6 @@ export enum RouteCategory {
 
 type TRouteData = {
   label: string;
-  element: JSX.Element;
   group: RouteGroup;
   category?: RouteCategory;
   ghInfo?: {
@@ -39,12 +26,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.mainMenu,
     {
       label: "Main menu",
-      element: <MainMenuPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.STYLE,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
         packageName: "@axiscommunications/fluent-styles",
       },
     },
@@ -53,7 +38,6 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.Home,
     {
       label: "Home",
-      element: <WelcomePage />,
       group: RouteGroup.MISC,
     },
   ],
@@ -61,12 +45,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.Theme,
     {
       label: "Themes",
-      element: <ThemePage />,
       group: RouteGroup.STORY,
       category: RouteCategory.MISC,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-theme",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-theme",
         packageName: "@axiscommunications/fluent-theme",
       },
     },
@@ -75,12 +57,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.IconCatalog,
     {
       label: "Icons",
-      element: <IconPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.MISC,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-icons",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-icons",
         packageName: "@axiscommunications/fluent-icons",
       },
     },
@@ -89,12 +69,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.Stepper,
     {
       label: "Stepper",
-      element: <StepperPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.COMPONENT,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-stepper",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-stepper",
         packageName: "@axiscommunications/fluent-stepper",
       },
     },
@@ -103,12 +81,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.Slider,
     {
       label: "Slider",
-      element: <SliderPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.COMPONENT,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-slider",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-slider",
         packageName: "@axiscommunications/fluent-slider",
       },
     },
@@ -117,12 +93,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.PasswordInput,
     {
       label: "Password input",
-      element: <PasswordInputPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.COMPONENT,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-password-input",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-password-input",
         packageName: "@axiscommunications/fluent-password-input",
       },
     },
@@ -131,12 +105,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.EmptyView,
     {
       label: "Empty view",
-      element: <EmptyViewPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.COMPONENT,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-empty-view",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-empty-view",
         packageName: "@axiscommunications/fluent-empty-view",
       },
     },
@@ -145,12 +117,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.TableUtilities,
     {
       label: "Table",
-      element: <TableUtilitiesPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.STYLE,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
         packageName: "@axiscommunications/fluent-styles",
       },
     },
@@ -159,12 +129,10 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.TabListUtilities,
     {
       label: "Tablist",
-      element: <FluentUiTabStylesPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.STYLE,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-styles",
         packageName: "@axiscommunications/fluent-styles",
       },
     },
@@ -173,21 +141,20 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     routes.Illustrations,
     {
       label: "Illustrations",
-      element: <IllustrationPage />,
       group: RouteGroup.STORY,
       category: RouteCategory.MISC,
       ghInfo: {
-        url:
-          "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-illustrations",
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-illustrations",
         packageName: "@axiscommunications/fluent-illustrations",
       },
     },
   ],
 ]);
 
-export function getGhInfoByKey(
-  routeKey: TRoute
-): { url: string; packageName: string } {
+export function getGhInfoByKey(routeKey: TRoute): {
+  url: string;
+  packageName: string;
+} {
   const routeData = routeMap.get(routeKey);
 
   if (routeData?.ghInfo) {

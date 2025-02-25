@@ -26,10 +26,8 @@ export type SectionProps = ComponentProps<SectionSlots> & {
   trackColor?: string;
 };
 
-export type SectionState =
-  & ComponentState<SectionSlots>
-  & {
-    offset: number;
-    disabled: boolean;
-    active: boolean;
-  };
+export type SectionState = ComponentState<SectionSlots> & {
+  offset: number;
+  disabled: boolean;
+  active: boolean;
+};

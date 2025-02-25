@@ -1,3 +1,4 @@
+import { axisCustomTokens } from "@axiscommunications/fluent-theme";
 import {
   makeStyles,
   shorthands,
@@ -8,7 +9,6 @@ import {
   iconFilledClassName,
   iconRegularClassName,
 } from "@fluentui/react-icons";
-import { axisCustomTokens } from "@axiscommunications/fluent-theme";
 
 export const useApplicationStyles = makeStyles({
   headerLabel: {

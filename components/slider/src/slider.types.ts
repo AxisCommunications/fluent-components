@@ -5,10 +5,10 @@ import {
 } from "@fluentui/react-utilities";
 
 import { SliderContextValue } from "./context/slider-context";
-import { MarkDef, MarkProps } from "./mark/mark.types";
-import { ThumbProps } from "./thumb/thumb.types";
 import { MarkLabelProps } from "./mark/label/mark-label.types";
+import { MarkDef, MarkProps } from "./mark/mark.types";
 import { SectionDef, SectionProps } from "./section/section.types";
+import { ThumbProps } from "./thumb/thumb.types";
 
 export type SliderContextValues = {
   slider: SliderContextValue;
@@ -33,42 +33,36 @@ export type RangeSliderOnChangeData = {
   value: number[];
 };
 
-export type RangeSliderProps =
-  & Omit<
-    Partial<ComponentProps<SliderSlots>>,
-    "value" | "defaultValue" | "onChange" | "control"
-  >
-  & {
-    disabled?: boolean;
-    marks?: boolean | MarkDef[];
-    sectionLabels?: SectionDef[];
-    step?: number | "marks";
-    size?: "small" | "medium";
-    min: number;
-    max: number;
-    value?: number[];
-    defaultValue?: number[];
-    onChange?: (data: RangeSliderOnChangeData) => void;
-    onChangeCommitted?: (data: RangeSliderOnChangeData) => void;
-    valueLabelTransform?: (value: number) => number | string;
-  };
+export type RangeSliderProps = Omit<
+  Partial<ComponentProps<SliderSlots>>,
+  "value" | "defaultValue" | "onChange" | "control"
+> & {
+  disabled?: boolean;
+  marks?: boolean | MarkDef[];
+  sectionLabels?: SectionDef[];
+  step?: number | "marks";
+  size?: "small" | "medium";
+  min: number;
+  max: number;
+  value?: number[];
+  defaultValue?: number[];
+  onChange?: (data: RangeSliderOnChangeData) => void;
+  onChangeCommitted?: (data: RangeSliderOnChangeData) => void;
+  valueLabelTransform?: (value: number) => number | string;
+};
 
-export type SliderProps =
-  & Omit<
-    RangeSliderProps,
-    "value" | "defaultValue" | "onChange" | "onChangeCommitted"
-  >
-  & {
-    value?: number;
-    defaultValue?: number;
-    onChange?: (data: SliderOnChangeData) => void;
-    onChangeCommitted?: (data: SliderOnChangeData) => void;
-  };
+export type SliderProps = Omit<
+  RangeSliderProps,
+  "value" | "defaultValue" | "onChange" | "onChangeCommitted"
+> & {
+  value?: number;
+  defaultValue?: number;
+  onChange?: (data: SliderOnChangeData) => void;
+  onChangeCommitted?: (data: SliderOnChangeData) => void;
+};
 
-export type SliderState =
-  & ComponentState<SliderSlots>
-  & Required<Pick<RangeSliderProps, "disabled" | "min" | "max" | "size">>
-  & {
+export type SliderState = ComponentState<SliderSlots> &
+  Required<Pick<RangeSliderProps, "disabled" | "min" | "max" | "size">> & {
     values: number[];
     marks: MarkProps[];
     markLabels: MarkLabelProps[];

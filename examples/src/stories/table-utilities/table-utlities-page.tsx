@@ -19,14 +19,15 @@ const examples: pageData[] = [
 
 export const TableUtilitiesPage = () => {
   const gh = getGhInfoByKey(routes.TableUtilities);
-  const { renderSections, renderNavigation } = useExampleWithNavigation(
-    examples
-  );
+  const { renderSections, renderNavigation } =
+    useExampleWithNavigation(examples);
 
   return (
     <StoryPage
       title="Table"
-      description={"Style utilities that can be used with fluent´s table component"}
+      description={
+        "Style utilities that can be used with fluent´s table component"
+      }
       ghUrl={gh.url}
       ghPackage={gh.packageName}
       navigation={renderNavigation}

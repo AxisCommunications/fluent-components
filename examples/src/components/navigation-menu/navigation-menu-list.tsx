@@ -2,9 +2,9 @@ import { MenuList } from "@fluentui/react-components";
 import React, { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { NavigationMenuItem } from "./navigation-menu.item";
-import { getRouteByCategory, RouteCategory } from "../../routing/route-map";
+import { RouteCategory, getRouteByCategory } from "../../routing/route-map";
 import { TRoute } from "../../routing/routes";
+import { NavigationMenuItem } from "./navigation-menu.item";
 
 const componentId = "navigation-menu-list";
 export const navigationMenuListClassNames = {
@@ -27,6 +27,7 @@ export function NavigationMenuList({ category, ...rest }: TNavigationMenuList) {
     [navigate]
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const renderMenuItems = useMemo(
     () =>
       Array.from(routes.entries()).map((entry) => {

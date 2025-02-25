@@ -9,20 +9,20 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-  mergeClasses,
   Popover,
   PopoverSurface,
   PositioningImperativeRef,
   SearchBox,
   SearchBoxChangeEvent,
   Subtitle1,
+  mergeClasses,
 } from "@fluentui/react-components";
 
 import {
   BuildingMultipleFilled,
   BuildingMultipleRegular,
-  bundleIcon,
   DismissRegular,
+  bundleIcon,
 } from "@fluentui/react-icons";
 import React, {
   useCallback,
@@ -54,20 +54,20 @@ export const OrganizationMenu = ({
 
   const currentOrganization = options?.find(({ id }) => id === value);
   const checkedValues = { org: [value] };
-  const noDropDownContent = options?.length === 1 && !customContent
-    && currentOrganization;
+  const noDropDownContent =
+    options?.length === 1 && !customContent && currentOrganization;
   const onlyCustomContent = !options?.length && !!customContent;
 
   const filteredOptions = options
     ?.filter(
       (opt) =>
-        filterText.length === 0
-        || opt.label.toLowerCase().indexOf(filterText) >= 0
+        filterText.length === 0 ||
+        opt.label.toLowerCase().indexOf(filterText) >= 0
     )
     .sort(
       (a, b) =>
-        a.label.toLowerCase().indexOf(filterText)
-        - b.label.toLowerCase().indexOf(filterText)
+        a.label.toLowerCase().indexOf(filterText) -
+        b.label.toLowerCase().indexOf(filterText)
     );
 
   const onFilterChange = useCallback(
@@ -106,16 +106,19 @@ export const OrganizationMenu = ({
     }
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   useLayoutEffect(() => {
     window.addEventListener("resize", updateShowSearchStatusOnResize);
     return () =>
       window.removeEventListener("resize", updateShowSearchStatusOnResize);
   }, [filterText]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   useLayoutEffect(() => {
     updateShowSearchStatus();
   }, [menuListRef, menuOpen, options]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   useEffect(() => {
     if (filterText.length === 0) updateShowSearchStatus();
   }, [filterText]);
@@ -128,6 +131,7 @@ export const OrganizationMenu = ({
     setShowMenuTriggerPopover(!!popoverInfo);
   }, [popoverInfo]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   useEffect(() => {
     if (orgMenuRef.current) {
       popoverPositioningRef.current?.setTarget(orgMenuRef.current);
@@ -198,7 +202,6 @@ export const OrganizationMenu = ({
                       data-testid={`organization-menu-item-${id}`}
                       key={id}
                       name="org"
-                      // eslint-disable-next-line react/jsx-no-bind
                       onClick={() => onChange(id)}
                       value={id}
                     >

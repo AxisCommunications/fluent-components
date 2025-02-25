@@ -7,11 +7,11 @@ import {
 } from "@fluentui/react-components";
 import { EyeOffRegular, EyeRegular } from "@fluentui/react-icons";
 
-import { PasswordInputProps } from "./password-input.types.js";
 import { usePasswordInputStyles } from "./password-input.styles.js";
+import { PasswordInputProps } from "./password-input.types.js";
 
-export const PasswordInput: ForwardRefComponent<PasswordInputProps> = React
-  .forwardRef((props: PasswordInputProps, ref) => {
+export const PasswordInput: ForwardRefComponent<PasswordInputProps> =
+  React.forwardRef((props: PasswordInputProps, ref) => {
     const { className, ...rest } = props;
 
     const styles = usePasswordInputStyles();
@@ -32,9 +32,13 @@ export const PasswordInput: ForwardRefComponent<PasswordInputProps> = React
       <Input
         ref={ref}
         type={isVisible ? "text" : "password"}
-        contentAfter={isVisible
-          ? <EyeOffRegular {...iconProps} />
-          : <EyeRegular {...iconProps} />}
+        contentAfter={
+          isVisible ? (
+            <EyeOffRegular {...iconProps} />
+          ) : (
+            <EyeRegular {...iconProps} />
+          )
+        }
         className={inputStyles}
         {...rest}
       />

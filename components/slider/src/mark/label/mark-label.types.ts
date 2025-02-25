@@ -16,10 +16,8 @@ export type MarkLabelProps = ComponentProps<MarkLabelSlots> & {
   activeEqual?: boolean;
 };
 
-export type MarkLabelState =
-  & ComponentState<MarkLabelSlots>
-  & Required<Pick<MarkLabelProps, "value">>
-  & {
+export type MarkLabelState = ComponentState<MarkLabelSlots> &
+  Required<Pick<MarkLabelProps, "value">> & {
     offset: number;
     disabled: boolean;
     active: boolean;

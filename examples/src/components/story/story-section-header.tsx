@@ -2,8 +2,8 @@ import React, { PropsWithChildren } from "react";
 
 import {
   Caption2,
-  makeStyles,
   Subtitle2,
+  makeStyles,
   tokens,
 } from "@fluentui/react-components";
 
@@ -28,9 +28,7 @@ export const StorySectionHeader = ({
 }: PropsWithChildren<PageHeaderProps>) => {
   const styles = useStyles();
   return (
-    <div
-      className={styles.root}
-    >
+    <div className={styles.root}>
       <Subtitle2>
         {title}
         <span className={styles.point}>.</span>

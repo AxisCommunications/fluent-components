@@ -20,6 +20,10 @@ import {
   WithStepsRangeSliderExampleAsString,
 } from "./examples/range-slider-with-steps-example";
 import {
+  WithStepsAndMarksRangeSliderExample,
+  WithStepsAndMarksRangeSliderExampleAsString,
+} from "./examples/range-slider-with-streps-and-marks-example";
+import {
   RegularSliderExample,
   RegularSliderExampleAsString,
 } from "./examples/regular-example";
@@ -51,15 +55,15 @@ import {
   WithStepsSliderExample,
   WithStepsSliderExampleAsString,
 } from "./examples/with-steps-example";
-import {
-  WithStepsAndMarksRangeSliderExample,
-  WithStepsAndMarksRangeSliderExampleAsString,
-} from "./examples/range-slider-with-streps-and-marks-example";
 
 import {
   DualSectionSliderExample,
   DualSectionSliderExampleAsString,
 } from "./examples/dual-section-example";
+import {
+  RangeSliderWithSectionExample,
+  RangeSliderWithSectionExampleAsString,
+} from "./examples/range-slider-with-section-example";
 import {
   TripleSectionSliderExample,
   TripleSectionSliderExampleAsString,
@@ -68,10 +72,6 @@ import {
   TripleSectionSliderNoZeroStartExample,
   TripleSectionSliderNoZeroStartExampleAsString,
 } from "./examples/triple-section-no-zero-start-example";
-import {
-  RangeSliderWithSectionExample,
-  RangeSliderWithSectionExampleAsString,
-} from "./examples/range-slider-with-section-example";
 
 const useStyles = makeStyles({
   example: {

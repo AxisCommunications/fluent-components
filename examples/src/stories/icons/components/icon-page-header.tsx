@@ -1,9 +1,9 @@
 import {
   Input,
-  makeStyles,
   Radio,
   RadioGroup,
   RadioGroupOnChangeData,
+  makeStyles,
   shorthands,
   tokens,
 } from "@fluentui/react-components";
@@ -27,13 +27,11 @@ type TIconPageHeader = {
   ) => void;
 };
 
-export function IconPageHeader(
-  {
-    search,
-    onSearchQueryChanged,
-    filterByVariant,
-  }: TIconPageHeader
-) {
+export function IconPageHeader({
+  search,
+  onSearchQueryChanged,
+  filterByVariant,
+}: TIconPageHeader) {
   const styles = useStyles();
 
   return (

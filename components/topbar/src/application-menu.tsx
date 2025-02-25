@@ -6,15 +6,15 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-  mergeClasses,
   Text,
+  mergeClasses,
 } from "@fluentui/react-components";
 import React from "react";
 import { ApplicationMenuProps } from "./application-menu.types";
-import { useApplicationStyles } from "./application.styles";
-import { useTranslation } from "./translation-context";
-import { ApplicationArea } from "./top-bar.types";
 import { appIcon, appLabel } from "./application-utils";
+import { useApplicationStyles } from "./application.styles";
+import { ApplicationArea } from "./top-bar.types";
+import { useTranslation } from "./translation-context";
 
 export const ApplicationMenu = ({
   customContent,
@@ -49,16 +49,17 @@ export const ApplicationMenu = ({
           )}
         >
           {currentSelection
-            ? currentSelection.icon
-              ?? appIcon(currentSelection.id, applicationArea !== undefined)
+            ? (currentSelection.icon ??
+              appIcon(currentSelection.id, applicationArea !== undefined))
             : undefined}
         </div>
       </div>
       <Menu
         positioning={{
-          offset: applicationArea !== undefined
-            ? { mainAxis: 2, crossAxis: 36 }
-            : undefined,
+          offset:
+            applicationArea !== undefined
+              ? { mainAxis: 2, crossAxis: 36 }
+              : undefined,
         }}
       >
         <MenuTrigger>
@@ -73,9 +74,9 @@ export const ApplicationMenu = ({
           >
             <span className={styles.applicationLabel}>
               {currentSelection
-                ? currentSelection.label ?? appLabel(t, currentSelection.id)
-                // FIXME: use translateable placeholder
-                : ""}
+                ? (currentSelection.label ?? appLabel(t, currentSelection.id))
+                : // FIXME: use translateable placeholder
+                  ""}
             </span>
           </MenuButton>
         </MenuTrigger>
@@ -98,7 +99,6 @@ export const ApplicationMenu = ({
                   </div>
                 }
                 key={id}
-                // eslint-disable-next-line react/jsx-no-bind
                 onClick={() => {
                   if (currentSelection?.id !== id) {
                     onChange?.(id);

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
+import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 import { StoryPage } from "../../components/story/story-page";
 import { StorySection } from "../../components/story/story-section";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import { ColorTokens } from "./components/color-tokens";
 import { ThemePageHeader } from "./components/theme-page-header";
-import { axisThemes, TaxisThemes, themeMap } from "./theme-page.types";
-import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
+import { TaxisThemes, axisThemes, themeMap } from "./theme-page.types";
 
 export const ThemePage = () => {
   const gh = getGhInfoByKey(routes.Theme);
@@ -33,15 +33,9 @@ export const ThemePage = () => {
         />
       }
     >
-      <StorySection
-        title="colorTokens"
-        description="Axis branded colors"
-      >
+      <StorySection title="colorTokens" description="Axis branded colors">
         <StoryCodeBlockAccordion codeString={themeCodeAsString} />
-        <ColorTokens
-          filter={search}
-          theme={themeMap[selectedTab]}
-        />
+        <ColorTokens filter={search} theme={themeMap[selectedTab]} />
       </StorySection>
     </StoryPage>
   );

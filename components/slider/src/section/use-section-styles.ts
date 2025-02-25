@@ -48,8 +48,8 @@ export const useSectionStyles_unstable = (
   const colorStyles = disabled
     ? styles.disabled
     : active
-    ? styles.active
-    : styles.enabled;
+      ? styles.active
+      : styles.enabled;
 
   state.root.className = mergeClasses(
     sliderClassNames.section.label,

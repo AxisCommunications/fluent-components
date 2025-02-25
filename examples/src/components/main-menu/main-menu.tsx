@@ -10,13 +10,13 @@ import {
   useTabListContext_unstable,
 } from "@fluentui/react-components";
 import {
-  bundleIcon,
   CardUiFilled,
   CardUiRegular,
   HomeFilled,
   HomeRegular,
   SettingsFilled,
   SettingsRegular,
+  bundleIcon,
 } from "@fluentui/react-icons";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -71,5 +71,9 @@ type TMainMenuTab = TabProps;
 function MainMenuTab({ children, ...props }: TMainMenuTab) {
   const selected = useTabListContext_unstable((c) => c.selectedValue);
   const { rootStyle } = useMainMenuTabStyles(selected === props.value);
-  return <Tab className={rootStyle} {...props}>{children}</Tab>;
+  return (
+    <Tab className={rootStyle} {...props}>
+      {children}
+    </Tab>
+  );
 }

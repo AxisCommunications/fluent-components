@@ -31,7 +31,7 @@ const cli = command({
       description: "date of the changeset",
       long: "date",
       short: "d",
-      defaultValue: () => (new Date()).toISOString(),
+      defaultValue: () => new Date().toISOString(),
       type: string,
     }),
     outfile: option({
@@ -42,7 +42,7 @@ const cli = command({
     }),
     scope: option({
       description:
-        "Only include conventional commits that match \"...(<scope>): ...\"",
+        'Only include conventional commits that match "...(<scope>): ..."',
       long: "scope",
       short: "s",
       type: optional(string),

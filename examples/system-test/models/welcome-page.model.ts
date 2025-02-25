@@ -1,6 +1,6 @@
 import type { Locator, Page } from "@playwright/test";
-import { TestId } from "../util/test-id";
 import { getRootPath } from "../util/common";
+import { TestId } from "../util/test-id";
 
 export class WelcomePage {
   private readonly welcomePage: Locator;

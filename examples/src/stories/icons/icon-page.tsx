@@ -1,6 +1,7 @@
 import { AxisIconProps } from "@axiscommunications/fluent-icons";
 import { Caption1 } from "@fluentui/react-components";
 import React from "react";
+import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 import { StoryPage } from "../../components/story/story-page";
 import { StorySection } from "../../components/story/story-section";
 import { getGhInfoByKey } from "../../routing/route-map";
@@ -9,22 +10,15 @@ import { IIconCopy } from "./components/icon-copy";
 import { IconPageHeader } from "./components/icon-page-header";
 import { useIconPage } from "./icon-page.hooks";
 import { useStyles } from "./icon-page.styles";
-import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 
 export const IconPage = (): JSX.Element => {
   const gh = getGhInfoByKey(routes.IconCatalog);
-  const {
-    search,
-    onSearchQueryChanged,
-    filterByVariant,
-    filterIcons,
-  } = useIconPage();
+  const { search, onSearchQueryChanged, filterByVariant, filterIcons } =
+    useIconPage();
 
   const styles = useStyles();
 
-  const _renderIcon = (
-    Icon: React.FC<AxisIconProps>
-  ): JSX.Element => {
+  const _renderIcon = (Icon: React.FC<AxisIconProps>): JSX.Element => {
     return (
       <div
         key={Icon.displayName}
@@ -33,9 +27,7 @@ export const IconPage = (): JSX.Element => {
       >
         <Icon />
         <div className={styles.displayName}>
-          <Caption1 className={styles.text}>
-            {Icon.displayName}
-          </Caption1>
+          <Caption1 className={styles.text}>{Icon.displayName}</Caption1>
           <IIconCopy
             toolTip={"copy react component to clipboard"}
             toCopy={Icon.displayName}
@@ -61,9 +53,7 @@ export const IconPage = (): JSX.Element => {
     >
       <StorySection>
         <StoryCodeBlockAccordion codeString={iconCodeAsString} />
-        <div className={styles.root}>
-          {filterIcons.map(_renderIcon)}
-        </div>
+        <div className={styles.root}>{filterIcons.map(_renderIcon)}</div>
       </StorySection>
     </StoryPage>
   );

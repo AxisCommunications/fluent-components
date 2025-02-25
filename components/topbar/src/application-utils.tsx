@@ -1,22 +1,22 @@
+import { MySystems24Filled } from "@axiscommunications/fluent-icons";
+import { mergeClasses } from "@fluentui/react-components";
 import {
   BoxFilled,
   BoxRegular,
-  bundleIcon,
   Circle20Filled,
   DataBarVertical20Filled,
   HomeMore20Filled,
+  bundleIcon,
 } from "@fluentui/react-icons";
-import { defaultMySystemsAppData, isMySystemsAppId } from "./applications";
-import { TranslationFn } from "./translation-context";
 import React from "react";
-import { ApplicationArea } from "./top-bar.types";
-import { useApplicationStyles } from "./application.styles";
-import { mergeClasses } from "@fluentui/react-components";
-import { MySystems24Filled } from "@axiscommunications/fluent-icons";
 import {
   ApplicationDrawerContent,
   SingleApplicationDrawerContent,
 } from "./application-drawer.types";
+import { useApplicationStyles } from "./application.styles";
+import { defaultMySystemsAppData, isMySystemsAppId } from "./applications";
+import { ApplicationArea } from "./top-bar.types";
+import { TranslationFn } from "./translation-context";
 
 enum appAreas {
   MY_SYSTEMS = "mySystems",
@@ -55,13 +55,10 @@ export const ApplicationAreaFlaworedIcon = ({
   const applicationAreaStyle = mergeClasses(
     styles.applicationIconBase,
     styles.filledIcon,
-    applicationArea === appAreas.MY_SYSTEMS
-      && styles.mySystemsMenuRectangle,
+    applicationArea === appAreas.MY_SYSTEMS && styles.mySystemsMenuRectangle,
     applicationArea === appAreas.MY_AXIS && styles.myAxisMenuRectangle,
-    applicationArea === appAreas.MY_BUSINESS
-      && styles.myBusinessMenuRectangle,
-    applicationArea === appAreas.MY_PARTNERS
-      && styles.myPartnersMenuRectangle
+    applicationArea === appAreas.MY_BUSINESS && styles.myBusinessMenuRectangle,
+    applicationArea === appAreas.MY_PARTNERS && styles.myPartnersMenuRectangle
   );
 
   return <div className={applicationAreaStyle}>{icon}</div>;
@@ -76,13 +73,10 @@ export const ApplicationAreaIcon = ({
 
   const applicationAreaStyle = mergeClasses(
     styles.myApplicationAreaBase,
-    applicationArea === appAreas.MY_SYSTEMS
-      && styles.mySystemsMenuRectangle,
+    applicationArea === appAreas.MY_SYSTEMS && styles.mySystemsMenuRectangle,
     applicationArea === appAreas.MY_AXIS && styles.myAxisMenuRectangle,
-    applicationArea === appAreas.MY_BUSINESS
-      && styles.myBusinessMenuRectangle,
-    applicationArea === appAreas.MY_PARTNERS
-      && styles.myPartnersMenuRectangle
+    applicationArea === appAreas.MY_BUSINESS && styles.myBusinessMenuRectangle,
+    applicationArea === appAreas.MY_PARTNERS && styles.myPartnersMenuRectangle
   );
 
   const applicationAreaIcon = (applicationArea?: ApplicationArea) => {

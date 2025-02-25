@@ -5,12 +5,15 @@ import { makeStyles, mergeClasses } from "@griffel/react";
 
 const useBundledIconStyles = makeStyles({
   root: { display: "none" },
-  visible: { display: "inline" }
+  visible: { display: "inline" },
 });
 
-const bundleIcon = (FilledIcon: React.FC<AxisIconProps>, RegularIcon: React.FC<AxisIconProps>) => {
+const bundleIcon = (
+  FilledIcon: React.FC<AxisIconProps>,
+  RegularIcon: React.FC<AxisIconProps>
+) => {
   const Component: React.FC<AxisIconProps> = (props) => {
-    const { className, primaryFill = 'currentColor', filled, ...rest } = props;
+    const { className, primaryFill = "currentColor", filled, ...rest } = props;
     const styles = useBundledIconStyles();
     return (
       <React.Fragment>
@@ -35,10 +38,10 @@ const bundleIcon = (FilledIcon: React.FC<AxisIconProps>, RegularIcon: React.FC<A
           fill={primaryFill}
         />
       </React.Fragment>
-    )
-  }
+    );
+  };
   Component.displayName = "CompoundIcon";
   return Component;
-}
+};
 
 export default bundleIcon;

@@ -1,5 +1,5 @@
 import { ILLUSTRATION_DARK, ILLUSTRATION_LIGHT } from "../utils/constants";
-import { parseParamsGenerateSVG, TGenerateSVGConfig } from "../utils/params";
+import { TGenerateSVGConfig, parseParamsGenerateSVG } from "../utils/params";
 import { checkDirectory, clearDirectory, copyFiles } from "./file-processor";
 import { LOG_LEVEL, Logger } from "./logger";
 
@@ -26,8 +26,8 @@ function main({ from, to }: TGenerateSVGConfig) {
 
 function filter(file: string) {
   if (
-    file.endsWith(`${ILLUSTRATION_LIGHT}.svg`)
-    || file.endsWith(`${ILLUSTRATION_DARK}.svg`)
+    file.endsWith(`${ILLUSTRATION_LIGHT}.svg`) ||
+    file.endsWith(`${ILLUSTRATION_DARK}.svg`)
   ) {
     return true;
   }

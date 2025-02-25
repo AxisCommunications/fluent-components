@@ -1,5 +1,5 @@
-import { sliderClassNames } from "./use-slider-styles";
 import { vi } from "vitest";
+import { sliderClassNames } from "./use-slider-styles";
 
 export const getControlRoot = (sliderRoot: HTMLElement): HTMLElement => {
   const element = sliderRoot.querySelector(`.${sliderClassNames.control}`);

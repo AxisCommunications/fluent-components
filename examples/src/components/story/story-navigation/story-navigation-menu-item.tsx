@@ -1,7 +1,7 @@
 import {
   Button,
-  makeStyles,
   MenuButtonProps,
+  makeStyles,
   mergeClasses,
   tokens,
 } from "@fluentui/react-components";
@@ -14,15 +14,13 @@ export const navigationMenuItemClassNames = {
 
 const useStyles = makeStyles({
   root: {
-    backgroundImage:
-      `linear-gradient(90deg,${tokens.colorNeutralBackground3}0%,${tokens.colorNeutralBackground1}50%,${tokens.colorNeutralBackground3}100%)`,
+    backgroundImage: `linear-gradient(90deg,${tokens.colorNeutralBackground3}0%,${tokens.colorNeutralBackground1}50%,${tokens.colorNeutralBackground3}100%)`,
     ":hover": {
       backgroundColor: tokens.colorNeutralBackground2,
     },
   },
   selected: {
-    backgroundImage:
-      `linear-gradient(90deg,${tokens.colorNeutralBackground1}0%,${tokens.colorNeutralBackground1Selected}50%,${tokens.colorNeutralBackground1}100%)`,
+    backgroundImage: `linear-gradient(90deg,${tokens.colorNeutralBackground1}0%,${tokens.colorNeutralBackground1Selected}50%,${tokens.colorNeutralBackground1}100%)`,
   },
 });
 
@@ -30,9 +28,9 @@ type TUseStoryNavigationMenuItemStyles = {
   selected: boolean;
 };
 
-export function useNavigationMenuItemStyles(
-  { selected }: TUseStoryNavigationMenuItemStyles
-) {
+export function useNavigationMenuItemStyles({
+  selected,
+}: TUseStoryNavigationMenuItemStyles) {
   const styles = useStyles();
   const rootStyle = mergeClasses(
     navigationMenuItemClassNames.root,
@@ -46,9 +44,11 @@ type TStoryNavigationMenuItem = {
   selected: boolean;
 } & MenuButtonProps;
 
-export function StoryNavigationMenuItem(
-  { children, selected, ...rest }: TStoryNavigationMenuItem
-) {
+export function StoryNavigationMenuItem({
+  children,
+  selected,
+  ...rest
+}: TStoryNavigationMenuItem) {
   const { rootStyle } = useNavigationMenuItemStyles({ selected });
 
   return (

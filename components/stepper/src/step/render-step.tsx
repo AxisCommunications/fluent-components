@@ -1,7 +1,7 @@
-import React from "react";
 import { getSlots } from "@fluentui/react-utilities";
-import type { StepSlots, StepState } from "./step.types";
+import React from "react";
 import { StepSymbol } from "../step-symbol";
+import type { StepSlots, StepState } from "./step.types";
 
 export const renderStep_unstable = (state: StepState) => {
   const { slots, slotProps } = getSlots<StepSlots>(state);

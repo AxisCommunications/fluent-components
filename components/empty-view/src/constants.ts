@@ -1,7 +1,6 @@
 import {
   AddUserProfileDark,
   AddUserProfileLight,
-  bundleIllustrationSmart,
   CodeErrorDark,
   CodeErrorLight,
   DataDark,
@@ -42,6 +41,7 @@ import {
   TeamLight,
   UnderConstructionDark,
   UnderConstructionLight,
+  bundleIllustrationSmart,
 } from "@axiscommunications/fluent-illustrations";
 import { IllustrationKind } from "./types.js";
 

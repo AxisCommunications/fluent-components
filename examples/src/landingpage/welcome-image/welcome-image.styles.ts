@@ -12,7 +12,6 @@ const pagePaddingBottom = "8px";
 export const useWelcomeImageStyles = makeStyles({
   image: {
     ...shorthands.padding("64px"),
-    maxHeight:
-      `calc(100vh - ${topBarHeight} - ${cardPadding} - ${cardPadding} - ${pagePadding} - ${pagePaddingBottom})`,
+    maxHeight: `calc(100vh - ${topBarHeight} - ${cardPadding} - ${cardPadding} - ${pagePadding} - ${pagePaddingBottom})`,
   },
 });

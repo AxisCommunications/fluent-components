@@ -2,8 +2,8 @@ import { getNativeElementProps } from "@fluentui/react-utilities";
 import React from "react";
 
 import { useSliderContext } from "../context/slider-context";
-import { SectionProps, SectionState } from "./section.types";
 import { toPercent } from "../utils";
+import { SectionProps, SectionState } from "./section.types";
 
 export const useSection_unstable = (
   props: SectionProps,
@@ -22,9 +22,10 @@ export const useSection_unstable = (
   const minValue = values.length > 1 ? Math.min(...values) : min;
   const maxValue = Math.max(...values);
 
-  const active = (minValue > from && minValue < to)
-    || (minValue <= from && maxValue > to)
-    || (maxValue > from && maxValue <= to);
+  const active =
+    (minValue > from && minValue < to) ||
+    (minValue <= from && maxValue > to) ||
+    (maxValue > from && maxValue <= to);
 
   return {
     root: getNativeElementProps("span", {

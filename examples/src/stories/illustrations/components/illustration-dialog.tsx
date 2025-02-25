@@ -7,9 +7,9 @@ import {
   DialogSurface,
   DialogTitle,
   DialogTrigger,
+  Subtitle2,
   makeStyles,
   shorthands,
-  Subtitle2,
   tokens,
 } from "@fluentui/react-components";
 import { DismissRegular } from "@fluentui/react-icons";
@@ -78,9 +78,11 @@ type TIllustrationDialog = {
   Illustration: React.FC<AxisIllustrationProps>;
 };
 
-export const IllustrationDialog = (
-  { thumbnail, Illustration, title }: TIllustrationDialog
-) => {
+export const IllustrationDialog = ({
+  thumbnail,
+  Illustration,
+  title,
+}: TIllustrationDialog) => {
   const styles = useStyles();
 
   return (
@@ -121,9 +123,9 @@ export const IllustrationDialog = (
   );
 };
 
-function VariantPreview(
-  { Illustration }: Pick<TIllustrationDialog, "Illustration">
-) {
+function VariantPreview({
+  Illustration,
+}: Pick<TIllustrationDialog, "Illustration">) {
   const styles = useStyles();
 
   if (!Illustration.displayName) {

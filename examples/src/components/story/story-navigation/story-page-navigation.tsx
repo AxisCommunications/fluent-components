@@ -23,6 +23,7 @@ export function StoryPageNavigation({ links }: TStoryPageNavigation) {
     }
   }, [hash]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const renderMenuItems = useMemo(
     () =>
       links.map(({ title, anchor }) => {
@@ -39,9 +40,5 @@ export function StoryPageNavigation({ links }: TStoryPageNavigation) {
     [selected]
   );
 
-  return (
-    <MenuList>
-      {renderMenuItems}
-    </MenuList>
-  );
+  return <MenuList>{renderMenuItems}</MenuList>;
 }

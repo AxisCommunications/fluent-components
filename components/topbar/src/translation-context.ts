@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import { MySystemsAppId } from "./applications";
 import { ApplicationArea } from ".";
+import { MySystemsAppId } from "./applications";
 
 export const translationKeys = ["dark", "light", "logout"] as const;
 export type TranslationKey =
@@ -13,10 +13,11 @@ export type TranslationFn = (key: keyof Translations) => string;
 export type TranslateLocaleFn = (lc: string | undefined) => string;
 
 export const TranslationContext: React.Context<
-  {
-    readonly t: TranslationFn;
-    readonly tLocale: TranslateLocaleFn;
-  } | undefined
+  | {
+      readonly t: TranslationFn;
+      readonly tLocale: TranslateLocaleFn;
+    }
+  | undefined
 > = createContext<
   { readonly t: TranslationFn; readonly tLocale: TranslateLocaleFn } | undefined
 >(undefined);

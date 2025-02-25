@@ -1,4 +1,3 @@
-import React from "react";
 import { AxisIllustrationProps } from "@axiscommunications/fluent-illustrations";
 import {
   Caption1,
@@ -6,6 +5,7 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
+import React from "react";
 import { IllustrationCopy } from "../components/illustration-copy";
 import { IllustrationDialog } from "../components/illustration-dialog";
 import { DEFAULT_ILLUSTRATION_WIDTH } from "../illustration-page.types";
@@ -37,9 +37,9 @@ export const useStyles = makeStyles({
   },
 });
 
-export function IllustrationList(
-  { illustrations }: { illustrations: React.FC<AxisIllustrationProps>[] }
-) {
+export function IllustrationList({
+  illustrations,
+}: { illustrations: React.FC<AxisIllustrationProps>[] }) {
   const styles = useStyles();
 
   const _renderIllustration = (
@@ -70,8 +70,6 @@ export function IllustrationList(
   };
 
   return (
-    <div className={styles.root}>
-      {illustrations.map(_renderIllustration)}
-    </div>
+    <div className={styles.root}>{illustrations.map(_renderIllustration)}</div>
   );
 }

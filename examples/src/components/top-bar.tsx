@@ -13,7 +13,6 @@ import {
 } from "@axiscommunications/fluent-topbar";
 import {
   Button,
-  makeStyles,
   Menu,
   MenuButton,
   MenuItem,
@@ -21,13 +20,13 @@ import {
   MenuPopover,
   MenuTrigger,
   Title1,
+  makeStyles,
 } from "@fluentui/react-components";
 import {
   AddRegular,
   AnimalCat20Filled,
   AnimalCat20Regular,
   BuildingBank20Regular,
-  bundleIcon,
   Drawer24Filled,
   FoodApple24Regular,
   FoodCarrot20Filled,
@@ -39,6 +38,7 @@ import {
   QuestionCircleRegular,
   ZoomFit20Filled,
   ZoomFit20Regular,
+  bundleIcon,
 } from "@fluentui/react-icons";
 import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/ApplicationStateProvider";
@@ -142,6 +142,7 @@ export const Navbar = () => {
     alert("sign me in");
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const onNavigateToApplication = React.useCallback(
     (appid: string) => {
       setSelectedApp(appid);
@@ -150,6 +151,7 @@ export const Navbar = () => {
     [setSelectedApp]
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const onDrawerNavigate = React.useCallback(
     (id: string) => {
       setDrawerSelectedApp(id);
@@ -159,23 +161,24 @@ export const Navbar = () => {
   );
 
   const [showDrawer, setShowDrawer] = useState(true);
-  const [drawerVersion, setDrawerVersion] = useState<
-    ApplicationDrawerProps["version"]
-  >("v1");
+  const [drawerVersion, setDrawerVersion] =
+    useState<ApplicationDrawerProps["version"]>("v1");
 
   return (
     <div className={styles.topBar}>
       <TopBar
-        appDrawer={showDrawer
-          ? {
-            version: drawerVersion,
-            link: { text: "Learn more", url: "https://example.com" },
-            applicationId: drawerSelectedApp,
-            title: <Title1>My Apps</Title1>,
-            content: appDrawerContent,
-            onChange: onDrawerNavigate,
-          }
-          : undefined}
+        appDrawer={
+          showDrawer
+            ? {
+                version: drawerVersion,
+                link: { text: "Learn more", url: "https://example.com" },
+                applicationId: drawerSelectedApp,
+                title: <Title1>My Apps</Title1>,
+                content: appDrawerContent,
+                onChange: onDrawerNavigate,
+              }
+            : undefined
+        }
         appMenu={{
           customContent: (
             <MenuItem icon={<FoodApple24Regular />}>
@@ -205,9 +208,10 @@ export const Navbar = () => {
                   return prev === "v1"
                     ? "v2"
                     : prev === "v2"
-                    ? undefined
-                    : "v1";
-                })}
+                      ? undefined
+                      : "v1";
+                })
+              }
             >
               {`Drawer version: ${drawerVersion}`}
             </Button>
@@ -242,16 +246,16 @@ export const Navbar = () => {
             showFilter: true,
             placeholderText: "Search organization",
           },
-          popoverInfo: currentOrganizationId === "2"
-            ? { title: "PopOver", body: "Say something about the org item!" }
-            : undefined,
+          popoverInfo:
+            currentOrganizationId === "2"
+              ? { title: "PopOver", body: "Say something about the org item!" }
+              : undefined,
         }}
         profileMenu={{
           // showCustomContentTopDivider: false,
           customContent: (
             <MenuItem
               icon={<OpenRegular />}
-              // eslint-disable-next-line react/jsx-no-bind
               onClick={() => {
                 window.open(
                   "https://auth.axis.com/user-center/account",

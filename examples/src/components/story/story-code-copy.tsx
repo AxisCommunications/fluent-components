@@ -1,10 +1,10 @@
 import {
   Button,
   ButtonProps,
+  Tooltip,
   makeStyles,
   mergeClasses,
   tokens,
-  Tooltip,
 } from "@fluentui/react-components";
 import { RectangleLandscapeHintCopyFilled } from "@fluentui/react-icons";
 import React, { useCallback } from "react";
@@ -40,6 +40,7 @@ type TCopy = {
 export function CopyButton({ className, codeString, ...rest }: TCopy) {
   const { rootStyle } = useCopyStyles({ className });
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
   const copyCode = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.stopPropagation();
@@ -57,8 +58,7 @@ export function CopyButton({ className, codeString, ...rest }: TCopy) {
         onClick={copyCode}
         icon={<RectangleLandscapeHintCopyFilled />}
         {...rest}
-      >
-      </Button>
+      ></Button>
     </Tooltip>
   );
 }

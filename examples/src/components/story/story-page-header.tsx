@@ -2,8 +2,8 @@ import React, { PropsWithChildren } from "react";
 
 import {
   Caption1,
-  makeStyles,
   Title2,
+  makeStyles,
   tokens,
 } from "@fluentui/react-components";
 import { EStoryStatus, StoryStatus } from "./story-status";
@@ -37,9 +37,7 @@ export const StoryPageHeader = ({
   const styles = useStyles();
 
   return (
-    <div
-      className={styles.root}
-    >
+    <div className={styles.root}>
       <div className={styles.title}>
         <Title2>
           {title}

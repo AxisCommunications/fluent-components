@@ -1,8 +1,8 @@
+import { Divider, mergeClasses } from "@fluentui/react-components";
 import React from "react";
+import { Step } from "./step";
 import { useStepperStyles } from "./stepper.styles";
 import { StepperProps } from "./stepper.types";
-import { Step } from "./step";
-import { Divider, mergeClasses } from "@fluentui/react-components";
 
 export const stepperClassNames: Record<"root" | "divider", string> = {
   root: "axis-Stepper",

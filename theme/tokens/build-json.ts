@@ -6,11 +6,9 @@ const getJsonColorToTokensDict = (
   theme: string
 ): Record<string, string[]> => {
   const colorDict: Record<string, string[]> = {};
-  for (
-    const token of dictionary.allTokens.filter(
-      (t) => t.attributes?.category === "color"
-    )
-  ) {
+  for (const token of dictionary.allTokens.filter(
+    (t) => t.attributes?.category === "color"
+  )) {
     const k = (token.value as string).toLowerCase();
     colorDict[k] = [...(colorDict[k] ?? []), `${theme}.${token.name}`];
   }
@@ -28,17 +26,18 @@ StyleDictionaryPackage.registerFormat({
 export const getJsonPlatform: (theme: string) => Platform = (theme) => ({
   transforms: ["attribute/cti", "name/cti/camel"],
   buildPath: "tokens/generated/json/",
-  files: theme === "global"
-    ? []
-    : [
-      {
-        format: "json/fluentui/color",
-        destination: `${theme}-colors.json`,
-        options: {
-          theme,
-        },
-      },
-    ],
+  files:
+    theme === "global"
+      ? []
+      : [
+          {
+            format: "json/fluentui/color",
+            destination: `${theme}-colors.json`,
+            options: {
+              theme,
+            },
+          },
+        ],
 });
 
 export const mergeJsonDictFiles = () => {

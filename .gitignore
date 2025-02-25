@@ -1,6 +1,5 @@
 # Tools
 .DS_Store
-.eslintcache
 
 node_modules/
 lib

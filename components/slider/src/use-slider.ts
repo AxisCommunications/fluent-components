@@ -21,14 +21,14 @@ export const useSlider_unstable = (
 
   const onChange = onChangeProp
     ? (data: RangeSliderOnChangeData) => {
-      onChangeProp({ value: data.value[0] });
-    }
+        onChangeProp({ value: data.value[0] });
+      }
     : undefined;
 
   const onChangeCommitted = onChangeCommittedProp
     ? (data: RangeSliderOnChangeData) => {
-      onChangeCommittedProp({ value: data.value[0] });
-    }
+        onChangeCommittedProp({ value: data.value[0] });
+      }
     : undefined;
 
   const defaultValue = useMemo(

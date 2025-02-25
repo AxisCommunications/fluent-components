@@ -24,15 +24,18 @@ export function TripleSectionSliderExample() {
       min={0}
       max={60}
       title="Click to change the value"
-      marks={[{
-        value: 20,
-        label: "First mark",
-        labelEqualActive: true,
-      }, {
-        value: 40,
-        label: "Other mark",
-        labelEqualActive: true,
-      }]}
+      marks={[
+        {
+          value: 20,
+          label: "First mark",
+          labelEqualActive: true,
+        },
+        {
+          value: 40,
+          label: "Other mark",
+          labelEqualActive: true,
+        },
+      ]}
       sectionLabels={[
         { edges: { to: 20 }, label: "Section 1", trackColor: "yellow" },
         {

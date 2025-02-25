@@ -40,9 +40,7 @@ export const Layout = ({ header, navigation, content }: LayoutProps) => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>{header}</div>
-      <div className={styles.navigation}>
-        {navigation}
-      </div>
+      <div className={styles.navigation}>{navigation}</div>
       <div className={styles.outlet}>{content}</div>
     </div>
   );

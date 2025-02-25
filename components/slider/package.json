@@ -12,13 +12,11 @@
   "author": "Axis Communications AB",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "build": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
-    "lint": "tsc --noEmit && eslint . --cache",
+    "lint": "tsc --noEmit && biome check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:update-snapshots": "vitest -u",
@@ -31,7 +29,6 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitest/coverage-c8": "^0.33.0",
-    "eslint": "^8.57.1",
     "jsdom": "^26.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

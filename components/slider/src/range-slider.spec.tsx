@@ -1,7 +1,7 @@
-import React from "react";
-import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import React from "react";
+import { describe, expect, it, vi } from "vitest";
 import "@testing-library/jest-dom";
 
 import { RangeSlider } from "./range-slider";
