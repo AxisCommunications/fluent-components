@@ -470,5 +470,7 @@
   "ic_axis_specification_compiler_32_regular": "0xf2d5",
   "ic_axis_specification_compiler_48_regular": "0xf2d6",
   "ic_axis_auto_roll_20_regular": "0xf2d7",
-  "ic_axis_auto_roll_24_regular": "0xf2d8"
+  "ic_axis_auto_roll_24_regular": "0xf2d8",
+  "ic_axis_air_quality_monitoring_20_regular": "0xf2d9",
+  "ic_axis_air_quality_monitoring_24_regular": "0xf2da"
 }
