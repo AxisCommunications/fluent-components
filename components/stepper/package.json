@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-stepper",
-  "version": "10.8.0",
+  "version": "10.8.1",
   "description": "Stepper for Fluent UI v9",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -12,7 +12,9 @@
   "author": "Axis Communications AB",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",

@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-hooks",
-  "version": "10.8.0",
+  "version": "10.8.1",
   "description": "Hooks",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -17,7 +17,9 @@
       "import": "./lib/index.js"
     }
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",

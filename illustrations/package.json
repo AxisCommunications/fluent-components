@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-illustrations",
-  "version": "10.8.0",
+  "version": "10.8.1",
   "description": "Illustrations",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -19,7 +19,9 @@
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "prebuild": "pnpm run -C ../theme build",
     "build": "pnpm prebuild && pnpm build:cjs && pnpm build:esm",

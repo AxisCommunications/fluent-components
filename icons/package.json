@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-icons",
-  "version": "10.8.0",
+  "version": "10.8.1",
   "description": "Icons",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -13,7 +13,9 @@
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "all": "pnpm fonts:deploy && pnpm react:deploy",
     "build": "pnpm build:cjs && pnpm build:esm",

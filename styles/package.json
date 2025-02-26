@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-styles",
-  "version": "10.8.0",
+  "version": "10.8.1",
   "description": "Styles for Fluent UI v9",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -19,7 +19,9 @@
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "pnpm build:cjs && pnpm build:esm",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
