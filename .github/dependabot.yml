@@ -11,10 +11,10 @@ updates:
           - "minor"
           - "patch"
         patterns:
+          - "*esbuild*"
           - "*vite*"
           - "*biome*"
           - "depcheck"
-          - "ts-node"
           - "typescript"
       fluent:
         update-types:

@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "outDir": "lib"
+  },
+  "exclude": ["vitest.config.ts", "src/setupTest.ts", "src/**/*.spec.ts*"]
+}

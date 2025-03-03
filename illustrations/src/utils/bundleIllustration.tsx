@@ -3,7 +3,7 @@ import {
   useIdentifyCurrentAxisTheme,
 } from "@axiscommunications/fluent-theme";
 import React from "react";
-import { AxisIllustrationProps } from "./types";
+import { AxisIllustrationProps } from "./types.js";
 
 export type TBundleIllustrationVariant = AxisThemeVariant;
 

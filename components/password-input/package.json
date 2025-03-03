@@ -14,34 +14,24 @@
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
-      "require": "./lib/cjs/index.js",
       "import": "./lib/index.js"
     }
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
   "files": ["lib"],
   "scripts": {
-    "build": "pnpm build:cjs && pnpm build:esm",
-    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
-    "build:esm": "tsc",
+    "build": "pnpm build:types && pnpm build:esm",
+    "build:esm": "esbuild --format=esm --bundle --sourcemap --packages=external --outdir=lib src/index.ts",
+    "build:types": "tsc -p tsconfig.build.json",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
-    "lint": "tsc --noEmit && biome check",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:watch": "vitest watch"
+    "lint": "tsc --noEmit && biome check"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@vitest/coverage-c8": "^0.33.0",
-    "jsdom": "^26.0.0",
+    "esbuild": "^0.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^4.5.5",
-    "vitest": "^0.34.6"
+    "typescript": "^5.8.2"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.58.2",
