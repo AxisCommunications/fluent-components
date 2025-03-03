@@ -1,7 +1,7 @@
-import { ILLUSTRATION_DARK, ILLUSTRATION_LIGHT } from "../utils/constants";
-import { TGenerateSVGConfig, parseParamsGenerateSVG } from "../utils/params";
-import { checkDirectory, clearDirectory, copyFiles } from "./file-processor";
-import { LOG_LEVEL, Logger } from "./logger";
+import { ILLUSTRATION_DARK, ILLUSTRATION_LIGHT } from "../utils/constants.js";
+import { TGenerateSVGConfig, parseParamsGenerateSVG } from "../utils/params.js";
+import { checkDirectory, clearDirectory, copyFiles } from "./file-processor.js";
+import { LOG_LEVEL, Logger } from "./logger.js";
 
 const logger = new Logger("generate-svg", () => LOG_LEVEL.INFO);
 

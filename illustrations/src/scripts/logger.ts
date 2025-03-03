@@ -4,7 +4,7 @@ import {
   ANSI_RED,
   ANSI_RESET,
   ANSI_YELLOW,
-} from "../utils/constants";
+} from "../utils/constants.js";
 
 const JSON_SPACE_COUNT = 2;
 

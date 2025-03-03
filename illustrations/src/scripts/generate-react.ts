@@ -1,17 +1,17 @@
 import path from "path";
 import { camelCase, upperFirst } from "lodash";
-import { DEFAULT_CHUNK_SIZE, FILE_PREFIX } from "../utils/constants";
+import { DEFAULT_CHUNK_SIZE, FILE_PREFIX } from "../utils/constants.js";
 import {
   TGenerateREACTConfig,
   parseParamsGenerateREACT,
-} from "../utils/params";
+} from "../utils/params.js";
 import {
   checkDirectory,
   clearDirectory,
   readAllFiles,
   writeToFile,
-} from "./file-processor";
-import { LOG_LEVEL, Logger } from "./logger";
+} from "./file-processor.js";
+import { LOG_LEVEL, Logger } from "./logger.js";
 
 const logger = new Logger("generate-react", () => LOG_LEVEL.INFO);
 
@@ -57,15 +57,15 @@ function createIndexFile(dest: string, illustrationContents: string[]) {
   const indexContent: string[] = [...illustrationContents];
 
   indexContent.push(
-    "export type { AxisIllustrationProps } from './utils/types'"
+    "export type { AxisIllustrationProps } from './utils/types.js'"
   );
 
   indexContent.push(
-    "export { bundleIllustration, bundleIllustrationSmart } from './utils/bundleIllustration'"
+    "export { bundleIllustration, bundleIllustrationSmart } from './utils/bundleIllustration.js'"
   );
 
   indexContent.push(
-    "export type { TBundleIllustration, TBundleIllustrationVariant, TBundleIllustrationSmart} from './utils/bundleIllustration'"
+    "export type { TBundleIllustration, TBundleIllustrationVariant, TBundleIllustrationSmart} from './utils/bundleIllustration.js'"
   );
 
   writeToFile(indexPath, indexContent.join("\n"));
@@ -77,7 +77,7 @@ function writeChunksToFile(chunks: string[], dest: string): string[] {
     const chunkFileName = `chunk-${i}`;
     const chunkPath = path.resolve(dest, `${chunkFileName}.tsx`);
     indexContents.push(
-      `export { ${toExports(chunk)} } from './illustrations/${chunkFileName}'`
+      `export { ${toExports(chunk)} } from './illustrations/${chunkFileName}.js'`
     );
     writeToFile(chunkPath, chunk);
   });
@@ -102,7 +102,7 @@ function toChunks(content: string[], chunkSize = DEFAULT_CHUNK_SIZE): string[] {
 
   for (const chunk of chunks) {
     chunk.unshift(
-      `import { createFluentIllustration } from "../utils/createFluentIllustration";`
+      `import { createFluentIllustration } from "../utils/createFluentIllustration.js";`
     );
   }
 
