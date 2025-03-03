@@ -5,17 +5,9 @@ var fs = require("fs");
 
 console.log("Build started fluent to json...");
 
-const global: string = JSON.stringify(
-  generateJsonGlobal(axisDarkTheme),
-  null,
-  2
-);
-const dark: string = JSON.stringify(generateJsonTheme(axisDarkTheme), null, 2);
-const light: string = JSON.stringify(
-  generateJsonTheme(axisLightTheme),
-  null,
-  2
-);
+const global = JSON.stringify(generateJsonGlobal(axisDarkTheme), null, 2);
+const dark = JSON.stringify(generateJsonTheme(axisDarkTheme), null, 2);
+const light = JSON.stringify(generateJsonTheme(axisLightTheme), null, 2);
 
 console.log("generating global.json...");
 fs.writeFileSync(__dirname + "/generated/tokens/global.json", global);

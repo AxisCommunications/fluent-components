@@ -49,7 +49,7 @@ export {
   LaunchLight,
   LocationDark,
   LocationLight,
-} from "./illustrations/chunk-0";
+} from "./illustrations/chunk-0.js";
 export {
   LoginDark,
   LoginLight,
@@ -101,20 +101,20 @@ export {
   UserGroupDark,
   UserGroupLight,
   UserLight,
-} from "./illustrations/chunk-1";
+} from "./illustrations/chunk-1.js";
 export {
   UserProfileDark,
   UserProfileLight,
   WelcomePlaneDark,
   WelcomePlaneLight,
-} from "./illustrations/chunk-2";
-export type { AxisIllustrationProps } from "./utils/types";
+} from "./illustrations/chunk-2.js";
+export type { AxisIllustrationProps } from "./utils/types.js";
 export {
   bundleIllustration,
   bundleIllustrationSmart,
-} from "./utils/bundleIllustration";
+} from "./utils/bundleIllustration.js";
 export type {
   TBundleIllustration,
   TBundleIllustrationVariant,
   TBundleIllustrationSmart,
-} from "./utils/bundleIllustration";
+} from "./utils/bundleIllustration.js";

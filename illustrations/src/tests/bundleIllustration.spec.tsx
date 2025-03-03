@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import { AddUserDark, AddUserLight } from "..";
-import { bundleIllustration } from "../utils/bundleIllustration";
+import { AddUserDark, AddUserLight } from "../index.js";
+import { bundleIllustration } from "../utils/bundleIllustration.js";
 
 const BundledIllustration = bundleIllustration(AddUserDark, AddUserLight);
 
