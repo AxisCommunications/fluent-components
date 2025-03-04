@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig.src.json",
   "compilerOptions": {
+    "declarationMap": false,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "types": ["vitest/globals"],
     "outDir": "lib"
   },

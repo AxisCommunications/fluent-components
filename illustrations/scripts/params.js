@@ -1,11 +1,6 @@
 import yargs from "yargs";
 
-export type TGenerateSVGConfig = {
-  from: string;
-  to: string;
-};
-
-export function parseParamsGenerateSVG(): TGenerateSVGConfig {
+export function parseParamsGenerateSVG() {
   const argv = yargs(process.argv.slice(2))
     .options({
       from: { type: "string", demandOption: true },
@@ -14,15 +9,10 @@ export function parseParamsGenerateSVG(): TGenerateSVGConfig {
     .parserConfiguration({ "camel-case-expansion": true })
     .parseSync();
 
-  return { from: argv.from, to: argv.to } as const;
+  return { from: argv.from, to: argv.to };
 }
 
-export type TGenerateREACTConfig = {
-  from: string;
-  to: string;
-};
-
-export function parseParamsGenerateREACT(): TGenerateREACTConfig {
+export function parseParamsGenerateREACT() {
   const argv = yargs(process.argv.slice(2))
     .options({
       from: { type: "string", demandOption: true },
@@ -31,5 +21,5 @@ export function parseParamsGenerateREACT(): TGenerateREACTConfig {
     .parserConfiguration({ "camel-case-expansion": true })
     .parseSync();
 
-  return { from: argv.from, to: argv.to } as const;
+  return { from: argv.from, to: argv.to };
 }

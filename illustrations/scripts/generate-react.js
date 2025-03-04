@@ -1,28 +1,21 @@
 import path from "path";
-import { camelCase, upperFirst } from "lodash";
-import { DEFAULT_CHUNK_SIZE, FILE_PREFIX } from "../utils/constants";
-import {
-  TGenerateREACTConfig,
-  parseParamsGenerateREACT,
-} from "../utils/params";
+import { DEFAULT_CHUNK_SIZE, FILE_PREFIX } from "./constants.js";
+import { parseParamsGenerateREACT } from "./params.js";
 import {
   checkDirectory,
   clearDirectory,
   readAllFiles,
   writeToFile,
-} from "./file-processor";
-import { LOG_LEVEL, Logger } from "./logger";
-
-const logger = new Logger("generate-react", () => LOG_LEVEL.INFO);
+} from "./file-processor.js";
 
 const config = parseParamsGenerateREACT();
 main(config);
 
-function main({ from, to }: TGenerateREACTConfig) {
-  logger.trace("running generate-react");
-  logger.info(`from: ${from}, to: ${to}`);
+function main({ from, to }) {
+  console.trace("running generate-react");
+  console.info(`from: ${from}, to: ${to}`);
   if (!checkDirectory(from)) {
-    logger.warn("folder to process doesn't exist", from);
+    console.warn("folder to process doesn't exist", from);
     process.exit(1);
   }
   if (checkDirectory(to, true)) {
@@ -32,52 +25,52 @@ function main({ from, to }: TGenerateREACTConfig) {
   const illustrationsDestFolder = path.join(to, "illustrations");
   checkDirectory(illustrationsDestFolder, true);
 
-  logger.info("processing illustration svg:s...");
+  console.info("processing illustration svg:s...");
   const illustrations = processFolder(from);
-  logger.info("illustrations to be react-ified:", illustrations.length);
+  console.info("illustrations to be react-ified:", illustrations.length);
 
-  logger.info("dividing into chunks...");
+  console.info("dividing into chunks...");
   const illustrationsChunks = toChunks(illustrations);
-  logger.info("chunks to be written :", illustrationsChunks.length);
+  console.info("chunks to be written :", illustrationsChunks.length);
 
-  logger.info("writing chunks into files...");
+  console.info("writing chunks into files...");
   const indexContents = writeChunksToFile(
     illustrationsChunks,
     illustrationsDestFolder
   );
 
-  logger.info("writing index file...");
+  console.info("writing index file...");
   createIndexFile(to, indexContents);
 
-  logger.trace("...generate-react done!");
+  console.trace("...generate-react done!");
 }
 
-function createIndexFile(dest: string, illustrationContents: string[]) {
+function createIndexFile(dest, illustrationContents) {
   const indexPath = path.join(dest, "index.ts");
-  const indexContent: string[] = [...illustrationContents];
+  const indexContent = [...illustrationContents];
 
   indexContent.push(
-    "export type { AxisIllustrationProps } from './utils/types'"
+    "export type { AxisIllustrationProps } from './utils/types.js'"
   );
 
   indexContent.push(
-    "export { bundleIllustration, bundleIllustrationSmart } from './utils/bundleIllustration'"
+    "export { bundleIllustration, bundleIllustrationSmart } from './utils/bundleIllustration.js'"
   );
 
   indexContent.push(
-    "export type { TBundleIllustration, TBundleIllustrationVariant, TBundleIllustrationSmart} from './utils/bundleIllustration'"
+    "export type { TBundleIllustration, TBundleIllustrationVariant, TBundleIllustrationSmart} from './utils/bundleIllustration.js'"
   );
 
   writeToFile(indexPath, indexContent.join("\n"));
 }
 
-function writeChunksToFile(chunks: string[], dest: string): string[] {
-  const indexContents: string[] = [];
+function writeChunksToFile(chunks, dest) {
+  const indexContents = [];
   chunks.forEach((chunk, i) => {
     const chunkFileName = `chunk-${i}`;
     const chunkPath = path.resolve(dest, `${chunkFileName}.tsx`);
     indexContents.push(
-      `export { ${toExports(chunk)} } from './illustrations/${chunkFileName}'`
+      `export { ${toExports(chunk)} } from './illustrations/${chunkFileName}.js'`
     );
     writeToFile(chunkPath, chunk);
   });
@@ -85,16 +78,16 @@ function writeChunksToFile(chunks: string[], dest: string): string[] {
   return indexContents;
 }
 
-function toExports(chunk: string) {
+function toExports(chunk) {
   const pattern = /export const (\w+) =/g;
   const iconNameRegexp = new RegExp(pattern, "g");
   return (chunk.match(iconNameRegexp) ?? [])
-    .map((m: string) => m.split(" ")[2])
+    .map((m) => m.split(" ")[2])
     .join(", ");
 }
 
-function toChunks(content: string[], chunkSize = DEFAULT_CHUNK_SIZE): string[] {
-  const chunks: string[][] = [];
+function toChunks(content, chunkSize = DEFAULT_CHUNK_SIZE) {
+  const chunks = [];
 
   while (content.length > 0) {
     chunks.push(content.splice(0, chunkSize));
@@ -102,7 +95,7 @@ function toChunks(content: string[], chunkSize = DEFAULT_CHUNK_SIZE): string[] {
 
   for (const chunk of chunks) {
     chunk.unshift(
-      `import { createFluentIllustration } from "../utils/createFluentIllustration";`
+      `import { createFluentIllustration } from "../utils/createFluentIllustration.js";`
     );
   }
 
@@ -110,8 +103,8 @@ function toChunks(content: string[], chunkSize = DEFAULT_CHUNK_SIZE): string[] {
   return chunkContent;
 }
 
-function processFolder(from: TGenerateREACTConfig["from"]): string[] {
-  const illustrations: string[] = [];
+function processFolder(from) {
+  const illustrations = [];
   for (const file of readAllFiles(from)) {
     const illustrationName = toIllustrationName(file.fileName);
     const fileContentAsString = `\`${file.content}\``;
@@ -121,7 +114,7 @@ function processFolder(from: TGenerateREACTConfig["from"]): string[] {
   return illustrations;
 }
 
-function toIllustrationName(fileName: string) {
+function toIllustrationName(fileName) {
   // remove extension .svg
   const filenameWithoutExtension = fileName.split(".")[0];
   const filenameWithoutPrefix = filenameWithoutExtension.replace(
@@ -129,5 +122,8 @@ function toIllustrationName(fileName: string) {
     ""
   );
 
-  return upperFirst(camelCase(filenameWithoutPrefix));
+  return filenameWithoutPrefix
+    .split("_")
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+    .join("");
 }

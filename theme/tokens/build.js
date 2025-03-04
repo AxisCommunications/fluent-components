@@ -7,7 +7,7 @@ import { concatXamlFiles, getXamlPlatform } from "./build-xaml";
 
 // HAVE THE STYLE DICTIONARY CONFIG DYNAMICALLY GENERATED
 
-const toPixelValue = (value: string) => {
+const toPixelValue = (value) => {
   const numericValue = parseFloat(value);
   return Number.isNaN(numericValue) || numericValue === 0
     ? value
@@ -32,13 +32,7 @@ StyleDictionaryPackage.registerTransform({
   transformer: (token) =>
     token.value
       .map(
-        (v: {
-          x: string;
-          y: string;
-          blur: string;
-          spread: string;
-          color: string;
-        }) =>
+        (v) =>
           `${[v.x, v.y, v.blur, v.spread]
             .map((pv) => toPixelValue(pv))
             .join(" ")} ${v.color}`
@@ -46,7 +40,7 @@ StyleDictionaryPackage.registerTransform({
       .join(", "),
 });
 
-const getStyleDictionaryConfig = (theme: string) => ({
+const getStyleDictionaryConfig = (theme) => ({
   source: [`tokens/generated/tokens/${theme}.json`],
   platforms: {
     css: getCssPlatform(theme),

@@ -10,15 +10,14 @@
   },
   "license": "MIT",
   "author": "Axis Communications AB",
+  "type": "module",
   "exports": {
     ".": {
+      "types": "./lib/index.d.ts",
       "require": "./lib/cjs/index.js",
       "import": "./lib/index.js"
     }
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
   "files": ["lib"],
   "scripts": {
     "build": "pnpm build:cjs && pnpm build:esm",
@@ -26,10 +25,10 @@
     "build:esm": "tsc",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && biome check",
-    "tokens:build": "node --require ts-node/register tokens/build.ts && pnpm tokens:build-ts-theme",
-    "tokens:build-ts-theme": "node --require ts-node/register tokens/build-ts-theme.ts",
+    "tokens:build": "node tokens/build.js && pnpm tokens:build-ts-theme",
+    "tokens:build-ts-theme": "node tokens/build-ts-theme.js",
     "tokens:runall": "pnpm tokens:transform && pnpm tokens:build",
-    "tokens:transform": "node --require ts-node/register tokens/build-ts-to-json.ts",
+    "tokens:transform": "node tokens/build-ts-to-json.js",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch"
@@ -42,7 +41,6 @@
     "react-dom": "^18.2.0",
     "style-dictionary": "^3.9.2",
     "token-transformer": "^0.0.33",
-    "ts-node": "^10.9.2",
     "typescript": "^4.5.5",
     "@testing-library/jest-dom": "^6.6.3",
     "@vitest/coverage-c8": "^0.33.0",

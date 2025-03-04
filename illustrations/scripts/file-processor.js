@@ -1,11 +1,7 @@
 import fs, { rmSync } from "fs";
 import path from "path";
 
-export function copyFiles(
-  srcPath: string,
-  destPath: string,
-  filter?: (file: string) => boolean
-) {
+export function copyFiles(srcPath, destPath, filter) {
   let filesCopied = 0;
   for (const file of readAllFiles(srcPath)) {
     const destFile = path.join(destPath, file.fileName);
@@ -22,11 +18,11 @@ export function copyFiles(
   return filesCopied;
 }
 
-export function writeToFile(dest: string, content: string) {
+export function writeToFile(dest, content) {
   fs.writeFileSync(dest, content);
 }
 
-export function checkDirectory(path: string, createIfMissing = false) {
+export function checkDirectory(path, createIfMissing = false) {
   const exist = fs.existsSync(path);
   if (!exist && createIfMissing) {
     fs.mkdirSync(path, { recursive: true });
@@ -34,7 +30,7 @@ export function checkDirectory(path: string, createIfMissing = false) {
   return exist;
 }
 
-export function clearDirectory(path: string) {
+export function clearDirectory(path) {
   const exist = checkDirectory(path);
   if (exist) {
     for (const file of readAllFiles(path)) {
@@ -43,9 +39,7 @@ export function clearDirectory(path: string) {
   }
 }
 
-export function* readAllFiles(
-  dir: string
-): Generator<{ path: string; content: string; fileName: string }> {
+export function* readAllFiles(dir) {
   const files = fs.readdirSync(dir, { withFileTypes: true });
 
   for (const file of files) {
@@ -62,6 +56,6 @@ export function* readAllFiles(
   }
 }
 
-export function getFileName(str: string) {
+export function getFileName(str) {
   return str.substring(str.lastIndexOf("/") + 1);
 }

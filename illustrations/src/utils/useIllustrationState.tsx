@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AxisIllustrationProps } from "./types";
+import { AxisIllustrationProps } from "./types.js";
 
 export const useIllustrationState = <
   TBaseAttributes extends

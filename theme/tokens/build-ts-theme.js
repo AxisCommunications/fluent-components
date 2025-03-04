@@ -1,13 +1,7 @@
 import { writeFileSync } from "fs";
-import { Theme } from "@fluentui/react-components";
 import { axisDarkTheme, axisLightTheme } from "../src";
 
-type TGenerate = {
-  name: string;
-  fileName: string;
-  theme: Theme;
-};
-const THEMES: TGenerate[] = [
+const THEMES = [
   {
     name: "AxisLightTheme",
     fileName: "axisLightTheme",
