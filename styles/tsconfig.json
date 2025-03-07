@@ -1,8 +1,9 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "lib"
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
-  "include": ["src"],
-  "exclude": ["**/*.spec.*"]
+  "include": ["src"]
 }

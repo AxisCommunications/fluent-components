@@ -1,8 +1,10 @@
 {
-  "extends": "./tsconfig.src.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "lib",
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "types": ["vitest/globals"]
   },
-  "exclude": ["vitest.config.ts"]
+  "include": ["src", "vitest.config.ts"]
 }

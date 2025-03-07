@@ -1,24 +1,10 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "lib",
+    "noEmit": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "types": ["vitest/globals"]
   },
-  "include": ["src"],
-  "ts-node": {
-    "type": "module",
-    "files": true,
-    "transpileOnly": true,
-    "compilerOptions": {
-      "target": "ES2015",
-      "module": "CommonJS",
-      "esModuleInterop": true,
-      "sourceMap": true,
-      "allowJs": true,
-      "moduleResolution": "node",
-      "strict": true
-    },
-    "include": ["tokens"],
-    "exclude": ["tokens/generated", "vitest.config.ts"]
-  }
+  "include": ["src", "vitest.config.ts"]
 }

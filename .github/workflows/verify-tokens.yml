@@ -20,7 +20,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Install dependencies
         run: |
@@ -28,8 +28,9 @@ jobs:
           corepack prepare --activate
           pnpm install --frozen-lockfile
 
-      - name: Transform Fluent Theme to JSON, builds tokens for platforms
-        run: pnpm --filter @axiscommunications/fluent-theme tokens:runall
-
-      - name: Build theme
+      - name: Build theme library and token generator
         run: pnpm --filter @axiscommunications/fluent-theme build
+
+      - name: Transform Fluent Theme to JSON, builds tokens for platforms
+        run: pnpm --filter @axiscommunications/fluent-theme tokens
+
