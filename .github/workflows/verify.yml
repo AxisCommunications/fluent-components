@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  unit-tests:
+  verify-code:
     runs-on: ubuntu-latest
 
     steps:
