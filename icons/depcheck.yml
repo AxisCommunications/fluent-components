@@ -1,2 +1,2 @@
-ignores: ["typescript"]
+ignores: ["typescript","@svgr/core"]
 skip-missing: true

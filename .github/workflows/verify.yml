@@ -32,6 +32,11 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         run: pnpm commitlint ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
 
+      - name: Check unused dependencies
+        run: |
+          git diff --exit-code
+          pnpm check:unused-deps
+
       - name: Build, linting & Unit testing
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
