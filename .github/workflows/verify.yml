@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Environment
-        uses: ./.github/workflows/setup.yml
+        uses: ./.github/actions/setup-workspace
 
       - name: Check commit message
         if: ${{ github.event_name == 'pull_request' }}
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Environment
-        uses: ./.github/workflows/setup.yml
+        uses: ./.github/actions/setup-workspace
 
       - name: Build
         env:
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Environment
-        uses: ./.github/workflows/setup.yml
+        uses: ./.github/actions/setup-workspace
 
       - name: Run Tests
         env:
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Environment
-        uses: ./.github/workflows/setup.yml
+        uses: ./.github/actions/setup-workspace
 
       - name: Build
         env:
