@@ -9,9 +9,8 @@ on:
       - main
 
 jobs:
-  verify-code:
+  setup:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
         with:
@@ -28,6 +27,10 @@ jobs:
           corepack prepare --activate
           pnpm install --frozen-lockfile
 
+  verify-commit-and-dependencies:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
       - name: Check commit message
         if: ${{ github.event_name == 'pull_request' }}
         run: pnpm commitlint ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
@@ -37,11 +40,35 @@ jobs:
           git diff --exit-code
           pnpm check:unused-deps
 
-      - name: Build, linting & Unit testing
+  lint:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Build
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: |
+          git diff --exit-code
+          pnpm check
+
+  test:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Run Tests
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: |
+          git diff --exit-code
+          pnpm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Build
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
         run: |
           git diff --exit-code
           pnpm build
-          pnpm check
-          pnpm test
