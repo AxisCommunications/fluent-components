@@ -9,34 +9,56 @@ on:
       - main
 
 jobs:
-  unit-tests:
+  verify-commit-and-dependencies:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: |
-          corepack enable
-          corepack prepare --activate
-          pnpm install --frozen-lockfile
+      - name: Setup Environment
+        uses: ./.github/actions/setup-workspace
 
       - name: Check commit message
         if: ${{ github.event_name == 'pull_request' }}
         run: pnpm commitlint ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
 
-      - name: Build, linting & Unit testing
+      - name: Check unused dependencies
+        run: |
+          git diff --exit-code
+          pnpm check:unused-deps
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Environment
+        uses: ./.github/actions/setup-workspace
+
+      - name: Build
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: |
+          git diff --exit-code
+          pnpm check
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Environment
+        uses: ./.github/actions/setup-workspace
+
+      - name: Run Tests
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: |
+          git diff --exit-code
+          pnpm test
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Environment
+        uses: ./.github/actions/setup-workspace
+
+      - name: Build
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
         run: |
           git diff --exit-code
           pnpm build
-          pnpm check
-          pnpm test
