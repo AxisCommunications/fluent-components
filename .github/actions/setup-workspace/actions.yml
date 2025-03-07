@@ -1,9 +1,8 @@
 name: Setup Node Environment
-description: Setup workspace
+description: Setup Node.js and install dependencies
 
 runs:
   using: composite
-  runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
       with:
@@ -15,6 +14,7 @@ runs:
         node-version: 18
 
     - name: Install dependencies
+      shell: bash
       run: |
         corepack enable
         corepack prepare --activate
