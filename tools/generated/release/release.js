@@ -23,7 +23,12 @@ export function release(increment) {
   const { version, repository } = JSON.parse(
     readFileSync("package.json").toString()
   );
-  const nextVersion = semver.inc(version, releaseType);
+  const isPre = releaseType.startsWith("pre");
+  const nextVersion = semver.inc(
+    version,
+    releaseType,
+    isPre ? "alpha" : undefined
+  );
   if (nextVersion === null) {
     throw new Error(`could not increment ${version} with ${releaseType}`);
   }

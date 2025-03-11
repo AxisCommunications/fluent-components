@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-components",
-  "version": "10.9.0",
+  "version": "11.0.0-alpha.0",
   "private": true,
   "description": "Axis branded theme, components and examples for Fluent UI v9",
   "repository": {
