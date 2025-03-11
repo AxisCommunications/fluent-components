@@ -1,10 +1,11 @@
+import React from "react";
+
 import {
   useFluentProviderContextValues_unstable,
   useFluentProvider_unstable,
 } from "@fluentui/react-components";
-import React from "react";
-import { AxisCustomUtilityTokens, AxisThemeVariant } from "..";
-import { AxisThemeName } from "../index";
+import { AxisCustomUtilityTokens, AxisThemeVariant } from "../index.js";
+import { AxisThemeName } from "../index.js";
 
 export type Result = {
   name: AxisThemeName;

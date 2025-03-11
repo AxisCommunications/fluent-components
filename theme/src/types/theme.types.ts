@@ -1,4 +1,4 @@
-import { Theme } from "@fluentui/react-components";
+import { Theme } from "@fluentui/react-theme";
 
 export type AxisCustomColorTokens = {
   axisCustomColorMySystemsBackground: string;
