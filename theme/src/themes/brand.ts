@@ -61,6 +61,7 @@ export const axisLightTheme: AxisTheme = {
   colorBrandBackgroundHover: "#FEC10C",
   colorBrandBackgroundPressed: "#B07A0F",
   colorBrandBackgroundSelected: "#B07A0F",
+  colorBrandStroke2Contrast:"#FFDC70",
   colorNeutralForegroundInverted: "#242424",
   colorCompoundBrandBackground: "#FEC10C",
   colorCompoundBrandBackgroundHover: "#EFAB01",
