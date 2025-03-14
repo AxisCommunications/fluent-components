@@ -36,7 +36,7 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup-workspace
 
-      - name: Build
+      - name: Lint
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
         run: |
@@ -72,7 +72,7 @@ jobs:
       - name: Setup Environment
         uses: ./.github/actions/setup-workspace
 
-      - name: Build
+      - name: Test
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
         run: |
