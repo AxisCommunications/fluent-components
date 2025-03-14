@@ -62,7 +62,7 @@ jobs:
           git diff --exit-code
           pnpm build
 
-unit-tests:
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
