@@ -80,3 +80,22 @@ jobs:
           git diff --exit-code
           pnpm build
           pnpm test
+
+  check-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Environment
+        uses: ./.github/actions/setup-workspace
+
+      - name:   check unused dependencies
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
+        run: |
+          git diff --exit-code
+          pnpm check:unused-deps
+          
