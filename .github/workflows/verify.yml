@@ -41,6 +41,7 @@ jobs:
           NODE_OPTIONS: "--max-old-space-size=4096"
         run: |
           git diff --exit-code
+          pnpm build
           pnpm check
 
   build:
@@ -77,4 +78,5 @@ jobs:
           NODE_OPTIONS: "--max-old-space-size=4096"
         run: |
           git diff --exit-code
+          pnpm build
           pnpm test
