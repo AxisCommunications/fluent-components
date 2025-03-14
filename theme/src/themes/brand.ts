@@ -2,8 +2,8 @@ import {
   BrandVariants,
   createDarkTheme,
   createLightTheme,
-} from "@fluentui/react-components";
-import { AxisTheme } from "..";
+} from "@fluentui/react-theme";
+import { AxisTheme } from "../index.js";
 
 export const brand: BrandVariants = {
   10: "#281E03",

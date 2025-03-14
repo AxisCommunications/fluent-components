@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-topbar",
-  "version": "10.9.0",
+  "version": "11.0.0-alpha.0",
   "description": "Axis branded TopBar",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -10,38 +10,41 @@
   },
   "license": "MIT",
   "author": "Axis Communications AB",
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
+      "types": "./lib/index.d.ts",
       "import": "./lib/index.js"
     }
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
   "files": ["lib"],
   "scripts": {
     "prebuild": "pnpm run -C ../../icons build && pnpm run -C ../../theme build ",
-    "build": "pnpm prebuild && pnpm build:cjs && pnpm build:esm",
-    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
-    "build:esm": "tsc",
+    "build": "pnpm prebuild && pnpm build:types && pnpm build:esm",
+    "build:esm": "esbuild --format=esm --bundle --sourcemap --packages=external --outdir=lib src/index.ts",
+    "build:types": "tsc -p tsconfig.build.json",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && biome check",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch"
   },
+  "dependencies": {
+    "@axiscommunications/fluent-icons": "workspace:*",
+    "@axiscommunications/fluent-theme": "workspace:*"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.2.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/coverage-v8": "^3.0.8",
+    "esbuild": "^0.25.0",
     "jsdom": "^26.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^4.5.5",
-    "vitest": "^0.34.6"
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
   },
   "peerDependencies": {
     "@axiscommunications/fluent-theme": ">=9.0.0",
@@ -50,10 +53,6 @@
     "@fluentui/react-utilities": "^9.18.20",
     "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0"
-  },
-  "dependencies": {
-    "@axiscommunications/fluent-icons": "workspace:*",
-    "@axiscommunications/fluent-theme": "workspace:*"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

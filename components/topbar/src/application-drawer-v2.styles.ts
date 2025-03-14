@@ -25,7 +25,7 @@ export const useApplicationDrawerV2Styles = makeStyles({
     width: "26px",
   },
   drawerTriggerLabel: {
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: "5px",
   },
   header: {
     display: "flex",

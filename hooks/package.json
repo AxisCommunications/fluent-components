@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-hooks",
-  "version": "10.9.0",
+  "version": "11.0.0-alpha.0",
   "description": "Hooks",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -13,20 +13,23 @@
   "type": "module",
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
+      "types": "./lib/index.d.ts",
       "import": "./lib/index.js"
     }
   },
   "files": ["lib"],
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm build:types && pnpm build:esm",
+    "build:esm": "esbuild --format=esm --bundle --sourcemap --packages=external --outdir=lib src/index.ts",
+    "build:types": "tsc -p tsconfig.build.json",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && biome check"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
+    "esbuild": "^0.25.0",
     "react": "^18.2.0",
-    "typescript": "^4.5.5"
+    "typescript": "^5.8.2"
   },
   "peerDependencies": {
     "react": ">=16.8.0 <19.0.0"

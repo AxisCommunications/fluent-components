@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-slider",
-  "version": "10.9.0",
+  "version": "11.0.0-alpha.0",
   "description": "Axis branded Slider",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -10,11 +10,18 @@
   },
   "license": "MIT",
   "author": "Axis Communications AB",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    }
+  },
   "files": ["lib"],
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm build:types && pnpm build:esm",
+    "build:esm": "esbuild --format=esm --bundle --sourcemap --packages=external --outdir=lib src/index.ts",
+    "build:types": "tsc -p tsconfig.build.json",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && biome check",
     "test": "vitest run",
@@ -28,12 +35,13 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/coverage-v8": "^3.0.8",
+    "esbuild": "^0.25.0",
     "jsdom": "^26.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^4.5.5",
-    "vitest": "^0.34.6"
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.58.2",

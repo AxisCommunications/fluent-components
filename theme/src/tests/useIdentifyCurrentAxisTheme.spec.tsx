@@ -4,9 +4,9 @@ import {
 } from "@fluentui/react-components";
 import { renderHook } from "@testing-library/react";
 import React, { PropsWithChildren } from "react";
-import { useIdentifyCurrentAxisTheme } from "../hooks/use-identify-current-axis-theme.hook";
-import { axisBlueDarkTheme, axisBlueLightTheme } from "../themes/blue";
-import { axisDarkTheme, axisLightTheme } from "../themes/brand";
+import { useIdentifyCurrentAxisTheme } from "../hooks/use-identify-current-axis-theme.hook.js";
+import { axisBlueDarkTheme, axisBlueLightTheme } from "../themes/blue.js";
+import { axisDarkTheme, axisLightTheme } from "../themes/brand.js";
 
 describe("useIdentifyCurrentAxisTheme", () => {
   it("should return null values if used with none-axis themes", () => {

@@ -1,6 +1,6 @@
 {
   "name": "tools",
-  "version": "10.9.0",
+  "version": "11.0.0-alpha.0",
   "private": true,
   "author": "Axis Communications AB",
   "type": "module",
@@ -19,7 +19,7 @@
     "semver": "^7.6.3"
   },
   "devDependencies": {
-    "@types/node": "^20.11.18",
+    "@types/node": "^22.13.9",
     "@types/semver": "^7.5.6"
   }
 }

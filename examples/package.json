@@ -1,6 +1,6 @@
 {
   "name": "examples",
-  "version": "10.9.0",
+  "version": "11.0.0-alpha.0",
   "private": true,
   "description": "Examples for Fluent UI v9",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
@@ -11,6 +11,7 @@
   },
   "license": "MIT",
   "author": "Axis Communications AB",
+  "type": "module",
   "scripts": {
     "build": "vite build",
     "build:deploy": "pnpm run build && cp -r ./dist/. ../docs",
@@ -25,13 +26,13 @@
     "@axiscommunications/fluent-empty-view": "workspace:*",
     "@axiscommunications/fluent-hooks": "workspace:*",
     "@axiscommunications/fluent-icons": "workspace:*",
+    "@axiscommunications/fluent-illustrations": "workspace:*",
     "@axiscommunications/fluent-password-input": "workspace:*",
     "@axiscommunications/fluent-slider": "workspace:*",
     "@axiscommunications/fluent-stepper": "workspace:*",
     "@axiscommunications/fluent-styles": "workspace:*",
     "@axiscommunications/fluent-theme": "workspace:*",
     "@axiscommunications/fluent-topbar": "workspace:*",
-    "@axiscommunications/fluent-illustrations": "workspace:*",
     "@fluentui/react-components": "^9.58.2",
     "@fluentui/react-context-selector": "^9.1.72",
     "@fluentui/react-icons": "^2.0.271 ",
@@ -41,14 +42,14 @@
     "react-router-dom": "6.28.0",
     "react-syntax-highlighter": "15.6.1",
     "scheduler": "0.23.2",
-    "vite": "^3.0.9"
+    "vite": "^6.2.1"
   },
   "devDependencies": {
     "@playwright/test": "1.50.1",
-    "@types/node": "^20.11.18",
+    "@types/node": "^22.13.9",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-syntax-highlighter": "15.5.13",
-    "typescript": "^4.5.5"
+    "typescript": "^5.8.2"
   }
 }

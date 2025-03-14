@@ -1,6 +1,6 @@
 import React from "react";
-import { AxisIllustrationProps, FluentIllustration } from "./types";
-import { useIllustrationState } from "./useIllustrationState";
+import { AxisIllustrationProps, FluentIllustration } from "./types.js";
+import { useIllustrationState } from "./useIllustrationState.js";
 
 export const createFluentIllustration = (
   displayName: string,

@@ -1,7 +1,6 @@
 ignores:
   [
     "typescript",
-    "ts-node",
     "@types/node",
     "@testing-library/jest-dom",
     "@vitest/coverage-c8",
