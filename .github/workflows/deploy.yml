@@ -18,8 +18,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Environment
-        uses: ./.github/actions/setup-workspace
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm install --frozen-lockfile
 
       - name: Build example project
         run: pnpm --filter examples build:deploy
