@@ -21,8 +21,18 @@ jobs:
         id: vars
         run: echo ::set-output name=version::$(jq -r .version package.json)
 
-      - name: Setup Environment
-        uses: ./.github/actions/setup-workspace
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@axiscommunications"
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm install --frozen-lockfile
 
       - name: Build
         env:
