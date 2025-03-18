@@ -13,7 +13,7 @@ jobs:
       contents: write
       packages: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -21,18 +21,8 @@ jobs:
         id: vars
         run: echo ::set-output name=version::$(jq -r .version package.json)
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@axiscommunications"
-
-      - name: Install dependencies
-        run: |
-          corepack enable
-          corepack prepare --activate
-          pnpm install --frozen-lockfile
+      - name: Setup Environment
+        uses: ./.github/actions/setup-workspace
 
       - name: Build
         env:

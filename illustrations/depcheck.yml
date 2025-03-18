@@ -3,6 +3,6 @@ ignores:
     "typescript",
     "@types/node",
     "@testing-library/jest-dom",
-    "@vitest/coverage-c8",
+    "@types/yargs"
   ]
 skip-missing: true

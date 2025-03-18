@@ -13,20 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
-
-      - name: Install dependencies
-        run: |
-          corepack enable
-          corepack prepare --activate
-          pnpm install --frozen-lockfile
+      - name: Setup Environment
+        uses: ./.github/actions/setup-workspace
 
       - name: Transform SVG to fonts
         run: pnpm --filter @axiscommunications/fluent-icons fonts:build
