@@ -32,12 +32,12 @@
     "@testing-library/react": "^14.2.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.25.1",
     "jsdom": "^26.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.8"
+    "vitest": "^3.0.9"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.58.2",
