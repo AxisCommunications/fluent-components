@@ -52,7 +52,14 @@ export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
 
   const tokens = Object.entries(light)
     .filter(([token]) => token.startsWith("color"))
-    .filter(([token]) => token.toLowerCase().includes(filter.toLowerCase()))
+    .filter(([token, value]) => {
+      const keyHit = token.toLowerCase().includes(filter.toLowerCase());
+      const valueHit = value
+        .toString()
+        .toLowerCase()
+        .includes(filter.toLowerCase());
+      return keyHit || valueHit;
+    })
     .map(([token, value]) => ({
       token,
       lightValue: value as string,
