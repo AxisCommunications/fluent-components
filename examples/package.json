@@ -1,6 +1,6 @@
 {
   "name": "examples",
-  "version": "11.0.0-alpha.0",
+  "version": "11.0.0",
   "private": true,
   "description": "Examples for Fluent UI v9",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
