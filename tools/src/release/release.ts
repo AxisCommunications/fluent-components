@@ -15,6 +15,7 @@ function sha(commitish: string) {
 function bumpPackages(version: string) {
   execSync(`pnpm version --no-git-tag-version ${version}`);
   execSync(`pnpm -r exec pnpm version --no-git-tag-version ${version}`);
+  execSync("pnpm format");
 }
 
 export function release(increment: string) {

@@ -12,6 +12,7 @@ function sha(commitish) {
 function bumpPackages(version) {
   execSync(`pnpm version --no-git-tag-version ${version}`);
   execSync(`pnpm -r exec pnpm version --no-git-tag-version ${version}`);
+  execSync("pnpm format");
 }
 export function release(increment) {
   const releaseType = semver.RELEASE_TYPES.find((r) => r === increment);
