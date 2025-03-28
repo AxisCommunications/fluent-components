@@ -89,6 +89,8 @@ export {
   ProhibitedLight,
   SettingsDark,
   SettingsLight,
+  SidebarDark,
+  SidebarLight,
   SuccessDark,
   SuccessLight,
   TeamDark,
@@ -99,10 +101,10 @@ export {
   UnpackLight,
   UserDark,
   UserGroupDark,
-  UserGroupLight,
-  UserLight,
 } from "./illustrations/chunk-1.js";
 export {
+  UserGroupLight,
+  UserLight,
   UserProfileDark,
   UserProfileLight,
   WelcomePlaneDark,
