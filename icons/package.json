@@ -45,7 +45,7 @@
     "@svgr/core": "^5.5.0",
     "@types/node": "^22.13.14",
     "@types/react": "^18.3.12",
-    "esbuild": "^0.25.1",
+    "esbuild": "^0.25.2",
     "icon-font-generator": "^2.1.11",
     "react": "^18.2.0",
     "replace": "^1.2.2",
