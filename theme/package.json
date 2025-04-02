@@ -37,7 +37,7 @@
     "@fluentui/react-theme": "^9.1.24",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.2.1",
-    "@types/node": "^22.13.14",
+    "@types/node": "^22.13.17",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "esbuild": "^0.25.1",
