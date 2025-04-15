@@ -43,14 +43,14 @@
   },
   "devDependencies": {
     "@svgr/core": "^5.5.0",
-    "@types/node": "^22.13.14",
+    "@types/node": "^22.14.1",
     "@types/react": "^18.3.12",
     "esbuild": "^0.25.2",
     "icon-font-generator": "^2.1.11",
     "react": "^18.2.0",
     "replace": "^1.2.2",
     "svgo": "1.3.2",
-    "typescript": "^5.8.2",
+    "typescript": "^5.8.3",
     "yargs": "^14.2.3"
   },
   "peerDependencies": {
