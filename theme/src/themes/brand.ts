@@ -69,6 +69,7 @@ export const axisLightTheme: AxisTheme = {
   colorBrandForegroundLinkHover: "#0182b3",
   colorBrandForegroundLinkPressed: "#026690",
   colorBrandForegroundLinkSelected: "#028fcc",
+  colorBrandStroke2Contrast: "#FFDC70",
   colorScrollbarOverlay: "rgba(0,0,0,0.2)",
   axisCustomColorMyAxisBackground: "#DFA001",
   axisCustomColorMyAxisForeground: "#FFF5D6",
