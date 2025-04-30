@@ -25,7 +25,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "depcheck": "1.4.7",
-    "sort-package-json": "3.0.0",
+    "sort-package-json": "3.1.0",
     "tools": "file:tools",
     "typescript": "^5.8.3"
   },
