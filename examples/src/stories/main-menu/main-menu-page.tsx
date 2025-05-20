@@ -34,7 +34,6 @@ export const MainMenuPage = () => {
 
   return (
     <StoryPage
-      status={[EStoryStatus.NEW]}
       title="Main menu"
       description={
         "Variant of a main menu using fluent TabList and axis styling"

@@ -121,7 +121,7 @@ export function StoryPage({
   navigation,
   children,
   customHeader,
-  status = [],
+  status = [EStoryStatus.STABLE],
   ...rest
 }: PropsWithChildren<TStoryPage>) {
   const { styles, rootStyle } = useStoryPageStyles();
