@@ -1,7 +1,6 @@
 import { pageData } from "examples/src/components/story/story.utils";
 import React from "react";
 import { StoryPage } from "../../components/story/story-page";
-import { EStoryStatus } from "../../components/story/story-status";
 import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";

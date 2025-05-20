@@ -9,7 +9,6 @@ import {
   PasswordInputExample,
   PasswordInputExampleAsString,
 } from "./password-input-example";
-import { EStoryStatus } from "examples/src/components/story/story-status";
 
 const useStyles = makeStyles({
   example: {
