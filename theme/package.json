@@ -40,14 +40,14 @@
     "@types/node": "^22.15.3",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "esbuild": "^0.25.3",
+    "esbuild": "^0.25.5",
     "jsdom": "^26.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "style-dictionary": "^3.9.2",
     "token-transformer": "^0.0.33",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "vitest": "^3.1.4"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.62.0",
