@@ -39,9 +39,11 @@ import {
   SuccessLight,
   TeamDark,
   TeamLight,
+  MenuItemFocusDark,
   UnderConstructionDark,
   UnderConstructionLight,
   bundleIllustrationSmart,
+  MenuItemFocusLight,
 } from "@axiscommunications/fluent-illustrations";
 import { IllustrationKind } from "./types.js";
 
@@ -54,6 +56,10 @@ export const Illustration: Record<
     AddUserProfileLight
   ),
   "code-error": bundleIllustrationSmart(CodeErrorDark, CodeErrorLight),
+  "menu-item-focus": bundleIllustrationSmart(
+    MenuItemFocusDark,
+    MenuItemFocusLight
+  ),
   data: bundleIllustrationSmart(DataDark, DataLight),
   devices: bundleIllustrationSmart(DevicesDark, DevicesLight),
   "empty-folder": bundleIllustrationSmart(EmptyFolderDark, EmptyFolderLight),

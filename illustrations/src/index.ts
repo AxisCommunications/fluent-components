@@ -63,6 +63,8 @@ export {
   MediaErrorDark,
   MediaErrorLight,
   MediaLight,
+  MenuItemFocusDark,
+  MenuItemFocusLight,
   MilPermissionsDark,
   MilPermissionsLight,
   NavigationDark,
@@ -99,10 +101,10 @@ export {
   ProhibitedLight,
   ResetPasswordDark,
   ResetPasswordLight,
-  SetPasswordDark,
-  SetPasswordLight,
 } from "./illustrations/chunk-1.js";
 export {
+  SetPasswordDark,
+  SetPasswordLight,
   SettingsDark,
   SettingsLight,
   SidebarDark,
