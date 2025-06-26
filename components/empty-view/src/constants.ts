@@ -17,6 +17,8 @@ import {
   FileMissingLight,
   MediaDark,
   MediaLight,
+  MenuItemFocusDark,
+  MenuItemFocusLight,
   NoAccessDark,
   NoAccessLight,
   NoConnectionDark,
@@ -39,11 +41,9 @@ import {
   SuccessLight,
   TeamDark,
   TeamLight,
-  MenuItemFocusDark,
   UnderConstructionDark,
   UnderConstructionLight,
   bundleIllustrationSmart,
-  MenuItemFocusLight,
 } from "@axiscommunications/fluent-illustrations";
 import { IllustrationKind } from "./types.js";
 
