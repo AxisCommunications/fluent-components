@@ -17,6 +17,8 @@ import {
   FileMissingLight,
   MediaDark,
   MediaLight,
+  MenuItemFocusDark,
+  MenuItemFocusLight,
   NoAccessDark,
   NoAccessLight,
   NoConnectionDark,
@@ -54,6 +56,10 @@ export const Illustration: Record<
     AddUserProfileLight
   ),
   "code-error": bundleIllustrationSmart(CodeErrorDark, CodeErrorLight),
+  "menu-item-focus": bundleIllustrationSmart(
+    MenuItemFocusDark,
+    MenuItemFocusLight
+  ),
   data: bundleIllustrationSmart(DataDark, DataLight),
   devices: bundleIllustrationSmart(DevicesDark, DevicesLight),
   "empty-folder": bundleIllustrationSmart(EmptyFolderDark, EmptyFolderLight),
