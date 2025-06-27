@@ -7,6 +7,8 @@ import {
   DataLight,
   DevicesDark,
   DevicesLight,
+  DragMenuItemDark,
+  DragMenuItemLight,
   EmptyFolderDark,
   EmptyFolderLight,
   EmptyGeneralDark,
@@ -55,6 +57,7 @@ export const Illustration: Record<
     AddUserProfileDark,
     AddUserProfileLight
   ),
+  "drag-menu": bundleIllustrationSmart(DragMenuItemDark, DragMenuItemLight),
   "code-error": bundleIllustrationSmart(CodeErrorDark, CodeErrorLight),
   "menu-item-focus": bundleIllustrationSmart(
     MenuItemFocusDark,
