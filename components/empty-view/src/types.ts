@@ -22,6 +22,7 @@ export type IllustrationKind =
   | "success"
   | "team"
   | "menu-item-focus"
+  | "drag-menu"
   | "under-construction";
 
 export interface ContentProps {

@@ -35,6 +35,8 @@ export {
   DocumentsLight,
   DoorErrorDark,
   DoorErrorLight,
+  DragMenuItemDark,
+  DragMenuItemLight,
   EmailSentDark,
   EmailSentLight,
   EmptyFolderDark,
@@ -47,10 +49,10 @@ export {
   FileMissingLight,
   FolderDark,
   FolderLight,
-  GridLocationDark,
-  GridLocationLight,
 } from "./illustrations/chunk-0.js";
 export {
+  GridLocationDark,
+  GridLocationLight,
   ImportExcelDark,
   ImportExcelLight,
   LaunchDark,
@@ -99,10 +101,10 @@ export {
   PasswordSentLight,
   ProhibitedDark,
   ProhibitedLight,
-  ResetPasswordDark,
-  ResetPasswordLight,
 } from "./illustrations/chunk-1.js";
 export {
+  ResetPasswordDark,
+  ResetPasswordLight,
   SetPasswordDark,
   SetPasswordLight,
   SettingsDark,
