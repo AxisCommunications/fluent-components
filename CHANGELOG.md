@@ -1,13 +1,5 @@
-## [11.2.0](https://github.com/AxisCommunications/fluent-components/compare/c9d859f28453386330c9c12161a486ab869b28f2..25e4df6ed264f906dcb644d64ae782e9c4f57a61) (2025-06-26T07:04:22.659Z)
-
-### 🚧 Maintenance
-
-  - generate menu-focus illustration (#476) ([25e4df6](https://github.com/AxisCommunications/fluent-components/commit/25e4df6ed264f906dcb644d64ae782e9c4f57a61))
-
-### 🐛 Bug fixes
-
-  - password console error when using not using edge (#467) ([8a28885](https://github.com/AxisCommunications/fluent-components/commit/8a28885d879ecfb86165c80e95033d90abb6008b))
+## [11.3.0](https://github.com/AxisCommunications/fluent-components/compare/7d4e935b65f8e6898205a45e7743a06c5e8e98ae..3f2390c468a831d7214b4fca0941609e54348ae9) (2025-06-27T15:11:59.072Z)
 
 ### 💄 Styling
 
-  - new illustration (#475) ([8320306](https://github.com/AxisCommunications/fluent-components/commit/8320306b8a53669af171a5fbbb5edc075f9d9d16))
+  - New and updated illustrations (#478) ([3f2390c](https://github.com/AxisCommunications/fluent-components/commit/3f2390c468a831d7214b4fca0941609e54348ae9))
