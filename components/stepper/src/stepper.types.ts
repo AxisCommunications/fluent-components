@@ -1,9 +1,9 @@
-export type Step = {
+export type TStep = {
   name: string;
 };
 
 export type StepperProps = {
   currentStep: number;
-  steps: Step[];
+  steps: TStep[];
   vertical?: boolean;
 };

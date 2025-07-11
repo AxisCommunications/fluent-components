@@ -1,6 +1,6 @@
-import { Step } from "./stepper.types";
+import { TStep } from "./stepper.types";
 
-export type DialogStep = Step & {
+export type DialogStep = TStep & {
   content: JSX.Element;
 };
 
