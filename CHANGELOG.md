@@ -1,5 +1,5 @@
-## [11.3.0](https://github.com/AxisCommunications/fluent-components/compare/7d4e935b65f8e6898205a45e7743a06c5e8e98ae..3f2390c468a831d7214b4fca0941609e54348ae9) (2025-06-27T15:11:59.072Z)
+## [11.4.0](https://github.com/AxisCommunications/fluent-components/compare/9ddcf54dea4329432b8057b5574117f1e9b895af..52104c24855a52daccb904100731ca9693a46489) (2025-07-25T09:12:39.546Z)
 
-### 💄 Styling
+### ✨ Features
 
-  - New and updated illustrations (#478) ([3f2390c](https://github.com/AxisCommunications/fluent-components/commit/3f2390c468a831d7214b4fca0941609e54348ae9))
+  - **topbar**: add optional initials for user avatar (#481) ([52104c2](https://github.com/AxisCommunications/fluent-components/commit/52104c24855a52daccb904100731ca9693a46489))
