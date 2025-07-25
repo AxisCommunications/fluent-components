@@ -27,6 +27,8 @@ export type UserInformationProps = {
   readonly email: string;
   // Optional third tagline (for extra information)
   readonly tag?: string;
+  // Optional custom initials for avatar
+  readonly initials?: string;
 };
 
 export type ProfileMenuProps = UserInformationProps & {
