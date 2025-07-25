@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import React from "react";
+import React, { act } from "react";
 import { TopBar } from "./top-bar";
 
 describe("Topbar", () => {
@@ -64,5 +64,55 @@ describe("Topbar", () => {
 
     const appMenuButton = await findByTestId("application-drawer-trigger");
     expect(appMenuButton).toBeTruthy();
+  });
+
+  it("should render standard initials", async () => {
+    const { findByTestId } = render(
+      <TopBar
+        profileMenu={{
+          name: "Super User",
+          email: "super.user@axis.com",
+          language: { onChange: () => {}, value: "en" },
+          theme: { onChange: () => {}, value: "dark" },
+          onSignOut: () => {},
+        }}
+      />
+    );
+
+    const profileMenuButton = await findByTestId("profile-menu-button");
+    expect(profileMenuButton).toHaveTextContent("SU");
+
+    act(() => {
+      profileMenuButton.click();
+    });
+    const profileMenuPersona = await findByTestId("profile-menu-persona");
+    expect(profileMenuPersona).toHaveTextContent(
+      "SUSuper Usersuper.user@axis.com"
+    );
+  });
+
+  it("should render custom initials", async () => {
+    const { findByTestId } = render(
+      <TopBar
+        profileMenu={{
+          name: "Super User",
+          email: "super.user@axis.com",
+          initials: "XY",
+          language: { onChange: () => {}, value: "en" },
+          theme: { onChange: () => {}, value: "dark" },
+          onSignOut: () => {},
+        }}
+      />
+    );
+
+    const profileMenuButton = await findByTestId("profile-menu-button");
+    expect(profileMenuButton).toHaveTextContent("XY");
+    act(() => {
+      profileMenuButton.click();
+    });
+    const profileMenuPersona = await findByTestId("profile-menu-persona");
+    expect(profileMenuPersona).toHaveTextContent(
+      "XYSuper Usersuper.user@axis.com"
+    );
   });
 });
