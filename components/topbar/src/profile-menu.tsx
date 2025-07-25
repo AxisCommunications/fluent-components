@@ -31,6 +31,7 @@ export const ProfileMenu = ({
   language,
   name,
   email,
+  initials,
   onSignOut,
   signOutLabel,
   tag,
@@ -50,6 +51,7 @@ export const ProfileMenu = ({
             <Avatar
               color="mink"
               name={name}
+              initials={initials}
               size={24}
               badge={
                 hasNotification
@@ -79,7 +81,12 @@ export const ProfileMenu = ({
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
-          <UserInformation name={name} email={email} tag={tag} />
+          <UserInformation
+            name={name}
+            email={email}
+            initials={initials}
+            tag={tag}
+          />
           {(customContent === undefined || showCustomContentTopDivider) && (
             <MenuDivider />
           )}
