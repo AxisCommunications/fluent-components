@@ -36,10 +36,10 @@
     "@fluentui/react-components": "^9.62.0",
     "@fluentui/react-context-selector": "^9.1.76",
     "@fluentui/react-icons": "^2.0.297",
-    "@vitejs/plugin-react": "^4.4.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "6.30.0",
+    "react-router-dom": "6.30.1",
     "react-syntax-highlighter": "15.6.1",
     "scheduler": "0.26.0",
     "vite": "^6.3.4"
