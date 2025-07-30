@@ -33,16 +33,16 @@
     "@axiscommunications/fluent-theme": "workspace:*"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^14.2.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "esbuild": "^0.25.3",
+    "esbuild": "^0.25.8",
     "jsdom": "^26.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "vitest": "^3.2.4"
   },
   "peerDependencies": {
     "@axiscommunications/fluent-theme": ">=9.0.0",
