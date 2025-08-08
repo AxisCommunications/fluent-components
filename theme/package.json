@@ -51,7 +51,6 @@
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.62.0",
-    "@fluentui/react-theme": "^9.1.24",
     "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0"
   },
