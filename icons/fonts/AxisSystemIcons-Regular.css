@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Regular";
-    src: url("./AxisSystemIcons-Regular.ttf?ab1a5c9d3942616bf7ea6ae3944a5942") format("truetype");
+    src: url("./AxisSystemIcons-Regular.ttf?6e7aaa341a78e4832071a708ae693d43") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -1435,4 +1435,109 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_air_quality_monitoring_24_regular:before {
     content: "\f2da";
+}
+.icon-ic_axis_breaking_glass_20_regular:before {
+    content: "\f2db";
+}
+.icon-ic_axis_breaking_glass_24_regular:before {
+    content: "\f2dc";
+}
+.icon-ic_axis_breaking_glass_28_regular:before {
+    content: "\f2dd";
+}
+.icon-ic_axis_breaking_glass_32_regular:before {
+    content: "\f2de";
+}
+.icon-ic_axis_breaking_glass_48_regular:before {
+    content: "\f2df";
+}
+.icon-ic_axis_cough_20_regular:before {
+    content: "\f2e0";
+}
+.icon-ic_axis_cough_24_regular:before {
+    content: "\f2e1";
+}
+.icon-ic_axis_cough_28_regular:before {
+    content: "\f2e2";
+}
+.icon-ic_axis_cough_32_regular:before {
+    content: "\f2e3";
+}
+.icon-ic_axis_cough_48_regular:before {
+    content: "\f2e4";
+}
+.icon-ic_axis_loud_noise_20_regular:before {
+    content: "\f2e5";
+}
+.icon-ic_axis_loud_noise_24_regular:before {
+    content: "\f2e6";
+}
+.icon-ic_axis_loud_noise_28_regular:before {
+    content: "\f2e7";
+}
+.icon-ic_axis_loud_noise_32_regular:before {
+    content: "\f2e8";
+}
+.icon-ic_axis_loud_noise_48_regular:before {
+    content: "\f2e9";
+}
+.icon-ic_axis_scream_16_regular:before {
+    content: "\f2ea";
+}
+.icon-ic_axis_scream_20_regular:before {
+    content: "\f2eb";
+}
+.icon-ic_axis_scream_24_regular:before {
+    content: "\f2ec";
+}
+.icon-ic_axis_scream_28_regular:before {
+    content: "\f2ed";
+}
+.icon-ic_axis_scream_32_regular:before {
+    content: "\f2ee";
+}
+.icon-ic_axis_scream_48_regular:before {
+    content: "\f2ef";
+}
+.icon-ic_axis_shout_16_regular:before {
+    content: "\f2f0";
+}
+.icon-ic_axis_shout_20_regular:before {
+    content: "\f2f1";
+}
+.icon-ic_axis_shout_24_regular:before {
+    content: "\f2f2";
+}
+.icon-ic_axis_shout_28_regular:before {
+    content: "\f2f3";
+}
+.icon-ic_axis_shout_32_regular:before {
+    content: "\f2f4";
+}
+.icon-ic_axis_shout_48_regular:before {
+    content: "\f2f5";
+}
+.icon-ic_axis_speak_16_regular:before {
+    content: "\f2f6";
+}
+.icon-ic_axis_speak_20_regular:before {
+    content: "\f2f7";
+}
+.icon-ic_axis_speak_24_regular:before {
+    content: "\f2f8";
+}
+.icon-ic_axis_speak_28_regular:before {
+    content: "\f2f9";
+}
+.icon-ic_axis_speak_32_regular:before {
+    content: "\f2fa";
+}
+.icon-ic_axis_speak_48_regular:before {
+    content: "\f2fb";
+}
+.icon-ic_axis_windshield_washer_20_regular:before {
+    content: "\f2fc";
+}
+.icon-ic_axis_windshield_washer_24_regular:before {
+    content: "\f2fd";
 }
