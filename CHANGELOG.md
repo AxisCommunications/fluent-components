@@ -1,5 +1,7 @@
-## [11.4.0](https://github.com/AxisCommunications/fluent-components/compare/9ddcf54dea4329432b8057b5574117f1e9b895af..52104c24855a52daccb904100731ca9693a46489) (2025-07-25T09:12:39.546Z)
+## [11.5.0](https://github.com/AxisCommunications/fluent-components/compare/a899f861beb37db485c83b9cec58db57992a79bb..49050768c1b64b1b3b297c7a6e334794a1fb8c23) (2025-08-28T10:48:15.213Z)
 
-### ✨ Features
+### 🚧 Maintenance
 
-  - **topbar**: add optional initials for user avatar (#481) ([52104c2](https://github.com/AxisCommunications/fluent-components/commit/52104c24855a52daccb904100731ca9693a46489))
+  - New icon (#492) ([4905076](https://github.com/AxisCommunications/fluent-components/commit/49050768c1b64b1b3b297c7a6e334794a1fb8c23))
+  - **deps**: remove react-theme as peer dependency (#487) ([c207de5](https://github.com/AxisCommunications/fluent-components/commit/c207de54645eaaf378165c09800b6190fbf8e119))
+  - export step component (#480) ([4a5ccb6](https://github.com/AxisCommunications/fluent-components/commit/4a5ccb667ad5519129dd45026545d3c7309e12d8))
