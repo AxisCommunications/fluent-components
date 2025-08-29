@@ -111,6 +111,8 @@ export {
   SettingsLight,
   SidebarDark,
   SidebarLight,
+  SignedDocumentsDark,
+  SignedDocumentsLight,
   SuccessDark,
   SuccessLight,
   TeamDark,
