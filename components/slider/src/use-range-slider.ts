@@ -504,7 +504,7 @@ export const useRangeSlider_unstable = (
       value,
       valueLabelTransform,
       "data-index": index,
-      open: open === index || active === index,
+      open: open === index || active === index || props.thumb?.open === true,
       active: active === index,
       dragging,
       handleFocus: createHandleFocus(index),
