@@ -1,5 +1,5 @@
-## [11.5.1](https://github.com/AxisCommunications/fluent-components/compare/e1a29a2aa09fa57b2d92d25b2e1c4b734242437e..64db8f36b6e9cb4ae045a8274e8f02e79bcc36a3) (2025-08-29T06:10:00.235Z)
+## [11.5.2](https://github.com/AxisCommunications/fluent-components/compare/70e692b816e6e0895bdcaa7c3327b63976fe50f8..36521653f49b31ba1335db111f385fe2ae04e3fc) (2025-09-12T12:24:26.242Z)
 
-### 💄 Styling
+### 🐛 Bug fixes
 
-  - new illustration (#495) ([64db8f3](https://github.com/AxisCommunications/fluent-components/commit/64db8f36b6e9cb4ae045a8274e8f02e79bcc36a3))
+  - **slider**: check props to show thumb tooltip (#497) ([3652165](https://github.com/AxisCommunications/fluent-components/commit/36521653f49b31ba1335db111f385fe2ae04e3fc))
