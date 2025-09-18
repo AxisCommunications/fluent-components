@@ -52,3 +52,5 @@ updates:
       interval: "weekly"
       day: "wednesday"
       time: "05:00"
+      # Disable all pull requests
+      open-pull-requests-limit: 0
