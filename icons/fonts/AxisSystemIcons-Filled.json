@@ -492,5 +492,17 @@
   "ic_axis_speak_32_filled": "0xf2eb",
   "ic_axis_speak_48_filled": "0xf2ec",
   "ic_axis_windshield_washer_20_filled": "0xf2ed",
-  "ic_axis_windshield_washer_24_filled": "0xf2ee"
+  "ic_axis_windshield_washer_24_filled": "0xf2ee",
+  "ic_axis_shield_alarm_16_filled": "0xf2ef",
+  "ic_axis_shield_alarm_20_filled": "0xf2f0",
+  "ic_axis_shield_alarm_24_filled": "0xf2f1",
+  "ic_axis_shield_alarm_28_filled": "0xf2f2",
+  "ic_axis_shield_alarm_32_filled": "0xf2f3",
+  "ic_axis_shield_alarm_48_filled": "0xf2f4",
+  "ic_axis_shield_learning_16_filled": "0xf2f5",
+  "ic_axis_shield_learning_20_filled": "0xf2f6",
+  "ic_axis_shield_learning_24_filled": "0xf2f7",
+  "ic_axis_shield_learning_28_filled": "0xf2f8",
+  "ic_axis_shield_learning_32_filled": "0xf2f9",
+  "ic_axis_shield_learning_48_filled": "0xf2fa"
 }

@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Regular";
-    src: url("./AxisSystemIcons-Regular.ttf?6e7aaa341a78e4832071a708ae693d43") format("truetype");
+    src: url("./AxisSystemIcons-Regular.ttf?727f2db2c0c3142610539db773fb2dcf") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -1540,4 +1540,40 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_windshield_washer_24_regular:before {
     content: "\f2fd";
+}
+.icon-ic_axis_shield_alarm_16_regular:before {
+    content: "\f2fe";
+}
+.icon-ic_axis_shield_alarm_20_regular:before {
+    content: "\f2ff";
+}
+.icon-ic_axis_shield_alarm_24_regular:before {
+    content: "\f300";
+}
+.icon-ic_axis_shield_alarm_28_regular:before {
+    content: "\f301";
+}
+.icon-ic_axis_shield_alarm_32_regular:before {
+    content: "\f302";
+}
+.icon-ic_axis_shield_alarm_48_regular:before {
+    content: "\f303";
+}
+.icon-ic_axis_shield_learning_16_regular:before {
+    content: "\f304";
+}
+.icon-ic_axis_shield_learning_20_regular:before {
+    content: "\f305";
+}
+.icon-ic_axis_shield_learning_24_regular:before {
+    content: "\f306";
+}
+.icon-ic_axis_shield_learning_28_regular:before {
+    content: "\f307";
+}
+.icon-ic_axis_shield_learning_32_regular:before {
+    content: "\f308";
+}
+.icon-ic_axis_shield_learning_48_regular:before {
+    content: "\f309";
 }
