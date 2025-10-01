@@ -46,7 +46,7 @@
     "react-dom": "^18.2.0",
     "style-dictionary": "^3.9.2",
     "token-transformer": "^0.0.33",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.3",
     "vitest": "^3.1.2"
   },
   "peerDependencies": {

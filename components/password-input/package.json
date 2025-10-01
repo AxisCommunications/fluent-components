@@ -31,7 +31,7 @@
     "esbuild": "^0.25.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.62.0",

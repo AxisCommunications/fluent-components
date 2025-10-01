@@ -19,10 +19,10 @@ importers:
         version: 3.1.0
       tools:
         specifier: file:tools
-        version: link:tools
+        version: file:tools
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   components/empty-view:
     dependencies:
@@ -52,8 +52,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   components/password-input:
     dependencies:
@@ -83,8 +83,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   components/slider:
     dependencies:
@@ -126,8 +126,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
       vitest:
         specifier: ^3.1.2
         version: 3.1.2(@types/node@22.15.3)(jsdom@26.1.0)
@@ -169,8 +169,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
       vitest:
         specifier: ^3.1.2
         version: 3.1.2(@types/node@22.15.3)(jsdom@26.1.0)
@@ -218,8 +218,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
       vitest:
         specifier: ^3.1.2
         version: 3.1.2(@types/node@22.15.3)(jsdom@26.1.0)
@@ -303,8 +303,8 @@ importers:
         specifier: 15.5.13
         version: 15.5.13
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   hooks:
     devDependencies:
@@ -318,8 +318,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   icons:
     dependencies:
@@ -352,8 +352,8 @@ importers:
         specifier: 1.3.2
         version: 1.3.2
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
       yargs:
         specifier: ^14.2.3
         version: 14.2.3
@@ -391,8 +391,8 @@ importers:
         specifier: 1.3.2
         version: 1.3.2
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
       vitest:
         specifier: ^3.1.2
         version: 3.1.2(@types/node@22.15.3)(jsdom@26.1.0)
@@ -419,8 +419,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
 
   theme:
     devDependencies:
@@ -464,8 +464,8 @@ importers:
         specifier: ^0.0.33
         version: 0.0.33
       typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
+        specifier: ^5.9.3
+        version: 5.9.3
       vitest:
         specifier: ^3.1.2
         version: 3.1.2(@types/node@22.15.3)(jsdom@26.1.0)
@@ -1391,6 +1391,7 @@ packages:
 
   '@fluentui/react-virtualizer@9.0.0-alpha.96':
     resolution: {integrity: sha512-0o9RSTAAIoJ4xdM2g8hF5u98Up0OHRknRhMolZHZDoqXEvhJ5GroGtp+NPfU7LxU+dxHrZLx9gQ6wVWe/35ZzQ==}
+    deprecated: Deprecating react-virtualizer in Fluent core - migrating to fluentui-contrib repo for stable release
     peerDependencies:
       '@types/react': '>=16.14.0 <19.0.0'
       '@types/react-dom': '>=16.9.0 <19.0.0'
@@ -3393,6 +3394,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  semver@7.7.2:
+    resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
   sentence-case@3.0.4:
     resolution: {integrity: sha512-8LS0JInaQMCRoQ7YUytAo/xUu5W2XnQxV2HI/6uM6U7CITS1RqPElr30V6uIqyMKM9lJGRVFy5/4CuzcixNYSg==}
 
@@ -3632,6 +3638,11 @@ packages:
 
   token-transformer@0.0.33:
     resolution: {integrity: sha512-0h7Cvo8trUcv6sZPyA+iNHsFEwIhN4FhXtYqgndHQNYub+dTDW8ZCQURBNDNa0PvJ8Xg2wqG1V/5WSwV0l6yOw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    hasBin: true
+
+  tools@file:tools:
+    resolution: {directory: tools, type: directory}
     hasBin: true
 
   tough-cookie@2.5.0:
@@ -3687,8 +3698,8 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
-  typescript@5.8.3:
-    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -7702,6 +7713,8 @@ snapshots:
 
   semver@7.7.1: {}
 
+  semver@7.7.2: {}
+
   sentence-case@3.0.4:
     dependencies:
       no-case: 3.0.4
@@ -7980,6 +7993,13 @@ snapshots:
     dependencies:
       yargs: 17.7.2
 
+  tools@file:tools:
+    dependencies:
+      cmd-ts: 0.13.0
+      semver: 7.7.2
+    transitivePeerDependencies:
+      - supports-color
+
   tough-cookie@2.5.0:
     dependencies:
       psl: 1.9.0
@@ -8053,7 +8073,7 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
-  typescript@5.8.3: {}
+  typescript@5.9.3: {}
 
   uglify-js@3.18.0:
     optional: true
