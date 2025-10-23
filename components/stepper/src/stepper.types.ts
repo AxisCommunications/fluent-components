@@ -1,5 +1,5 @@
 export type TStep = {
-  name: string;
+  name?: string;
 };
 
 export type StepperProps = {

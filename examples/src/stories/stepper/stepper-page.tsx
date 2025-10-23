@@ -11,6 +11,10 @@ import {
   CustomStepperDialogExampleAsString,
 } from "./examples/custom-style-example";
 import {
+  MinimalWithCustomFooterStepperDialogExample,
+  MinimalWithCustomFooterStepperDialogExampleAsString,
+} from "./examples/minimal-with-counter-stepper-example";
+import {
   StepperDialogExample,
   StepperDialogExampleAsString,
 } from "./examples/stepper-dialog-example";
@@ -37,6 +41,12 @@ const examples: pageData[] = [
     anchor: "Override styling",
     example: <CustomStepperDialogExample />,
     codeString: CustomStepperDialogExampleAsString,
+  },
+  {
+    title: "Minimal with custom footer",
+    anchor: "Minimal with custom footer",
+    example: <MinimalWithCustomFooterStepperDialogExample />,
+    codeString: MinimalWithCustomFooterStepperDialogExampleAsString,
   },
 ];
 

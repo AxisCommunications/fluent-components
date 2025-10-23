@@ -7,6 +7,8 @@ export type DialogStep = TStep & {
 export type StepperDialogProps = {
   currentStep: number;
   steps: DialogStep[];
+  hideSteps?: boolean;
+  footerContent?: JSX.Element;
   vertical?: boolean;
   onStepChange: (newStep: number) => void;
   onFinish: () => void;
