@@ -297,4 +297,49 @@ describe("StepperDialog", () => {
 
     expect(onFinish).toHaveBeenCalled();
   });
+
+  it("should not render the steps", () => {
+    const onFinish = vi.fn();
+
+    const { container } = render(
+      <StepperDialog
+        currentStep={2}
+        steps={steps}
+        hideSteps
+        disableProgression={false}
+        onStepChange={vi.fn()}
+        onFinish={onFinish}
+        onCancel={vi.fn()}
+        cancelLabel={"Cancel"}
+        nextLabel={"Next"}
+        previousLabel={"Previous"}
+        finishLabel={"Finish"}
+      />
+    );
+
+    expect(container.querySelectorAll(".axis-Stepper").length).toBe(0);
+  });
+
+  it("should render footer content", () => {
+    const onFinish = vi.fn();
+
+    const { getByTestId } = render(
+      <StepperDialog
+        currentStep={2}
+        steps={steps}
+        hideSteps
+        footerContent={<div data-testid="footerContent">footer content</div>}
+        disableProgression={false}
+        onStepChange={vi.fn()}
+        onFinish={onFinish}
+        onCancel={vi.fn()}
+        cancelLabel={"Cancel"}
+        nextLabel={"Next"}
+        previousLabel={"Previous"}
+        finishLabel={"Finish"}
+      />
+    );
+
+    expect(getByTestId("footerContent")).toBeVisible();
+  });
 });

@@ -11,6 +11,7 @@ export const StepperDialogClassNames = {
   root: ROOT_CLASS_NAME,
   container: `${ROOT_CLASS_NAME}-container`,
   content: `${ROOT_CLASS_NAME}-content`,
+  footerContent: `${ROOT_CLASS_NAME}-footer-content`,
   buttonContainer: `${ROOT_CLASS_NAME}-buttons-container`,
   buttons: `${ROOT_CLASS_NAME}-buttons`,
   cancel: `${ROOT_CLASS_NAME}-cancel`,
@@ -53,6 +54,9 @@ const useStyles = makeStyles({
     display: "flex",
     ...shorthands.gap(tokens.spacingHorizontalL),
   },
+  footerContent: {
+    alignSelf: "center",
+  },
 });
 
 type TUseStepperDialogStyles = {
@@ -88,6 +92,10 @@ export function useStepperDialogStyles({
     StepperDialogClassNames.buttons,
     styles.buttons
   );
+  const footerContentStyles = mergeClasses(
+    StepperDialogClassNames.footerContent,
+    styles.footerContent
+  );
 
   const buttonCancel = mergeClasses(StepperDialogClassNames.cancel);
   const buttonPrevious = mergeClasses(StepperDialogClassNames.previous);
@@ -99,6 +107,7 @@ export function useStepperDialogStyles({
     rootStyles,
     containerStyles,
     contentStyles,
+    footerContentStyles,
     buttonContainerStyles,
     buttonStyles,
     buttonCancel,

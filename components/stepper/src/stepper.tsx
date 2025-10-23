@@ -25,7 +25,11 @@ export const Stepper = ({ currentStep, steps, vertical }: StepperProps) => {
     <div className={rootStyles}>
       {steps.map((step, stepIndex) => (
         <React.Fragment key={stepIndex}>
-          <Step currentStep={currentStep} name={step.name} step={stepIndex} />
+          <Step
+            currentStep={currentStep}
+            name={step.name ?? ""}
+            step={stepIndex}
+          />
           {stepIndex !== steps.length - 1 && (
             <div className={dividerStyles}>
               <Divider vertical={vertical} />

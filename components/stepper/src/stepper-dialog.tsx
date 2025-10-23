@@ -7,6 +7,8 @@ import { StepperDialogProps } from "./stepper-dialog.types";
 export const StepperDialog = ({
   currentStep,
   steps,
+  hideSteps,
+  footerContent,
   vertical,
   disableProgression,
   onStepChange,
@@ -22,6 +24,7 @@ export const StepperDialog = ({
     rootStyles,
     containerStyles,
     contentStyles,
+    footerContentStyles,
     buttonContainerStyles,
     buttonStyles,
     buttonCancel,
@@ -42,13 +45,15 @@ export const StepperDialog = ({
   return (
     <div className={rootStyles}>
       <div className={containerStyles}>
-        <div>
-          <Stepper
-            currentStep={currentStep}
-            steps={steps}
-            vertical={vertical}
-          />
-        </div>
+        {!hideSteps && (
+          <div>
+            <Stepper
+              currentStep={currentStep}
+              steps={steps}
+              vertical={vertical}
+            />
+          </div>
+        )}
         <div className={contentStyles}>{steps[currentStep].content}</div>
       </div>
       <div className={buttonContainerStyles}>
@@ -59,6 +64,9 @@ export const StepperDialog = ({
             </Button>
           )}
         </div>
+        {footerContent && (
+          <div className={footerContentStyles}>{footerContent}</div>
+        )}
         <div className={buttonStyles}>
           {currentStep > 0 && previousLabel && (
             <Button className={buttonPrevious} onClick={onPrevious}>
