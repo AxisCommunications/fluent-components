@@ -1,5 +1,4 @@
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function WithStepsSliderExample() {
   return (
@@ -16,7 +15,6 @@ export function WithStepsSliderExample() {
 
 export const WithStepsSliderExampleAsString = `
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function WithStepsSliderExample() {
   return (

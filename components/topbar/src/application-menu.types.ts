@@ -1,13 +1,14 @@
+import { ReactElement } from "react";
 export type ApplicationOption = {
   id: string;
-  icon?: JSX.Element;
+  icon?: ReactElement;
   label?: string;
   url?: string;
   group?: string;
 };
 
 export type ApplicationMenuProps = {
-  customContent?: JSX.Element;
+  customContent?: ReactElement;
   options?: ApplicationOption[];
   value: string;
   onChange: (id: string) => void;

@@ -21,7 +21,7 @@ import {
   GridDots20Regular,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React, { useState } from "react";
+import { ReactElement, useState } from "react";
 import { useApplicationDrawerV2Styles } from "./application-drawer-v2.styles";
 import {
   ApplicationDrawerContent,
@@ -78,7 +78,7 @@ const ApplicationGroupTitle = ({
   application,
 }: {
   application: ApplicationDrawerContent;
-}): JSX.Element => {
+}): ReactElement => {
   const styles = useApplicationDrawerV2Styles();
   return (
     <Caption1Stronger block className={styles.applicationGroupTitleText}>
@@ -95,10 +95,10 @@ const SingleApplication = ({
   application: SingleApplicationDrawerContent;
   onChange: (id: string) => void;
   isSelected: boolean;
-}): JSX.Element => {
+}): ReactElement => {
   const styles = useApplicationDrawerV2Styles();
 
-  const AppIcon = (): JSX.Element => {
+  const AppIcon = (): ReactElement => {
     return (
       <div className={mergeClasses(isSelected && styles.filledIcon)}>
         {application.icon}
@@ -106,7 +106,7 @@ const SingleApplication = ({
     );
   };
 
-  const AppLabel = (): JSX.Element => {
+  const AppLabel = (): ReactElement => {
     return isSelected ? (
       <Body1Strong>{application.label}</Body1Strong>
     ) : (
@@ -147,7 +147,7 @@ const ApplicationWithChildren = ({
   application: ApplicationDrawerContent;
   onChange: (id: string) => void;
   selectedId: string;
-}): JSX.Element => {
+}): ReactElement => {
   return (
     <>
       <ApplicationGroupTitle application={application} />

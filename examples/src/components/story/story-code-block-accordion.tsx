@@ -7,7 +7,6 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import React from "react";
 import { StoryCodeBlock } from "./story-code-block";
 import { CopyButton } from "./story-code-copy";
 

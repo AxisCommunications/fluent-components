@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { ApplicationDrawerProps } from "./application-drawer.types";
 import { ApplicationMenuProps } from "./application-menu.types";
 import { OrganizationMenuProps } from "./organization-menu.types";
@@ -20,10 +21,10 @@ export type TopBarProps = {
    */
   readonly appDrawer?: ApplicationDrawerProps;
   readonly children?: ReadonlyArray<never>;
-  readonly customContent?: JSX.Element;
-  readonly leftCustomContent?: JSX.Element;
+  readonly customContent?: ReactElement;
+  readonly leftCustomContent?: ReactElement;
   readonly orgMenu?: OrganizationMenuProps;
   readonly profileMenu?: ProfileMenuProps;
   readonly applicationArea?: ApplicationArea;
-  readonly centerCustomContent?: JSX.Element;
+  readonly centerCustomContent?: ReactElement;
 };

@@ -1,5 +1,5 @@
 import { MenuList } from "@fluentui/react-components";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { StoryNavigationMenuItem } from "./story-navigation-menu-item";
 

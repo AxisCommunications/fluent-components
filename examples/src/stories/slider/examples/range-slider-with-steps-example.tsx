@@ -1,5 +1,4 @@
 import { RangeSlider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function WithStepsRangeSliderExample() {
   return (
@@ -16,7 +15,6 @@ export function WithStepsRangeSliderExample() {
 
 export const WithStepsRangeSliderExampleAsString = `
 import { RangeSlider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function WithStepsRangeSliderExample() {
   return (

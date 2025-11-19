@@ -1,5 +1,5 @@
 import { Button } from "@fluentui/react-components";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { Stepper } from "./stepper";
 import { useStepperDialogStyles } from "./stepper-dialog.styles";
 import { StepperDialogProps } from "./stepper-dialog.types";

@@ -15,7 +15,7 @@ import {
   SignOutRegular,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { LanguageSubmenu } from "./profile-language-submenu";
 import { ProfileMenuProps } from "./profile-menu.types";
 import { ThemeSubmenu } from "./profile-theme-submenu";

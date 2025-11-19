@@ -1,5 +1,4 @@
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function TransformValueSliderExample() {
   return (
@@ -15,7 +14,6 @@ export function TransformValueSliderExample() {
 
 export const TransformValueSliderExampleAsString = `
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function TransformValueSliderExample() {
   return (

@@ -12,7 +12,6 @@ import {
   DarkThemeRegular,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React from "react";
 import { ThemeSubmenuProps } from "./profile-menu.types";
 import { useTranslation } from "./translation-context";
 

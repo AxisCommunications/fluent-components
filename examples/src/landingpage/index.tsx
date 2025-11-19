@@ -11,7 +11,7 @@ import {
   IconsRegular,
   PuzzlePieceRegular,
 } from "@fluentui/react-icons";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { TestId } from "../../system-test/util/test-id";
 import { RouteCategory, getRouteByCategory } from "../routing/route-map";

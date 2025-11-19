@@ -1,9 +1,9 @@
-import * as React from "react";
-import { useIconState } from "./useIconState";
+import { ReactElement, createElement } from "react";
 import { AxisIconProps } from "./FluentIconsProps.types";
+import { useIconState } from "./useIconState";
 
 export type FluentIcon = {
-  (props: AxisIconProps): JSX.Element;
+  (props: AxisIconProps): ReactElement;
   displayName?: string;
 };
 
@@ -21,11 +21,11 @@ export const createFluentIcon = (
       viewBox: `0 0 ${viewBoxWidth} ${viewBoxWidth}`,
       xmlns: "http://www.w3.org/2000/svg",
     };
-    return React.createElement(
+    return createElement(
       "svg",
       state,
       ...paths.map((d) =>
-        React.createElement("path", {
+        createElement("path", {
           d,
           fill: state.fill, // We are designating primaryFill as the primary color for filling. If not provided, it defaults to null
           // key: i // The key for static children is needless

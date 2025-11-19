@@ -1,6 +1,5 @@
 import { getSlots } from "@fluentui/react-utilities";
 
-import React from "react";
 import { MarkLabelSlots, MarkLabelState } from "./mark-label.types";
 
 export const renderMarkLabel_unstable = (state: MarkLabelState) => {

@@ -1,5 +1,4 @@
 import { SubmenuEmptyView } from "@axiscommunications/fluent-empty-view";
-import React from "react";
 
 export function SubmenuEmptyViewExample() {
   return (
@@ -10,7 +9,6 @@ export function SubmenuEmptyViewExample() {
 }
 
 export const SubmenuEmptyViewExampleAsString = `
-import React from "react";
 import { SubmenuEmptyView } from "@axiscommunications/fluent-empty-view";
 
 export function EmptyViewExample() {

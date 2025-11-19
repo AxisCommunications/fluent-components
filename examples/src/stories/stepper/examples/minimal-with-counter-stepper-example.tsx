@@ -1,7 +1,6 @@
 import { DialogStep, StepperDialog } from "@axiscommunications/fluent-stepper";
 import { Body1 } from "@fluentui/react-components";
 import { useCallback, useState } from "react";
-import React from "react";
 
 const steps: DialogStep[] = [
   {
@@ -39,7 +38,7 @@ export function MinimalWithCustomFooterStepperDialogExample() {
 }
 
 export const MinimalWithCustomFooterStepperDialogExampleAsString = `
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import {
   DialogStep,

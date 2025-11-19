@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren, ReactElement } from "react";
 
 export type OrganizationOption = {
   id: string;
@@ -7,7 +7,7 @@ export type OrganizationOption = {
 
 export type OrganizationMenuProps = PropsWithChildren<{
   readonly value: string;
-  readonly customContent?: JSX.Element;
+  readonly customContent?: ReactElement;
   readonly onChange: (id: string) => void;
   readonly options?: OrganizationOption[];
   readonly filter?: { showFilter: boolean; placeholderText: string };

@@ -1,4 +1,3 @@
-import React from "react";
 import { StoryPage } from "../../components/story/story-page";
 import {
   pageData,

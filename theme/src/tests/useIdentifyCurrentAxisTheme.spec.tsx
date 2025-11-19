@@ -3,7 +3,7 @@ import {
   FluentProviderProps,
 } from "@fluentui/react-components";
 import { renderHook } from "@testing-library/react";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactElement } from "react";
 import { useIdentifyCurrentAxisTheme } from "../hooks/use-identify-current-axis-theme.hook.js";
 import { axisBlueDarkTheme, axisBlueLightTheme } from "../themes/blue.js";
 import { axisDarkTheme, axisLightTheme } from "../themes/brand.js";
@@ -63,7 +63,7 @@ describe("useIdentifyCurrentAxisTheme", () => {
 
 function RenderFluentProviderWithAxisLightTheme({
   children,
-}: PropsWithChildren): JSX.Element {
+}: PropsWithChildren): ReactElement {
   return (
     <RenderFluentProviderDefault theme={axisLightTheme}>
       {children}
@@ -73,7 +73,7 @@ function RenderFluentProviderWithAxisLightTheme({
 
 function RenderFluentProviderWithAxisDarkTheme({
   children,
-}: PropsWithChildren): JSX.Element {
+}: PropsWithChildren): ReactElement {
   return (
     <RenderFluentProviderDefault theme={axisDarkTheme}>
       {children}
@@ -83,7 +83,7 @@ function RenderFluentProviderWithAxisDarkTheme({
 
 function RenderFluentProviderWithAxisBlueDarkTheme({
   children,
-}: PropsWithChildren): JSX.Element {
+}: PropsWithChildren): ReactElement {
   return (
     <RenderFluentProviderDefault theme={axisBlueDarkTheme}>
       {children}
@@ -93,7 +93,7 @@ function RenderFluentProviderWithAxisBlueDarkTheme({
 
 function RenderFluentProviderWithAxisBlueLightTheme({
   children,
-}: PropsWithChildren): JSX.Element {
+}: PropsWithChildren): ReactElement {
   return (
     <RenderFluentProviderDefault theme={axisBlueLightTheme}>
       {children}
@@ -108,6 +108,6 @@ type TRenderFluentProvider = {
 function RenderFluentProviderDefault({
   children,
   theme,
-}: TRenderFluentProvider): JSX.Element {
+}: TRenderFluentProvider): ReactElement {
   return <FluentProvider theme={theme}>{children}</FluentProvider>;
 }

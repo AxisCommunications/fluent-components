@@ -1,6 +1,6 @@
 import { useScrollStaticStyles } from "@axiscommunications/fluent-styles";
 import { FluentProvider } from "@fluentui/react-components";
-import React, { useMemo } from "react";
+import { ReactElement, useMemo } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { useAppContext } from "./context/ApplicationStateProvider";
@@ -51,7 +51,7 @@ export const App = () => {
   );
 };
 
-const routeElements: Record<TRoute, JSX.Element> = {
+const routeElements: Record<TRoute, ReactElement> = {
   [routes.mainMenu]: <MainMenuPage />,
   [routes.Home]: <WelcomePage />,
   [routes.Theme]: <ThemePage />,

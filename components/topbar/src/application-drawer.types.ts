@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 export type ApplicationDrawerContent = SingleApplicationDrawerContent & {
   children?: SingleApplicationDrawerContent[];
 };
@@ -9,7 +10,7 @@ export type SingleApplicationDrawerContent = {
    * For proper rendering, this should be a bundled filled and unfilled version of an icon.
    *  Created with bundleIcon().
    */
-  icon: JSX.Element;
+  icon: ReactElement;
   /** Label to show in opened drawer. */
   label: string;
   /**
@@ -37,7 +38,7 @@ export type ApplicationDrawerProps = {
    */
   version?: "v1" | "v2";
   link?: { text: string; url: string };
-  title: JSX.Element;
+  title: ReactElement;
   content?: ApplicationDrawerContent[];
   applicationId: string;
   onChange?: (id: string) => void;

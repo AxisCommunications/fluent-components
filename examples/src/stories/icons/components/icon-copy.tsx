@@ -1,6 +1,6 @@
 import { Button, Tooltip } from "@fluentui/react-components";
 import { RectangleLandscapeHintCopyRegular } from "@fluentui/react-icons";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 
 type TIconCopy = {
   toolTip: string;

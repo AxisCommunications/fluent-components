@@ -11,7 +11,6 @@ Your can consume illustrations as `React Functional Components`
 
 example:
 ```tsx
-import React from "react";
 import { AddUserDark, AddUserLight } from "@axiscommunications/fluent-illustrations";
 
 

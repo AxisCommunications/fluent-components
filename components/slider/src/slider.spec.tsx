@@ -2,7 +2,6 @@ import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { FluentProvider } from "@fluentui/react-components";
-import React from "react";
 import { describe, expect, it, vi } from "vitest";
 import { Slider } from "./slider";
 import { getControlRoot } from "./test-helpers";

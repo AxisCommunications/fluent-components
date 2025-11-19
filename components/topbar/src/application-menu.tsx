@@ -9,7 +9,6 @@ import {
   Text,
   mergeClasses,
 } from "@fluentui/react-components";
-import React from "react";
 import { ApplicationMenuProps } from "./application-menu.types";
 import { appIcon, appLabel } from "./application-utils";
 import { useApplicationStyles } from "./application.styles";

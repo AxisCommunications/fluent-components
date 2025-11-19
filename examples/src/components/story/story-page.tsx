@@ -9,7 +9,7 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactElement } from "react";
 import { StoryPageHeader } from "./story-page-header";
 import { EStoryStatus } from "./story-status";
 
@@ -108,8 +108,8 @@ type TStoryPage = {
   ghPackage: string;
   ghUrl?: string;
   description?: string;
-  customHeader?: JSX.Element;
-  navigation?: JSX.Element;
+  customHeader?: ReactElement;
+  navigation?: ReactElement;
   status?: EStoryStatus[];
 };
 

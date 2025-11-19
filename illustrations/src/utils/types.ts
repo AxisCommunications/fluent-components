@@ -1,14 +1,14 @@
-import React from "react";
+import type { HTMLAttributes, ImgHTMLAttributes, ReactElement } from "react";
 
 export type FluentIllustration = {
-  (props: AxisIllustrationProps): JSX.Element;
+  (props: AxisIllustrationProps): ReactElement;
   displayName?: string;
 };
 
 export type AxisIllustrationProps<
   TBaseAttributes extends
-    | React.ImgHTMLAttributes<HTMLImageElement>
-    | React.HTMLAttributes<HTMLElement> = React.ImgHTMLAttributes<HTMLImageElement>,
+    | ImgHTMLAttributes<HTMLImageElement>
+    | HTMLAttributes<HTMLElement> = ImgHTMLAttributes<HTMLImageElement>,
 > = TBaseAttributes & {
   className?: string;
   title?: string;

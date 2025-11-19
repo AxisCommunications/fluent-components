@@ -1,5 +1,4 @@
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function WithMarkSliderExample() {
   return (
@@ -19,7 +18,6 @@ export function WithMarkSliderExample() {
 
 export const WithMarkSliderExampleAsString = `
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function WithMarkSliderExample() {
   return (

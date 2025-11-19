@@ -339,7 +339,7 @@ export const useRangeSlider_unstable = (
     removeListeners();
   });
 
-  const touchId = useRef<number>();
+  const touchId = useRef<number | undefined>(undefined);
 
   const handleTouchStart = useEventCallback((event: TouchEvent) => {
     // prevent scrolling

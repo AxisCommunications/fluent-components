@@ -1,14 +1,15 @@
+import { ReactElement } from "react";
 import { TStep } from "./stepper.types";
 
 export type DialogStep = TStep & {
-  content: JSX.Element;
+  content: ReactElement;
 };
 
 export type StepperDialogProps = {
   currentStep: number;
   steps: DialogStep[];
   hideSteps?: boolean;
-  footerContent?: JSX.Element;
+  footerContent?: ReactElement;
   vertical?: boolean;
   onStepChange: (newStep: number) => void;
   onFinish: () => void;

@@ -6,7 +6,7 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import React from "react";
+import { ReactElement } from "react";
 
 /**
  * statuses are sorted in same order the listed in enum
@@ -20,7 +20,7 @@ export enum EStoryStatus {
   UNSTABLE,
 }
 
-const STATUS_BADGES: Record<EStoryStatus, JSX.Element> = {
+const STATUS_BADGES: Record<EStoryStatus, ReactElement> = {
   [EStoryStatus.WIP]: (
     <Tooltip
       key={EStoryStatus.PUBLIC}
@@ -128,7 +128,7 @@ export function StoryStatus({ status }: TStoryStatus) {
   const { rootStyle } = useStoryStatusStyles();
   const sortedStatuses = status.sort((a, b) => a - b);
 
-  const _renderStatuses = (status: EStoryStatus): JSX.Element => {
+  const _renderStatuses = (status: EStoryStatus): ReactElement => {
     return STATUS_BADGES[status];
   };
 

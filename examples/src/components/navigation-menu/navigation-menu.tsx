@@ -14,7 +14,6 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import { HomeFilled, HomeRegular, bundleIcon } from "@fluentui/react-icons";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { RouteCategory } from "../../routing/route-map";
 import { routes } from "../../routing/routes";

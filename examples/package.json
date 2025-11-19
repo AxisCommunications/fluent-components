@@ -33,12 +33,12 @@
     "@axiscommunications/fluent-styles": "workspace:*",
     "@axiscommunications/fluent-theme": "workspace:*",
     "@axiscommunications/fluent-topbar": "workspace:*",
-    "@fluentui/react-components": "^9.62.0",
-    "@fluentui/react-context-selector": "^9.1.76",
-    "@fluentui/react-icons": "^2.0.297",
+    "@fluentui/react-components": "^9.72.7",
+    "@fluentui/react-context-selector": "^9.2.12",
+    "@fluentui/react-icons": "^2.0.315",
     "@vitejs/plugin-react": "^4.4.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-router-dom": "6.30.0",
     "react-syntax-highlighter": "15.6.1",
     "scheduler": "0.26.0",
@@ -47,8 +47,8 @@
   "devDependencies": {
     "@playwright/test": "1.52.0",
     "@types/node": "^22.15.3",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "15.5.13",
     "typescript": "^5.8.3"
   }

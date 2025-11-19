@@ -2,7 +2,6 @@
 Copyright 2022 Axis Communications AB, SWEDEN. All rights reserved.
 ***************************************************************************** */
 import { Title1, mergeClasses } from "@fluentui/react-components";
-import React from "react";
 import { useFixedPageStyle, useLayoutStyles } from "../styles/page";
 
 export const PageNotFound = () => {

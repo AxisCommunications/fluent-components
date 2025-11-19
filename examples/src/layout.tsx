@@ -1,11 +1,11 @@
-import React from "react";
+import { ReactElement } from "react";
 
 import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 
 type LayoutProps = {
-  readonly header: JSX.Element;
-  readonly navigation: JSX.Element;
-  readonly content: JSX.Element;
+  readonly header: ReactElement;
+  readonly navigation: ReactElement;
+  readonly content: ReactElement;
 };
 
 const useStyles = makeStyles({

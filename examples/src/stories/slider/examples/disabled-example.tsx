@@ -1,5 +1,4 @@
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function DisabledSliderExample() {
   return (
@@ -15,7 +14,6 @@ export function DisabledSliderExample() {
 
 export const DisabledSliderExampleAsString = `
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function DisabledSliderExample() {
   return (

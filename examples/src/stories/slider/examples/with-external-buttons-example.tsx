@@ -1,6 +1,6 @@
 import { Slider, SliderOnChangeData } from "@axiscommunications/fluent-slider";
 import { Button, makeStyles, tokens } from "@fluentui/react-components";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useSliderPageStyles = makeStyles({
   sliderContainer: {
@@ -47,7 +47,7 @@ export function ExternalButtonsSliderExample() {
 export const ExternalButtonsSliderExampleAsString = `
 import { Slider, SliderOnChangeData } from "@axiscommunications/fluent-slider";
 import { Button, makeStyles, tokens } from "@fluentui/react-components";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useSliderPageStyles = makeStyles({
   sliderContainer: {

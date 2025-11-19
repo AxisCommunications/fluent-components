@@ -9,7 +9,7 @@ import {
   TabProps,
 } from "@fluentui/react-components";
 import { HomeFilled, HomeRegular, bundleIcon } from "@fluentui/react-icons";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const HomeIcon = bundleIcon(HomeFilled, HomeRegular);
 
@@ -88,7 +88,7 @@ import {
   TabProps,
 } from "@fluentui/react-components";
 import { HomeFilled, HomeRegular, bundleIcon } from "@fluentui/react-icons";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const HomeIcon = bundleIcon(HomeFilled, HomeRegular);
 

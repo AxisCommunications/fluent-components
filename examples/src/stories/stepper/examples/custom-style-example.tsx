@@ -4,7 +4,7 @@ import {
   StepperDialogClassNames,
 } from "@axiscommunications/fluent-stepper";
 import { makeStyles } from "@fluentui/react-components";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useOverrideStyles = makeStyles({
   root: {
@@ -55,7 +55,7 @@ export function CustomStepperDialogExample() {
 }
 
 export const CustomStepperDialogExampleAsString = `
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { DialogStep, StepperDialog, StepperDialogClassNames } from "@axiscommunications/fluent-stepper";
 import { makeStyles } from "@fluentui/react-components";
 
