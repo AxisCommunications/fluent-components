@@ -29,11 +29,9 @@ export function release(increment: string) {
     readFileSync("package.json").toString()
   );
   const isPre = releaseType.startsWith("pre");
-  const nextVersion = semver.inc(
-    version,
-    releaseType,
-    isPre ? "alpha" : undefined
-  );
+  const nextVersion = isPre
+    ? semver.inc(version, releaseType, "alpha")
+    : semver.inc(version, releaseType);
   if (nextVersion === null) {
     throw new Error(`could not increment ${version} with ${releaseType}`);
   }
