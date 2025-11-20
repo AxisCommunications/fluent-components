@@ -5,7 +5,7 @@ import {
   bundleIllustration,
 } from "@axiscommunications/fluent-illustrations";
 import { Switch } from "@fluentui/react-components";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const AddUserIllustration = bundleIllustration(AddUserDark, AddUserLight);
 
@@ -31,7 +31,7 @@ export function BundleIllustration() {
 export const BundleIllustrationExampleAsString = `
 import { AddUserDark, AddUserLight, TBundleIllustrationVariant, bundleIllustration } from "@axiscommunications/fluent-illustrations";
 import { Switch } from "@fluentui/react-components";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const AddUserIllustration = bundleIllustration(AddUserDark, AddUserLight)
 

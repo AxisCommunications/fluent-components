@@ -8,7 +8,7 @@ import {
   HomeMore20Filled,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React from "react";
+import { ReactElement } from "react";
 import {
   ApplicationDrawerContent,
   SingleApplicationDrawerContent,
@@ -34,7 +34,7 @@ export function appLabel(t: TranslationFn, id: string): string {
   return id;
 }
 
-export function appIcon(id: string, filled = false): JSX.Element {
+export function appIcon(id: string, filled = false): ReactElement {
   if (isMySystemsAppId(id)) {
     return filled
       ? defaultMySystemsAppData[id].filledIcon
@@ -48,7 +48,7 @@ export const ApplicationAreaFlaworedIcon = ({
   icon,
 }: {
   applicationArea?: ApplicationArea;
-  icon: JSX.Element;
+  icon: ReactElement;
 }) => {
   const styles = useApplicationStyles();
 

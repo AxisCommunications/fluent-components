@@ -1,6 +1,5 @@
 import { DialogEmptyView } from "@axiscommunications/fluent-empty-view";
 import { DialogContent, tokens } from "@fluentui/react-components";
-import React from "react";
 
 export function DialogEmptyViewExample() {
   return (
@@ -20,7 +19,6 @@ export function DialogEmptyViewExample() {
 }
 
 export const DialogEmptyViewExampleAsString = `
-import React from "react";
 import { DialogEmptyView } from "@axiscommunications/fluent-empty-view";
 
 export function EmptyViewExample() {

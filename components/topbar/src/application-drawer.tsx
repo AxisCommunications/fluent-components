@@ -1,4 +1,3 @@
-import React from "react";
 import { ApplicationDrawerV1 } from "./application-drawer-v1";
 import { ApplicationDrawerV2 } from "./application-drawer-v2";
 import { ApplicationDrawerProps } from "./application-drawer.types";

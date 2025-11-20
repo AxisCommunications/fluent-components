@@ -13,7 +13,7 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import { DismissRegular } from "@fluentui/react-icons";
-import * as React from "react";
+import { ReactElement } from "react";
 import { useFindVariantsByIllustrationName } from "../illustration-page.hooks";
 import { IllustrationCopy } from "./illustration-copy";
 
@@ -73,7 +73,7 @@ const useStyles = makeStyles({
 });
 
 type TIllustrationDialog = {
-  thumbnail: JSX.Element;
+  thumbnail: ReactElement;
   title?: string;
   Illustration: React.FC<AxisIllustrationProps>;
 };

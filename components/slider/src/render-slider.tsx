@@ -1,5 +1,3 @@
-import React from "react";
-
 import { getSlots } from "@fluentui/react-utilities";
 
 import { SliderContextProvider } from "./context/slider-context";

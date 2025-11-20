@@ -1,5 +1,4 @@
 import { getSlots } from "@fluentui/react-utilities";
-import React from "react";
 import { StepSymbol } from "../step-symbol";
 import type { StepSlots, StepState } from "./step.types";
 

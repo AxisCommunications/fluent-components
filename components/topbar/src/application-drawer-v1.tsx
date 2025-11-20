@@ -12,7 +12,7 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import { ArrowRightRegular, Dismiss20Regular } from "@fluentui/react-icons";
-import React, { useState } from "react";
+import { ReactElement, useState } from "react";
 import { useApplicationDrawerStyles } from "./application-drawer-v1.styles";
 import {
   ApplicationDrawerContent,
@@ -95,7 +95,7 @@ const ApplicationGroupTitle = ({
   application,
 }: {
   application: ApplicationDrawerContent;
-}): JSX.Element => {
+}): ReactElement => {
   const styles = useApplicationDrawerStyles();
   const appStyles = useApplicationStyles();
 
@@ -117,7 +117,7 @@ const ApplicationGroupTitle = ({
 };
 
 const iconConverter = (
-  icon: JSX.Element,
+  icon: ReactElement,
   isCurrent: boolean,
   applicationArea: ApplicationArea
 ) => {
@@ -141,7 +141,7 @@ const SingleApplication = ({
   currentSelectionId: string;
   onChange: (id: string) => void;
   applicationArea: ApplicationArea;
-}): JSX.Element => {
+}): ReactElement => {
   const styles = useApplicationDrawerStyles();
 
   return (
@@ -174,7 +174,7 @@ const ApplicationWithChildren = ({
   currentSelectionId: string;
   onChange: (id: string) => void;
   applicationArea: ApplicationArea;
-}): JSX.Element => {
+}): ReactElement => {
   const styles = useApplicationDrawerStyles();
 
   return (

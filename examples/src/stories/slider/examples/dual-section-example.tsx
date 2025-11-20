@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Slider } from "@axiscommunications/fluent-slider";
 import { makeStyles, tokens } from "@fluentui/react-components";
 
@@ -56,8 +54,6 @@ export function DualSectionSliderExample() {
 }
 
 export const DualSectionSliderExampleAsString = `
-import React from "react";
-
 import { Slider } from "@axiscommunications/fluent-slider";
 import { makeStyles, tokens } from "@fluentui/react-components";
 

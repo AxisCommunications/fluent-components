@@ -7,8 +7,7 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-
-import React from "react";
+import { ReactElement } from "react";
 
 const useStyles = makeStyles({
   root: {
@@ -28,7 +27,7 @@ type TCardExample = {
   title: string;
   description?: string;
   text?: string;
-  icon: JSX.Element;
+  icon: ReactElement;
   onClick: () => void;
 };
 

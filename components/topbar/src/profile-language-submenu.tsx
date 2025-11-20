@@ -12,7 +12,6 @@ import {
   LocalLanguageRegular,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React from "react";
 import { useProfileLanguageSubmenuStyles } from "./profile-language-submenu.styles";
 import { LanguageSubmenuProps } from "./profile-menu.types";
 import { useTranslation } from "./translation-context";

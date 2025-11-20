@@ -9,7 +9,6 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import React from "react";
 import { GitHubUrls } from "../../constants/constants";
 
 const componentId = "navigation-footer";

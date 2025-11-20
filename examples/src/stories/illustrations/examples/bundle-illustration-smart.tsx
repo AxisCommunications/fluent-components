@@ -3,7 +3,6 @@ import {
   AddUserLight,
   bundleIllustrationSmart,
 } from "@axiscommunications/fluent-illustrations";
-import React from "react";
 
 const AddUserIllustrationSmart = bundleIllustrationSmart(
   AddUserDark,
@@ -20,7 +19,6 @@ import {
   AddUserLight,
   bundleIllustrationSmart
 } from "@axiscommunications/fluent-illustrations";
-import React from "react";
 
 const AddUserIllustrationSmart = bundleIllustrationSmart(AddUserDark, AddUserLight);
 

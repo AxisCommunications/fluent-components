@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 import { StoryPage } from "../../components/story/story-page";
 import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
@@ -15,7 +15,7 @@ import {
 import { IllustrationList } from "./examples/illustration-list";
 import { useIllustrationPage } from "./illustration-page.hooks";
 
-export const IllustrationPage = (): JSX.Element => {
+export const IllustrationPage = (): ReactElement => {
   const gh = getGhInfoByKey(routes.Illustrations);
 
   const {

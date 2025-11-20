@@ -1,10 +1,11 @@
 import {
+  JSXIntrinsicElement,
   makeStyles,
   mergeClasses,
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { StorySectionHeader } from "./story-section-header";
 
 const componentId = "story-section";
@@ -38,7 +39,7 @@ export function useStorySectionStyles() {
 export type TStorySection = {
   title?: string;
   description?: string;
-} & JSX.IntrinsicElements["div"];
+} & JSXIntrinsicElement<"div">;
 
 export function StorySection({
   title,

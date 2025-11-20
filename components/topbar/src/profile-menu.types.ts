@@ -32,7 +32,7 @@ export type UserInformationProps = {
 };
 
 export type ProfileMenuProps = UserInformationProps & {
-  readonly customContent?: JSX.Element;
+  readonly customContent?: ReactElement;
   readonly showCustomContentTopDivider?: boolean;
   readonly hasNotification?: boolean;
   readonly notificationIcon?: ReactElement;

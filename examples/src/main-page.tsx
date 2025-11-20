@@ -1,5 +1,4 @@
 import { makeStyles } from "@fluentui/react-components";
-import React from "react";
 import { Outlet } from "react-router-dom";
 import { MainMenu } from "./components/main-menu/main-menu";
 import { NavigationMenu } from "./components/navigation-menu/navigation-menu";

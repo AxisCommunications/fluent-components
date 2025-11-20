@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Slider } from "@axiscommunications/fluent-slider";
 import { makeStyles, tokens } from "@fluentui/react-components";
 
@@ -64,8 +62,6 @@ export function TripleSectionSliderExample() {
 }
 
 export const TripleSectionSliderExampleAsString = `
-import React from "react";
-
 import { Slider } from "@axiscommunications/fluent-slider";
 import { makeStyles, tokens } from "@fluentui/react-components";
 

@@ -1,6 +1,6 @@
 import { AxisIconProps } from "@axiscommunications/fluent-icons";
 import { Caption1 } from "@fluentui/react-components";
-import React from "react";
+import React, { ReactElement } from "react";
 import { StoryCodeBlockAccordion } from "../../components/story/story-code-block-accordion";
 import { StoryPage } from "../../components/story/story-page";
 import { StorySection } from "../../components/story/story-section";
@@ -11,14 +11,14 @@ import { IconPageHeader } from "./components/icon-page-header";
 import { useIconPage } from "./icon-page.hooks";
 import { useStyles } from "./icon-page.styles";
 
-export const IconPage = (): JSX.Element => {
+export const IconPage = (): ReactElement => {
   const gh = getGhInfoByKey(routes.IconCatalog);
   const { search, onSearchQueryChanged, filterByVariant, filterIcons } =
     useIconPage();
 
   const styles = useStyles();
 
-  const _renderIcon = (Icon: React.FC<AxisIconProps>): JSX.Element => {
+  const _renderIcon = (Icon: React.FC<AxisIconProps>): ReactElement => {
     return (
       <div
         key={Icon.displayName}

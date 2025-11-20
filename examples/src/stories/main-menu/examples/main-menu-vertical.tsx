@@ -19,7 +19,7 @@ import {
   SettingsRegular,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const HomeIcon = bundleIcon(HomeFilled, HomeRegular);
 const RandomIcon = bundleIcon(CardUiFilled, CardUiRegular);
@@ -96,7 +96,7 @@ import {
   SettingsFilled,
   SettingsRegular,
 } from "@fluentui/react-icons";
-import React, { useState } from "react";
+ import { useState } from "react";
 
 const HomeIcon = bundleIcon(HomeFilled, HomeRegular);
 const RandomIcon = bundleIcon(CardUiFilled, CardUiRegular);

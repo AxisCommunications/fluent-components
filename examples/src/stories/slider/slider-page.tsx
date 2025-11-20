@@ -1,5 +1,4 @@
 import { makeStyles } from "@fluentui/react-components";
-import React from "react";
 import { StoryPage } from "../../components/story/story-page";
 import {
   pageData,

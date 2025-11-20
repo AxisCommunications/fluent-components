@@ -5,7 +5,7 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import React from "react";
+import React, { ReactElement } from "react";
 import { IllustrationCopy } from "../components/illustration-copy";
 import { IllustrationDialog } from "../components/illustration-dialog";
 import { DEFAULT_ILLUSTRATION_WIDTH } from "../illustration-page.types";
@@ -44,7 +44,7 @@ export function IllustrationList({
 
   const _renderIllustration = (
     Illustration: React.FC<AxisIllustrationProps>
-  ): JSX.Element => {
+  ): ReactElement => {
     return (
       <div
         key={Illustration.displayName}

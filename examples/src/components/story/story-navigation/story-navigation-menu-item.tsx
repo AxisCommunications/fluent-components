@@ -5,7 +5,6 @@ import {
   mergeClasses,
   tokens,
 } from "@fluentui/react-components";
-import React from "react";
 
 const componentId = "navigation-menu-item";
 export const navigationMenuItemClassNames = {

@@ -1,5 +1,5 @@
 import { MenuList } from "@fluentui/react-components";
-import React, { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { RouteCategory, getRouteByCategory } from "../../routing/route-map";

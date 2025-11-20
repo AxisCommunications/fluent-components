@@ -1,9 +1,9 @@
-import React from "react";
+import type { ReactElement } from "react";
 import { AxisIconProps } from "./FluentIconsProps.types";
 import { useIconState } from "./useIconState";
 
 const wrapIcon = (
-  Icon: (iconProps: AxisIconProps) => JSX.Element,
+  Icon: (iconProps: AxisIconProps) => ReactElement,
   displayName?: string
 ) => {
   const WrappedIcon = (props: AxisIconProps) => {

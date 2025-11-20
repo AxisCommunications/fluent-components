@@ -33,7 +33,7 @@ import {
   ChevronRight16Regular,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useAppContext } from "../../context/ApplicationStateProvider";
 
 const users = [
@@ -375,7 +375,7 @@ import {
   ChevronRight16Regular,
   bundleIcon,
 } from "@fluentui/react-icons";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useAppContext } from "../../context/ApplicationStateProvider";
 
 const users = [

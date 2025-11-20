@@ -1,6 +1,5 @@
 import { Slider } from "@axiscommunications/fluent-slider";
 import { makeStyles, tokens } from "@fluentui/react-components";
-import React from "react";
 
 const useCustomizedSliderStyles = makeStyles({
   thumb: {
@@ -86,7 +85,6 @@ export function CustomSliderExample() {
 export const CustomSliderExampleAsString = `
 import { Slider } from "@axiscommunications/fluent-slider";
 import { makeStyles, tokens } from "@fluentui/react-components";
-import React from "react";
 
 const useCustomizedSliderStyles = makeStyles({
   thumb: {

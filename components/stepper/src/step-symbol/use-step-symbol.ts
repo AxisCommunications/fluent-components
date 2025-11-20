@@ -3,7 +3,7 @@ import {
   getNativeElementProps,
   resolveShorthand,
 } from "@fluentui/react-utilities";
-import React from "react";
+import { createElement } from "react";
 import type { StepSymbolProps, StepSymbolState } from "./step-symbol.types";
 
 export const useStepSymbol_unstable = (
@@ -26,7 +26,7 @@ export const useStepSymbol_unstable = (
     icon: resolveShorthand(props.icon, {
       required: true,
       defaultProps: {
-        children: React.createElement(CheckmarkFilled),
+        children: createElement(CheckmarkFilled),
       },
     }),
   };

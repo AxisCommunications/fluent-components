@@ -1,5 +1,3 @@
-import React from "react";
-
 import { RangeSlider } from "@axiscommunications/fluent-slider";
 import { makeStyles, tokens } from "@fluentui/react-components";
 
@@ -68,8 +66,6 @@ export function RangeSliderWithSectionExample() {
 }
 
 export const RangeSliderWithSectionExampleAsString = `
-import React from "react";
-
 import { RangeSlider } from "@axiscommunications/fluent-slider";
 import { makeStyles, tokens } from "@fluentui/react-components";
 

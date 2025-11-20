@@ -5,7 +5,6 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
-import React from "react";
 import { TaxisThemeVariants } from "../theme-page.types";
 
 const componentId = "color-tokens";

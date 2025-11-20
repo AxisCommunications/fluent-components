@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Button } from "@fluentui/react-components";
 import { ArrowSyncRegular } from "@fluentui/react-icons";
 
@@ -28,7 +26,6 @@ export function MainEmptyViewExample() {
 }
 
 export const MainEmptyViewExampleAsString = `
-import React from "react";
 import { MainEmptyView } from "@axiscommunications/fluent-empty-view";
 
 export function EmptyViewExample() {

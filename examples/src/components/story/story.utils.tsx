@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { ReactElement, useMemo } from "react";
 import { StoryCodeBlockAccordion } from "./story-code-block-accordion";
 import {
   StoryPageNavigation,
@@ -7,7 +7,7 @@ import {
 import { StorySection, TStorySection } from "./story-section";
 
 export type pageData = {
-  example: JSX.Element;
+  example: ReactElement;
   codeString?: string;
   storySectionProps?: TStorySection;
 } & TStoryNavigationLink;

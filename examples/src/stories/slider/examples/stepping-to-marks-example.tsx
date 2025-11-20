@@ -1,5 +1,4 @@
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function SteppingToMarksSliderExample() {
   return (
@@ -20,7 +19,6 @@ export function SteppingToMarksSliderExample() {
 
 export const SteppingToMarksSliderExampleAsString = `
 import { Slider } from "@axiscommunications/fluent-slider";
-import React from "react";
 
 export function SteppingToMarksSliderExample() {
   return (

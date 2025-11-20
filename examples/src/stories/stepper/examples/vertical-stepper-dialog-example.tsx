@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { DialogStep, StepperDialog } from "@axiscommunications/fluent-stepper";
 
@@ -38,7 +38,7 @@ export function VerticalStepperDialogExample() {
 }
 
 export const VerticalStepperDialogExampleAsString = `
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import {
   DialogStep,

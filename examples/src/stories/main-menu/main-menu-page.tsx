@@ -1,5 +1,4 @@
 import { pageData } from "examples/src/components/story/story.utils";
-import React from "react";
 import { StoryPage } from "../../components/story/story-page";
 import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";

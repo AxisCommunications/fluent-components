@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   BoxMultipleFilled,
   BoxMultipleRegular,
@@ -15,6 +13,7 @@ import {
   VideoClipMultipleRegular,
   bundleIcon,
 } from "@fluentui/react-icons";
+import { ReactElement } from "react";
 import { TranslationKey } from "./translation-context";
 
 const MySystemsIcon = bundleIcon(HomeMoreFilled, HomeMoreRegular);
@@ -51,13 +50,13 @@ export function isMySystemsAppId(name: unknown): name is MySystemsAppId {
 }
 
 export interface MySystemsAppData {
-  readonly icon: JSX.Element;
+  readonly icon: ReactElement;
   readonly labelKey: TranslationKey;
 }
 
 export const defaultMySystemsAppData: Record<
   MySystemsAppId,
-  MySystemsAppData & { filledIcon: JSX.Element }
+  MySystemsAppData & { filledIcon: ReactElement }
 > = {
   dm: {
     icon: <SystemManagementIcon />,

@@ -1,5 +1,4 @@
 import { PanelEmptyView } from "@axiscommunications/fluent-empty-view";
-import React from "react";
 
 export function PanelEmptyViewExample() {
   return (
@@ -14,7 +13,6 @@ export function PanelEmptyViewExample() {
 }
 
 export const PanelEmptyViewExampleAsString = `
-import React from "react";
 import { PanelEmptyView } from "@axiscommunications/fluent-empty-view";
 
 export function PanelEmptyViewExample() {

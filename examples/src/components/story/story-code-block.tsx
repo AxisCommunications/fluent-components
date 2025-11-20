@@ -1,5 +1,4 @@
 import { makeStyles, tokens } from "@fluentui/react-components";
-import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { CopyButton } from "./story-code-copy";
 
