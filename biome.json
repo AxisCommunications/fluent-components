@@ -10,11 +10,11 @@
       "**/*.ts",
       "**/*.tsx"
     ],
-    "ignore": ["lib/", ".vscode/"]
+    "ignore": ["lib/", "lib-commonjs/", ".vscode/"]
   },
   "organizeImports": {
     "enabled": true,
-    "ignore": ["generated/", ".vscode/"]
+    "ignore": ["generated/", "lib-commonjs/", ".vscode/"]
   },
   "formatter": {
     "enabled": true,
@@ -23,7 +23,7 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["generated/", ".vscode/"],
+    "ignore": ["generated/", "lib-commonjs/", ".vscode/"],
     "rules": {
       "recommended": false,
       "correctness": {

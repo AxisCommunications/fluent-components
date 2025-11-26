@@ -10,20 +10,21 @@
   },
   "license": "MIT",
   "author": "Axis Communications AB",
-  "type": "module",
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
-      "import": "./lib/index.js"
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
     }
   },
   "bin": {
     "fluent-theme-tokens": "./lib/tokens.cjs"
   },
-  "files": ["lib"],
+  "files": ["lib", "lib-commonjs"],
   "scripts": {
-    "build": "pnpm build:types && pnpm build:esm && pnpm build:cli",
+    "build": "pnpm build:types && pnpm build:esm && pnpm build:cjs && pnpm build:cli",
     "build:cli": "esbuild --format=cjs --bundle --platform=node --packages=external --outfile=lib/tokens.cjs src/tokens/build.ts",
+    "build:cjs": "esbuild --format=cjs --bundle --sourcemap --packages=external --outdir=lib-commonjs src/index.ts",
     "build:esm": "esbuild --format=esm --bundle --sourcemap --packages=external --outdir=lib src/index.ts",
     "build:types": "tsc -p tsconfig.build.json",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
