@@ -26,8 +26,8 @@
     "lint": "tsc --noEmit && biome check"
   },
   "devDependencies": {
-    "@types/react": "^19.2.6",
-    "esbuild": "^0.25.3",
+    "@types/react": "^19.2.7",
+    "esbuild": "^0.27.0",
     "react": "^19.2.0",
     "typescript": "^5.8.3"
   },
