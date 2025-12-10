@@ -34,7 +34,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
-    "esbuild": "^0.25.3",
+    "esbuild": "^0.27.1",
     "jsdom": "^26.1.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
