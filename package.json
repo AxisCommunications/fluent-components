@@ -20,11 +20,13 @@
     "lint": "pnpm -r lint",
     "sort:check": "sort-package-json '**/package.json' '!**/node_modules/**/package.json' --check",
     "sort:run": "sort-package-json '**/package.json' '!**/node_modules/**/package.json'",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "depcheck": "1.4.7",
+    "husky": "^9.1.7",
     "sort-package-json": "3.1.0",
     "tools": "file:tools",
     "typescript": "^5.8.3"
