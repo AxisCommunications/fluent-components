@@ -1,7 +1,7 @@
 /**
  * Do not edit directly
  * Generated on Thu, 18 Dec 2025 15:24:07 GMT
- */ 
+ */
 
 import { Theme } from "@fluentui/react-theme";
 
@@ -387,9 +387,11 @@ export const AxisDarkTheme: Theme = {
   durationSlower: "400ms",
   durationUltraFast: "50ms",
   durationUltraSlow: "500ms",
-  fontFamilyBase: "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+  fontFamilyBase:
+    "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
   fontFamilyMonospace: "Consolas, 'Courier New', Courier, monospace",
-  fontFamilyNumeric: "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+  fontFamilyNumeric:
+    "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
   fontSizeBase100: "10px",
   fontSizeBase200: "12px",
   fontSizeBase300: "14px",
@@ -451,6 +453,5 @@ export const AxisDarkTheme: Theme = {
   strokeWidthThick: "2px",
   strokeWidthThicker: "3px",
   strokeWidthThickest: "4px",
-  strokeWidthThin: "1px"
+  strokeWidthThin: "1px",
 };
-
