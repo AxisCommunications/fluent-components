@@ -4,11 +4,11 @@
  */
 
 import {
-  LineHeightTokens,
+  BorderRadiusTokens,
   FontFamilyTokens,
   FontSizeTokens,
   FontWeightTokens,
-  BorderRadiusTokens,
+  LineHeightTokens,
   StrokeWidthTokens,
 } from "@fluentui/react-theme";
 

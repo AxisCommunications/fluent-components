@@ -1,7 +1,7 @@
-import React from "react";
-import { iconFilledClassName, iconRegularClassName } from "./constants";
-import { AxisIconProps } from "./FluentIconsProps.types";
 import { makeStyles, mergeClasses } from "@griffel/react";
+import React from "react";
+import { AxisIconProps } from "./FluentIconsProps.types";
+import { iconFilledClassName, iconRegularClassName } from "./constants";
 
 const useBundledIconStyles = makeStyles({
   root: { display: "none" },

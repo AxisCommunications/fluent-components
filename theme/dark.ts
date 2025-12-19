@@ -5,8 +5,8 @@
 
 import {
   ColorTokens,
-  ShadowTokens,
   ShadowBrandTokens,
+  ShadowTokens,
 } from "@fluentui/react-theme";
 
 export const colorTokens: ColorTokens = {
