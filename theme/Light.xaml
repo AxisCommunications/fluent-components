@@ -1,0 +1,979 @@
+<!--
+  Do not edit directly
+  Generated on Thu, 18 Dec 2025 15:24:07 GMT
+-->
+<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:p="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+>
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Colors.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBackground1"
+    Color="{StaticResource Light.ColorStatusDangerBackground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBackground2"
+    Color="{StaticResource Light.ColorStatusDangerBackground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBackground3"
+    Color="{StaticResource Light.ColorStatusDangerBackground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerForeground1"
+    Color="{StaticResource Light.ColorStatusDangerForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerForeground2"
+    Color="{StaticResource Light.ColorStatusDangerForeground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerForeground3"
+    Color="{StaticResource Light.ColorStatusDangerForeground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerForegroundInverted"
+    Color="{StaticResource Light.ColorStatusDangerForegroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBorderActive"
+    Color="{StaticResource Light.ColorStatusDangerBorderActive}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBorder1"
+    Color="{StaticResource Light.ColorStatusDangerBorder1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBorder2"
+    Color="{StaticResource Light.ColorStatusDangerBorder2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBackground3Hover"
+    Color="{StaticResource Light.ColorStatusDangerBackground3Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusDangerBackground3Pressed"
+    Color="{StaticResource Light.ColorStatusDangerBackground3Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBackground1"
+    Color="{StaticResource Light.ColorStatusWarningBackground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBackground2"
+    Color="{StaticResource Light.ColorStatusWarningBackground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBackground3"
+    Color="{StaticResource Light.ColorStatusWarningBackground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningForeground1"
+    Color="{StaticResource Light.ColorStatusWarningForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningForeground2"
+    Color="{StaticResource Light.ColorStatusWarningForeground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningForeground3"
+    Color="{StaticResource Light.ColorStatusWarningForeground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningForegroundInverted"
+    Color="{StaticResource Light.ColorStatusWarningForegroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBorderActive"
+    Color="{StaticResource Light.ColorStatusWarningBorderActive}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBorder1"
+    Color="{StaticResource Light.ColorStatusWarningBorder1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusWarningBorder2"
+    Color="{StaticResource Light.ColorStatusWarningBorder2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBackground1"
+    Color="{StaticResource Light.ColorStatusSuccessBackground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBackground2"
+    Color="{StaticResource Light.ColorStatusSuccessBackground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBackground3"
+    Color="{StaticResource Light.ColorStatusSuccessBackground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessForeground1"
+    Color="{StaticResource Light.ColorStatusSuccessForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessForeground2"
+    Color="{StaticResource Light.ColorStatusSuccessForeground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessForeground3"
+    Color="{StaticResource Light.ColorStatusSuccessForeground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessForegroundInverted"
+    Color="{StaticResource Light.ColorStatusSuccessForegroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBorderActive"
+    Color="{StaticResource Light.ColorStatusSuccessBorderActive}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBorder1"
+    Color="{StaticResource Light.ColorStatusSuccessBorder1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStatusSuccessBorder2"
+    Color="{StaticResource Light.ColorStatusSuccessBorder2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground1"
+    Color="{StaticResource Light.ColorNeutralForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2"
+    Color="{StaticResource Light.ColorNeutralForeground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground3"
+    Color="{StaticResource Light.ColorNeutralForeground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground4"
+    Color="{StaticResource Light.ColorNeutralForeground4}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground1Hover"
+    Color="{StaticResource Light.ColorNeutralForeground1Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground1Pressed"
+    Color="{StaticResource Light.ColorNeutralForeground1Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground1Selected"
+    Color="{StaticResource Light.ColorNeutralForeground1Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2Hover"
+    Color="{StaticResource Light.ColorNeutralForeground2Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2Pressed"
+    Color="{StaticResource Light.ColorNeutralForeground2Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2Selected"
+    Color="{StaticResource Light.ColorNeutralForeground2Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2BrandHover"
+    Color="{StaticResource Light.ColorNeutralForeground2BrandHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2BrandPressed"
+    Color="{StaticResource Light.ColorNeutralForeground2BrandPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2BrandSelected"
+    Color="{StaticResource Light.ColorNeutralForeground2BrandSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground3Hover"
+    Color="{StaticResource Light.ColorNeutralForeground3Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground3Pressed"
+    Color="{StaticResource Light.ColorNeutralForeground3Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground3Selected"
+    Color="{StaticResource Light.ColorNeutralForeground3Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground3BrandHover"
+    Color="{StaticResource Light.ColorNeutralForeground3BrandHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground3BrandPressed"
+    Color="{StaticResource Light.ColorNeutralForeground3BrandPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground3BrandSelected"
+    Color="{StaticResource Light.ColorNeutralForeground3BrandSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundDisabled"
+    Color="{StaticResource Light.ColorNeutralForegroundDisabled}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInvertedDisabled"
+    Color="{StaticResource Light.ColorNeutralForegroundInvertedDisabled}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2Link"
+    Color="{StaticResource Light.ColorNeutralForeground2Link}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2LinkHover"
+    Color="{StaticResource Light.ColorNeutralForeground2LinkHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2LinkPressed"
+    Color="{StaticResource Light.ColorNeutralForeground2LinkPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground2LinkSelected"
+    Color="{StaticResource Light.ColorNeutralForeground2LinkSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForeground1Static"
+    Color="{StaticResource Light.ColorNeutralForeground1Static}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundStaticInverted"
+    Color="{StaticResource Light.ColorNeutralForegroundStaticInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInverted"
+    Color="{StaticResource Light.ColorNeutralForegroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInvertedHover"
+    Color="{StaticResource Light.ColorNeutralForegroundInvertedHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInvertedPressed"
+    Color="{StaticResource Light.ColorNeutralForegroundInvertedPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInvertedSelected"
+    Color="{StaticResource Light.ColorNeutralForegroundInvertedSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInverted2"
+    Color="{StaticResource Light.ColorNeutralForegroundInverted2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundOnBrand"
+    Color="{StaticResource Light.ColorNeutralForegroundOnBrand}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInvertedLink"
+    Color="{StaticResource Light.ColorNeutralForegroundInvertedLink}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInvertedLinkHover"
+    Color="{StaticResource Light.ColorNeutralForegroundInvertedLinkHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInvertedLinkPressed"
+    Color="{StaticResource Light.ColorNeutralForegroundInvertedLinkPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralForegroundInvertedLinkSelected"
+    Color="{StaticResource Light.ColorNeutralForegroundInvertedLinkSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground1"
+    Color="{StaticResource Light.ColorNeutralBackground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground2"
+    Color="{StaticResource Light.ColorNeutralBackground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground3"
+    Color="{StaticResource Light.ColorNeutralBackground3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground4"
+    Color="{StaticResource Light.ColorNeutralBackground4}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground5"
+    Color="{StaticResource Light.ColorNeutralBackground5}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground6"
+    Color="{StaticResource Light.ColorNeutralBackground6}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground1Hover"
+    Color="{StaticResource Light.ColorNeutralBackground1Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground1Pressed"
+    Color="{StaticResource Light.ColorNeutralBackground1Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground1Selected"
+    Color="{StaticResource Light.ColorNeutralBackground1Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground2Hover"
+    Color="{StaticResource Light.ColorNeutralBackground2Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground2Pressed"
+    Color="{StaticResource Light.ColorNeutralBackground2Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground2Selected"
+    Color="{StaticResource Light.ColorNeutralBackground2Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground3Hover"
+    Color="{StaticResource Light.ColorNeutralBackground3Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground3Pressed"
+    Color="{StaticResource Light.ColorNeutralBackground3Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground3Selected"
+    Color="{StaticResource Light.ColorNeutralBackground3Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground4Hover"
+    Color="{StaticResource Light.ColorNeutralBackground4Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground4Pressed"
+    Color="{StaticResource Light.ColorNeutralBackground4Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground4Selected"
+    Color="{StaticResource Light.ColorNeutralBackground4Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground5Hover"
+    Color="{StaticResource Light.ColorNeutralBackground5Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground5Pressed"
+    Color="{StaticResource Light.ColorNeutralBackground5Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackground5Selected"
+    Color="{StaticResource Light.ColorNeutralBackground5Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackgroundInverted"
+    Color="{StaticResource Light.ColorNeutralBackgroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackgroundStatic"
+    Color="{StaticResource Light.ColorNeutralBackgroundStatic}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackgroundAlpha"
+    Color="{StaticResource Light.ColorNeutralBackgroundAlpha}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackgroundAlpha2"
+    Color="{StaticResource Light.ColorNeutralBackgroundAlpha2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackgroundDisabled"
+    Color="{StaticResource Light.ColorNeutralBackgroundDisabled}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralBackgroundInvertedDisabled"
+    Color="{StaticResource Light.ColorNeutralBackgroundInvertedDisabled}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStroke1"
+    Color="{StaticResource Light.ColorNeutralStroke1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStroke2"
+    Color="{StaticResource Light.ColorNeutralStroke2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStroke3"
+    Color="{StaticResource Light.ColorNeutralStroke3}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeAccessible"
+    Color="{StaticResource Light.ColorNeutralStrokeAccessible}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeAccessibleHover"
+    Color="{StaticResource Light.ColorNeutralStrokeAccessibleHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeAccessiblePressed"
+    Color="{StaticResource Light.ColorNeutralStrokeAccessiblePressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeAccessibleSelected"
+    Color="{StaticResource Light.ColorNeutralStrokeAccessibleSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStroke1Hover"
+    Color="{StaticResource Light.ColorNeutralStroke1Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStroke1Pressed"
+    Color="{StaticResource Light.ColorNeutralStroke1Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStroke1Selected"
+    Color="{StaticResource Light.ColorNeutralStroke1Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeSubtle"
+    Color="{StaticResource Light.ColorNeutralStrokeSubtle}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeOnBrand"
+    Color="{StaticResource Light.ColorNeutralStrokeOnBrand}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeOnBrand2"
+    Color="{StaticResource Light.ColorNeutralStrokeOnBrand2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeOnBrand2Hover"
+    Color="{StaticResource Light.ColorNeutralStrokeOnBrand2Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeOnBrand2Pressed"
+    Color="{StaticResource Light.ColorNeutralStrokeOnBrand2Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeOnBrand2Selected"
+    Color="{StaticResource Light.ColorNeutralStrokeOnBrand2Selected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeDisabled"
+    Color="{StaticResource Light.ColorNeutralStrokeDisabled}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeInvertedDisabled"
+    Color="{StaticResource Light.ColorNeutralStrokeInvertedDisabled}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeAlpha"
+    Color="{StaticResource Light.ColorNeutralStrokeAlpha}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStrokeAlpha2"
+    Color="{StaticResource Light.ColorNeutralStrokeAlpha2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralShadowAmbient"
+    Color="{StaticResource Light.ColorNeutralShadowAmbient}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralShadowKey"
+    Color="{StaticResource Light.ColorNeutralShadowKey}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralShadowAmbientLighter"
+    Color="{StaticResource Light.ColorNeutralShadowAmbientLighter}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralShadowKeyLighter"
+    Color="{StaticResource Light.ColorNeutralShadowKeyLighter}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralShadowAmbientDarker"
+    Color="{StaticResource Light.ColorNeutralShadowAmbientDarker}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralShadowKeyDarker"
+    Color="{StaticResource Light.ColorNeutralShadowKeyDarker}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStencil1"
+    Color="{StaticResource Light.ColorNeutralStencil1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStencil2"
+    Color="{StaticResource Light.ColorNeutralStencil2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStencil1Alpha"
+    Color="{StaticResource Light.ColorNeutralStencil1Alpha}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorNeutralStencil2Alpha"
+    Color="{StaticResource Light.ColorNeutralStencil2Alpha}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundLink"
+    Color="{StaticResource Light.ColorBrandForegroundLink}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundLinkHover"
+    Color="{StaticResource Light.ColorBrandForegroundLinkHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundLinkPressed"
+    Color="{StaticResource Light.ColorBrandForegroundLinkPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundLinkSelected"
+    Color="{StaticResource Light.ColorBrandForegroundLinkSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForeground1"
+    Color="{StaticResource Light.ColorBrandForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForeground2"
+    Color="{StaticResource Light.ColorBrandForeground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForeground2Hover"
+    Color="{StaticResource Light.ColorBrandForeground2Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForeground2Pressed"
+    Color="{StaticResource Light.ColorBrandForeground2Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundInverted"
+    Color="{StaticResource Light.ColorBrandForegroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundInvertedHover"
+    Color="{StaticResource Light.ColorBrandForegroundInvertedHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundInvertedPressed"
+    Color="{StaticResource Light.ColorBrandForegroundInvertedPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundOnLight"
+    Color="{StaticResource Light.ColorBrandForegroundOnLight}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundOnLightHover"
+    Color="{StaticResource Light.ColorBrandForegroundOnLightHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundOnLightPressed"
+    Color="{StaticResource Light.ColorBrandForegroundOnLightPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandForegroundOnLightSelected"
+    Color="{StaticResource Light.ColorBrandForegroundOnLightSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackground"
+    Color="{StaticResource Light.ColorBrandBackground}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackgroundHover"
+    Color="{StaticResource Light.ColorBrandBackgroundHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackgroundPressed"
+    Color="{StaticResource Light.ColorBrandBackgroundPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackgroundSelected"
+    Color="{StaticResource Light.ColorBrandBackgroundSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackgroundStatic"
+    Color="{StaticResource Light.ColorBrandBackgroundStatic}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackground2"
+    Color="{StaticResource Light.ColorBrandBackground2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackground2Hover"
+    Color="{StaticResource Light.ColorBrandBackground2Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackground2Pressed"
+    Color="{StaticResource Light.ColorBrandBackground2Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackground3Static"
+    Color="{StaticResource Light.ColorBrandBackground3Static}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackground4Static"
+    Color="{StaticResource Light.ColorBrandBackground4Static}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackgroundInverted"
+    Color="{StaticResource Light.ColorBrandBackgroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackgroundInvertedHover"
+    Color="{StaticResource Light.ColorBrandBackgroundInvertedHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackgroundInvertedPressed"
+    Color="{StaticResource Light.ColorBrandBackgroundInvertedPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandBackgroundInvertedSelected"
+    Color="{StaticResource Light.ColorBrandBackgroundInvertedSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandStroke1"
+    Color="{StaticResource Light.ColorBrandStroke1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandStroke2"
+    Color="{StaticResource Light.ColorBrandStroke2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandStroke2Hover"
+    Color="{StaticResource Light.ColorBrandStroke2Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandStroke2Pressed"
+    Color="{StaticResource Light.ColorBrandStroke2Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandStroke2Contrast"
+    Color="{StaticResource Light.ColorBrandStroke2Contrast}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandShadowAmbient"
+    Color="{StaticResource Light.ColorBrandShadowAmbient}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBrandShadowKey"
+    Color="{StaticResource Light.ColorBrandShadowKey}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackground"
+    Color="{StaticResource Light.ColorSubtleBackground}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundHover"
+    Color="{StaticResource Light.ColorSubtleBackgroundHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundPressed"
+    Color="{StaticResource Light.ColorSubtleBackgroundPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundSelected"
+    Color="{StaticResource Light.ColorSubtleBackgroundSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundLightAlphaHover"
+    Color="{StaticResource Light.ColorSubtleBackgroundLightAlphaHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundLightAlphaPressed"
+    Color="{StaticResource Light.ColorSubtleBackgroundLightAlphaPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundLightAlphaSelected"
+    Color="{StaticResource Light.ColorSubtleBackgroundLightAlphaSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundInverted"
+    Color="{StaticResource Light.ColorSubtleBackgroundInverted}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundInvertedHover"
+    Color="{StaticResource Light.ColorSubtleBackgroundInvertedHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundInvertedPressed"
+    Color="{StaticResource Light.ColorSubtleBackgroundInvertedPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorSubtleBackgroundInvertedSelected"
+    Color="{StaticResource Light.ColorSubtleBackgroundInvertedSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorTransparentBackground"
+    Color="{StaticResource Light.ColorTransparentBackground}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorTransparentBackgroundHover"
+    Color="{StaticResource Light.ColorTransparentBackgroundHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorTransparentBackgroundPressed"
+    Color="{StaticResource Light.ColorTransparentBackgroundPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorTransparentBackgroundSelected"
+    Color="{StaticResource Light.ColorTransparentBackgroundSelected}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorTransparentStroke"
+    Color="{StaticResource Light.ColorTransparentStroke}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorTransparentStrokeInteractive"
+    Color="{StaticResource Light.ColorTransparentStrokeInteractive}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorTransparentStrokeDisabled"
+    Color="{StaticResource Light.ColorTransparentStrokeDisabled}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStrokeFocus1"
+    Color="{StaticResource Light.ColorStrokeFocus1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorStrokeFocus2"
+    Color="{StaticResource Light.ColorStrokeFocus2}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandForeground1"
+    Color="{StaticResource Light.ColorCompoundBrandForeground1}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandForeground1Hover"
+    Color="{StaticResource Light.ColorCompoundBrandForeground1Hover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandForeground1Pressed"
+    Color="{StaticResource Light.ColorCompoundBrandForeground1Pressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandBackground"
+    Color="{StaticResource Light.ColorCompoundBrandBackground}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandBackgroundHover"
+    Color="{StaticResource Light.ColorCompoundBrandBackgroundHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandBackgroundPressed"
+    Color="{StaticResource Light.ColorCompoundBrandBackgroundPressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandStroke"
+    Color="{StaticResource Light.ColorCompoundBrandStroke}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandStrokeHover"
+    Color="{StaticResource Light.ColorCompoundBrandStrokeHover}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorCompoundBrandStrokePressed"
+    Color="{StaticResource Light.ColorCompoundBrandStrokePressed}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorBackgroundOverlay"
+    Color="{StaticResource Light.ColorBackgroundOverlay}"
+    p:Freeze="True"
+  />
+  <SolidColorBrush
+    x:Key="ColorScrollbarOverlay"
+    Color="{StaticResource Light.ColorScrollbarOverlay}"
+    p:Freeze="True"
+  />
+</ResourceDictionary>
