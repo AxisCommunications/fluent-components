@@ -207,6 +207,8 @@ export {
   Skip15ForwardRegular,
   SmartSearchFilled,
   SmartSearchRegular,
+  SmartSearchSettingsFilled,
+  SmartSearchSettingsRegular,
   SpeakFilled,
   SpeakRegular,
   SpecificationCompilerFilled,
@@ -1077,6 +1079,14 @@ export {
   SmartSearch32Regular,
   SmartSearch48Filled,
   SmartSearch48Regular,
+  SmartSearchSettings16Filled,
+  SmartSearchSettings16Regular,
+  SmartSearchSettings20Filled,
+  SmartSearchSettings20Regular,
+  SmartSearchSettings24Filled,
+  SmartSearchSettings24Regular,
+  SmartSearchSettings28Filled,
+  SmartSearchSettings28Regular,
   Speak16Filled,
   Speak16Regular,
   Speak20Filled,
@@ -1250,6 +1260,8 @@ export {
   ViewAreaRight20Filled,
   ViewAreaRight20Regular,
   ViewAreaRight24Filled,
+} from "./sizedIcons/chunk-1";
+export {
   ViewAreaRight24Regular,
   Walking12Filled,
   Walking12Regular,
@@ -1258,8 +1270,6 @@ export {
   Walking20Filled,
   Walking20Regular,
   Walking24Filled,
-} from "./sizedIcons/chunk-1";
-export {
   Walking24Regular,
   Walking28Filled,
   Walking28Regular,
