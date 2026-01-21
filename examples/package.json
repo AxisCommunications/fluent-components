@@ -37,17 +37,17 @@
     "@fluentui/react-context-selector": "^9.2.12",
     "@fluentui/react-icons": "^2.0.315",
     "@vitejs/plugin-react": "^4.4.1",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "6.30.0",
-    "react-syntax-highlighter": "15.6.1",
-    "scheduler": "0.26.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-router-dom": "6.30.3",
+    "react-syntax-highlighter": "15.6.6",
+    "scheduler": "0.27.0",
     "vite": "^6.3.4"
   },
   "devDependencies": {
     "@playwright/test": "1.52.0",
     "@types/node": "^22.15.3",
-    "@types/react": "^19.2.6",
+    "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "15.5.13",
     "typescript": "^5.8.3"
