@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-theme",
-  "version": "12.1.0",
+  "version": "12.2.0",
   "description": "Theme for Fluent UI v9",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -52,6 +52,7 @@
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.72.7",
+    "@fluentui/react-theme": "^9.2.0",
     "react": ">=16.14.0 <20.0.0",
     "react-dom": ">=16.14.0 <20.0.0"
   },
