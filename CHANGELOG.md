@@ -1,5 +1,9 @@
-## [12.1.0](https://github.com/AxisCommunications/fluent-components/compare/d5a5ae34ba73e725c712547793ef64db16122aea..fa6e9996b54ad3a89528f7d16537f1e3628d256d) (2025-12-19T10:55:05.366Z)
+## [12.2.0](https://github.com/AxisCommunications/fluent-components/compare/c73b2a60d08f56b69e22c7fa13c1d6f4c6c62bb7..efd16810fc73d5fe681983dad754d7599f93c0d0) (2026-01-23T07:34:47.009Z)
+
+### 🐛 Bug fixes
+
+  - **theme**: add @fluentui/react-theme dependency (#534) ([efd1681](https://github.com/AxisCommunications/fluent-components/commit/efd16810fc73d5fe681983dad754d7599f93c0d0))
 
 ### 💄 Styling
 
-  - improving color contrast (#526) ([fa6e999](https://github.com/AxisCommunications/fluent-components/commit/fa6e9996b54ad3a89528f7d16537f1e3628d256d))
+  - new SmartSearch settings icon (#533) ([7d0615a](https://github.com/AxisCommunications/fluent-components/commit/7d0615aab5a9a0491593c368e448567aaaf039d3))
