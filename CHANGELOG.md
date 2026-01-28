@@ -1,9 +1,9 @@
-## [12.2.0](https://github.com/AxisCommunications/fluent-components/compare/c73b2a60d08f56b69e22c7fa13c1d6f4c6c62bb7..efd16810fc73d5fe681983dad754d7599f93c0d0) (2026-01-23T07:34:47.009Z)
+## [12.3.0](https://github.com/AxisCommunications/fluent-components/compare/6b41c126a19dedb27eb7a10a6fe0d37f0f5a2336..76b7415d0e45090e03bd8282d9fc491391cacf69) (2026-01-28T13:57:26.731Z)
 
-### 🐛 Bug fixes
+### 🚧 Maintenance
 
-  - **theme**: add @fluentui/react-theme dependency (#534) ([efd1681](https://github.com/AxisCommunications/fluent-components/commit/efd16810fc73d5fe681983dad754d7599f93c0d0))
+  - **deps**: bump the fluent group across 1 directory with 4 updates (#536) ([bad0e5a](https://github.com/AxisCommunications/fluent-components/commit/bad0e5a5888bf99666b1ae368cb854f394ef3c4e))
 
 ### 💄 Styling
 
-  - new SmartSearch settings icon (#533) ([7d0615a](https://github.com/AxisCommunications/fluent-components/commit/7d0615aab5a9a0491593c368e448567aaaf039d3))
+  - three new icons (#537) ([76b7415](https://github.com/AxisCommunications/fluent-components/commit/76b7415d0e45090e03bd8282d9fc491391cacf69))
