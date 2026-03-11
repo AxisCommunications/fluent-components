@@ -23,6 +23,7 @@ export type IllustrationKind =
   | "team"
   | "menu-item-focus"
   | "drag-menu"
+  | "media-error"
   | "under-construction";
 
 export interface ContentProps {

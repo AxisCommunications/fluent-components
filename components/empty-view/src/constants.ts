@@ -18,6 +18,8 @@ import {
   FileMissingDark,
   FileMissingLight,
   MediaDark,
+  MediaErrorDark,
+  MediaErrorLight,
   MediaLight,
   MenuItemFocusDark,
   MenuItemFocusLight,
@@ -58,6 +60,7 @@ export const Illustration: Record<
     AddUserProfileLight
   ),
   "drag-menu": bundleIllustrationSmart(DragMenuItemDark, DragMenuItemLight),
+  "media-error": bundleIllustrationSmart(MediaErrorDark, MediaErrorLight),
   "code-error": bundleIllustrationSmart(CodeErrorDark, CodeErrorLight),
   "menu-item-focus": bundleIllustrationSmart(
     MenuItemFocusDark,
