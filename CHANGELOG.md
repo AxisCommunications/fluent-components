@@ -1,9 +1,6 @@
-## [12.3.0](https://github.com/AxisCommunications/fluent-components/compare/6b41c126a19dedb27eb7a10a6fe0d37f0f5a2336..76b7415d0e45090e03bd8282d9fc491391cacf69) (2026-01-28T13:57:26.731Z)
+## [12.3.1](https://github.com/AxisCommunications/fluent-components/compare/cb7391f6e620583c6fcc2f8b6aa16a4b8ef47ce5..dee3f31ef23632fdd6bb910abd1982aba795ac46) (2026-03-11T09:28:13.355Z)
 
 ### 🚧 Maintenance
 
-  - **deps**: bump the fluent group across 1 directory with 4 updates (#536) ([bad0e5a](https://github.com/AxisCommunications/fluent-components/commit/bad0e5a5888bf99666b1ae368cb854f394ef3c4e))
-
-### 💄 Styling
-
-  - three new icons (#537) ([76b7415](https://github.com/AxisCommunications/fluent-components/commit/76b7415d0e45090e03bd8282d9fc491391cacf69))
+  - mao media-error illustration (#549) ([dee3f31](https://github.com/AxisCommunications/fluent-components/commit/dee3f31ef23632fdd6bb910abd1982aba795ac46))
+  - **deps**: bump @types/node from 22.19.1 to 25.0.10 (#540) ([2dffb4c](https://github.com/AxisCommunications/fluent-components/commit/2dffb4cdc6931e9fbfa1c317b9e58f0b7f09abde))
