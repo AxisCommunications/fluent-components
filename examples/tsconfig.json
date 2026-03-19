@@ -1,6 +1,7 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "lib": ["es5", "es6", "dom", "dom.iterable", "ES2015", "es2017"],
     "types": ["node"],
     "paths": {
