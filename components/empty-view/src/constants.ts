@@ -1,4 +1,6 @@
 import {
+  AddUserDark,
+  AddUserLight,
   AddUserProfileDark,
   AddUserProfileLight,
   CodeErrorDark,
@@ -91,4 +93,5 @@ export const Illustration: Record<
     UnderConstructionDark,
     UnderConstructionLight
   ),
+  "add-user": bundleIllustrationSmart(AddUserDark, AddUserLight),
 } as const;

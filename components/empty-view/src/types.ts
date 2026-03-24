@@ -24,7 +24,8 @@ export type IllustrationKind =
   | "menu-item-focus"
   | "drag-menu"
   | "media-error"
-  | "under-construction";
+  | "under-construction"
+  | "add-user";
 
 export interface ContentProps {
   readonly body: ReactNode;
