@@ -59,4 +59,19 @@ export const DialogEmptyViewExample = () => {
   );
 };
 ```
+## Adding new illustrations
 
+The `add-illustration` script automates adding new illustration mappings from `@axiscommunications/fluent-illustrations` into this component. It scans the illustrations library for available Dark/Light pairs, shows which ones aren't yet mapped, and lets you interactively select which to add. The script updates both `IllustrationKind` in `types.ts` and the mapping in `constants.ts`.
+
+```sh
+pnpm add-illustration
+```
+
+The script will:
+
+1. List all unmapped illustrations by number
+2. Prompt you to select which to add (comma-separated numbers, or `all`)
+3. Suggest a kebab-case key for each (editable)
+4. Update `src/types.ts` and `src/constants.ts`
+
+Run `pnpm lint` after to format the changes.

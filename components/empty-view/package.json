@@ -23,6 +23,7 @@
     "build": "pnpm prebuild && pnpm build:types && pnpm build:esm",
     "build:esm": "esbuild --format=esm --bundle --sourcemap --packages=external --outdir=lib src/index.ts",
     "build:types": "tsc -p tsconfig.build.json",
+    "add-illustration": "bash scripts/add-illustration.sh",
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "lint": "tsc --noEmit && biome check"
   },
