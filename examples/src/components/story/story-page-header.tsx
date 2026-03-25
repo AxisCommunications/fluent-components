@@ -1,9 +1,10 @@
 import { PropsWithChildren } from "react";
 
 import {
-  Caption1,
-  Title2,
+  Body1,
+  Title1,
   makeStyles,
+  shorthands,
   tokens,
 } from "@fluentui/react-components";
 import { EStoryStatus, StoryStatus } from "./story-status";
@@ -15,9 +16,23 @@ type PageHeaderProps = {
 
 const useStyles = makeStyles({
   root: {
+    position: "relative",
     display: "flex",
-    justifyItems: "flex-end",
     flexDirection: "column",
+    ...shorthands.gap(tokens.spacingVerticalM),
+  },
+  watermark: {
+    position: "absolute",
+    top: "-20px",
+    right: "16px",
+    fontSize: "120px",
+    fontWeight: tokens.fontWeightBold,
+    lineHeight: "1",
+    color: tokens.colorNeutralForeground1,
+    opacity: "0.06",
+    pointerEvents: "none",
+    userSelect: "none",
+    whiteSpace: "nowrap",
   },
   point: {
     color: tokens.colorBrandBackground,
@@ -25,7 +40,12 @@ const useStyles = makeStyles({
   title: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    ...shorthands.gap(tokens.spacingHorizontalM),
+    position: "relative",
+  },
+  children: {
+    color: tokens.colorNeutralForeground3,
+    position: "relative",
   },
 });
 
@@ -38,14 +58,15 @@ export const StoryPageHeader = ({
 
   return (
     <div className={styles.root}>
+      <span className={styles.watermark}>{title}</span>
       <div className={styles.title}>
-        <Title2>
+        <Title1>
           {title}
           <span className={styles.point}>.</span>
-        </Title2>
+        </Title1>
         {status && <StoryStatus status={status} />}
       </div>
-      <Caption1>{children}</Caption1>
+      <Body1 className={styles.children}>{children}</Body1>
     </div>
   );
 };

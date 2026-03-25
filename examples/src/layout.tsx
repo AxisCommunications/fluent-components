@@ -31,6 +31,12 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground3,
     ...shorthands.gridArea("outlet"),
     ...shorthands.overflow("hidden"),
+    ...shorthands.borderRadius(
+      tokens.borderRadiusXLarge,
+      0,
+      0,
+      tokens.borderRadiusXLarge
+    ),
   },
 });
 

@@ -4,6 +4,7 @@ import {
   Caption2,
   Subtitle2,
   makeStyles,
+  shorthands,
   tokens,
 } from "@fluentui/react-components";
 
@@ -14,8 +15,15 @@ type PageHeaderProps = {
 const useStyles = makeStyles({
   root: {
     display: "flex",
-    justifyItems: "flex-end",
     flexDirection: "column",
+    ...shorthands.gap(tokens.spacingVerticalXXS),
+    ...shorthands.borderLeft("3px", "solid", tokens.colorBrandBackground),
+    ...shorthands.padding(
+      tokens.spacingVerticalXXS,
+      0,
+      tokens.spacingVerticalXXS,
+      tokens.spacingHorizontalM
+    ),
   },
   point: {
     color: tokens.colorBrandBackground,
@@ -33,7 +41,7 @@ export const StorySectionHeader = ({
         {title}
         <span className={styles.point}>.</span>
       </Subtitle2>
-      <Caption2>{children}</Caption2>
+      {children && <Caption2>{children}</Caption2>}
     </div>
   );
 };
