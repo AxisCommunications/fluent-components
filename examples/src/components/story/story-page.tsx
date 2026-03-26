@@ -1,5 +1,5 @@
 import {
-  Divider,
+  Caption1,
   DrawerBody,
   DrawerHeader,
   InlineDrawer,
@@ -24,20 +24,21 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground3,
     display: "grid",
     gridTemplateColumns: "1fr min-content",
-    ...shorthands.padding(0, "15%", 0, "5%"),
+    ...shorthands.padding(0, "8%", 0, "5%"),
+    maxWidth: "1400px",
   },
   header: {
     ...shorthands.padding(
+      tokens.spacingVerticalXXL,
       tokens.spacingHorizontalM,
-      tokens.spacingHorizontalM,
-      tokens.spacingHorizontalXXS,
+      tokens.spacingVerticalM,
       tokens.spacingHorizontalM
     ),
   },
   headerDescription: {
     display: "flex",
     flexDirection: "column",
-    ...shorthands.gap(tokens.spacingHorizontalL),
+    ...shorthands.gap(tokens.spacingHorizontalS),
   },
   package: {
     color: tokens.colorNeutralForeground3,
@@ -48,8 +49,13 @@ const useStyles = makeStyles({
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    ...shorthands.gap(tokens.spacingVerticalS),
-    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingVerticalL),
+    ...shorthands.gap(tokens.spacingVerticalXXL),
+    ...shorthands.padding(
+      tokens.spacingVerticalL,
+      tokens.spacingVerticalL,
+      tokens.spacingVerticalXXXL,
+      tokens.spacingVerticalL
+    ),
   },
   main: {
     overflowY: "auto",
@@ -61,35 +67,22 @@ const useStyles = makeStyles({
   },
   navigation: {
     height: "100%",
-    width: "220px",
+    width: "200px",
     ...shorthands.border(0),
+    backgroundColor: tokens.colorNeutralBackground3,
   },
   navigationBody: {
-    backgroundImage: `linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
-    linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
-    linear-gradient(to top, ${tokens.colorNeutralBackground3}, ${tokens.colorNeutralBackground3}),
-    linear-gradient(to bottom, ${tokens.colorNeutralStroke1}, ${tokens.colorNeutralBackground3})`,
     backgroundColor: tokens.colorNeutralBackground3,
-    backgroundSize: "100% 2px, 100% 2px, 94% 1px, 100% 0px",
     ...shorthands.margin(0),
-    ...shorthands.padding(
-      tokens.spacingVerticalXS,
-      tokens.spacingVerticalS,
-      tokens.spacingVerticalXS,
-      tokens.spacingVerticalS
-    ),
-    ":first-child": {
-      paddingTop: "unset",
-    },
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+  },
+  navigationLabel: {
+    color: tokens.colorNeutralForeground3,
+    ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalM),
   },
   navigationHeader: {
     ...shorthands.margin(0),
-    ...shorthands.padding(
-      tokens.spacingVerticalM,
-      tokens.spacingVerticalS,
-      tokens.spacingVerticalXS,
-      tokens.spacingVerticalS
-    ),
+    ...shorthands.padding(0),
     backgroundColor: tokens.colorNeutralBackground3,
   },
   customHeaderSlot: {
@@ -127,7 +120,7 @@ export function StoryPage({
   const { styles, rootStyle } = useStoryPageStyles();
   return (
     <div data-testid={componentId} className={rootStyle} {...rest}>
-      <div className={styles.main}>
+      <div className={styles.main} data-scroll-container>
         <div className={styles.header}>
           <StoryPageHeader title={title} status={status}>
             <div className={styles.headerDescription}>
@@ -147,7 +140,6 @@ export function StoryPage({
             )}
           </StoryPageHeader>
         </div>
-        <Divider />
         <div className={styles.body}>{children}</div>
       </div>
       {navigation && (
@@ -156,7 +148,9 @@ export function StoryPage({
           position={"end"}
           open={true}
         >
-          <DrawerHeader className={styles.navigationHeader} />
+          <DrawerHeader className={styles.navigationHeader}>
+            <Caption1 className={styles.navigationLabel}>On this page</Caption1>
+          </DrawerHeader>
           <DrawerBody className={styles.navigationBody}>
             {navigation}
           </DrawerBody>

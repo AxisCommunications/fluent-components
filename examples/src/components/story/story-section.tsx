@@ -18,15 +18,26 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     ...shorthands.borderRadius(tokens.borderRadiusLarge),
-    ...shorthands.gap(tokens.spacingHorizontalS),
+    ...shorthands.gap(tokens.spacingHorizontalM),
   },
   body: {
     display: "flex",
     flexDirection: "column",
-    ...shorthands.border("1px", "solid", tokens.colorNeutralBackground1),
+    backgroundColor: tokens.colorNeutralBackground2,
+    ...shorthands.border(
+      tokens.strokeWidthThin,
+      "solid",
+      tokens.colorNeutralStroke2
+    ),
     ...shorthands.borderRadius(tokens.borderRadiusLarge),
-    ...shorthands.padding(tokens.spacingHorizontalM),
-    ...shorthands.gap(tokens.spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingHorizontalL),
+    ...shorthands.gap(tokens.spacingHorizontalM),
+    transitionDuration: tokens.durationNormal,
+    transitionProperty: "border-color, box-shadow",
+    ":hover": {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      boxShadow: tokens.shadow4,
+    },
   },
 });
 

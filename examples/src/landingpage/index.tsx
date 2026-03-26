@@ -1,5 +1,5 @@
 import {
-  Title2,
+  Body1,
   makeStyles,
   shorthands,
   tokens,
@@ -17,7 +17,6 @@ import { TestId } from "../../system-test/util/test-id";
 import { RouteCategory, getRouteByCategory } from "../routing/route-map";
 import { routes } from "../routing/routes";
 import { WelcomeCard } from "./welcome-card";
-import { WelcomeImage } from "./welcome-image/welcome-image.component";
 
 const useStyles = makeStyles({
   root: {
@@ -26,12 +25,7 @@ const useStyles = makeStyles({
     height: "100%",
     width: "100%",
     ...shorthands.overflow("auto"),
-    ...shorthands.padding(tokens.spacingVerticalXXL),
-  },
-  image: {
-    position: "absolute",
-    bottom: 0,
-    right: 0,
+    ...shorthands.padding("48px"),
   },
   content: {
     zIndex: 1,
@@ -39,12 +33,28 @@ const useStyles = makeStyles({
     height: "100%",
     width: "100%",
     flexDirection: "column",
-    ...shorthands.gap(tokens.spacingHorizontalL),
+    ...shorthands.gap(tokens.spacingVerticalXXXL),
+  },
+  hero: {
+    display: "flex",
+    flexDirection: "column",
+    ...shorthands.gap(tokens.spacingVerticalM),
+    maxWidth: "520px",
+  },
+  title: {
+    fontSize: tokens.fontSizeHero800,
+    fontWeight: tokens.fontWeightSemibold,
+    lineHeight: tokens.lineHeightHero800,
+    color: tokens.colorNeutralForeground1,
+  },
+  subtitle: {
+    color: tokens.colorNeutralForeground3,
   },
   cardContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-    ...shorthands.gap(tokens.spacingHorizontalM),
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+    ...shorthands.gap(tokens.spacingHorizontalL),
+    maxWidth: "900px",
   },
 });
 
@@ -61,45 +71,47 @@ export const WelcomePage = () => {
   return (
     <div data-testid={TestId.welcomePage} className={styles.root}>
       <div className={styles.content}>
-        <Title2 block wrap>
-          Welcome to Axis Fluent Components
-        </Title2>
+        <div className={styles.hero}>
+          <span className={styles.title}>
+            Welcome to Axis Fluent Components
+          </span>
+          <Body1 className={styles.subtitle}>
+            Explore components, themes, icons, illustrations, and style
+            utilities built on Fluent UI.
+          </Body1>
+        </div>
         <div className={styles.cardContainer}>
           <WelcomeCard
-            icon={<PuzzlePieceRegular fontSize={tokens.fontSizeBase600} />}
+            icon={<PuzzlePieceRegular />}
             title="Components"
-            description={"Axis branded component"}
-            text={"Complement to fluent ui components"}
+            description="Axis branded components that complement Fluent UI"
             onClick={navigateToFirstComponent}
           />
           <WelcomeCard
-            icon={<DarkThemeRegular fontSize={tokens.fontSizeBase600} />}
+            icon={<DarkThemeRegular />}
             title="Theme"
-            description={"Axis branded themes"}
+            description="Axis branded light and dark themes"
             onClick={navigateToTheme}
           />
           <WelcomeCard
-            icon={<IconsRegular fontSize={tokens.fontSizeBase600} />}
+            icon={<IconsRegular />}
             title="Icons"
-            description={"Axis branded icons"}
+            description="Axis branded icon library"
             onClick={navigateToIcon}
           />
           <WelcomeCard
-            icon={<BeachRegular fontSize={tokens.fontSizeBase600} />}
+            icon={<BeachRegular />}
             title="Illustrations"
-            description={"Axis branded illustrations"}
+            description="Axis branded illustrations for empty states"
             onClick={navigateToIllustration}
           />
           <WelcomeCard
-            icon={<DocumentCssRegular fontSize={tokens.fontSizeBase600} />}
+            icon={<DocumentCssRegular />}
             title="Styles"
-            description={"Utilities for existing components"}
+            description="Utility styles for existing components"
             onClick={navigateToFirstStyle}
           />
         </div>
-      </div>
-      <div className={styles.image}>
-        <WelcomeImage />
       </div>
     </div>
   );
