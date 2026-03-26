@@ -3,6 +3,7 @@ import {
   MenuItemProps,
   makeStyles,
   mergeClasses,
+  shorthands,
   tokens,
 } from "@fluentui/react-components";
 
@@ -13,10 +14,36 @@ export const navigationMenuItemClassNames = {
 
 const useStyles = makeStyles({
   root: {
-    backgroundImage: `linear-gradient(90deg,${tokens.colorNeutralBackground1}0%,${tokens.colorNeutralBackground3}95%)`,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.padding(
+      tokens.spacingVerticalSNudge,
+      tokens.spacingHorizontalM
+    ),
+    minHeight: "unset",
+    color: tokens.colorNeutralForeground2,
+    backgroundColor: "transparent",
+    ":hover": {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground1,
+    },
   },
   selected: {
-    backgroundImage: `linear-gradient(90deg,${tokens.colorNeutralBackground1}100%,${tokens.colorNeutralBackground3}0%)`,
+    backgroundColor: tokens.colorNeutralBackground1,
+    color: tokens.colorNeutralForeground1,
+    fontWeight: tokens.fontWeightSemibold,
+    "::before": {
+      content: '""',
+      position: "absolute",
+      left: "0",
+      top: "25%",
+      height: "50%",
+      width: "3px",
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      backgroundColor: tokens.colorBrandForeground1,
+    },
+    ":hover": {
+      backgroundColor: tokens.colorNeutralBackground1,
+    },
   },
 });
 
