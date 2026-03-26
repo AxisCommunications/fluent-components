@@ -1,9 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
+import process from "node:process";
 
 import yargs from "yargs";
 
-const argv = yargs.boolean("selector").default("selector", false).argv;
+const argv = yargs(process.argv.slice(2)).boolean("selector").default("selector", false).parseSync();
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;

@@ -63,7 +63,7 @@ const processFolder = (srcPath, destPath, folderDepth, extension) => {
   });
 };
 
-const argv = yargs.argv;
+const argv = yargs(process.argv.slice(2)).parseSync();
 
 if (!argv.source) {
   throw new Error("Icon source folder not specified by --source");
