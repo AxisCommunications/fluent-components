@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-topbar",
-  "version": "12.0.0",
+  "version": "12.4.0",
   "description": "Axis branded TopBar",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -34,15 +34,15 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@types/react": "^19.2.6",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "esbuild": "^0.25.3",
+    "esbuild": "^0.27.4",
     "jsdom": "^26.1.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "vitest": "^4.1.0"
   },
   "peerDependencies": {
     "@axiscommunications/fluent-theme": ">=9.0.0",
