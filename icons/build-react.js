@@ -4,7 +4,10 @@ import process from "node:process";
 
 import yargs from "yargs";
 
-const argv = yargs(process.argv.slice(2)).boolean("selector").default("selector", false).parseSync();
+const argv = yargs(process.argv.slice(2))
+  .boolean("selector")
+  .default("selector", false)
+  .parseSync();
 
 const SRC_PATH = argv.source;
 const DEST_PATH = argv.dest;
