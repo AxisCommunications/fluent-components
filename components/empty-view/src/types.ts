@@ -68,7 +68,8 @@ export type IllustrationKind =
   | "welcome-plane"
   | "extend-system"
   | "migrate-system"
-  | "new-system";
+  | "new-system"
+  | "search";
 
 export interface ContentProps {
   readonly body: ReactNode;

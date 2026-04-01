@@ -111,6 +111,8 @@ export {
   ProhibitedLight,
   ResetPasswordDark,
   ResetPasswordLight,
+  SearchDark,
+  SearchLight,
   SetPasswordDark,
   SetPasswordLight,
   SettingsDark,
