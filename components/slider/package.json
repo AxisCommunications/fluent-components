@@ -39,7 +39,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "typescript": "^5.8.3",
-    "vitest": "^4.1.0"
+    "vitest": "^4.1.2"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.72.7",
