@@ -45,12 +45,14 @@ export {
   EmptyGeneralLight,
   EmptySpaceDark,
   EmptySpaceLight,
+  ExtendSystemDark,
+  ExtendSystemLight,
   FileMissingDark,
   FileMissingLight,
-  FolderDark,
-  FolderLight,
 } from "./illustrations/chunk-0.js";
 export {
+  FolderDark,
+  FolderLight,
   GridLocationDark,
   GridLocationLight,
   ImportExcelDark,
@@ -67,10 +69,14 @@ export {
   MediaLight,
   MenuItemFocusDark,
   MenuItemFocusLight,
+  MigrateSystemDark,
+  MigrateSystemLight,
   MilPermissionsDark,
   MilPermissionsLight,
   NavigationDark,
   NavigationLight,
+  NewSystemDark,
+  NewSystemLight,
   NoAccessDark,
   NoAccessLight,
   NoConnectionDark,
@@ -95,14 +101,14 @@ export {
   NotFoundLight,
   NotificationsDark,
   NotificationsLight,
+} from "./illustrations/chunk-1.js";
+export {
   OrganizationDark,
   OrganizationLight,
   PasswordSentDark,
   PasswordSentLight,
   ProhibitedDark,
   ProhibitedLight,
-} from "./illustrations/chunk-1.js";
-export {
   ResetPasswordDark,
   ResetPasswordLight,
   SetPasswordDark,
