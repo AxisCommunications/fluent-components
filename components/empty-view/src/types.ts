@@ -65,7 +65,10 @@ export type IllustrationKind =
   | "user"
   | "user-group"
   | "user-profile"
-  | "welcome-plane";
+  | "welcome-plane"
+  | "extend-system"
+  | "migrate-system"
+  | "new-system";
 
 export interface ContentProps {
   readonly body: ReactNode;
