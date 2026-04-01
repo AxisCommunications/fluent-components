@@ -258,5 +258,5 @@ export const Illustration: Record<
     MigrateSystemLight
   ),
   "new-system": bundleIllustrationSmart(NewSystemDark, NewSystemLight),
-  "search": bundleIllustrationSmart(SearchDark, SearchLight),
+  search: bundleIllustrationSmart(SearchDark, SearchLight),
 } as const;
