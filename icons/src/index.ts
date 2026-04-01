@@ -143,6 +143,8 @@ export {
   KeyholeRegular,
   LightbulbIrFilled,
   LightbulbIrRegular,
+  LinecrossingFilled,
+  LinecrossingRegular,
   LocationTextFilled,
   LocationTextRegular,
   LoudNoiseFilled,
@@ -834,6 +836,10 @@ export {
   LightbulbIr20Regular,
   LightbulbIr24Filled,
   LightbulbIr24Regular,
+  Linecrossing16Filled,
+  Linecrossing16Regular,
+  Linecrossing20Filled,
+  Linecrossing20Regular,
   LocationText20Filled,
   LocationText20Regular,
   LocationText24Filled,
@@ -1260,12 +1266,12 @@ export {
   Vehicles28Filled,
   Vehicles28Regular,
   Vehicles32Filled,
+} from "./sizedIcons/chunk-1";
+export {
   Vehicles32Regular,
   Vehicles48Filled,
   Vehicles48Regular,
   ViewAreaLeft20Filled,
-} from "./sizedIcons/chunk-1";
-export {
   ViewAreaLeft20Regular,
   ViewAreaLeft24Filled,
   ViewAreaLeft24Regular,
