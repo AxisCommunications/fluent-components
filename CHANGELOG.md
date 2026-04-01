@@ -1,13 +1,14 @@
-## [12.4.0](https://github.com/AxisCommunications/fluent-components/compare/0b527963b2ce9474edb615d952255c51b8b02be1..bb8cdb03ea647e943bd0b24dc6bd5cbc6b98fd79) (2026-03-24T11:03:39.670Z)
+## [12.5.0](https://github.com/AxisCommunications/fluent-components/compare/ea9bfbbb39f5bd8aacd0883e65629627de909c7f..e076219070bd10f81800ff4ce88e0128451a3e3e) (2026-04-01T11:19:21.823Z)
 
 ### 🚧 Maintenance
 
-  - map all illustrations (#557) ([bb8cdb0](https://github.com/AxisCommunications/fluent-components/commit/bb8cdb03ea647e943bd0b24dc6bd5cbc6b98fd79))
-  - script to map new empty views (#556) ([0cc11f6](https://github.com/AxisCommunications/fluent-components/commit/0cc11f6ca3be6ce63a7ac31bf1b4951baf991df3))
-  - **deps**: bump vite from 6.4.1 to 8.0.0 (#554) ([57d98a0](https://github.com/AxisCommunications/fluent-components/commit/57d98a00cff228fee365dff02f470312eee980c3))
-  - **deps**: bump the fluent group with 2 updates (#551) ([18d62db](https://github.com/AxisCommunications/fluent-components/commit/18d62dbf1089da97c18c44b3d6034b0ae0c9f3dc))
-  - **deps**: bump vitest from 3.2.4 to 4.1.0 (#555) ([5a585db](https://github.com/AxisCommunications/fluent-components/commit/5a585db19e129cc7abb584917f03e27a5d5dcb8b))
-  - **deps**: bump the dev-dependencies group with 2 updates (#552) ([1064780](https://github.com/AxisCommunications/fluent-components/commit/1064780c3bf3568be694575febfbca03074d0ad2))
-  - **deps**: bump the fluent group across 1 directory with 3 updates (#547) ([ff26540](https://github.com/AxisCommunications/fluent-components/commit/ff26540cf84c405bed43101ecd7f2f8e5439a3a5))
-  - **deps**: bump the dependencies group across 1 directory with 8 updates (#548) ([186c19e](https://github.com/AxisCommunications/fluent-components/commit/186c19eeec1c1c4813c054135ac5df06f87d49ea))
-  - **deps**: bump the dev-dependencies group across 1 directory with 5 updates (#544) ([a50a182](https://github.com/AxisCommunications/fluent-components/commit/a50a182e6d66e639a8217a3d820ad23aced69f3c))
+  - map 3 empty views (#570) ([e076219](https://github.com/AxisCommunications/fluent-components/commit/e076219070bd10f81800ff4ce88e0128451a3e3e))
+  - add copilot instructions (#565) ([3bcf197](https://github.com/AxisCommunications/fluent-components/commit/3bcf197c18cf27aba012ff8ed3d5bf83bc497856))
+  - setup husky (#530) ([47e69dd](https://github.com/AxisCommunications/fluent-components/commit/47e69ddeec86d616afbaf3ce5160f069fa30b205))
+  - improve example ux (#564) ([595cf98](https://github.com/AxisCommunications/fluent-components/commit/595cf98d2742cefdac2ee87e8d80d62d18d3d425))
+
+### 💄 Styling
+
+  - added icon (#569) ([841deaa](https://github.com/AxisCommunications/fluent-components/commit/841deaa3f539ccf2957f88beb99acb2131c7ee06))
+  - new illustrations (#568) ([2bd7dcd](https://github.com/AxisCommunications/fluent-components/commit/2bd7dcd55b9561fae854141af894d88a8a641603))
+  - adjust brand foreground 2 (#563) ([5e7d46e](https://github.com/AxisCommunications/fluent-components/commit/5e7d46e97ac4df2af2d0d719fe3ac3c9670e75bf))
