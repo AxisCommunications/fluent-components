@@ -43,9 +43,9 @@
   },
   "devDependencies": {
     "@svgr/core": "^5.5.0",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.5.2",
     "@types/react": "^19.2.14",
-    "esbuild": "^0.27.4",
+    "esbuild": "^0.28.0",
     "icon-font-generator": "^2.1.11",
     "react": "^19.2.4",
     "replace": "^1.2.2",
