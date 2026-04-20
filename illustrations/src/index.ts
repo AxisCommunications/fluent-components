@@ -55,6 +55,10 @@ export {
   FolderLight,
   GridLocationDark,
   GridLocationLight,
+  HighSpeedApproachingTrafficDark,
+  HighSpeedApproachingTrafficLight,
+  HighSpeedOneWayDark,
+  HighSpeedOneWayLight,
   ImportExcelDark,
   ImportExcelLight,
   LaunchDark,
@@ -97,12 +101,12 @@ export {
   NoReportsLight,
   NoSitesDark,
   NoSitesLight,
+} from "./illustrations/chunk-1.js";
+export {
   NotFoundDark,
   NotFoundLight,
   NotificationsDark,
   NotificationsLight,
-} from "./illustrations/chunk-1.js";
-export {
   OrganizationDark,
   OrganizationLight,
   PasswordSentDark,
