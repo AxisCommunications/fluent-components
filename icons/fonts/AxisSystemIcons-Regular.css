@@ -1,6 +1,6 @@
 @font-face {
     font-family: "AxisSystemIcons-Regular";
-    src: url("./AxisSystemIcons-Regular.ttf?727f2db2c0c3142610539db773fb2dcf") format("truetype");
+    src: url("./AxisSystemIcons-Regular.ttf?e2e257787babcd6334b8ceca8492d01f") format("truetype");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -1576,4 +1576,73 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 }
 .icon-ic_axis_shield_learning_48_regular:before {
     content: "\f309";
+}
+.icon-ic_axis_autotracking_24_regular:before {
+    content: "\f30a";
+}
+.icon-ic_axis_beam_shape_left_32_regular:before {
+    content: "\f30b";
+}
+.icon-ic_axis_beam_shape_left_48_regular:before {
+    content: "\f30c";
+}
+.icon-ic_axis_beam_shape_mid_32_regular:before {
+    content: "\f30d";
+}
+.icon-ic_axis_beam_shape_mid_48_regular:before {
+    content: "\f30e";
+}
+.icon-ic_axis_beam_shape_panoramic_left_32_regular:before {
+    content: "\f30f";
+}
+.icon-ic_axis_beam_shape_panoramic_left_48_regular:before {
+    content: "\f310";
+}
+.icon-ic_axis_beam_shape_panoramic_right_32_regular:before {
+    content: "\f311";
+}
+.icon-ic_axis_beam_shape_panoramic_right_48_regular:before {
+    content: "\f312";
+}
+.icon-ic_axis_beam_shape_right_32_regular:before {
+    content: "\f313";
+}
+.icon-ic_axis_beam_shape_right_48_regular:before {
+    content: "\f314";
+}
+.icon-ic_axis_beam_shape_spot_32_regular:before {
+    content: "\f315";
+}
+.icon-ic_axis_beam_shape_spot_48_regular:before {
+    content: "\f316";
+}
+.icon-ic_axis_beam_shape_wide_32_regular:before {
+    content: "\f317";
+}
+.icon-ic_axis_beam_shape_wide_48_regular:before {
+    content: "\f318";
+}
+.icon-ic_axis_body_worn_activation_20_regular:before {
+    content: "\f319";
+}
+.icon-ic_axis_body_worn_feature_access_20_regular:before {
+    content: "\f31a";
+}
+.icon-ic_axis_linecrossing_16_regular:before {
+    content: "\f31b";
+}
+.icon-ic_axis_linecrossing_20_regular:before {
+    content: "\f31c";
+}
+.icon-ic_axis_smart_search_settings_16_regular:before {
+    content: "\f31d";
+}
+.icon-ic_axis_smart_search_settings_20_regular:before {
+    content: "\f31e";
+}
+.icon-ic_axis_smart_search_settings_24_regular:before {
+    content: "\f31f";
+}
+.icon-ic_axis_smart_search_settings_28_regular:before {
+    content: "\f320";
 }
