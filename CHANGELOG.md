@@ -1,16 +1,12 @@
-## [12.5.0](https://github.com/AxisCommunications/fluent-components/compare/ea9bfbbb39f5bd8aacd0883e65629627de909c7f..2b63a5850c0afa121f22d36ecbd805b8bcb1bb9a) (2026-04-01T12:30:56.773Z)
+## [12.6.0](https://github.com/AxisCommunications/fluent-components/compare/99909c698214c624b5bf937b94f2173736a85134..60459a4a8351b0308f22b81552191da73d2ca03c) (2026-04-24T11:46:12.294Z)
 
 ### 🚧 Maintenance
 
-  - Search illustration fix (#573) ([2b63a58](https://github.com/AxisCommunications/fluent-components/commit/2b63a5850c0afa121f22d36ecbd805b8bcb1bb9a))
-  - improve script name (#572) ([fb1c9d3](https://github.com/AxisCommunications/fluent-components/commit/fb1c9d3e6e91cc3fd01b3659203283deba3325e4))
-  - map 3 empty views (#570) ([e076219](https://github.com/AxisCommunications/fluent-components/commit/e076219070bd10f81800ff4ce88e0128451a3e3e))
-  - add copilot instructions (#565) ([3bcf197](https://github.com/AxisCommunications/fluent-components/commit/3bcf197c18cf27aba012ff8ed3d5bf83bc497856))
-  - setup husky (#530) ([47e69dd](https://github.com/AxisCommunications/fluent-components/commit/47e69ddeec86d616afbaf3ce5160f069fa30b205))
-  - improve example ux (#564) ([595cf98](https://github.com/AxisCommunications/fluent-components/commit/595cf98d2742cefdac2ee87e8d80d62d18d3d425))
+  - **deps**: bump jsdom from 26.1.0 to 29.0.1 (#562) ([2b2117a](https://github.com/AxisCommunications/fluent-components/commit/2b2117a16e28a8fed4979ab5b8eb83da67fde23b))
+  - **deps**: bump the dev-dependencies group across 1 directory with 4 updates (#575) ([125ad71](https://github.com/AxisCommunications/fluent-components/commit/125ad716eb7b499ef517f0a9d1c4bc5865f4a029))
+  - **deps**: bump vite from 8.0.1 to 8.0.2 in the dependencies group (#561) ([0862ae4](https://github.com/AxisCommunications/fluent-components/commit/0862ae490e94c666bf86bdec8f45d3b9e25d325d))
 
 ### 💄 Styling
 
-  - added icon (#569) ([841deaa](https://github.com/AxisCommunications/fluent-components/commit/841deaa3f539ccf2957f88beb99acb2131c7ee06))
-  - new illustrations (#568) ([2bd7dcd](https://github.com/AxisCommunications/fluent-components/commit/2bd7dcd55b9561fae854141af894d88a8a641603))
-  - adjust brand foreground 2 (#563) ([5e7d46e](https://github.com/AxisCommunications/fluent-components/commit/5e7d46e97ac4df2af2d0d719fe3ac3c9670e75bf))
+  - New illustrations (#588) ([60459a4](https://github.com/AxisCommunications/fluent-components/commit/60459a4a8351b0308f22b81552191da73d2ca03c))
+  - New beam icons (signed) (#587) ([86a90e3](https://github.com/AxisCommunications/fluent-components/commit/86a90e3c712a2a34d91de68d64b4ae45bbc3e3da))
