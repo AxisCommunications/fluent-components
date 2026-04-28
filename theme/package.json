@@ -45,7 +45,7 @@
     "jsdom": "^29.0.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "style-dictionary": "^3.9.2",
+    "style-dictionary": "^5.4.0",
     "token-transformer": "^0.0.33",
     "typescript": "^5.8.3",
     "vitest": "^4.1.3"
