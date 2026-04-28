@@ -3,6 +3,10 @@ export {
   AccessorySelectorRegular,
   AcsCameraFilled,
   AcsCameraRegular,
+  AcsCenterFilled,
+  AcsCenterRegular,
+  AcsEdgeFilled,
+  AcsEdgeRegular,
   AddFilled,
   AddRegular,
   AdmWrenchFilled,
@@ -282,6 +286,18 @@ export {
   AcsCamera28Regular,
   AcsCamera32Filled,
   AcsCamera32Regular,
+  AcsCenter20Filled,
+  AcsCenter20Regular,
+  AcsCenter24Filled,
+  AcsCenter24Regular,
+  AcsCenter28Filled,
+  AcsCenter28Regular,
+  AcsEdge20Filled,
+  AcsEdge20Regular,
+  AcsEdge24Filled,
+  AcsEdge24Regular,
+  AcsEdge28Filled,
+  AcsEdge28Regular,
   Add12Filled,
   Add12Regular,
   Add20Filled,
@@ -752,6 +768,8 @@ export {
   FilmStripEdit20Regular,
   FilmStripEdit24Filled,
   FilmStripEdit24Regular,
+} from "./sizedIcons/chunk-0";
+export {
   FilmStripEdit28Filled,
   FilmStripEdit28Regular,
   FilmStripEdit32Filled,
@@ -764,8 +782,6 @@ export {
   FivegBackBox16Regular,
   FivegBackBox20Filled,
   FivegBackBox20Regular,
-} from "./sizedIcons/chunk-0";
-export {
   FivegBackBox24Filled,
   FivegBackBox24Regular,
   FivegBackBox28Filled,
@@ -1254,6 +1270,8 @@ export {
   VehicleBusProfile28Filled,
   VehicleBusProfile28Regular,
   VehicleBusProfile32Filled,
+} from "./sizedIcons/chunk-1";
+export {
   VehicleBusProfile32Regular,
   VehicleBusProfile48Filled,
   VehicleBusProfile48Regular,
@@ -1266,8 +1284,6 @@ export {
   VehicleMotorcycleProfile28Filled,
   VehicleMotorcycleProfile28Regular,
   VehicleMotorcycleProfile32Filled,
-} from "./sizedIcons/chunk-1";
-export {
   VehicleMotorcycleProfile32Regular,
   VehicleMotorcycleProfile48Filled,
   VehicleMotorcycleProfile48Regular,
