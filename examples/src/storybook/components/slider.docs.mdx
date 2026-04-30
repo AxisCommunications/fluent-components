@@ -1,0 +1,43 @@
+import { Canvas, Description, Meta, Subtitle, Title } from "@storybook/blocks";
+import * as SliderStories from "./slider.stories";
+
+<Meta of={SliderStories} />
+
+<Title />
+<Subtitle>Single-value and range sliders with marks, steps, and section support.</Subtitle>
+<Description>
+The slider package extends Fluent slider behavior with richer visual and interaction
+patterns such as marks, sectioning, and range selection.
+</Description>
+
+## Exports
+
+- Slider
+- RangeSlider
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-slider
+```
+
+## Core Examples
+
+<Canvas of={SliderStories.Default} />
+<Canvas of={SliderStories.WithMarks} />
+<Canvas of={SliderStories.WithSteps} />
+<Canvas of={SliderStories.RangeSlider} />
+
+## Advanced Examples
+
+<Canvas of={SliderStories.WithStepsAndMarks} />
+<Canvas of={SliderStories.DualSection} />
+<Canvas of={SliderStories.TripleSection} />
+<Canvas of={SliderStories.RangeSliderWithSection} />
+
+## Guidance
+
+- Use marks when users need semantic milestones.
+- Use stepped modes for discrete values.
+- Use RangeSlider for min-max selection flows.
+- Keep labels concise to avoid overlap in narrow layouts.

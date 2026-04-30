@@ -1,0 +1,42 @@
+import { Canvas, Description, Meta, Subtitle, Title } from "@storybook/blocks";
+import * as StyleStories from "./styles.stories";
+
+<Meta of={StyleStories} />
+
+<Title />
+<Subtitle>Shared style helpers for Fluent UI tables, menus, tabs, navigation, and static app styling.</Subtitle>
+<Description>
+The styles package provides reusable class-producing hooks and static styles for
+common application patterns built on top of Fluent UI components.
+</Description>
+
+## Exports
+
+- useMainMenuContainerStyles
+- useMainMenuTabListStyles
+- useMainMenuTabStyles
+- useNavigationStyles
+- useRowStyles
+- useColumnStyles
+- useTableStyles
+- useTabListStyles
+- useTabStyles
+- useScrollStaticStyles
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-styles
+```
+
+## Examples
+
+<Canvas of={StyleStories.MainMenuStyles} />
+<Canvas of={StyleStories.TableStyles} />
+<Canvas of={StyleStories.TabListStyles} />
+
+## Guidance
+
+- Apply these hooks at the composition layer where Fluent primitives are assembled.
+- Prefer shared styles for consistency across product surfaces rather than duplicating one-off overrides.
+- Use static styles only once near the application root.

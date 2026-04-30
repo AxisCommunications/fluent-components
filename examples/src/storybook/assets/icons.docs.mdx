@@ -1,0 +1,32 @@
+import { Canvas, Description, Meta, Subtitle, Title } from "@storybook/blocks";
+import * as IconStories from "./icons.stories";
+
+<Meta of={IconStories} />
+
+<Title />
+<Subtitle>Axis icon library with filled and regular variants across a large catalog.</Subtitle>
+<Description>
+The icons package exports a large generated React icon set. Storybook exposes the
+catalog as a searchable browsing experience rather than one story per icon.
+</Description>
+
+## Exports
+
+- Hundreds of generated icon components, typically in Filled and Regular variants
+- Sized icon variants for supported sizes
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-icons
+```
+
+## Example
+
+<Canvas of={IconStories.Catalog} />
+
+## Guidance
+
+- Use the searchable catalog story to discover icon names before implementation.
+- Keep icon usage semantically consistent across products.
+- Prefer a single icon family or weight within the same interaction cluster.

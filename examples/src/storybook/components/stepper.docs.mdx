@@ -1,0 +1,36 @@
+import { Canvas, Description, Meta, Subtitle, Title } from "@storybook/blocks";
+import * as StepperStories from "./stepper.stories";
+
+<Meta of={StepperStories} />
+
+<Title />
+<Subtitle>Wizard-style progress UI for multi-step tasks.</Subtitle>
+<Description>
+The stepper package includes both composable stepper primitives and a dialog-based
+experience for guided workflows.
+</Description>
+
+## Exports
+
+- Stepper
+- Step
+- StepperDialog
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-stepper
+```
+
+## Examples
+
+<Canvas of={StepperStories.Dialog} />
+<Canvas of={StepperStories.VerticalDialog} />
+<Canvas of={StepperStories.CustomStyles} />
+<Canvas of={StepperStories.MinimalWithCounter} />
+
+## Guidance
+
+- Use StepperDialog when the flow should block surrounding context.
+- Keep each step focused on one decision or action.
+- Prefer predictable next/previous behavior across steps.

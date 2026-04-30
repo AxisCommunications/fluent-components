@@ -1,6 +1,6 @@
 import { makeStyles } from "@fluentui/react-components";
-import { pageData } from "examples/src/components/story/story.utils";
 import { StoryPage } from "../../components/story/story-page";
+import type { pageData } from "../../components/story/story.utils";
 import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";

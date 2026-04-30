@@ -18,6 +18,8 @@
     "check:unused-deps": "depcheck . --config=depcheck.yml",
     "dev": "vite",
     "lint": "tsc --noEmit && biome check",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
     "serve": "vite preview",
     "stest": "pnpm playwright test",
     "stest:ui": "pnpm playwright test --ui"
@@ -37,8 +39,10 @@
     "@fluentui/react-context-selector": "^9.2.15",
     "@fluentui/react-icons": "^2.0.321",
     "@vitejs/plugin-react": "^4.4.1",
+    "maplibre-gl": "^5.24.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-map-gl": "^8.1.1",
     "react-router-dom": "6.30.3",
     "react-syntax-highlighter": "15.6.6",
     "scheduler": "0.27.0",
@@ -46,10 +50,16 @@
   },
   "devDependencies": {
     "@playwright/test": "1.59.1",
+    "@storybook/addon-a11y": "8.6.18",
+    "@storybook/addon-essentials": "8.6.18",
+    "@storybook/addon-interactions": "8.6.18",
+    "@storybook/react": "8.6.18",
+    "@storybook/react-vite": "8.6.18",
     "@types/node": "^25.5.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "15.5.13",
+    "storybook": "8.6.18",
     "typescript": "^5.8.3"
   }
 }

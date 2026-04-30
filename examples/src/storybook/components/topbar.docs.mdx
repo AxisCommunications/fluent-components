@@ -1,0 +1,43 @@
+import { Canvas, Description, Meta, Subtitle, Title } from "@storybook/blocks";
+import * as TopbarStories from "./topbar.stories";
+
+<Meta of={TopbarStories} />
+
+<Title />
+<Subtitle>Application-level navigation shell with app, org, and profile controls.</Subtitle>
+<Description>
+Topbar provides a wrapper and companion menus for product navigation, organization
+selection, and user profile actions.
+</Description>
+
+## Exports
+
+- TopBar
+- ApplicationDrawer
+- ApplicationMenu
+- OrganizationMenu
+- ProfileMenu
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-topbar
+```
+
+## Full Layout
+
+<Canvas of={TopbarStories.FullTopBar} />
+
+## Building Blocks
+
+<Canvas of={TopbarStories.ApplicationMenuOnly} />
+<Canvas of={TopbarStories.ApplicationDrawerV2} />
+<Canvas of={TopbarStories.OrganizationMenuOnly} />
+<Canvas of={TopbarStories.ProfileMenuOnly} />
+
+## Guidance
+
+- Use TopBar for product-level layout framing.
+- Keep menu labels short to avoid truncation in dense headers.
+- Prefer explicit selection defaults for app and organization menus.
+- Add product-specific actions with customContent and centerCustomContent.

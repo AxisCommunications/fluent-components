@@ -1,0 +1,33 @@
+import { Canvas, Description, Meta, Subtitle, Title } from "@storybook/blocks";
+import * as HookStories from "./hooks.stories";
+
+<Meta of={HookStories} />
+
+<Title />
+<Subtitle>Reusable behavioral hooks for responsive layouts and paging flows.</Subtitle>
+<Description>
+The hooks package contains small, focused utilities used with Fluent UI-based
+applications. These hooks are designed to stay framework-light and compose into
+larger view components.
+</Description>
+
+## Exports
+
+- useMediaQuery
+- usePageController
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-hooks
+```
+
+## Examples
+
+<Canvas of={HookStories.Overview} />
+
+## Guidance
+
+- useMediaQuery: use for high-level responsive branching, not fine-grained style tweaks.
+- usePageController: use when pagination state is owned by the parent container.
+- Keep pagination source-of-truth in the calling component so table, footer, and fetch state stay synchronized.

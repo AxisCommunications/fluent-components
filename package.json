@@ -18,6 +18,8 @@
     "format": "biome format --write",
     "format:check": "biome format",
     "lint": "pnpm -r lint",
+    "storybook": "pnpm --filter examples storybook",
+    "storybook:build": "pnpm --filter examples storybook:build",
     "sort:check": "sort-package-json '**/package.json' '!**/node_modules/**/package.json' --check",
     "sort:run": "sort-package-json '**/package.json' '!**/node_modules/**/package.json'",
     "test": "pnpm -r test",

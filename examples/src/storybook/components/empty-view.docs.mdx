@@ -1,0 +1,38 @@
+import { Canvas, Description, Meta, Story, Subtitle, Title } from "@storybook/blocks";
+import * as EmptyViewStories from "./empty-view.stories";
+
+<Meta of={EmptyViewStories} />
+
+<Title />
+<Subtitle>Contextual empty states for main, panel, submenu, and dialog layouts.</Subtitle>
+<Description>
+The empty view package provides presentation variants for no-data states.
+Use the variant that matches the container where the empty state is rendered.
+</Description>
+
+## Exports
+
+- MainEmptyView
+- PanelEmptyView
+- SubmenuEmptyView
+- DialogEmptyView
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-empty-view
+```
+
+## Examples
+
+<Canvas of={EmptyViewStories.Main} />
+<Canvas of={EmptyViewStories.Panel} />
+<Canvas of={EmptyViewStories.Submenu} />
+<Canvas of={EmptyViewStories.Dialog} />
+
+## Guidance
+
+- MainEmptyView: use for full-page or large content areas.
+- PanelEmptyView: use inside side panels and constrained surfaces.
+- SubmenuEmptyView: use in compact navigation or submenu regions.
+- DialogEmptyView: use in dialog content with limited height.

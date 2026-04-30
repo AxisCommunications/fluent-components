@@ -1,0 +1,38 @@
+import { Canvas, Description, Meta, Subtitle, Title } from "@storybook/blocks";
+import * as ThemeStories from "./theme.stories";
+
+<Meta of={ThemeStories} />
+
+<Title />
+<Subtitle>Axis-branded Fluent UI themes, brand tokens, and theme detection helpers.</Subtitle>
+<Description>
+The theme package contains the branded Axis theme variants used throughout the
+monorepo. It also exports brand token sets and a helper hook for identifying the
+active Axis theme.
+</Description>
+
+## Exports
+
+- axisDarkTheme
+- axisLightTheme
+- axisBlueDarkTheme
+- axisBlueLightTheme
+- brand
+- blueBrand
+- useIdentifyCurrentAxisTheme
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-theme
+```
+
+## Example
+
+<Canvas of={ThemeStories.Explorer} />
+
+## Guidance
+
+- Wrap application roots in FluentProvider with one of the exported Axis themes.
+- Prefer token usage over hardcoded colors in downstream components.
+- Use theme-aware illustration and styling helpers to keep light/dark behavior aligned.

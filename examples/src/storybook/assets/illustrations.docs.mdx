@@ -1,0 +1,34 @@
+import { Canvas, Description, Meta, Subtitle, Title } from "@storybook/blocks";
+import * as IllustrationStories from "./illustrations.stories";
+
+<Meta of={IllustrationStories} />
+
+<Title />
+<Subtitle>Theme-aware illustration library with light and dark variants.</Subtitle>
+<Description>
+The illustrations package provides generated React illustrations and helpers for
+bundling dark and light variants together. Storybook exposes the collection as a
+searchable catalog plus themed showcase examples.
+</Description>
+
+## Exports
+
+- Generated illustration components in Dark and Light variants
+- bundleIllustration
+- bundleIllustrationSmart
+
+## Installation
+
+```bash
+pnpm add @axiscommunications/fluent-illustrations
+```
+
+## Example
+
+<Canvas of={IllustrationStories.Catalog} />
+
+## Guidance
+
+- Use bundled helpers when the current theme should automatically drive the illustration variant.
+- Choose illustrations that reinforce empty, onboarding, and success states without overwhelming nearby content.
+- Keep illustration containers large enough to preserve readability.
