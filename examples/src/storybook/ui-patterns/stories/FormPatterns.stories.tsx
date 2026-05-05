@@ -246,12 +246,12 @@ function RegistrationForm() {
   const [submitted, setSubmitted] = useState(false);
   const isPasswordValid = fields.password.length >= 8;
 
-  const set = (key: keyof RegistrationFields) => (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFields((prev) => ({ ...prev, [key]: e.target.value }));
-    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
-  };
+  const set =
+    (key: keyof RegistrationFields) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFields((prev) => ({ ...prev, [key]: e.target.value }));
+      if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
+    };
 
   const validate = (): RegistrationErrors => {
     const errs: RegistrationErrors = {};
@@ -286,7 +286,13 @@ function RegistrationForm() {
   };
 
   const handleReset = () => {
-    setFields({ firstName: "", lastName: "", email: "", password: "", confirmPassword: "" });
+    setFields({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
     setErrors({});
     setSubmitted(false);
   };
