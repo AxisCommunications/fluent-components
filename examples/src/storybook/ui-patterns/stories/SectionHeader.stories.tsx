@@ -1,8 +1,8 @@
+import { axisLightTheme } from "@axiscommunications/fluent-theme";
 import { FluentProvider } from "@fluentui/react-components";
 import { AddRegular, ArrowSyncRegular } from "@fluentui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react";
 import { SectionHeader } from "../components/composites/SectionHeader";
-import { dsgLightTheme } from "../theme/dsgTheme";
 
 const meta: Meta<typeof SectionHeader> = {
   title: "UI patterns/Section Header",
@@ -80,7 +80,7 @@ const meta: Meta<typeof SectionHeader> = {
   },
   decorators: [
     (Story) => (
-      <FluentProvider theme={dsgLightTheme}>
+      <FluentProvider theme={axisLightTheme}>
         <Story />
       </FluentProvider>
     ),

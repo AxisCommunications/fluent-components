@@ -1,3 +1,4 @@
+import { axisLightTheme } from "@axiscommunications/fluent-theme";
 import {
   Badge,
   CounterBadge,
@@ -17,7 +18,6 @@ import {
 } from "@fluentui/react-components";
 import { AlertRegular, LockClosedRegular } from "@fluentui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react";
-import { dsgLightTheme } from "../theme/dsgTheme";
 
 /**
  * # Badges in Tables
@@ -572,7 +572,7 @@ This story covers how to use Fluent \`Badge\`, \`CounterBadge\`, and \`PresenceB
   },
   decorators: [
     (Story) => (
-      <FluentProvider theme={dsgLightTheme}>
+      <FluentProvider theme={axisLightTheme}>
         <Story />
       </FluentProvider>
     ),

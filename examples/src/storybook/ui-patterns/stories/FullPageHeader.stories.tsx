@@ -1,3 +1,4 @@
+import { axisLightTheme } from "@axiscommunications/fluent-theme";
 import { FluentProvider } from "@fluentui/react-components";
 import {
   AppsRegular,
@@ -6,7 +7,6 @@ import {
 } from "@fluentui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FullPageHeader } from "../components/composites/FullPageHeader";
-import { dsgLightTheme } from "../theme/dsgTheme";
 
 /**
  * Full Page Header Component
@@ -23,7 +23,7 @@ const meta: Meta<typeof FullPageHeader> = {
   },
   decorators: [
     (Story) => (
-      <FluentProvider theme={dsgLightTheme}>
+      <FluentProvider theme={axisLightTheme}>
         <Story />
       </FluentProvider>
     ),

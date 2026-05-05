@@ -1,3 +1,4 @@
+import { axisLightTheme } from "@axiscommunications/fluent-theme";
 import {
   Badge,
   Card,
@@ -14,7 +15,6 @@ import {
 import type { Meta, StoryObj } from "@storybook/react";
 import { FilterToolbar } from "../components/composites/FilterToolbar";
 import { FullPageHeader } from "../components/composites/FullPageHeader";
-import { dsgLightTheme } from "../theme/dsgTheme";
 
 const useStyles = makeStyles({
   canvas: {
@@ -223,7 +223,7 @@ const meta: Meta = {
   },
   decorators: [
     (Story) => (
-      <FluentProvider theme={dsgLightTheme}>
+      <FluentProvider theme={axisLightTheme}>
         <Story />
       </FluentProvider>
     ),

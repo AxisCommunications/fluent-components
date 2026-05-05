@@ -1,7 +1,7 @@
+import { axisLightTheme } from "@axiscommunications/fluent-theme";
 import { FluentProvider } from "@fluentui/react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 import { SuiteHeader } from "../components/suite/SuiteHeader";
-import { dsgLightTheme } from "../theme/dsgTheme";
 
 const meta: Meta<typeof SuiteHeader> = {
   title: "UI patterns/Suite Header",
@@ -18,7 +18,7 @@ const meta: Meta<typeof SuiteHeader> = {
   },
   decorators: [
     (Story) => (
-      <FluentProvider theme={dsgLightTheme}>
+      <FluentProvider theme={axisLightTheme}>
         <Story />
       </FluentProvider>
     ),
