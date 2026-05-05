@@ -1,3 +1,5 @@
+import { Button, Input, makeStyles, tokens } from "@fluentui/react-components";
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FormField } from "../components/composites/FormField";
 
@@ -61,7 +63,7 @@ export const Default: Story = {
   render: (args) => (
     <div style={{ minWidth: "300px" }}>
       <FormField {...args}>
-        <input type="email" placeholder="Enter your email" />
+        <Input type="email" placeholder="Enter your email" />
       </FormField>
     </div>
   ),
@@ -79,7 +81,7 @@ export const Required: Story = {
   render: (args) => (
     <div style={{ minWidth: "300px" }}>
       <FormField {...args}>
-        <input type="text" placeholder="Enter your name" required />
+        <Input type="text" placeholder="Enter your name" required />
       </FormField>
     </div>
   ),
@@ -98,7 +100,7 @@ export const WithError: Story = {
   render: (args) => (
     <div style={{ minWidth: "300px" }}>
       <FormField {...args}>
-        <input type="password" placeholder="Enter password" />
+        <Input type="password" placeholder="Enter password" />
       </FormField>
     </div>
   ),
@@ -125,7 +127,7 @@ export const Disabled: Story = {
   render: (args) => (
     <div style={{ minWidth: "300px" }}>
       <FormField {...args}>
-        <input
+        <Input
           type="email"
           placeholder="Enter email"
           disabled
@@ -150,19 +152,19 @@ export const AllVariants: Story = {
       }}
     >
       <FormField label="Default" hint="This is a hint">
-        <input type="text" placeholder="Text input" />
+        <Input type="text" placeholder="Text input" />
       </FormField>
 
       <FormField label="Required" required hint="Marked as required">
-        <input type="email" placeholder="Email input" required />
+        <Input type="email" placeholder="Email input" required />
       </FormField>
 
       <FormField label="Error" error="This field has an error">
-        <input type="text" placeholder="With error" />
+        <Input type="text" placeholder="With error" />
       </FormField>
 
       <FormField label="Disabled" disabled hint="Cannot be edited">
-        <input
+        <Input
           type="text"
           placeholder="Disabled"
           disabled
@@ -180,8 +182,230 @@ export const Interactive: Story = {
   render: (args) => (
     <div style={{ minWidth: "300px" }}>
       <FormField {...args}>
-        <input type="text" placeholder="Interactive input" />
+        <Input type="text" placeholder="Interactive input" />
       </FormField>
     </div>
   ),
+};
+
+// ---------------------------------------------------------------------------
+// Full registration form
+// ---------------------------------------------------------------------------
+
+const useFormStyles = makeStyles({
+  actions: {
+    display: "flex",
+    justifyContent: "flex-end",
+    gap: tokens.spacingHorizontalS,
+    paddingTop: tokens.spacingVerticalS,
+  },
+  passwordValid: {
+    "--colorCompoundBrandStroke": tokens.colorStatusSuccessForeground1,
+    "--colorCompoundBrandStrokePressed": tokens.colorStatusSuccessForeground1,
+    selectors: {
+      "&::after": {
+        borderBottomColor: `${tokens.colorStatusSuccessForeground1} !important`,
+      },
+      "&:focus-within::after": {
+        borderBottomColor: `${tokens.colorStatusSuccessForeground1} !important`,
+      },
+      "&:focus-within:active::after": {
+        borderBottomColor: `${tokens.colorStatusSuccessForeground1} !important`,
+      },
+    },
+  },
+  success: {
+    color: tokens.colorStatusSuccessForeground1,
+    fontSize: tokens.fontSizeBase200,
+    textAlign: "center",
+    paddingTop: tokens.spacingVerticalS,
+  },
+});
+
+type RegistrationFields = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
+type RegistrationErrors = Partial<Record<keyof RegistrationFields, string>>;
+
+function RegistrationForm() {
+  const styles = useFormStyles();
+
+  const [fields, setFields] = useState<RegistrationFields>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [errors, setErrors] = useState<RegistrationErrors>({});
+  const [submitted, setSubmitted] = useState(false);
+  const isPasswordValid = fields.password.length >= 8;
+
+  const set = (key: keyof RegistrationFields) => (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFields((prev) => ({ ...prev, [key]: e.target.value }));
+    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
+  };
+
+  const validate = (): RegistrationErrors => {
+    const errs: RegistrationErrors = {};
+    if (!fields.firstName.trim()) errs.firstName = "First name is required";
+    if (!fields.lastName.trim()) errs.lastName = "Last name is required";
+    if (!fields.email.trim()) {
+      errs.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
+      errs.email = "Enter a valid email address";
+    }
+    if (!fields.password) {
+      errs.password = "Password is required";
+    } else if (fields.password.length < 8) {
+      errs.password = "Password must be at least 8 characters";
+    }
+    if (!fields.confirmPassword) {
+      errs.confirmPassword = "Please confirm your password";
+    } else if (fields.confirmPassword !== fields.password) {
+      errs.confirmPassword = "Passwords do not match";
+    }
+    return errs;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setSubmitted(true);
+  };
+
+  const handleReset = () => {
+    setFields({ firstName: "", lastName: "", email: "", password: "", confirmPassword: "" });
+    setErrors({});
+    setSubmitted(false);
+  };
+
+  if (submitted) {
+    return (
+      <div className={styles.form}>
+        <p className={styles.success}>
+          ✓ Registration successful! Welcome, {fields.firstName}.
+        </p>
+        <div className={styles.actions}>
+          <Button appearance="secondary" onClick={handleReset}>
+            Reset
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        width: "400px",
+      }}
+      onSubmit={handleSubmit}
+      noValidate
+    >
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "12px",
+          alignItems: "start",
+        }}
+      >
+        <FormField label="First name" required error={errors.firstName}>
+          <Input
+            style={{ width: "100%" }}
+            value={fields.firstName}
+            onChange={set("firstName")}
+            placeholder="Jane"
+          />
+        </FormField>
+        <FormField label="Last name" required error={errors.lastName}>
+          <Input
+            style={{ width: "100%" }}
+            value={fields.lastName}
+            onChange={set("lastName")}
+            placeholder="Smith"
+          />
+        </FormField>
+      </div>
+
+      <FormField
+        label="Email address"
+        required
+        hint="Used for login and notifications"
+        error={errors.email}
+      >
+        <Input
+          style={{ width: "100%" }}
+          type="email"
+          value={fields.email}
+          onChange={set("email")}
+          placeholder="jane@example.com"
+        />
+      </FormField>
+
+      <FormField
+        label="Password"
+        required
+        hint="At least 8 characters"
+        error={errors.password}
+      >
+        <Input
+          style={{ width: "100%" }}
+          className={isPasswordValid ? styles.passwordValid : undefined}
+          type="password"
+          value={fields.password}
+          onChange={set("password")}
+          placeholder="••••••••"
+        />
+      </FormField>
+
+      <FormField
+        label="Confirm password"
+        required
+        error={errors.confirmPassword}
+      >
+        <Input
+          style={{ width: "100%" }}
+          type="password"
+          value={fields.confirmPassword}
+          onChange={set("confirmPassword")}
+          placeholder="••••••••"
+        />
+      </FormField>
+
+      <div className={styles.actions}>
+        <Button appearance="secondary" type="button" onClick={handleReset}>
+          Clear
+        </Button>
+        <Button appearance="primary" type="submit">
+          Create account
+        </Button>
+      </div>
+    </form>
+  );
+}
+
+/**
+ * A complete registration form with client-side validation.
+ * Required fields show errors on submit; each error clears as the user types.
+ */
+export const RegistrationFormStory: Story = {
+  name: "Registration form",
+  parameters: { layout: "centered" },
+  render: () => <RegistrationForm />,
 };

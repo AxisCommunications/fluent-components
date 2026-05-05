@@ -69,7 +69,7 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       description: "Global theme for all stories",
-      defaultValue: "dark",
+      defaultValue: "light",
       toolbar: {
         title: "Theme",
         icon: "paintbrush",

@@ -122,12 +122,12 @@ const deviceData: DeviceRow[] = [
 
 const statusColorMap: Record<
   DeviceRow["status"],
-  "success" | "warning" | "danger" | "subtle"
+  "success" | "warning" | "danger" | "informative"
 > = {
   Online: "success",
   Warning: "warning",
   Error: "danger",
-  Offline: "subtle",
+  Offline: "informative",
 };
 
 function StatusTable({
