@@ -193,6 +193,11 @@ export const Interactive: Story = {
 // ---------------------------------------------------------------------------
 
 const useFormStyles = makeStyles({
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalM,
+  },
   actions: {
     display: "flex",
     justifyContent: "flex-end",
