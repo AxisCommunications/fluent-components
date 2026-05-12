@@ -6,8 +6,9 @@ import {
   Text,
   makeStyles,
   tokens,
+  typographyStyles,
 } from "@fluentui/react-components";
-import { AgentsColor } from "@fluentui/react-icons";
+import { Folder20Filled } from "@fluentui/react-icons";
 import { type ReactNode, forwardRef } from "react";
 
 export interface BreadcrumbHeaderProps {
@@ -64,9 +65,6 @@ const useStyles = makeStyles({
     boxShadow: "none",
     borderRadius: tokens.borderRadiusSmall,
     color: tokens.colorNeutralForeground2,
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
-    lineHeight: tokens.lineHeightBase300,
 
     ":hover": {
       backgroundColor: "transparent",
@@ -104,10 +102,11 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: "20px",
+    ...typographyStyles.subtitle2Stronger,
     flexShrink: 0,
     width: "20px",
     height: "20px",
+    color: tokens.colorCompoundBrandForeground1,
   },
 
   title: {
@@ -154,17 +153,15 @@ export const BreadcrumbHeader = forwardRef<
                 className={styles.breadcrumbItem}
               >
                 <BreadcrumbButton
-                  className={styles.crumbButton}
                   onClick={crumb.onClick}
                   current={index === breadcrumbs.length - 1 ? undefined : false}
                 >
                   {crumb.label}
                 </BreadcrumbButton>
-                {index < breadcrumbs.length - 1 && (
-                  <BreadcrumbDivider className={styles.divider}>
-                    /
-                  </BreadcrumbDivider>
-                )}
+
+                <BreadcrumbDivider className={styles.divider}>
+                  /
+                </BreadcrumbDivider>
               </BreadcrumbItem>
             ))}
           </Breadcrumb>
@@ -172,7 +169,7 @@ export const BreadcrumbHeader = forwardRef<
 
         <div className={styles.titleGroup}>
           <span className={styles.titleIcon} aria-hidden="true">
-            {icon ?? <AgentsColor />}
+            {icon ?? <Folder20Filled />}
           </span>
           <Text className={styles.title}>{title}</Text>
         </div>
