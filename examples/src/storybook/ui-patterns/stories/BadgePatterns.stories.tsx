@@ -583,14 +583,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Use outlined badges when badges appear on many rows. This minimises cognitive load and
+ * Use tinted badges when badges appear on many rows. This minimises cognitive load and
  * creates visual balance across the table.
  *
  * The status column is **never** the first column — badges are secondary and supportive.
  */
 export const OutlinedStatusBadge: Story = {
-  name: "Status badge (outlined — recommended)",
-  render: () => <StatusTable appearance="outline" />,
+  name: "Status badge (tint — recommended)",
+  render: () => <StatusTable appearance="tint" />,
 };
 
 /**
