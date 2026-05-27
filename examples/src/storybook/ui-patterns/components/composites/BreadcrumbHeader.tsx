@@ -9,7 +9,7 @@ import {
   typographyStyles,
 } from "@fluentui/react-components";
 import { Folder20Filled } from "@fluentui/react-icons";
-import { type ReactNode, forwardRef } from "react";
+import { Fragment, type ReactNode, forwardRef } from "react";
 
 export interface BreadcrumbHeaderProps {
   /** Breadcrumb items displayed before the title. */
@@ -148,21 +148,21 @@ export const BreadcrumbHeader = forwardRef<
         <nav aria-label={ariaLabel}>
           <Breadcrumb className={styles.breadcrumb}>
             {breadcrumbs.map((crumb, index) => (
-              <BreadcrumbItem
-                key={`${crumb.label}-${index}`}
-                className={styles.breadcrumbItem}
-              >
-                <BreadcrumbButton
-                  onClick={crumb.onClick}
-                  current={index === breadcrumbs.length - 1 ? undefined : false}
-                >
-                  {crumb.label}
-                </BreadcrumbButton>
-
-                <BreadcrumbDivider className={styles.divider}>
-                  /
-                </BreadcrumbDivider>
-              </BreadcrumbItem>
+              <Fragment key={`${crumb.label}-${index}`}>
+                <BreadcrumbItem className={styles.breadcrumbItem}>
+                  <BreadcrumbButton
+                    onClick={crumb.onClick}
+                    current={index === breadcrumbs.length - 1 ? undefined : false}
+                  >
+                    {crumb.label}
+                  </BreadcrumbButton>
+                </BreadcrumbItem>
+                {index < breadcrumbs.length - 1 && (
+                  <BreadcrumbDivider className={styles.divider}>
+                    /
+                  </BreadcrumbDivider>
+                )}
+              </Fragment>
             ))}
           </Breadcrumb>
         </nav>

@@ -8,7 +8,7 @@ import {
   makeStyles,
   tokens,
 } from "@fluentui/react-components";
-import { forwardRef } from "react";
+import { Fragment, forwardRef } from "react";
 
 export interface PageHeaderProps {
   /** Breadcrumb items: array of { label, onClick? } */
@@ -125,12 +125,14 @@ export const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
                   crumb: { label: string; onClick?: () => void },
                   idx: number
                 ) => (
-                  <BreadcrumbItem key={idx} className={styles.breadcrumbItem}>
-                    <BreadcrumbButton onClick={crumb.onClick}>
-                      {crumb.label}
-                    </BreadcrumbButton>
+                  <Fragment key={idx}>
+                    <BreadcrumbItem className={styles.breadcrumbItem}>
+                      <BreadcrumbButton onClick={crumb.onClick}>
+                        {crumb.label}
+                      </BreadcrumbButton>
+                    </BreadcrumbItem>
                     {idx < breadcrumbs.length - 1 && <BreadcrumbDivider />}
-                  </BreadcrumbItem>
+                  </Fragment>
                 )
               )}
             </Breadcrumb>
