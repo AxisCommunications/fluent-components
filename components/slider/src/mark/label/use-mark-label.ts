@@ -1,5 +1,8 @@
-import { getNativeElementProps } from "@fluentui/react-utilities";
-import React from "react";
+import {
+  getNativeElementProps,
+  useMergedRefs,
+} from "@fluentui/react-utilities";
+import React, { useLayoutEffect, useRef, useState } from "react";
 
 import { useSliderContext } from "../../context/slider-context";
 import { toPercent } from "../../utils";
@@ -18,9 +21,35 @@ export const useMarkLabel_unstable = (
     ? values.some((value) => value === props.value)
     : props.value >= minValue && props.value <= maxValue;
 
+  const [labelWidth, setLabelWidth] = useState(0);
+  const el = useRef<HTMLElement | null>(null);
+  const labelRef = useMergedRefs(ref, el);
+
+  useLayoutEffect(() => {
+    const element = el.current;
+    if (element === null) {
+      return;
+    }
+    setLabelWidth(element.clientWidth);
+
+    if (typeof window.ResizeObserver === "undefined") {
+      return;
+    }
+    const observer = new window.ResizeObserver((entries) => {
+      if (entries === undefined || entries.length === 0) {
+        return;
+      }
+      for (const entry of entries) {
+        setLabelWidth(entry.target.clientWidth);
+      }
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return {
     root: getNativeElementProps("span", {
-      ref,
+      ref: labelRef,
       children: props.label,
       ...props,
     }),
@@ -31,5 +60,6 @@ export const useMarkLabel_unstable = (
     value: props.value,
     disabled,
     active,
+    labelWidth,
   };
 };

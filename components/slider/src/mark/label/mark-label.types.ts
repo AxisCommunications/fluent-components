@@ -21,4 +21,5 @@ export type MarkLabelState = ComponentState<MarkLabelSlots> &
     offset: number;
     disabled: boolean;
     active: boolean;
+    labelWidth: number;
   };
