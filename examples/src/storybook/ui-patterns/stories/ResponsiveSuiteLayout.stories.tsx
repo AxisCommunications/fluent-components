@@ -90,12 +90,12 @@ const useStyles = makeStyles({
     width: "100%",
     minWidth: 0,
     maxWidth: "100%",
-    maxHeight: "40vh",
+    height: "100%",
     backgroundColor: tokens.colorNeutralBackground3,
     overflow: "hidden",
     position: "relative",
     zIndex: 4,
-    ...shorthands.borderBottom(
+    ...shorthands.borderRight(
       tokens.strokeWidthThin,
       "solid",
       tokens.colorNeutralStroke2
@@ -845,14 +845,32 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const isDocsView = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  if (new URLSearchParams(window.location.search).get("viewMode") === "docs") {
+    return true;
+  }
+
+  try {
+    const parentParams = new URLSearchParams(window.parent.location.search);
+    const parentPath = parentParams.get("path");
+    return parentPath?.startsWith("/docs/") ?? false;
+  } catch {
+    return false;
+  }
+};
+
 export const DashboardView: Story = {
-  render: () => <DashboardPage />,
+  render: () => <DashboardPage forceDesktopLayout={isDocsView()} />,
 };
 
 export const DevicesListView: Story = {
-  render: () => <DevicesPage />,
+  render: () => <DevicesPage forceDesktopLayout={isDocsView()} />,
 };
 
 export const SettingsFormView: Story = {
-  render: () => <SettingsPage />,
+  render: () => <SettingsPage forceDesktopLayout={isDocsView()} />,
 };
