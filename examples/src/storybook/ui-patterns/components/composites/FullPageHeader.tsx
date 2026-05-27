@@ -509,8 +509,12 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
               <div className={styles.tabsWrap} ref={tabsWrapRef}>
                 <TabList
                   className={styles.tabs}
-                  selectedValue={selectedTab}
-                  defaultSelectedValue={defaultSelectedTab ?? tabs[0]?.value}
+                  {...(selectedTab !== undefined
+                    ? { selectedValue: selectedTab }
+                    : {
+                        defaultSelectedValue:
+                          defaultSelectedTab ?? tabs[0]?.value,
+                      })}
                   onTabSelect={(_event, data) =>
                     onTabSelect?.(String(data.value))
                   }
@@ -578,8 +582,9 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
           <div className={styles.tabsWrapStacked} ref={tabsWrapRef}>
             <TabList
               className={styles.tabs}
-              selectedValue={selectedTab}
-              defaultSelectedValue={defaultSelectedTab ?? tabs[0]?.value}
+              {...(selectedTab !== undefined
+                ? { selectedValue: selectedTab }
+                : { defaultSelectedValue: defaultSelectedTab ?? tabs[0]?.value })}
               onTabSelect={(_event, data) => onTabSelect?.(String(data.value))}
             >
               {tabs.map((tab) => (

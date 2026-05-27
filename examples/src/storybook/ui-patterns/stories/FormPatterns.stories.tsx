@@ -198,6 +198,16 @@ const useFormStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalM,
   },
+  nameRow: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: tokens.spacingHorizontalS,
+    alignItems: "start",
+  },
+  nameField: {
+    width: "100%",
+    minWidth: 0,
+  },
   actions: {
     display: "flex",
     justifyContent: "flex-end",
@@ -328,15 +338,13 @@ function RegistrationForm() {
       onSubmit={handleSubmit}
       noValidate
     >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "12px",
-          alignItems: "start",
-        }}
-      >
-        <FormField label="First name" required error={errors.firstName}>
+      <div className={styles.nameRow}>
+        <FormField
+          className={styles.nameField}
+          label="First name"
+          required
+          error={errors.firstName}
+        >
           <Input
             style={{ width: "100%" }}
             value={fields.firstName}
@@ -344,7 +352,12 @@ function RegistrationForm() {
             placeholder="Jane"
           />
         </FormField>
-        <FormField label="Last name" required error={errors.lastName}>
+        <FormField
+          className={styles.nameField}
+          label="Last name"
+          required
+          error={errors.lastName}
+        >
           <Input
             style={{ width: "100%" }}
             value={fields.lastName}

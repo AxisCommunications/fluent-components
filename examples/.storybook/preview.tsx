@@ -26,6 +26,19 @@ const withFluentProvider: Decorator = (Story, context) => {
   const theme = context.globals.theme as ThemeKey;
   const direction = context.globals.direction as DirectionKey;
   const isDocsMode = context.viewMode === "docs";
+  const layout = context.parameters.layout as
+    | "centered"
+    | "fullscreen"
+    | "padded"
+    | undefined;
+  const isFullscreenLayout = layout === "fullscreen";
+
+  const wrapperPadding = isFullscreenLayout ? 0 : isDocsMode ? "8px" : "24px";
+  const wrapperMinHeight = isFullscreenLayout
+    ? "100vh"
+    : isDocsMode
+      ? "auto"
+      : "100vh";
 
   return (
     <MemoryRouter initialEntries={["/"]}>
@@ -33,8 +46,8 @@ const withFluentProvider: Decorator = (Story, context) => {
         <FluentProvider theme={storyTheme[theme]} dir={direction}>
           <div
             style={{
-              minHeight: isDocsMode ? "auto" : "100vh",
-              padding: isDocsMode ? "8px" : "24px",
+              minHeight: wrapperMinHeight,
+              padding: wrapperPadding,
             }}
           >
             <Story />

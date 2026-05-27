@@ -37,6 +37,10 @@ const config: StorybookConfig = {
             __dirname,
             "../../components/password-input/src/index.ts"
           ),
+          "@axiscommunications/fluent-side-navigation": path.resolve(
+            __dirname,
+            "../../components/side-navigation/src/index.ts"
+          ),
           "@axiscommunications/fluent-slider": path.resolve(
             __dirname,
             "../../components/slider/src/index.ts"

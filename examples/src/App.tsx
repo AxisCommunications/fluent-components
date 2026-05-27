@@ -14,6 +14,7 @@ import { IconPage } from "./stories/icons/icon-page";
 import { IllustrationPage } from "./stories/illustrations/illustration-page";
 import { MainMenuPage } from "./stories/main-menu/main-menu-page";
 import { PasswordInputPage } from "./stories/password-input/password-input-page";
+import { SideNavigationPage } from "./stories/side-navigation/side-navigation-page";
 import { SliderPage } from "./stories/slider/slider-page";
 import { StepperPage } from "./stories/stepper/stepper-page";
 import { FluentUiTabStylesPage } from "./stories/tab-list-utilities/tab-list-utilities-page";
@@ -59,6 +60,7 @@ const routeElements: Record<TRoute, ReactElement> = {
   [routes.Stepper]: <StepperPage />,
   [routes.Slider]: <SliderPage />,
   [routes.PasswordInput]: <PasswordInputPage />,
+  [routes.SideNavigation]: <SideNavigationPage />,
   [routes.EmptyView]: <EmptyViewPage />,
   [routes.TableUtilities]: <TableUtilitiesPage />,
   [routes.TabListUtilities]: <FluentUiTabStylesPage />,

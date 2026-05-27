@@ -1,0 +1,45 @@
+{
+  "name": "@axiscommunications/fluent-side-navigation",
+  "version": "12.6.1",
+  "description": "Compact side navigation rail for Fluent UI v9",
+  "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AxisCommunications/fluent-components.git",
+    "directory": "components/side-navigation"
+  },
+  "license": "MIT",
+  "author": "Axis Communications AB",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    }
+  },
+  "files": ["lib"],
+  "scripts": {
+    "build": "pnpm build:types && pnpm build:esm",
+    "build:esm": "esbuild --format=esm --bundle --sourcemap --packages=external --outdir=lib src/index.ts",
+    "build:types": "tsc -p tsconfig.build.json",
+    "check:unused-deps": "depcheck . --config=depcheck.yml",
+    "lint": "tsc --noEmit && biome check"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "esbuild": "^0.28.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@fluentui/react-components": "^9.72.7",
+    "@fluentui/react-icons": "^2.0.315",
+    "react": ">=16.14.0 <20.0.0",
+    "react-dom": ">=16.14.0 <20.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

@@ -20,6 +20,8 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    position: "relative",
+    zIndex: 1,
     ...{
       borderRight: `1px solid ${tokens.colorNeutralStroke2}`,
     },
@@ -63,8 +65,20 @@ const useStyles = makeStyles({
     placeItems: "center",
   },
   switcherButton: {
-    width: "60px",
-    height: "60px",
+    width: "68px",
+    minWidth: "68px",
+    height: "56px",
+    display: "grid",
+    alignItems: "center",
+    justifyItems: "center",
+    rowGap: "2px",
+    fontSize: tokens.fontSizeBase100,
+    ...{
+      paddingTop: "0",
+      paddingRight: "0",
+      paddingBottom: "0",
+      paddingLeft: "0",
+    },
   },
 });
 
@@ -91,7 +105,11 @@ const navItems: NavItem[] = [
   { key: "workloads", label: "Workloads", icon: <AppsRegular fontSize={20} /> },
 ];
 
-export function SideNavigation() {
+export interface SideNavigationProps {
+  onSiteFilterClick?: () => void;
+}
+
+export function SideNavigation({ onSiteFilterClick }: SideNavigationProps) {
   const styles = useStyles();
 
   return (
@@ -133,6 +151,7 @@ export function SideNavigation() {
           appearance="secondary"
           className={styles.switcherButton}
           icon={<AppsRegular fontSize={20} />}
+          onClick={onSiteFilterClick}
         >
           <span className={styles.label}>Site</span>
         </Button>

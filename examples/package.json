@@ -30,6 +30,7 @@
     "@axiscommunications/fluent-icons": "workspace:*",
     "@axiscommunications/fluent-illustrations": "workspace:*",
     "@axiscommunications/fluent-password-input": "workspace:*",
+    "@axiscommunications/fluent-side-navigation": "workspace:*",
     "@axiscommunications/fluent-slider": "workspace:*",
     "@axiscommunications/fluent-stepper": "workspace:*",
     "@axiscommunications/fluent-styles": "workspace:*",

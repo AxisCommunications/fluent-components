@@ -102,6 +102,18 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     },
   ],
   [
+    routes.SideNavigation,
+    {
+      label: "Side navigation",
+      group: RouteGroup.STORY,
+      category: RouteCategory.COMPONENT,
+      ghInfo: {
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-side-navigation",
+        packageName: "@axiscommunications/fluent-side-navigation",
+      },
+    },
+  ],
+  [
     routes.EmptyView,
     {
       label: "Empty view",

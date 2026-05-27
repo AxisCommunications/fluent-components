@@ -89,6 +89,34 @@ importers:
         specifier: ^5.8.3
         version: 5.9.3
 
+  components/side-navigation:
+    dependencies:
+      '@fluentui/react-components':
+        specifier: ^9.72.7
+        version: 9.73.4(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(scheduler@0.27.0)
+      '@fluentui/react-icons':
+        specifier: ^2.0.315
+        version: 2.0.321(react@19.2.4)
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      esbuild:
+        specifier: ^0.28.0
+        version: 0.28.0
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.2.4
+        version: 19.2.4(react@19.2.4)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+
   components/slider:
     dependencies:
       '@fluentui/react-components':
@@ -244,6 +272,9 @@ importers:
       '@axiscommunications/fluent-password-input':
         specifier: workspace:*
         version: link:../components/password-input
+      '@axiscommunications/fluent-side-navigation':
+        specifier: workspace:*
+        version: link:../components/side-navigation
       '@axiscommunications/fluent-slider':
         specifier: workspace:*
         version: link:../components/slider

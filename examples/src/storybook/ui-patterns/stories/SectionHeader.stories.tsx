@@ -1,5 +1,3 @@
-import { axisLightTheme } from "@axiscommunications/fluent-theme";
-import { FluentProvider } from "@fluentui/react-components";
 import { AddRegular, ArrowSyncRegular } from "@fluentui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react";
 import { SectionHeader } from "../components/composites/SectionHeader";
@@ -78,13 +76,6 @@ const meta: Meta<typeof SectionHeader> = {
       },
     ],
   },
-  decorators: [
-    (Story) => (
-      <FluentProvider theme={axisLightTheme}>
-        <Story />
-      </FluentProvider>
-    ),
-  ],
 };
 
 export default meta;

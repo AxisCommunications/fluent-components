@@ -1,5 +1,3 @@
-import { axisLightTheme } from "@axiscommunications/fluent-theme";
-import { FluentProvider } from "@fluentui/react-components";
 import {
   AppsRegular,
   PeopleRegular,
@@ -21,13 +19,6 @@ const meta: Meta<typeof FullPageHeader> = {
   parameters: {
     layout: "padded",
   },
-  decorators: [
-    (Story) => (
-      <FluentProvider theme={axisLightTheme}>
-        <Story />
-      </FluentProvider>
-    ),
-  ],
 };
 
 export default meta;

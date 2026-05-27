@@ -1,8 +1,6 @@
-import { axisLightTheme } from "@axiscommunications/fluent-theme";
 import {
   Badge,
   CounterBadge,
-  FluentProvider,
   PresenceBadge,
   Table,
   TableBody,
@@ -38,8 +36,11 @@ import type { Meta, StoryObj } from "@storybook/react";
  *
  * - **Use outlined badges by default** in tables. Multiple filled badges on one page
  *   create high visual noise; outlined badges provide balance without losing clarity.
- * - **Use filled badges sparingly** — reserve them for exceptions that genuinely need
- *   to stand out (e.g. a single critical-severity row in an otherwise low-severity list).
+ * - **Don't use filled badges in this theme.** Our yellow brand theme requires black
+ *   on-brand foreground colors, which collides with the filled badge foreground token
+ *   and reduces clarity.
+ * - **Use tint badges when you need extra emphasis** while still keeping readable
+ *   contrast in this theme.
  * - **Keep labels short.** Badges are not the place for descriptions; use a tooltip for
  *   additional context if needed.
  * - **Position badges in a supporting column**, not as the first column or a heading.
@@ -298,7 +299,7 @@ function CounterBadgeTable() {
                   <CounterBadge
                     count={row.alerts}
                     color="danger"
-                    appearance="filled"
+                    appearance="outline"
                     aria-label={`${row.alerts} active alerts`}
                   />
                 ) : (
@@ -312,7 +313,7 @@ function CounterBadgeTable() {
                   <CounterBadge
                     count={row.incidents}
                     color="important"
-                    appearance="filled"
+                    appearance="outline"
                     aria-label={`${row.incidents} open incidents`}
                   />
                 ) : (
@@ -527,24 +528,24 @@ function FilledVsOutlinedTable() {
     <div className={styles.section}>
       <div>
         <Text className={styles.sectionLabel}>
-          Outlined (default) — use when badges appear on many rows. Reduces
-          cognitive load and creates visual balance.
+          ✅ Do: Outlined (default) — use when badges appear on many rows.
+          Reduces cognitive load and creates visual balance.
         </Text>
         <StatusTable appearance="outline" />
       </div>
       <div>
         <Text className={styles.sectionLabel}>
-          Filled — use sparingly for exceptions that must stand out. Avoid when
-          most rows carry a badge.
+          ✅ Do: Tint — use when you want more emphasis than outlined while
+          preserving readable contrast in this theme.
         </Text>
-        <StatusTable appearance="filled" />
+        <StatusTable appearance="tint" />
       </div>
       <div>
         <Text className={styles.sectionLabel}>
-          Tint — a middle ground between filled and outlined. Suitable for
-          dashboards and card contexts.
+          ❌ Don't: Filled — avoid in this yellow brand theme because on-brand
+          foreground colors are black and conflict with the filled badge token.
         </Text>
-        <StatusTable appearance="tint" />
+        <StatusTable appearance="filled" />
       </div>
     </div>
   );
@@ -566,17 +567,13 @@ A badge is a visual indicator that communicates a status or description of an as
 They use short text, color, and icons for quick recognition and are placed near the relevant content.
 
 This story covers how to use Fluent \`Badge\`, \`CounterBadge\`, and \`PresenceBadge\` inside data tables.
+
+In Axis yellow brand themes, prefer outlined and tint badges. Avoid filled badges because
+on-brand black foreground colors conflict with filled badge token usage.
         `,
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <FluentProvider theme={axisLightTheme}>
-        <Story />
-      </FluentProvider>
-    ),
-  ],
 };
 
 export default meta;
@@ -596,11 +593,11 @@ export const OutlinedStatusBadge: Story = {
 /**
  * Choose the badge appearance based on context:
  * - **Outlined** — default for tables; low visual weight when many badges are visible
- * - **Filled** — exceptions only; draws maximum attention to a single row
- * - **Tint** — suitable for dashboards and card bodies where a touch of color aids scanning
+ * - **Tint** — suitable when you need extra emphasis while preserving readable contrast
+ * - **Filled** — don't use in our yellow brand theme due to on-brand foreground token collision
  */
 export const AppearanceComparison: Story = {
-  name: "Filled vs outlined vs tint",
+  name: "Outlined + tint (filled is don't)",
   render: () => <FilledVsOutlinedTable />,
 };
 
@@ -643,6 +640,7 @@ export const IconOnlyBadgeWithTooltip: Story = {
  *
  * **Don't**
  * - Use badges as row headings or key identifiers
+ * - Use filled badges in our yellow brand themes
  * - Write long descriptions inside a badge — use a tooltip instead
  * - Put a badge in the first column — badges are secondary to the content
  * - Make badges interactive — use `ToggleButton` for clickable states

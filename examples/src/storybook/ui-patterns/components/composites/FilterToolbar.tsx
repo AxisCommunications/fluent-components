@@ -85,6 +85,9 @@ export interface FilterToolbarProps {
 
   /** Optional className hook. */
   className?: string;
+
+  /** Toolbar row background style variant. */
+  toolbarBackground?: "default" | "transparent";
 }
 
 const useStyles = makeStyles({
@@ -102,6 +105,10 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
     backgroundColor: tokens.colorNeutralBackground1,
+  },
+
+  toolbarRowTransparent: {
+    backgroundColor: "transparent",
   },
 
   toolbar: {
@@ -181,6 +188,7 @@ export const FilterToolbar = forwardRef<HTMLDivElement, FilterToolbarProps>(
       secondaryActions = [],
       ariaLabel = "Filter toolbar",
       className,
+      toolbarBackground = "default",
       ...rest
     },
     ref
@@ -224,7 +232,16 @@ export const FilterToolbar = forwardRef<HTMLDivElement, FilterToolbarProps>(
         className={[styles.root, className].filter(Boolean).join(" ")}
         {...rest}
       >
-        <div className={styles.toolbarRow}>
+        <div
+          className={[
+            styles.toolbarRow,
+            toolbarBackground === "transparent"
+              ? styles.toolbarRowTransparent
+              : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
           <Toolbar aria-label={ariaLabel} className={styles.toolbar}>
             <div className={styles.startActions}>
               {primaryActions.map((action) => (

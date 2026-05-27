@@ -4,6 +4,7 @@ import {
   DoorStation20Regular,
   Speak20Regular,
 } from "@axiscommunications/fluent-icons";
+import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 import {
   Accordion,
   AccordionHeader,
@@ -41,8 +42,11 @@ import {
   SearchRegular,
 } from "@fluentui/react-icons";
 import {
+  type CSSProperties,
+  type PointerEvent,
   type ReactNode,
   forwardRef,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -211,7 +215,10 @@ export interface InlineFilterDrawerProps {
     nextDeployment: DeviceDeploymentFilter
   ) => void;
 
-  /** Controls which hierarchy levels are selectable for cross-filtering. */
+  /**
+   * Controls which hierarchy levels are selectable for cross-filtering.
+   * Checkboxes are hidden unless a level is explicitly set to true.
+   */
   selectionByLevel?: Partial<Record<OrganisationNodeType, boolean>>;
 
   /** Controlled selected hierarchy node IDs used for cross-filtering. */
@@ -243,19 +250,87 @@ export interface InlineFilterDrawerProps {
 
   /** Optional className hook. */
   className?: string;
+
+  /** Renders the drawer as a full-height panel surface instead of a card. */
+  fullHeight?: boolean;
+
+  /** Enables user-driven width resizing with a drag handle on the right edge. */
+  resizable?: boolean;
+
+  /** Initial drawer width in pixels before user interaction. */
+  defaultWidth?: number;
+
+  /** Lower bound for drawer width in pixels. */
+  minWidth?: number;
+
+  /** Upper bound for drawer width in pixels. */
+  maxWidth?: number;
+
+  /** Fired when the drawer width changes due to user resize or clamping. */
+  onWidthChange?: (nextWidth: number) => void;
+
+  /** Enables compact width behavior on small viewports. */
+  responsiveWidth?: boolean;
+
+  /** Drawer width used on small viewports when responsiveWidth is enabled. */
+  smallViewportWidth?: number;
+
+  /** Minimum drawer width used on small viewports when responsiveWidth is enabled. */
+  smallViewportMinWidth?: number;
+
+  /** Maximum drawer width used on small viewports when responsiveWidth is enabled. */
+  smallViewportMaxWidth?: number;
 }
 
 const useStyles = makeStyles({
   root: {
-    width: "360px",
+    width: "100%",
     maxWidth: "100%",
+    minWidth: 0,
+    boxSizing: "border-box",
     borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
     borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground2,
+    backgroundColor: tokens.colorNeutralBackground3,
     display: "flex",
+    position: "relative",
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
     padding: tokens.spacingHorizontalM,
+  },
+
+  rootFullHeight: {
+    height: "100%",
+    borderRadius: 0,
+    borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+    backgroundColor: tokens.colorNeutralBackground3,
+  },
+
+  resizeHandle: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: tokens.spacingHorizontalM,
+    cursor: "col-resize",
+    touchAction: "none",
+    userSelect: "none",
+    borderRadius: `0 ${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium} 0`,
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      top: "50%",
+      right: tokens.spacingHorizontalXXS,
+      transform: "translateY(-50%)",
+      width: tokens.strokeWidthThick,
+      height: "40px",
+      borderRadius: tokens.borderRadiusCircular,
+      backgroundColor: tokens.colorNeutralStroke2,
+      opacity: 0.7,
+    },
+    "&:hover::after": {
+      backgroundColor: tokens.colorNeutralStroke1,
+      opacity: 1,
+    },
   },
 
   title: {
@@ -445,23 +520,6 @@ const DEVICE_DEPLOYMENT_FILTER_LABELS: Array<{
   { value: "production", label: "Production" },
   { value: "staging", label: "Staging" },
 ];
-
-const DEFAULT_SELECTION_BY_LEVEL: Partial<
-  Record<OrganisationNodeType, boolean>
-> = {
-  global: true,
-  region: true,
-  country: true,
-  city: true,
-  geographicalArea: true,
-  site: true,
-  building: true,
-  floor: true,
-  room: true,
-  areaOfInterest: true,
-  zoneOrArea: true,
-  device: true,
-};
 
 type AddNodeMode = "generic" | "location" | "edit";
 
@@ -1554,11 +1612,29 @@ export const InlineFilterDrawer = forwardRef<
       locationMapStyle = DEFAULT_LOCATION_MAP_STYLE,
       onNodesChange,
       className,
+      fullHeight = false,
+      resizable = true,
+      defaultWidth = 360,
+      minWidth = 280,
+      maxWidth = 640,
+      onWidthChange,
+      responsiveWidth = true,
+      smallViewportWidth = 280,
+      smallViewportMinWidth = 240,
+      smallViewportMaxWidth = 420,
       ...rest
     },
     ref
   ) => {
     const styles = useStyles();
+    const mediaType = useMediaQuery();
+    const isSmallViewport = responsiveWidth && mediaType === "small";
+    const resolvedDefaultWidth = isSmallViewport
+      ? smallViewportWidth
+      : defaultWidth;
+    const resolvedMinWidth = isSmallViewport ? smallViewportMinWidth : minWidth;
+    const resolvedMaxWidth = isSmallViewport ? smallViewportMaxWidth : maxWidth;
+    const canResize = resizable && !isSmallViewport;
     const [searchValue, setSearchValue] = useState("");
     const [internalDeviceTypeFilter, setInternalDeviceTypeFilter] =
       useState<DeviceTypeFilter>(defaultDeviceTypeFilter);
@@ -1588,6 +1664,38 @@ export const InlineFilterDrawer = forwardRef<
     const suggestionRequestSeqByNodeIdRef = useRef<Record<string, number>>({});
     const reverseRequestSeqByNodeIdRef = useRef<Record<string, number>>({});
     const mapRef = useRef<MapRef>(null);
+    const rootRef = useRef<HTMLDivElement>(null);
+    const dragStateRef = useRef<{ startX: number; startWidth: number } | null>(
+      null
+    );
+    const [availableWidth, setAvailableWidth] = useState<number | null>(null);
+    const [drawerWidth, setDrawerWidth] = useState(resolvedDefaultWidth);
+
+    const clampDrawerWidth = useCallback(
+      (candidate: number) => {
+        const resolvedMax =
+          availableWidth !== null
+            ? Math.max(0, Math.min(resolvedMaxWidth, availableWidth))
+            : resolvedMaxWidth;
+        const resolvedMin = Math.min(resolvedMinWidth, resolvedMax);
+        return Math.min(Math.max(candidate, resolvedMin), resolvedMax);
+      },
+      [availableWidth, resolvedMaxWidth, resolvedMinWidth]
+    );
+
+    const setClampedDrawerWidth = useCallback(
+      (candidate: number) => {
+        const next = clampDrawerWidth(candidate);
+        setDrawerWidth((previous) => {
+          if (previous === next) {
+            return previous;
+          }
+          onWidthChange?.(next);
+          return next;
+        });
+      },
+      [clampDrawerWidth, onWidthChange]
+    );
 
     const locationSuggestionProvider =
       fetchLocationSuggestions ?? fetchOpenMeteoLocationSuggestions;
@@ -1599,6 +1707,89 @@ export const InlineFilterDrawer = forwardRef<
       setApiSuggestionsByNodeId({});
       setMapViewByNodeId({});
     }, [nodes]);
+
+    useEffect(() => {
+      setClampedDrawerWidth(resolvedDefaultWidth);
+    }, [resolvedDefaultWidth, setClampedDrawerWidth]);
+
+    useEffect(() => {
+      const rootElement = rootRef.current;
+      const parentElement = rootElement?.parentElement;
+
+      if (!parentElement) {
+        return;
+      }
+
+      const updateAvailableWidth = () => {
+        const nextAvailableWidth = parentElement.getBoundingClientRect().width;
+        setAvailableWidth(nextAvailableWidth);
+      };
+
+      updateAvailableWidth();
+
+      const observer = new ResizeObserver(() => {
+        updateAvailableWidth();
+      });
+
+      observer.observe(parentElement);
+      return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+      setClampedDrawerWidth(drawerWidth);
+    }, [drawerWidth, setClampedDrawerWidth]);
+
+    useEffect(() => {
+      const handlePointerMove = (event: globalThis.PointerEvent) => {
+        const activeDragState = dragStateRef.current;
+        if (!activeDragState) {
+          return;
+        }
+        setClampedDrawerWidth(
+          activeDragState.startWidth + (event.clientX - activeDragState.startX)
+        );
+      };
+
+      const handlePointerUp = () => {
+        dragStateRef.current = null;
+      };
+
+      globalThis.window.addEventListener("pointermove", handlePointerMove);
+      globalThis.window.addEventListener("pointerup", handlePointerUp);
+
+      return () => {
+        globalThis.window.removeEventListener("pointermove", handlePointerMove);
+        globalThis.window.removeEventListener("pointerup", handlePointerUp);
+      };
+    }, [setClampedDrawerWidth]);
+
+    const setRefs = useCallback(
+      (node: HTMLDivElement | null) => {
+        rootRef.current = node;
+
+        if (typeof ref === "function") {
+          ref(node);
+          return;
+        }
+
+        if (ref) {
+          ref.current = node;
+        }
+      },
+      [ref]
+    );
+
+    const handleResizePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+      if (!canResize) {
+        return;
+      }
+
+      event.preventDefault();
+      dragStateRef.current = {
+        startX: event.clientX,
+        startWidth: drawerWidth,
+      };
+    };
 
     const isDeviceFilterControlled = deviceTypeFilter !== undefined;
     const isHealthFilterControlled = deviceHealthFilter !== undefined;
@@ -1622,7 +1813,7 @@ export const InlineFilterDrawer = forwardRef<
       [activeSelectedNodeIds]
     );
     const effectiveSelectionByLevel = useMemo(
-      () => ({ ...DEFAULT_SELECTION_BY_LEVEL, ...selectionByLevel }),
+      () => selectionByLevel ?? {},
       [selectionByLevel]
     );
 
@@ -2442,10 +2633,28 @@ export const InlineFilterDrawer = forwardRef<
                 ? 11
                 : 2,
           };
+    const drawerStyle: CSSProperties = fullHeight
+      ? {
+          width: "100%",
+          maxWidth: "100%",
+          height: "100%",
+        }
+      : {
+          width: `${drawerWidth}px`,
+          maxWidth: "100%",
+        };
+
     return (
       <aside
-        ref={ref}
-        className={[styles.root, className].filter(Boolean).join(" ")}
+        ref={setRefs}
+        className={[
+          styles.root,
+          fullHeight ? styles.rootFullHeight : undefined,
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        style={drawerStyle}
         {...rest}
       >
         <Text as="h2" className={styles.title}>
@@ -3070,6 +3279,16 @@ export const InlineFilterDrawer = forwardRef<
             </DialogBody>
           </DialogSurface>
         </Dialog>
+
+        {canResize && (
+          <div
+            role="separator"
+            aria-label="Resize filter drawer"
+            aria-orientation="vertical"
+            className={styles.resizeHandle}
+            onPointerDown={handleResizePointerDown}
+          />
+        )}
       </aside>
     );
   }

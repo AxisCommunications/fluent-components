@@ -126,6 +126,7 @@ export function NavigationMenu({ ...rest }) {
             <NavSubItem value={routes.Stepper}>Stepper</NavSubItem>
             <NavSubItem value={routes.Slider}>Slider</NavSubItem>
             <NavSubItem value={routes.PasswordInput}>Password input</NavSubItem>
+            <NavSubItem value={routes.SideNavigation}>Side navigation</NavSubItem>
             <NavSubItem value={routes.EmptyView}>Empty view</NavSubItem>
           </NavSubItemGroup>
         </NavCategory>

@@ -20,20 +20,20 @@ import {
 } from "@fluentui/react-components";
 import {
   AlertRegular,
-  AlertUrgent24Color,
-  BoardColor,
-  Calendar24Color,
   ChevronDownRegular,
-  ClipboardColor,
   GridDotsRegular,
-  Notebook16Color,
   QuestionCircleRegular,
   SearchRegular,
-  Send28Color,
   SettingsRegular,
-  SportColor,
 } from "@fluentui/react-icons";
 import { type ReactElement, useEffect, useState } from "react";
+import appIcon01 from "../../../../assets/Appicons/App 1.svg";
+import appIcon02 from "../../../../assets/Appicons/App 2.svg";
+import appIcon03 from "../../../../assets/Appicons/App 3.svg";
+import appIcon04 from "../../../../assets/Appicons/App 4.svg";
+import appIcon05 from "../../../../assets/Appicons/App 5.svg";
+import appIcon06 from "../../../../assets/Appicons/App 6.svg";
+import appIcon07 from "../../../../assets/Appicons/App 7.svg";
 
 export interface SuiteHeaderAction {
   id: string;
@@ -78,7 +78,7 @@ const useStyles = makeStyles({
     gridTemplateColumns: "1fr minmax(180px, 1fr) 1fr",
     alignItems: "center",
     columnGap: tokens.spacingHorizontalL,
-    backgroundColor: tokens.colorNeutralBackground2,
+    backgroundColor: tokens.colorNeutralBackground4,
     ...shorthands.padding("0", tokens.spacingHorizontalM),
     ...shorthands.borderBottom("1px", "solid", tokens.colorNeutralStroke2),
   },
@@ -115,6 +115,11 @@ const useStyles = makeStyles({
     "& svg": {
       width: "20px",
       height: "20px",
+    },
+    "& img": {
+      width: "20px",
+      height: "20px",
+      display: "block",
     },
   },
   divider: {
@@ -215,31 +220,41 @@ const useStyles = makeStyles({
     boxShadow: `inset 0 -4px 0 ${tokens.colorPaletteYellowBorderActive}`,
   },
   tileIconWrap: {
-    width: "20px",
-    height: "20px",
+    width: "28px",
+    height: "28px",
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: "20px",
+    fontSize: "28px",
     lineHeight: 1,
     color: tokens.colorNeutralForeground1,
     "& svg": {
-      width: "20px",
-      height: "20px",
+      width: "28px",
+      height: "28px",
+    },
+    "& img": {
+      width: "28px",
+      height: "28px",
+      display: "block",
     },
   },
   orgTileIconWrap: {
-    width: "20px",
-    height: "20px",
+    width: "28px",
+    height: "28px",
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: "20px",
+    fontSize: "28px",
     lineHeight: 1,
     color: tokens.colorNeutralForeground1,
     "& svg": {
-      width: "20px",
-      height: "20px",
+      width: "28px",
+      height: "28px",
+    },
+    "& img": {
+      width: "28px",
+      height: "28px",
+      display: "block",
     },
   },
   tileLabel: {
@@ -250,12 +265,12 @@ const useStyles = makeStyles({
   },
   sectionTitle: {
     textAlign: "center",
-    fontSize: tokens.fontSizeBase400,
+    fontSize: tokens.fontSizeBase100,
     fontWeight: tokens.fontWeightSemibold,
-    lineHeight: tokens.lineHeightBase300,
+    lineHeight: tokens.lineHeightBase100,
     color: tokens.colorNeutralForeground3,
     textTransform: "uppercase",
-    letterSpacing: "0.04em",
+    letterSpacing: "0.02em",
     ...shorthands.margin(0),
   },
   orgTileButton: {
@@ -273,11 +288,11 @@ const useStyles = makeStyles({
     boxShadow: `inset 0 -4px 0 ${tokens.colorPaletteYellowBorderActive}`,
   },
   "@media (max-width: 900px)": {
-    launcherGrid: {
+    "&launcherGrid": {
       gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
       rowGap: "12px",
     },
-    orgGrid: {
+    "&orgGrid": {
       gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
       rowGap: "12px",
     },
@@ -286,18 +301,18 @@ const useStyles = makeStyles({
     cursor: "pointer",
   },
   "@media (max-width: 1024px)": {
-    root: {
+    "&root": {
       gridTemplateColumns: "1fr auto",
     },
-    center: {
+    "&center": {
       display: "none",
     },
-    dateTime: {
+    "&dateTime": {
       display: "none",
     },
   },
   "@media (max-width: 720px)": {
-    root: {
+    "&root": {
       ...shorthands.padding("0", tokens.spacingHorizontalS),
       columnGap: tokens.spacingHorizontalS,
     },
@@ -310,17 +325,29 @@ const defaultActions: SuiteHeaderAction[] = [
   { id: "help", icon: <QuestionCircleRegular />, ariaLabel: "Help" },
 ];
 
+function appIcon(src: string): ReactElement {
+  return <img src={src} alt="" />;
+}
+
 const defaultLauncherApps: SuiteHeaderLauncherItem[] = [
-  { id: "camera-station", label: "AXIS Camera Station", icon: <BoardColor /> },
-  { id: "device-manager", label: "AXIS Device Manager", icon: <Send28Color /> },
-  { id: "cloud-storage", label: "Cloud Storage", icon: <SportColor /> },
+  {
+    id: "camera-station",
+    label: "Axis Station",
+    icon: appIcon(appIcon01),
+  },
+  {
+    id: "device-manager",
+    label: "Axis Device Manager",
+    icon: appIcon(appIcon02),
+  },
+  { id: "cloud-storage", label: "Cloud Storage", icon: appIcon(appIcon03) },
 ];
 
 const defaultLauncherOrganizationItems: SuiteHeaderLauncherItem[] = [
-  { id: "start", label: "Start", icon: <Calendar24Color /> },
-  { id: "settings", label: "Settings", icon: <AlertUrgent24Color /> },
-  { id: "users", label: "Users", icon: <Notebook16Color /> },
-  { id: "licenses", label: "Licenses", icon: <ClipboardColor /> },
+  { id: "start", label: "Start", icon: appIcon(appIcon04) },
+  { id: "settings", label: "Settings", icon: appIcon(appIcon05) },
+  { id: "users", label: "Users", icon: appIcon(appIcon06) },
+  { id: "licenses", label: "Licenses", icon: appIcon(appIcon07) },
 ];
 
 export function SuiteHeader({
@@ -375,7 +402,7 @@ export function SuiteHeader({
 
   const displayName = selectedHeaderItem?.label ?? productName;
   const displayIcon = productIcon ?? selectedHeaderItem?.icon ?? (
-    <BoardColor className={styles.titleIcon} aria-hidden="true" />
+    <img src={appIcon01} alt="" />
   );
 
   useEffect(() => {

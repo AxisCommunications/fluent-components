@@ -1,82 +1,41 @@
 {/* Introduction.mdx */}
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/blocks";
 
 <Meta title="Introduction" />
 
-# Fluent UI Composite Components
+# Fluent Components
 
-Welcome to the **Fluent UI Composite Components** library. This project showcases 6+ custom composite components built strictly according to Fluent design guidelines and best practices.
+Welcome to the Axis Fluent component library for React and Fluent UI v9.
+This Storybook documents reusable building blocks and usage patterns used
+across applications.
 
-## What's Inside
+## Packages In This Library
 
-This Storybook contains interactive stories for:
+- `@axiscommunications/fluent-theme` - Axis branded Fluent themes
+- `@axiscommunications/fluent-icons` - Axis icon set
+- `@axiscommunications/fluent-hooks` - shared React hooks
+- `@axiscommunications/fluent-styles` - shared style modules
+- `@axiscommunications/fluent-stepper` - stepper and wizard flows
+- `@axiscommunications/fluent-slider` - slider and range slider components
+- `@axiscommunications/fluent-topbar` - app, org, and profile menu topbar
+- `@axiscommunications/fluent-empty-view` - empty state views
+- `@axiscommunications/fluent-password-input` - password input with reveal
+- `@axiscommunications/fluent-illustrations` - Axis branded illustrations
 
--  **Form Patterns** — `FormField` for accessible form controls with validation
-- **Data Display** — `StatCard`, `InfoCard`, `DataTable` for presenting information
-- **Layouts** — `PageHeader` for consistent page structure
+## Usage Patterns
 
-## Key Principles
+The usage patterns documented in this Storybook are developed by the
+Design System Group and serve as global UX patterns.
 
-All components follow rigorous guidelines:
+Use them as the default approach when building new experiences to ensure:
 
-✓ **Fluent-First** — Only use `@fluentui/react-components` as building blocks
-✓ **Token-Driven** — All styling via `makeStyles()` + Fluent design tokens (no px values)
-✓ **Accessible** — Semantic HTML, ARIA labels, keyboard navigation, screen reader support
-✓ **Type-Safe** — Strict TypeScript with explicit prop interfaces
-✓ **Documented** — JSDoc comments, Storybook stories, MDX docs with guideline callouts
+- consistency across products
+- predictable behavior for users
+- accessibility and Fluent v9 alignment
+- faster implementation with shared conventions
 
 ## Getting Started
 
-1. Browse the stories in the sidebar
-2. Use the interactive controls to explore prop variations
-3. Check the **Accessibility** panel (a11y addon) for any violations
-4. Read the MDX documentation with Fluent principle explanations
-
-## Architecture
-
-```
-src/
-├── components/composites/
-│   ├── FormField.tsx
-│   ├── StatCard.tsx
-│   ├── InfoCard.tsx
-│   ├── PageHeader.tsx
-│   ├── FilterBar.tsx
-│   ├── EmptyState.tsx
-│   ├── DataTable.tsx
-│   └── index.ts (barrel export)
-├── guidelines/
-│   ├── FLUENT_COMPOSITE_GUIDELINES.md (principles & rules)
-│   ├── COMPONENT_TEMPLATE.tsx (reference boilerplate)
-├── stories/
-│   ├── Introduction.mdx
-│   ├── FormPatterns.stories.tsx
-│   ├── DataDisplay.stories.tsx
-│   ├── TablePatterns.stories.tsx
-│   └── LayoutPatterns.stories.tsx
-```
-
-## References
-
-- [Fluent UI v9 Documentation](https://microsoft.github.io/fluentui/react-components/storybook/)
-- [Design Tokens Reference](https://microsoft.github.io/fluentui/react-components/storybook/?path=/docs/concepts-migration-from-v8-tokens--page)
-- [Guidelines Document](../guidelines/FLUENT_COMPOSITE_GUIDELINES.md)
-
-## Running Locally
-
-```bash
-# Start Storybook dev server
-npm run storybook
-
-# Build for deployment
-npm run build-storybook
-
-# Build main project
-npm run build
-```
-
-Storybook opens at **http://localhost:6006/**
-
----
-
-**Ready to explore?** Select a story from the left sidebar to get started!
+1. Browse stories in the sidebar by package or pattern.
+2. Use controls to explore variants and props.
+3. Apply these patterns as-is unless your team has an approved exception.

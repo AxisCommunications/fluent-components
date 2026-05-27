@@ -20,6 +20,7 @@ import {
   RocketRegular,
   SettingsRegular,
 } from "@fluentui/react-icons";
+import { useState } from "react";
 import { DesignMatchedTable } from "../DesignMatchedTable";
 import { WorkspaceToolbar } from "./WorkspaceToolbar";
 
@@ -53,6 +54,15 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     columnGap: "4px",
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
+  },
+  tabsHost: {
+    minWidth: 0,
+    overflowX: "auto",
+  },
+  tabs: {
+    width: "max-content",
   },
   card: {
     ...{
@@ -118,6 +128,7 @@ const workspaceActions = [
 
 export function MainWorkspace() {
   const styles = useStyles();
+  const [selectedTab, setSelectedTab] = useState("tab1");
 
   return (
     <main className={styles.root}>
@@ -143,11 +154,17 @@ export function MainWorkspace() {
         </div>
       </section>
 
-      <TabList defaultSelectedValue="tab1">
-        <Tab value="tab1">Overview</Tab>
-        <Tab value="tab2">Data</Tab>
-        <Tab value="tab3">Pipelines</Tab>
-      </TabList>
+      <div className={styles.tabsHost}>
+        <TabList
+          className={styles.tabs}
+          selectedValue={selectedTab}
+          onTabSelect={(_event, data) => setSelectedTab(String(data.value))}
+        >
+          <Tab value="tab1">Overview</Tab>
+          <Tab value="tab2">Data</Tab>
+          <Tab value="tab3">Pipelines</Tab>
+        </TabList>
+      </div>
 
       <WorkspaceToolbar />
 

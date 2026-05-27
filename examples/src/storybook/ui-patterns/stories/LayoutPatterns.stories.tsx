@@ -1,8 +1,6 @@
-import { axisLightTheme } from "@axiscommunications/fluent-theme";
 import {
   Badge,
   Card,
-  FluentProvider,
   Text,
   makeStyles,
   tokens,
@@ -221,13 +219,6 @@ const meta: Meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <FluentProvider theme={axisLightTheme}>
-        <Story />
-      </FluentProvider>
-    ),
-  ],
 };
 
 export default meta;

@@ -13,8 +13,21 @@ const meta: Meta<typeof InlineFilterDrawer> = {
   component: InlineFilterDrawer,
   tags: ["autodocs"],
   parameters: {
-    layout: "padded",
+    layout: "centered",
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          width: "min(600px, 100vw)",
+          maxWidth: "100%",
+          minHeight: "500px",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     title: {
       control: "text",
