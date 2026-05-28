@@ -21,8 +21,6 @@ export type IllustrationKind =
   | "settings"
   | "success"
   | "team"
-  | "menu-item-focus"
-  | "drag-menu"
   | "media-error"
   | "under-construction"
   | "add-user"
@@ -67,9 +65,25 @@ export type IllustrationKind =
   | "user-profile"
   | "welcome-plane"
   | "extend-system"
-  | "migrate-system"
-  | "new-system"
-  | "search";
+  | "instruction-conditional"
+  | "instruction-crossline-counting"
+  | "instruction-drag-menu-item"
+  | "instruction-fall-detection"
+  | "instruction-hard-hat-detection"
+  | "instruction-high-speed-approaching-traffic"
+  | "instruction-high-speed-one-way"
+  | "instruction-line-crossing"
+  | "instruction-menu-item-focus"
+  | "instruction-migrate-system"
+  | "instruction-motion-in-area"
+  | "instruction-motion-line-crossing"
+  | "instruction-new-system"
+  | "instruction-object-in-area"
+  | "instruction-occupancy-in-area"
+  | "instruction-search"
+  | "instruction-tailgating-detection"
+  | "instruction-time-in-area"
+  | "instruction-zone-crossing";
 
 export interface ContentProps {
   readonly body: ReactNode;

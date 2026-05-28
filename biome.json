@@ -10,7 +10,12 @@
       "**/*.ts",
       "**/*.tsx"
     ],
-    "ignore": ["lib/", "lib-commonjs/", ".vscode/"]
+    "ignore": [
+      "lib/",
+      "lib-commonjs/",
+      ".vscode/",
+      "illustrations/src/illustrations/"
+    ]
   },
   "organizeImports": {
     "enabled": true,
