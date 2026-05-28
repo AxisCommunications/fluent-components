@@ -89,6 +89,12 @@ Make sure you have node and pnpm installed.
    pnpm dev
    ```
 
+### Getting access for development
+To be able to push:
+* You need to be a member of the GitHub organization AxisCommunications. You can request that in ServiceNow, access to GitHub and choose "GitHub Cloud for open source development". Read more about the requirements in ServiceNow.
+* You need to be added to a writers group by a current admin, contact recent contributors in this repo.
+* You need to set up [signing for commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits).
+
 ### Development
 
 The following is one example of how to use a local version while developing.
