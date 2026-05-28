@@ -9,9 +9,11 @@ export function SteppingToMarksSliderExample() {
       defaultValue={50}
       step="marks"
       marks={[
+        { value: 0, label: "min" },
         { value: 25 },
         { value: 50, label: "50" },
         { value: 75, label: "75" },
+        { value: 100, label: "max" },
       ]}
     />
   );
@@ -28,9 +30,11 @@ export function SteppingToMarksSliderExample() {
       defaultValue={50}
       step="marks"
       marks={[
+        { value: 0, label: "min" },
         { value: 25 },
         { value: 50, label: "50" },
         { value: 75, label: "75" },
+        { value: 100, label: "max" },
       ]} />
   )
 }
