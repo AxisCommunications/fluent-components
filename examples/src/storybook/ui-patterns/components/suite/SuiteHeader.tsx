@@ -332,22 +332,22 @@ function appIcon(src: string): ReactElement {
 const defaultLauncherApps: SuiteHeaderLauncherItem[] = [
   {
     id: "camera-station",
-    label: "Axis Station",
+    label: "app1",
     icon: appIcon(appIcon01),
   },
   {
     id: "device-manager",
-    label: "Axis Device Manager",
+    label: "app2",
     icon: appIcon(appIcon02),
   },
-  { id: "cloud-storage", label: "Cloud Storage", icon: appIcon(appIcon03) },
+  { id: "cloud-storage", label: "app3", icon: appIcon(appIcon03) },
 ];
 
 const defaultLauncherOrganizationItems: SuiteHeaderLauncherItem[] = [
-  { id: "start", label: "Start", icon: appIcon(appIcon04) },
-  { id: "settings", label: "Settings", icon: appIcon(appIcon05) },
-  { id: "users", label: "Users", icon: appIcon(appIcon06) },
-  { id: "licenses", label: "Licenses", icon: appIcon(appIcon07) },
+  { id: "start", label: "app4", icon: appIcon(appIcon04) },
+  { id: "settings", label: "app5", icon: appIcon(appIcon05) },
+  { id: "users", label: "app6", icon: appIcon(appIcon06) },
+  { id: "licenses", label: "app7", icon: appIcon(appIcon07) },
 ];
 
 export function SuiteHeader({
