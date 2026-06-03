@@ -11,8 +11,12 @@ import {
   TabList,
   makeStyles,
   tokens,
+  typographyStyles,
 } from "@fluentui/react-components";
-import { CloudOffRegular, MoreHorizontalRegular } from "@fluentui/react-icons";
+import {
+  CloudOff16Regular,
+  MoreHorizontalRegular,
+} from "@fluentui/react-icons";
 import {
   type ReactNode,
   forwardRef,
@@ -118,7 +122,6 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     flexDirection: "column",
-    gap: "2px",
     paddingBottom: "0px",
     width: "100%",
     minWidth: 0,
@@ -126,25 +129,25 @@ const useStyles = makeStyles({
 
   headerRow: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     width: "100%",
     minWidth: 0,
   },
 
   leftCluster: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     minWidth: 0,
     flexShrink: 1,
   },
 
   identity: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: tokens.spacingHorizontalS,
     minWidth: 0,
-    flexShrink: 1,
     overflow: "hidden",
+    paddingTop: tokens.spacingVerticalSNudge,
   },
 
   tabsWrap: {
@@ -154,6 +157,7 @@ const useStyles = makeStyles({
     flexShrink: 1,
     flexGrow: 0,
     marginLeft: "24px",
+    marginBottom: tokens.spacingVerticalXXS,
     overflow: "hidden",
   },
 
@@ -164,7 +168,7 @@ const useStyles = makeStyles({
     flexShrink: 0,
     flexGrow: 1,
     marginLeft: 0,
-    marginTop: tokens.spacingVerticalXS,
+    marginBottom: tokens.spacingVerticalXXS,
     width: "100%",
     overflow: "hidden",
   },
@@ -196,9 +200,9 @@ const useStyles = makeStyles({
   },
 
   statusMeta: {
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase200,
+    ...typographyStyles.caption2,
     color: tokens.colorNeutralForeground2,
+    paddingTop: tokens.spacingVerticalXXS,
   },
 
   actions: {
@@ -514,11 +518,13 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
             <span className={styles.statusLabel}>
               <Badge
                 className={styles.statusBadge}
-                size="small"
+                size="large"
+                appearance="ghost"
                 color={status.color ?? "warning"}
-                icon={(status.icon ?? <CloudOffRegular />) as any}
-              />
-              <span className={styles.statusText}>{status.label}</span>
+                icon={(status.icon ?? <CloudOff16Regular />) as any}
+              >
+                {status.label}
+              </Badge>
             </span>
             {status.meta && (
               <span className={styles.statusMeta}>{status.meta}</span>

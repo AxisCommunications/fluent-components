@@ -121,6 +121,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     gap: tokens.spacingHorizontalSNudge,
     paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingBottom: tokens.spacingVerticalXXS,
     minWidth: 0,
   },
 
@@ -456,11 +457,16 @@ export const BreadcrumbHeader = forwardRef<
 
               {/* Last item — visible when there's room */}
               {breadcrumbs.length > 1 && showLastItem && (
-                <BreadcrumbItem className={styles.breadcrumbItem}>
-                  <BreadcrumbButton onClick={lastItem.onClick}>
-                    {lastItem.label}
-                  </BreadcrumbButton>
-                </BreadcrumbItem>
+                <>
+                  <BreadcrumbItem className={styles.breadcrumbItem}>
+                    <BreadcrumbButton onClick={lastItem.onClick}>
+                      {lastItem.label}
+                    </BreadcrumbButton>
+                  </BreadcrumbItem>
+                  <BreadcrumbDivider className={styles.divider}>
+                    /
+                  </BreadcrumbDivider>
+                </>
               )}
             </Breadcrumb>
           </nav>
