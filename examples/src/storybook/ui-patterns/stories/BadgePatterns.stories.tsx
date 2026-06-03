@@ -299,7 +299,7 @@ function CounterBadgeTable() {
                   <CounterBadge
                     count={row.alerts}
                     color="danger"
-                    appearance="outline"
+                    appearance="filled"
                     aria-label={`${row.alerts} active alerts`}
                   />
                 ) : (
@@ -313,7 +313,7 @@ function CounterBadgeTable() {
                   <CounterBadge
                     count={row.incidents}
                     color="important"
-                    appearance="outline"
+                    appearance="filled"
                     aria-label={`${row.incidents} open incidents`}
                   />
                 ) : (

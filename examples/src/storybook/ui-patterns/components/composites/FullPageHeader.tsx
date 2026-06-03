@@ -1,6 +1,7 @@
 import {
   Badge,
   Button,
+  Divider,
   Menu,
   MenuItem,
   MenuList,
@@ -118,7 +119,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     gap: "2px",
-    paddingBottom: "1px",
+    paddingBottom: "0px",
     width: "100%",
     minWidth: 0,
   },
@@ -142,7 +143,8 @@ const useStyles = makeStyles({
     alignItems: "center",
     gap: tokens.spacingHorizontalS,
     minWidth: 0,
-    flexShrink: 0,
+    flexShrink: 1,
+    overflow: "hidden",
   },
 
   tabsWrap: {
@@ -173,10 +175,17 @@ const useStyles = makeStyles({
     gap: tokens.spacingHorizontalXS,
     minHeight: tokens.lineHeightBase200,
     paddingLeft: "0px",
+    flexWrap: "wrap",
   },
 
   statusBadge: {
     minWidth: "auto",
+  },
+
+  statusLabel: {
+    display: "flex",
+    alignItems: "center",
+    gap: tokens.spacingHorizontalXS,
   },
 
   statusText: {
@@ -226,6 +235,10 @@ const useStyles = makeStyles({
     '&[aria-selected="true"]': {
       color: tokens.colorNeutralForeground1,
     },
+  },
+
+  divider: {
+    marginTop: "-2px",
   },
 });
 
@@ -278,18 +291,35 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
     const normalizedTabs = useMemo(() => tabs ?? [], [tabs]);
 
     useLayoutEffect(() => {
-      if (normalizedActions.length === 0) {
-        setVisibleActionCount(0);
-        return;
-      }
-
       const measure = () => {
         const rowEl = headerRowRef.current;
         const leftClusterEl = leftClusterRef.current;
         const identityEl = identityRef.current;
         const measureActionsEl = measureActionsRef.current;
         const measureTabsEl = measureTabsRef.current;
-        if (!rowEl || !leftClusterEl || !identityEl || !measureActionsEl) {
+        if (!rowEl || !leftClusterEl || !identityEl) {
+          return;
+        }
+
+        if (normalizedActions.length === 0) {
+          // Still calculate tab stacking even without actions
+          const hasTabs = normalizedTabs.length > 0;
+          if (hasTabs && measureTabsEl) {
+            const rowWidth = rowEl.getBoundingClientRect().width;
+            const identityWidth = identityEl.getBoundingClientRect().width;
+            const spaceBetweenTabsAndIdentity = 24;
+            const tabsWidth = measureTabsEl.scrollWidth;
+            const spaceNeededForTabsAndIdentity =
+              identityWidth + spaceBetweenTabsAndIdentity + tabsWidth;
+            setStackTabs(rowWidth < spaceNeededForTabsAndIdentity);
+          } else {
+            setStackTabs(false);
+          }
+          setVisibleActionCount(0);
+          return;
+        }
+
+        if (!measureActionsEl) {
           return;
         }
 
@@ -359,8 +389,8 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
         ) {
           setStackTabs(true);
           // When stacking, recalculate available space for actions using full row width
-          const availableActionsWidth =
-            rowWidth - identityEl.getBoundingClientRect().width;
+          const identityWidth = identityEl.getBoundingClientRect().width;
+          const availableActionsWidth = rowWidth - identityWidth;
 
           let nextVisible = 0;
           for (let count = 0; count <= normalizedActions.length; count += 1) {
@@ -481,13 +511,15 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
 
         {status && (
           <div className={styles.statusRow}>
-            <Badge
-              className={styles.statusBadge}
-              size="small"
-              color={status.color ?? "warning"}
-              icon={(status.icon ?? <CloudOffRegular />) as any}
-            />
-            <span className={styles.statusText}>{status.label}</span>
+            <span className={styles.statusLabel}>
+              <Badge
+                className={styles.statusBadge}
+                size="small"
+                color={status.color ?? "warning"}
+                icon={(status.icon ?? <CloudOffRegular />) as any}
+              />
+              <span className={styles.statusText}>{status.label}</span>
+            </span>
             {status.meta && (
               <span className={styles.statusMeta}>{status.meta}</span>
             )}
@@ -584,7 +616,9 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
               className={styles.tabs}
               {...(selectedTab !== undefined
                 ? { selectedValue: selectedTab }
-                : { defaultSelectedValue: defaultSelectedTab ?? tabs[0]?.value })}
+                : {
+                    defaultSelectedValue: defaultSelectedTab ?? tabs[0]?.value,
+                  })}
               onTabSelect={(_event, data) => onTabSelect?.(String(data.value))}
             >
               {tabs.map((tab) => (
@@ -600,6 +634,8 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
             </TabList>
           </div>
         )}
+
+        <Divider className={styles.divider} />
       </div>
     );
   }

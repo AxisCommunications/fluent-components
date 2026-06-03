@@ -1,4 +1,7 @@
-import { useMediaQuery, usePageController } from "@axiscommunications/fluent-hooks";
+import {
+  useMediaQuery,
+  usePageController,
+} from "@axiscommunications/fluent-hooks";
 import { SideNavigation as CompactRailNavigation } from "@axiscommunications/fluent-side-navigation";
 import {
   Badge,
@@ -13,12 +16,12 @@ import {
   Field,
   Input,
   TableCellLayout,
+  type TableColumnDefinition,
   Text,
   createTableColumn,
   makeStyles,
   shorthands,
   tokens,
-  type TableColumnDefinition,
 } from "@fluentui/react-components";
 import {
   AddRegular,
@@ -28,6 +31,7 @@ import {
   EditRegular,
   SettingsRegular,
 } from "@fluentui/react-icons";
+// @ts-expect-error - @storybook/blocks may not be available in all environments
 import { Canvas, Description, Heading, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
@@ -280,7 +284,9 @@ function DashboardPage({
         {rail.showDrawer && (
           <div
             className={
-              isSmall ? styles.inlineDrawerPanelCompact : styles.inlineDrawerPanel
+              isSmall
+                ? styles.inlineDrawerPanelCompact
+                : styles.inlineDrawerPanel
             }
           >
             <InlineFilterDrawer
@@ -339,7 +345,8 @@ function DashboardPage({
                     <Text className={styles.contentEyebrow}>Status</Text>
                     <Text className={styles.contentTitle}>Core systems</Text>
                     <Text className={styles.contentBody}>
-                      All core systems are running normally with full redundancy.
+                      All core systems are running normally with full
+                      redundancy.
                     </Text>
                     <div className={styles.footerRow}>
                       <Badge appearance="tint" color="success">
@@ -362,7 +369,9 @@ function DashboardPage({
                       <Badge appearance="tint" color="success">
                         Optimal
                       </Badge>
-                      <Text className={styles.contentBody}>Next check in 5 min</Text>
+                      <Text className={styles.contentBody}>
+                        Next check in 5 min
+                      </Text>
                     </div>
                   </Card>
 
@@ -403,16 +412,76 @@ interface Device {
 }
 
 const ALL_DEVICES: Device[] = [
-  { id: "dev-001", name: "Camera A1", type: "Camera", location: "Stockholm - Building A", status: "online" },
-  { id: "dev-002", name: "Camera B2", type: "Camera", location: "Stockholm - Building B", status: "online" },
-  { id: "dev-003", name: "Intercom C1", type: "Intercom", location: "Lund - Main Office", status: "offline" },
-  { id: "dev-004", name: "Access Control D1", type: "Access Control", location: "Prague - Data Center", status: "online" },
-  { id: "dev-005", name: "Camera C3", type: "Camera", location: "Stockholm - Building C", status: "online" },
-  { id: "dev-006", name: "Intercom B2", type: "Intercom", location: "Stockholm - Building B", status: "online" },
-  { id: "dev-007", name: "Camera D4", type: "Camera", location: "Lund - Main Office", status: "offline" },
-  { id: "dev-008", name: "Access Control A1", type: "Access Control", location: "Stockholm - Building A", status: "online" },
-  { id: "dev-009", name: "Camera E5", type: "Camera", location: "Prague - Data Center", status: "online" },
-  { id: "dev-010", name: "Intercom A1", type: "Intercom", location: "Stockholm - Building A", status: "offline" },
+  {
+    id: "dev-001",
+    name: "Camera A1",
+    type: "Camera",
+    location: "Stockholm - Building A",
+    status: "online",
+  },
+  {
+    id: "dev-002",
+    name: "Camera B2",
+    type: "Camera",
+    location: "Stockholm - Building B",
+    status: "online",
+  },
+  {
+    id: "dev-003",
+    name: "Intercom C1",
+    type: "Intercom",
+    location: "Lund - Main Office",
+    status: "offline",
+  },
+  {
+    id: "dev-004",
+    name: "Access Control D1",
+    type: "Access Control",
+    location: "Prague - Data Center",
+    status: "online",
+  },
+  {
+    id: "dev-005",
+    name: "Camera C3",
+    type: "Camera",
+    location: "Stockholm - Building C",
+    status: "online",
+  },
+  {
+    id: "dev-006",
+    name: "Intercom B2",
+    type: "Intercom",
+    location: "Stockholm - Building B",
+    status: "online",
+  },
+  {
+    id: "dev-007",
+    name: "Camera D4",
+    type: "Camera",
+    location: "Lund - Main Office",
+    status: "offline",
+  },
+  {
+    id: "dev-008",
+    name: "Access Control A1",
+    type: "Access Control",
+    location: "Stockholm - Building A",
+    status: "online",
+  },
+  {
+    id: "dev-009",
+    name: "Camera E5",
+    type: "Camera",
+    location: "Prague - Data Center",
+    status: "online",
+  },
+  {
+    id: "dev-010",
+    name: "Intercom A1",
+    type: "Intercom",
+    location: "Stockholm - Building A",
+    status: "offline",
+  },
 ];
 
 const PAGE_SIZE = 5;
@@ -421,16 +490,12 @@ const deviceColumns: TableColumnDefinition<Device>[] = [
   createTableColumn<Device>({
     columnId: "name",
     renderHeaderCell: () => "Name",
-    renderCell: (device) => (
-      <TableCellLayout>{device.name}</TableCellLayout>
-    ),
+    renderCell: (device) => <TableCellLayout>{device.name}</TableCellLayout>,
   }),
   createTableColumn<Device>({
     columnId: "type",
     renderHeaderCell: () => "Type",
-    renderCell: (device) => (
-      <TableCellLayout>{device.type}</TableCellLayout>
-    ),
+    renderCell: (device) => <TableCellLayout>{device.type}</TableCellLayout>,
   }),
   createTableColumn<Device>({
     columnId: "location",
@@ -462,7 +527,9 @@ function DevicesPage({
   const rail = useRailState();
   const mediaType = useMediaQuery();
   const isSmall = !forceDesktopLayout && mediaType === "small";
-  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set(["dev-001"]));
+  const [selectedItems, setSelectedItems] = useState<Set<string>>(
+    new Set(["dev-001"])
+  );
   const [skip, setSkip] = useState(0);
 
   const controller = usePageController({
@@ -501,7 +568,9 @@ function DevicesPage({
         {rail.showDrawer && (
           <div
             className={
-              isSmall ? styles.inlineDrawerPanelCompact : styles.inlineDrawerPanel
+              isSmall
+                ? styles.inlineDrawerPanelCompact
+                : styles.inlineDrawerPanel
             }
           >
             <InlineFilterDrawer
@@ -543,7 +612,11 @@ function DevicesPage({
                     ? `${styles.pageContentArea} ${styles.pageContentAreaCompact}`
                     : styles.pageContentArea
                 }
-                style={{ display: "flex", flexDirection: "column", height: "100%" }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                }}
               >
                 <div className={styles.dataGridWrapper}>
                   <FilterToolbar
@@ -613,9 +686,7 @@ function DevicesPage({
                             }}
                           >
                             {({ renderCell }) => (
-                              <DataGridCell>
-                                {renderCell(item)}
-                              </DataGridCell>
+                              <DataGridCell>{renderCell(item)}</DataGridCell>
                             )}
                           </DataGridRow>
                         )}
@@ -679,7 +750,9 @@ function SettingsPage({
         {rail.showDrawer && (
           <div
             className={
-              isSmall ? styles.inlineDrawerPanelCompact : styles.inlineDrawerPanel
+              isSmall
+                ? styles.inlineDrawerPanelCompact
+                : styles.inlineDrawerPanel
             }
           >
             <InlineFilterDrawer
@@ -740,47 +813,50 @@ function SettingsPage({
                     Organization Settings
                   </Text>
 
-                <div
-                  className={
-                    isSmall
-                      ? `${styles.formGrid} ${styles.formGridCompact}`
-                      : styles.formGrid
-                  }
-                >
-                  <Field label="Organization name">
-                    <Input placeholder="Enter organization name" />
-                  </Field>
+                  <div
+                    className={
+                      isSmall
+                        ? `${styles.formGrid} ${styles.formGridCompact}`
+                        : styles.formGrid
+                    }
+                  >
+                    <Field label="Organization name">
+                      <Input placeholder="Enter organization name" />
+                    </Field>
 
-                  <Field label="Organization ID">
-                    <Input placeholder="Auto-generated" disabled />
-                  </Field>
+                    <Field label="Organization ID">
+                      <Input placeholder="Auto-generated" disabled />
+                    </Field>
 
-                  <Field label="Primary contact email">
-                    <Input placeholder="contact@organization.com" type="email" />
-                  </Field>
+                    <Field label="Primary contact email">
+                      <Input
+                        placeholder="contact@organization.com"
+                        type="email"
+                      />
+                    </Field>
 
-                  <Field label="Support contact">
-                    <Input
-                      placeholder="support@organization.com"
-                      type="email"
-                    />
-                  </Field>
-                </div>
+                    <Field label="Support contact">
+                      <Input
+                        placeholder="support@organization.com"
+                        type="email"
+                      />
+                    </Field>
+                  </div>
 
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: tokens.spacingVerticalM,
-                  }}
-                >
-                  <Text style={{ fontWeight: tokens.fontWeightSemibold }}>
-                    Preferences
-                  </Text>
-                  <Checkbox label="Enable automated backups" defaultChecked />
-                  <Checkbox label="Send security alerts" defaultChecked />
-                  <Checkbox label="Enable two-factor authentication" />
-                </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: tokens.spacingVerticalM,
+                    }}
+                  >
+                    <Text style={{ fontWeight: tokens.fontWeightSemibold }}>
+                      Preferences
+                    </Text>
+                    <Checkbox label="Enable automated backups" defaultChecked />
+                    <Checkbox label="Send security alerts" defaultChecked />
+                    <Checkbox label="Enable two-factor authentication" />
+                  </div>
 
                   {isSaved && (
                     <div

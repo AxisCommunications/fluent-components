@@ -50,6 +50,7 @@ export interface SuiteHeaderLauncherItem {
 }
 
 export interface SuiteHeaderProps {
+  className?: string;
   productName?: string;
   productIcon?: ReactElement;
   showAppLauncher?: boolean;
@@ -351,6 +352,7 @@ const defaultLauncherOrganizationItems: SuiteHeaderLauncherItem[] = [
 ];
 
 export function SuiteHeader({
+  className,
   productName = "Product name",
   productIcon,
   showAppLauncher = false,
@@ -421,7 +423,11 @@ export function SuiteHeader({
 
   return (
     <header
-      className={[styles.root, !showSearch ? styles.rootWithoutSearch : ""]
+      className={[
+        styles.root,
+        !showSearch ? styles.rootWithoutSearch : "",
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
     >

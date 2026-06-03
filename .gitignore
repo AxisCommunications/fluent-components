@@ -27,3 +27,9 @@ theme/generated
 
 # Jetbrains
 .idea/
+
+# Local machine and generated artifacts
+.tmp/
+.vscode/mcp.json
+examples/storybook-static/
+vela/

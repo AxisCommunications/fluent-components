@@ -1,10 +1,10 @@
+import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 import {
   CameraDome20Regular,
   Devices20Regular,
   DoorStation20Regular,
   Speak20Regular,
 } from "@axiscommunications/fluent-icons";
-import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 import {
   Accordion,
   AccordionHeader,
@@ -22,6 +22,9 @@ import {
   Dropdown,
   Field,
   Input,
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
   Menu,
   MenuItem,
   MenuItemCheckbox,
@@ -31,8 +34,11 @@ import {
   Option,
   SpinButton,
   Switch,
+  TagGroup,
   Text,
+  createPresenceComponent,
   makeStyles,
+  motionTokens,
   tokens,
 } from "@fluentui/react-components";
 import {
@@ -333,7 +339,14 @@ const useStyles = makeStyles({
     },
   },
 
+  titleRow: {
+    display: "flex",
+    alignItems: "center",
+    gap: tokens.spacingHorizontalXS,
+  },
+
   title: {
+    flex: 1,
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
     fontWeight: tokens.fontWeightSemibold,
@@ -364,10 +377,6 @@ const useStyles = makeStyles({
 
   checkboxWrap: {
     display: "inline-flex",
-  },
-
-  chipButton: {
-    borderRadius: tokens.borderRadiusCircular,
   },
 
   accordion: {
@@ -495,6 +504,25 @@ const useStyles = makeStyles({
 
   locationCombobox: {
     width: "100%",
+  },
+});
+
+const SearchBarCollapse = createPresenceComponent({
+  enter: {
+    keyframes: [
+      { opacity: 0, maxHeight: "0px", overflow: "hidden" },
+      { opacity: 1, maxHeight: "40px", overflow: "hidden" },
+    ],
+    duration: motionTokens.durationNormal,
+    easing: motionTokens.curveDecelerateMid,
+  },
+  exit: {
+    keyframes: [
+      { opacity: 1, maxHeight: "40px", overflow: "hidden" },
+      { opacity: 0, maxHeight: "0px", overflow: "hidden" },
+    ],
+    duration: motionTokens.durationFast,
+    easing: motionTokens.curveAccelerateMid,
   },
 });
 
@@ -1636,11 +1664,19 @@ export const InlineFilterDrawer = forwardRef<
     const resolvedMaxWidth = isSmallViewport ? smallViewportMaxWidth : maxWidth;
     const canResize = resizable && !isSmallViewport;
     const [searchValue, setSearchValue] = useState("");
+    const [searchOpen, setSearchOpen] = useState(!title);
     const [internalDeviceTypeFilter, setInternalDeviceTypeFilter] =
       useState<DeviceTypeFilter>(defaultDeviceTypeFilter);
     const [internalDeviceHealthFilter, setInternalDeviceHealthFilter] =
       useState<DeviceHealthFilter>(defaultDeviceHealthFilter);
     const [internalDeviceDeploymentFilter, setInternalDeviceDeploymentFilter] =
+      useState<DeviceDeploymentFilter>(defaultDeviceDeploymentFilter);
+    const [shownDeviceTypes, setShownDeviceTypes] = useState<DeviceTypeFilter>(
+      defaultDeviceTypeFilter
+    );
+    const [shownHealthFilters, setShownHealthFilters] =
+      useState<DeviceHealthFilter>(defaultDeviceHealthFilter);
+    const [shownDeploymentFilters, setShownDeploymentFilters] =
       useState<DeviceDeploymentFilter>(defaultDeviceDeploymentFilter);
     const [internalSelectedNodeIds, setInternalSelectedNodeIds] = useState<
       string[]
@@ -2657,161 +2693,365 @@ export const InlineFilterDrawer = forwardRef<
         style={drawerStyle}
         {...rest}
       >
-        <Text as="h2" className={styles.title}>
-          {title}
-        </Text>
-
-        <div className={styles.searchRow}>
-          <Input
-            className={styles.search}
-            type="search"
-            contentBefore={<SearchRegular />}
-            placeholder={searchPlaceholder}
-            value={searchValue}
-            onChange={(_event, data) => setSearchValue(data.value)}
-          />
-
-          {showDeviceTypeFilter && (
-            <Menu
-              checkedValues={{
-                deviceTypes: activeDeviceTypeFilter,
-                healthStates: activeDeviceHealthFilter,
-                deployments: activeDeviceDeploymentFilter,
+        {title && (
+          <div className={styles.titleRow}>
+            <Text as="h2" className={styles.title}>
+              {title}
+            </Text>
+            <Button
+              icon={<SearchRegular />}
+              appearance={searchOpen ? "subtle" : "secondary"}
+              aria-label={searchOpen ? "Close search" : "Open search"}
+              aria-pressed={searchOpen}
+              onClick={() => {
+                setSearchOpen((prev) => {
+                  if (prev) {
+                    setSearchValue("");
+                  }
+                  return !prev;
+                });
               }}
-              onCheckedValueChange={(_event, data) => {
-                if (data.name === "deviceTypes") {
-                  const next = data.checkedItems as DeviceCategory[];
-                  if (!isDeviceFilterControlled) {
-                    setInternalDeviceTypeFilter(next);
+            />
+            {showDeviceTypeFilter && (
+              <Menu
+                checkedValues={{
+                  deviceTypes: activeDeviceTypeFilter,
+                  healthStates: activeDeviceHealthFilter,
+                  deployments: activeDeviceDeploymentFilter,
+                }}
+                onCheckedValueChange={(_event, data) => {
+                  if (data.name === "deviceTypes") {
+                    const next = data.checkedItems as DeviceCategory[];
+                    if (!isDeviceFilterControlled) {
+                      setInternalDeviceTypeFilter(next);
+                    }
+                    setShownDeviceTypes((prev) => [
+                      ...new Set([...prev, ...next]),
+                    ]);
+                    onDeviceTypeFilterChange?.(next);
                   }
-                  onDeviceTypeFilterChange?.(next);
-                }
 
-                if (data.name === "healthStates") {
-                  const next = data.checkedItems as DeviceHealth[];
-                  if (!isHealthFilterControlled) {
-                    setInternalDeviceHealthFilter(next);
+                  if (data.name === "healthStates") {
+                    const next = data.checkedItems as DeviceHealth[];
+                    if (!isHealthFilterControlled) {
+                      setInternalDeviceHealthFilter(next);
+                    }
+                    setShownHealthFilters((prev) => [
+                      ...new Set([...prev, ...next]),
+                    ]);
+                    onDeviceHealthFilterChange?.(next);
                   }
-                  onDeviceHealthFilterChange?.(next);
-                }
 
-                if (data.name === "deployments") {
-                  const next = data.checkedItems as DeviceDeployment[];
-                  if (!isDeploymentFilterControlled) {
-                    setInternalDeviceDeploymentFilter(next);
+                  if (data.name === "deployments") {
+                    const next = data.checkedItems as DeviceDeployment[];
+                    if (!isDeploymentFilterControlled) {
+                      setInternalDeviceDeploymentFilter(next);
+                    }
+                    setShownDeploymentFilters((prev) => [
+                      ...new Set([...prev, ...next]),
+                    ]);
+                    onDeviceDeploymentFilterChange?.(next);
                   }
-                  onDeviceDeploymentFilterChange?.(next);
-                }
-              }}
-            >
-              <MenuTrigger disableButtonEnhancement>
-                <Button
-                  icon={<FilterRegular />}
-                  appearance="secondary"
-                  aria-label="Open filters"
-                />
-              </MenuTrigger>
-              <MenuPopover>
-                <MenuList>
-                  {DEVICE_FILTER_LABELS.map((option) => (
-                    <MenuItemCheckbox
-                      key={option.value}
-                      name="deviceTypes"
-                      value={option.value}
-                    >
-                      {option.label}
-                    </MenuItemCheckbox>
-                  ))}
-
-                  {DEVICE_HEALTH_FILTER_LABELS.map((option) => (
-                    <MenuItemCheckbox
-                      key={option.value}
-                      name="healthStates"
-                      value={option.value}
-                    >
-                      Health: {option.label}
-                    </MenuItemCheckbox>
-                  ))}
-
-                  {DEVICE_DEPLOYMENT_FILTER_LABELS.map((option) => (
-                    <MenuItemCheckbox
-                      key={option.value}
-                      name="deployments"
-                      value={option.value}
-                    >
-                      Environment: {option.label}
-                    </MenuItemCheckbox>
-                  ))}
-                </MenuList>
-              </MenuPopover>
-            </Menu>
-          )}
-        </div>
-
-        {showDeviceTypeFilter && (
-          <div className={styles.selectedFiltersSection}>
-            {DEVICE_FILTER_LABELS.map(
-              (option) =>
-                activeDeviceTypeFilter.includes(option.value) && (
+                }}
+              >
+                <MenuTrigger disableButtonEnhancement>
                   <Button
-                    key={option.value}
-                    className={styles.chipButton}
-                    appearance="outline"
-                    size="small"
-                    onClick={() => handleDeviceFilterChange(option.value)}
-                  >
-                    {option.label} x
-                  </Button>
-                )
-            )}
+                    icon={<FilterRegular />}
+                    appearance="secondary"
+                    aria-label="Open filters"
+                  />
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    {DEVICE_FILTER_LABELS.map((option) => (
+                      <MenuItemCheckbox
+                        key={option.value}
+                        name="deviceTypes"
+                        value={option.value}
+                      >
+                        {option.label}
+                      </MenuItemCheckbox>
+                    ))}
 
-            {DEVICE_HEALTH_FILTER_LABELS.map(
-              (option) =>
-                activeDeviceHealthFilter.includes(option.value) && (
-                  <Button
-                    key={option.value}
-                    className={styles.chipButton}
-                    appearance="outline"
-                    size="small"
-                    onClick={() => {
-                      const next = activeDeviceHealthFilter.filter(
-                        (value) => value !== option.value
-                      );
-                      if (!isHealthFilterControlled) {
-                        setInternalDeviceHealthFilter(next);
-                      }
-                      onDeviceHealthFilterChange?.(next);
-                    }}
-                  >
-                    Health: {option.label} x
-                  </Button>
-                )
-            )}
+                    {DEVICE_HEALTH_FILTER_LABELS.map((option) => (
+                      <MenuItemCheckbox
+                        key={option.value}
+                        name="healthStates"
+                        value={option.value}
+                      >
+                        Health: {option.label}
+                      </MenuItemCheckbox>
+                    ))}
 
-            {DEVICE_DEPLOYMENT_FILTER_LABELS.map(
-              (option) =>
-                activeDeviceDeploymentFilter.includes(option.value) && (
-                  <Button
-                    key={option.value}
-                    className={styles.chipButton}
-                    appearance="outline"
-                    size="small"
-                    onClick={() => {
-                      const next = activeDeviceDeploymentFilter.filter(
-                        (value) => value !== option.value
-                      );
-                      if (!isDeploymentFilterControlled) {
-                        setInternalDeviceDeploymentFilter(next);
-                      }
-                      onDeviceDeploymentFilterChange?.(next);
-                    }}
-                  >
-                    Env: {option.label} x
-                  </Button>
-                )
+                    {DEVICE_DEPLOYMENT_FILTER_LABELS.map((option) => (
+                      <MenuItemCheckbox
+                        key={option.value}
+                        name="deployments"
+                        value={option.value}
+                      >
+                        Environment: {option.label}
+                      </MenuItemCheckbox>
+                    ))}
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
             )}
           </div>
         )}
+
+        <SearchBarCollapse visible={searchOpen}>
+          <div className={styles.searchRow}>
+            <Input
+              className={styles.search}
+              type="search"
+              contentBefore={<SearchRegular />}
+              placeholder={searchPlaceholder}
+              value={searchValue}
+              onChange={(_event, data) => setSearchValue(data.value)}
+              input={{
+                ref: (el: HTMLInputElement | null) => {
+                  if (el && !el.dataset.focused) {
+                    el.dataset.focused = "true";
+                    el.focus();
+                    el.select();
+                  }
+                },
+              }}
+            />
+            {!title && showDeviceTypeFilter && (
+              <Menu
+                checkedValues={{
+                  deviceTypes: activeDeviceTypeFilter,
+                  healthStates: activeDeviceHealthFilter,
+                  deployments: activeDeviceDeploymentFilter,
+                }}
+                onCheckedValueChange={(_event, data) => {
+                  if (data.name === "deviceTypes") {
+                    const next = data.checkedItems as DeviceCategory[];
+                    if (!isDeviceFilterControlled) {
+                      setInternalDeviceTypeFilter(next);
+                    }
+                    setShownDeviceTypes((prev) => [
+                      ...new Set([...prev, ...next]),
+                    ]);
+                    onDeviceTypeFilterChange?.(next);
+                  }
+
+                  if (data.name === "healthStates") {
+                    const next = data.checkedItems as DeviceHealth[];
+                    if (!isHealthFilterControlled) {
+                      setInternalDeviceHealthFilter(next);
+                    }
+                    setShownHealthFilters((prev) => [
+                      ...new Set([...prev, ...next]),
+                    ]);
+                    onDeviceHealthFilterChange?.(next);
+                  }
+
+                  if (data.name === "deployments") {
+                    const next = data.checkedItems as DeviceDeployment[];
+                    if (!isDeploymentFilterControlled) {
+                      setInternalDeviceDeploymentFilter(next);
+                    }
+                    setShownDeploymentFilters((prev) => [
+                      ...new Set([...prev, ...next]),
+                    ]);
+                    onDeviceDeploymentFilterChange?.(next);
+                  }
+                }}
+              >
+                <MenuTrigger disableButtonEnhancement>
+                  <Button
+                    icon={<FilterRegular />}
+                    appearance="secondary"
+                    aria-label="Open filters"
+                  />
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    {DEVICE_FILTER_LABELS.map((option) => (
+                      <MenuItemCheckbox
+                        key={option.value}
+                        name="deviceTypes"
+                        value={option.value}
+                      >
+                        {option.label}
+                      </MenuItemCheckbox>
+                    ))}
+
+                    {DEVICE_HEALTH_FILTER_LABELS.map((option) => (
+                      <MenuItemCheckbox
+                        key={option.value}
+                        name="healthStates"
+                        value={option.value}
+                      >
+                        Health: {option.label}
+                      </MenuItemCheckbox>
+                    ))}
+
+                    {DEVICE_DEPLOYMENT_FILTER_LABELS.map((option) => (
+                      <MenuItemCheckbox
+                        key={option.value}
+                        name="deployments"
+                        value={option.value}
+                      >
+                        Environment: {option.label}
+                      </MenuItemCheckbox>
+                    ))}
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            )}
+          </div>
+        </SearchBarCollapse>
+
+        {showDeviceTypeFilter &&
+          (shownDeviceTypes.length > 0 ||
+            shownHealthFilters.length > 0 ||
+            shownDeploymentFilters.length > 0) && (
+            <TagGroup
+              className={styles.selectedFiltersSection}
+              onDismiss={(_event, data) => {
+                const value = data.value as string;
+                if (value.startsWith("type:")) {
+                  const category = value.replace("type:", "") as DeviceCategory;
+                  setShownDeviceTypes((prev) =>
+                    prev.filter((v) => v !== category)
+                  );
+                  if (activeDeviceTypeFilter.includes(category)) {
+                    handleDeviceFilterChange(category);
+                  }
+                } else if (value.startsWith("health:")) {
+                  const health = value.replace("health:", "") as DeviceHealth;
+                  setShownHealthFilters((prev) =>
+                    prev.filter((v) => v !== health)
+                  );
+                  if (activeDeviceHealthFilter.includes(health)) {
+                    const next = activeDeviceHealthFilter.filter(
+                      (v) => v !== health
+                    );
+                    if (!isHealthFilterControlled) {
+                      setInternalDeviceHealthFilter(next);
+                    }
+                    onDeviceHealthFilterChange?.(next);
+                  }
+                } else if (value.startsWith("deploy:")) {
+                  const deployment = value.replace(
+                    "deploy:",
+                    ""
+                  ) as DeviceDeployment;
+                  setShownDeploymentFilters((prev) =>
+                    prev.filter((v) => v !== deployment)
+                  );
+                  if (activeDeviceDeploymentFilter.includes(deployment)) {
+                    const next = activeDeviceDeploymentFilter.filter(
+                      (v) => v !== deployment
+                    );
+                    if (!isDeploymentFilterControlled) {
+                      setInternalDeviceDeploymentFilter(next);
+                    }
+                    onDeviceDeploymentFilterChange?.(next);
+                  }
+                }
+              }}
+            >
+              {DEVICE_FILTER_LABELS.map(
+                (option) =>
+                  shownDeviceTypes.includes(option.value) && (
+                    <InteractionTag
+                      key={option.value}
+                      size="small"
+                      appearance="outline"
+                      selected={activeDeviceTypeFilter.includes(option.value)}
+                      value={`type:${option.value}`}
+                    >
+                      <InteractionTagPrimary
+                        hasSecondaryAction
+                        onClick={() => handleDeviceFilterChange(option.value)}
+                      >
+                        {option.label}
+                      </InteractionTagPrimary>
+                      <InteractionTagSecondary
+                        aria-label={`Remove ${option.label}`}
+                      />
+                    </InteractionTag>
+                  )
+              )}
+
+              {DEVICE_HEALTH_FILTER_LABELS.map(
+                (option) =>
+                  shownHealthFilters.includes(option.value) && (
+                    <InteractionTag
+                      key={option.value}
+                      size="small"
+                      appearance="outline"
+                      selected={activeDeviceHealthFilter.includes(option.value)}
+                      value={`health:${option.value}`}
+                    >
+                      <InteractionTagPrimary
+                        hasSecondaryAction
+                        onClick={() => {
+                          const isActive = activeDeviceHealthFilter.includes(
+                            option.value
+                          );
+                          const next = isActive
+                            ? activeDeviceHealthFilter.filter(
+                                (v) => v !== option.value
+                              )
+                            : [...activeDeviceHealthFilter, option.value];
+                          if (!isHealthFilterControlled) {
+                            setInternalDeviceHealthFilter(next);
+                          }
+                          onDeviceHealthFilterChange?.(next);
+                        }}
+                      >
+                        Health: {option.label}
+                      </InteractionTagPrimary>
+                      <InteractionTagSecondary
+                        aria-label={`Remove Health: ${option.label}`}
+                      />
+                    </InteractionTag>
+                  )
+              )}
+
+              {DEVICE_DEPLOYMENT_FILTER_LABELS.map(
+                (option) =>
+                  shownDeploymentFilters.includes(option.value) && (
+                    <InteractionTag
+                      key={option.value}
+                      size="small"
+                      appearance="outline"
+                      selected={activeDeviceDeploymentFilter.includes(
+                        option.value
+                      )}
+                      value={`deploy:${option.value}`}
+                    >
+                      <InteractionTagPrimary
+                        hasSecondaryAction
+                        onClick={() => {
+                          const isActive =
+                            activeDeviceDeploymentFilter.includes(option.value);
+                          const next = isActive
+                            ? activeDeviceDeploymentFilter.filter(
+                                (v) => v !== option.value
+                              )
+                            : [...activeDeviceDeploymentFilter, option.value];
+                          if (!isDeploymentFilterControlled) {
+                            setInternalDeviceDeploymentFilter(next);
+                          }
+                          onDeviceDeploymentFilterChange?.(next);
+                        }}
+                      >
+                        Env: {option.label}
+                      </InteractionTagPrimary>
+                      <InteractionTagSecondary
+                        aria-label={`Remove Env: ${option.label}`}
+                      />
+                    </InteractionTag>
+                  )
+              )}
+            </TagGroup>
+          )}
 
         {renderNodes(filteredNodes)}
 
