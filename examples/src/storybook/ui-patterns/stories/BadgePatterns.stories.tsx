@@ -1,6 +1,5 @@
 import {
   Badge,
-  CounterBadge,
   PresenceBadge,
   Table,
   TableBody,
@@ -246,7 +245,7 @@ function MultipleBadgesTable() {
                     }
                     aria-label={row.connectivity}
                   />
-                  <Badge appearance="outline" color={severityMap[row.severity]}>
+                  <Badge appearance="tint" color={severityMap[row.severity]}>
                     {row.severity}
                   </Badge>
                 </span>
@@ -296,12 +295,15 @@ function CounterBadgeTable() {
             <TableCell>
               <TableCellLayout>
                 {row.alerts > 0 ? (
-                  <CounterBadge
-                    count={row.alerts}
+                  <Badge
                     color="danger"
-                    appearance="filled"
+                    appearance="tint"
+                    shape="circular"
+                    size="medium"
                     aria-label={`${row.alerts} active alerts`}
-                  />
+                  >
+                    {row.alerts}
+                  </Badge>
                 ) : (
                   <span aria-hidden="true">—</span>
                 )}
@@ -310,12 +312,15 @@ function CounterBadgeTable() {
             <TableCell>
               <TableCellLayout>
                 {row.incidents > 0 ? (
-                  <CounterBadge
-                    count={row.incidents}
+                  <Badge
                     color="important"
-                    appearance="filled"
+                    appearance="tint"
+                    shape="circular"
+                    size="medium"
                     aria-label={`${row.incidents} open incidents`}
-                  />
+                  >
+                    {row.incidents}
+                  </Badge>
                 ) : (
                   <span aria-hidden="true">—</span>
                 )}
@@ -461,10 +466,7 @@ function DoAndDontTable() {
                 </TableCell>
                 <TableCell>
                   <TableCellLayout>
-                    <Badge
-                      appearance="outline"
-                      color={statusColorMap[row.status]}
-                    >
+                    <Badge appearance="tint" color={statusColorMap[row.status]}>
                       {row.status}
                     </Badge>
                   </TableCellLayout>
@@ -519,39 +521,6 @@ function DoAndDontTable() {
 }
 
 // ---------------------------------------------------------------------------
-// Story: FilledVsOutlined comparison
-// ---------------------------------------------------------------------------
-
-function FilledVsOutlinedTable() {
-  const styles = useTableStyles();
-  return (
-    <div className={styles.section}>
-      <div>
-        <Text className={styles.sectionLabel}>
-          ✅ Do: Outlined (default) — use when badges appear on many rows.
-          Reduces cognitive load and creates visual balance.
-        </Text>
-        <StatusTable appearance="outline" />
-      </div>
-      <div>
-        <Text className={styles.sectionLabel}>
-          ✅ Do: Tint — use when you want more emphasis than outlined while
-          preserving readable contrast in this theme.
-        </Text>
-        <StatusTable appearance="tint" />
-      </div>
-      <div>
-        <Text className={styles.sectionLabel}>
-          ❌ Don't: Filled — avoid in this yellow brand theme because on-brand
-          foreground colors are black and conflict with the filled badge token.
-        </Text>
-        <StatusTable appearance="filled" />
-      </div>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // Storybook meta
 // ---------------------------------------------------------------------------
 
@@ -568,7 +537,7 @@ They use short text, color, and icons for quick recognition and are placed near 
 
 This story covers how to use Fluent \`Badge\`, \`CounterBadge\`, and \`PresenceBadge\` inside data tables.
 
-In Axis yellow brand themes, prefer outlined and tint badges. Avoid filled badges because
+In Axis we use the **tint** appearance with **circular** shape. Avoid filled badges because
 on-brand black foreground colors conflict with filled badge token usage.
         `,
       },
@@ -580,25 +549,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Use tinted badges when badges appear on many rows. This minimises cognitive load and
+ * Use tinted badges when badges appear on many rows. This minimizes cognitive load and
  * creates visual balance across the table.
  *
  * The status column is **never** the first column — badges are secondary and supportive.
  */
 export const OutlinedStatusBadge: Story = {
-  name: "Status badge (tint — recommended)",
+  name: "Status badge",
   render: () => <StatusTable appearance="tint" />,
-};
-
-/**
- * Choose the badge appearance based on context:
- * - **Outlined** — default for tables; low visual weight when many badges are visible
- * - **Tint** — suitable when you need extra emphasis while preserving readable contrast
- * - **Filled** — don't use in our yellow brand theme due to on-brand foreground token collision
- */
-export const AppearanceComparison: Story = {
-  name: "Outlined + tint (filled is don't)",
-  render: () => <FilledVsOutlinedTable />,
 };
 
 /**
@@ -614,6 +572,7 @@ export const MultipleBadgesPerCell: Story = {
 
 /**
  * `CounterBadge` is best for showing aggregate counts such as open alerts or unread items.
+ * However because of the problem of using on-brand black foreground colors conflicting with filled badge token usage, it is recommended to use the badge component instead. Use medium size and tint appearance with circular shape.
  * Show a neutral placeholder (e.g. `—`) instead of a zero counter to reduce noise.
  */
 export const CounterBadgeInTable: Story = {
