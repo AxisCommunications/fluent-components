@@ -1,109 +1,78 @@
-import { mergeClasses } from "@fluentui/react-components";
+import { Tooltip, mergeClasses } from "@fluentui/react-components";
 import {
-  AppsFilled,
-  AppsRegular,
-  BuildingFilled,
-  BuildingRegular,
-  HomeFilled,
-  HomeRegular,
-  LayerFilled,
-  LayerRegular,
-  MoreHorizontalFilled,
-  MoreHorizontalRegular,
-  PeopleFilled,
-  PeopleRegular,
+  PanelLeftContractRegular,
+  PanelLeftExpandRegular,
 } from "@fluentui/react-icons";
 import React from "react";
 
-import { useSideNavigationStyles } from "./side-navigation.styles.js";
+import { SideNavigationItemRow } from "./side-navigation-item.js";
 import {
-  SideNavigationItem,
-  SideNavigationProps,
-} from "./side-navigation.types.js";
+  DEFAULT_EXPANDED_WIDTH,
+  INDICATOR_HEIGHT,
+  RAIL_WIDTH,
+  sideNavigationClassNames as classNames,
+  useSideNavigationStyles,
+} from "./side-navigation.styles.js";
+import { SideNavigationProps } from "./side-navigation.types.js";
+import { useControllableState } from "./use-controllable-state.js";
 
-const defaultItems: SideNavigationItem[] = [
-  {
-    id: "home",
-    label: "Home",
-    icon: <HomeRegular fontSize={24} />,
-    selectedIcon: <HomeFilled fontSize={24} />,
-  },
-  {
-    id: "workspaces",
-    label: "Workspaces",
-    icon: <AppsRegular fontSize={24} />,
-    selectedIcon: <AppsFilled fontSize={24} />,
-  },
-  {
-    id: "onelake",
-    label: "OneLake",
-    icon: <LayerRegular fontSize={24} />,
-    selectedIcon: <LayerFilled fontSize={24} />,
-  },
-  {
-    id: "realtime",
-    label: "Real-Time",
-    icon: <PeopleRegular fontSize={24} />,
-    selectedIcon: <PeopleFilled fontSize={24} />,
-  },
-  {
-    id: "monitor",
-    label: "Monitor",
-    icon: <BuildingRegular fontSize={24} />,
-    selectedIcon: <BuildingFilled fontSize={24} />,
-  },
-  {
-    id: "workloads",
-    label: "Workloads",
-    icon: <AppsRegular fontSize={24} />,
-    selectedIcon: <AppsFilled fontSize={24} />,
-  },
-  {
-    id: "workspace",
-    label: "Contoso Workspace",
-    icon: <BuildingRegular fontSize={24} />,
-    selectedIcon: <BuildingFilled fontSize={24} />,
-  },
-  {
-    id: "more",
-    label: "More",
-    icon: <MoreHorizontalRegular fontSize={24} />,
-    selectedIcon: <MoreHorizontalFilled fontSize={24} />,
-  },
-];
-
-const defaultBottomItem: SideNavigationItem = {
-  id: "site",
-  label: "Site",
-  icon: <AppsRegular fontSize={24} />,
-};
-
+/**
+ * A vertical navigation rail for Fluent UI v9 applications. Renders a compact
+ * icon rail that can expand to reveal labels and nested sub-items, with an
+ * animated indicator tracking the selected item.
+ *
+ * Selection and the expanded state can each be used in a controlled or
+ * uncontrolled way. Sub-item groups are managed internally and seeded with
+ * {@link SideNavigationProps.defaultOpenItemIds}.
+ */
 export const SideNavigation = React.forwardRef<
   HTMLElement,
   SideNavigationProps
 >((props, ref) => {
   const {
     className,
-    items = defaultItems,
-    selectedItemId = defaultItems[0]?.id,
+    style,
+    items,
+    footerItems,
+    selectedItemId,
+    defaultSelectedItemId,
     onSelect,
-    bottomItem = defaultBottomItem,
-    mode = "rail",
+    expanded: expandedProp,
+    defaultExpanded = false,
+    onExpandedChange,
+    collapsible = true,
+    defaultOpenItemIds,
+    expandedWidth = DEFAULT_EXPANDED_WIDTH,
+    expandLabel = "Expand navigation",
+    collapseLabel = "Collapse navigation",
     ...rest
   } = props;
-  const { styles, rootStyle } = useSideNavigationStyles();
-  const isHidden = mode === "hidden";
-  const rootRef = React.useRef<HTMLElement | null>(null);
-  const itemRefs = React.useRef<Record<string, HTMLDivElement | null>>({});
-  const [selectedIndicatorOffset, setSelectedIndicatorOffset] = React.useState<
-    number | null
-  >(null);
 
-  const hubItems = items.slice(0, 6);
-  const workspaceItem = items[6];
-  const overflowItem = items[7];
-  const isWorkspaceSelected = workspaceItem?.id === selectedItemId;
-  const isOverflowSelected = overflowItem?.id === selectedItemId;
+  const styles = useSideNavigationStyles();
+
+  const rootRef = React.useRef<HTMLElement | null>(null);
+  const itemRefs = React.useRef<Map<string, HTMLElement>>(new Map());
+  const [indicatorOffset, setIndicatorOffset] = React.useState<number | null>(
+    null
+  );
+
+  const [selectedItem, setSelectedItem] = useControllableState<
+    string | undefined
+  >({
+    controlledValue: selectedItemId,
+    defaultValue: defaultSelectedItemId,
+    onChange: onSelect as ((value: string | undefined) => void) | undefined,
+  });
+
+  const [expanded, setExpanded] = useControllableState<boolean>({
+    controlledValue: expandedProp,
+    defaultValue: defaultExpanded,
+    onChange: onExpandedChange,
+  });
+
+  const [openItemIds, setOpenItemIds] = React.useState<string[]>(
+    () => defaultOpenItemIds ?? []
+  );
 
   const setRootRef = React.useCallback(
     (node: HTMLElement | null) => {
@@ -118,180 +87,142 @@ export const SideNavigation = React.forwardRef<
     [ref]
   );
 
-  const setItemRef = React.useCallback(
-    (itemId: string) => (node: HTMLDivElement | null) => {
-      itemRefs.current[itemId] = node;
+  const registerRef = React.useCallback(
+    (id: string) => (node: HTMLElement | null) => {
+      if (node) {
+        itemRefs.current.set(id, node);
+      } else {
+        itemRefs.current.delete(id);
+      }
     },
     []
   );
 
-  const updateSelectedIndicatorOffset = React.useCallback(() => {
-    if (!selectedItemId) {
-      setSelectedIndicatorOffset(null);
-      return;
-    }
-
+  const updateIndicator = React.useCallback(() => {
     const rootElement = rootRef.current;
-    const selectedItemElement = itemRefs.current[selectedItemId];
+    const selectedElement = selectedItem
+      ? itemRefs.current.get(selectedItem)
+      : undefined;
 
-    if (!rootElement || !selectedItemElement) {
-      setSelectedIndicatorOffset(null);
+    if (!rootElement || !selectedElement) {
+      setIndicatorOffset(null);
       return;
     }
 
     const rootRect = rootElement.getBoundingClientRect();
-    const selectedItemRect = selectedItemElement.getBoundingClientRect();
-    const indicatorHeight = 16;
-    const centeredOffset =
-      selectedItemRect.top -
+    const selectedRect = selectedElement.getBoundingClientRect();
+    const offset =
+      selectedRect.top -
       rootRect.top +
-      (selectedItemRect.height - indicatorHeight) / 2;
+      (selectedRect.height - INDICATOR_HEIGHT) / 2;
 
-    setSelectedIndicatorOffset(centeredOffset);
-  }, [selectedItemId]);
+    setIndicatorOffset(offset);
+  }, [selectedItem]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-measure the indicator after layout changes (expand, open groups, items)
   React.useLayoutEffect(() => {
-    updateSelectedIndicatorOffset();
-  }, [updateSelectedIndicatorOffset]);
+    updateIndicator();
+  }, [updateIndicator, expanded, openItemIds, items, footerItems]);
 
   React.useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
 
-    window.addEventListener("resize", updateSelectedIndicatorOffset);
+    window.addEventListener("resize", updateIndicator);
 
     return () => {
-      window.removeEventListener("resize", updateSelectedIndicatorOffset);
+      window.removeEventListener("resize", updateIndicator);
     };
-  }, [updateSelectedIndicatorOffset]);
+  }, [updateIndicator]);
 
-  const handleSelect = React.useCallback(
-    (itemId: string) => {
-      onSelect?.(itemId);
-    },
-    [onSelect]
-  );
+  const handleToggleExpanded = React.useCallback(() => {
+    setExpanded(!expanded);
+  }, [expanded, setExpanded]);
+
+  const handleToggleOpen = React.useCallback((id: string) => {
+    setOpenItemIds((current) =>
+      current.includes(id)
+        ? current.filter((openId) => openId !== id)
+        : [...current, id]
+    );
+  }, []);
+
+  const toggleLabel = expanded ? collapseLabel : expandLabel;
 
   return (
-    <aside
+    <nav
       ref={setRootRef}
       className={mergeClasses(
-        rootStyle,
-        isHidden ? styles.rootHidden : undefined,
+        classNames.root,
+        styles.root,
+        expanded && classNames.expanded,
         className
       )}
+      style={{ ...style, width: expanded ? expandedWidth : RAIL_WIDTH }}
       {...rest}
     >
-      {selectedIndicatorOffset !== null ? (
+      {indicatorOffset !== null ? (
         <span
-          className={styles.selectedIndicator}
-          style={{ transform: `translateY(${selectedIndicatorOffset}px)` }}
+          className={mergeClasses(
+            classNames.selectedIndicator,
+            styles.selectedIndicator
+          )}
+          style={{ transform: `translateY(${indicatorOffset}px)` }}
         />
       ) : null}
 
-      <div className={styles.topGroup}>
-        {hubItems.map((item) => {
-          const isSelected = item.id === selectedItemId;
+      {collapsible ? (
+        <Tooltip content={toggleLabel} relationship="label" withArrow>
+          <button
+            type="button"
+            className={mergeClasses(classNames.toggle, styles.toggle)}
+            onClick={handleToggleExpanded}
+            aria-label={toggleLabel}
+            aria-expanded={expanded}
+          >
+            {expanded ? (
+              <PanelLeftContractRegular />
+            ) : (
+              <PanelLeftExpandRegular />
+            )}
+          </button>
+        </Tooltip>
+      ) : null}
 
-          return (
-            <div
+      <div className={mergeClasses(classNames.list, styles.list)}>
+        {items.map((item) => (
+          <SideNavigationItemRow
+            key={item.id}
+            item={item}
+            expanded={expanded}
+            selectedItemId={selectedItem}
+            open={openItemIds.includes(item.id)}
+            onSelect={setSelectedItem}
+            onToggleOpen={handleToggleOpen}
+            registerRef={registerRef}
+          />
+        ))}
+      </div>
+
+      {footerItems && footerItems.length > 0 ? (
+        <div className={mergeClasses(classNames.footer, styles.footer)}>
+          <div className={mergeClasses(classNames.divider, styles.divider)} />
+          {footerItems.map((item) => (
+            <SideNavigationItemRow
               key={item.id}
-              className={styles.itemContainer}
-              ref={setItemRef(item.id)}
-            >
-              <button
-                type="button"
-                className={mergeClasses(
-                  styles.item,
-                  isSelected ? styles.selectedItem : undefined
-                )}
-                onClick={() => {
-                  handleSelect(item.id);
-                }}
-                aria-current={isSelected ? "page" : undefined}
-                aria-label={item.label}
-                title={item.label}
-              >
-                {isSelected ? (item.selectedIcon ?? item.icon) : item.icon}
-                <span className={styles.itemLabel}>{item.label}</span>
-              </button>
-            </div>
-          );
-        })}
-      </div>
-
-      {workspaceItem ? (
-        <div className={styles.workspaceSection}>
-          <div className={styles.divider} />
-          <div
-            className={styles.itemContainer}
-            ref={setItemRef(workspaceItem.id)}
-          >
-            <button
-              type="button"
-              className={mergeClasses(
-                styles.item,
-                isWorkspaceSelected ? styles.selectedItem : undefined
-              )}
-              onClick={() => {
-                handleSelect(workspaceItem.id);
-              }}
-              aria-current={isWorkspaceSelected ? "page" : undefined}
-              aria-label={workspaceItem.label}
-              title={workspaceItem.label}
-            >
-              {isWorkspaceSelected
-                ? (workspaceItem.selectedIcon ?? workspaceItem.icon)
-                : workspaceItem.icon}
-              <span className={styles.itemLabel}>{workspaceItem.label}</span>
-            </button>
-          </div>
+              item={item}
+              expanded={expanded}
+              selectedItemId={selectedItem}
+              open={openItemIds.includes(item.id)}
+              onSelect={setSelectedItem}
+              onToggleOpen={handleToggleOpen}
+              registerRef={registerRef}
+            />
+          ))}
         </div>
       ) : null}
-
-      {overflowItem ? (
-        <div className={styles.overflowSection}>
-          <div
-            className={styles.itemContainer}
-            ref={setItemRef(overflowItem.id)}
-          >
-            <button
-              type="button"
-              className={mergeClasses(
-                styles.item,
-                isOverflowSelected ? styles.selectedItem : undefined
-              )}
-              onClick={() => {
-                handleSelect(overflowItem.id);
-              }}
-              aria-current={isOverflowSelected ? "page" : undefined}
-              aria-label={overflowItem.label}
-              title={overflowItem.label}
-            >
-              {isOverflowSelected
-                ? (overflowItem.selectedIcon ?? overflowItem.icon)
-                : overflowItem.icon}
-              <span className={styles.itemLabel}>{overflowItem.label}</span>
-            </button>
-          </div>
-        </div>
-      ) : null}
-
-      <div className={styles.bottomSection}>
-        <button
-          type="button"
-          className={styles.bottomItem}
-          onClick={() => {
-            handleSelect(bottomItem.id);
-          }}
-          aria-label={bottomItem.label}
-          title={bottomItem.label}
-        >
-          {bottomItem.icon}
-          <span className={styles.itemLabel}>{bottomItem.label}</span>
-        </button>
-      </div>
-    </aside>
+    </nav>
   );
 });
+SideNavigation.displayName = "SideNavigation";

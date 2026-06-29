@@ -1,3 +1,4 @@
+import { MainEmptyView } from "@axiscommunications/fluent-empty-view";
 import { makeStyles } from "@fluentui/react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 import { DialogEmptyViewExample } from "../../stories/empty-view/examples/dialog";
@@ -13,6 +14,7 @@ const useStyles = makeStyles({
 
 const meta: Meta = {
   title: "Components/Empty View",
+  component: MainEmptyView,
   parameters: {
     layout: "fullscreen",
   },

@@ -126,6 +126,18 @@ export const routeMap: Map<TRoute, TRouteData> = new Map([
     },
   ],
   [
+    routes.AdvancedDataGrid,
+    {
+      label: "Advanced data grid",
+      group: RouteGroup.STORY,
+      category: RouteCategory.COMPONENT,
+      ghInfo: {
+        url: "https://github.com/AxisCommunications/fluent-components/pkgs/npm/fluent-advanced-data-grid",
+        packageName: "@axiscommunications/fluent-advanced-data-grid",
+      },
+    },
+  ],
+  [
     routes.TableUtilities,
     {
       label: "Table",

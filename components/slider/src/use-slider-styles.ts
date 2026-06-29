@@ -226,14 +226,16 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
         [offsetDirection]: `${trackOffset}%`,
       };
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
+  // Recompute the section track gradient whenever the selected value(s) move or
+  // the section configuration (range, sections, direction) changes.
   const sectionStyles = useMemo(() => {
     /** trackColorGradient */
     let tcg;
     let thumbColor;
 
     if (hasSectionLabelsAndColors) {
-      const { min, max } = state;
+      const min = state.min;
+      const max = state.max;
       const rangeStart = values[0];
       const rangeEnd =
         values.length > 1 ? values[values.length - 1] : undefined;
@@ -316,7 +318,14 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
 
       return { trackColorGradient: tcg, thumbColor };
     }
-  }, [values]);
+  }, [
+    values,
+    hasSectionLabelsAndColors,
+    rtl,
+    state.min,
+    state.max,
+    state.sectionLabels,
+  ]);
 
   state.thumb = {
     ...state.thumb,

@@ -4,12 +4,18 @@ import { DataTable } from "../components/composites/DataTable";
 /**
  * Data Table Component
  *
- * Composable table structure with Root/Header/Row pattern.
+ * Composable table structure with a Root/Header/Row/Cell pattern.
  *
  * **Fluent Guidelines Applied:**
  * - Semantic `<table>` structure with proper `<thead>` and `<tbody>`
  * - Token-driven spacing, colors, and borders
  * - Hover states for row interactivity
+ *
+ * **Compositional API:**
+ * - `DataTable.Root` — table wrapper. Props: `children`, `className`.
+ * - `DataTable.Header` — header row. Props: `columns: Array<{ label: string; width?: string }>`, `className`.
+ * - `DataTable.Row` — data row. Props: `cells: ReactNode[]`, `onRowAction?: () => void`, `className`.
+ * - `DataTable.Cell` — single cell. Props: `children`, `align?: 'left' | 'center' | 'right'`, `className`.
  */
 const meta: Meta<typeof DataTable.Root> = {
   title: "UI patterns/Table Patterns",
@@ -17,6 +23,25 @@ const meta: Meta<typeof DataTable.Root> = {
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
+    docs: {
+      description: {
+        component:
+          "A composable table built from `DataTable.Root`, `DataTable.Header`, `DataTable.Row`, and `DataTable.Cell`. The `argTypes` below describe `DataTable.Root`; see the component JSDoc for the props of each sub-component.",
+      },
+    },
+  },
+  argTypes: {
+    children: {
+      control: false,
+      description:
+        "Table content — typically a `DataTable.Header` followed by a `<tbody>` of `DataTable.Row` elements.",
+      table: { type: { summary: "ReactNode" } },
+    },
+    className: {
+      control: "text",
+      description: "Optional CSS class applied to the root `<table>` element.",
+      table: { type: { summary: "string | undefined" } },
+    },
   },
 };
 

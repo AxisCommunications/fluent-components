@@ -1,4 +1,14 @@
+import {
+  Card,
+  Field,
+  Input,
+  Textarea,
+  makeStyles,
+  tokens,
+} from "@fluentui/react-components";
+import { ArrowResetRegular, SaveRegular } from "@fluentui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react";
+import { useMemo, useState } from "react";
 import { FullPageHeader } from "../components/composites/FullPageHeader";
 
 /**
@@ -28,11 +38,27 @@ import { FullPageHeader } from "../components/composites/FullPageHeader";
  * In responsive designs, when space is limited, the breadcrumb component smartly collapses its
  * central content into a "More" menu, as detailed in the
  * [breadcrumb documentation](https://react.fluentui.dev/?path=/docs/components-breadcrumb--docs).
- * Tabs then adjust to fit the available space.
+ * Tabs remain visible in a horizontal strip and can be scrolled when needed.
  *
- * When even less space is available the tabs will break onto a new line and position themselves
- * below the breadcrumbs or title. This ensures a clean layout that adapts seamlessly to different
- * screen sizes, enhancing user navigation.
+ * When space is tighter and header actions are present, tabs can move onto a new line below the
+ * breadcrumb/title row while still remaining horizontally scrollable.
+ *
+ * ## Page-level actions (Save / Reset)
+ *
+ * For pages that do **not** auto-save on input — settings and configuration forms, for example —
+ * the commit controls live in the header `actions` slot rather than at the bottom of the form.
+ * The recommended pattern mirrors common form behaviour:
+ *
+ * - **Pristine (no edits):** Save is `disabled` and rendered as a `secondary` button; Reset is hidden
+ *   or disabled because there is nothing to discard.
+ * - **Dirty (unsaved changes):** Save becomes the `primary` action to signal the pending commit, and
+ *   Reset is enabled so the user can discard their changes and return to the last saved state.
+ * - **After save:** the form is pristine again, so Save returns to disabled/secondary and Reset is
+ *   disabled.
+ *
+ * See the `FormPageWithSaveActions` story for a working example of this dirty-state behaviour.
+ *
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=79-383"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof FullPageHeader> = {
   title: "UI patterns/Full Page Header",
@@ -40,6 +66,100 @@ const meta: Meta<typeof FullPageHeader> = {
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
+  },
+  argTypes: {
+    breadcrumbs: {
+      control: "object",
+      description:
+        "Breadcrumb trail shown above the title. Each item supports a `label` and an optional `onClick`; the trail collapses into a 'More' menu when space is limited.",
+      table: {
+        type: {
+          summary: "Array<{ label: string; onClick?: () => void }>",
+        },
+      },
+    },
+    title: {
+      control: "text",
+      description: "Main page title shown in the header row.",
+      table: {
+        type: { summary: "string" },
+      },
+    },
+    icon: {
+      control: false,
+      description: "Optional icon rendered next to the title.",
+      table: {
+        type: { summary: "ReactNode" },
+      },
+    },
+    status: {
+      control: "object",
+      description:
+        "Optional status line under the title. Supports `label`, optional `meta` text, optional `icon`, and a `color` ('danger' | 'warning' | 'success' | 'info' | 'neutral').",
+      table: {
+        type: {
+          summary:
+            "{ label: string; meta?: string; icon?: ReactElement | null; color?: 'danger' | 'warning' | 'success' | 'info' | 'neutral' } | undefined",
+        },
+      },
+    },
+    actions: {
+      control: "object",
+      description:
+        "Optional right-aligned action buttons. Each action supports `label`, optional `onClick`, optional `icon`, an `appearance`, and a `disabled` flag. Use these for page-level commands such as Save/Reset on forms that do not auto-save: keep Save `disabled` while the form is pristine and promote it to `appearance: 'primary'` once there are unsaved changes.",
+      table: {
+        type: {
+          summary:
+            "Array<{ label: string; onClick?: () => void; icon?: ReactElement | null; appearance?: HeaderActionAppearance; disabled?: boolean }> | undefined",
+        },
+      },
+    },
+    tabs: {
+      control: "object",
+      description:
+        "Optional tab strip shown below the header row. Each tab supports `value`, `label`, and an optional `disabled` flag.",
+      table: {
+        type: {
+          summary:
+            "Array<{ value: string; label: string; disabled?: boolean }> | undefined",
+        },
+      },
+    },
+    selectedTab: {
+      control: "text",
+      description: "Controlled selected tab value.",
+      table: {
+        type: { summary: "string | undefined" },
+      },
+    },
+    defaultSelectedTab: {
+      control: "text",
+      description: "Default selected tab value for uncontrolled usage.",
+      table: {
+        type: { summary: "string | undefined" },
+      },
+    },
+    onTabSelect: {
+      action: "onTabSelect",
+      description: "Callback invoked with the `value` of the selected tab.",
+      table: {
+        type: { summary: "(value: string) => void" },
+      },
+    },
+    ariaLabel: {
+      control: "text",
+      description: "Accessible label for the breadcrumb navigation landmark.",
+      table: {
+        type: { summary: "string | undefined" },
+      },
+    },
+    className: {
+      control: "text",
+      description: "Optional CSS class applied to the root element.",
+      table: {
+        type: { summary: "string | undefined" },
+      },
+    },
   },
 };
 
@@ -96,7 +216,7 @@ export const Minimal: Story = {
 
 /**
  * When space is limited, the breadcrumb collapses its central content into a
- * "More" menu and tabs adjust to fit the available space.
+ * "More" menu and tabs stay visible in a horizontally scrollable strip.
  */
 export const ResponsiveBreadcrumbOverflow: Story = {
   decorators: [
@@ -140,7 +260,7 @@ export const ResponsiveBreadcrumbOverflow: Story = {
 
 /**
  * When even less space is available, the tabs break onto a new line and
- * position themselves below the breadcrumbs or title.
+ * position themselves below the breadcrumbs or title while staying scrollable.
  * This works both with and without action buttons.
  */
 export const ResponsiveStackedTabs: Story = {
@@ -214,5 +334,136 @@ export const ResponsiveStackedTabsNoActions: Story = {
       { value: "fourth", label: "Fourth Tab" },
     ],
     defaultSelectedTab: "first",
+  },
+};
+
+const useFormStyles = makeStyles({
+  page: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalL,
+    maxWidth: "640px",
+  },
+  formCard: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalL,
+    padding: tokens.spacingHorizontalXL,
+  },
+  formStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalM,
+  },
+});
+
+interface ProfileFormValues {
+  name: string;
+  email: string;
+  description: string;
+}
+
+const INITIAL_PROFILE: ProfileFormValues = {
+  name: "Stockholm Office",
+  email: "ops@stockholm.example.com",
+  description: "Primary monitoring site for the Nordic region.",
+};
+
+/**
+ * Settings/configuration pages that do not auto-save expose their commit
+ * controls in the header `actions` slot. This interactive example demonstrates
+ * the full dirty-state lifecycle:
+ *
+ * - Edit any field to mark the form dirty — **Save** promotes itself to the
+ *   `primary` appearance and **Reset** becomes enabled.
+ * - **Reset** discards edits and returns the form to its last saved state,
+ *   which makes both actions inactive again.
+ * - **Save** persists the values (here, into the "saved" baseline), after which
+ *   the form is pristine and Save drops back to a disabled `secondary` button.
+ */
+export const FormPageWithSaveActions: Story = {
+  render: () => {
+    const styles = useFormStyles();
+    const [saved, setSaved] = useState<ProfileFormValues>(INITIAL_PROFILE);
+    const [draft, setDraft] = useState<ProfileFormValues>(INITIAL_PROFILE);
+
+    const isDirty = useMemo(
+      () =>
+        draft.name !== saved.name ||
+        draft.email !== saved.email ||
+        draft.description !== saved.description,
+      [draft, saved]
+    );
+
+    const updateField = (field: keyof ProfileFormValues) => (value: string) =>
+      setDraft((prev) => ({ ...prev, [field]: value }));
+
+    return (
+      <div className={styles.page}>
+        <FullPageHeader
+          breadcrumbs={[
+            { label: "Administration", onClick: () => {} },
+            { label: "Sites" },
+          ]}
+          title="Site Profile"
+          status={
+            isDirty
+              ? {
+                  label: "Unsaved changes",
+                  meta: "Save to apply your edits",
+                  color: "warning",
+                }
+              : {
+                  label: "Saved",
+                  meta: "All changes applied",
+                  color: "success",
+                }
+          }
+          actions={[
+            {
+              label: "Reset",
+              icon: <ArrowResetRegular />,
+              appearance: "secondary",
+              disabled: !isDirty,
+              onClick: () => setDraft(saved),
+            },
+            {
+              label: "Save",
+              icon: <SaveRegular />,
+              appearance: isDirty ? "primary" : "secondary",
+              disabled: !isDirty,
+              onClick: () => setSaved(draft),
+            },
+          ]}
+        />
+
+        <Card className={styles.formCard}>
+          <div className={styles.formStack}>
+            <Field label="Site name" required>
+              <Input
+                value={draft.name}
+                onChange={(_e, data) => updateField("name")(data.value)}
+              />
+            </Field>
+
+            <Field label="Contact email">
+              <Input
+                type="email"
+                value={draft.email}
+                onChange={(_e, data) => updateField("email")(data.value)}
+              />
+            </Field>
+
+            <Field label="Description">
+              <Textarea
+                resize="vertical"
+                value={draft.description}
+                onChange={(_e, data) => updateField("description")(data.value)}
+              />
+            </Field>
+          </div>
+        </Card>
+      </div>
+    );
   },
 };

@@ -130,6 +130,9 @@ export function NavigationMenu({ ...rest }) {
               Side navigation
             </NavSubItem>
             <NavSubItem value={routes.EmptyView}>Empty view</NavSubItem>
+            <NavSubItem value={routes.AdvancedDataGrid}>
+              Advanced data grid
+            </NavSubItem>
           </NavSubItemGroup>
         </NavCategory>
 

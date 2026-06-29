@@ -5,9 +5,17 @@ import { useExampleWithNavigation } from "../../components/story/story.utils";
 import { getGhInfoByKey } from "../../routing/route-map";
 import { routes } from "../../routing/routes";
 import {
+  CollapsibleSideNavigationExample,
+  CollapsibleSideNavigationExampleAsString,
+} from "./examples/collapsible-side-navigation-example";
+import {
   CompactSideNavigationExample,
   CompactSideNavigationExampleAsString,
 } from "./examples/compact-side-navigation-example";
+import {
+  IconOnlySideNavigationExample,
+  IconOnlySideNavigationExampleAsString,
+} from "./examples/icon-only-side-navigation-example";
 
 const useStyles = makeStyles({
   example: {
@@ -17,10 +25,22 @@ const useStyles = makeStyles({
 
 const examples: pageData[] = [
   {
-    title: "Compact side navigation",
+    title: "Collapsible side navigation",
     anchor: "CompactSideNavigationExample",
     example: <CompactSideNavigationExample />,
     codeString: CompactSideNavigationExampleAsString,
+  },
+  {
+    title: "Permanent icon rail",
+    anchor: "IconOnlySideNavigationExample",
+    example: <IconOnlySideNavigationExample />,
+    codeString: IconOnlySideNavigationExampleAsString,
+  },
+  {
+    title: "Expanded with sub-menus",
+    anchor: "CollapsibleSideNavigationExample",
+    example: <CollapsibleSideNavigationExample />,
+    codeString: CollapsibleSideNavigationExampleAsString,
   },
 ];
 

@@ -1,7 +1,16 @@
 export { SideNavigation } from "./side-navigation.js";
-export { useSideNavigationStyles } from "./side-navigation.styles.js";
+export { SideNavigationItemRow } from "./side-navigation-item.js";
+export type { SideNavigationItemRowProps } from "./side-navigation-item.js";
+export {
+  sideNavigationClassNames,
+  useSideNavigationStyles,
+} from "./side-navigation.styles.js";
+export type {
+  SideNavigationSlot,
+  SideNavigationStyles,
+} from "./side-navigation.styles.js";
 export type {
   SideNavigationItem,
-  SideNavigationMode,
   SideNavigationProps,
+  SideNavigationSubItem,
 } from "./side-navigation.types.js";

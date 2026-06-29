@@ -18,7 +18,6 @@
  * - FullPageHeader: Page header with optional status, actions, and tabs
  * - SectionHeader: Secondary header for section context beneath the page header
  * - PageHeader: Top section with breadcrumb, title, actions
- * - FilterBar: Horizontal filters, sort, and search
  * - EmptyState: Hero message for empty content areas
  * - DataTable: Composable table with Root/Header/Row pattern
  * - Pagination: Page navigation with item range display
@@ -32,7 +31,6 @@ export {
   type FileUploadProps,
 } from "./FileUpload";
 export { StatCard, type StatCardProps } from "./StatCard";
-export { InfoCard, type InfoCardProps } from "./InfoCard";
 export {
   BreadcrumbHeader,
   type BreadcrumbHeaderProps,
@@ -50,7 +48,14 @@ export {
   type SectionHeaderAction,
 } from "./SectionHeader";
 export { PageHeader, type PageHeaderProps } from "./PageHeader";
-export { FilterBar, type FilterBarProps } from "./FilterBar";
+export {
+  FilterChip,
+  FilterChipGroup,
+  type FilterChipProps,
+  type FilterChipGroupProps,
+  type FilterChipSize,
+  type FilterChipAppearance,
+} from "./FilterChip";
 export {
   FilterToolbar,
   type FilterToolbarProps,
@@ -59,18 +64,15 @@ export {
 } from "./FilterToolbar";
 export {
   InlineFilterDrawer,
+  ORGANISATION_FILTER_GROUPS,
   ORGANISATION_NAVIGATION_TREE,
-  type DeviceCategory,
-  type DeviceDeployment,
-  type DeviceDeploymentFilter,
-  type DeviceHealth,
-  type DeviceHealthFilter,
-  type DeviceTypeFilter,
+  type FilterGroup,
+  type FilterTag,
   type InlineFilterDrawerProps,
   type OrganisationNode,
   type OrganisationNodeType,
+  type TagFilter,
 } from "./InlineFilterDrawer";
-export { EmptyState, type EmptyStateProps } from "./EmptyState";
 export {
   DataTable,
   DataTableRoot,
@@ -83,3 +85,9 @@ export {
   type DataTableCellProps,
 } from "./DataTable";
 export { Pagination, type PaginationProps } from "./Pagination";
+export {
+  Wizard,
+  type WizardProps,
+  type WizardStep,
+  type WizardNavigationMode,
+} from "./Wizard";

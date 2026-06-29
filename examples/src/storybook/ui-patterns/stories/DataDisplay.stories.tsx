@@ -10,6 +10,8 @@ import { StatCard } from "../components/composites/StatCard";
  * - Grid layout with proper content hierarchy
  * - Color-coded trends (green=up, red=down, neutral=same)
  * - Token-driven spacing and text sizes
+ *
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=59-160"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof StatCard> = {
   title: "UI patterns/Data Display",
@@ -21,24 +23,40 @@ const meta: Meta<typeof StatCard> = {
   argTypes: {
     title: {
       control: "text",
-      description: "Card title",
+      description: "Card title / label.",
+      table: { type: { summary: "string" } },
     },
     value: {
       control: "text",
-      description: "Main metric value",
+      description: 'Main metric value (e.g., "1,234").',
+      table: { type: { summary: "string | number" } },
     },
     change: {
       control: "text",
-      description: 'Change indicator (e.g., "+12%")',
+      description: 'Optional change indicator (e.g., "+12%" or "-5%").',
+      table: { type: { summary: "string | undefined" } },
     },
     trend: {
       control: "radio",
       options: ["up", "down", "neutral"],
-      description: "Trend direction for color coding",
+      description:
+        "Trend direction used for color coding (up = positive, down = negative, neutral = no change).",
+      table: { type: { summary: "'up' | 'down' | 'neutral' | undefined" } },
+    },
+    icon: {
+      control: false,
+      description: "Optional icon or decorator shown in the card header.",
+      table: { type: { summary: "ReactNode" } },
     },
     description: {
       control: "text",
-      description: "Optional description text",
+      description: "Optional supporting description text.",
+      table: { type: { summary: "string | undefined" } },
+    },
+    className: {
+      control: "text",
+      description: "Optional CSS class applied to the root element.",
+      table: { type: { summary: "string | undefined" } },
     },
   },
 };

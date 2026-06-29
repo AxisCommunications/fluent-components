@@ -1,14 +1,13 @@
 import {
   Button,
-  Dropdown,
-  Option,
   Skeleton,
+  SpinButton,
   Text,
   makeStyles,
   tokens,
 } from "@fluentui/react-components";
 import { ChevronLeftRegular, ChevronRightRegular } from "@fluentui/react-icons";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 
 export interface PaginationProps {
   /** Boolean to render either skeleton or the actual pagination component */
@@ -93,7 +92,7 @@ const useStyles = makeStyles({
   },
 
   pageInput: {
-    width: "fit-content",
+    width: "56px",
     minWidth: "unset",
     flexShrink: 0,
   },
@@ -167,16 +166,33 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
   ) => {
     const styles = useStyles();
 
+    // Local input value so the user can type freely before committing
+    const [pageInputValue, setPageInputValue] = useState(String(currentPage));
+
+    // Keep the input in sync when the page changes externally
+    useEffect(() => {
+      setPageInputValue(String(currentPage));
+    }, [currentPage]);
+
     // Interpolate row counter message
     const rowMsg = rowCounterMsg
       .replace("X", String(firstPageRow))
       .replace("Y", String(lastPageRow))
       .replace("Z", String(total));
 
-    const handleOptionSelect = (_: unknown, data: { optionValue?: string }) => {
-      const page = parseInt(data.optionValue ?? "", 10);
-      if (!Number.isNaN(page) && page >= 1 && page <= totalPages) {
-        goToPage(page);
+    // Split the page counter message around the "X" placeholder so the editable
+    // input can sit between the surrounding text (e.g. "Page" ... "of Y").
+    const [pageLabelBefore, pageLabelAfterRaw = ""] = pageCounterMsg.split("X");
+    const pageLabelAfter = pageLabelAfterRaw.replace("Y", String(totalPages));
+
+    const commitPage = (page: number) => {
+      if (page >= 1 && page <= totalPages) {
+        if (page !== currentPage) {
+          goToPage(page);
+        }
+      } else {
+        // Reset to the current page if the value is out of range
+        setPageInputValue(String(currentPage));
       }
     };
 
@@ -209,24 +225,36 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
 
         {/* Right section: Controls */}
         <div className={styles.controlSection}>
-          {/* Page selector dropdown */}
+          {/* Page selector input */}
           <div className={styles.pageSelector}>
-            <Dropdown
+            {pageLabelBefore ? (
+              <Text className={styles.pageInfo}>{pageLabelBefore.trim()}</Text>
+            ) : null}
+            <SpinButton
               className={styles.pageInput}
-              value={pageLabel(currentPage, totalPages)}
-              selectedOptions={[String(currentPage)]}
-              onOptionSelect={handleOptionSelect}
-              aria-label="Select page"
-            >
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <Option
-                    key={page}
-                    value={String(page)}
-                  >{`Page ${page} of ${totalPages}`}</Option>
-                )
-              )}
-            </Dropdown>
+              min={1}
+              max={totalPages}
+              value={currentPage}
+              displayValue={pageInputValue}
+              onChange={(_, data) => {
+                if (typeof data.value === "number") {
+                  setPageInputValue(String(data.value));
+                  commitPage(data.value);
+                } else if (data.displayValue !== undefined) {
+                  const page = parseInt(data.displayValue, 10);
+                  if (!Number.isNaN(page)) {
+                    setPageInputValue(String(page));
+                    commitPage(page);
+                  } else {
+                    setPageInputValue(String(currentPage));
+                  }
+                }
+              }}
+              aria-label="Current page"
+            />
+            {pageLabelAfter ? (
+              <Text className={styles.pageInfo}>{pageLabelAfter.trim()}</Text>
+            ) : null}
           </div>
 
           {/* Navigation buttons */}
@@ -253,7 +281,3 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
 );
 
 Pagination.displayName = "Pagination";
-
-function pageLabel(p: number, total: number): string {
-  return `Page ${p} of ${total}`;
-}

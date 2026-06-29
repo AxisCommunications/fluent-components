@@ -11,6 +11,9 @@ export default defineConfig({
   base: "/fluent-components/",
   resolve: {
     alias: {
+      "@axiscommunications/fluent-advanced-data-grid": path.resolve(
+        "../components/advanced-data-grid/src/index.ts"
+      ),
       "@axiscommunications/fluent-empty-view": path.resolve(
         "../components/empty-view/src/index.ts"
       ),

@@ -1,40 +1,27 @@
 import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 import {
-  CameraDome20Regular,
-  Devices20Regular,
-  DoorStation20Regular,
-  Speak20Regular,
-} from "@axiscommunications/fluent-icons";
-import {
   Accordion,
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
   Button,
   Checkbox,
-  Combobox,
   Dialog,
   DialogActions,
   DialogBody,
   DialogContent,
   DialogSurface,
   DialogTitle,
-  Dropdown,
   Field,
   Input,
-  InteractionTag,
-  InteractionTagPrimary,
-  InteractionTagSecondary,
   Menu,
+  MenuGroup,
+  MenuGroupHeader,
   MenuItem,
   MenuItemCheckbox,
   MenuList,
   MenuPopover,
   MenuTrigger,
-  Option,
-  SpinButton,
-  Switch,
-  TagGroup,
   Text,
   createPresenceComponent,
   makeStyles,
@@ -58,76 +45,32 @@ import {
   useRef,
   useState,
 } from "react";
-import MapLibreMap, {
-  Marker,
-  NavigationControl,
-  type MapLayerMouseEvent,
-  type MapRef,
-} from "react-map-gl/maplibre";
-import "maplibre-gl/dist/maplibre-gl.css";
-import type { StyleSpecification } from "maplibre-gl";
+import { FilterChip, FilterChipGroup } from "./FilterChip";
 
-export type DeviceCategory = "camera" | "audio" | "accessControl";
-export type DeviceTypeFilter = DeviceCategory[];
-export type DeviceHealth = "online" | "warning" | "offline";
-export type DeviceHealthFilter = DeviceHealth[];
-export type DeviceDeployment = "production" | "staging";
-export type DeviceDeploymentFilter = DeviceDeployment[];
+/** Identifier for a hierarchy level. Free-form so any naming scheme works. */
+export type OrganisationNodeType = string;
 
-export type AreaType = "campus" | "district" | "corridor" | "custom";
-export type SiteType = "outdoor" | "indoor" | "mixed";
-export type PowerGridFrequency = "50Hz" | "60Hz";
-export type BuildingType =
-  | "office"
-  | "warehouse"
-  | "datacenter"
-  | "residential"
-  | "retail"
-  | "factory"
-  | "custom";
-export type FloorType = "standard" | "basement" | "mezzanine" | "rooftop";
-export type RoomType =
-  | "office"
-  | "meeting_room"
-  | "storage"
-  | "server_room"
-  | "restroom"
-  | "lobby"
-  | "custom";
-export type AreaOfInterestType =
-  | "zone"
-  | "corridor"
-  | "parking"
-  | "entrance"
-  | "custom";
+/** Map of selected values keyed by filter group id. */
+export type TagFilter = Record<string, string[]>;
 
-export type TopologyNodeMeta =
-  | { nodeType: "geographicalArea"; areaType?: AreaType }
-  | {
-      nodeType: "site";
-      siteType?: SiteType;
-      powerGridFrequency?: PowerGridFrequency;
-      timeZone?: string;
-      isIndoorSetting?: boolean;
-    }
-  | { nodeType: "building"; buildingType?: BuildingType }
-  | { nodeType: "floor"; floorType?: FloorType; floorLevel?: number }
-  | { nodeType: "room"; roomType?: RoomType }
-  | { nodeType: "areaOfInterest"; areaOfInterestType?: AreaOfInterestType };
+export interface FilterTag {
+  /** Stable value used for matching against a node tag. */
+  value: string;
 
-export type OrganisationNodeType =
-  | "global"
-  | "region"
-  | "country"
-  | "city"
-  | "geographicalArea"
-  | "site"
-  | "building"
-  | "floor"
-  | "room"
-  | "areaOfInterest"
-  | "zoneOrArea"
-  | "device";
+  /** Human-readable label shown in the filter menu and chips. */
+  label: string;
+}
+
+export interface FilterGroup {
+  /** Stable group identifier. Matches the key used in a node's `tags`. */
+  id: string;
+
+  /** Human-readable group label. */
+  label: string;
+
+  /** Selectable options for this group. */
+  options: FilterTag[];
+}
 
 export interface OrganisationNode {
   /** Stable node identifier. */
@@ -136,47 +79,21 @@ export interface OrganisationNode {
   /** Human-readable node label. */
   label: string;
 
-  /** Node type in the hierarchy. */
+  /** Node type / hierarchy level key. */
   type: OrganisationNodeType;
 
   /** Child nodes for nested navigation. */
   children?: OrganisationNode[];
 
-  /** Optional device category used for device-type filtering. */
-  deviceCategory?: DeviceCategory;
+  /** Optional icon rendered before the node label at any hierarchy level. */
+  icon?: ReactNode;
 
-  /** Optional device health status for health-based filtering. */
-  deviceHealth?: DeviceHealth;
-
-  /** Optional deployment stage for environment-based filtering. */
-  deviceDeployment?: DeviceDeployment;
-
-  /** Optional geocoding metadata for location nodes. */
-  geo?: {
-    latitude: number;
-    longitude: number;
-    country?: string;
-    countryCode?: string;
-  };
-
-  /** Optional topology-type-specific metadata. */
-  topologyMeta?: TopologyNodeMeta;
-}
-
-export interface LocationSuggestion {
-  name: string;
-  latitude: number;
-  longitude: number;
-  country?: string;
-  countryCode?: string;
-  timeZone?: string;
-}
-
-export interface LocationSuggestionContext {
-  parentNode: OrganisationNode;
-  path: OrganisationNode[];
-  childType: OrganisationNodeType;
-  countryCodeHint?: string;
+  /**
+   * Optional tag values used for tag-based filtering, keyed by filter group id.
+   * A node passes a group's filter when it has no value for that group or its
+   * value is among the selected values.
+   */
+  tags?: Record<string, string>;
 }
 
 export interface InlineFilterDrawerProps {
@@ -189,37 +106,20 @@ export interface InlineFilterDrawerProps {
   /** Search input placeholder text. */
   searchPlaceholder?: string;
 
-  /** Toggle visibility of the device category filter controls. */
-  showDeviceTypeFilter?: boolean;
+  /** Filter groups used to build the tag filter menu and chips. */
+  filterGroups?: FilterGroup[];
 
-  /** Controlled selected device categories. Empty means all categories. */
-  deviceTypeFilter?: DeviceTypeFilter;
+  /** Toggle visibility of the tag filter controls. */
+  showTagFilter?: boolean;
 
-  /** Uncontrolled default selected device categories. Empty means all categories. */
-  defaultDeviceTypeFilter?: DeviceTypeFilter;
+  /** Controlled selected tag values keyed by filter group id. */
+  tagFilter?: TagFilter;
 
-  /** Fired when selected device categories change. */
-  onDeviceTypeFilterChange?: (nextType: DeviceTypeFilter) => void;
+  /** Uncontrolled default selected tag values keyed by filter group id. */
+  defaultTagFilter?: TagFilter;
 
-  /** Controlled selected device health statuses. Empty means all statuses. */
-  deviceHealthFilter?: DeviceHealthFilter;
-
-  /** Uncontrolled default selected device health statuses. Empty means all statuses. */
-  defaultDeviceHealthFilter?: DeviceHealthFilter;
-
-  /** Fired when selected device health statuses change. */
-  onDeviceHealthFilterChange?: (nextHealth: DeviceHealthFilter) => void;
-
-  /** Controlled selected device deployment stages. Empty means all stages. */
-  deviceDeploymentFilter?: DeviceDeploymentFilter;
-
-  /** Uncontrolled default selected device deployment stages. Empty means all stages. */
-  defaultDeviceDeploymentFilter?: DeviceDeploymentFilter;
-
-  /** Fired when selected device deployment stages change. */
-  onDeviceDeploymentFilterChange?: (
-    nextDeployment: DeviceDeploymentFilter
-  ) => void;
+  /** Fired when selected tag values change. */
+  onTagFilterChange?: (nextTagFilter: TagFilter) => void;
 
   /**
    * Controls which hierarchy levels are selectable for cross-filtering.
@@ -239,19 +139,10 @@ export interface InlineFilterDrawerProps {
   /** Allows selecting multiple hierarchy nodes at once. */
   allowMultiNodeSelection?: boolean;
 
-  /** Enables inline creation of child folders/locations per node. */
+  /** Enables inline creation, renaming and removal of child folders per node. */
   enableSubfolderCreation?: boolean;
 
-  /** Optional provider for real-location autocomplete suggestions. */
-  fetchLocationSuggestions?: (
-    query: string,
-    context: LocationSuggestionContext
-  ) => Promise<LocationSuggestion[]>;
-
-  /** MapLibre style used for location pinning map. */
-  locationMapStyle?: string | StyleSpecification;
-
-  /** Fired when nodes are updated by inline add-folder actions. */
+  /** Fired when nodes are updated by inline add/rename/remove actions. */
   onNodesChange?: (nextNodes: OrganisationNode[]) => void;
 
   /** Optional className hook. */
@@ -355,12 +246,14 @@ const useStyles = makeStyles({
 
   search: {
     flex: 1,
+    minWidth: 0,
   },
 
   searchRow: {
     display: "flex",
     alignItems: "center",
     gap: tokens.spacingHorizontalXS,
+    minWidth: 0,
   },
 
   selectedFiltersSection: {
@@ -418,7 +311,7 @@ const useStyles = makeStyles({
     minWidth: 0,
   },
 
-  deviceIcon: {
+  nodeIcon: {
     display: "inline-flex",
     color: tokens.colorNeutralForeground2,
   },
@@ -429,81 +322,9 @@ const useStyles = makeStyles({
     paddingRight: tokens.spacingHorizontalXXS,
   },
 
-  inlineEditInput: {
-    flex: 1,
-    minWidth: 0,
-    "& input": {
-      fontSize: tokens.fontSizeBase200,
-      lineHeight: tokens.lineHeightBase200,
-      height: "auto",
-      padding: `0 ${tokens.spacingHorizontalXXS}`,
-    },
-  },
-
-  addEditor: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalM,
-  },
-
-  locationPicker: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalM,
-  },
-
-  miniMap: {
-    height: "220px",
-    borderRadius: tokens.borderRadiusMedium,
-    overflow: "hidden",
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-  },
-
-  locationMeta: {
-    color: tokens.colorNeutralForeground3,
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-  },
-
-  detectedNameRow: {
-    display: "flex",
-    alignItems: "center",
-    gap: tokens.spacingHorizontalS,
-    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalS}`,
-    backgroundColor: tokens.colorNeutralBackground3,
-    borderRadius: tokens.borderRadiusMedium,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
-  },
-
-  detectedNameLabel: {
-    flex: 1,
-    minWidth: 0,
-    color: tokens.colorNeutralForeground2,
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-  },
-
-  metaFieldsGrid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: tokens.spacingVerticalM,
-    columnGap: tokens.spacingHorizontalM,
-  },
-
-  metaFieldFull: {
-    gridColumn: "1 / -1",
-  },
-
-  editorDialogBody: {
-    width: "min(560px, 92vw)",
-  },
-
-  typeSelector: {
-    minWidth: "240px",
-  },
-
-  locationCombobox: {
-    width: "100%",
+  editorDialogSurface: {
+    width: "min(400px, 92vw)",
+    maxWidth: "min(400px, 92vw)",
   },
 });
 
@@ -526,41 +347,12 @@ const SearchBarCollapse = createPresenceComponent({
   },
 });
 
-const DEVICE_FILTER_LABELS: Array<{ value: DeviceCategory; label: string }> = [
-  { value: "camera", label: "Cameras" },
-  { value: "audio", label: "Audio" },
-  { value: "accessControl", label: "Access control" },
-];
-
-const DEVICE_HEALTH_FILTER_LABELS: Array<{
-  value: DeviceHealth;
-  label: string;
-}> = [
-  { value: "online", label: "Online" },
-  { value: "warning", label: "Warning" },
-  { value: "offline", label: "Offline" },
-];
-
-const DEVICE_DEPLOYMENT_FILTER_LABELS: Array<{
-  value: DeviceDeployment;
-  label: string;
-}> = [
-  { value: "production", label: "Production" },
-  { value: "staging", label: "Staging" },
-];
-
-type AddNodeMode = "generic" | "location" | "edit";
+type AddNodeMode = "generic" | "edit";
 
 interface AddNodeDraft {
   isOpen: boolean;
   mode: AddNodeMode;
   value: string;
-  targetType?: OrganisationNodeType;
-  latitude?: number;
-  longitude?: number;
-  resolvedLocationName?: string;
-  topologyMeta?: TopologyNodeMeta;
-  mapSearchValue?: string;
 }
 
 interface ActiveEditorContext {
@@ -569,962 +361,157 @@ interface ActiveEditorContext {
   path: OrganisationNode[];
 }
 
-interface LocationMapViewState {
-  latitude: number;
-  longitude: number;
-  zoom: number;
-}
-
-const DEFAULT_LOCATION_MAP_STYLE: StyleSpecification = {
-  version: 8,
-  sources: {
-    osm: {
-      type: "raster",
-      tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-      tileSize: 256,
-      attribution: "&copy; OpenStreetMap contributors",
-      maxzoom: 19,
-    },
-  },
-  layers: [
-    {
-      id: "osm-tiles",
-      type: "raster",
-      source: "osm",
-    },
-  ],
-};
-
 const DEFAULT_ADD_NODE_DRAFT: AddNodeDraft = {
   isOpen: false,
   mode: "generic",
   value: "",
-  targetType: "zoneOrArea",
 };
 
-const COORDINATE_INPUT_PATTERN =
-  /^\s*-?\d+(?:\.\d+)?\s*,\s*-?\d+(?:\.\d+)?\s*$/;
+const CHIP_VALUE_SEPARATOR = "::";
 
-interface TopologyFieldDef {
-  key: string;
-  label: string;
-  type: "enum" | "number" | "text" | "boolean";
-  options?: Array<{ value: string; label: string }>;
-  placeholder?: string;
-  fullWidth?: boolean;
-}
-
-const TOPOLOGY_META_FIELDS: Partial<
-  Record<OrganisationNodeType, TopologyFieldDef[]>
-> = {
-  geographicalArea: [
-    {
-      key: "areaType",
-      label: "Area type",
-      type: "enum",
-      options: [
-        { value: "campus", label: "Campus" },
-        { value: "district", label: "District" },
-        { value: "corridor", label: "Corridor" },
-        { value: "custom", label: "Custom" },
-      ],
-    },
-  ],
-  site: [
-    {
-      key: "siteType",
-      label: "Site type",
-      type: "enum",
-      options: [
-        { value: "outdoor", label: "Outdoor" },
-        { value: "indoor", label: "Indoor" },
-        { value: "mixed", label: "Mixed" },
-      ],
-    },
-    {
-      key: "powerGridFrequency",
-      label: "Power grid frequency",
-      type: "enum",
-      options: [
-        { value: "50Hz", label: "50 Hz" },
-        { value: "60Hz", label: "60 Hz" },
-      ],
-    },
-    {
-      key: "timeZone",
-      label: "Time zone",
-      type: "text",
-      placeholder: "e.g. Europe/Stockholm",
-      fullWidth: true,
-    },
-    {
-      key: "isIndoorSetting",
-      label: "Indoor setting",
-      type: "boolean",
-    },
-  ],
-  building: [
-    {
-      key: "buildingType",
-      label: "Building type",
-      type: "enum",
-      options: [
-        { value: "office", label: "Office" },
-        { value: "warehouse", label: "Warehouse" },
-        { value: "datacenter", label: "Data center" },
-        { value: "residential", label: "Residential" },
-        { value: "retail", label: "Retail" },
-        { value: "factory", label: "Factory" },
-        { value: "custom", label: "Custom" },
-      ],
-    },
-  ],
-  floor: [
-    {
-      key: "floorType",
-      label: "Floor type",
-      type: "enum",
-      options: [
-        { value: "standard", label: "Standard" },
-        { value: "basement", label: "Basement" },
-        { value: "mezzanine", label: "Mezzanine" },
-        { value: "rooftop", label: "Rooftop" },
-      ],
-    },
-    {
-      key: "floorLevel",
-      label: "Floor level",
-      type: "number",
-    },
-  ],
-  room: [
-    {
-      key: "roomType",
-      label: "Room type",
-      type: "enum",
-      options: [
-        { value: "office", label: "Office" },
-        { value: "meeting_room", label: "Meeting room" },
-        { value: "storage", label: "Storage" },
-        { value: "server_room", label: "Server room" },
-        { value: "restroom", label: "Restroom" },
-        { value: "lobby", label: "Lobby" },
-        { value: "custom", label: "Custom" },
-      ],
-    },
-  ],
-  areaOfInterest: [
-    {
-      key: "areaOfInterestType",
-      label: "Area of interest type",
-      type: "enum",
-      options: [
-        { value: "zone", label: "Zone" },
-        { value: "corridor", label: "Corridor" },
-        { value: "parking", label: "Parking" },
-        { value: "entrance", label: "Entrance" },
-        { value: "custom", label: "Custom" },
-      ],
-    },
-  ],
-};
-
-const getTopologyMetaValue = (
-  meta: TopologyNodeMeta | undefined,
-  key: string
-): unknown => {
-  if (!meta) return undefined;
-  return (meta as Record<string, unknown>)[key];
-};
-
-const buildTopologyMeta = (
-  nodeType: OrganisationNodeType,
-  existing: TopologyNodeMeta | undefined,
-  key: string,
-  value: unknown
-): TopologyNodeMeta => {
-  const base: Record<string, unknown> =
-    existing && (existing as Record<string, unknown>).nodeType === nodeType
-      ? { ...(existing as Record<string, unknown>) }
-      : { nodeType };
-  base[key] = value;
-  return base as TopologyNodeMeta;
-};
-
-const TOPOLOGY_TYPE_LABELS: Partial<Record<OrganisationNodeType, string>> = {
-  global: "Organization",
-  region: "Region",
-  country: "Country",
-  city: "City",
-  geographicalArea: "Geographical Area",
-  site: "Site",
-  building: "Building",
-  floor: "Floor",
-  room: "Room",
-  areaOfInterest: "Area of Interest",
-  zoneOrArea: "Zone / Area",
-  device: "Device",
-};
-
-const NEXT_NODE_TYPE_BY_PARENT: Record<
-  OrganisationNodeType,
-  OrganisationNodeType
-> = {
-  global: "region",
-  region: "site",
-  country: "site",
-  city: "site",
-  geographicalArea: "site",
-  site: "building",
-  building: "floor",
-  floor: "room",
-  room: "areaOfInterest",
-  areaOfInterest: "areaOfInterest",
-  zoneOrArea: "areaOfInterest",
-  device: "device",
-};
-
-const TOPOLOGY_CHILD_TYPES_BY_PARENT: Partial<
-  Record<OrganisationNodeType, OrganisationNodeType[]>
-> = {
-  global: ["region"],
-  region: ["geographicalArea", "site"],
-  country: ["site", "building"],
-  city: ["site", "building"],
-  geographicalArea: ["site", "building", "floor", "room", "areaOfInterest"],
-  site: ["building", "floor", "room", "areaOfInterest"],
-  building: ["floor", "room", "areaOfInterest"],
-  floor: ["room", "areaOfInterest"],
-  room: ["areaOfInterest"],
-  areaOfInterest: [],
-  zoneOrArea: ["areaOfInterest"],
-};
-
-const COUNTRY_CITY_SUGGESTIONS: Record<string, string[]> = {
-  Sweden: [
-    "Stockholm",
-    "Gothenburg",
-    "Malmo",
-    "Uppsala",
-    "Lund",
-    "Helsingborg",
-  ],
-  Germany: ["Berlin", "Munich", "Hamburg", "Frankfurt", "Cologne", "Stuttgart"],
-  "United States": [
-    "New York",
-    "Atlanta",
-    "Chicago",
-    "Seattle",
-    "Austin",
-    "San Diego",
-  ],
-  Singapore: [
-    "Downtown Core",
-    "Marina Bay",
-    "Jurong East",
-    "Woodlands",
-    "Tampines",
-    "Punggol",
-  ],
-};
-
-const COUNTRY_TO_CODE: Record<string, string> = {
-  Sweden: "SE",
-  Germany: "DE",
-  "United States": "US",
-  Singapore: "SG",
-  "United Kingdom": "GB",
-  France: "FR",
-  Canada: "CA",
-  Japan: "JP",
-  Australia: "AU",
-  Brazil: "BR",
-  India: "IN",
-  "South Africa": "ZA",
-};
-
-const REGION_COUNTRY_SUGGESTIONS: Record<string, string[]> = {
-  EMEA: ["Sweden", "Germany", "France", "United Kingdom", "Spain", "Italy"],
-  Americas: [
-    "United States",
-    "Canada",
-    "Mexico",
-    "Brazil",
-    "Argentina",
-    "Chile",
-  ],
-  APAC: ["Singapore", "Japan", "Australia", "India", "South Korea", "Thailand"],
-};
-
-const GLOBAL_CITY_SUGGESTIONS = [
-  "London",
-  "Paris",
-  "Tokyo",
-  "Sydney",
-  "Toronto",
-  "Madrid",
-  "Rome",
-  "Amsterdam",
-  "Dubai",
-  "Sao Paulo",
-  "Mexico City",
-  "Cape Town",
+/** Sample filter groups used by the example stories. */
+export const ORGANISATION_FILTER_GROUPS: FilterGroup[] = [
+  {
+    id: "status",
+    label: "Status",
+    options: [
+      { value: "active", label: "Active" },
+      { value: "paused", label: "Paused" },
+      { value: "archived", label: "Archived" },
+    ],
+  },
+  {
+    id: "priority",
+    label: "Priority",
+    options: [
+      { value: "high", label: "High" },
+      { value: "medium", label: "Medium" },
+      { value: "low", label: "Low" },
+    ],
+  },
 ];
 
-const GLOBAL_COUNTRY_SUGGESTIONS = [
-  "Sweden",
-  "Germany",
-  "United States",
-  "Singapore",
-  "United Kingdom",
-  "France",
-  "Canada",
-  "Japan",
-  "Australia",
-  "Brazil",
-  "India",
-  "South Africa",
-];
-
-const COMMON_TIME_ZONES = [
-  "UTC",
-  "Europe/Stockholm",
-  "Europe/Berlin",
-  "Europe/London",
-  "Europe/Paris",
-  "Europe/Rome",
-  "America/New_York",
-  "America/Chicago",
-  "America/Denver",
-  "America/Los_Angeles",
-  "America/Toronto",
-  "America/Sao_Paulo",
-  "Asia/Singapore",
-  "Asia/Tokyo",
-  "Asia/Seoul",
-  "Asia/Kolkata",
-  "Australia/Sydney",
-  "Africa/Johannesburg",
-];
-
-const getTimeZoneSuggestions = (query: string): string[] => {
-  const normalized = query.trim().toLowerCase();
-  const matches =
-    normalized.length === 0
-      ? COMMON_TIME_ZONES
-      : COMMON_TIME_ZONES.filter((timeZone) =>
-          timeZone.toLowerCase().includes(normalized)
-        );
-  return matches.slice(0, 8);
-};
-
-const normalizeNodeLabel = (label: string): string => {
-  const withoutMetadata = label.split(" - ")[0] ?? label;
-  return withoutMetadata.replace(/\s*\(.*?\)\s*/g, "").trim();
-};
-
-const getCountryFromPath = (path: OrganisationNode[]): string | undefined => {
-  const typedCountry = path.find((node) => node.type === "country");
-  if (typedCountry) {
-    return normalizeNodeLabel(typedCountry.label);
-  }
-
-  const knownCountries = Object.keys(COUNTRY_CITY_SUGGESTIONS);
-  for (const node of path) {
-    const normalized = normalizeNodeLabel(node.label);
-    const matched = knownCountries.find((country) =>
-      normalized.includes(country)
-    );
-    if (matched) {
-      return matched;
-    }
-  }
-
-  return undefined;
-};
-
-const getRegionFromPath = (path: OrganisationNode[]): string | undefined => {
-  const typedRegion = path.find((node) => node.type === "region");
-  if (typedRegion) {
-    return normalizeNodeLabel(typedRegion.label);
-  }
-
-  const knownRegions = Object.keys(REGION_COUNTRY_SUGGESTIONS);
-  for (const node of path) {
-    const normalized = normalizeNodeLabel(node.label);
-    const matched = knownRegions.find((region) => normalized.includes(region));
-    if (matched) {
-      return matched;
-    }
-  }
-
-  return undefined;
-};
-
-const splitCountryAndLocationQuery = (
-  query: string
-): { locationQuery: string; countryCodeHint?: string } => {
-  const normalizedQuery = query.trim().replace(/\s+/g, " ");
-  if (!normalizedQuery) {
-    return { locationQuery: "" };
-  }
-
-  const queryLower = normalizedQuery.toLowerCase();
-  const countriesByLength = Object.keys(COUNTRY_TO_CODE).sort(
-    (a, b) => b.length - a.length
-  );
-
-  for (const country of countriesByLength) {
-    const countryLower = country.toLowerCase();
-
-    if (queryLower === countryLower) {
-      return {
-        locationQuery: "",
-        countryCodeHint: COUNTRY_TO_CODE[country],
-      };
-    }
-
-    if (queryLower.startsWith(`${countryLower} `)) {
-      return {
-        locationQuery: normalizedQuery.slice(country.length).trim(),
-        countryCodeHint: COUNTRY_TO_CODE[country],
-      };
-    }
-
-    if (queryLower.endsWith(` ${countryLower}`)) {
-      return {
-        locationQuery: normalizedQuery
-          .slice(0, normalizedQuery.length - country.length)
-          .trim(),
-        countryCodeHint: COUNTRY_TO_CODE[country],
-      };
-    }
-
-    const commaSuffix = `, ${countryLower}`;
-    if (queryLower.endsWith(commaSuffix)) {
-      return {
-        locationQuery: normalizedQuery
-          .slice(0, normalizedQuery.length - commaSuffix.length)
-          .trim(),
-        countryCodeHint: COUNTRY_TO_CODE[country],
-      };
-    }
-
-    const commaPrefix = `${countryLower}, `;
-    if (queryLower.startsWith(commaPrefix)) {
-      return {
-        locationQuery: normalizedQuery.slice(commaPrefix.length).trim(),
-        countryCodeHint: COUNTRY_TO_CODE[country],
-      };
-    }
-  }
-
-  return { locationQuery: normalizedQuery };
-};
-
-const getChildTypeForLocationMode = (
-  parentType: OrganisationNodeType
-): OrganisationNodeType => {
-  return NEXT_NODE_TYPE_BY_PARENT[parentType] ?? "areaOfInterest";
-};
-
-const getAllowedChildTypes = (
-  parentType: OrganisationNodeType
-): OrganisationNodeType[] => {
-  if (parentType === "device") return [];
-  return (
-    TOPOLOGY_CHILD_TYPES_BY_PARENT[parentType] ?? [
-      getChildTypeForLocationMode(parentType),
-    ]
-  );
-};
-
-const shouldUseLocationSearch = (childType: OrganisationNodeType): boolean => {
-  return childType !== "device" && childType !== "zoneOrArea";
-};
-
-const getLocationSuggestions = (
-  path: OrganisationNode[],
-  query: string,
-  childType: OrganisationNodeType
-): string[] => {
-  if (childType === "country") {
-    const region = getRegionFromPath(path);
-    const base = region
-      ? (REGION_COUNTRY_SUGGESTIONS[region] ?? GLOBAL_COUNTRY_SUGGESTIONS)
-      : GLOBAL_COUNTRY_SUGGESTIONS;
-    const trimmedCountry = query.trim().toLowerCase();
-    const filteredCountries =
-      trimmedCountry.length === 0
-        ? base
-        : base.filter((country) =>
-            country.toLowerCase().includes(trimmedCountry)
-          );
-    return filteredCountries.slice(0, 8);
-  }
-
-  const country = getCountryFromPath(path);
-  const base = country
-    ? (COUNTRY_CITY_SUGGESTIONS[country] ?? GLOBAL_CITY_SUGGESTIONS)
-    : GLOBAL_CITY_SUGGESTIONS;
-  const parsedQuery = splitCountryAndLocationQuery(query);
-  const trimmed = (parsedQuery.locationQuery || query).trim().toLowerCase();
-  const filtered =
-    trimmed.length === 0
-      ? base
-      : base.filter((city) => city.toLowerCase().includes(trimmed));
-  return filtered.slice(0, 8);
-};
-
-const fetchOpenMeteoLocationSuggestions = async (
-  query: string,
-  context: LocationSuggestionContext
-): Promise<LocationSuggestion[]> => {
-  if (!shouldUseLocationSearch(context.childType)) {
-    return [];
-  }
-
-  const normalizedQuery = query.trim();
-  const parsedQuery = splitCountryAndLocationQuery(normalizedQuery);
-  const searchQuery =
-    context.childType === "country"
-      ? normalizedQuery
-      : parsedQuery.locationQuery || normalizedQuery;
-  if (searchQuery.length < 2) {
-    return [];
-  }
-
-  const params = new URLSearchParams({
-    name: searchQuery,
-    count: "8",
-    language: "en",
-    format: "json",
-  });
-
-  if (context.childType === "city") {
-    params.set("feature_code", "PPL");
-  }
-
-  if (context.childType === "country") {
-    params.set("feature_code", "PCLI");
-  }
-
-  if (context.childType === "region") {
-    params.set("feature_code", "ADM1");
-  }
-
-  if (context.childType !== "country") {
-    const resolvedCountryHint =
-      parsedQuery.countryCodeHint ?? context.countryCodeHint;
-    if (resolvedCountryHint) {
-      params.set("country", resolvedCountryHint);
-    }
-  }
-
-  const response = await fetch(
-    `https://geocoding-api.open-meteo.com/v1/search?${params.toString()}`
-  );
-  if (!response.ok) {
-    return [];
-  }
-
-  const payload = (await response.json()) as {
-    results?: Array<{
-      name: string;
-      latitude: number;
-      longitude: number;
-      country?: string;
-      country_code?: string;
-      timezone?: string;
-    }>;
-  };
-
-  return (payload.results ?? []).map((result) => ({
-    name: result.name,
-    latitude: result.latitude,
-    longitude: result.longitude,
-    country: result.country,
-    countryCode: result.country_code,
-    timeZone: result.timezone,
-  }));
-};
-
-const fetchOpenMeteoReverseLocation = async (
-  latitude: number,
-  longitude: number
-): Promise<LocationSuggestion | undefined> => {
-  const params = new URLSearchParams({
-    latitude: String(latitude),
-    longitude: String(longitude),
-    language: "en",
-    format: "json",
-  });
-
-  const response = await fetch(
-    `https://geocoding-api.open-meteo.com/v1/reverse?${params.toString()}`
-  );
-  if (!response.ok) {
-    return undefined;
-  }
-
-  const payload = (await response.json()) as {
-    results?: Array<{
-      name: string;
-      latitude: number;
-      longitude: number;
-      country?: string;
-      country_code?: string;
-      timezone?: string;
-    }>;
-  };
-
-  const first = payload.results?.[0];
-  if (!first) {
-    return undefined;
-  }
-
-  return {
-    name: first.name,
-    latitude: first.latitude,
-    longitude: first.longitude,
-    country: first.country,
-    countryCode: first.country_code,
-    timeZone: first.timezone,
-  };
-};
-
-const getDeviceIcon = (deviceCategory?: DeviceCategory) => {
-  if (deviceCategory === "camera") {
-    return <CameraDome20Regular aria-hidden="true" />;
-  }
-
-  if (deviceCategory === "audio") {
-    return <Speak20Regular aria-hidden="true" />;
-  }
-
-  if (deviceCategory === "accessControl") {
-    return <DoorStation20Regular aria-hidden="true" />;
-  }
-
-  return <Devices20Regular aria-hidden="true" />;
-};
-
+/** Sample navigation tree used by the example stories. */
 export const ORGANISATION_NAVIGATION_TREE: OrganisationNode[] = [
   {
-    id: "global-axis-communications",
-    label: "AXIS Communications Global",
-    type: "global",
+    id: "region-emea",
+    label: "EMEA",
+    type: "region",
     children: [
       {
-        id: "region-emea",
-        label: "EMEA",
-        type: "region",
+        id: "site-lund",
+        label: "Lund HQ",
+        type: "site",
         children: [
           {
-            id: "country-se",
-            label: "Sweden",
-            type: "country",
+            id: "folder-lund-ops",
+            label: "Operations",
+            type: "folder",
             children: [
               {
-                id: "city-lund",
-                label: "Lund",
-                type: "city",
-                children: [
-                  {
-                    id: "site-lund-hq",
-                    label: "Lund HQ Campus",
-                    type: "site",
-                    children: [
-                      {
-                        id: "building-beta",
-                        label: "Building Beta",
-                        type: "building",
-                        children: [
-                          {
-                            id: "zone-beta-north-entrance",
-                            label: "North Entrance",
-                            type: "zoneOrArea",
-                            children: [
-                              {
-                                id: "device-axis-a1610-01",
-                                label: "AXIS A1610 Network Door Controller",
-                                type: "device",
-                                deviceCategory: "accessControl",
-                                deviceHealth: "online",
-                                deviceDeployment: "production",
-                              },
-                              {
-                                id: "device-axis-a8207-01",
-                                label: "AXIS A8207-VE Mk II",
-                                type: "device",
-                                deviceCategory: "accessControl",
-                                deviceHealth: "warning",
-                                deviceDeployment: "production",
-                              },
-                              {
-                                id: "device-axis-a9210-01",
-                                label: "AXIS A9210 Network I/O Relay Module",
-                                type: "device",
-                                deviceCategory: "accessControl",
-                                deviceHealth: "online",
-                                deviceDeployment: "production",
-                              },
-                            ],
-                          },
-                          {
-                            id: "zone-beta-rnd-labs",
-                            label: "R&D Labs",
-                            type: "zoneOrArea",
-                            children: [
-                              {
-                                id: "device-axis-q1808-01",
-                                label: "AXIS Q1808-LE",
-                                type: "device",
-                                deviceCategory: "camera",
-                                deviceHealth: "online",
-                                deviceDeployment: "staging",
-                              },
-                              {
-                                id: "device-axis-c1310e-01",
-                                label: "AXIS C1310-E",
-                                type: "device",
-                                deviceCategory: "audio",
-                                deviceHealth: "online",
-                                deviceDeployment: "production",
-                              },
-                              {
-                                id: "device-axis-p3737-01",
-                                label: "AXIS P3737-PLE",
-                                type: "device",
-                                deviceCategory: "camera",
-                                deviceHealth: "warning",
-                                deviceDeployment: "staging",
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                      {
-                        id: "device-direct-site-lund-01",
-                        label: "AXIS P3265-LV (Site Perimeter)",
-                        type: "device",
-                        deviceCategory: "camera",
-                        deviceHealth: "warning",
-                        deviceDeployment: "production",
-                      },
-                      {
-                        id: "device-direct-site-lund-02",
-                        label: "AXIS C8110 Network Audio Bridge",
-                        type: "device",
-                        deviceCategory: "audio",
-                        deviceHealth: "offline",
-                        deviceDeployment: "staging",
-                      },
-                      {
-                        id: "device-direct-site-lund-03",
-                        label: "AXIS Q6075-E PTZ Camera",
-                        type: "device",
-                        deviceCategory: "camera",
-                        deviceHealth: "online",
-                        deviceDeployment: "production",
-                      },
-                      {
-                        id: "device-direct-site-lund-04",
-                        label: "AXIS A1610-B Network Door Controller",
-                        type: "device",
-                        deviceCategory: "accessControl",
-                        deviceHealth: "warning",
-                        deviceDeployment: "staging",
-                      },
-                    ],
-                  },
-                ],
+                id: "item-lund-ops-1",
+                label: "Onboarding checklist",
+                type: "item",
+                tags: { status: "active", priority: "high" },
+              },
+              {
+                id: "item-lund-ops-2",
+                label: "Quarterly review",
+                type: "item",
+                tags: { status: "paused", priority: "medium" },
               },
             ],
           },
           {
-            id: "country-de",
-            label: "Germany",
-            type: "country",
+            id: "folder-lund-rnd",
+            label: "R&D",
+            type: "folder",
             children: [
               {
-                id: "city-munich",
-                label: "Munich",
-                type: "city",
-                children: [
-                  {
-                    id: "site-munich-demo-center",
-                    label: "Munich Demo Center",
-                    type: "site",
-                    children: [
-                      {
-                        id: "zone-showroom",
-                        label: "Showroom",
-                        type: "zoneOrArea",
-                        children: [
-                          {
-                            id: "device-axis-m4328p-01",
-                            label: "AXIS M4328-P",
-                            type: "device",
-                            deviceCategory: "camera",
-                            deviceHealth: "online",
-                            deviceDeployment: "production",
-                          },
-                          {
-                            id: "device-axis-c1511-01",
-                            label: "AXIS C1511 Network Pendant Speaker",
-                            type: "device",
-                            deviceCategory: "audio",
-                            deviceHealth: "warning",
-                            deviceDeployment: "staging",
-                          },
-                          {
-                            id: "device-axis-q1952e-01",
-                            label: "AXIS Q1952-E Thermal Camera",
-                            type: "device",
-                            deviceCategory: "camera",
-                            deviceHealth: "online",
-                            deviceDeployment: "production",
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
+                id: "item-lund-rnd-1",
+                label: "Prototype A",
+                type: "item",
+                tags: { status: "active", priority: "medium" },
+              },
+              {
+                id: "item-lund-rnd-2",
+                label: "Legacy migration",
+                type: "item",
+                tags: { status: "archived", priority: "low" },
               },
             ],
           },
         ],
       },
       {
-        id: "region-americas",
-        label: "Americas",
-        type: "region",
+        id: "site-munich",
+        label: "Munich",
+        type: "site",
         children: [
           {
-            id: "country-us",
-            label: "United States",
-            type: "country",
+            id: "folder-munich-sales",
+            label: "Sales",
+            type: "folder",
             children: [
               {
-                id: "city-atlanta",
-                label: "Atlanta",
-                type: "city",
-                children: [
-                  {
-                    id: "site-atlanta-office",
-                    label: "Atlanta Office",
-                    type: "site",
-                    children: [
-                      {
-                        id: "building-atlanta-one",
-                        label: "Building One",
-                        type: "building",
-                        children: [
-                          {
-                            id: "zone-reception",
-                            label: "Reception",
-                            type: "zoneOrArea",
-                            children: [
-                              {
-                                id: "device-axis-p1468le-01",
-                                label: "AXIS P1468-LE",
-                                type: "device",
-                                deviceCategory: "camera",
-                                deviceHealth: "online",
-                                deviceDeployment: "production",
-                              },
-                              {
-                                id: "device-axis-a1210b-01",
-                                label: "AXIS A1210-B",
-                                type: "device",
-                                deviceCategory: "accessControl",
-                                deviceHealth: "offline",
-                                deviceDeployment: "staging",
-                              },
-                              {
-                                id: "device-axis-c1410-01",
-                                label: "AXIS C1410 Network Mini Speaker",
-                                type: "device",
-                                deviceCategory: "audio",
-                                deviceHealth: "online",
-                                deviceDeployment: "production",
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                      {
-                        id: "device-direct-site-atlanta-01",
-                        label: "AXIS M3088-V Dome Camera",
-                        type: "device",
-                        deviceCategory: "camera",
-                        deviceHealth: "warning",
-                        deviceDeployment: "staging",
-                      },
-                    ],
-                  },
-                ],
+                id: "item-munich-sales-1",
+                label: "Showroom rollout",
+                type: "item",
+                tags: { status: "active", priority: "high" },
               },
             ],
           },
         ],
       },
+    ],
+  },
+  {
+    id: "region-americas",
+    label: "Americas",
+    type: "region",
+    children: [
       {
-        id: "region-apac",
-        label: "APAC",
-        type: "region",
+        id: "site-atlanta",
+        label: "Atlanta",
+        type: "site",
         children: [
           {
-            id: "country-sg",
-            label: "Singapore",
-            type: "country",
+            id: "folder-atlanta-ops",
+            label: "Operations",
+            type: "folder",
             children: [
               {
-                id: "city-singapore",
-                label: "Singapore",
-                type: "city",
-                children: [
-                  {
-                    id: "site-singapore-hub",
-                    label: "Singapore Hub",
-                    type: "site",
-                    children: [
-                      {
-                        id: "device-axis-q3538lve-01",
-                        label: "AXIS Q3538-LVE",
-                        type: "device",
-                        deviceCategory: "camera",
-                        deviceHealth: "online",
-                        deviceDeployment: "production",
-                      },
-                      {
-                        id: "device-axis-c1004e-01",
-                        label: "AXIS C1004-E",
-                        type: "device",
-                        deviceCategory: "audio",
-                        deviceHealth: "warning",
-                        deviceDeployment: "staging",
-                      },
-                      {
-                        id: "device-axis-a9188-01",
-                        label: "AXIS A9188 Network I/O Relay Module",
-                        type: "device",
-                        deviceCategory: "accessControl",
-                        deviceHealth: "online",
-                        deviceDeployment: "production",
-                      },
-                      {
-                        id: "device-axis-p1467le-01",
-                        label: "AXIS P1467-LE",
-                        type: "device",
-                        deviceCategory: "camera",
-                        deviceHealth: "online",
-                        deviceDeployment: "staging",
-                      },
-                    ],
-                  },
-                ],
+                id: "item-atlanta-ops-1",
+                label: "Reception desk",
+                type: "item",
+                tags: { status: "paused", priority: "low" },
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "region-apac",
+    label: "APAC",
+    type: "region",
+    children: [
+      {
+        id: "site-singapore",
+        label: "Singapore",
+        type: "site",
+        children: [
+          {
+            id: "folder-singapore-ops",
+            label: "Operations",
+            type: "folder",
+            children: [
+              {
+                id: "item-singapore-ops-1",
+                label: "Lobby refresh",
+                type: "item",
+                tags: { status: "archived", priority: "medium" },
               },
             ],
           },
@@ -1534,26 +521,33 @@ export const ORGANISATION_NAVIGATION_TREE: OrganisationNode[] = [
   },
 ];
 
+const hasActiveTagFilter = (tagFilter: TagFilter): boolean =>
+  Object.values(tagFilter).some((values) => values.length > 0);
+
+const nodeMatchesTagFilter = (
+  node: OrganisationNode,
+  tagFilter: TagFilter
+): boolean =>
+  Object.entries(tagFilter).every(([groupId, values]) => {
+    if (values.length === 0) {
+      return true;
+    }
+    const nodeValue = node.tags?.[groupId];
+    if (nodeValue === undefined) {
+      return true;
+    }
+    return values.includes(nodeValue);
+  });
+
 const filterTree = (
   nodes: OrganisationNode[],
   query: string,
-  activeDeviceFilter: DeviceTypeFilter,
-  activeHealthFilter: DeviceHealthFilter,
-  activeDeploymentFilter: DeviceDeploymentFilter
+  tagFilter: TagFilter
 ): OrganisationNode[] => {
   const normalizedSearch = query.trim().toLowerCase();
-  if (
-    !normalizedSearch &&
-    activeDeviceFilter.length === 0 &&
-    activeHealthFilter.length === 0 &&
-    activeDeploymentFilter.length === 0
-  ) {
+  if (!normalizedSearch && !hasActiveTagFilter(tagFilter)) {
     return nodes;
   }
-
-  const selectedDeviceTypes = new Set(activeDeviceFilter);
-  const selectedHealthStates = new Set(activeHealthFilter);
-  const selectedDeployments = new Set(activeDeploymentFilter);
 
   const walk = (node: OrganisationNode): OrganisationNode | null => {
     const filteredChildren = (node.children ?? [])
@@ -1563,47 +557,17 @@ const filterTree = (
     const matchesSearch =
       normalizedSearch.length === 0 ||
       node.label.toLowerCase().includes(normalizedSearch);
-    const matchesDeviceFilter =
-      node.type !== "device" ||
-      selectedDeviceTypes.size === 0 ||
-      (node.deviceCategory
-        ? selectedDeviceTypes.has(node.deviceCategory)
-        : false);
-    const matchesHealthFilter =
-      node.type !== "device" ||
-      selectedHealthStates.size === 0 ||
-      (node.deviceHealth ? selectedHealthStates.has(node.deviceHealth) : false);
-    const matchesDeploymentFilter =
-      node.type !== "device" ||
-      selectedDeployments.size === 0 ||
-      (node.deviceDeployment
-        ? selectedDeployments.has(node.deviceDeployment)
-        : false);
+    const matchesTags = nodeMatchesTagFilter(node, tagFilter);
 
-    if (node.type === "device") {
-      if (
-        !matchesSearch ||
-        !matchesDeviceFilter ||
-        !matchesHealthFilter ||
-        !matchesDeploymentFilter
-      ) {
-        return null;
-      }
-
-      return {
-        ...node,
-        children: [],
-      };
+    if (filteredChildren.length > 0) {
+      return { ...node, children: filteredChildren };
     }
 
-    if (!matchesSearch && filteredChildren.length === 0) {
-      return null;
+    if (matchesSearch && matchesTags) {
+      return { ...node, children: [] };
     }
 
-    return {
-      ...node,
-      children: filteredChildren,
-    };
+    return null;
   };
 
   return nodes
@@ -1620,24 +584,17 @@ export const InlineFilterDrawer = forwardRef<
       nodes = ORGANISATION_NAVIGATION_TREE,
       title = "Organisation Filters",
       searchPlaceholder = "Search filters",
-      showDeviceTypeFilter = true,
-      deviceTypeFilter,
-      defaultDeviceTypeFilter = [],
-      onDeviceTypeFilterChange,
-      deviceHealthFilter,
-      defaultDeviceHealthFilter = [],
-      onDeviceHealthFilterChange,
-      deviceDeploymentFilter,
-      defaultDeviceDeploymentFilter = [],
-      onDeviceDeploymentFilterChange,
+      filterGroups = [],
+      showTagFilter = true,
+      tagFilter,
+      defaultTagFilter = {},
+      onTagFilterChange,
       selectionByLevel,
       selectedNodeIds,
       defaultSelectedNodeIds = [],
       onSelectedNodeIdsChange,
       allowMultiNodeSelection = true,
       enableSubfolderCreation = false,
-      fetchLocationSuggestions,
-      locationMapStyle = DEFAULT_LOCATION_MAP_STYLE,
       onNodesChange,
       className,
       fullHeight = false,
@@ -1665,41 +622,22 @@ export const InlineFilterDrawer = forwardRef<
     const canResize = resizable && !isSmallViewport;
     const [searchValue, setSearchValue] = useState("");
     const [searchOpen, setSearchOpen] = useState(!title);
-    const [internalDeviceTypeFilter, setInternalDeviceTypeFilter] =
-      useState<DeviceTypeFilter>(defaultDeviceTypeFilter);
-    const [internalDeviceHealthFilter, setInternalDeviceHealthFilter] =
-      useState<DeviceHealthFilter>(defaultDeviceHealthFilter);
-    const [internalDeviceDeploymentFilter, setInternalDeviceDeploymentFilter] =
-      useState<DeviceDeploymentFilter>(defaultDeviceDeploymentFilter);
-    const [shownDeviceTypes, setShownDeviceTypes] = useState<DeviceTypeFilter>(
-      defaultDeviceTypeFilter
-    );
-    const [shownHealthFilters, setShownHealthFilters] =
-      useState<DeviceHealthFilter>(defaultDeviceHealthFilter);
-    const [shownDeploymentFilters, setShownDeploymentFilters] =
-      useState<DeviceDeploymentFilter>(defaultDeviceDeploymentFilter);
+    const [internalTagFilter, setInternalTagFilter] =
+      useState<TagFilter>(defaultTagFilter);
+    const [disabledTags, setDisabledTags] = useState<TagFilter>({});
     const [internalSelectedNodeIds, setInternalSelectedNodeIds] = useState<
       string[]
     >(defaultSelectedNodeIds);
     const [editableNodes, setEditableNodes] =
       useState<OrganisationNode[]>(nodes);
-    const [addNodeDrafts, setAddNodeDrafts] = useState<
-      Record<string, AddNodeDraft>
-    >({});
     const [activeEditorContext, setActiveEditorContext] =
       useState<ActiveEditorContext | null>(null);
-    const [apiSuggestionsByNodeId, setApiSuggestionsByNodeId] = useState<
-      Record<string, LocationSuggestion[]>
-    >({});
-    const [mapViewByNodeId, setMapViewByNodeId] = useState<
-      Record<string, LocationMapViewState>
-    >({});
+    const [activeEditorDraft, setActiveEditorDraft] = useState<AddNodeDraft>(
+      DEFAULT_ADD_NODE_DRAFT
+    );
     const [openItemsByLevel, setOpenItemsByLevel] = useState<
       Record<string, string[]>
     >({});
-    const suggestionRequestSeqByNodeIdRef = useRef<Record<string, number>>({});
-    const reverseRequestSeqByNodeIdRef = useRef<Record<string, number>>({});
-    const mapRef = useRef<MapRef>(null);
     const rootRef = useRef<HTMLDivElement>(null);
     const dragStateRef = useRef<{ startX: number; startWidth: number } | null>(
       null
@@ -1733,15 +671,10 @@ export const InlineFilterDrawer = forwardRef<
       [clampDrawerWidth, onWidthChange]
     );
 
-    const locationSuggestionProvider =
-      fetchLocationSuggestions ?? fetchOpenMeteoLocationSuggestions;
-
     useEffect(() => {
       setEditableNodes(nodes);
-      setAddNodeDrafts({});
       setActiveEditorContext(null);
-      setApiSuggestionsByNodeId({});
-      setMapViewByNodeId({});
+      setActiveEditorDraft(DEFAULT_ADD_NODE_DRAFT);
     }, [nodes]);
 
     useEffect(() => {
@@ -1827,20 +760,12 @@ export const InlineFilterDrawer = forwardRef<
       };
     };
 
-    const isDeviceFilterControlled = deviceTypeFilter !== undefined;
-    const isHealthFilterControlled = deviceHealthFilter !== undefined;
-    const isDeploymentFilterControlled = deviceDeploymentFilter !== undefined;
+    const isTagFilterControlled = tagFilter !== undefined;
     const isNodeSelectionControlled = selectedNodeIds !== undefined;
 
-    const activeDeviceTypeFilter = isDeviceFilterControlled
-      ? deviceTypeFilter
-      : internalDeviceTypeFilter;
-    const activeDeviceHealthFilter = isHealthFilterControlled
-      ? deviceHealthFilter
-      : internalDeviceHealthFilter;
-    const activeDeviceDeploymentFilter = isDeploymentFilterControlled
-      ? deviceDeploymentFilter
-      : internalDeviceDeploymentFilter;
+    const activeTagFilter = isTagFilterControlled
+      ? tagFilter
+      : internalTagFilter;
     const activeSelectedNodeIds = isNodeSelectionControlled
       ? selectedNodeIds
       : internalSelectedNodeIds;
@@ -1854,227 +779,166 @@ export const InlineFilterDrawer = forwardRef<
     );
 
     const filteredNodes = useMemo(
-      () =>
-        filterTree(
-          editableNodes,
-          searchValue,
-          activeDeviceTypeFilter,
-          activeDeviceHealthFilter,
-          activeDeviceDeploymentFilter
-        ),
-      [
-        editableNodes,
-        searchValue,
-        activeDeviceTypeFilter,
-        activeDeviceHealthFilter,
-        activeDeviceDeploymentFilter,
-      ]
+      () => filterTree(editableNodes, searchValue, activeTagFilter),
+      [editableNodes, searchValue, activeTagFilter]
     );
 
-    const updateAddNodeDraft = (
-      nodeId: string,
-      patch: Partial<AddNodeDraft>
-    ) => {
-      setAddNodeDrafts((previous) => ({
-        ...previous,
-        [nodeId]: { ...(previous[nodeId] ?? DEFAULT_ADD_NODE_DRAFT), ...patch },
-      }));
-    };
+    const menuCheckedValues = useMemo(
+      () =>
+        Object.fromEntries(
+          filterGroups.map((group) => [
+            group.id,
+            activeTagFilter[group.id] ?? [],
+          ])
+        ),
+      [filterGroups, activeTagFilter]
+    );
 
-    const closeAddNodeEditor = (nodeId: string) => {
-      setAddNodeDrafts((previous) => ({
-        ...previous,
-        [nodeId]: DEFAULT_ADD_NODE_DRAFT,
-      }));
-      setActiveEditorContext((previous) =>
-        previous?.node.id === nodeId ? null : previous
-      );
-      setApiSuggestionsByNodeId((previous) => ({
-        ...previous,
-        [nodeId]: [],
-      }));
-    };
-
-    const setMapViewForNode = (
-      nodeId: string,
-      latitude: number,
-      longitude: number,
-      zoom?: number
-    ) => {
-      const resolvedZoom = zoom ?? mapViewByNodeId[nodeId]?.zoom ?? 3;
-      setMapViewByNodeId((previous) => ({
-        ...previous,
-        [nodeId]: { latitude, longitude, zoom: resolvedZoom },
-      }));
-      mapRef.current?.flyTo({
-        center: [longitude, latitude],
-        zoom: resolvedZoom,
-        duration: 800,
-      });
-    };
-
-    const requestLocationSuggestions = async (
-      nodeId: string,
-      value: string,
-      context: LocationSuggestionContext
-    ) => {
-      const nextRequestSeq =
-        (suggestionRequestSeqByNodeIdRef.current[nodeId] ?? 0) + 1;
-      suggestionRequestSeqByNodeIdRef.current[nodeId] = nextRequestSeq;
-
-      try {
-        const suggestions = await locationSuggestionProvider(value, context);
-        if (
-          suggestionRequestSeqByNodeIdRef.current[nodeId] !== nextRequestSeq
-        ) {
-          return;
-        }
-
-        setApiSuggestionsByNodeId((previous) => ({
-          ...previous,
-          [nodeId]: suggestions,
-        }));
-
-        if (value.trim().length > 0 && suggestions.length > 0) {
-          const firstMatch = suggestions[0];
-          setMapViewForNode(
-            nodeId,
-            firstMatch.latitude,
-            firstMatch.longitude,
-            context.childType === "country" ? 4 : 9
+    const activeTagChips = useMemo(
+      () =>
+        filterGroups.flatMap((group) => {
+          const activeValues = activeTagFilter[group.id] ?? [];
+          const disabledValues = (disabledTags[group.id] ?? []).filter(
+            (value) => !activeValues.includes(value)
           );
-        }
-      } catch {
-        if (
-          suggestionRequestSeqByNodeIdRef.current[nodeId] !== nextRequestSeq
-        ) {
-          return;
-        }
+          return [
+            ...activeValues.map((value) => ({ value, selected: true })),
+            ...disabledValues.map((value) => ({ value, selected: false })),
+          ].map(({ value, selected }) => {
+            const option = group.options.find(
+              (candidate) => candidate.value === value
+            );
+            return {
+              groupId: group.id,
+              value,
+              selected,
+              label: option
+                ? `${group.label}: ${option.label}`
+                : `${group.label}: ${value}`,
+            };
+          });
+        }),
+      [filterGroups, activeTagFilter, disabledTags]
+    );
 
-        setApiSuggestionsByNodeId((previous) => ({
-          ...previous,
-          [nodeId]: [],
-        }));
+    const updateTagFilter = (nextTagFilter: TagFilter) => {
+      if (!isTagFilterControlled) {
+        setInternalTagFilter(nextTagFilter);
       }
+      onTagFilterChange?.(nextTagFilter);
     };
 
-    const applyLocationSuggestion = (
-      nodeId: string,
-      suggestion: LocationSuggestion
-    ) => {
-      const resolvedLocationName = suggestion.country
-        ? `${suggestion.name}, ${suggestion.country}`
-        : suggestion.name;
-
-      setAddNodeDrafts((previous) => {
-        const draft = previous[nodeId] ?? DEFAULT_ADD_NODE_DRAFT;
-        const shouldReplaceInput =
-          draft.value.trim().length === 0 ||
-          (draft.resolvedLocationName !== undefined &&
-            draft.value.trim() === draft.resolvedLocationName) ||
-          COORDINATE_INPUT_PATTERN.test(draft.value);
-
-        return {
-          ...previous,
-          [nodeId]: {
-            ...draft,
-            value: shouldReplaceInput ? resolvedLocationName : draft.value,
-            latitude: suggestion.latitude,
-            longitude: suggestion.longitude,
-            resolvedLocationName,
-            topologyMeta:
-              draft.targetType === "site" && suggestion.timeZone
-                ? buildTopologyMeta(
-                    "site",
-                    draft.topologyMeta,
-                    "timeZone",
-                    suggestion.timeZone
-                  )
-                : draft.topologyMeta,
-          },
-        };
-      });
-      setMapViewForNode(nodeId, suggestion.latitude, suggestion.longitude, 11);
+    const setGroupValues = (groupId: string, values: string[]) => {
+      const nextTagFilter: TagFilter = { ...activeTagFilter };
+      if (values.length === 0) {
+        delete nextTagFilter[groupId];
+      } else {
+        nextTagFilter[groupId] = values;
+      }
+      updateTagFilter(nextTagFilter);
     };
 
-    const applyPinnedLocation = async (
-      nodeId: string,
-      latitude: number,
-      longitude: number
-    ) => {
-      updateAddNodeDraft(nodeId, {
-        latitude,
-        longitude,
+    const setDisabledGroupValues = (groupId: string, values: string[]) => {
+      setDisabledTags((previous) => {
+        const next = { ...previous };
+        if (values.length === 0) {
+          delete next[groupId];
+        } else {
+          next[groupId] = values;
+        }
+        return next;
       });
-      setMapViewForNode(nodeId, latitude, longitude);
+    };
 
-      const nextRequestSeq =
-        (reverseRequestSeqByNodeIdRef.current[nodeId] ?? 0) + 1;
-      reverseRequestSeqByNodeIdRef.current[nodeId] = nextRequestSeq;
-
-      try {
-        const reverseLocation = await fetchOpenMeteoReverseLocation(
-          latitude,
-          longitude
+    // Primary chip action: toggle whether the filter is applied without
+    // removing the chip from the list.
+    const toggleChipActive = (groupId: string, value: string) => {
+      const activeValues = activeTagFilter[groupId] ?? [];
+      const disabledValues = disabledTags[groupId] ?? [];
+      if (activeValues.includes(value)) {
+        setGroupValues(
+          groupId,
+          activeValues.filter((item) => item !== value)
         );
-        if (
-          !reverseLocation ||
-          reverseRequestSeqByNodeIdRef.current[nodeId] !== nextRequestSeq
-        ) {
-          return;
+        if (!disabledValues.includes(value)) {
+          setDisabledGroupValues(groupId, [...disabledValues, value]);
         }
-
-        updateAddNodeDraft(nodeId, {
-          resolvedLocationName: reverseLocation.country
-            ? `${reverseLocation.name}, ${reverseLocation.country}`
-            : reverseLocation.name,
-          latitude: reverseLocation.latitude,
-          longitude: reverseLocation.longitude,
-        });
-
-        setAddNodeDrafts((previous) => {
-          const draft = previous[nodeId] ?? DEFAULT_ADD_NODE_DRAFT;
-          const nextResolvedLocationName = reverseLocation.country
-            ? `${reverseLocation.name}, ${reverseLocation.country}`
-            : reverseLocation.name;
-          const shouldReplaceInput =
-            draft.value.trim().length === 0 ||
-            (draft.resolvedLocationName !== undefined &&
-              draft.value.trim() === draft.resolvedLocationName) ||
-            COORDINATE_INPUT_PATTERN.test(draft.value);
-
-          return {
-            ...previous,
-            [nodeId]: {
-              ...draft,
-              value: shouldReplaceInput
-                ? nextResolvedLocationName
-                : draft.value,
-              resolvedLocationName: nextResolvedLocationName,
-              latitude: reverseLocation.latitude,
-              longitude: reverseLocation.longitude,
-              topologyMeta:
-                draft.targetType === "site" && reverseLocation.timeZone
-                  ? buildTopologyMeta(
-                      "site",
-                      draft.topologyMeta,
-                      "timeZone",
-                      reverseLocation.timeZone
-                    )
-                  : draft.topologyMeta,
-            },
-          };
-        });
-      } catch {
-        if (reverseRequestSeqByNodeIdRef.current[nodeId] !== nextRequestSeq) {
-          return;
-        }
-        updateAddNodeDraft(nodeId, {
-          resolvedLocationName: `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`,
-          latitude,
-          longitude,
-        });
+      } else {
+        setGroupValues(groupId, [...activeValues, value]);
+        setDisabledGroupValues(
+          groupId,
+          disabledValues.filter((item) => item !== value)
+        );
       }
+    };
+
+    // Secondary chip action: remove the chip entirely.
+    const removeChip = (groupId: string, value: string) => {
+      const activeValues = activeTagFilter[groupId] ?? [];
+      if (activeValues.includes(value)) {
+        setGroupValues(
+          groupId,
+          activeValues.filter((item) => item !== value)
+        );
+      }
+      const disabledValues = disabledTags[groupId] ?? [];
+      if (disabledValues.includes(value)) {
+        setDisabledGroupValues(
+          groupId,
+          disabledValues.filter((item) => item !== value)
+        );
+      }
+    };
+
+    const updateSelectedNodeIds = (nextSelectedNodeIds: string[]) => {
+      if (!isNodeSelectionControlled) {
+        setInternalSelectedNodeIds(nextSelectedNodeIds);
+      }
+      onSelectedNodeIdsChange?.(nextSelectedNodeIds);
+    };
+
+    const isNodeSelectable = (node: OrganisationNode): boolean => {
+      return Boolean(effectiveSelectionByLevel[node.type]);
+    };
+
+    const collectSelectableSubtreeIds = (node: OrganisationNode): string[] => {
+      const collectedIds: string[] = [];
+
+      const walk = (currentNode: OrganisationNode) => {
+        if (isNodeSelectable(currentNode)) {
+          collectedIds.push(currentNode.id);
+        }
+
+        for (const child of currentNode.children ?? []) {
+          walk(child);
+        }
+      };
+
+      walk(node);
+      return collectedIds;
+    };
+
+    const toggleNodeSelection = (node: OrganisationNode) => {
+      const affectedIds = collectSelectableSubtreeIds(node);
+      const isSelected = affectedIds.every((id) => selectedNodeIdSet.has(id));
+
+      if (allowMultiNodeSelection) {
+        if (isSelected) {
+          updateSelectedNodeIds(
+            activeSelectedNodeIds.filter(
+              (currentId) => !affectedIds.includes(currentId)
+            )
+          );
+          return;
+        }
+
+        updateSelectedNodeIds(
+          Array.from(new Set([...activeSelectedNodeIds, ...affectedIds]))
+        );
+        return;
+      }
+
+      updateSelectedNodeIds(isSelected ? [] : affectedIds);
     };
 
     const updateNodeLabelById = (
@@ -2090,34 +954,6 @@ export const InlineFilterDrawer = forwardRef<
           children: updateNodeLabelById(node.children, targetId, newLabel),
         };
       });
-
-    const commitEditingNode = (nodeId: string, value: string) => {
-      const trimmed = value.trim();
-      if (trimmed) {
-        setEditableNodes((previous) => {
-          const next = updateNodeLabelById(previous, nodeId, trimmed);
-          onNodesChange?.(next);
-          return next;
-        });
-      }
-    };
-
-    const handleEditNode = (
-      node: OrganisationNode,
-      levelKey: string,
-      path: OrganisationNode[]
-    ) => {
-      setActiveEditorContext({ node, levelKey, path });
-      setAddNodeDrafts((previous) => ({
-        ...previous,
-        [node.id]: {
-          ...(previous[node.id] ?? DEFAULT_ADD_NODE_DRAFT),
-          isOpen: true,
-          mode: "edit",
-          value: node.label,
-        },
-      }));
-    };
 
     const appendChildById = (
       branch: OrganisationNode[],
@@ -2169,48 +1005,51 @@ export const InlineFilterDrawer = forwardRef<
       return next;
     };
 
+    const closeEditor = () => {
+      setActiveEditorContext(null);
+      setActiveEditorDraft(DEFAULT_ADD_NODE_DRAFT);
+    };
+
+    const openAddFolderEditor = (
+      node: OrganisationNode,
+      levelKey: string,
+      path: OrganisationNode[]
+    ) => {
+      setActiveEditorContext({ node, levelKey, path });
+      setActiveEditorDraft({ isOpen: true, mode: "generic", value: "" });
+    };
+
+    const handleEditNode = (
+      node: OrganisationNode,
+      levelKey: string,
+      path: OrganisationNode[]
+    ) => {
+      setActiveEditorContext({ node, levelKey, path });
+      setActiveEditorDraft({ isOpen: true, mode: "edit", value: node.label });
+    };
+
+    const commitEditingNode = (nodeId: string, value: string) => {
+      const trimmed = value.trim();
+      if (trimmed) {
+        setEditableNodes((previous) => {
+          const next = updateNodeLabelById(previous, nodeId, trimmed);
+          onNodesChange?.(next);
+          return next;
+        });
+      }
+    };
+
     const handleAddSubfolder = (node: OrganisationNode, levelKey: string) => {
-      const draft = addNodeDrafts[node.id] ?? DEFAULT_ADD_NODE_DRAFT;
-      const trimmedName = draft.value.trim();
-      if (!trimmedName || node.type === "device") {
+      const trimmedName = activeEditorDraft.value.trim();
+      if (!trimmedName) {
         return;
       }
-
-      const fallbackType =
-        draft.mode === "location"
-          ? getChildTypeForLocationMode(node.type)
-          : "zoneOrArea";
-      const childType = draft.targetType ?? fallbackType;
-
-      const selectedGeoSuggestion = (
-        apiSuggestionsByNodeId[node.id] ?? []
-      ).find(
-        (suggestion) =>
-          suggestion.name.toLowerCase() === trimmedName.toLowerCase()
-      );
-      const resolvedLatitude =
-        selectedGeoSuggestion?.latitude ?? draft.latitude;
-      const resolvedLongitude =
-        selectedGeoSuggestion?.longitude ?? draft.longitude;
-      const resolvedCountry = selectedGeoSuggestion?.country;
-      const resolvedCountryCode = selectedGeoSuggestion?.countryCode;
 
       const newChild: OrganisationNode = {
         id: `node-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
         label: trimmedName,
-        type: childType,
+        type: "folder",
         children: [],
-        ...(resolvedLatitude !== undefined && resolvedLongitude !== undefined
-          ? {
-              geo: {
-                latitude: resolvedLatitude,
-                longitude: resolvedLongitude,
-                country: resolvedCountry,
-                countryCode: resolvedCountryCode,
-              },
-            }
-          : {}),
-        ...(draft.topologyMeta ? { topologyMeta: draft.topologyMeta } : {}),
       };
 
       setEditableNodes((previous) => {
@@ -2226,78 +1065,7 @@ export const InlineFilterDrawer = forwardRef<
         ),
       }));
 
-      closeAddNodeEditor(node.id);
-    };
-
-    const openAddNodeEditor = (
-      node: OrganisationNode,
-      levelKey: string,
-      path: OrganisationNode[],
-      mode: AddNodeMode,
-      preselectedType?: OrganisationNodeType
-    ) => {
-      const activeDraft = addNodeDrafts[node.id] ?? DEFAULT_ADD_NODE_DRAFT;
-      const defaultTargetType =
-        mode === "location"
-          ? getChildTypeForLocationMode(node.type)
-          : "zoneOrArea";
-      const targetType =
-        preselectedType ??
-        (activeDraft.mode === mode && activeDraft.targetType
-          ? activeDraft.targetType
-          : defaultTargetType);
-
-      setActiveEditorContext({ node, levelKey, path });
-      updateAddNodeDraft(node.id, {
-        isOpen: true,
-        mode,
-        value: activeDraft.value,
-        targetType,
-        latitude: activeDraft.latitude,
-        longitude: activeDraft.longitude,
-        resolvedLocationName: activeDraft.resolvedLocationName,
-      });
-
-      setMapViewByNodeId((previous) => {
-        if (previous[node.id]) {
-          return previous;
-        }
-
-        return {
-          ...previous,
-          [node.id]: {
-            latitude: activeDraft.latitude ?? 20,
-            longitude: activeDraft.longitude ?? 0,
-            zoom:
-              activeDraft.latitude !== undefined &&
-              activeDraft.longitude !== undefined
-                ? 11
-                : 2,
-          },
-        };
-      });
-
-      setOpenItemsByLevel((previous) => ({
-        ...previous,
-        [levelKey]: Array.from(
-          new Set([...(previous[levelKey] ?? []), node.id])
-        ),
-      }));
-
-      if (mode === "location") {
-        const childType = targetType;
-        if (shouldUseLocationSearch(childType)) {
-          const countryHint = getCountryFromPath(path);
-          void requestLocationSuggestions(node.id, activeDraft.value, {
-            parentNode: node,
-            path,
-            childType,
-            countryCodeHint: countryHint
-              ? COUNTRY_TO_CODE[countryHint]
-              : undefined,
-          });
-        }
-      }
+      closeEditor();
     };
 
     const handleRemoveNode = (nodeId: string) => {
@@ -2310,71 +1078,44 @@ export const InlineFilterDrawer = forwardRef<
       updateSelectedNodeIds(
         activeSelectedNodeIds.filter((id) => id !== nodeId)
       );
-      closeAddNodeEditor(nodeId);
+      closeEditor();
     };
 
-    const handleDeviceFilterChange = (nextType: DeviceCategory) => {
-      const isSelected = activeDeviceTypeFilter.includes(nextType);
-      const updated = isSelected
-        ? activeDeviceTypeFilter.filter((item) => item !== nextType)
-        : [...activeDeviceTypeFilter, nextType];
-
-      if (!isDeviceFilterControlled) {
-        setInternalDeviceTypeFilter(updated);
-      }
-      onDeviceTypeFilterChange?.(updated);
-    };
-
-    const updateSelectedNodeIds = (nextSelectedNodeIds: string[]) => {
-      if (!isNodeSelectionControlled) {
-        setInternalSelectedNodeIds(nextSelectedNodeIds);
-      }
-      onSelectedNodeIdsChange?.(nextSelectedNodeIds);
-    };
-
-    const collectSelectableSubtreeIds = (node: OrganisationNode): string[] => {
-      const collectedIds: string[] = [];
-
-      const walk = (currentNode: OrganisationNode) => {
-        if (isNodeSelectable(currentNode)) {
-          collectedIds.push(currentNode.id);
-        }
-
-        for (const child of currentNode.children ?? []) {
-          walk(child);
-        }
-      };
-
-      walk(node);
-      return collectedIds;
-    };
-
-    const toggleNodeSelection = (node: OrganisationNode) => {
-      const affectedIds = collectSelectableSubtreeIds(node);
-      const isSelected = affectedIds.every((id) => selectedNodeIdSet.has(id));
-
-      if (allowMultiNodeSelection) {
-        if (isSelected) {
-          updateSelectedNodeIds(
-            activeSelectedNodeIds.filter(
-              (currentId) => !affectedIds.includes(currentId)
-            )
-          );
-          return;
-        }
-
-        updateSelectedNodeIds(
-          Array.from(new Set([...activeSelectedNodeIds, ...affectedIds]))
-        );
-        return;
-      }
-
-      updateSelectedNodeIds(isSelected ? [] : affectedIds);
-    };
-
-    const isNodeSelectable = (node: OrganisationNode): boolean => {
-      return Boolean(effectiveSelectionByLevel[node.type]);
-    };
+    const renderNodeMenu = (
+      node: OrganisationNode,
+      levelKey: string,
+      currentPath: OrganisationNode[]
+    ) => (
+      <Menu>
+        <MenuTrigger disableButtonEnhancement>
+          <Button
+            size="small"
+            appearance="subtle"
+            className={styles.nodeMenuButton}
+            icon={<MoreHorizontalRegular />}
+            aria-label={`More actions for ${node.label}`}
+          />
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem
+              onClick={() => handleEditNode(node, levelKey, currentPath)}
+              icon={<Pen20Regular />}
+            >
+              Rename
+            </MenuItem>
+            <MenuItem
+              onClick={() => openAddFolderEditor(node, levelKey, currentPath)}
+            >
+              Add folder
+            </MenuItem>
+            <MenuItem onClick={() => handleRemoveNode(node.id)}>
+              Remove
+            </MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    );
 
     const renderNodes = (
       branch: OrganisationNode[],
@@ -2410,18 +1151,15 @@ export const InlineFilterDrawer = forwardRef<
           {branch.map((node) => {
             const children = node.children ?? [];
             const hasChildren = children.length > 0;
-            const canAddSubfolder =
-              enableSubfolderCreation && node.type !== "device";
+            const canEditNode = enableSubfolderCreation;
             const currentPath = [...ancestors, node];
 
             if (!hasChildren) {
               return (
                 <div key={node.id}>
                   <div className={styles.leaf}>
-                    {node.type === "device" && (
-                      <span className={styles.deviceIcon}>
-                        {getDeviceIcon(node.deviceCategory)}
-                      </span>
+                    {node.icon && (
+                      <span className={styles.nodeIcon}>{node.icon}</span>
                     )}
                     {isNodeSelectable(node) && (
                       <Checkbox
@@ -2431,78 +1169,7 @@ export const InlineFilterDrawer = forwardRef<
                       />
                     )}
                     <Text className={styles.leafLabel}>{node.label}</Text>
-                    {canAddSubfolder && (
-                      <Menu>
-                        <MenuTrigger disableButtonEnhancement>
-                          <Button
-                            size="small"
-                            appearance="subtle"
-                            className={styles.nodeMenuButton}
-                            icon={<MoreHorizontalRegular />}
-                            aria-label={`More actions for ${node.label}`}
-                          />
-                        </MenuTrigger>
-                        <MenuPopover>
-                          <MenuList>
-                            <MenuItem
-                              onClick={() =>
-                                handleEditNode(node, levelKey, currentPath)
-                              }
-                              icon={<Pen20Regular />}
-                            >
-                              Edit
-                            </MenuItem>
-                            <MenuItem
-                              onClick={() =>
-                                openAddNodeEditor(
-                                  node,
-                                  levelKey,
-                                  currentPath,
-                                  "generic"
-                                )
-                              }
-                            >
-                              Add folder
-                            </MenuItem>
-                            {getAllowedChildTypes(node.type).length > 0 && (
-                              <Menu>
-                                <MenuTrigger disableButtonEnhancement>
-                                  <MenuItem hasSubmenu>
-                                    Add topology location
-                                  </MenuItem>
-                                </MenuTrigger>
-                                <MenuPopover>
-                                  <MenuList>
-                                    {getAllowedChildTypes(node.type).map(
-                                      (childType) => (
-                                        <MenuItem
-                                          key={childType}
-                                          onClick={() =>
-                                            openAddNodeEditor(
-                                              node,
-                                              levelKey,
-                                              currentPath,
-                                              "location",
-                                              childType
-                                            )
-                                          }
-                                        >
-                                          {TOPOLOGY_TYPE_LABELS[childType] ??
-                                            childType}
-                                        </MenuItem>
-                                      )
-                                    )}
-                                  </MenuList>
-                                </MenuPopover>
-                              </Menu>
-                            )}
-                            <MenuItem onClick={() => handleRemoveNode(node.id)}>
-                              Remove
-                            </MenuItem>
-                          </MenuList>
-                        </MenuPopover>
-                      </Menu>
-                    )}
+                    {canEditNode && renderNodeMenu(node, levelKey, currentPath)}
                   </div>
                 </div>
               );
@@ -2524,84 +1191,16 @@ export const InlineFilterDrawer = forwardRef<
                         />
                       </span>
                     )}
+                    {node.icon && (
+                      <span className={styles.nodeIcon}>{node.icon}</span>
+                    )}
                     <Text>{node.label}</Text>
-                    {canAddSubfolder && (
+                    {canEditNode && (
                       <span
                         className={styles.checkboxWrap}
                         onClick={(event) => event.stopPropagation()}
                       >
-                        <Menu>
-                          <MenuTrigger disableButtonEnhancement>
-                            <Button
-                              size="small"
-                              appearance="subtle"
-                              className={styles.nodeMenuButton}
-                              icon={<MoreHorizontalRegular />}
-                              aria-label={`More actions for ${node.label}`}
-                            />
-                          </MenuTrigger>
-                          <MenuPopover>
-                            <MenuList>
-                              <MenuItem
-                                onClick={() =>
-                                  handleEditNode(node, levelKey, currentPath)
-                                }
-                                icon={<Pen20Regular />}
-                              >
-                                Edit
-                              </MenuItem>
-                              <MenuItem
-                                onClick={() =>
-                                  openAddNodeEditor(
-                                    node,
-                                    levelKey,
-                                    currentPath,
-                                    "generic"
-                                  )
-                                }
-                              >
-                                Add folder
-                              </MenuItem>
-                              {getAllowedChildTypes(node.type).length > 0 && (
-                                <Menu>
-                                  <MenuTrigger disableButtonEnhancement>
-                                    <MenuItem hasSubmenu>
-                                      Add topology location
-                                    </MenuItem>
-                                  </MenuTrigger>
-                                  <MenuPopover>
-                                    <MenuList>
-                                      {getAllowedChildTypes(node.type).map(
-                                        (childType) => (
-                                          <MenuItem
-                                            key={childType}
-                                            onClick={() =>
-                                              openAddNodeEditor(
-                                                node,
-                                                levelKey,
-                                                currentPath,
-                                                "location",
-                                                childType
-                                              )
-                                            }
-                                          >
-                                            {TOPOLOGY_TYPE_LABELS[childType] ??
-                                              childType}
-                                          </MenuItem>
-                                        )
-                                      )}
-                                    </MenuList>
-                                  </MenuPopover>
-                                </Menu>
-                              )}
-                              <MenuItem
-                                onClick={() => handleRemoveNode(node.id)}
-                              >
-                                Remove
-                              </MenuItem>
-                            </MenuList>
-                          </MenuPopover>
-                        </Menu>
+                        {renderNodeMenu(node, levelKey, currentPath)}
                       </span>
                     )}
                   </div>
@@ -2622,53 +1221,54 @@ export const InlineFilterDrawer = forwardRef<
       );
     };
 
-    const activeEditorNodeId = activeEditorContext?.node.id;
-    const activeEditorDraft = activeEditorNodeId
-      ? (addNodeDrafts[activeEditorNodeId] ?? DEFAULT_ADD_NODE_DRAFT)
-      : null;
-    const activeEditorChildType =
-      activeEditorDraft?.targetType ??
-      (activeEditorContext
-        ? getChildTypeForLocationMode(activeEditorContext.node.type)
-        : undefined);
-    const activeEditorApiSuggestions = activeEditorNodeId
-      ? (apiSuggestionsByNodeId[activeEditorNodeId] ?? [])
-      : [];
-    const activeEditorSuggestionByName = new globalThis.Map(
-      activeEditorApiSuggestions.map((suggestion) => [
-        suggestion.name,
-        suggestion,
-      ])
-    );
-    const activeEditorFallbackSuggestions =
-      activeEditorContext && activeEditorDraft && activeEditorChildType
-        ? getLocationSuggestions(
-            activeEditorContext.path,
-            activeEditorDraft.value,
-            activeEditorChildType
-          )
-        : [];
-    const activeEditorSuggestionNames = activeEditorApiSuggestions.map(
-      (suggestion) => suggestion.name
-    );
-    const activeEditorLocationSuggestions = Array.from(
-      new Set([
-        ...activeEditorSuggestionNames,
-        ...activeEditorFallbackSuggestions,
-      ])
-    );
-    const activeEditorMapView =
-      activeEditorNodeId && mapViewByNodeId[activeEditorNodeId]
-        ? mapViewByNodeId[activeEditorNodeId]
-        : {
-            latitude: activeEditorDraft?.latitude ?? 20,
-            longitude: activeEditorDraft?.longitude ?? 0,
-            zoom:
-              activeEditorDraft?.latitude !== undefined &&
-              activeEditorDraft?.longitude !== undefined
-                ? 11
-                : 2,
-          };
+    const renderFilterMenu = () => {
+      if (!showTagFilter || filterGroups.length === 0) {
+        return null;
+      }
+
+      return (
+        <Menu
+          checkedValues={menuCheckedValues}
+          onCheckedValueChange={(_event, data) => {
+            const checkedItems = data.checkedItems as string[];
+            setGroupValues(data.name, checkedItems);
+            setDisabledGroupValues(
+              data.name,
+              (disabledTags[data.name] ?? []).filter(
+                (value) => !checkedItems.includes(value)
+              )
+            );
+          }}
+        >
+          <MenuTrigger disableButtonEnhancement>
+            <Button
+              icon={<FilterRegular />}
+              appearance="secondary"
+              aria-label="Open filters"
+            />
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              {filterGroups.map((group) => (
+                <MenuGroup key={group.id}>
+                  <MenuGroupHeader>{group.label}</MenuGroupHeader>
+                  {group.options.map((option) => (
+                    <MenuItemCheckbox
+                      key={option.value}
+                      name={group.id}
+                      value={option.value}
+                    >
+                      {option.label}
+                    </MenuItemCheckbox>
+                  ))}
+                </MenuGroup>
+              ))}
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      );
+    };
+
     const drawerStyle: CSSProperties = fullHeight
       ? {
           width: "100%",
@@ -2712,90 +1312,7 @@ export const InlineFilterDrawer = forwardRef<
                 });
               }}
             />
-            {showDeviceTypeFilter && (
-              <Menu
-                checkedValues={{
-                  deviceTypes: activeDeviceTypeFilter,
-                  healthStates: activeDeviceHealthFilter,
-                  deployments: activeDeviceDeploymentFilter,
-                }}
-                onCheckedValueChange={(_event, data) => {
-                  if (data.name === "deviceTypes") {
-                    const next = data.checkedItems as DeviceCategory[];
-                    if (!isDeviceFilterControlled) {
-                      setInternalDeviceTypeFilter(next);
-                    }
-                    setShownDeviceTypes((prev) => [
-                      ...new Set([...prev, ...next]),
-                    ]);
-                    onDeviceTypeFilterChange?.(next);
-                  }
-
-                  if (data.name === "healthStates") {
-                    const next = data.checkedItems as DeviceHealth[];
-                    if (!isHealthFilterControlled) {
-                      setInternalDeviceHealthFilter(next);
-                    }
-                    setShownHealthFilters((prev) => [
-                      ...new Set([...prev, ...next]),
-                    ]);
-                    onDeviceHealthFilterChange?.(next);
-                  }
-
-                  if (data.name === "deployments") {
-                    const next = data.checkedItems as DeviceDeployment[];
-                    if (!isDeploymentFilterControlled) {
-                      setInternalDeviceDeploymentFilter(next);
-                    }
-                    setShownDeploymentFilters((prev) => [
-                      ...new Set([...prev, ...next]),
-                    ]);
-                    onDeviceDeploymentFilterChange?.(next);
-                  }
-                }}
-              >
-                <MenuTrigger disableButtonEnhancement>
-                  <Button
-                    icon={<FilterRegular />}
-                    appearance="secondary"
-                    aria-label="Open filters"
-                  />
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    {DEVICE_FILTER_LABELS.map((option) => (
-                      <MenuItemCheckbox
-                        key={option.value}
-                        name="deviceTypes"
-                        value={option.value}
-                      >
-                        {option.label}
-                      </MenuItemCheckbox>
-                    ))}
-
-                    {DEVICE_HEALTH_FILTER_LABELS.map((option) => (
-                      <MenuItemCheckbox
-                        key={option.value}
-                        name="healthStates"
-                        value={option.value}
-                      >
-                        Health: {option.label}
-                      </MenuItemCheckbox>
-                    ))}
-
-                    {DEVICE_DEPLOYMENT_FILTER_LABELS.map((option) => (
-                      <MenuItemCheckbox
-                        key={option.value}
-                        name="deployments"
-                        value={option.value}
-                      >
-                        Environment: {option.label}
-                      </MenuItemCheckbox>
-                    ))}
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            )}
+            {renderFilterMenu()}
           </div>
         )}
 
@@ -2818,693 +1335,113 @@ export const InlineFilterDrawer = forwardRef<
                 },
               }}
             />
-            {!title && showDeviceTypeFilter && (
-              <Menu
-                checkedValues={{
-                  deviceTypes: activeDeviceTypeFilter,
-                  healthStates: activeDeviceHealthFilter,
-                  deployments: activeDeviceDeploymentFilter,
-                }}
-                onCheckedValueChange={(_event, data) => {
-                  if (data.name === "deviceTypes") {
-                    const next = data.checkedItems as DeviceCategory[];
-                    if (!isDeviceFilterControlled) {
-                      setInternalDeviceTypeFilter(next);
-                    }
-                    setShownDeviceTypes((prev) => [
-                      ...new Set([...prev, ...next]),
-                    ]);
-                    onDeviceTypeFilterChange?.(next);
-                  }
-
-                  if (data.name === "healthStates") {
-                    const next = data.checkedItems as DeviceHealth[];
-                    if (!isHealthFilterControlled) {
-                      setInternalDeviceHealthFilter(next);
-                    }
-                    setShownHealthFilters((prev) => [
-                      ...new Set([...prev, ...next]),
-                    ]);
-                    onDeviceHealthFilterChange?.(next);
-                  }
-
-                  if (data.name === "deployments") {
-                    const next = data.checkedItems as DeviceDeployment[];
-                    if (!isDeploymentFilterControlled) {
-                      setInternalDeviceDeploymentFilter(next);
-                    }
-                    setShownDeploymentFilters((prev) => [
-                      ...new Set([...prev, ...next]),
-                    ]);
-                    onDeviceDeploymentFilterChange?.(next);
-                  }
-                }}
-              >
-                <MenuTrigger disableButtonEnhancement>
-                  <Button
-                    icon={<FilterRegular />}
-                    appearance="secondary"
-                    aria-label="Open filters"
-                  />
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    {DEVICE_FILTER_LABELS.map((option) => (
-                      <MenuItemCheckbox
-                        key={option.value}
-                        name="deviceTypes"
-                        value={option.value}
-                      >
-                        {option.label}
-                      </MenuItemCheckbox>
-                    ))}
-
-                    {DEVICE_HEALTH_FILTER_LABELS.map((option) => (
-                      <MenuItemCheckbox
-                        key={option.value}
-                        name="healthStates"
-                        value={option.value}
-                      >
-                        Health: {option.label}
-                      </MenuItemCheckbox>
-                    ))}
-
-                    {DEVICE_DEPLOYMENT_FILTER_LABELS.map((option) => (
-                      <MenuItemCheckbox
-                        key={option.value}
-                        name="deployments"
-                        value={option.value}
-                      >
-                        Environment: {option.label}
-                      </MenuItemCheckbox>
-                    ))}
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            )}
+            {!title && renderFilterMenu()}
           </div>
         </SearchBarCollapse>
 
-        {showDeviceTypeFilter &&
-          (shownDeviceTypes.length > 0 ||
-            shownHealthFilters.length > 0 ||
-            shownDeploymentFilters.length > 0) && (
-            <TagGroup
-              className={styles.selectedFiltersSection}
-              onDismiss={(_event, data) => {
-                const value = data.value as string;
-                if (value.startsWith("type:")) {
-                  const category = value.replace("type:", "") as DeviceCategory;
-                  setShownDeviceTypes((prev) =>
-                    prev.filter((v) => v !== category)
-                  );
-                  if (activeDeviceTypeFilter.includes(category)) {
-                    handleDeviceFilterChange(category);
-                  }
-                } else if (value.startsWith("health:")) {
-                  const health = value.replace("health:", "") as DeviceHealth;
-                  setShownHealthFilters((prev) =>
-                    prev.filter((v) => v !== health)
-                  );
-                  if (activeDeviceHealthFilter.includes(health)) {
-                    const next = activeDeviceHealthFilter.filter(
-                      (v) => v !== health
-                    );
-                    if (!isHealthFilterControlled) {
-                      setInternalDeviceHealthFilter(next);
-                    }
-                    onDeviceHealthFilterChange?.(next);
-                  }
-                } else if (value.startsWith("deploy:")) {
-                  const deployment = value.replace(
-                    "deploy:",
-                    ""
-                  ) as DeviceDeployment;
-                  setShownDeploymentFilters((prev) =>
-                    prev.filter((v) => v !== deployment)
-                  );
-                  if (activeDeviceDeploymentFilter.includes(deployment)) {
-                    const next = activeDeviceDeploymentFilter.filter(
-                      (v) => v !== deployment
-                    );
-                    if (!isDeploymentFilterControlled) {
-                      setInternalDeviceDeploymentFilter(next);
-                    }
-                    onDeviceDeploymentFilterChange?.(next);
-                  }
-                }
-              }}
-            >
-              {DEVICE_FILTER_LABELS.map(
-                (option) =>
-                  shownDeviceTypes.includes(option.value) && (
-                    <InteractionTag
-                      key={option.value}
-                      size="small"
-                      appearance="outline"
-                      selected={activeDeviceTypeFilter.includes(option.value)}
-                      value={`type:${option.value}`}
-                    >
-                      <InteractionTagPrimary
-                        hasSecondaryAction
-                        onClick={() => handleDeviceFilterChange(option.value)}
-                      >
-                        {option.label}
-                      </InteractionTagPrimary>
-                      <InteractionTagSecondary
-                        aria-label={`Remove ${option.label}`}
-                      />
-                    </InteractionTag>
-                  )
-              )}
-
-              {DEVICE_HEALTH_FILTER_LABELS.map(
-                (option) =>
-                  shownHealthFilters.includes(option.value) && (
-                    <InteractionTag
-                      key={option.value}
-                      size="small"
-                      appearance="outline"
-                      selected={activeDeviceHealthFilter.includes(option.value)}
-                      value={`health:${option.value}`}
-                    >
-                      <InteractionTagPrimary
-                        hasSecondaryAction
-                        onClick={() => {
-                          const isActive = activeDeviceHealthFilter.includes(
-                            option.value
-                          );
-                          const next = isActive
-                            ? activeDeviceHealthFilter.filter(
-                                (v) => v !== option.value
-                              )
-                            : [...activeDeviceHealthFilter, option.value];
-                          if (!isHealthFilterControlled) {
-                            setInternalDeviceHealthFilter(next);
-                          }
-                          onDeviceHealthFilterChange?.(next);
-                        }}
-                      >
-                        Health: {option.label}
-                      </InteractionTagPrimary>
-                      <InteractionTagSecondary
-                        aria-label={`Remove Health: ${option.label}`}
-                      />
-                    </InteractionTag>
-                  )
-              )}
-
-              {DEVICE_DEPLOYMENT_FILTER_LABELS.map(
-                (option) =>
-                  shownDeploymentFilters.includes(option.value) && (
-                    <InteractionTag
-                      key={option.value}
-                      size="small"
-                      appearance="outline"
-                      selected={activeDeviceDeploymentFilter.includes(
-                        option.value
-                      )}
-                      value={`deploy:${option.value}`}
-                    >
-                      <InteractionTagPrimary
-                        hasSecondaryAction
-                        onClick={() => {
-                          const isActive =
-                            activeDeviceDeploymentFilter.includes(option.value);
-                          const next = isActive
-                            ? activeDeviceDeploymentFilter.filter(
-                                (v) => v !== option.value
-                              )
-                            : [...activeDeviceDeploymentFilter, option.value];
-                          if (!isDeploymentFilterControlled) {
-                            setInternalDeviceDeploymentFilter(next);
-                          }
-                          onDeviceDeploymentFilterChange?.(next);
-                        }}
-                      >
-                        Env: {option.label}
-                      </InteractionTagPrimary>
-                      <InteractionTagSecondary
-                        aria-label={`Remove Env: ${option.label}`}
-                      />
-                    </InteractionTag>
-                  )
-              )}
-            </TagGroup>
-          )}
+        {showTagFilter && activeTagChips.length > 0 && (
+          <FilterChipGroup
+            className={styles.selectedFiltersSection}
+            size="small"
+            onDismiss={(value) => {
+              const [groupId, tagValue] = value.split(CHIP_VALUE_SEPARATOR);
+              if (groupId && tagValue !== undefined) {
+                removeChip(groupId, tagValue);
+              }
+            }}
+          >
+            {activeTagChips.map((chip) => (
+              <FilterChip
+                key={`${chip.groupId}${CHIP_VALUE_SEPARATOR}${chip.value}`}
+                value={`${chip.groupId}${CHIP_VALUE_SEPARATOR}${chip.value}`}
+                selected={chip.selected}
+                onToggle={() => toggleChipActive(chip.groupId, chip.value)}
+                dismissLabel={`Remove ${chip.label}`}
+              >
+                {chip.label}
+              </FilterChip>
+            ))}
+          </FilterChipGroup>
+        )}
 
         {renderNodes(filteredNodes)}
 
         {filteredNodes.length === 0 && (
-          <Text className={styles.emptyState}>
-            No locations or device models found.
-          </Text>
+          <Text className={styles.emptyState}>No results found.</Text>
         )}
 
         <Dialog
-          open={Boolean(activeEditorContext && activeEditorDraft?.isOpen)}
+          open={Boolean(activeEditorContext && activeEditorDraft.isOpen)}
           onOpenChange={(_event, data) => {
-            if (!data.open && activeEditorNodeId) {
-              closeAddNodeEditor(activeEditorNodeId);
+            if (!data.open) {
+              closeEditor();
             }
           }}
         >
-          <DialogSurface>
-            <DialogBody className={styles.editorDialogBody}>
+          <DialogSurface className={styles.editorDialogSurface}>
+            <DialogBody>
               <DialogTitle>
-                {activeEditorDraft?.mode === "edit"
-                  ? "Rename"
-                  : activeEditorDraft?.mode === "location"
-                    ? `Add ${TOPOLOGY_TYPE_LABELS[activeEditorChildType ?? "site"] ?? "Topology Location"}`
-                    : "Add Folder"}
+                {activeEditorDraft.mode === "edit" ? "Rename" : "Add Folder"}
               </DialogTitle>
               <DialogContent>
-                {activeEditorContext &&
-                  activeEditorDraft &&
-                  activeEditorNodeId &&
-                  activeEditorChildType && (
-                    <div className={styles.addEditor}>
-                      <Field
-                        label={
-                          activeEditorDraft.mode === "edit"
-                            ? "Name"
-                            : activeEditorDraft.mode === "location"
-                              ? "Location name"
-                              : "Folder name"
-                        }
-                      >
-                        <Input
-                          value={activeEditorDraft.value}
-                          placeholder={
-                            activeEditorDraft.mode === "location"
-                              ? "Type location name…"
-                              : "Type folder name"
+                {activeEditorContext && (
+                  <Field
+                    label={
+                      activeEditorDraft.mode === "edit" ? "Name" : "Folder name"
+                    }
+                  >
+                    <Input
+                      value={activeEditorDraft.value}
+                      placeholder={
+                        activeEditorDraft.mode === "edit"
+                          ? "Type a name"
+                          : "Type folder name"
+                      }
+                      onChange={(_event, data) => {
+                        setActiveEditorDraft((previous) => ({
+                          ...previous,
+                          value: data.value,
+                        }));
+                      }}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                          event.preventDefault();
+                          if (activeEditorDraft.mode === "edit") {
+                            commitEditingNode(
+                              activeEditorContext.node.id,
+                              activeEditorDraft.value
+                            );
+                            closeEditor();
+                          } else {
+                            handleAddSubfolder(
+                              activeEditorContext.node,
+                              activeEditorContext.levelKey
+                            );
                           }
-                          onChange={(_event, data) => {
-                            updateAddNodeDraft(activeEditorNodeId, {
-                              value: data.value,
-                            });
-                          }}
-                          onKeyDown={(event) => {
-                            if (event.key === "Enter") {
-                              event.preventDefault();
-                              handleAddSubfolder(
-                                activeEditorContext.node,
-                                activeEditorContext.levelKey
-                              );
-                            }
-                          }}
-                        />
-                      </Field>
-
-                      {activeEditorDraft.mode !== "edit" &&
-                        activeEditorDraft.mode === "location" &&
-                        activeEditorChildType &&
-                        TOPOLOGY_META_FIELDS[activeEditorChildType] && (
-                          <div className={styles.metaFieldsGrid}>
-                            {TOPOLOGY_META_FIELDS[activeEditorChildType]!.map(
-                              (fieldDef) => (
-                                <div
-                                  key={fieldDef.key}
-                                  className={
-                                    fieldDef.fullWidth
-                                      ? styles.metaFieldFull
-                                      : undefined
-                                  }
-                                >
-                                  {fieldDef.type === "enum" ? (
-                                    <Field label={fieldDef.label}>
-                                      <Dropdown
-                                        placeholder="Select…"
-                                        selectedOptions={
-                                          getTopologyMetaValue(
-                                            activeEditorDraft.topologyMeta,
-                                            fieldDef.key
-                                          ) !== undefined
-                                            ? [
-                                                String(
-                                                  getTopologyMetaValue(
-                                                    activeEditorDraft.topologyMeta,
-                                                    fieldDef.key
-                                                  )
-                                                ),
-                                              ]
-                                            : []
-                                        }
-                                        value={String(
-                                          getTopologyMetaValue(
-                                            activeEditorDraft.topologyMeta,
-                                            fieldDef.key
-                                          ) ?? ""
-                                        )}
-                                        onOptionSelect={(_event, data) => {
-                                          updateAddNodeDraft(
-                                            activeEditorNodeId,
-                                            {
-                                              topologyMeta: buildTopologyMeta(
-                                                activeEditorChildType,
-                                                activeEditorDraft.topologyMeta,
-                                                fieldDef.key,
-                                                data.optionValue
-                                              ),
-                                            }
-                                          );
-                                        }}
-                                      >
-                                        {fieldDef.options!.map((opt) => (
-                                          <Option
-                                            key={opt.value}
-                                            value={opt.value}
-                                          >
-                                            {opt.label}
-                                          </Option>
-                                        ))}
-                                      </Dropdown>
-                                    </Field>
-                                  ) : fieldDef.type === "number" ? (
-                                    <Field label={fieldDef.label}>
-                                      <SpinButton
-                                        value={Number(
-                                          getTopologyMetaValue(
-                                            activeEditorDraft.topologyMeta,
-                                            fieldDef.key
-                                          ) ?? 0
-                                        )}
-                                        onChange={(_event, data) => {
-                                          updateAddNodeDraft(
-                                            activeEditorNodeId,
-                                            {
-                                              topologyMeta: buildTopologyMeta(
-                                                activeEditorChildType,
-                                                activeEditorDraft.topologyMeta,
-                                                fieldDef.key,
-                                                data.value
-                                              ),
-                                            }
-                                          );
-                                        }}
-                                      />
-                                    </Field>
-                                  ) : fieldDef.type === "text" ? (
-                                    <Field label={fieldDef.label}>
-                                      {fieldDef.key === "timeZone" ? (
-                                        <Combobox
-                                          className={styles.locationCombobox}
-                                          freeform
-                                          placeholder={fieldDef.placeholder}
-                                          value={String(
-                                            getTopologyMetaValue(
-                                              activeEditorDraft.topologyMeta,
-                                              fieldDef.key
-                                            ) ?? ""
-                                          )}
-                                          onInput={(event) => {
-                                            const nextValue = (
-                                              event.target as HTMLInputElement
-                                            ).value;
-                                            updateAddNodeDraft(
-                                              activeEditorNodeId,
-                                              {
-                                                topologyMeta: buildTopologyMeta(
-                                                  activeEditorChildType,
-                                                  activeEditorDraft.topologyMeta,
-                                                  fieldDef.key,
-                                                  nextValue
-                                                ),
-                                              }
-                                            );
-                                          }}
-                                          onOptionSelect={(_event, data) => {
-                                            updateAddNodeDraft(
-                                              activeEditorNodeId,
-                                              {
-                                                topologyMeta: buildTopologyMeta(
-                                                  activeEditorChildType,
-                                                  activeEditorDraft.topologyMeta,
-                                                  fieldDef.key,
-                                                  data.optionValue ??
-                                                    data.optionText ??
-                                                    ""
-                                                ),
-                                              }
-                                            );
-                                          }}
-                                        >
-                                          {getTimeZoneSuggestions(
-                                            String(
-                                              getTopologyMetaValue(
-                                                activeEditorDraft.topologyMeta,
-                                                fieldDef.key
-                                              ) ?? ""
-                                            )
-                                          ).map((timeZone) => (
-                                            <Option
-                                              key={timeZone}
-                                              value={timeZone}
-                                              text={timeZone}
-                                            >
-                                              {timeZone}
-                                            </Option>
-                                          ))}
-                                        </Combobox>
-                                      ) : (
-                                        <Input
-                                          placeholder={fieldDef.placeholder}
-                                          value={String(
-                                            getTopologyMetaValue(
-                                              activeEditorDraft.topologyMeta,
-                                              fieldDef.key
-                                            ) ?? ""
-                                          )}
-                                          onChange={(_event, data) => {
-                                            updateAddNodeDraft(
-                                              activeEditorNodeId,
-                                              {
-                                                topologyMeta: buildTopologyMeta(
-                                                  activeEditorChildType,
-                                                  activeEditorDraft.topologyMeta,
-                                                  fieldDef.key,
-                                                  data.value
-                                                ),
-                                              }
-                                            );
-                                          }}
-                                        />
-                                      )}
-                                    </Field>
-                                  ) : fieldDef.type === "boolean" ? (
-                                    <Field label={fieldDef.label}>
-                                      <Switch
-                                        checked={Boolean(
-                                          getTopologyMetaValue(
-                                            activeEditorDraft.topologyMeta,
-                                            fieldDef.key
-                                          )
-                                        )}
-                                        onChange={(_event, data) => {
-                                          updateAddNodeDraft(
-                                            activeEditorNodeId,
-                                            {
-                                              topologyMeta: buildTopologyMeta(
-                                                activeEditorChildType,
-                                                activeEditorDraft.topologyMeta,
-                                                fieldDef.key,
-                                                data.checked
-                                              ),
-                                            }
-                                          );
-                                        }}
-                                      />
-                                    </Field>
-                                  ) : null}
-                                </div>
-                              )
-                            )}
-                          </div>
-                        )}
-
-                      {activeEditorDraft.mode !== "edit" &&
-                        activeEditorDraft.mode === "location" && (
-                          <div className={styles.locationPicker}>
-                            {activeEditorDraft.resolvedLocationName && (
-                              <div className={styles.detectedNameRow}>
-                                <Text className={styles.detectedNameLabel}>
-                                  Detected:{" "}
-                                  {activeEditorDraft.resolvedLocationName}
-                                </Text>
-                                <Button
-                                  size="small"
-                                  appearance="subtle"
-                                  onClick={() =>
-                                    updateAddNodeDraft(activeEditorNodeId, {
-                                      value:
-                                        activeEditorDraft.resolvedLocationName,
-                                    })
-                                  }
-                                >
-                                  Use this name
-                                </Button>
-                              </div>
-                            )}
-
-                            {shouldUseLocationSearch(activeEditorChildType) && (
-                              <Field label="Search map">
-                                <Combobox
-                                  className={styles.locationCombobox}
-                                  freeform
-                                  value={activeEditorDraft.mapSearchValue ?? ""}
-                                  placeholder="Search for a city or area…"
-                                  onInput={(event) => {
-                                    const searchVal = (
-                                      event.target as HTMLInputElement
-                                    ).value;
-                                    updateAddNodeDraft(activeEditorNodeId, {
-                                      mapSearchValue: searchVal,
-                                    });
-                                    const countryHint = getCountryFromPath(
-                                      activeEditorContext.path
-                                    );
-                                    void requestLocationSuggestions(
-                                      activeEditorNodeId,
-                                      searchVal,
-                                      {
-                                        parentNode: activeEditorContext.node,
-                                        path: activeEditorContext.path,
-                                        childType: activeEditorChildType,
-                                        countryCodeHint: countryHint
-                                          ? COUNTRY_TO_CODE[countryHint]
-                                          : undefined,
-                                      }
-                                    );
-                                  }}
-                                  onOptionSelect={(_event, data) => {
-                                    const suggestion =
-                                      activeEditorSuggestionByName.get(
-                                        data.optionText ?? ""
-                                      );
-                                    if (suggestion) {
-                                      applyLocationSuggestion(
-                                        activeEditorNodeId,
-                                        suggestion
-                                      );
-                                      updateAddNodeDraft(activeEditorNodeId, {
-                                        mapSearchValue: suggestion.country
-                                          ? `${suggestion.name}, ${suggestion.country}`
-                                          : suggestion.name,
-                                      });
-                                    }
-                                  }}
-                                >
-                                  {activeEditorLocationSuggestions
-                                    .slice(0, 8)
-                                    .map((suggestionName) => {
-                                      const suggestion =
-                                        activeEditorSuggestionByName.get(
-                                          suggestionName
-                                        );
-                                      return (
-                                        <Option
-                                          key={`${activeEditorNodeId}-${suggestionName}`}
-                                          value={suggestionName}
-                                          text={suggestionName}
-                                        >
-                                          {suggestion?.country
-                                            ? `${suggestion.name}, ${suggestion.country}`
-                                            : suggestionName}
-                                        </Option>
-                                      );
-                                    })}
-                                </Combobox>
-                              </Field>
-                            )}
-
-                            <Field label="Pin on map">
-                              <div className={styles.miniMap}>
-                                <MapLibreMap
-                                  ref={mapRef}
-                                  mapStyle={locationMapStyle}
-                                  longitude={activeEditorMapView.longitude}
-                                  latitude={activeEditorMapView.latitude}
-                                  zoom={activeEditorMapView.zoom}
-                                  onMove={(event: {
-                                    viewState: {
-                                      latitude: number;
-                                      longitude: number;
-                                      zoom: number;
-                                    };
-                                  }) => {
-                                    setMapViewByNodeId((previous) => ({
-                                      ...previous,
-                                      [activeEditorNodeId]: {
-                                        latitude: event.viewState.latitude,
-                                        longitude: event.viewState.longitude,
-                                        zoom: event.viewState.zoom,
-                                      },
-                                    }));
-                                  }}
-                                  onClick={(event: MapLayerMouseEvent) => {
-                                    void applyPinnedLocation(
-                                      activeEditorNodeId,
-                                      event.lngLat.lat,
-                                      event.lngLat.lng
-                                    );
-                                  }}
-                                  reuseMaps
-                                >
-                                  <NavigationControl
-                                    position="top-right"
-                                    showCompass={false}
-                                  />
-                                  {activeEditorDraft.latitude !== undefined &&
-                                    activeEditorDraft.longitude !==
-                                      undefined && (
-                                      <Marker
-                                        longitude={activeEditorDraft.longitude}
-                                        latitude={activeEditorDraft.latitude}
-                                        color={tokens.colorBrandForeground1}
-                                      />
-                                    )}
-                                </MapLibreMap>
-                              </div>
-                            </Field>
-
-                            <Text className={styles.locationMeta}>
-                              {activeEditorDraft.latitude !== undefined &&
-                              activeEditorDraft.longitude !== undefined
-                                ? `Pinned: ${activeEditorDraft.latitude.toFixed(4)}, ${activeEditorDraft.longitude.toFixed(4)}`
-                                : "Click the map to pin coordinates"}
-                            </Text>
-                          </div>
-                        )}
-                    </div>
-                  )}
+                        }
+                      }}
+                    />
+                  </Field>
+                )}
               </DialogContent>
               <DialogActions>
-                <Button
-                  appearance="secondary"
-                  onClick={() => {
-                    if (activeEditorNodeId) {
-                      closeAddNodeEditor(activeEditorNodeId);
-                    }
-                  }}
-                >
+                <Button appearance="secondary" onClick={closeEditor}>
                   Cancel
                 </Button>
                 <Button
                   appearance="primary"
                   disabled={
-                    !activeEditorDraft ||
                     activeEditorDraft.value.trim().length === 0 ||
                     !activeEditorContext
                   }
                   onClick={() => {
                     if (!activeEditorContext) return;
-                    if (activeEditorDraft?.mode === "edit") {
+                    if (activeEditorDraft.mode === "edit") {
                       commitEditingNode(
                         activeEditorContext.node.id,
                         activeEditorDraft.value
                       );
-                      closeAddNodeEditor(activeEditorContext.node.id);
+                      closeEditor();
                     } else {
                       handleAddSubfolder(
                         activeEditorContext.node,
@@ -3513,7 +1450,7 @@ export const InlineFilterDrawer = forwardRef<
                     }
                   }}
                 >
-                  {activeEditorDraft?.mode === "edit" ? "Save" : "Add"}
+                  {activeEditorDraft.mode === "edit" ? "Save" : "Add"}
                 </Button>
               </DialogActions>
             </DialogBody>

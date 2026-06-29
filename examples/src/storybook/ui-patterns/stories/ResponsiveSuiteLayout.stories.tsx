@@ -2,7 +2,10 @@ import {
   useMediaQuery,
   usePageController,
 } from "@axiscommunications/fluent-hooks";
-import { SideNavigation as CompactRailNavigation } from "@axiscommunications/fluent-side-navigation";
+import {
+  SideNavigation as BaseSideNavigation,
+  type SideNavigationItem,
+} from "@axiscommunications/fluent-side-navigation";
 import {
   Badge,
   Card,
@@ -18,23 +21,40 @@ import {
   TableCellLayout,
   type TableColumnDefinition,
   Text,
+  Toast,
+  ToastBody,
+  ToastTitle,
+  Toaster,
   createTableColumn,
   makeStyles,
-  shorthands,
   tokens,
+  useId,
+  useToastController,
 } from "@fluentui/react-components";
 import {
   AddRegular,
+  AlertFilled,
   AlertRegular,
-  CheckmarkCircle24Color,
+  ArrowResetRegular,
   DeleteRegular,
   EditRegular,
+  GlobeFilled,
+  GlobeRegular,
+  HomeFilled,
+  HomeRegular,
+  SaveRegular,
+  SettingsFilled,
   SettingsRegular,
 } from "@fluentui/react-icons";
-// @ts-expect-error - @storybook/blocks may not be available in all environments
-import { Canvas, Description, Heading, Title } from "@storybook/blocks";
+import {
+  Canvas,
+  Description,
+  Heading,
+  Markdown,
+  Title,
+} from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import { FilterToolbar } from "../components/composites/FilterToolbar";
 import { FullPageHeader } from "../components/composites/FullPageHeader";
 import { InlineFilterDrawer } from "../components/composites/InlineFilterDrawer";
@@ -42,6 +62,7 @@ import { Pagination } from "../components/composites/Pagination";
 import {
   SuiteHeader,
   type SuiteHeaderAction,
+  defaultLauncherOrganizationItems,
 } from "../components/suite/SuiteHeader";
 
 const useStyles = makeStyles({
@@ -60,20 +81,19 @@ const useStyles = makeStyles({
   },
   body: {
     minHeight: 0,
-    display: "grid",
-    gridTemplateColumns: "68px 1fr",
+    display: "flex",
+    flexDirection: "row",
     overflow: "hidden",
   },
   bodyCompact: {
     minHeight: 0,
-    display: "grid",
-    gridTemplateColumns: "1fr",
+    display: "flex",
+    flexDirection: "row",
     overflow: "hidden",
   },
-  bodyWithDrawer: {
-    gridTemplateColumns: "68px 320px 1fr",
-  },
+  bodyWithDrawer: {},
   compactRail: {
+    flexShrink: 0,
     height: "100%",
     position: "sticky",
     top: 0,
@@ -82,30 +102,26 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground4,
   },
   inlineDrawerPanel: {
-    width: "320px",
-    minWidth: "320px",
-    height: "100%",
-    backgroundColor: tokens.colorNeutralBackground3,
-    overflow: "hidden",
-    position: "relative",
-    zIndex: 4,
-  },
-  inlineDrawerPanelCompact: {
-    width: "100%",
+    flexShrink: 0,
     minWidth: 0,
-    maxWidth: "100%",
     height: "100%",
     backgroundColor: tokens.colorNeutralBackground3,
     overflow: "hidden",
     position: "relative",
     zIndex: 4,
-    ...shorthands.borderRight(
-      tokens.strokeWidthThin,
-      "solid",
-      tokens.colorNeutralStroke2
-    ),
+    transitionProperty: "width",
+    transitionDuration: tokens.durationNormal,
+    transitionTimingFunction: tokens.curveEasyEase,
+    "@media (prefers-reduced-motion: reduce)": {
+      transitionDuration: "0.01ms",
+    },
+  },
+  inlineDrawerInner: {
+    height: "100%",
+    flexShrink: 0,
   },
   workspaceHost: {
+    flexGrow: 1,
     minWidth: 0,
     height: "100%",
     overflow: "hidden",
@@ -193,13 +209,49 @@ const useStyles = makeStyles({
     gap: tokens.spacingHorizontalM,
     marginTop: "auto",
   },
-  formGrid: {
+  // --- Responsive 12-column grid system ---------------------------------
+  // Fluent UI v9 does not ship a Grid component, so application pages build a
+  // CSS grid that mirrors the Fluent 2 layout breakpoints. Content blocks opt
+  // into a column span per breakpoint instead of stretching to fill the page.
+  // The grid is a *container* so blocks respond to the real content-area width
+  // (which shrinks when a drawer/rail is open) rather than the viewport width.
+  // Container breakpoints (min-width): medium 700 · large 1100
+  contentGrid12: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: tokens.spacingHorizontalL,
+    containerType: "inline-size",
+    gridTemplateColumns: "repeat(12, minmax(0, 1fr))",
+    columnGap: tokens.spacingHorizontalXXL,
+    rowGap: tokens.spacingVerticalXL,
+    alignItems: "start",
   },
-  formGridCompact: {
-    gridTemplateColumns: "1fr",
+  // Forms are most legible as a single narrow column. Mobile-first: full width
+  // when the container is narrow, half-width at medium, and capped at ~1/3
+  // (4 of 12 ≈ 33%) once there is enough room — never edge-to-edge.
+  formColumn: {
+    gridColumn: "span 12",
+    "@container (min-width: 700px)": {
+      gridColumn: "span 6",
+    },
+    "@container (min-width: 1100px)": {
+      gridColumn: "span 4",
+    },
+  },
+  // Supporting content (preferences, help) stacks below the form when the
+  // container is narrow and sits beside it once there is room.
+  asideColumn: {
+    gridColumn: "span 12",
+    "@container (min-width: 700px)": {
+      gridColumn: "span 6",
+    },
+    "@container (min-width: 1100px)": {
+      gridColumn: "span 3",
+    },
+  },
+  // Form fields are always stacked in a single column for fast vertical scanning.
+  formStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalM,
   },
   dataGridWrapper: {
     display: "flex",
@@ -228,6 +280,119 @@ const headerUtilityActions: SuiteHeaderAction[] = [
   { id: "alerts", icon: <AlertRegular />, ariaLabel: "Alerts" },
   { id: "settings", icon: <SettingsRegular />, ariaLabel: "Settings" },
 ];
+
+const railNavItems: SideNavigationItem[] = [
+  {
+    id: "home",
+    label: "Home",
+    icon: <HomeRegular />,
+    selectedIcon: <HomeFilled />,
+    children: [
+      { id: "home-overview", label: "Overview" },
+      { id: "home-activity", label: "Activity" },
+    ],
+  },
+  {
+    id: "alerts",
+    label: "Alerts",
+    icon: <AlertRegular />,
+    selectedIcon: <AlertFilled />,
+    children: [
+      { id: "alerts-active", label: "Active" },
+      { id: "alerts-resolved", label: "Resolved" },
+    ],
+  },
+  {
+    id: "settings",
+    label: "Settings",
+    icon: <SettingsRegular />,
+    selectedIcon: <SettingsFilled />,
+    children: [
+      { id: "settings-general", label: "General" },
+      { id: "settings-preferences", label: "Preferences" },
+      { id: "settings-security", label: "Security" },
+    ],
+  },
+];
+
+const railFooterItems: SideNavigationItem[] = [
+  {
+    id: "site",
+    label: "Site",
+    icon: <GlobeRegular />,
+    selectedIcon: <GlobeFilled />,
+  },
+];
+
+/** Width of the rail when expanded to reveal labels, in pixels. */
+const RAIL_EXPANDED_WIDTH = 260;
+
+/**
+ * Local wrapper that supplies the suite's nav items to the shared
+ * {@link BaseSideNavigation} component and renders it as a collapsible icon
+ * rail that can expand inline to reveal labels via the built-in toggle.
+ */
+function CompactRailNavigation({
+  className,
+  style,
+  selectedItemId,
+  onSelect,
+}: {
+  className?: string;
+  style?: CSSProperties;
+  selectedItemId?: string;
+  onSelect?: (id: string) => void;
+}) {
+  return (
+    <BaseSideNavigation
+      className={className}
+      style={style}
+      items={railNavItems}
+      footerItems={railFooterItems}
+      collapsible
+      expandedWidth={RAIL_EXPANDED_WIDTH}
+      defaultOpenItemIds={["home", "alerts", "settings"]}
+      selectedItemId={selectedItemId}
+      onSelect={onSelect}
+    />
+  );
+}
+
+/**
+ * Always-rendered inline filter drawer that slides open/closed by animating its
+ * width, mirroring the collapsible behavior of {@link CompactRailNavigation}.
+ * The drawer is never wider than its content: the inner content keeps a fixed
+ * width so it does not reflow while the panel width transitions, and the open
+ * width adapts to the viewport.
+ */
+function InlineDrawerSlot({
+  open,
+  isSmall,
+}: {
+  open: boolean;
+  isSmall: boolean;
+}) {
+  const styles = useStyles();
+  const contentWidth = isSmall ? 280 : 320;
+
+  return (
+    <div
+      className={styles.inlineDrawerPanel}
+      style={{ width: open ? contentWidth : 0 }}
+      aria-hidden={!open}
+    >
+      <div className={styles.inlineDrawerInner} style={{ width: contentWidth }}>
+        <InlineFilterDrawer
+          fullHeight
+          resizable={false}
+          defaultWidth={contentWidth}
+          minWidth={contentWidth}
+          maxWidth={contentWidth}
+        />
+      </div>
+    </div>
+  );
+}
 
 function useRailState() {
   const [selectedNavItemId, setSelectedNavItemId] = useState("home");
@@ -266,6 +431,7 @@ function DashboardPage({
         productName="Axis Management"
         showSearch
         searchPlaceholder="Search systems and devices"
+        launcherOrganizationItems={defaultLauncherOrganizationItems}
         utilityActions={headerUtilityActions}
       />
       <div
@@ -281,23 +447,7 @@ function DashboardPage({
           selectedItemId={rail.selectedNavItemId}
           onSelect={rail.onSelect}
         />
-        {rail.showDrawer && (
-          <div
-            className={
-              isSmall
-                ? styles.inlineDrawerPanelCompact
-                : styles.inlineDrawerPanel
-            }
-          >
-            <InlineFilterDrawer
-              fullHeight
-              resizable={false}
-              defaultWidth={isSmall ? 280 : 320}
-              minWidth={isSmall ? 240 : 320}
-              maxWidth={isSmall ? 420 : 320}
-            />
-          </div>
-        )}
+        <InlineDrawerSlot open={rail.showDrawer} isSmall={isSmall} />
         <div className={styles.workspaceHost}>
           <div className={styles.pageSection}>
             <div
@@ -550,6 +700,7 @@ function DevicesPage({
         productName="Axis Management"
         showSearch
         searchPlaceholder="Search systems and devices"
+        launcherOrganizationItems={defaultLauncherOrganizationItems}
         utilityActions={headerUtilityActions}
       />
       <div
@@ -565,23 +716,7 @@ function DevicesPage({
           selectedItemId={rail.selectedNavItemId}
           onSelect={rail.onSelect}
         />
-        {rail.showDrawer && (
-          <div
-            className={
-              isSmall
-                ? styles.inlineDrawerPanelCompact
-                : styles.inlineDrawerPanel
-            }
-          >
-            <InlineFilterDrawer
-              fullHeight
-              resizable={false}
-              defaultWidth={isSmall ? 280 : 320}
-              minWidth={isSmall ? 240 : 320}
-              maxWidth={isSmall ? 420 : 320}
-            />
-          </div>
-        )}
+        <InlineDrawerSlot open={rail.showDrawer} isSmall={isSmall} />
         <div className={styles.workspaceHost}>
           <div className={styles.pageSection}>
             <div
@@ -716,6 +851,24 @@ function DevicesPage({
   );
 }
 
+interface SettingsFormValues {
+  organizationName: string;
+  contactEmail: string;
+  supportContact: string;
+  automatedBackups: boolean;
+  securityAlerts: boolean;
+  twoFactor: boolean;
+}
+
+const INITIAL_SETTINGS: SettingsFormValues = {
+  organizationName: "",
+  contactEmail: "",
+  supportContact: "",
+  automatedBackups: true,
+  securityAlerts: true,
+  twoFactor: false,
+};
+
 function SettingsPage({
   forceDesktopLayout = false,
 }: ResponsiveLayoutPageProps) {
@@ -723,15 +876,36 @@ function SettingsPage({
   const rail = useRailState();
   const mediaType = useMediaQuery();
   const isSmall = !forceDesktopLayout && mediaType === "small";
-  const [isSaved] = useState(false);
+  const [saved, setSaved] = useState<SettingsFormValues>(INITIAL_SETTINGS);
+  const [draft, setDraft] = useState<SettingsFormValues>(INITIAL_SETTINGS);
+  const toasterId = useId("settings-toaster");
+  const { dispatchToast } = useToastController(toasterId);
+
+  const isDirty = useMemo(
+    () =>
+      draft.organizationName !== saved.organizationName ||
+      draft.contactEmail !== saved.contactEmail ||
+      draft.supportContact !== saved.supportContact ||
+      draft.automatedBackups !== saved.automatedBackups ||
+      draft.securityAlerts !== saved.securityAlerts ||
+      draft.twoFactor !== saved.twoFactor,
+    [draft, saved]
+  );
+
+  const updateField =
+    <K extends keyof SettingsFormValues>(field: K) =>
+    (value: SettingsFormValues[K]) =>
+      setDraft((prev) => ({ ...prev, [field]: value }));
 
   return (
     <div className={styles.shell}>
+      <Toaster toasterId={toasterId} position="top-end" />
       <SuiteHeader
         className={styles.suiteHeader}
         productName="Axis Management"
         showSearch
         searchPlaceholder="Search systems and devices"
+        launcherOrganizationItems={defaultLauncherOrganizationItems}
         utilityActions={headerUtilityActions}
       />
       <div
@@ -747,23 +921,7 @@ function SettingsPage({
           selectedItemId={rail.selectedNavItemId}
           onSelect={rail.onSelect}
         />
-        {rail.showDrawer && (
-          <div
-            className={
-              isSmall
-                ? styles.inlineDrawerPanelCompact
-                : styles.inlineDrawerPanel
-            }
-          >
-            <InlineFilterDrawer
-              fullHeight
-              resizable={false}
-              defaultWidth={isSmall ? 280 : 320}
-              minWidth={isSmall ? 240 : 320}
-              maxWidth={isSmall ? 420 : 320}
-            />
-          </div>
-        )}
+        <InlineDrawerSlot open={rail.showDrawer} isSmall={isSmall} />
         <div className={styles.workspaceHost}>
           <div className={styles.pageSection}>
             <div
@@ -781,9 +939,40 @@ function SettingsPage({
                 title="System Settings"
                 status={{
                   label: "Configured",
-                  meta: "All required fields complete",
+                  meta: "Manage organization settings",
                   color: "success",
                 }}
+                actions={[
+                  {
+                    label: "Reset",
+                    icon: <ArrowResetRegular />,
+                    appearance: "secondary",
+                    disabled: !isDirty,
+                    onClick: () => setDraft(saved),
+                  },
+                  {
+                    label: "Save",
+                    icon: <SaveRegular />,
+                    appearance: isDirty ? "primary" : "secondary",
+                    disabled: !isDirty,
+                    onClick: () => {
+                      setSaved(draft);
+                      dispatchToast(
+                        <Toast>
+                          <ToastTitle>Settings saved</ToastTitle>
+                          <ToastBody>Your changes have been applied.</ToastBody>
+                        </Toast>,
+                        { intent: "success" }
+                      );
+                    },
+                  },
+                ]}
+                tabs={[
+                  { value: "general", label: "General" },
+                  { value: "preferences", label: "Preferences" },
+                  { value: "security", label: "Security" },
+                ]}
+                defaultSelectedTab="general"
               />
             </div>
 
@@ -795,86 +984,101 @@ function SettingsPage({
                     : styles.pageContentArea
                 }
               >
-                <Card
-                  style={{
-                    padding: tokens.spacingHorizontalL,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: tokens.spacingVerticalL,
-                    backgroundColor: tokens.colorNeutralBackground1,
-                  }}
-                >
-                  <Text
+                <div className={styles.contentGrid12}>
+                  <Card
+                    className={styles.formColumn}
                     style={{
-                      fontSize: tokens.fontSizeBase400,
-                      fontWeight: tokens.fontWeightSemibold,
+                      padding: tokens.spacingHorizontalL,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: tokens.spacingVerticalL,
+                      backgroundColor: tokens.colorNeutralBackground1,
                     }}
                   >
-                    Organization Settings
-                  </Text>
+                    <Text
+                      style={{
+                        fontSize: tokens.fontSizeBase400,
+                        fontWeight: tokens.fontWeightSemibold,
+                      }}
+                    >
+                      Organization Settings
+                    </Text>
 
-                  <div
-                    className={
-                      isSmall
-                        ? `${styles.formGrid} ${styles.formGridCompact}`
-                        : styles.formGrid
-                    }
-                  >
-                    <Field label="Organization name">
-                      <Input placeholder="Enter organization name" />
-                    </Field>
+                    <div className={styles.formStack}>
+                      <Field label="Organization name">
+                        <Input
+                          placeholder="Enter organization name"
+                          value={draft.organizationName}
+                          onChange={(_e, data) =>
+                            updateField("organizationName")(data.value)
+                          }
+                        />
+                      </Field>
 
-                    <Field label="Organization ID">
-                      <Input placeholder="Auto-generated" disabled />
-                    </Field>
+                      <Field label="Organization ID">
+                        <Input placeholder="Auto-generated" disabled />
+                      </Field>
 
-                    <Field label="Primary contact email">
-                      <Input
-                        placeholder="contact@organization.com"
-                        type="email"
-                      />
-                    </Field>
+                      <Field label="Primary contact email">
+                        <Input
+                          placeholder="contact@organization.com"
+                          type="email"
+                          value={draft.contactEmail}
+                          onChange={(_e, data) =>
+                            updateField("contactEmail")(data.value)
+                          }
+                        />
+                      </Field>
 
-                    <Field label="Support contact">
-                      <Input
-                        placeholder="support@organization.com"
-                        type="email"
-                      />
-                    </Field>
-                  </div>
+                      <Field label="Support contact">
+                        <Input
+                          placeholder="support@organization.com"
+                          type="email"
+                          value={draft.supportContact}
+                          onChange={(_e, data) =>
+                            updateField("supportContact")(data.value)
+                          }
+                        />
+                      </Field>
+                    </div>
+                  </Card>
 
-                  <div
+                  <Card
+                    className={styles.asideColumn}
                     style={{
+                      padding: tokens.spacingHorizontalL,
                       display: "flex",
                       flexDirection: "column",
                       gap: tokens.spacingVerticalM,
+                      backgroundColor: tokens.colorNeutralBackground1,
                     }}
                   >
                     <Text style={{ fontWeight: tokens.fontWeightSemibold }}>
                       Preferences
                     </Text>
-                    <Checkbox label="Enable automated backups" defaultChecked />
-                    <Checkbox label="Send security alerts" defaultChecked />
-                    <Checkbox label="Enable two-factor authentication" />
-                  </div>
-
-                  {isSaved && (
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: tokens.spacingHorizontalM,
-                        padding: tokens.spacingHorizontalM,
-                        backgroundColor: tokens.colorStatusSuccessBackground1,
-                        borderRadius: tokens.borderRadiusMedium,
-                        color: tokens.colorStatusSuccessForeground1,
-                      }}
-                    >
-                      <CheckmarkCircle24Color />
-                      <Text>Settings saved successfully</Text>
-                    </div>
-                  )}
-                </Card>
+                    <Checkbox
+                      label="Enable automated backups"
+                      checked={draft.automatedBackups}
+                      onChange={(_e, data) =>
+                        updateField("automatedBackups")(Boolean(data.checked))
+                      }
+                    />
+                    <Checkbox
+                      label="Send security alerts"
+                      checked={draft.securityAlerts}
+                      onChange={(_e, data) =>
+                        updateField("securityAlerts")(Boolean(data.checked))
+                      }
+                    />
+                    <Checkbox
+                      label="Enable two-factor authentication"
+                      checked={draft.twoFactor}
+                      onChange={(_e, data) =>
+                        updateField("twoFactor")(Boolean(data.checked))
+                      }
+                    />
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
@@ -884,11 +1088,95 @@ function SettingsPage({
   );
 }
 
+const responsiveGridGuide = `
+Application pages are laid out on a **12-column grid** that adapts across three
+breakpoints. Instead of stretching content to fill the available space, every
+block is assigned a **column span per breakpoint** — this keeps line lengths
+readable and content predictable from mobile to ultra-wide.
+
+The grid measures **its own width, not the viewport** (CSS container queries).
+That matters because the content area shrinks when a side rail or filter drawer
+is open: the same page reflows to one column when it is squeezed, even on a
+large monitor.
+
+### Breakpoints (content-area width)
+
+| Name | Width | Typical use |
+| --- | --- | --- |
+| Small | < 700px | Single column, everything stacks |
+| Medium | 700–1099px | Two columns (½ + ½) |
+| Large | ≥ 1100px | Multi-column, form capped at ⅓ |
+
+### Column spans by region
+
+| Region | Small | Medium | Large |
+| --- | --- | --- | --- |
+| **Form** | 12/12 (full) | 6/12 (½) | **4/12 (⅓)** |
+| **Supporting / preferences** | 12/12 (full) | 6/12 (½) | 3/12 (¼) |
+| **Data table** | 12/12 | 12/12 | 12/12 |
+| **Dashboard cards** | 12/12 | 6/12 | 3/12 |
+
+### Rules of thumb for designers
+
+- **Measure the content area, not the screen.** A drawer or rail makes the page
+  narrower — design the breakpoint where the layout *stops working*, then trust
+  the grid to collapse to one column when space runs out.
+- **Forms are not full-width.** A form column maxes out at ~⅓ of the page on
+  wide screens. Wide fields are hard to scan and look unfinished.
+- **Stack form fields in a single column.** Two-up fields only work for short,
+  paired values (e.g. first / last name); default to stacked.
+- **Reserve whitespace.** Empty grid columns to the right of a narrow form are
+  intentional — they are not "unused space" to be filled.
+- **Cards stack vertically when narrow.** Below the Small breakpoint, side-by-side
+  cards become a single stacked column in source order.
+- **Tables and toolbars span all 12 columns** at every breakpoint; their
+  internal columns collapse instead of the page grid.
+`;
+
 function ResponsiveLayoutDocsPage() {
+  // The story previews are full-page app shells rendered in their own iframes.
+  // As each iframe mounts, a focusable element inside it (form fields, data
+  // grid, etc.) receives focus and the browser scrolls that iframe into view,
+  // leaving the Docs page parked in the middle on load. Keep the Docs page
+  // pinned to the top until the user scrolls intentionally.
+  useEffect(() => {
+    let frame = 0;
+    let userScrolled = false;
+
+    const markUserScroll = () => {
+      userScrolled = true;
+    };
+
+    const start = performance.now();
+    const pinToTop = () => {
+      if (userScrolled) {
+        return;
+      }
+      window.scrollTo(0, 0);
+      if (performance.now() - start < 1500) {
+        frame = requestAnimationFrame(pinToTop);
+      }
+    };
+    frame = requestAnimationFrame(pinToTop);
+
+    window.addEventListener("wheel", markUserScroll, { passive: true });
+    window.addEventListener("touchmove", markUserScroll, { passive: true });
+    window.addEventListener("keydown", markUserScroll);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("wheel", markUserScroll);
+      window.removeEventListener("touchmove", markUserScroll);
+      window.removeEventListener("keydown", markUserScroll);
+    };
+  }, []);
+
   return (
     <>
       <Title />
       <Description />
+      <Heading>Designing responsively: the 12-column grid</Heading>
+      <Markdown>{responsiveGridGuide}</Markdown>
       <Heading>Dashboard View</Heading>
       <Canvas of={DashboardView} />
       <Heading>Devices List View</Heading>
@@ -912,7 +1200,7 @@ const meta: Meta = {
       },
       description: {
         component:
-          "Responsive layout demonstration showing how UI pattern components (SuiteHeader, SideNavigation, FullPageHeader, FilterToolbar) compose together in a real application. Each story variant shows a different page type: Dashboard overview, Device management, and System settings.",
+          "Responsive layout demonstration showing how UI pattern components (SuiteHeader, SideNavigation, FullPageHeader, FilterToolbar) compose together in a real application. Pages are laid out on a 12-column grid that reflows by breakpoint — see the designer guidance below. Each story variant shows a different page type: Dashboard overview, Device management, and System settings.",
       },
     },
   },

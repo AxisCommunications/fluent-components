@@ -1,0 +1,9 @@
+ignores:
+  [
+    "react-dom",
+    "typescript",
+    "@testing-library/jest-dom",
+    "@testing-library/user-event",
+    "@vitest/coverage-c8",
+  ]
+skip-missing: true

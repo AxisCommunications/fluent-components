@@ -34,11 +34,18 @@ const withFluentProvider: Decorator = (Story, context) => {
   const isFullscreenLayout = layout === "fullscreen";
 
   const wrapperPadding = isFullscreenLayout ? 0 : isDocsMode ? "8px" : "24px";
-  const wrapperMinHeight = isFullscreenLayout
-    ? "100vh"
-    : isDocsMode
-      ? "auto"
-      : "100vh";
+  // Stories whose content is intrinsically full-height (e.g. a side-nav rail)
+  // need the wrapper to fill the viewport. Short fullscreen stories (e.g. a
+  // header bar) can opt into content-height via `parameters.fitContent` to
+  // avoid large dead space below them, especially in the inline docs view.
+  const fitContent = context.parameters.fitContent === true;
+  const wrapperMinHeight = fitContent
+    ? "auto"
+    : isFullscreenLayout
+      ? "100vh"
+      : isDocsMode
+        ? "auto"
+        : "100vh";
 
   return (
     <MemoryRouter initialEntries={["/"]}>

@@ -9,6 +9,7 @@ import { MainPage } from "./main-page";
 import { PageNotFound } from "./routing/page-not-found";
 import { RouteGroup, getRouteByGroup } from "./routing/route-map";
 import { TRoute, routes } from "./routing/routes";
+import { AdvancedDataGridPage } from "./stories/advanced-data-grid/advanced-data-grid-page";
 import { EmptyViewPage } from "./stories/empty-view/page";
 import { IconPage } from "./stories/icons/icon-page";
 import { IllustrationPage } from "./stories/illustrations/illustration-page";
@@ -62,6 +63,7 @@ const routeElements: Record<TRoute, ReactElement> = {
   [routes.PasswordInput]: <PasswordInputPage />,
   [routes.SideNavigation]: <SideNavigationPage />,
   [routes.EmptyView]: <EmptyViewPage />,
+  [routes.AdvancedDataGrid]: <AdvancedDataGridPage />,
   [routes.TableUtilities]: <TableUtilitiesPage />,
   [routes.TabListUtilities]: <FluentUiTabStylesPage />,
   [routes.Illustrations]: <IllustrationPage />,

@@ -14,6 +14,8 @@ import { Pagination } from "../components/composites/Pagination";
  * - Page selector dropdown for quick navigation
  * - Loading skeleton state
  * - Token-driven spacing and colors
+ *
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=32-701"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof Pagination> = {
   title: "UI patterns/Pagination",
@@ -21,6 +23,85 @@ const meta: Meta<typeof Pagination> = {
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
+  },
+  argTypes: {
+    isLoading: {
+      control: "boolean",
+      description:
+        "When `true`, renders a loading skeleton in place of the pagination controls.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
+    currentPage: {
+      control: "number",
+      description: "Current page number (1-indexed).",
+      table: { type: { summary: "number" } },
+    },
+    totalPages: {
+      control: "number",
+      description: "Total number of pages available.",
+      table: { type: { summary: "number" } },
+    },
+    nextPage: {
+      action: "nextPage",
+      description: "Callback invoked to advance to the next page.",
+      table: { type: { summary: "() => void" } },
+    },
+    prevPage: {
+      action: "prevPage",
+      description: "Callback invoked to go back to the previous page.",
+      table: { type: { summary: "() => void" } },
+    },
+    goToPage: {
+      action: "goToPage",
+      description: "Callback invoked with the page number to jump to.",
+      table: { type: { summary: "(newPage: number) => void" } },
+    },
+    canGoBackward: {
+      control: "boolean",
+      description:
+        "Whether backward navigation is enabled (disables the previous button when `false`).",
+      table: { type: { summary: "boolean" } },
+    },
+    canGoForward: {
+      control: "boolean",
+      description:
+        "Whether forward navigation is enabled (disables the next button when `false`).",
+      table: { type: { summary: "boolean" } },
+    },
+    total: {
+      control: "number",
+      description: "Total number of items across all pages.",
+      table: { type: { summary: "number" } },
+    },
+    firstPageRow: {
+      control: "number",
+      description: "Row number of the first item shown on the current page.",
+      table: { type: { summary: "number" } },
+    },
+    lastPageRow: {
+      control: "number",
+      description: "Row number of the last item shown on the current page.",
+      table: { type: { summary: "number" } },
+    },
+    rowCounterMsg: {
+      control: "text",
+      description:
+        'Text shown at the bottom describing the visible rows, e.g. "Showing rows X-Y of Z".',
+      table: { type: { summary: "string | undefined" } },
+    },
+    pageCounterMsg: {
+      control: "text",
+      description: 'Text shown on the page selector, e.g. "Page X of Y".',
+      table: { type: { summary: "string | undefined" } },
+    },
+    className: {
+      control: "text",
+      description: "Optional CSS class applied to the root element.",
+      table: { type: { summary: "string | undefined" } },
+    },
   },
 };
 

@@ -13,13 +13,12 @@ import {
   tokens,
   typographyStyles,
 } from "@fluentui/react-components";
-import {
-  CloudOff16Regular,
-  MoreHorizontalRegular,
-} from "@fluentui/react-icons";
+import { CloudOff16Filled, MoreHorizontalRegular } from "@fluentui/react-icons";
 import {
   type ReactNode,
+  type Ref,
   forwardRef,
+  useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
@@ -81,6 +80,13 @@ export interface FullPageHeaderAction {
 
   /** Button appearance. */
   appearance?: HeaderActionAppearance;
+
+  /**
+   * When `true`, the action is disabled and cannot be clicked. Useful for a
+   * "Save" action that should only be enabled once the form has unsaved
+   * changes.
+   */
+  disabled?: boolean;
 }
 
 export interface FullPageHeaderProps {
@@ -158,7 +164,9 @@ const useStyles = makeStyles({
     flexGrow: 0,
     marginLeft: "24px",
     marginBottom: tokens.spacingVerticalXXS,
-    overflow: "hidden",
+    overflowX: "auto",
+    overflowY: "hidden",
+    scrollbarWidth: "thin",
   },
 
   tabsWrapStacked: {
@@ -170,7 +178,9 @@ const useStyles = makeStyles({
     marginLeft: 0,
     marginBottom: tokens.spacingVerticalXXS,
     width: "100%",
-    overflow: "hidden",
+    overflowX: "auto",
+    overflowY: "hidden",
+    scrollbarWidth: "thin",
   },
 
   statusRow: {
@@ -230,10 +240,16 @@ const useStyles = makeStyles({
 
   tabs: {
     marginTop: "0px",
-    minWidth: 0,
+    width: "max-content",
+    minWidth: "100%",
+    flexShrink: 0,
   },
 
   tab: {
+    maxWidth: "160px",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
     color: tokens.colorNeutralForeground2,
 
     '&[aria-selected="true"]': {
@@ -274,6 +290,9 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
     ref
   ) => {
     const styles = useStyles();
+    const [internalSelectedTab, setInternalSelectedTab] = useState<string>(
+      defaultSelectedTab ?? tabs?.[0]?.value ?? ""
+    );
     const [visibleActionCount, setVisibleActionCount] = useState(
       actions?.length ?? 0
     );
@@ -282,8 +301,10 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
     const leftClusterRef = useRef<HTMLDivElement | null>(null);
     const identityRef = useRef<HTMLDivElement | null>(null);
     const tabsWrapRef = useRef<HTMLDivElement | null>(null);
+    const tabRefs = useRef<Record<string, HTMLElement | null>>({});
     const measureActionsRef = useRef<HTMLDivElement | null>(null);
     const measureTabsRef = useRef<HTMLDivElement | null>(null);
+    const measureIdentityRef = useRef<HTMLDivElement | null>(null);
     const moreMeasureRef = useRef<HTMLButtonElement | HTMLAnchorElement | null>(
       null
     );
@@ -293,6 +314,59 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
 
     const normalizedActions = useMemo(() => actions ?? [], [actions]);
     const normalizedTabs = useMemo(() => tabs ?? [], [tabs]);
+    const activeTabValue = selectedTab ?? internalSelectedTab;
+
+    useEffect(() => {
+      if (selectedTab !== undefined) {
+        return;
+      }
+
+      if (normalizedTabs.length === 0) {
+        setInternalSelectedTab("");
+        return;
+      }
+
+      const stillExists = normalizedTabs.some(
+        (tab) => tab.value === internalSelectedTab
+      );
+      if (!stillExists) {
+        setInternalSelectedTab(defaultSelectedTab ?? normalizedTabs[0].value);
+      }
+    }, [defaultSelectedTab, internalSelectedTab, normalizedTabs, selectedTab]);
+
+    useLayoutEffect(() => {
+      if (!activeTabValue) {
+        return;
+      }
+
+      const tabsContainer = tabsWrapRef.current;
+      const activeTab = tabRefs.current[activeTabValue];
+
+      if (!tabsContainer || !activeTab || !tabsContainer.contains(activeTab)) {
+        return;
+      }
+
+      activeTab.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+        behavior: "auto",
+      });
+    }, [activeTabValue]);
+
+    const handleTabSelect: NonNullable<FullPageHeaderProps["onTabSelect"]> = (
+      value
+    ) => {
+      if (selectedTab === undefined) {
+        setInternalSelectedTab(value);
+      }
+      onTabSelect?.(value);
+    };
+
+    const setTabRef =
+      (value: string): Ref<HTMLButtonElement> =>
+      (el) => {
+        tabRefs.current[value] = el;
+      };
 
     useLayoutEffect(() => {
       const measure = () => {
@@ -301,16 +375,25 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
         const identityEl = identityRef.current;
         const measureActionsEl = measureActionsRef.current;
         const measureTabsEl = measureTabsRef.current;
+        const measureIdentityEl = measureIdentityRef.current;
         if (!rowEl || !leftClusterEl || !identityEl) {
           return;
         }
+
+        // Use the hidden measurement copy of the identity to read its natural
+        // (uncollapsed) width. Reading the live identity element is unreliable
+        // because it shrinks to make room for the action buttons, which would
+        // otherwise create a feedback loop that hides tabs behind the actions.
+        const identityNaturalWidth = measureIdentityEl
+          ? measureIdentityEl.scrollWidth
+          : identityEl.getBoundingClientRect().width;
 
         if (normalizedActions.length === 0) {
           // Still calculate tab stacking even without actions
           const hasTabs = normalizedTabs.length > 0;
           if (hasTabs && measureTabsEl) {
             const rowWidth = rowEl.getBoundingClientRect().width;
-            const identityWidth = identityEl.getBoundingClientRect().width;
+            const identityWidth = identityNaturalWidth;
             const spaceBetweenTabsAndIdentity = 24;
             const tabsWidth = measureTabsEl.scrollWidth;
             const spaceNeededForTabsAndIdentity =
@@ -328,7 +411,6 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
         }
 
         const rowWidth = rowEl.getBoundingClientRect().width;
-        const leftClusterWidth = leftClusterEl.getBoundingClientRect().width;
         const tabsWidth = measureTabsEl ? measureTabsEl.scrollWidth : 0;
         const actionsGap =
           parseFloat(getComputedStyle(measureActionsEl).columnGap || "0") || 0;
@@ -338,9 +420,8 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
         // Check if tabs and actions fit side-by-side
         const spaceBetweenTabsAndIdentity = 24; // marginLeft of tabsWrap
         const spaceNeededForTabsAndIdentity =
-          identityEl.getBoundingClientRect().width +
-          spaceBetweenTabsAndIdentity +
-          tabsWidth;
+          identityNaturalWidth +
+          (hasTabs ? spaceBetweenTabsAndIdentity + tabsWidth : 0);
 
         // Estimate actions width
         const actionWidths = normalizedActions.map((_, index) => {
@@ -393,8 +474,7 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
         ) {
           setStackTabs(true);
           // When stacking, recalculate available space for actions using full row width
-          const identityWidth = identityEl.getBoundingClientRect().width;
-          const availableActionsWidth = rowWidth - identityWidth;
+          const availableActionsWidth = rowWidth - identityNaturalWidth;
 
           let nextVisible = 0;
           for (let count = 0; count <= normalizedActions.length; count += 1) {
@@ -407,10 +487,12 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
           setVisibleActionCount(nextVisible);
         } else {
           setStackTabs(false);
-          // When tabs are inline, leftClusterWidth is accurate (includes identity + margin + tabs)
+          // Base available action space on the identity's natural width plus
+          // the inline tabs, not the live left cluster (which shrinks to fit
+          // the actions and would otherwise mask the overflow).
           const availableActionsWidth = Math.max(
             0,
-            rowWidth - leftClusterWidth
+            rowWidth - spaceNeededForTabsAndIdentity
           );
 
           if (
@@ -470,6 +552,19 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
       >
         <div className={styles.measureRoot} aria-hidden="true" inert>
           <div
+            ref={(measureIdentityEl) => {
+              measureIdentityRef.current = measureIdentityEl;
+            }}
+            className={styles.identity}
+          >
+            <BreadcrumbHeader
+              breadcrumbs={breadcrumbs}
+              title={title}
+              icon={icon}
+              ariaLabel={ariaLabel}
+            />
+          </div>
+          <div
             ref={(measureTabsEl) => {
               measureTabsRef.current = measureTabsEl;
             }}
@@ -521,7 +616,7 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
                 size="large"
                 appearance="ghost"
                 color={status.color ?? "warning"}
-                icon={(status.icon ?? <CloudOff16Regular />) as any}
+                icon={(status.icon ?? <CloudOff16Filled />) as any}
               >
                 {status.label}
               </Badge>
@@ -547,19 +642,15 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
               <div className={styles.tabsWrap} ref={tabsWrapRef}>
                 <TabList
                   className={styles.tabs}
-                  {...(selectedTab !== undefined
-                    ? { selectedValue: selectedTab }
-                    : {
-                        defaultSelectedValue:
-                          defaultSelectedTab ?? tabs[0]?.value,
-                      })}
-                  onTabSelect={(_event, data) =>
-                    onTabSelect?.(String(data.value))
-                  }
+                  selectedValue={activeTabValue}
+                  onTabSelect={(_event, data) => {
+                    handleTabSelect(String(data.value));
+                  }}
                 >
                   {tabs.map((tab) => (
                     <Tab
                       key={tab.value}
+                      ref={setTabRef(tab.value)}
                       className={styles.tab}
                       value={tab.value}
                       disabled={tab.disabled}
@@ -580,6 +671,7 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
                   className={styles.actionButton}
                   appearance={action.appearance ?? "primary"}
                   icon={action.icon}
+                  disabled={action.disabled}
                   onClick={action.onClick}
                 >
                   {action.label}
@@ -603,6 +695,7 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
                         <MenuItem
                           key={`overflow-${action.label}-${index}`}
                           icon={action.icon as any}
+                          disabled={action.disabled}
                           onClick={action.onClick}
                         >
                           {action.label}
@@ -620,16 +713,15 @@ export const FullPageHeader = forwardRef<HTMLDivElement, FullPageHeaderProps>(
           <div className={styles.tabsWrapStacked} ref={tabsWrapRef}>
             <TabList
               className={styles.tabs}
-              {...(selectedTab !== undefined
-                ? { selectedValue: selectedTab }
-                : {
-                    defaultSelectedValue: defaultSelectedTab ?? tabs[0]?.value,
-                  })}
-              onTabSelect={(_event, data) => onTabSelect?.(String(data.value))}
+              selectedValue={activeTabValue}
+              onTabSelect={(_event, data) => {
+                handleTabSelect(String(data.value));
+              }}
             >
               {tabs.map((tab) => (
                 <Tab
                   key={tab.value}
+                  ref={setTabRef(tab.value)}
                   className={styles.tab}
                   value={tab.value}
                   disabled={tab.disabled}

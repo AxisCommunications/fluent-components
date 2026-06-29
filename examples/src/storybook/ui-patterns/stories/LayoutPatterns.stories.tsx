@@ -104,7 +104,7 @@ const LayoutPatternPreview = () => {
             {
               label: "Create deployment",
               icon: <RocketRegular />,
-              appearance: "primary",
+              appearance: "secondary",
               onClick: () => console.log("Create deployment"),
             },
             {
@@ -142,7 +142,7 @@ const LayoutPatternPreview = () => {
             {
               id: "bulk-restart",
               label: "Restart selected",
-              appearance: "primary",
+              appearance: "secondary",
             },
             { id: "export", label: "Export", appearance: "secondary" },
           ]}

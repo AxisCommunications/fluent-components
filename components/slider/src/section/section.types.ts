@@ -5,9 +5,15 @@ import {
 } from "@fluentui/react-utilities";
 import { ReactNode } from "react";
 
+/**
+ * Definition of a labelled, optionally coloured section of the slider track.
+ */
 export type SectionDef = {
+  /** Start/end values bounding the section. */
   edges: SectionEdges;
+  /** Label rendered for the section. */
   label: ReactNode;
+  /** Optional custom colour for the section's portion of the track. */
   trackColor?: string;
 };
 

@@ -1,182 +1,119 @@
-import {
-  makeStyles,
-  mergeClasses,
-  shorthands,
-  tokens,
-} from "@fluentui/react-components";
+import { makeStyles, shorthands, tokens } from "@fluentui/react-components";
 
 const componentId = "side-navigation";
 
+/** Stable class names applied to each part for styling and testing overrides. */
 export const sideNavigationClassNames = {
   root: `${componentId}`,
-  topGroup: `${componentId}__top-group`,
-  workspaceSection: `${componentId}__workspace-section`,
+  expanded: `${componentId}--expanded`,
+  list: `${componentId}__list`,
+  footer: `${componentId}__footer`,
   divider: `${componentId}__divider`,
-  overflowSection: `${componentId}__overflow-section`,
-  item: `${componentId}__item`,
-  itemLabel: `${componentId}__item-label`,
-  selectedItem: `${componentId}__item--selected`,
+  toggle: `${componentId}__toggle`,
   selectedIndicator: `${componentId}__selected-indicator`,
-  bottomSection: `${componentId}__bottom-section`,
-  bottomItem: `${componentId}__bottom-item`,
-};
+  item: `${componentId}__item`,
+  itemSelected: `${componentId}__item--selected`,
+  itemIcon: `${componentId}__item-icon`,
+  itemLabel: `${componentId}__item-label`,
+  itemChevron: `${componentId}__item-chevron`,
+  group: `${componentId}__group`,
+  subItem: `${componentId}__sub-item`,
+  subItemSelected: `${componentId}__sub-item--selected`,
+} as const;
+
+export type SideNavigationSlot = keyof typeof sideNavigationClassNames;
+
+/** Width of the collapsed rail and the fixed icon column, in pixels. */
+export const RAIL_WIDTH = 68;
+/** Default rail width when expanded, in pixels. */
+export const DEFAULT_EXPANDED_WIDTH = 260;
+/** Height of the sliding selection indicator, in pixels. */
+export const INDICATOR_HEIGHT = 20;
 
 const useStyles = makeStyles({
   root: {
-    width: "68px",
-    minWidth: "68px",
+    boxSizing: "border-box",
+    width: `${RAIL_WIDTH}px`,
+    minWidth: `${RAIL_WIDTH}px`,
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center",
     paddingTop: "16px",
-    ...shorthands.borderRight(
-      tokens.strokeWidthThin,
-      "solid",
-      tokens.colorNeutralStroke2
-    ),
-    position: "relative",
-    backgroundColor: tokens.colorNeutralBackground1,
-    boxSizing: "border-box",
-  },
-  rootHidden: {
-    display: "none",
-  },
-  topGroup: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    paddingLeft: tokens.spacingHorizontalXS,
+    paddingRight: tokens.spacingHorizontalXS,
     rowGap: "4px",
     position: "relative",
-    isolation: "isolate",
-  },
-  workspaceSection: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
     overflow: "hidden",
-  },
-  divider: {
-    width: "24px",
-    height: tokens.strokeWidthThin,
-    backgroundColor: tokens.colorNeutralStroke1,
-  },
-  overflowSection: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  itemContainer: {
-    width: "68px",
-    display: "flex",
-    justifyContent: "center",
-    position: "relative",
-  },
-  item: {
-    width: "68px",
-    minWidth: "68px",
-    height: "56px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    rowGap: "2px",
-    color: tokens.colorNeutralForeground2,
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase100,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.borderStyle("none"),
-    backgroundColor: "transparent",
-    cursor: "pointer",
-    ...shorthands.padding("8px", "4px"),
-    outlineStyle: "none",
-    position: "relative",
-    zIndex: 0,
-    transitionProperty: "background-color, color",
+    backgroundColor: tokens.colorNeutralBackground2,
+    ...shorthands.borderRight("1px", "solid", tokens.colorNeutralStroke2),
+    transitionProperty: "width",
     transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
-    "&:hover": {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      color: tokens.colorNeutralForeground1,
-    },
-    "&:focus-visible": {
-      ...shorthands.outline(
-        tokens.strokeWidthThick,
-        "solid",
-        tokens.colorStrokeFocus2
-      ),
-    },
-    "& > :first-child": {
-      flexShrink: 0,
-      width: "24px",
-      height: "24px",
-      fontSize: "24px",
-      lineHeight: "24px",
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
+    "@media (prefers-reduced-motion: reduce)": {
+      transitionDuration: "0.01ms",
     },
   },
-  selectedItem: {
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorNeutralBackground3,
+  list: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "4px",
+    minWidth: 0,
+  },
+  footer: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "4px",
+    marginTop: "auto",
+    minWidth: 0,
+  },
+  divider: {
+    height: tokens.strokeWidthThin,
+    marginTop: "8px",
+    marginBottom: "8px",
+    marginLeft: "12px",
+    marginRight: "12px",
+    backgroundColor: tokens.colorNeutralStroke2,
   },
   selectedIndicator: {
-    width: "3px",
-    height: "16px",
     position: "absolute",
-    left: "-1px",
+    left: 0,
     top: 0,
-    transform: "translateY(0)",
+    width: "3px",
+    height: `${INDICATOR_HEIGHT}px`,
     backgroundColor: "#efab01",
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    borderTopRightRadius: tokens.borderRadiusCircular,
+    borderBottomRightRadius: tokens.borderRadiusCircular,
     zIndex: 2,
+    pointerEvents: "none",
     transitionProperty: "transform, opacity",
     transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
-    pointerEvents: "none",
+    "@media (prefers-reduced-motion: reduce)": {
+      transitionDuration: "0.01ms",
+    },
   },
-  hiddenSelectedIndicator: {
-    opacity: 0,
-  },
-  itemLabel: {
-    textAlign: "center",
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase100,
-    maxWidth: "100%",
-    ...shorthands.padding("0", "2px"),
-    overflowWrap: "anywhere",
-  },
-  bottomSection: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    marginTop: "auto",
-    height: "68px",
+  toggle: {
+    boxSizing: "border-box",
+    flexShrink: 0,
+    height: "40px",
+    minWidth: `${RAIL_WIDTH - 8}px`,
+    width: `${RAIL_WIDTH - 8}px`,
+    paddingLeft: 0,
+    paddingRight: 0,
+    display: "inline-flex",
     alignItems: "center",
-  },
-  bottomItem: {
-    width: "60px",
-    minWidth: "60px",
-    height: "60px",
-    display: "flex",
-    flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
-    rowGap: "2px",
     color: tokens.colorNeutralForeground2,
-    backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    backgroundColor: "transparent",
     ...shorthands.borderStyle("none"),
-    boxShadow: "0 1px 2px rgba(0,0,0,0.14), 0 0 2px rgba(0,0,0,0.12)",
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     cursor: "pointer",
-    padding: 0,
+    outlineStyle: "none",
+    transitionProperty: "background-color, color",
+    transitionDuration: tokens.durationFaster,
+    transitionTimingFunction: tokens.curveEasyEase,
     "&:hover": {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorNeutralBackground2Hover,
       color: tokens.colorNeutralForeground1,
     },
     "&:focus-visible": {
@@ -186,24 +123,163 @@ const useStyles = makeStyles({
         tokens.colorStrokeFocus2
       ),
     },
-    "& > :first-child": {
-      flexShrink: 0,
-      width: "24px",
-      height: "24px",
-      fontSize: "24px",
-      lineHeight: "24px",
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
+    "& svg": {
+      fontSize: "20px",
+    },
+  },
+  group: {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: "4px",
+    minWidth: 0,
+  },
+  item: {
+    boxSizing: "border-box",
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    minWidth: 0,
+    height: "44px",
+    paddingLeft: 0,
+    paddingRight: "8px",
+    color: tokens.colorNeutralForeground2,
+    backgroundColor: "transparent",
+    ...shorthands.borderStyle("none"),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    cursor: "pointer",
+    outlineStyle: "none",
+    textAlign: "left",
+    transitionProperty: "background-color, color",
+    transitionDuration: tokens.durationFaster,
+    transitionTimingFunction: tokens.curveEasyEase,
+    "&:hover": {
+      backgroundColor: tokens.colorNeutralBackground2Hover,
+      color: tokens.colorNeutralForeground1,
+    },
+    "&:focus-visible": {
+      ...shorthands.outline(
+        tokens.strokeWidthThick,
+        "solid",
+        tokens.colorStrokeFocus2
+      ),
+    },
+    "&:disabled": {
+      color: tokens.colorNeutralForegroundDisabled,
+      cursor: "not-allowed",
+      backgroundColor: "transparent",
+    },
+  },
+  itemSelected: {
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground2Pressed,
+    "&:hover": {
+      backgroundColor: tokens.colorNeutralBackground2Pressed,
+      color: tokens.colorNeutralForeground1,
+    },
+  },
+  itemIcon: {
+    flexShrink: 0,
+    width: `${RAIL_WIDTH - 8}px`,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    "& svg": {
+      fontSize: "20px",
+    },
+  },
+  itemLabel: {
+    flexGrow: 1,
+    minWidth: 0,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    opacity: 0,
+    transitionProperty: "opacity",
+    transitionDuration: tokens.durationNormal,
+    transitionTimingFunction: tokens.curveEasyEase,
+    "@media (prefers-reduced-motion: reduce)": {
+      transitionDuration: "0.01ms",
+    },
+  },
+  itemLabelVisible: {
+    opacity: 1,
+  },
+  itemChevron: {
+    flexShrink: 0,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "20px",
+    transitionProperty: "transform",
+    transitionDuration: tokens.durationNormal,
+    transitionTimingFunction: tokens.curveEasyEase,
+    "& svg": {
+      fontSize: "16px",
+    },
+    "@media (prefers-reduced-motion: reduce)": {
+      transitionDuration: "0.01ms",
+    },
+  },
+  itemChevronOpen: {
+    transform: "rotate(90deg)",
+  },
+  subItem: {
+    boxSizing: "border-box",
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    minWidth: 0,
+    height: "36px",
+    paddingLeft: `${RAIL_WIDTH - 8}px`,
+    paddingRight: "8px",
+    color: tokens.colorNeutralForeground2,
+    backgroundColor: "transparent",
+    ...shorthands.borderStyle("none"),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    cursor: "pointer",
+    outlineStyle: "none",
+    textAlign: "left",
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    transitionProperty: "background-color, color",
+    transitionDuration: tokens.durationFaster,
+    transitionTimingFunction: tokens.curveEasyEase,
+    "&:hover": {
+      backgroundColor: tokens.colorNeutralBackground2Hover,
+      color: tokens.colorNeutralForeground1,
+    },
+    "&:focus-visible": {
+      ...shorthands.outline(
+        tokens.strokeWidthThick,
+        "solid",
+        tokens.colorStrokeFocus2
+      ),
+    },
+    "&:disabled": {
+      color: tokens.colorNeutralForegroundDisabled,
+      cursor: "not-allowed",
+      backgroundColor: "transparent",
+    },
+  },
+  subItemSelected: {
+    color: tokens.colorNeutralForeground1,
+    fontWeight: tokens.fontWeightSemibold,
+    backgroundColor: tokens.colorNeutralBackground2Pressed,
+    "&:hover": {
+      backgroundColor: tokens.colorNeutralBackground2Pressed,
+      color: tokens.colorNeutralForeground1,
     },
   },
 });
 
-export function useSideNavigationStyles() {
-  const styles = useStyles();
+export type SideNavigationStyles = ReturnType<typeof useStyles>;
 
-  return {
-    styles,
-    rootStyle: mergeClasses(sideNavigationClassNames.root, styles.root),
-  };
+export function useSideNavigationStyles() {
+  return useStyles();
 }

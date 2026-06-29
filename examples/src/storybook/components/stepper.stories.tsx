@@ -1,3 +1,4 @@
+import { Stepper } from "@axiscommunications/fluent-stepper";
 import type { Meta, StoryObj } from "@storybook/react";
 import { CustomStepperDialogExample } from "../../stories/stepper/examples/custom-style-example";
 import { MinimalWithCustomFooterStepperDialogExample } from "../../stories/stepper/examples/minimal-with-counter-stepper-example";
@@ -6,6 +7,7 @@ import { VerticalStepperDialogExample } from "../../stories/stepper/examples/ver
 
 const meta: Meta = {
   title: "Components/Stepper",
+  component: Stepper,
 };
 
 export default meta;

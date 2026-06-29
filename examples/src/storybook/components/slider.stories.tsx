@@ -1,3 +1,4 @@
+import { Slider } from "@axiscommunications/fluent-slider";
 import { makeStyles } from "@fluentui/react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ReactElement } from "react";
@@ -26,6 +27,7 @@ const useStyles = makeStyles({
 
 const meta: Meta = {
   title: "Components/Slider",
+  component: Slider,
 };
 
 export default meta;

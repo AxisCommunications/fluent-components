@@ -11,7 +11,7 @@ const meta: Meta<typeof SectionHeader> = {
     docs: {
       description: {
         component:
-          "An advanced h2 pattern for section-level page content. All props are optional: use `title`, `description`, `meta`, and `actions` only when the section needs them, and omit everything for a no-op render.",
+          "An advanced h2 pattern for section-level page content. All props are optional: use `title`, `description`, `meta`, and `actions` only when the section needs them, and omit everything for a no-op render.\n\n<p align='right'><a href='https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=25-18'><img width='240' src='/figma-global-components-cover.svg' alt='Open in Figma — AXIS Fluent Global components' /></a></p>",
       },
     },
   },
@@ -71,7 +71,7 @@ const meta: Meta<typeof SectionHeader> = {
       {
         label: "Add target",
         icon: <AddRegular />,
-        appearance: "primary",
+        appearance: "secondary",
         onClick: () => console.log("Add target"),
       },
     ],
@@ -105,7 +105,7 @@ export const CurrentSectionHeader: Story = {
       {
         label: "Add target",
         icon: <AddRegular />,
-        appearance: "primary",
+        appearance: "secondary",
         onClick: () => console.log("Add target"),
       },
     ],
@@ -150,7 +150,7 @@ export const WithActionsOnly: Story = {
       {
         label: "Add target",
         icon: <AddRegular />,
-        appearance: "primary",
+        appearance: "secondary",
         onClick: () => console.log("Add target"),
       },
     ],
@@ -196,7 +196,7 @@ export const WithoutDescription: Story = {
       {
         label: "Add target",
         icon: <AddRegular />,
-        appearance: "primary",
+        appearance: "secondary",
         onClick: () => console.log("Add target"),
       },
     ],
@@ -273,7 +273,7 @@ export const ActionsWithoutTitle: Story = {
       {
         label: "Add target",
         icon: <AddRegular />,
-        appearance: "primary",
+        appearance: "secondary",
         onClick: () => console.log("Add target"),
       },
     ],

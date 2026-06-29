@@ -8,6 +8,8 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
+  Overflow,
+  OverflowItem,
   Popover,
   PopoverSurface,
   PopoverTrigger,
@@ -17,16 +19,19 @@ import {
   makeStyles,
   shorthands,
   tokens,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
 } from "@fluentui/react-components";
 import {
   AlertRegular,
   ChevronDownRegular,
   GridDotsRegular,
+  MoreHorizontalRegular,
   QuestionCircleRegular,
   SearchRegular,
   SettingsRegular,
 } from "@fluentui/react-icons";
-import { type ReactElement, useEffect, useState } from "react";
+import { type ReactElement, useEffect, useRef, useState } from "react";
 import appIcon01 from "../../../../assets/Appicons/App 1.svg";
 import appIcon02 from "../../../../assets/Appicons/App 2.svg";
 import appIcon03 from "../../../../assets/Appicons/App 3.svg";
@@ -51,11 +56,13 @@ export interface SuiteHeaderLauncherItem {
 
 export interface SuiteHeaderProps {
   className?: string;
+  companyLogo?: string;
   productName?: string;
   productIcon?: ReactElement;
   showAppLauncher?: boolean;
   showTimeDate?: boolean;
   showSearch?: boolean;
+  showOrganizationPicker?: boolean;
   searchPlaceholder?: string;
   notificationCount?: number;
   timeLabel?: string;
@@ -65,7 +72,13 @@ export interface SuiteHeaderProps {
   selectedOrganization?: string;
   onOrganizationSelect?: (organization: string) => void;
   launcherApps?: SuiteHeaderLauncherItem[];
+  /**
+   * Optional sub-menu shown below the app tiles in the launcher. When omitted
+   * (or empty) the sub-menu section is not rendered.
+   */
   launcherOrganizationItems?: SuiteHeaderLauncherItem[];
+  /** Heading shown above the optional launcher sub-menu. Defaults to "Sub menu". */
+  launcherOrganizationLabel?: string;
   onAppLauncherClick?: () => void;
   onActiveAppChange?: (app: SuiteHeaderLauncherItem) => void;
   onSearchChange?: (value: string) => void;
@@ -80,11 +93,24 @@ const useStyles = makeStyles({
     alignItems: "center",
     columnGap: tokens.spacingHorizontalL,
     backgroundColor: tokens.colorNeutralBackground4,
-    ...shorthands.padding("0", tokens.spacingHorizontalM),
-    ...shorthands.borderBottom("1px", "solid", tokens.colorNeutralStroke2),
+    // No left padding so the app launcher can occupy the same 68px column as
+    // the side-navigation rail and keep its icon aligned with the rail icons.
+    ...shorthands.padding("0", tokens.spacingHorizontalM, "0", "0"),
+    // Below the search breakpoint the center column is hidden, so collapse the
+    // grid to "brand | actions". The actions take the flexible track so they
+    // keep their natural width and only collapse into the overflow menu when
+    // the viewport is genuinely too narrow.
+    "@media (max-width: 1024px)": {
+      gridTemplateColumns: "auto minmax(0, 1fr)",
+      columnGap: tokens.spacingHorizontalM,
+    },
+    "@media (max-width: 720px)": {
+      columnGap: tokens.spacingHorizontalS,
+      ...shorthands.padding("0", tokens.spacingHorizontalS, "0", "0"),
+    },
   },
   rootWithoutSearch: {
-    gridTemplateColumns: "1fr auto",
+    gridTemplateColumns: "auto minmax(0, 1fr)",
   },
   left: {
     display: "flex",
@@ -132,6 +158,10 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     minWidth: 0,
+    // Hide global search before the header runs out of horizontal room.
+    "@media (max-width: 1024px)": {
+      display: "none",
+    },
   },
   searchInput: {
     width: "100%",
@@ -142,9 +172,24 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "flex-end",
     columnGap: tokens.spacingHorizontalS,
+    minWidth: 0,
   },
   rightToolbar: {
+    // Right-aligned overflow row. The toolbar fills the right column (flexGrow)
+    // so Fluent's Overflow can measure the available width, and the actions are
+    // end-aligned so they sit next to the avatar. justify-content:flex-end is
+    // also required for detection here: the container clips with overflow:hidden
+    // and Fluent's IntersectionObserver only receives change events when content
+    // overflows past the START edge, which only happens when it's end-aligned.
+    display: "flex",
+    flexGrow: 1,
+    flexShrink: 1,
+    flexWrap: "nowrap",
     alignItems: "center",
+    justifyContent: "flex-end",
+    columnGap: tokens.spacingHorizontalS,
+    minWidth: 0,
+    ...shorthands.overflow("hidden"),
     ...shorthands.padding(0),
   },
   dateTime: {
@@ -152,6 +197,10 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "flex-end",
     color: tokens.colorNeutralForeground2,
+    whiteSpace: "nowrap",
+    "@media (max-width: 600px)": {
+      display: "none",
+    },
   },
   timeLabel: {
     fontSize: "10px",
@@ -165,16 +214,28 @@ const useStyles = makeStyles({
   appButton: {
     ...shorthands.margin(0),
   },
+  appLauncher: {
+    // Match the 68px side-navigation rail column and center the launcher so its
+    // icon lines up vertically with the rail icons below it.
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "68px",
+    flexShrink: 0,
+  },
   organizationButton: {
     ...shorthands.margin(0, tokens.spacingHorizontalXXS, 0, 0),
     maxWidth: "180px",
+    whiteSpace: "nowrap",
   },
   launcherButton: {
     ...shorthands.margin(0),
   },
   launcherSurface: {
-    width: "372px",
-    maxWidth: "calc(100vw - 24px)",
+    // Responsive width: caps at 372px but shrinks to fit narrow viewports so
+    // the launcher never overflows the screen. The grids below use 1fr tracks,
+    // so the tiles scale down with the surface.
+    width: "min(372px, calc(100vw - 24px))",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -198,14 +259,19 @@ const useStyles = makeStyles({
     display: "grid",
     gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
     columnGap: "12px",
+    rowGap: "12px",
   },
   orgGrid: {
     display: "grid",
     gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
     columnGap: "12px",
-    rowGap: "12px",
+    rowGap: "16px",
+    ...shorthands.margin(tokens.spacingVerticalXS, 0, 0),
   },
   tileButton: {
+    // Override Fluent's default 96px button min-width so the tiles shrink to
+    // their grid track and never overflow the launcher surface.
+    minWidth: 0,
     minHeight: "84px",
     display: "flex",
     flexDirection: "column",
@@ -275,6 +341,9 @@ const useStyles = makeStyles({
     ...shorthands.margin(0),
   },
   orgTileButton: {
+    // Override Fluent's default 96px button min-width so the four org tiles fit
+    // the surface width instead of overflowing and clipping the last tile.
+    minWidth: 0,
     minHeight: "84px",
     display: "flex",
     flexDirection: "column",
@@ -288,35 +357,8 @@ const useStyles = makeStyles({
   orgTileButtonActive: {
     boxShadow: `inset 0 -4px 0 ${tokens.colorPaletteYellowBorderActive}`,
   },
-  "@media (max-width: 900px)": {
-    "&launcherGrid": {
-      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-      rowGap: "12px",
-    },
-    "&orgGrid": {
-      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-      rowGap: "12px",
-    },
-  },
   avatar: {
     cursor: "pointer",
-  },
-  "@media (max-width: 1024px)": {
-    "&root": {
-      gridTemplateColumns: "1fr auto",
-    },
-    "&center": {
-      display: "none",
-    },
-    "&dateTime": {
-      display: "none",
-    },
-  },
-  "@media (max-width: 720px)": {
-    "&root": {
-      ...shorthands.padding("0", tokens.spacingHorizontalS),
-      columnGap: tokens.spacingHorizontalS,
-    },
   },
 });
 
@@ -325,6 +367,63 @@ const defaultActions: SuiteHeaderAction[] = [
   { id: "settings", icon: <SettingsRegular />, ariaLabel: "Settings" },
   { id: "help", icon: <QuestionCircleRegular />, ariaLabel: "Help" },
 ];
+
+/**
+ * Renders a single overflowed action inside the "more" menu. It only renders
+ * when its matching toolbar button has been pushed out of the visible area.
+ */
+function OverflowMenuItem({ action }: { action: SuiteHeaderAction }) {
+  const isVisible = useIsOverflowItemVisible(action.id);
+
+  if (isVisible) {
+    return null;
+  }
+
+  return (
+    <MenuItem icon={action.icon} onClick={action.onClick}>
+      {action.ariaLabel}
+    </MenuItem>
+  );
+}
+
+/**
+ * The "more" menu trigger. It only appears while one or more actions don't fit,
+ * collecting the hidden actions into a dropdown so they stay reachable.
+ */
+function ActionOverflowMenu({
+  actions,
+  className,
+}: {
+  actions: SuiteHeaderAction[];
+  className?: string;
+}) {
+  const { ref, isOverflowing, overflowCount } =
+    useOverflowMenu<HTMLButtonElement>();
+
+  if (!isOverflowing) {
+    return null;
+  }
+
+  return (
+    <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        <ToolbarButton
+          ref={ref}
+          className={className}
+          aria-label={`More actions (${overflowCount})`}
+          icon={<MoreHorizontalRegular />}
+        />
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          {actions.map((action) => (
+            <OverflowMenuItem key={action.id} action={action} />
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+}
 
 function appIcon(src: string): ReactElement {
   return <img src={src} alt="" />;
@@ -344,7 +443,7 @@ const defaultLauncherApps: SuiteHeaderLauncherItem[] = [
   { id: "cloud-storage", label: "app3", icon: appIcon(appIcon03) },
 ];
 
-const defaultLauncherOrganizationItems: SuiteHeaderLauncherItem[] = [
+export const defaultLauncherOrganizationItems: SuiteHeaderLauncherItem[] = [
   { id: "start", label: "app4", icon: appIcon(appIcon04) },
   { id: "settings", label: "app5", icon: appIcon(appIcon05) },
   { id: "users", label: "app6", icon: appIcon(appIcon06) },
@@ -353,11 +452,13 @@ const defaultLauncherOrganizationItems: SuiteHeaderLauncherItem[] = [
 
 export function SuiteHeader({
   className,
+  companyLogo,
   productName = "Product name",
   productIcon,
-  showAppLauncher = false,
+  showAppLauncher = true,
   showTimeDate = false,
   showSearch = true,
+  showOrganizationPicker = true,
   searchPlaceholder = "Search",
   notificationCount,
   timeLabel = "11:52 AM",
@@ -367,17 +468,66 @@ export function SuiteHeader({
   selectedOrganization,
   onOrganizationSelect,
   launcherApps = defaultLauncherApps,
-  launcherOrganizationItems = defaultLauncherOrganizationItems,
+  launcherOrganizationItems = [],
+  launcherOrganizationLabel = "Sub menu",
   onAppLauncherClick,
   onActiveAppChange,
   onSearchChange,
   utilityActions = defaultActions,
 }: SuiteHeaderProps) {
   const styles = useStyles();
+  const firstLauncherTileRef = useRef<HTMLButtonElement | null>(null);
   const [activeOrganization, setActiveOrganization] = useState(
     selectedOrganization ?? organizationOptions[0] ?? "Organization"
   );
   const [isLauncherOpen, setIsLauncherOpen] = useState(false);
+
+  useEffect(() => {
+    if (isLauncherOpen) {
+      firstLauncherTileRef.current?.focus();
+    }
+  }, [isLauncherOpen]);
+
+  const onLauncherKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "Tab") {
+      return;
+    }
+
+    const tiles = Array.from(
+      event.currentTarget.querySelectorAll<HTMLButtonElement>(
+        'button[data-launcher-tile="true"]'
+      )
+    );
+
+    if (tiles.length === 0) {
+      return;
+    }
+
+    const currentIndex = tiles.indexOf(
+      document.activeElement as HTMLButtonElement
+    );
+    const direction = event.shiftKey ? -1 : 1;
+    const fallbackIndex = event.shiftKey ? tiles.length - 1 : 0;
+
+    if (currentIndex === -1) {
+      event.preventDefault();
+      tiles[fallbackIndex]?.focus();
+      return;
+    }
+
+    const isAtStart = currentIndex === 0;
+    const isAtEnd = currentIndex === tiles.length - 1;
+
+    if ((event.shiftKey && isAtStart) || (!event.shiftKey && isAtEnd)) {
+      // Let keyboard users leave the launcher with Tab/Shift+Tab.
+      setIsLauncherOpen(false);
+      return;
+    }
+
+    const nextIndex = currentIndex + direction;
+    event.preventDefault();
+    tiles[nextIndex]?.focus();
+  };
 
   useEffect(() => {
     if (selectedOrganization) {
@@ -433,16 +583,121 @@ export function SuiteHeader({
     >
       <div className={styles.left}>
         {showAppLauncher && (
+          <div className={styles.appLauncher}>
+            <Popover
+              open={isLauncherOpen}
+              onOpenChange={(_event, data) => setIsLauncherOpen(data.open)}
+              positioning="below-start"
+              trapFocus
+            >
+              <PopoverTrigger disableButtonEnhancement>
+                <ToolbarButton
+                  className={styles.appButton}
+                  aria-label="Open app launcher"
+                  icon={<GridDotsRegular />}
+                  onClick={onAppLauncherClick}
+                />
+              </PopoverTrigger>
+              <PopoverSurface className={styles.launcherSurface}>
+                <div
+                  className={styles.launcherSection}
+                  onKeyDown={onLauncherKeyDown}
+                >
+                  <div className={styles.launcherGrid}>
+                    {launcherApps.map((item, index) => (
+                      <Button
+                        key={item.id}
+                        ref={index === 0 ? firstLauncherTileRef : null}
+                        data-launcher-tile="true"
+                        className={[
+                          styles.tileButton,
+                          activeLauncherAppId === item.id
+                            ? styles.tileButtonActive
+                            : "",
+                        ]
+                          .filter(Boolean)
+                          .join(" ")}
+                        appearance="subtle"
+                        onClick={() => {
+                          setActiveLauncherAppId(item.id);
+                          setSelectedHeaderItemId(item.id);
+                          setIsLauncherOpen(false);
+                          onActiveAppChange?.(item);
+                          item.onClick?.();
+                        }}
+                      >
+                        <span
+                          className={styles.tileIconWrap}
+                          aria-hidden="true"
+                        >
+                          {item.icon}
+                        </span>
+                        <span className={styles.tileLabel}>{item.label}</span>
+                      </Button>
+                    ))}
+                  </div>
+
+                  {launcherOrganizationItems.length > 0 && (
+                    <>
+                      <Divider className={styles.launcherDivider} />
+
+                      <Text className={styles.sectionTitle}>
+                        {launcherOrganizationLabel}
+                      </Text>
+
+                      <div className={styles.orgGrid}>
+                        {launcherOrganizationItems.map((item) => (
+                          <Button
+                            key={item.id}
+                            data-launcher-tile="true"
+                            className={[
+                              styles.orgTileButton,
+                              activeLauncherOrgId === item.id
+                                ? styles.orgTileButtonActive
+                                : "",
+                            ]
+                              .filter(Boolean)
+                              .join(" ")}
+                            appearance="subtle"
+                            onClick={() => {
+                              setActiveLauncherOrgId(item.id);
+                              setSelectedHeaderItemId(item.id);
+                              setIsLauncherOpen(false);
+                              onActiveAppChange?.(item);
+                              item.onClick?.();
+                            }}
+                          >
+                            <span
+                              className={styles.orgTileIconWrap}
+                              aria-hidden="true"
+                            >
+                              {item.icon}
+                            </span>
+                            <span className={styles.tileLabel}>
+                              {item.label}
+                            </span>
+                          </Button>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </PopoverSurface>
+            </Popover>
+          </div>
+        )}
+
+        {companyLogo && (
           <>
-            <ToolbarButton
-              className={styles.launcherButton}
-              aria-label="Open app launcher"
-              icon={<GridDotsRegular />}
-              onClick={onAppLauncherClick}
+            <img
+              src={companyLogo}
+              alt="Company logo"
+              style={{ height: "20px" }}
             />
             <div className={styles.divider} />
           </>
         )}
+
         <Text className={styles.productName}>
           <span className={styles.titleIcon} aria-hidden="true">
             {displayIcon}
@@ -464,137 +719,68 @@ export function SuiteHeader({
       ) : null}
 
       <div className={styles.right}>
-        {showTimeDate && (
-          <div className={styles.dateTime}>
-            <Text className={styles.timeLabel}>{timeLabel}</Text>
-            <Text className={styles.dateLabel}>{dateLabel}</Text>
-          </div>
-        )}
-
-        <Toolbar
-          className={styles.rightToolbar}
-          aria-label="Suite quick actions"
-        >
-          <Menu>
-            <MenuTrigger disableButtonEnhancement>
-              <ToolbarButton
-                className={styles.organizationButton}
-                appearance="subtle"
-              >
-                {activeOrganization}
-                <ChevronDownRegular />
-              </ToolbarButton>
-            </MenuTrigger>
-            <MenuPopover>
-              <MenuList>
-                {organizationOptions.map((organization) => (
-                  <MenuItem
-                    key={organization}
-                    onClick={() => {
-                      setActiveOrganization(organization);
-                      onOrganizationSelect?.(organization);
-                    }}
-                  >
-                    {organization}
-                  </MenuItem>
-                ))}
-              </MenuList>
-            </MenuPopover>
-          </Menu>
-
-          <Popover
-            open={isLauncherOpen}
-            onOpenChange={(_event, data) => setIsLauncherOpen(data.open)}
-            positioning="below-end"
+        <Overflow minimumVisible={0} padding={36}>
+          <Toolbar
+            className={styles.rightToolbar}
+            aria-label="Suite quick actions"
           >
-            <PopoverTrigger disableButtonEnhancement>
-              <ToolbarButton
-                className={styles.appButton}
-                aria-label="Open app launcher"
-                icon={<GridDotsRegular />}
-                onClick={onAppLauncherClick}
-              />
-            </PopoverTrigger>
-            <PopoverSurface className={styles.launcherSurface}>
-              <div className={styles.launcherSection}>
-                <div className={styles.launcherGrid}>
-                  {launcherApps.map((item) => (
-                    <Button
-                      key={item.id}
-                      className={[
-                        styles.tileButton,
-                        activeLauncherAppId === item.id
-                          ? styles.tileButtonActive
-                          : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" ")}
-                      appearance="subtle"
-                      onClick={() => {
-                        setActiveLauncherAppId(item.id);
-                        setSelectedHeaderItemId(item.id);
-                        setIsLauncherOpen(false);
-                        onActiveAppChange?.(item);
-                        item.onClick?.();
-                      }}
-                    >
-                      <span className={styles.tileIconWrap} aria-hidden="true">
-                        {item.icon}
-                      </span>
-                      <span className={styles.tileLabel}>{item.label}</span>
-                    </Button>
-                  ))}
+            {showTimeDate && (
+              <OverflowItem id="__datetime" priority={1000}>
+                <div className={styles.dateTime}>
+                  <Text className={styles.timeLabel}>{timeLabel}</Text>
+                  <Text className={styles.dateLabel}>{dateLabel}</Text>
                 </div>
+              </OverflowItem>
+            )}
 
-                <Divider className={styles.launcherDivider} />
-
-                <Text className={styles.sectionTitle}>Organization</Text>
-
-                <div className={styles.orgGrid}>
-                  {launcherOrganizationItems.map((item) => (
-                    <Button
-                      key={item.id}
-                      className={[
-                        styles.orgTileButton,
-                        activeLauncherOrgId === item.id
-                          ? styles.orgTileButtonActive
-                          : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" ")}
+            {showOrganizationPicker && (
+              <OverflowItem id="__organization" priority={900}>
+                <Menu>
+                  <MenuTrigger disableButtonEnhancement>
+                    <ToolbarButton
+                      className={styles.organizationButton}
                       appearance="subtle"
-                      onClick={() => {
-                        setActiveLauncherOrgId(item.id);
-                        setSelectedHeaderItemId(item.id);
-                        setIsLauncherOpen(false);
-                        onActiveAppChange?.(item);
-                        item.onClick?.();
-                      }}
                     >
-                      <span
-                        className={styles.orgTileIconWrap}
-                        aria-hidden="true"
-                      >
-                        {item.icon}
-                      </span>
-                      <span className={styles.tileLabel}>{item.label}</span>
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </PopoverSurface>
-          </Popover>
+                      {activeOrganization}
+                      <ChevronDownRegular />
+                    </ToolbarButton>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      {organizationOptions.map((organization) => (
+                        <MenuItem
+                          key={organization}
+                          onClick={() => {
+                            setActiveOrganization(organization);
+                            onOrganizationSelect?.(organization);
+                          }}
+                        >
+                          {organization}
+                        </MenuItem>
+                      ))}
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              </OverflowItem>
+            )}
 
-          {utilityActions.map((action) => (
-            <ToolbarButton
-              key={action.id}
+            {utilityActions.map((action) => (
+              <OverflowItem key={action.id} id={action.id}>
+                <ToolbarButton
+                  className={styles.appButton}
+                  aria-label={action.ariaLabel}
+                  icon={action.icon}
+                  onClick={action.onClick}
+                />
+              </OverflowItem>
+            ))}
+
+            <ActionOverflowMenu
+              actions={utilityActions}
               className={styles.appButton}
-              aria-label={action.ariaLabel}
-              icon={action.icon}
-              onClick={action.onClick}
             />
-          ))}
-        </Toolbar>
+          </Toolbar>
+        </Overflow>
 
         <Avatar
           className={styles.avatar}

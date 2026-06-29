@@ -4,6 +4,7 @@ import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(ts|tsx)"],
+  staticDirs: ["../public"],
   addons: [
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",
@@ -13,10 +14,33 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  typescript: {
+    // Auto-generate the ArgTypes / Controls table from each component's
+    // TypeScript prop types instead of relying on hand-written argTypes.
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      // Drop low-level React DOM attribute noise (HTMLAttributes, AriaAttributes,
+      // CSS typings) but keep Fluent/Axis-declared props so every component —
+      // including thin wrappers like PasswordInput that re-export Fluent props —
+      // still produces a populated table.
+      propFilter: (prop) =>
+        prop.parent
+          ? !/node_modules\/(@types\/react|react|csstype)\//.test(
+              prop.parent.fileName
+            )
+          : true,
+    },
+  },
   viteFinal: async (config) => {
     return mergeConfig(config, {
       resolve: {
         alias: {
+          "@axiscommunications/fluent-advanced-data-grid": path.resolve(
+            __dirname,
+            "../../components/advanced-data-grid/src/index.ts"
+          ),
           "@axiscommunications/fluent-empty-view": path.resolve(
             __dirname,
             "../../components/empty-view/src/index.ts"

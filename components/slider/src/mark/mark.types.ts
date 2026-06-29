@@ -5,8 +5,13 @@ import {
 } from "@fluentui/react-utilities";
 import { ReactNode } from "react";
 
+/**
+ * Definition of a single tick mark placed along the slider rail.
+ */
 export type MarkDef = {
+  /** Value at which the mark is positioned. */
   value: number;
+  /** Optional label rendered beneath the mark. */
   label?: ReactNode;
   /** Mark label is ***active*** only when slider value is **equal** to mark value. */
   labelEqualActive?: boolean;

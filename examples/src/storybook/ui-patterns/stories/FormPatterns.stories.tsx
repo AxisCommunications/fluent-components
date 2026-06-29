@@ -13,8 +13,6 @@ import { FormField } from "../components/composites/FormField";
  * - Accessibility: Error messages with `role="alert"`, `aria-invalid` on error
  * - Token-driven styling via `makeStyles` + Fluent tokens exclusively
  * - Composition: Accepts any form input as children
- *
- * @see FLUENT_COMPOSITE_GUIDELINES.md for details on principles
  */
 const meta: Meta<typeof FormField> = {
   title: "UI patterns/Form Field",

@@ -1,3 +1,4 @@
+import { PasswordInput } from "@axiscommunications/fluent-password-input";
 import { makeStyles } from "@fluentui/react-components";
 import type { Meta, StoryObj } from "@storybook/react";
 import { PasswordInputExample } from "../../stories/password-input/password-input-example";
@@ -10,6 +11,7 @@ const useStyles = makeStyles({
 
 const meta: Meta = {
   title: "Components/Password Input",
+  component: PasswordInput,
 };
 
 export default meta;

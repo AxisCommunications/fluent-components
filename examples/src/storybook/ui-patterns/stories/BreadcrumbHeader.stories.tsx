@@ -21,6 +21,8 @@ import { BreadcrumbHeader } from "../components/composites/BreadcrumbHeader";
  * In responsive designs, when space is limited, the breadcrumb component smartly collapses its
  * central content into a "More" menu, as detailed in the
  * [breadcrumb documentation](https://react.fluentui.dev/?path=/docs/components-breadcrumb--docs).
+ *
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=53-157"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof BreadcrumbHeader> = {
   title: "UI patterns/Breadcrumb Header",
@@ -28,6 +30,44 @@ const meta: Meta<typeof BreadcrumbHeader> = {
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
+  },
+  argTypes: {
+    breadcrumbs: {
+      control: "object",
+      description:
+        "Breadcrumb items shown before the title. Each item supports a `label` and an optional `onClick`. The trail collapses into a 'More' menu when space is limited.",
+      table: {
+        type: {
+          summary: "Array<{ label: string; onClick?: () => void }>",
+        },
+      },
+    },
+    title: {
+      control: "text",
+      description: "Main title shown after the breadcrumb trail.",
+      table: { type: { summary: "string" } },
+    },
+    icon: {
+      control: false,
+      description: "Optional leading icon shown in the title area.",
+      table: { type: { summary: "ReactNode" } },
+    },
+    maxDisplayedItems: {
+      control: "number",
+      description:
+        "Maximum number of breadcrumb items to display before collapsing the middle items into an overflow menu.",
+      table: { type: { summary: "number | undefined" } },
+    },
+    ariaLabel: {
+      control: "text",
+      description: "Accessible label for the breadcrumb navigation landmark.",
+      table: { type: { summary: "string | undefined" } },
+    },
+    className: {
+      control: "text",
+      description: "Optional CSS class applied to the root element.",
+      table: { type: { summary: "string | undefined" } },
+    },
   },
 };
 

@@ -4,6 +4,7 @@ export const routes = {
   IconCatalog: "/icon-catalog",
   Stepper: "/stepper",
   TableUtilities: "/table-utilities",
+  AdvancedDataGrid: "/advanced-data-grid",
   Slider: "/slider",
   PasswordInput: "/password-input",
   SideNavigation: "/side-navigation",

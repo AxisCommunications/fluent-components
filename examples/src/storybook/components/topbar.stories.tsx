@@ -34,6 +34,7 @@ const themeOptions = [
 
 const meta: Meta = {
   title: "Components/Topbar",
+  component: TopBar,
 };
 
 export default meta;
