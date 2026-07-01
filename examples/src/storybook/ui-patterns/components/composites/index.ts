@@ -21,6 +21,7 @@
  * - EmptyState: Hero message for empty content areas
  * - DataTable: Composable table with Root/Header/Row pattern
  * - Pagination: Page navigation with item range display
+ * - StickySave: Persistent save/cancel bar for long forms
  */
 
 export { FormField, type FormFieldProps } from "./FormField";
@@ -85,6 +86,7 @@ export {
   type DataTableCellProps,
 } from "./DataTable";
 export { Pagination, type PaginationProps } from "./Pagination";
+export { StickySave, type StickySaveProps } from "./StickySave";
 export {
   Wizard,
   type WizardProps,
