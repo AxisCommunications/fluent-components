@@ -4,6 +4,7 @@ import {
   AdvancedDataGridProps,
 } from "@axiscommunications/fluent-advanced-data-grid";
 import type { Meta, StoryObj } from "@storybook/react";
+import type { ReactElement } from "react";
 import { AdvancedDataGridExample } from "../../stories/advanced-data-grid/examples/advanced-data-grid-example";
 import { AdvancedDataGridMinimalExample } from "../../stories/advanced-data-grid/examples/advanced-data-grid-minimal-example";
 
@@ -45,7 +46,7 @@ const columns: AdvancedColumnDef<User>[] = [
 // can infer `args` and render the Controls / ArgTypes table.
 const AdvancedDataGridStory = AdvancedDataGrid as (
   props: AdvancedDataGridProps<User>
-) => JSX.Element;
+) => ReactElement;
 
 /**
  * Advanced data grid

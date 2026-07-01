@@ -8,7 +8,9 @@ type Illustration = FC<AxisIllustrationProps> & { displayName: string };
 const SVG_DATA_URI_PREFIX = "data:image/svg+xml;utf8,";
 const PREVIEW_WIDTH = 140;
 
-const illustrations: Illustration[] = Object.values(AxisIllustrations)
+const illustrations: Illustration[] = (
+  Object.values(AxisIllustrations) as unknown[]
+)
   .filter(
     (value): value is Illustration =>
       typeof value === "function" &&

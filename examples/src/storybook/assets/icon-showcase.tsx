@@ -8,7 +8,7 @@ type Icon = FC<AxisIconProps> & { displayName: string };
 
 const PREVIEW_FONT_SIZE = 32;
 
-const icons: Icon[] = Object.values(AxisIcons)
+const icons: Icon[] = (Object.values(AxisIcons) as unknown[])
   .filter(
     (value): value is Icon =>
       typeof value === "function" &&
