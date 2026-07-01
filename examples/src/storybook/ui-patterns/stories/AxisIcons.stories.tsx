@@ -1,7 +1,7 @@
 import * as AxisIcons from "@axiscommunications/fluent-icons";
 import { Button, Input, Text } from "@fluentui/react-components";
 import { Search20Regular } from "@fluentui/react-icons";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ComponentType } from "react";
 import { useState } from "react";
 

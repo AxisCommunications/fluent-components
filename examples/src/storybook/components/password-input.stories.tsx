@@ -1,6 +1,6 @@
 import { PasswordInput } from "@axiscommunications/fluent-password-input";
 import { makeStyles } from "@fluentui/react-components";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PasswordInputExample } from "../../stories/password-input/password-input-example";
 
 const useStyles = makeStyles({

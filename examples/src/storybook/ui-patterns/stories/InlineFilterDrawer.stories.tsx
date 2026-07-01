@@ -6,7 +6,7 @@ import {
   Layer20Regular,
   Location20Regular,
 } from "@fluentui/react-icons";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import {
   type FilterGroup,

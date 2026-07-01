@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PageHeader } from "../components/composites/PageHeader";
 
 /**
@@ -23,7 +23,7 @@ const meta: Meta<typeof PageHeader> = {
     docs: {
       description: {
         component:
-          "A page-level header with optional breadcrumbs, a title, an optional description, and right-aligned action buttons. Only `title` is required; provide the other props as the page needs them.\n\n<p align='right'><a href='https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=86-367'><img width='240' src='./figma-global-components-cover.svg' alt='Open in Figma — AXIS Fluent Global components' /></a></p>",
+          "A page-level header with optional breadcrumbs, a title, an optional description, and right-aligned action buttons. Only `title` is required; provide the other props as the page needs them.\n\n<p align='right'><a href='https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=86-367'><img width='240' src='/figma-global-components-cover.svg' alt='Open in Figma — AXIS Fluent Global components' /></a></p>",
       },
     },
   },

@@ -1,6 +1,6 @@
 import { Slider } from "@axiscommunications/fluent-slider";
 import { makeStyles } from "@fluentui/react-components";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ReactElement } from "react";
 import { CustomSliderExample } from "../../stories/slider/examples/custom-example";
 import { DisabledSliderExample } from "../../stories/slider/examples/disabled-example";

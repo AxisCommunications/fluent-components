@@ -7,7 +7,7 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import { ArrowResetRegular, SaveRegular } from "@fluentui/react-icons";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useMemo, useState } from "react";
 import { FullPageHeader } from "../components/composites/FullPageHeader";
 

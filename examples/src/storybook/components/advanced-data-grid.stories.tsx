@@ -3,7 +3,7 @@ import {
   AdvancedDataGrid,
   AdvancedDataGridProps,
 } from "@axiscommunications/fluent-advanced-data-grid";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ReactElement } from "react";
 import { AdvancedDataGridExample } from "../../stories/advanced-data-grid/examples/advanced-data-grid-example";
 import { AdvancedDataGridMinimalExample } from "../../stories/advanced-data-grid/examples/advanced-data-grid-minimal-example";

@@ -1,5 +1,5 @@
 import { Button, Input, makeStyles, tokens } from "@fluentui/react-components";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { FormField } from "../components/composites/FormField";
 

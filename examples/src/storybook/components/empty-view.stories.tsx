@@ -1,6 +1,6 @@
 import { MainEmptyView } from "@axiscommunications/fluent-empty-view";
 import { makeStyles } from "@fluentui/react-components";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DialogEmptyViewExample } from "../../stories/empty-view/examples/dialog";
 import { MainEmptyViewExample } from "../../stories/empty-view/examples/main";
 import { PanelEmptyViewExample } from "../../stories/empty-view/examples/panel";

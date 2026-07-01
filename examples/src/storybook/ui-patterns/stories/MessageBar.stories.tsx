@@ -28,7 +28,7 @@ import {
   SettingsFilled,
   SettingsRegular,
 } from "@fluentui/react-icons";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { type CSSProperties, useState } from "react";
 import { FullPageHeader } from "../components/composites/FullPageHeader";
 import {

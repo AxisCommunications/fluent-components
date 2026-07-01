@@ -1,6 +1,6 @@
 import { SideNavigation } from "@axiscommunications/fluent-side-navigation";
 import { makeStyles } from "@fluentui/react-components";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { CollapsibleSideNavigationExample } from "../../stories/side-navigation/examples/collapsible-side-navigation-example";
 import { CompactSideNavigationExample } from "../../stories/side-navigation/examples/compact-side-navigation-example";
 import { IconOnlySideNavigationExample } from "../../stories/side-navigation/examples/icon-only-side-navigation-example";

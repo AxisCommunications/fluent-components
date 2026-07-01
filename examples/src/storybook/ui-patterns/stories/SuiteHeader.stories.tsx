@@ -7,7 +7,7 @@ import {
   SettingsRegular,
   ShareRegular,
 } from "@fluentui/react-icons";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import logoBlack from "../../../assets/logo-black.svg";
 import {
   SuiteHeader,

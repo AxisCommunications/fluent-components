@@ -6,7 +6,7 @@ import {
   axisLightTheme,
 } from "@axiscommunications/fluent-theme";
 import { FluentProvider } from "@fluentui/react-components";
-import type { Decorator, Preview } from "@storybook/react";
+import type { Decorator, Preview } from "@storybook/react-vite";
 import { MemoryRouter } from "react-router-dom";
 import { ApplicationStateProvider } from "../src/context/ApplicationStateProvider";
 

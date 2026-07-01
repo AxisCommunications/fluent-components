@@ -14,7 +14,7 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import { AlertRegular, LockClosedRegular } from "@fluentui/react-icons";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 /**
  * # Badges in Tables

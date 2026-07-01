@@ -52,8 +52,8 @@ import {
   Heading,
   Markdown,
   Title,
-} from "@storybook/blocks";
-import type { Meta, StoryObj } from "@storybook/react";
+} from "@storybook/addon-docs/blocks";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import { FilterToolbar } from "../components/composites/FilterToolbar";
 import { FullPageHeader } from "../components/composites/FullPageHeader";

@@ -1,5 +1,5 @@
 import { AddRegular, ArrowSyncRegular } from "@fluentui/react-icons";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SectionHeader } from "../components/composites/SectionHeader";
 
 const meta: Meta<typeof SectionHeader> = {

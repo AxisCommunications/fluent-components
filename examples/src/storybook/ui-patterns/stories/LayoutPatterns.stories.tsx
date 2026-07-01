@@ -10,7 +10,7 @@ import {
   PeopleRegular,
   RocketRegular,
 } from "@fluentui/react-icons";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FilterToolbar } from "../components/composites/FilterToolbar";
 import { FullPageHeader } from "../components/composites/FullPageHeader";
 

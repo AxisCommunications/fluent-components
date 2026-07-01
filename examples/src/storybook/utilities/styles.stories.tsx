@@ -1,5 +1,5 @@
 import { makeStyles } from "@fluentui/react-components";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { MainMenu } from "../../stories/main-menu/examples/main-menu";
 import { MainMenuVertical } from "../../stories/main-menu/examples/main-menu-vertical";
 import { StyledTabListComponent } from "../../stories/tab-list-utilities/tab-list-example";
