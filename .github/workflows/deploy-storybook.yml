@@ -1,0 +1,39 @@
+name: Deploy Storybook to gh-pages/storybook
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev-design-storybook
+
+jobs:
+  storybook-gh-pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm install --frozen-lockfile
+
+      - name: Build Storybook
+        run: pnpm --filter examples storybook:build
+
+      - name: Deploy Storybook to gh-pages subfolder
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./examples/storybook-static
+          destination_dir: storybook
+          keep_files: true
+          enable_jekyll: false
