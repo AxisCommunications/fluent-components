@@ -16,7 +16,7 @@ import { FilterToolbar } from "../components/composites/FilterToolbar";
  * - Accessible toolbar landmark via `ariaLabel`
  * - Token-based spacing, colors, and background variants
  *
- * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=77-361"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=77-361"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof FilterToolbar> = {
   title: "UI patterns/Filter Toolbar",

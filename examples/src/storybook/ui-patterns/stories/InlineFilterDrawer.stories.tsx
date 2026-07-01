@@ -54,7 +54,7 @@ import {
  *   width, so it can be driven by app state or manage its own.
  * - Responsive width via `@axiscommunications/fluent-hooks` `useMediaQuery`.
  *
- * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=99-300"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=99-300"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof InlineFilterDrawer> = {
   title: "UI patterns/Inline Filter Drawer",

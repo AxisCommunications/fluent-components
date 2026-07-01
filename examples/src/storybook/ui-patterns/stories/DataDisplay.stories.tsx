@@ -11,7 +11,7 @@ import { StatCard } from "../components/composites/StatCard";
  * - Color-coded trends (green=up, red=down, neutral=same)
  * - Token-driven spacing and text sizes
  *
- * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=59-160"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=59-160"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof StatCard> = {
   title: "UI patterns/Data Display",

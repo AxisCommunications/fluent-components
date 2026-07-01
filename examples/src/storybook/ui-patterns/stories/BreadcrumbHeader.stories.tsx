@@ -22,7 +22,7 @@ import { BreadcrumbHeader } from "../components/composites/BreadcrumbHeader";
  * central content into a "More" menu, as detailed in the
  * [breadcrumb documentation](https://react.fluentui.dev/?path=/docs/components-breadcrumb--docs).
  *
- * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=53-157"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=53-157"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof BreadcrumbHeader> = {
   title: "UI patterns/Breadcrumb Header",

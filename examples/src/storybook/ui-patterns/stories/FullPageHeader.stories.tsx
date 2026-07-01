@@ -58,7 +58,7 @@ import { FullPageHeader } from "../components/composites/FullPageHeader";
  *
  * See the `FormPageWithSaveActions` story for a working example of this dirty-state behaviour.
  *
- * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=79-383"><img width="240" src="/figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=79-383"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof FullPageHeader> = {
   title: "UI patterns/Full Page Header",
