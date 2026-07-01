@@ -11,28 +11,42 @@ monorepo. It also exports brand token sets and a helper hook for identifying the
 active Axis theme.
 </Description>
 
-## Exports
-
-- axisDarkTheme
-- axisLightTheme
-- axisBlueDarkTheme
-- axisBlueLightTheme
-- brand
-- blueBrand
-- useIdentifyCurrentAxisTheme
-
 ## Installation
 
 ```bash
 pnpm add @axiscommunications/fluent-theme
 ```
 
-## Example
+## Usage
 
-<Canvas of={ThemeStories.Explorer} />
+Wrap your application root in a `FluentProvider` with one of the exported Axis
+themes.
+
+```tsx
+import { FluentProvider } from "@fluentui/react-components";
+import { axisLightTheme } from "@axiscommunications/fluent-theme";
+
+<FluentProvider theme={axisLightTheme}>
+  <App />
+</FluentProvider>;
+```
+
+## Color tokens
+
+The Axis main theme extends the Fluent palette with branded color and utility
+tokens. Each token below shows its light and dark value.
+
+<Canvas of={ThemeStories.ColorTokenReference} sourceState="none" />
+
+## Exports
+
+- `axisLightTheme`, `axisDarkTheme` — Axis main theme
+- `axisBlueLightTheme`, `axisBlueDarkTheme` — Axis blue theme
+- `brand`, `blueBrand` — brand token ramps
+- `useIdentifyCurrentAxisTheme` — hook to detect the active Axis theme
 
 ## Guidance
 
-- Wrap application roots in FluentProvider with one of the exported Axis themes.
 - Prefer token usage over hardcoded colors in downstream components.
 - Use theme-aware illustration and styling helpers to keep light/dark behavior aligned.
+

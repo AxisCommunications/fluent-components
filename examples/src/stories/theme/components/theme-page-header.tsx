@@ -6,11 +6,7 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-  SelectTabData,
-  SelectTabEvent,
   Switch,
-  Tab,
-  TabList,
   makeStyles,
   shorthands,
   tokens,
@@ -18,7 +14,7 @@ import {
 import { DarkThemeRegular } from "@fluentui/react-icons";
 import React, { useCallback } from "react";
 import { useAppContext } from "../../../context/ApplicationStateProvider";
-import { TaxisThemes, axisThemes, themeMap } from "../theme-page.types";
+import { mainTheme } from "../theme-page.types";
 
 const useStyles = makeStyles({
   root: {
@@ -34,14 +30,10 @@ const useStyles = makeStyles({
 
 type ThemePageHeader = {
   search: string;
-  selectedTab: TaxisThemes;
-  setSelectedTab: (value: TaxisThemes) => void;
   onSearchQueryChanged: (ev?: React.FormEvent<HTMLInputElement>) => void;
 };
 
 export function ThemePageHeader({
-  selectedTab,
-  setSelectedTab,
   search,
   onSearchQueryChanged,
 }: ThemePageHeader) {
@@ -51,21 +43,12 @@ export function ThemePageHeader({
   const styles = useStyles();
 
   const applyLightTheme = useCallback(() => {
-    const theme = themeMap[selectedTab].light;
-    setAppTheme(theme);
-  }, [selectedTab, setAppTheme]);
+    setAppTheme(mainTheme.light);
+  }, [setAppTheme]);
 
   const applyDarkTheme = useCallback(() => {
-    const theme = themeMap[selectedTab].dark;
-    setAppTheme(theme);
-  }, [selectedTab, setAppTheme]);
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
-  const onThemeSelect = useCallback(
-    (_: SelectTabEvent, { value }: SelectTabData) =>
-      setSelectedTab(value as TaxisThemes),
-    []
-  );
+    setAppTheme(mainTheme.dark);
+  }, [setAppTheme]);
 
   return (
     <div className={styles.root}>
@@ -79,10 +62,6 @@ export function ThemePageHeader({
           onChange={onSearchQueryChanged}
         />
       </div>
-      <TabList defaultSelectedValue={selectedTab} onTabSelect={onThemeSelect}>
-        <Tab value={axisThemes.main}>Main theme</Tab>
-        <Tab value={axisThemes.blue}>Blue Theme</Tab>
-      </TabList>
       <Menu>
         <MenuTrigger disableButtonEnhancement>
           <MenuButton shape="circular" icon={<DarkThemeRegular />}>

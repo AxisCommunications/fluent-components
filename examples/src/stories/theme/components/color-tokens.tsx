@@ -13,146 +13,183 @@ export const colorTokensClassNames = {
 };
 
 const useStyles = makeStyles({
-  root: {
-    display: "grid",
-    gridTemplateColumns: "2fr 1fr 1fr",
-    ...shorthands.gap(tokens.spacingHorizontalXS),
-    fontFamily: "monospace",
-    "> :nth-child(1)": {
-      gridColumnStart: "span 1",
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    ...shorthands.gap(tokens.spacingVerticalXXL),
+  },
+  section: {
+    display: "flex",
+    flexDirection: "column",
+    ...shorthands.gap(tokens.spacingVerticalS),
+  },
+  sectionTitle: {
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+    color: tokens.colorNeutralForeground1,
+    textTransform: "capitalize",
+  },
+  table: {
+    width: "100%",
+    borderCollapse: "collapse",
+    fontSize: tokens.fontSizeBase300,
+    backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.border("1px", "solid", tokens.colorNeutralStroke2),
+    ...shorthands.overflow("hidden"),
+    boxShadow: tokens.shadow4,
+  },
+  headerCell: {
+    textAlign: "left",
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightSemibold,
+    letterSpacing: "0.06em",
+    textTransform: "uppercase",
+    color: tokens.colorNeutralForeground3,
+    backgroundColor: tokens.colorNeutralBackground2,
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
+    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
+  },
+  row: {
+    "&:not(:last-child) > td": {
+      borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
     },
-    "> :nth-child(2)": {
-      gridColumnStart: "span 1",
-    },
-    "> :nth-child(3)": {
-      gridColumnStart: "span 1",
+    ":hover": {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
     },
   },
-  tableHeader: {
-    fontSize: "16px",
-    backgroundColor: tokens.colorNeutralBackground1,
+  tokenCell: {
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
+    fontFamily: "monospace",
+    color: tokens.colorNeutralForeground1,
+    verticalAlign: "middle",
+    whiteSpace: "nowrap",
+  },
+  swatchCell: {
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
+    verticalAlign: "middle",
+    width: "220px",
+  },
+  swatch: {
+    display: "flex",
+    alignItems: "center",
+    ...shorthands.gap(tokens.spacingHorizontalS),
+  },
+  chip: {
+    width: "28px",
+    height: "28px",
+    flexShrink: 0,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.border("1px", "solid", tokens.colorNeutralStroke2),
+    boxShadow: "inset 0 0 0 1px rgba(0, 0, 0, 0.06)",
+  },
+  chipValue: {
+    fontFamily: "monospace",
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground2,
+  },
+  empty: {
+    ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalM),
+    color: tokens.colorNeutralForeground3,
   },
 });
-
-export function useColorTokensStyles() {
-  const styles = useStyles();
-  const rootStyle = mergeClasses(colorTokensClassNames.root, styles.root);
-  const headerStyle = mergeClasses(styles.root, styles.tableHeader);
-  return { styles, headerStyle, rootStyle };
-}
 
 type TColorTokens = {
   filter: string;
   theme: Record<TaxisThemeVariants, Theme>;
 };
 
+type TColorRow = { token: string; lightValue: string; darkValue: string };
+
 export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
   const { light, dark } = theme;
+  const styles = useStyles();
 
-  const tokens = Object.entries(light)
+  const query = filter.toLowerCase();
+  const matchesFilter = (token: string, value: string) =>
+    token.toLowerCase().includes(query) || value.toLowerCase().includes(query);
+
+  const buildRows = (prefix: string): TColorRow[] =>
+    Object.entries(light)
+      .filter(([token]) => token.startsWith(prefix))
+      .map(([token, value]) => ({
+        token,
+        lightValue: value as string,
+        darkValue: (dark as unknown as Record<string, string>)[token],
+      }))
+      .filter(({ token, lightValue }) => matchesFilter(token, lightValue));
+
+  const customColorTokens = buildRows("axisCustomColor");
+  const customUtilityTokens = buildRows("axisCustomUtility");
+  const standardTokens = Object.entries(light)
     .filter(([token]) => token.startsWith("color"))
-    .filter(([token, value]) => {
-      const keyHit = token.toLowerCase().includes(filter.toLowerCase());
-      const valueHit = value
-        .toString()
-        .toLowerCase()
-        .includes(filter.toLowerCase());
-      return keyHit || valueHit;
-    })
     .map(([token, value]) => ({
       token,
       lightValue: value as string,
       darkValue: (dark as unknown as Record<string, string>)[token],
-    }));
-
-  const customColorTokens = Object.entries(light)
-    .filter(([token]) => token.startsWith("axisCustomColor"))
-    .map(([token, value]) => ({
-      token,
-      lightValue: value as string,
-      darkValue: (dark as unknown as Record<string, string>)[token],
-    }));
-
-  const customUtilityTokens = Object.entries(light)
-    .filter(([token]) => token.startsWith("axisCustomUtility"))
-    .map(([token, value]) => ({
-      token,
-      lightValue: value as string,
-      darkValue: (dark as unknown as Record<string, string>)[token],
-    }));
-
-  const { rootStyle } = useColorTokensStyles();
+    }))
+    .filter(({ token, lightValue }) => matchesFilter(token, lightValue));
 
   return (
-    <>
-      <Header title="custom color token" />
-      <div data-testid={componentId} className={rootStyle} {...rest}>
-        {customColorTokens.map((args, i) => (
-          <ColorPalette key={i} {...args} />
-        ))}
-      </div>
-
-      <Header title="custom utility token" />
-      <div data-testid={componentId} className={rootStyle} {...rest}>
-        {customUtilityTokens.map((args, i) => (
-          <ColorPalette key={i} {...args} />
-        ))}
-      </div>
-
-      <Header title="token" />
-      <div data-testid={componentId} className={rootStyle} {...rest}>
-        {tokens.map((args, i) => (
-          <ColorPalette key={i} {...args} />
-        ))}
-      </div>
-    </>
+    <div
+      data-testid={componentId}
+      className={mergeClasses(colorTokensClassNames.root, styles.container)}
+      {...rest}
+    >
+      <TokenTable title="custom color token" rows={customColorTokens} />
+      <TokenTable title="custom utility token" rows={customUtilityTokens} />
+      <TokenTable title="token" rows={standardTokens} />
+    </div>
   );
 }
 
-const useColorPaletteStyles = makeStyles({
-  root: {
-    width: "100%",
-    textShadow: "0px 0px 1px #fff, 0 0px 1px #000, 0 0 0px",
-  },
-});
-
-type TColorPalette = { token: string; lightValue: string; darkValue: string };
-
-function ColorPalette({ token, lightValue, darkValue }: TColorPalette) {
-  const styles = useColorPaletteStyles();
+function TokenTable({ title, rows }: { title: string; rows: TColorRow[] }) {
+  const styles = useStyles();
 
   return (
-    <>
-      <div>{token}</div>
-      <div
-        className={styles.root}
-        style={{
-          backgroundColor: lightValue,
-          color: darkValue,
-        }}
-      >
-        {lightValue}
-      </div>
-      <div
-        className={styles.root}
-        style={{
-          backgroundColor: darkValue,
-          color: lightValue,
-        }}
-      >
-        {darkValue}
-      </div>
-    </>
+    <div className={styles.section}>
+      <div className={styles.sectionTitle}>{title}</div>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th className={styles.headerCell}>Token</th>
+            <th className={styles.headerCell}>Light value</th>
+            <th className={styles.headerCell}>Dark value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.length === 0 ? (
+            <tr>
+              <td className={styles.empty} colSpan={3}>
+                No matching tokens
+              </td>
+            </tr>
+          ) : (
+            rows.map(({ token, lightValue, darkValue }) => (
+              <tr key={token} className={styles.row}>
+                <td className={styles.tokenCell}>{token}</td>
+                <td className={styles.swatchCell}>
+                  <Swatch value={lightValue} />
+                </td>
+                <td className={styles.swatchCell}>
+                  <Swatch value={darkValue} />
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
-function Header({ title }: { title: string }) {
-  const { headerStyle } = useColorTokensStyles();
+function Swatch({ value }: { value: string }) {
+  const styles = useStyles();
+
   return (
-    <div className={headerStyle}>
-      <b>{title}</b>
-      <b>light value</b>
-      <b>dark value</b>
+    <div className={styles.swatch}>
+      <span className={styles.chip} style={{ backgroundColor: value }} />
+      <span className={styles.chipValue}>{value}</span>
     </div>
   );
 }
