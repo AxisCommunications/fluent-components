@@ -1,8 +1,5 @@
 import { Tooltip, mergeClasses } from "@fluentui/react-components";
-import {
-  PanelLeftContractRegular,
-  PanelLeftExpandRegular,
-} from "@fluentui/react-icons";
+import { ChevronLeftRegular, ChevronRightRegular } from "@fluentui/react-icons";
 import React from "react";
 
 import { SideNavigationItemRow } from "./side-navigation-item.js";
@@ -181,11 +178,7 @@ export const SideNavigation = React.forwardRef<
             aria-label={toggleLabel}
             aria-expanded={expanded}
           >
-            {expanded ? (
-              <PanelLeftContractRegular />
-            ) : (
-              <PanelLeftExpandRegular />
-            )}
+            {expanded ? <ChevronLeftRegular /> : <ChevronRightRegular />}
           </button>
         </Tooltip>
       ) : null}
