@@ -80,10 +80,10 @@ const meta: Meta<typeof PageHeader> = {
     title: "My workspace",
     description: "Production data workspace",
     actions: [
-      { label: "Cancel", onClick: () => console.log("Cancel") },
+      { label: "Reset", onClick: () => console.log("Reset") },
       {
-        label: "Save",
-        onClick: () => console.log("Save"),
+        label: "Apply",
+        onClick: () => console.log("Apply"),
         appearance: "primary",
       },
     ],

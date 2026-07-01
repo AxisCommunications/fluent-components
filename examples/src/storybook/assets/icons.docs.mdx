@@ -6,8 +6,9 @@ import * as IconStories from "./icons.stories";
 <Title />
 <Subtitle>Axis icon library with filled and regular variants across a large catalog.</Subtitle>
 <Description>
-The icons package exports a large generated React icon set. Storybook exposes the
-catalog as a searchable browsing experience rather than one story per icon.
+The icons package exports a large generated React icon set. The catalog below is
+a clean, searchable showcase: filter by variant, select the icons you need, and
+download them directly as SVG files.
 </Description>
 
 ## Exports
@@ -21,12 +22,17 @@ catalog as a searchable browsing experience rather than one story per icon.
 pnpm add @axiscommunications/fluent-icons
 ```
 
-## Example
+## Using the catalog
+
+- **Search** by name to find an icon quickly.
+- **Filter** by `Regular` or `Filled` to narrow the variant.
+- **Select** one or more cards, then use **Download selected** to save them all
+  as SVG — or use the download button on a single card.
 
 <Canvas of={IconStories.Catalog} />
 
 ## Guidance
 
-- Use the searchable catalog story to discover icon names before implementation.
+- Use the searchable catalog to discover icon names before implementation.
 - Keep icon usage semantically consistent across products.
 - Prefer a single icon family or weight within the same interaction cluster.

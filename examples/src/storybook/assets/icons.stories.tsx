@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { IconPage } from "../../stories/icons/icon-page";
+import { IconShowcase } from "./icon-showcase";
 
 const meta: Meta = {
   title: "Assets/Icons",
@@ -13,5 +13,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Catalog: Story = {
-  render: () => <IconPage />,
+  render: () => <IconShowcase />,
 };

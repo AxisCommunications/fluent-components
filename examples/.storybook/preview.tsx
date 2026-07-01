@@ -77,6 +77,7 @@ const preview: Preview = {
       storySort: {
         order: [
           "UI patterns",
+          ["Introduction", "*"],
           "Components",
           "Assets",
           "Utilities",

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { IllustrationPage } from "../../stories/illustrations/illustration-page";
+import { IllustrationShowcase } from "./illustration-showcase";
 
 const meta: Meta = {
   title: "Assets/Illustrations",
@@ -13,5 +13,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Catalog: Story = {
-  render: () => <IllustrationPage />,
+  render: () => <IllustrationShowcase />,
 };

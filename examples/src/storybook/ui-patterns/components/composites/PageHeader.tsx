@@ -101,8 +101,8 @@ const useStyles = makeStyles({
  *   title="My Workspace"
  *   description="Production data workspace"
  *   actions={[
- *     { label: 'Save', onClick: handleSave, appearance: 'primary' },
- *     { label: 'Cancel', onClick: handleCancel }
+ *     { label: 'Apply', onClick: handleApply, appearance: 'primary' },
+ *     { label: 'Reset', onClick: handleReset }
  *   ]}
  * />
  */
