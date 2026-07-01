@@ -28,12 +28,20 @@ jobs:
       - name: Build Storybook
         run: pnpm --filter examples storybook:build
 
-      - name: Deploy Storybook to gh-pages subfolder
+      - name: Stage Pages artifact
+        run: |
+          mkdir -p publish/docs/storybook
+          cp -r examples/storybook-static/. publish/docs/storybook/
+          # GitHub Pages serves this repo from the gh-pages branch /docs folder
+          # via a legacy Jekyll build, which ignores files starting with "_"
+          # (e.g. Storybook's __resetStyles.esm-*.js). A .nojekyll at the docs
+          # root disables Jekyll so those module chunks are served.
+          touch publish/docs/.nojekyll
+
+      - name: Deploy Storybook to gh-pages/docs/storybook
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./examples/storybook-static
-          destination_dir: docs/storybook
+          publish_dir: ./publish
           keep_files: true
-          enable_jekyll: false
