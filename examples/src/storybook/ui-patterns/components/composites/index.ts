@@ -93,3 +93,10 @@ export {
   type WizardStep,
   type WizardNavigationMode,
 } from "./Wizard";
+export {
+  VideoControlBar,
+  type VideoControlBarProps,
+  type VideoControlBarGroup,
+  type VideoControlBarItem,
+  type VideoControlBarMenuItem,
+} from "./VideoControlBar";
