@@ -137,6 +137,31 @@ Accessibility panel. When you add stories for the new component, check that pane
 is clean and document an `## Accessibility` section in the story and the README
 (landmark role, `aria-*`, reduced-motion handling), as the existing components do.
 
+### Storybook version, MDX docs & hosting
+
+- **Storybook is v10** (`storybook`, `@storybook/react-vite`, `@storybook/addon-a11y`,
+  `@storybook/addon-docs` all `10.x`). It was upgraded from 8.6 because the repo runs
+  **Vite 8** (rolldown) — only Storybook 10 lists Vite 8 in its builder peer range;
+  8.6/9.x break MDX `<Meta of={...} />` at build time ("must reference a CSF file
+  module export"). Upgrade Storybook **one major at a time**
+  (`pnpm dlx storybook@9 upgrade --yes` then `@latest`); it blocks multi-major jumps.
+- In v9/v10 `@storybook/addon-essentials` / `@storybook/addon-interactions` were folded
+  into core (the `addons` array is just `["@storybook/addon-a11y", "@storybook/addon-docs"]`),
+  and **MDX doc blocks moved**: import `Meta`, `Canvas`, `Controls`, `Title`, etc. from
+  `@storybook/addon-docs/blocks`, **not** the old `@storybook/blocks`. Story files import
+  `Meta`/`StoryObj` types from `@storybook/react-vite` (not `@storybook/react`).
+- **Hosting:** `.github/workflows/deploy-storybook.yml` builds
+  (`pnpm --filter examples storybook:build`) and publishes the static Storybook to the
+  `gh-pages` branch under `docs/storybook` (Pages serves gh-pages `/docs`, legacy Jekyll).
+  It runs from branch `dev-design-storybook` and uses `keep_files: true` so it does not
+  clobber the existing examples site. Live at
+  <https://axiscommunications.github.io/fluent-components/storybook/>.
+- **GH Pages gotchas** (each cost real iterations): legacy Jekyll **drops files starting
+  with `_`**, so a `.nojekyll` file must sit at the served `docs/` root (branch-root
+  `.nojekyll` is not enough) or hashed `_`-prefixed JS assets 404. And project-site
+  asset paths must be **relative** (`./figma-...svg`), not absolute (`/figma-...svg`) —
+  an absolute path resolves to the domain root, not the `/fluent-components/` subpath.
+
 ## 5. Playwright system tests (examples/system-test)
 
 End-to-end/system tests drive the real examples app in a browser. They live in

@@ -39,6 +39,14 @@ never raw hex or detached rectangles.
    `disableCodeConnect: true`) also returns an inline screenshot and is the most
    reliable way to eyeball a node after each edit.
 
+> **Storybook note.** The examples app runs **Storybook v10** (Vite 8 / rolldown).
+> You can preview the live source stories at
+> <https://axiscommunications.github.io/fluent-components/storybook/> to grab the exact
+> copy/props before mirroring them into Figma. When editing `*.docs.mdx` doc pages,
+> import doc blocks (`Meta`, `Canvas`, `Controls`, `Title`) from
+> `@storybook/addon-docs/blocks` (not the old `@storybook/blocks`), and story `Meta`/
+> `StoryObj` types from `@storybook/react-vite`.
+
 ## ALWAYS document a new component with the Doc template
 
 Whenever you create (or finish) a component, also produce a documentation page for it
