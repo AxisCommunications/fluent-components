@@ -1,6 +1,4 @@
-import { Button, Tooltip } from "@fluentui/react-components";
-import { RectangleLandscapeHintCopyRegular } from "@fluentui/react-icons";
-import { useCallback } from "react";
+import { CopyButton } from "../../../components/copy-button";
 
 type TIllustrationCopy = {
   toolTip: string;
@@ -8,26 +6,11 @@ type TIllustrationCopy = {
 };
 
 export function IllustrationCopy({ toolTip, toCopy }: TIllustrationCopy) {
-  // biome-ignore lint/correctness/useExhaustiveDependencies: FIXME
-  const copyCode = useCallback(async () => {
-    toCopy && (await copyToClipboard(`<${toCopy}/>`));
-  }, []);
-
   return (
-    <Tooltip withArrow content={toolTip} relationship={"label"}>
-      <Button
-        appearance="transparent"
-        onClick={copyCode}
-        icon={<RectangleLandscapeHintCopyRegular />}
-      ></Button>
-    </Tooltip>
+    <CopyButton
+      value={toCopy ? `<${toCopy}/>` : ""}
+      copyLabel={toolTip}
+      appearance="transparent"
+    />
   );
-}
-
-async function copyToClipboard(text: string): Promise<void> {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch (error) {
-    console.error("Error copying to clipboard:", error);
-  }
 }

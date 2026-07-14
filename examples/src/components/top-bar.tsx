@@ -12,9 +12,9 @@ import {
   TopBar,
 } from "@axiscommunications/fluent-topbar";
 import {
-  Button,
   Menu,
   MenuButton,
+  MenuDivider,
   MenuItem,
   MenuList,
   MenuPopover,
@@ -26,14 +26,13 @@ import {
   AddRegular,
   AnimalCat20Filled,
   AnimalCat20Regular,
+  AppsListRegular,
   BuildingBank20Regular,
-  Drawer24Filled,
+  Drawer24Regular,
   FoodApple24Regular,
-  FoodCarrot20Filled,
   FoodFish20Filled,
   FoodFish20Regular,
   MailUnreadFilled,
-  Megaphone24Filled,
   OpenRegular,
   QuestionCircleRegular,
   ZoomFit20Filled,
@@ -115,7 +114,7 @@ export const Navbar = () => {
     ...new Array<LanguageOption>(50).fill({ id: "fi" }),
   ];
 
-  const [selectedApp, setSelectedApp] = useState(applications[1].id);
+  const [selectedApp, setSelectedApp] = useState(applications[0].id);
   const [drawerSelectedApp, setDrawerSelectedApp] = useState(
     appDrawerContent[1].id
   );
@@ -190,36 +189,9 @@ export const Navbar = () => {
           onChange: onNavigateToApplication,
         }}
         applicationArea={"mySystems"}
-        leftCustomContent={
-          <>
-            <Button
-              appearance="subtle"
-              icon={<Megaphone24Filled />}
-              iconPosition="before"
-              onClick={() => setShowDrawer(!showDrawer)}
-            >
-              {showDrawer ? "Use application menu" : "Use application drawer"}
-            </Button>
-            <Button
-              appearance="subtle"
-              icon={<Drawer24Filled />}
-              onClick={() =>
-                setDrawerVersion((prev) => {
-                  return prev === "v1"
-                    ? "v2"
-                    : prev === "v2"
-                      ? undefined
-                      : "v1";
-                })
-              }
-            >
-              {`Drawer version: ${drawerVersion}`}
-            </Button>
-          </>
-        }
         customContent={
           <Menu>
-            <MenuTrigger>
+            <MenuTrigger disableButtonEnhancement>
               <MenuButton
                 icon={<QuestionCircleRegular />}
                 appearance="subtle"
@@ -228,12 +200,29 @@ export const Navbar = () => {
             <MenuPopover>
               <MenuList>
                 <MenuItem>FAQ</MenuItem>
+                <MenuDivider />
+                <MenuItem
+                  icon={<AppsListRegular />}
+                  onClick={() => setShowDrawer((prev) => !prev)}
+                >
+                  {showDrawer
+                    ? "Demo: use application menu"
+                    : "Demo: use application drawer"}
+                </MenuItem>
+                <MenuItem
+                  icon={<Drawer24Regular />}
+                  disabled={!showDrawer}
+                  onClick={() =>
+                    setDrawerVersion((prev) =>
+                      prev === "v1" ? "v2" : prev === "v2" ? undefined : "v1"
+                    )
+                  }
+                >
+                  {`Demo: drawer version ${drawerVersion ?? "off"}`}
+                </MenuItem>
               </MenuList>
             </MenuPopover>
           </Menu>
-        }
-        centerCustomContent={
-          <Button icon={<FoodCarrot20Filled />}>I AM CENTER</Button>
         }
         orgMenu={{
           customContent: (

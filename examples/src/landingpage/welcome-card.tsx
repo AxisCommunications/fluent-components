@@ -3,6 +3,7 @@ import {
   Card,
   Subtitle2,
   makeStyles,
+  mergeClasses,
   shorthands,
   tokens,
 } from "@fluentui/react-components";
@@ -14,48 +15,48 @@ const useStyles = makeStyles({
     position: "relative",
     minWidth: "200px",
     maxWidth: "100%",
-    height: "auto",
-    minHeight: "170px",
+    minHeight: "180px",
     ...shorthands.padding(tokens.spacingVerticalXL, tokens.spacingHorizontalXL),
-    ...shorthands.gap(tokens.spacingVerticalXS),
+    ...shorthands.gap(tokens.spacingVerticalS),
     ...shorthands.overflow("hidden"),
     cursor: "pointer",
     transitionDuration: tokens.durationNormal,
-    transitionProperty: "background, box-shadow",
+    transitionProperty: "background, box-shadow, transform",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-end",
+    alignItems: "flex-start",
     ":hover": {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       boxShadow: tokens.shadow16,
+      transform: "translateY(-2px)",
     },
-    ":hover > :first-child": {
-      transform: "rotate(-8deg) scale(1.15)",
-      opacity: "0.18",
+    ":hover .axis-WelcomeCard__icon": {
+      backgroundColor: tokens.colorBrandBackground,
+      color: tokens.colorNeutralForegroundOnBrand,
     },
-    ":hover > :last-child > svg": {
+    ":hover .axis-WelcomeCard__footer svg": {
       transform: "translateX(4px)",
     },
   },
-  watermark: {
-    position: "absolute",
-    top: "-8px",
-    right: "-8px",
-    fontSize: "96px",
-    opacity: "0.1",
+  icon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "44px",
+    height: "44px",
+    ...shorthands.borderRadius(tokens.borderRadiusLarge),
+    backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground1,
+    fontSize: "24px",
     transitionDuration: tokens.durationNormal,
-    transitionProperty: "transform, opacity",
-    pointerEvents: "none",
-    lineHeight: "1",
+    transitionProperty: "background, color",
   },
   title: {
-    color: tokens.colorBrandForeground1,
-    position: "relative",
+    color: tokens.colorNeutralForeground1,
   },
   description: {
-    color: tokens.colorNeutralForeground2,
-    position: "relative",
+    color: tokens.colorNeutralForeground3,
+    flexGrow: 1,
   },
   footer: {
     display: "flex",
@@ -64,8 +65,6 @@ const useStyles = makeStyles({
     color: tokens.colorBrandForeground1,
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightSemibold,
-    marginTop: tokens.spacingVerticalS,
-    position: "relative",
     "& svg": {
       transitionDuration: tokens.durationNormal,
       transitionProperty: "transform",
@@ -90,10 +89,12 @@ export const WelcomeCard = ({
 
   return (
     <Card className={styles.root} onClick={onClick}>
-      <div className={styles.watermark}>{icon}</div>
+      <div className={mergeClasses("axis-WelcomeCard__icon", styles.icon)}>
+        {icon}
+      </div>
       <Subtitle2 className={styles.title}>{title}</Subtitle2>
       <Body1 className={styles.description}>{description}</Body1>
-      <div className={styles.footer}>
+      <div className={mergeClasses("axis-WelcomeCard__footer", styles.footer)}>
         Explore <ArrowRightRegular />
       </div>
     </Card>
