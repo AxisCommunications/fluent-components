@@ -10,6 +10,7 @@ import {
   DocumentCssRegular,
   IconsRegular,
   PuzzlePieceRegular,
+  SparkleRegular,
 } from "@fluentui/react-icons";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +40,21 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     ...shorthands.gap(tokens.spacingVerticalM),
-    maxWidth: "520px",
+    maxWidth: "640px",
+  },
+  kicker: {
+    display: "inline-flex",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    ...shorthands.gap(tokens.spacingHorizontalXS),
+    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingHorizontalS),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground1,
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightSemibold,
+    textTransform: "uppercase",
+    letterSpacing: "0.04em",
   },
   title: {
     fontSize: tokens.fontSizeHero800,
@@ -49,12 +64,13 @@ const useStyles = makeStyles({
   },
   subtitle: {
     color: tokens.colorNeutralForeground3,
+    fontSize: tokens.fontSizeBase400,
   },
   cardContainer: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
     ...shorthands.gap(tokens.spacingHorizontalL),
-    maxWidth: "900px",
+    maxWidth: "980px",
   },
 });
 
@@ -72,6 +88,10 @@ export const WelcomePage = () => {
     <div data-testid={TestId.welcomePage} className={styles.root}>
       <div className={styles.content}>
         <div className={styles.hero}>
+          <span className={styles.kicker}>
+            <SparkleRegular />
+            Axis Design System
+          </span>
           <span className={styles.title}>
             Welcome to Axis Fluent Components
           </span>
