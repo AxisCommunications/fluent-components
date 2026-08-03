@@ -3,8 +3,6 @@ import { FileUpload } from "../components/composites/FileUpload";
 
 /**
  * File Upload pattern built with Fluent components and AXIS illustrations.
- *
- * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=273-165"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof FileUpload> = {
   title: "UI patterns/File Upload",
@@ -15,7 +13,7 @@ const meta: Meta<typeof FileUpload> = {
     docs: {
       description: {
         component:
-          "Use this pattern when people need a clear entry point for uploading files inside a form, dialog, or setup flow. Prefer the multi-file version for attachments or supporting documents, and use the single-file version when the task expects exactly one required document such as an ID, contract, or profile asset.",
+          'Use this pattern when people need a clear entry point for uploading files inside a form, dialog, or setup flow. Prefer the multi-file version for attachments or supporting documents, and use the single-file version when the task expects exactly one required document such as an ID, contract, or profile asset.\n\n<p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=273-165"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>',
       },
     },
   },
