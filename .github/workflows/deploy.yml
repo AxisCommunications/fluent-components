@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      issues: write
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,13 +28,20 @@ jobs:
           pnpm install --frozen-lockfile
 
       - name: Build example project
-        run: pnpm --filter examples build:deploy
+        run: pnpm --filter examples build
+
+      - name: Stage Pages artifact
+        run: |
+          mkdir -p publish/docs
+          cp -r examples/dist/. publish/
+          cp -r examples/dist/. publish/docs/
+          touch publish/.nojekyll
+          touch publish/docs/.nojekyll
 
       - name: Deploy example page to gh-pages
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git switch --orphan gh-pages
-          git add -f docs
-          git commit -m "docs: update examplepage"
-          git push -f origin gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./publish
+          keep_files: true

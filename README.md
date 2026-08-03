@@ -101,6 +101,23 @@ The following is one example of how to use a local version while developing.
 This setup avoids bundling multiple copies of React. The application project's dev server
 will pick up changes only after running `pnpm build`, not when source files change.
 
+## GitHub Pages deployment
+
+The repository uses two separate workflows for GitHub Pages content:
+
+1. `.github/workflows/deploy.yml`
+   - Trigger: push to `main`
+   - Purpose: deploy the examples app
+   - Published paths on `gh-pages`: root (`/`) and `/docs`
+
+2. `.github/workflows/deploy-storybook.yml`
+   - Trigger: push to `dev-design-storybook`
+   - Purpose: deploy Storybook only
+   - Published paths on `gh-pages`: `/storybook` and `/docs/storybook`
+
+The Storybook workflow is scoped to Storybook paths only and does not overwrite the
+examples app entrypoints (`/index.html` and `/docs/index.html`).
+
 ## Release a new version
 
 1. Checkout a new temporary branch for the release PR (e.g. `rel`)
