@@ -3,6 +3,8 @@ import { FileUpload } from "../components/composites/FileUpload";
 
 /**
  * File Upload pattern built with Fluent components and AXIS illustrations.
+ *
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=273-165"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof FileUpload> = {
   title: "UI patterns/File Upload",
