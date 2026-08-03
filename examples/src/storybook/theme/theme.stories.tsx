@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ColorTokens } from "../../stories/theme/components/color-tokens";
+import { SemanticColors } from "../../stories/theme/components/semantic-colors";
 import { ThemePage } from "../../stories/theme/theme-page";
 import { mainTheme } from "../../stories/theme/theme-page.types";
 
@@ -24,4 +25,12 @@ export const ColorTokenReference: Story = {
     layout: "padded",
   },
   render: () => <ColorTokens filter="" theme={mainTheme} />,
+};
+
+export const SemanticColorReference: Story = {
+  name: "Semantic colors",
+  parameters: {
+    layout: "padded",
+  },
+  render: () => <SemanticColors theme={mainTheme} />,
 };

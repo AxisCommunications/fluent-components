@@ -38,6 +38,43 @@ tokens. Each token below shows its light and dark value.
 
 <Canvas of={ThemeStories.ColorTokenReference} sourceState="none" />
 
+## Semantic colors
+
+Colors in the Axis theme are **semantic** — each family has a meaning and a job.
+The reference below evaluates every family (**Neutral**, **Brand**, the status
+trio **Success / Warning / Danger**, and the Axis **contextual category** colors),
+documents what each should and should not be used for, previews the full ramp in
+light and dark, and computes the WCAG contrast ratio for the intended
+foreground/background pairings.
+
+A healthy interface leans on Neutral for the bulk of text and surfaces (~60%),
+uses Brand sparingly for the primary action and interactive emphasis (~10%), and
+reserves the status colors strictly for feedback. Reusing a status or brand color
+for generic decoration dilutes its meaning and misleads users.
+
+Status families share the same Fluent slot roles:
+
+- **Background1** — subtle tinted surface for inline messages and banners.
+- **Background2 / Background3** — stronger fills for badges, dots, and icons.
+- **Foreground1** — accessible text/icon color for the subtle surface.
+- **ForegroundInverted** — text/icon color for the strong filled surface.
+- **Border1 → BorderActive** — subtle to emphasized borders and focus states.
+
+<Canvas of={ThemeStories.SemanticColorReference} sourceState="none" />
+
+### Do / Don't
+
+- **Do** pair every status with an icon **and** text — never rely on color alone
+  (WCAG 1.4.1). Around 8% of men have red–green color-vision deficiency.
+- **Do** use the intended foreground/background pairings so text meets contrast
+  (WCAG 1.4.3: 4.5:1 body text, 3:1 large text and UI elements per 1.4.11).
+- **Do** keep meaning consistent — one color maps to one concept app-wide.
+- **Don't** use Danger red or Success green as a brand or emphasis accent.
+- **Don't** place body text on a saturated `Background3` fill; use it for badges,
+  dots, and icons where the inverted foreground provides contrast.
+- **Don't** use Warning for hard failures — escalate to Danger — or for anything
+  positive or purely informational.
+
 ## Exports
 
 - `axisLightTheme`, `axisDarkTheme` — Axis main theme
