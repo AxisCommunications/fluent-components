@@ -1089,7 +1089,7 @@ function SettingsPage({
 }
 
 const responsiveGridGuide = `
-Application pages are laid out on a **12-column grid** that adapts across three
+Application pages are laid out on a **12-column grid** that adapts across six
 breakpoints. Instead of stretching content to fill the available space, every
 block is assigned a **column span per breakpoint** — this keeps line lengths
 readable and content predictable from mobile to ultra-wide.
@@ -1101,20 +1101,23 @@ large monitor.
 
 ### Breakpoints (content-area width)
 
-| Name | Width | Typical use |
+| Size class | Breakpoint range | Breakpoints |
 | --- | --- | --- |
-| Small | < 700px | Single column, everything stacks |
-| Medium | 700–1099px | Two columns (½ + ½) |
-| Large | ≥ 1100px | Multi-column, form capped at ⅓ |
+| small | 320–479 | < 479 pixels |
+| medium | 480–639 | < 639 pixels |
+| large | 640–1023 | < 1023 pixels |
+| x-large | 1024–1365 | > 1024 pixels |
+| xx-large | 1366–1919 | > 1366 pixels |
+| xxx-large | 1920 and up | > 1920 pixels |
 
 ### Column spans by region
 
-| Region | Small | Medium | Large |
-| --- | --- | --- | --- |
-| **Form** | 12/12 (full) | 6/12 (½) | **4/12 (⅓)** |
-| **Supporting / preferences** | 12/12 (full) | 6/12 (½) | 3/12 (¼) |
-| **Data table** | 12/12 | 12/12 | 12/12 |
-| **Dashboard cards** | 12/12 | 6/12 | 3/12 |
+| Region | small | medium | large | x-large | xx-large | xxx-large |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Form** | 12/12 (full) | 12/12 (full) | 6/12 (½) | **4/12 (⅓)** | **4/12 (⅓)** | 3/12 (¼) |
+| **Supporting / preferences** | 12/12 (full) | 12/12 (full) | 6/12 (½) | 3/12 (¼) | 3/12 (¼) | 2/12 (⅙) |
+| **Data table** | 12/12 | 12/12 | 12/12 | 12/12 | 12/12 | 12/12 |
+| **Dashboard cards** | 12/12 | 6/12 | 4/12 | 3/12 | 3/12 | 2/12 |
 
 ### Rules of thumb for designers
 
@@ -1127,7 +1130,7 @@ large monitor.
   paired values (e.g. first / last name); default to stacked.
 - **Reserve whitespace.** Empty grid columns to the right of a narrow form are
   intentional — they are not "unused space" to be filled.
-- **Cards stack vertically when narrow.** Below the Small breakpoint, side-by-side
+- **Cards stack vertically when narrow.** At the small breakpoint, side-by-side
   cards become a single stacked column in source order.
 - **Tables and toolbars span all 12 columns** at every breakpoint; their
   internal columns collapse instead of the page grid.
