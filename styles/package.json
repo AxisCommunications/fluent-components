@@ -32,8 +32,8 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.72.7",
-    "@fluentui/react-icons": "^2.0.315",
+    "@fluentui/react-components": "^9.74.4",
+    "@fluentui/react-icons": "^2.0.334",
     "react": ">=16.14.0 <20.0.0"
   },
   "publishConfig": {
