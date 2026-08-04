@@ -40,7 +40,7 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.72.7",
+    "@fluentui/react-components": "^9.74.4",
     "react": ">=16.14.0 <20.0.0",
     "react-dom": ">=16.14.0 <20.0.0"
   },
