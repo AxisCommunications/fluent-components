@@ -166,15 +166,6 @@ const useStyles = makeStyles({
     paddingBottom: tokens.spacingVerticalM,
     paddingLeft: tokens.spacingHorizontalM,
   },
-  contentGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: tokens.spacingHorizontalL,
-  },
-  contentGridCompact: {
-    gridTemplateColumns: "1fr",
-    gap: tokens.spacingVerticalS,
-  },
   contentCard: {
     display: "flex",
     flexDirection: "column",
@@ -215,7 +206,8 @@ const useStyles = makeStyles({
   // into a column span per breakpoint instead of stretching to fill the page.
   // The grid is a *container* so blocks respond to the real content-area width
   // (which shrinks when a drawer/rail is open) rather than the viewport width.
-  // Container breakpoints (min-width): medium 700 · large 1100
+  // Size classes (container min-width): medium 480 · large 640 · x-large 1024 ·
+  // xx-large 1366 · xxx-large 1920 (small is the base, below 480).
   contentGrid12: {
     display: "grid",
     containerType: "inline-size",
@@ -225,26 +217,51 @@ const useStyles = makeStyles({
     alignItems: "start",
   },
   // Forms are most legible as a single narrow column. Mobile-first: full width
-  // when the container is narrow, half-width at medium, and capped at ~1/3
-  // (4 of 12 ≈ 33%) once there is enough room — never edge-to-edge.
+  // through small/medium, half-width at large, a third at x-large/xx-large, and
+  // capped at a quarter (3 of 12) at xxx-large — never edge-to-edge.
   formColumn: {
     gridColumn: "span 12",
-    "@container (min-width: 700px)": {
+    "@container (min-width: 640px)": {
       gridColumn: "span 6",
     },
-    "@container (min-width: 1100px)": {
+    "@container (min-width: 1024px)": {
       gridColumn: "span 4",
     },
+    "@container (min-width: 1920px)": {
+      gridColumn: "span 3",
+    },
   },
-  // Supporting content (preferences, help) stacks below the form when the
-  // container is narrow and sits beside it once there is room.
+  // Supporting content (preferences, help) stacks below the form through
+  // small/medium, sits beside it at large (half), then narrows to a quarter at
+  // x-large/xx-large and a sixth (2 of 12) at xxx-large.
   asideColumn: {
     gridColumn: "span 12",
-    "@container (min-width: 700px)": {
+    "@container (min-width: 640px)": {
       gridColumn: "span 6",
     },
-    "@container (min-width: 1100px)": {
+    "@container (min-width: 1024px)": {
       gridColumn: "span 3",
+    },
+    "@container (min-width: 1920px)": {
+      gridColumn: "span 2",
+    },
+  },
+  // Dashboard cards flow on the same 12-column grid: full width at small, two
+  // per row at medium (6), three at large (4), four at x-large/xx-large (3),
+  // and six at xxx-large (2).
+  cardColumn: {
+    gridColumn: "span 12",
+    "@container (min-width: 480px)": {
+      gridColumn: "span 6",
+    },
+    "@container (min-width: 640px)": {
+      gridColumn: "span 4",
+    },
+    "@container (min-width: 1024px)": {
+      gridColumn: "span 3",
+    },
+    "@container (min-width: 1920px)": {
+      gridColumn: "span 2",
     },
   },
   // Form fields are always stacked in a single column for fast vertical scanning.
@@ -484,14 +501,10 @@ function DashboardPage({
                     : styles.pageContentArea
                 }
               >
-                <div
-                  className={
-                    isSmall
-                      ? `${styles.contentGrid} ${styles.contentGridCompact}`
-                      : styles.contentGrid
-                  }
-                >
-                  <Card className={styles.contentCard}>
+                <div className={styles.contentGrid12}>
+                  <Card
+                    className={`${styles.contentCard} ${styles.cardColumn}`}
+                  >
                     <Text className={styles.contentEyebrow}>Status</Text>
                     <Text className={styles.contentTitle}>Core systems</Text>
                     <Text className={styles.contentBody}>
@@ -506,7 +519,9 @@ function DashboardPage({
                     </div>
                   </Card>
 
-                  <Card className={styles.contentCard}>
+                  <Card
+                    className={`${styles.contentCard} ${styles.cardColumn}`}
+                  >
                     <Text className={styles.contentEyebrow}>Performance</Text>
                     <Text className={styles.contentTitle}>
                       Average latency 45ms
@@ -525,7 +540,9 @@ function DashboardPage({
                     </div>
                   </Card>
 
-                  <Card className={styles.contentCard}>
+                  <Card
+                    className={`${styles.contentCard} ${styles.cardColumn}`}
+                  >
                     <Text className={styles.contentEyebrow}>Capacity</Text>
                     <Text className={styles.contentTitle}>89% utilized</Text>
                     <Text className={styles.contentBody}>
