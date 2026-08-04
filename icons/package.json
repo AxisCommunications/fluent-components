@@ -29,13 +29,13 @@
     "fonts:generate:font-filled": "icon-font-generator dist/fonts-svg/*_filled.svg -o dist/fonts --name AxisSystemIcons-Filled --types ttf --codepoints fonts/AxisSystemIcons-Filled.json --height 500",
     "fonts:generate:font-regular": "icon-font-generator dist/fonts-svg/*_regular.svg -o dist/fonts --name AxisSystemIcons-Regular --types ttf --codepoints fonts/AxisSystemIcons-Regular.json --height 500",
     "fonts:generate:svg": "node build-svg.js --source=assets --dest=dist/fonts-svg --extension=svg",
-    "fonts:optimize:svg": "find dist/fonts-svg -type f -name '*.svg' -exec pnpm svgo --config svgo_config.yml '{}' +",
+    "fonts:optimize:svg": "find dist/fonts-svg -type f -name '*.svg' -exec pnpm svgo --config svgo.config.js '{}' +",
     "lint": "tsc --noEmit && biome check",
     "react:build": "mkdir -p dist/react-svg && pnpm react:generate:svg && pnpm react:svg:optimize && pnpm react:svg:unfill && pnpm react:generate:react",
     "react:deploy": "mkdir -p src && pnpm react:build && cp -a dist/react/* src && biome format --write src",
     "react:generate:react": "node build-react.js --source=./dist/react-svg --dest=./dist/react",
     "react:generate:svg": "node build-svg.js --source=assets --dest=dist/react-svg --extension=svg",
-    "react:svg:optimize": "svgo --folder=./dist/react-svg --precision=2 --disable=removeViewBox,mergePaths",
+    "react:svg:optimize": "svgo --folder=./dist/react-svg --config svgo.react.config.js",
     "react:svg:unfill": "find ./dist/react-svg -type f -name '*.svg' -exec sed -i.bak 's/fill=\"none\"//g' '{}' \\; && find ./dist/react-svg -type f -name '*.bak' -delete"
   },
   "dependencies": {
@@ -49,7 +49,7 @@
     "icon-font-generator": "^2.1.11",
     "react": "^19.2.4",
     "replace": "^1.2.2",
-    "svgo": "1.3.2",
+    "svgo": "3.3.4",
     "typescript": "^5.8.3",
     "yargs": "^14.2.3"
   },
