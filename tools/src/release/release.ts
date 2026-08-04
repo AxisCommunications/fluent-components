@@ -12,6 +12,25 @@ function sha(commitish: string) {
   return execSync(`git rev-parse ${commitish}`).toString().trim();
 }
 
+function resolvePreviousTag(version: string) {
+  const tag = `v${version}`;
+  try {
+    return sha(tag);
+  } catch {
+    // The tag may exist on the remote but not locally (release tags are created
+    // by the publish CI on merge). Fetch tags and retry once.
+    execSync(`git fetch --tags`);
+  }
+  try {
+    return sha(tag);
+  } catch {
+    throw new Error(
+      `release tag ${tag} not found locally or on the remote. Ensure the ` +
+        `previous release was published and tagged, then run \`git fetch --tags\`.`
+    );
+  }
+}
+
 function bumpPackages(version: string) {
   execSync(`pnpm version --no-git-tag-version ${version}`);
   execSync(`pnpm -r exec pnpm version --no-git-tag-version ${version}`);
@@ -36,9 +55,13 @@ export function release(increment: string) {
     throw new Error(`could not increment ${version} with ${releaseType}`);
   }
   console.log(`${version} => ${nextVersion}`);
+
+  // Resolve the previous release tag before mutating any package.json so that a
+  // missing tag aborts cleanly without leaving the working tree partially bumped.
+  const from = resolvePreviousTag(version);
+
   bumpPackages(nextVersion);
 
-  const from = sha(`v${version}`);
   const to = sha("HEAD");
 
   const changelog = changeset({
