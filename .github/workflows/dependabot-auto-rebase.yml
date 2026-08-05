@@ -19,9 +19,6 @@ name: Dependabot auto-rebase
 # then add it as the repo/org Actions secret `DEPENDABOT_REBASE_TOKEN`.
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
