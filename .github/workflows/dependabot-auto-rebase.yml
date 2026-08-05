@@ -6,11 +6,19 @@ name: Dependabot auto-rebase
 # not on a plain "behind" state. This workflow asks Dependabot to rebase those
 # behind PRs so they stay mergeable without a manual `@dependabot rebase` comment.
 # Rebasing keeps Dependabot's clean single-commit history.
+#
+# IMPORTANT: Dependabot only accepts slash commands (like `@dependabot rebase`)
+# from a user that has push access. The default GITHUB_TOKEN posts as
+# github-actions[bot], which Dependabot rejects with:
+#   "Sorry, only users with push access can use that command."
+# So this workflow authenticates with a Personal Access Token stored in the
+# secret DEPENDABOT_REBASE_TOKEN. Create a fine-grained PAT (or classic PAT)
+# from an account with push access to this repo, scoped to:
+#   - Pull requests: Read and write
+#   - Contents: Read (fine-grained), or `repo` scope (classic)
+# then add it as the repo/org Actions secret `DEPENDABOT_REBASE_TOKEN`.
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -22,9 +30,17 @@ jobs:
     steps:
       - name: Ask Dependabot to rebase behind PRs
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Must be a PAT from a user with push access, NOT the default
+          # GITHUB_TOKEN, or Dependabot will refuse the rebase command.
+          GH_TOKEN: ${{ secrets.DEPENDABOT_REBASE_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Secret DEPENDABOT_REBASE_TOKEN is not set. Add a PAT" \
+              "from a user with push access so Dependabot accepts the rebase."
+            exit 1
+          fi
+
           # List open Dependabot PRs that are behind the base branch.
           prs=$(gh pr list \
             --repo "$REPO" \
