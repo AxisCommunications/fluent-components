@@ -27,6 +27,7 @@ import {
   Toaster,
   createTableColumn,
   makeStyles,
+  mergeClasses,
   tokens,
   useId,
   useToastController,
@@ -503,7 +504,10 @@ function DashboardPage({
               >
                 <div className={styles.contentGrid12}>
                   <Card
-                    className={`${styles.contentCard} ${styles.cardColumn}`}
+                    className={mergeClasses(
+                      styles.contentCard,
+                      styles.cardColumn
+                    )}
                   >
                     <Text className={styles.contentEyebrow}>Status</Text>
                     <Text className={styles.contentTitle}>Core systems</Text>
@@ -520,7 +524,10 @@ function DashboardPage({
                   </Card>
 
                   <Card
-                    className={`${styles.contentCard} ${styles.cardColumn}`}
+                    className={mergeClasses(
+                      styles.contentCard,
+                      styles.cardColumn
+                    )}
                   >
                     <Text className={styles.contentEyebrow}>Performance</Text>
                     <Text className={styles.contentTitle}>
@@ -541,7 +548,10 @@ function DashboardPage({
                   </Card>
 
                   <Card
-                    className={`${styles.contentCard} ${styles.cardColumn}`}
+                    className={mergeClasses(
+                      styles.contentCard,
+                      styles.cardColumn
+                    )}
                   >
                     <Text className={styles.contentEyebrow}>Capacity</Text>
                     <Text className={styles.contentTitle}>89% utilized</Text>
