@@ -31,7 +31,13 @@ import {
   SearchRegular,
   SettingsRegular,
 } from "@fluentui/react-icons";
-import { type ReactElement, useEffect, useRef, useState } from "react";
+import {
+  type ReactElement,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import appIcon01 from "../../../../assets/Appicons/App 1.svg";
 import appIcon02 from "../../../../assets/Appicons/App 2.svg";
 import appIcon03 from "../../../../assets/Appicons/App 3.svg";
@@ -45,6 +51,8 @@ export interface SuiteHeaderAction {
   icon: ReactElement;
   ariaLabel: string;
   onClick?: () => void;
+  /** When set, the action opens a flyout with this content instead of only firing onClick. */
+  flyout?: ReactNode;
 }
 
 export interface SuiteHeaderLauncherItem {
@@ -425,6 +433,38 @@ function ActionOverflowMenu({
   );
 }
 
+/**
+ * A quick-action button. Actions carrying `flyout` content open it in a popover
+ * anchored to the button, mirroring the app launcher behaviour.
+ */
+function ActionButton({
+  action,
+  className,
+}: {
+  action: SuiteHeaderAction;
+  className?: string;
+}) {
+  const button = (
+    <ToolbarButton
+      className={className}
+      aria-label={action.ariaLabel}
+      icon={action.icon}
+      onClick={action.onClick}
+    />
+  );
+
+  if (!action.flyout) {
+    return button;
+  }
+
+  return (
+    <Popover positioning="below-end" trapFocus>
+      <PopoverTrigger disableButtonEnhancement>{button}</PopoverTrigger>
+      <PopoverSurface>{action.flyout}</PopoverSurface>
+    </Popover>
+  );
+}
+
 function appIcon(src: string): ReactElement {
   return <img src={src} alt="" />;
 }
@@ -766,12 +806,7 @@ export function SuiteHeader({
 
             {utilityActions.map((action) => (
               <OverflowItem key={action.id} id={action.id}>
-                <ToolbarButton
-                  className={styles.appButton}
-                  aria-label={action.ariaLabel}
-                  icon={action.icon}
-                  onClick={action.onClick}
-                />
+                <ActionButton action={action} className={styles.appButton} />
               </OverflowItem>
             ))}
 

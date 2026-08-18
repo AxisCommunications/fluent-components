@@ -1,4 +1,4 @@
-import { makeStyles, tokens } from "@fluentui/react-components";
+import { Divider, Link, makeStyles, tokens } from "@fluentui/react-components";
 import {
   AlertRegular,
   CalendarRegular,
@@ -8,7 +8,9 @@ import {
   ShareRegular,
 } from "@fluentui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Fragment } from "react";
 import logoBlack from "../../../assets/logo-black.svg";
+import qrCode from "../../../assets/qr-code.svg";
 import {
   SuiteHeader,
   type SuiteHeaderAction,
@@ -33,6 +35,53 @@ const meta: Meta<typeof SuiteHeader> = {
 
 export default meta;
 type Story = StoryObj<typeof SuiteHeader>;
+
+const helpFlyoutItems = [
+  { id: "manual", title: "User manual", href: "https://help.axis.com" },
+  { id: "whats-new", title: "What's new", href: "https://help.axis.com" },
+  { id: "breaking", title: "Breaking changes", href: "https://help.axis.com" },
+];
+
+const useHelpFlyoutStyles = makeStyles({
+  content: {
+    display: "grid",
+    rowGap: tokens.spacingVerticalM,
+  },
+  section: {
+    display: "grid",
+    justifyItems: "start",
+    rowGap: tokens.spacingVerticalXS,
+  },
+  qr: {
+    display: "block",
+    width: "130px",
+    height: "130px",
+  },
+});
+
+function HelpFlyoutContent() {
+  const styles = useHelpFlyoutStyles();
+
+  return (
+    <div className={styles.content}>
+      {helpFlyoutItems.map((item, index) => (
+        <Fragment key={item.id}>
+          {index > 0 && <Divider />}
+          <div className={styles.section}>
+            <Link href={item.href} target="_blank" rel="noopener noreferrer">
+              {item.title}
+            </Link>
+            <img
+              className={styles.qr}
+              src={qrCode}
+              alt={`Scan to open ${item.title}`}
+            />
+          </div>
+        </Fragment>
+      ))}
+    </div>
+  );
+}
 
 /**
  * The minimal header: app launcher, product name, quick actions, and avatar.
@@ -145,5 +194,30 @@ export const CollapsingActions: Story = {
     showSearch: false,
     showOrganizationPicker: false,
     utilityActions: manyActions,
+  },
+};
+
+const helpActions: SuiteHeaderAction[] = [
+  { id: "notifications", icon: <AlertRegular />, ariaLabel: "Notifications" },
+  { id: "settings", icon: <SettingsRegular />, ariaLabel: "Settings" },
+  {
+    id: "help",
+    icon: <QuestionCircleRegular />,
+    ariaLabel: "Help",
+    flyout: <HelpFlyoutContent />,
+  },
+];
+
+/**
+ * Click the help button to open its flyout. Actions can carry a `flyout` of
+ * their own, which opens in a popover anchored to the button just like the app
+ * launcher.
+ */
+export const WithHelpFlyout: Story = {
+  args: {
+    productName: "Product name",
+    showSearch: false,
+    showOrganizationPicker: false,
+    utilityActions: helpActions,
   },
 };
