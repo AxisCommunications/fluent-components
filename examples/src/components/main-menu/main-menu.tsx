@@ -7,6 +7,9 @@ import {
   Tab,
   TabList,
   TabProps,
+  makeStyles,
+  mergeClasses,
+  tokens,
   useTabListContext_unstable,
 } from "@fluentui/react-components";
 import {
@@ -28,6 +31,12 @@ const SettingsIcon = bundleIcon(SettingsFilled, SettingsRegular);
 
 const HOME_VALUE = "1";
 
+const useOverrideStyles = makeStyles({
+  container: {
+    backgroundColor: tokens.colorNeutralBackground2,
+  },
+});
+
 export function MainMenu() {
   const [selectedTab, setSelectedTab] = useState(HOME_VALUE);
   const navigate = useNavigate();
@@ -39,11 +48,12 @@ export function MainMenu() {
     }
   }, [pathname]);
 
+  const overrides = useOverrideStyles();
   const { rootStyle: containerRootStyle } = useMainMenuContainerStyles();
   const { rootStyle, spacerStyle } = useMainMenuTabListStyles();
 
   return (
-    <div className={containerRootStyle}>
+    <div className={mergeClasses(containerRootStyle, overrides.container)}>
       <TabList
         className={rootStyle}
         size="large"

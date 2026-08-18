@@ -2,6 +2,7 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
+    "ignoreDeprecations": "5.0",
     "module": "esnext",
     "moduleResolution": "bundler",
     "types": ["vitest/globals"]

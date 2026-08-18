@@ -35,8 +35,6 @@ import {
   DocumentsLight,
   DoorErrorDark,
   DoorErrorLight,
-  DragMenuItemDark,
-  DragMenuItemLight,
   EmailSentDark,
   EmailSentLight,
   EmptyFolderDark,
@@ -55,6 +53,44 @@ import {
   GridLocationLight,
   ImportExcelDark,
   ImportExcelLight,
+  InstructionConditionalDark,
+  InstructionConditionalLight,
+  InstructionCrosslineCountingDark,
+  InstructionCrosslineCountingLight,
+  InstructionDragMenuItemDark,
+  InstructionDragMenuItemLight,
+  InstructionFallDetectionDark,
+  InstructionFallDetectionLight,
+  InstructionHardHatDetectionDark,
+  InstructionHardHatDetectionLight,
+  InstructionHighSpeedApproachingTrafficDark,
+  InstructionHighSpeedApproachingTrafficLight,
+  InstructionHighSpeedOneWayDark,
+  InstructionHighSpeedOneWayLight,
+  InstructionLineCrossingDark,
+  InstructionLineCrossingLight,
+  InstructionMenuItemFocusDark,
+  InstructionMenuItemFocusLight,
+  InstructionMigrateSystemDark,
+  InstructionMigrateSystemLight,
+  InstructionMotionInAreaDark,
+  InstructionMotionInAreaLight,
+  InstructionMotionLineCrossingDark,
+  InstructionMotionLineCrossingLight,
+  InstructionNewSystemDark,
+  InstructionNewSystemLight,
+  InstructionObjectInAreaDark,
+  InstructionObjectInAreaLight,
+  InstructionOccupancyInAreaDark,
+  InstructionOccupancyInAreaLight,
+  InstructionSearchDark,
+  InstructionSearchLight,
+  InstructionTailgatingDetectionDark,
+  InstructionTailgatingDetectionLight,
+  InstructionTimeInAreaDark,
+  InstructionTimeInAreaLight,
+  InstructionZoneCrossingDark,
+  InstructionZoneCrossingLight,
   LaunchDark,
   LaunchLight,
   LocationDark,
@@ -65,16 +101,10 @@ import {
   MediaErrorDark,
   MediaErrorLight,
   MediaLight,
-  MenuItemFocusDark,
-  MenuItemFocusLight,
-  MigrateSystemDark,
-  MigrateSystemLight,
   MilPermissionsDark,
   MilPermissionsLight,
   NavigationDark,
   NavigationLight,
-  NewSystemDark,
-  NewSystemLight,
   NoAccessDark,
   NoAccessLight,
   NoConnectionDark,
@@ -107,8 +137,6 @@ import {
   ProhibitedLight,
   ResetPasswordDark,
   ResetPasswordLight,
-  SearchDark,
-  SearchLight,
   SetPasswordDark,
   SetPasswordLight,
   SettingsDark,
@@ -149,13 +177,10 @@ export const Illustration: Record<
     AddUserProfileDark,
     AddUserProfileLight
   ),
-  "drag-menu": bundleIllustrationSmart(DragMenuItemDark, DragMenuItemLight),
+
   "media-error": bundleIllustrationSmart(MediaErrorDark, MediaErrorLight),
   "code-error": bundleIllustrationSmart(CodeErrorDark, CodeErrorLight),
-  "menu-item-focus": bundleIllustrationSmart(
-    MenuItemFocusDark,
-    MenuItemFocusLight
-  ),
+
   data: bundleIllustrationSmart(DataDark, DataLight),
   devices: bundleIllustrationSmart(DevicesDark, DevicesLight),
   "empty-folder": bundleIllustrationSmart(EmptyFolderDark, EmptyFolderLight),
@@ -253,10 +278,80 @@ export const Illustration: Record<
   "user-profile": bundleIllustrationSmart(UserProfileDark, UserProfileLight),
   "welcome-plane": bundleIllustrationSmart(WelcomePlaneDark, WelcomePlaneLight),
   "extend-system": bundleIllustrationSmart(ExtendSystemDark, ExtendSystemLight),
-  "migrate-system": bundleIllustrationSmart(
-    MigrateSystemDark,
-    MigrateSystemLight
+  "instruction-conditional": bundleIllustrationSmart(
+    InstructionConditionalDark,
+    InstructionConditionalLight
   ),
-  "new-system": bundleIllustrationSmart(NewSystemDark, NewSystemLight),
-  search: bundleIllustrationSmart(SearchDark, SearchLight),
+  "instruction-crossline-counting": bundleIllustrationSmart(
+    InstructionCrosslineCountingDark,
+    InstructionCrosslineCountingLight
+  ),
+  "instruction-drag-menu-item": bundleIllustrationSmart(
+    InstructionDragMenuItemDark,
+    InstructionDragMenuItemLight
+  ),
+  "instruction-fall-detection": bundleIllustrationSmart(
+    InstructionFallDetectionDark,
+    InstructionFallDetectionLight
+  ),
+  "instruction-hard-hat-detection": bundleIllustrationSmart(
+    InstructionHardHatDetectionDark,
+    InstructionHardHatDetectionLight
+  ),
+  "instruction-high-speed-approaching-traffic": bundleIllustrationSmart(
+    InstructionHighSpeedApproachingTrafficDark,
+    InstructionHighSpeedApproachingTrafficLight
+  ),
+  "instruction-high-speed-one-way": bundleIllustrationSmart(
+    InstructionHighSpeedOneWayDark,
+    InstructionHighSpeedOneWayLight
+  ),
+  "instruction-line-crossing": bundleIllustrationSmart(
+    InstructionLineCrossingDark,
+    InstructionLineCrossingLight
+  ),
+  "instruction-menu-item-focus": bundleIllustrationSmart(
+    InstructionMenuItemFocusDark,
+    InstructionMenuItemFocusLight
+  ),
+  "instruction-migrate-system": bundleIllustrationSmart(
+    InstructionMigrateSystemDark,
+    InstructionMigrateSystemLight
+  ),
+  "instruction-motion-in-area": bundleIllustrationSmart(
+    InstructionMotionInAreaDark,
+    InstructionMotionInAreaLight
+  ),
+  "instruction-motion-line-crossing": bundleIllustrationSmart(
+    InstructionMotionLineCrossingDark,
+    InstructionMotionLineCrossingLight
+  ),
+  "instruction-new-system": bundleIllustrationSmart(
+    InstructionNewSystemDark,
+    InstructionNewSystemLight
+  ),
+  "instruction-object-in-area": bundleIllustrationSmart(
+    InstructionObjectInAreaDark,
+    InstructionObjectInAreaLight
+  ),
+  "instruction-occupancy-in-area": bundleIllustrationSmart(
+    InstructionOccupancyInAreaDark,
+    InstructionOccupancyInAreaLight
+  ),
+  "instruction-search": bundleIllustrationSmart(
+    InstructionSearchDark,
+    InstructionSearchLight
+  ),
+  "instruction-tailgating-detection": bundleIllustrationSmart(
+    InstructionTailgatingDetectionDark,
+    InstructionTailgatingDetectionLight
+  ),
+  "instruction-time-in-area": bundleIllustrationSmart(
+    InstructionTimeInAreaDark,
+    InstructionTimeInAreaLight
+  ),
+  "instruction-zone-crossing": bundleIllustrationSmart(
+    InstructionZoneCrossingDark,
+    InstructionZoneCrossingLight
+  ),
 } as const;

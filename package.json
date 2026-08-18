@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-components",
-  "version": "12.6.1",
+  "version": "12.9.0",
   "private": true,
   "description": "Axis branded theme, components and examples for Fluent UI v9",
   "repository": {
@@ -18,13 +18,13 @@
     "format": "biome format --write",
     "format:check": "biome format",
     "lint": "pnpm -r lint",
+    "prepare": "husky",
     "storybook": "pnpm --filter examples storybook",
     "storybook:build": "pnpm --filter examples storybook:build",
     "storybook:redeploy": "gh workflow run deploy-storybook.yml --ref dev-design-storybook",
     "sort:check": "sort-package-json '**/package.json' '!**/node_modules/**/package.json' --check",
     "sort:run": "sort-package-json '**/package.json' '!**/node_modules/**/package.json'",
-    "test": "pnpm -r test",
-    "prepare": "husky"
+    "test": "pnpm -r test"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -34,5 +34,28 @@
     "tools": "file:tools",
     "typescript": "^5.8.3"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.5.0",
+  "pnpm": {
+    "overrides": {
+      "@babel/core": "7.29.6",
+      "ajv": "6.14.0",
+      "brace-expansion@1": "1.1.18",
+      "brace-expansion@2": "2.1.4",
+      "form-data@2": "2.5.6",
+      "handlebars": "4.7.9",
+      "js-yaml@3": "3.15.0",
+      "minimatch@3": "3.1.4",
+      "minimatch@7": "7.4.8",
+      "minimatch@9": "9.0.7",
+      "postcss": "8.5.23",
+      "prismjs": "1.30.0",
+      "qs@6": "6.14.1",
+      "semver@5": "5.7.2",
+      "svg2ttf": "^6.1.0",
+      "ttf2woff2": "^8.0.1",
+      "underscore": "1.13.8",
+      "undici@7": "7.29.0",
+      "yaml@1": "1.10.3"
+    }
+  }
 }

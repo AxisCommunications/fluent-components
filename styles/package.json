@@ -1,6 +1,6 @@
 {
   "name": "@axiscommunications/fluent-styles",
-  "version": "12.6.1",
+  "version": "12.9.0",
   "description": "Styles for Fluent UI v9",
   "homepage": "https://github.com/AxisCommunications/fluent-components#readme",
   "repository": {
@@ -26,14 +26,14 @@
     "lint": "tsc --noEmit && biome check"
   },
   "devDependencies": {
-    "@types/react": "^19.2.14",
-    "esbuild": "^0.28.0",
-    "react": "^19.2.4",
+    "@types/react": "^19.2.18",
+    "esbuild": "^0.28.1",
+    "react": "^19.2.8",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.72.7",
-    "@fluentui/react-icons": "^2.0.315",
+    "@fluentui/react-components": "^9.74.4",
+    "@fluentui/react-icons": "^2.0.334",
     "react": ">=16.14.0 <20.0.0"
   },
   "publishConfig": {

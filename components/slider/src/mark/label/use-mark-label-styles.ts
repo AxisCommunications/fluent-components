@@ -24,7 +24,6 @@ const useStyles = makeStyles({
     position: "absolute",
     color: `var(${sliderVars.mark.color})`,
     top: `var(${sliderVars.thumb.size})`,
-    transform: `translateX(-50%)`,
     whiteSpace: "nowrap",
   },
   active: {
@@ -43,7 +42,7 @@ export const useMarkLabelStyles_unstable = (
 ): MarkLabelState => {
   const styles = useStyles();
 
-  const { offset, disabled, active } = state;
+  const { offset, disabled, active, labelWidth } = state;
 
   const colorStyles = disabled
     ? styles.disabled
@@ -60,7 +59,11 @@ export const useMarkLabelStyles_unstable = (
 
   const { dir } = useFluent();
   const offsetDirection = dir === "rtl" ? "right" : "left";
-  state.root.style = { [offsetDirection]: `${offset}%`, ...state.root.style };
+  const clampedPosition = `clamp(0%, calc(${offset}% - ${labelWidth / 2}px), calc(100% - ${labelWidth}px))`;
+  state.root.style = {
+    [offsetDirection]: clampedPosition,
+    ...state.root.style,
+  };
 
   return state;
 };

@@ -1,0 +1,60 @@
+name: Dependabot auto-rebase
+
+# When main advances, Dependabot PRs fall "behind" (because branch protection
+# requires branches to be up to date before merging). Dependabot's built-in
+# rebase-strategy: auto only kicks in on conflicts or base dependency changes,
+# not on a plain "behind" state. This workflow asks Dependabot to rebase those
+# behind PRs so they stay mergeable without a manual `@dependabot rebase` comment.
+# Rebasing keeps Dependabot's clean single-commit history.
+#
+# IMPORTANT: Dependabot only accepts slash commands (like `@dependabot rebase`)
+# from a user that has push access. The default GITHUB_TOKEN posts as
+# github-actions[bot], which Dependabot rejects with:
+#   "Sorry, only users with push access can use that command."
+# So this workflow authenticates with a Personal Access Token stored in the
+# secret DEPENDABOT_REBASE_TOKEN. Create a fine-grained PAT (or classic PAT)
+# from an account with push access to this repo, scoped to:
+#   - Pull requests: Read and write
+#   - Contents: Read (fine-grained), or `repo` scope (classic)
+# then add it as the repo/org Actions secret `DEPENDABOT_REBASE_TOKEN`.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  rebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask Dependabot to rebase behind PRs
+        env:
+          # Must be a PAT from a user with push access, NOT the default
+          # GITHUB_TOKEN, or Dependabot will refuse the rebase command.
+          GH_TOKEN: ${{ secrets.DEPENDABOT_REBASE_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Secret DEPENDABOT_REBASE_TOKEN is not set. Add a PAT" \
+              "from a user with push access so Dependabot accepts the rebase."
+            exit 1
+          fi
+
+          # List open Dependabot PRs that are behind the base branch.
+          prs=$(gh pr list \
+            --repo "$REPO" \
+            --state open \
+            --author "app/dependabot" \
+            --json number,mergeStateStatus \
+            --jq '.[] | select(.mergeStateStatus == "BEHIND") | .number')
+
+          if [ -z "$prs" ]; then
+            echo "No behind Dependabot PRs to rebase."
+            exit 0
+          fi
+
+          for pr in $prs; do
+            echo "Requesting rebase for PR #$pr"
+            gh pr comment "$pr" --repo "$REPO" --body "@dependabot rebase"
+          done

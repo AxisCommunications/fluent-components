@@ -5,6 +5,8 @@ import {
   shorthands,
   tokens,
 } from "@fluentui/react-components";
+import { ReactNode } from "react";
+import { CopyButton } from "../../../components/copy-button";
 import { TaxisThemeVariants } from "../theme-page.types";
 
 const componentId = "color-tokens";
@@ -13,103 +15,88 @@ export const colorTokensClassNames = {
 };
 
 const useStyles = makeStyles({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    ...shorthands.gap(tokens.spacingVerticalXXL),
-  },
   section: {
     display: "flex",
     flexDirection: "column",
-    ...shorthands.gap(tokens.spacingVerticalS),
+    ...shorthands.gap(tokens.spacingVerticalXS),
+    marginBottom: tokens.spacingVerticalXL,
   },
   sectionTitle: {
-    fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
-    color: tokens.colorNeutralForeground1,
-    textTransform: "capitalize",
-  },
-  table: {
-    width: "100%",
-    borderCollapse: "collapse",
-    fontSize: tokens.fontSizeBase300,
-    backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.border("1px", "solid", tokens.colorNeutralStroke2),
-    ...shorthands.overflow("hidden"),
-    boxShadow: tokens.shadow4,
-  },
-  headerCell: {
-    textAlign: "left",
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightSemibold,
-    letterSpacing: "0.06em",
-    textTransform: "uppercase",
-    color: tokens.colorNeutralForeground3,
-    backgroundColor: tokens.colorNeutralBackground2,
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
-    borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
-  },
-  row: {
-    "&:not(:last-child) > td": {
-      borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
-    },
-    ":hover": {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-    },
-  },
-  tokenCell: {
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
-    fontFamily: "monospace",
-    color: tokens.colorNeutralForeground1,
-    verticalAlign: "middle",
-    whiteSpace: "nowrap",
-  },
-  swatchCell: {
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
-    verticalAlign: "middle",
-    width: "220px",
-  },
-  swatch: {
     display: "flex",
     alignItems: "center",
-    ...shorthands.gap(tokens.spacingHorizontalS),
-  },
-  chip: {
-    width: "28px",
-    height: "28px",
-    flexShrink: 0,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.border("1px", "solid", tokens.colorNeutralStroke2),
-    boxShadow: "inset 0 0 0 1px rgba(0, 0, 0, 0.06)",
-  },
-  chipValue: {
-    fontFamily: "monospace",
-    fontSize: tokens.fontSizeBase200,
+    ...shorthands.gap(tokens.spacingHorizontalXS),
+    fontSize: tokens.fontSizeBase300,
+    fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground2,
+    textTransform: "uppercase",
+    letterSpacing: "0.04em",
+    marginBottom: tokens.spacingVerticalXXS,
+  },
+  count: {
+    ...shorthands.padding(0, tokens.spacingHorizontalXS),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    backgroundColor: tokens.colorNeutralBackground3,
+    color: tokens.colorNeutralForeground3,
+    fontSize: tokens.fontSizeBase100,
+    fontWeight: tokens.fontWeightRegular,
+    letterSpacing: "normal",
+    textTransform: "none",
   },
   empty: {
-    ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalM),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    ...shorthands.gap(tokens.spacingVerticalXS),
+    ...shorthands.padding(tokens.spacingVerticalXXXL, 0),
     color: tokens.colorNeutralForeground3,
   },
+  emptyQuery: {
+    fontFamily: "monospace",
+    color: tokens.colorNeutralForeground1,
+  },
+  table: {
+    display: "grid",
+    gridTemplateColumns:
+      "minmax(240px, 2fr) minmax(140px, 1fr) minmax(140px, 1fr)",
+    ...shorthands.overflow("hidden"),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.border(
+      tokens.strokeWidthThin,
+      "solid",
+      tokens.colorNeutralStroke2
+    ),
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  headerCell: {
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM),
+    backgroundColor: tokens.colorNeutralBackground2,
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightSemibold,
+    color: tokens.colorNeutralForeground2,
+    ...shorthands.borderBottom(
+      tokens.strokeWidthThin,
+      "solid",
+      tokens.colorNeutralStroke2
+    ),
+  },
 });
+
+export function useColorTokensStyles() {
+  const styles = useStyles();
+  const rootStyle = mergeClasses(colorTokensClassNames.root, styles.table);
+  return { styles, rootStyle };
+}
 
 type TColorTokens = {
   filter: string;
   theme: Record<TaxisThemeVariants, Theme>;
 };
 
-type TColorRow = { token: string; lightValue: string; darkValue: string };
-
 export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
-  const { light, dark } = theme;
   const styles = useStyles();
+  const { light, dark } = theme;
 
-  const query = filter.toLowerCase();
-  const matchesFilter = (token: string, value: string) =>
-    token.toLowerCase().includes(query) || value.toLowerCase().includes(query);
-
-  const buildRows = (prefix: string): TColorRow[] =>
+  const toRows = (prefix: string) =>
     Object.entries(light)
       .filter(([token]) => token.startsWith(prefix))
       .map(([token, value]) => ({
@@ -117,79 +104,252 @@ export function ColorTokens({ theme, filter, ...rest }: TColorTokens) {
         lightValue: value as string,
         darkValue: (dark as unknown as Record<string, string>)[token],
       }))
-      .filter(({ token, lightValue }) => matchesFilter(token, lightValue));
+      .filter((row) => matchesFilter(row, filter));
 
-  const customColorTokens = buildRows("axisCustomColor");
-  const customUtilityTokens = buildRows("axisCustomUtility");
-  const standardTokens = Object.entries(light)
-    .filter(([token]) => token.startsWith("color"))
-    .map(([token, value]) => ({
-      token,
-      lightValue: value as string,
-      darkValue: (dark as unknown as Record<string, string>)[token],
-    }))
-    .filter(({ token, lightValue }) => matchesFilter(token, lightValue));
+  const customColorTokens = toRows("axisCustomColor");
+  const customUtilityTokens = toRows("axisCustomUtility");
+  const fluentTokens = toRows("color");
+
+  const isEmpty =
+    customColorTokens.length === 0 &&
+    customUtilityTokens.length === 0 &&
+    fluentTokens.length === 0;
 
   return (
-    <div
-      data-testid={componentId}
-      className={mergeClasses(colorTokensClassNames.root, styles.container)}
-      {...rest}
-    >
-      <TokenTable title="custom color token" rows={customColorTokens} />
-      <TokenTable title="custom utility token" rows={customUtilityTokens} />
-      <TokenTable title="token" rows={standardTokens} />
+    <div data-testid={componentId} {...rest}>
+      {isEmpty ? (
+        <div className={styles.empty}>
+          <span>No tokens match</span>
+          <span className={styles.emptyQuery}>"{filter}"</span>
+        </div>
+      ) : (
+        <>
+          <TokenSection
+            title="Custom color tokens"
+            rows={customColorTokens}
+            filter={filter}
+          />
+          <TokenSection
+            title="Custom utility tokens"
+            rows={customUtilityTokens}
+            filter={filter}
+          />
+          <TokenSection
+            title="Fluent tokens"
+            rows={fluentTokens}
+            filter={filter}
+          />
+        </>
+      )}
     </div>
   );
 }
 
-function TokenTable({ title, rows }: { title: string; rows: TColorRow[] }) {
+type TColorPalette = { token: string; lightValue: string; darkValue: string };
+
+function matchesFilter(row: TColorPalette, filter: string) {
+  if (!filter) {
+    return true;
+  }
+  const needle = filter.toLowerCase();
+  return (
+    row.token.toLowerCase().includes(needle) ||
+    (row.lightValue ?? "").toLowerCase().includes(needle) ||
+    (row.darkValue ?? "").toLowerCase().includes(needle)
+  );
+}
+
+function TokenSection({
+  title,
+  rows,
+  filter,
+}: {
+  title: string;
+  rows: TColorPalette[];
+  filter: string;
+}) {
   const styles = useStyles();
+  const { rootStyle } = useColorTokensStyles();
+
+  if (rows.length === 0) {
+    return null;
+  }
 
   return (
     <div className={styles.section}>
-      <div className={styles.sectionTitle}>{title}</div>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th className={styles.headerCell}>Token</th>
-            <th className={styles.headerCell}>Light value</th>
-            <th className={styles.headerCell}>Dark value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.length === 0 ? (
-            <tr>
-              <td className={styles.empty} colSpan={3}>
-                No matching tokens
-              </td>
-            </tr>
-          ) : (
-            rows.map(({ token, lightValue, darkValue }) => (
-              <tr key={token} className={styles.row}>
-                <td className={styles.tokenCell}>{token}</td>
-                <td className={styles.swatchCell}>
-                  <Swatch value={lightValue} />
-                </td>
-                <td className={styles.swatchCell}>
-                  <Swatch value={darkValue} />
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+      <span className={styles.sectionTitle}>
+        {title}
+        <span className={styles.count}>{rows.length}</span>
+      </span>
+      <div className={rootStyle}>
+        <div className={styles.headerCell}>Token</div>
+        <div className={styles.headerCell}>Light</div>
+        <div className={styles.headerCell}>Dark</div>
+        {rows.map((args, i) => (
+          <ColorPalette
+            key={args.token}
+            zebra={i % 2 === 1}
+            filter={filter}
+            {...args}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
-function Swatch({ value }: { value: string }) {
-  const styles = useStyles();
+const useColorPaletteStyles = makeStyles({
+  tokenCell: {
+    display: "flex",
+    alignItems: "center",
+    ...shorthands.gap(tokens.spacingHorizontalXS),
+    ...shorthands.padding(
+      tokens.spacingVerticalSNudge,
+      tokens.spacingHorizontalM,
+      tokens.spacingVerticalSNudge,
+      tokens.spacingHorizontalXS
+    ),
+    fontFamily: "monospace",
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground1,
+    ...shorthands.overflow("hidden"),
+    animationName: {
+      from: { opacity: 0, transform: "translateY(4px)" },
+      to: { opacity: 1, transform: "translateY(0)" },
+    },
+    animationDuration: tokens.durationNormal,
+    animationTimingFunction: tokens.curveDecelerateMin,
+    animationFillMode: "both",
+  },
+  tokenName: {
+    ...shorthands.overflow("hidden"),
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+  copyButton: {
+    minWidth: "24px",
+    maxWidth: "24px",
+    height: "24px",
+    flexShrink: 0,
+    ...shorthands.padding(0),
+  },
+  valueCell: {
+    display: "flex",
+    alignItems: "center",
+    ...shorthands.gap(tokens.spacingHorizontalS),
+    ...shorthands.padding(
+      tokens.spacingVerticalSNudge,
+      tokens.spacingHorizontalM
+    ),
+    fontFamily: "monospace",
+    fontSize: tokens.fontSizeBase200,
+    color: tokens.colorNeutralForeground2,
+    animationName: {
+      from: { opacity: 0, transform: "translateY(4px)" },
+      to: { opacity: 1, transform: "translateY(0)" },
+    },
+    animationDuration: tokens.durationNormal,
+    animationTimingFunction: tokens.curveDecelerateMin,
+    animationFillMode: "both",
+  },
+  zebra: {
+    backgroundColor: tokens.colorNeutralBackground2,
+  },
+  swatch: {
+    flexShrink: 0,
+    width: "18px",
+    height: "18px",
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    ...shorthands.border(
+      tokens.strokeWidthThin,
+      "solid",
+      tokens.colorNeutralStroke1
+    ),
+    boxShadow: tokens.shadow2,
+  },
+  mark: {
+    ...shorthands.padding(0, "2px"),
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    fontWeight: tokens.fontWeightSemibold,
+  },
+});
+
+function Highlight({ text, query }: { text: string; query: string }) {
+  const styles = useColorPaletteStyles();
+
+  if (!query || !text) {
+    return <>{text}</>;
+  }
+
+  const lowerText = text.toLowerCase();
+  const needle = query.toLowerCase();
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+  let matchIndex = lowerText.indexOf(needle);
+
+  while (matchIndex !== -1) {
+    if (matchIndex > cursor) {
+      parts.push(text.slice(cursor, matchIndex));
+    }
+    const end = matchIndex + needle.length;
+    parts.push(
+      <mark key={matchIndex} className={styles.mark}>
+        {text.slice(matchIndex, end)}
+      </mark>
+    );
+    cursor = end;
+    matchIndex = lowerText.indexOf(needle, cursor);
+  }
+
+  if (cursor < text.length) {
+    parts.push(text.slice(cursor));
+  }
+
+  return <>{parts}</>;
+}
+
+function ColorPalette({
+  token,
+  lightValue,
+  darkValue,
+  zebra,
+  filter,
+}: TColorPalette & {
+  zebra: boolean;
+  filter: string;
+}) {
+  const styles = useColorPaletteStyles();
+  const rowStyle = zebra ? styles.zebra : undefined;
 
   return (
-    <div className={styles.swatch}>
-      <span className={styles.chip} style={{ backgroundColor: value }} />
-      <span className={styles.chipValue}>{value}</span>
-    </div>
+    <>
+      <div className={mergeClasses(styles.tokenCell, rowStyle)}>
+        <CopyButton
+          value={token}
+          size="small"
+          copyLabel="Copy token"
+          className={styles.copyButton}
+        />
+        <span className={styles.tokenName}>
+          <Highlight text={token} query={filter} />
+        </span>
+      </div>
+      <div className={mergeClasses(styles.valueCell, rowStyle)}>
+        <span
+          className={styles.swatch}
+          style={{ backgroundColor: lightValue }}
+        />
+        <Highlight text={lightValue} query={filter} />
+      </div>
+      <div className={mergeClasses(styles.valueCell, rowStyle)}>
+        <span
+          className={styles.swatch}
+          style={{ backgroundColor: darkValue }}
+        />
+        <Highlight text={darkValue} query={filter} />
+      </div>
+    </>
   );
 }
