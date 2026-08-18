@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t,t as n}from"./createFluentIcon-CEiHlms4.js";var r;function i(){return(i=e((()=>{t(),r=n(`CircleFilled`,`1em`,[`M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z`])})))()}export{i as n,r as t};
