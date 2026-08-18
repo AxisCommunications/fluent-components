@@ -141,18 +141,26 @@ function buildEndGroups(): VideoControlBarGroup[] {
   ];
 }
 
+/**
+ * Video Control Bar
+ *
+ * A toolbar of grouped icon controls for a live video feed. Controls are split
+ * into leading (`start`) and trailing (`end`) groups; related controls can be
+ * `segmented` to sit behind a shared background separated by vertical dividers.
+ * Every control exposes a tooltip and an `aria-label`, and the root renders as
+ * a `toolbar` landmark.
+ *
+ * The `media` appearance is a dark scrim intended to overlay a video stream,
+ * while `subtle` is a theme-aware bar for placement on a page surface.
+ *
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=355-420"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
+ */
 const meta: Meta<typeof VideoControlBar> = {
   title: "UI patterns/Video Control Bar",
   component: VideoControlBar,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
-    docs: {
-      description: {
-        component:
-          "A toolbar of grouped icon controls for a live video feed. Controls are split into leading (`start`) and trailing (`end`) groups; related controls can be `segmented` to sit behind a shared background separated by vertical dividers. Every control exposes a tooltip and an `aria-label`, and the root renders as a `toolbar` landmark.\n\nThe `media` appearance is a dark scrim intended to overlay a video stream, while `subtle` is a theme-aware bar for placement on a page surface.\n\n<p align='right'><a href='https://www.figma.com/design/3dbVV6ioOwvMMnhqTZVHJZ/ADA-UI-kit?node-id=4934-752531'><img width='240' src='./figma-global-components-cover.svg' alt='Open in Figma — AXIS ADA UI kit' /></a></p>",
-      },
-    },
   },
   argTypes: {
     appearance: {
