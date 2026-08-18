@@ -8,6 +8,7 @@ import {
 } from "@axiscommunications/fluent-side-navigation";
 import {
   Badge,
+  Button,
   Card,
   Checkbox,
   DataGrid,
@@ -16,8 +17,13 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridRow,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerHeaderTitle,
   Field,
   Input,
+  OverlayDrawer,
   TableCellLayout,
   type TableColumnDefinition,
   Text,
@@ -38,6 +44,7 @@ import {
   AlertRegular,
   ArrowResetRegular,
   DeleteRegular,
+  Dismiss24Regular,
   EditRegular,
   GlobeFilled,
   GlobeRegular,
@@ -93,6 +100,11 @@ const useStyles = makeStyles({
     overflow: "hidden",
   },
   bodyWithDrawer: {},
+  editDrawerBody: {
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalM,
+  },
   compactRail: {
     flexShrink: 0,
     height: "100%",
@@ -708,6 +720,7 @@ function DevicesPage({
     new Set(["dev-001"])
   );
   const [skip, setSkip] = useState(0);
+  const [editingDeviceId, setEditingDeviceId] = useState<string | null>(null);
 
   const controller = usePageController({
     total: ALL_DEVICES.length,
@@ -719,6 +732,9 @@ function DevicesPage({
   const pagedDevices = ALL_DEVICES.slice(skip, skip + PAGE_SIZE);
   const firstRow = skip + 1;
   const lastRow = Math.min(skip + PAGE_SIZE, ALL_DEVICES.length);
+  const editingDevice =
+    ALL_DEVICES.find((device) => device.id === editingDeviceId) ?? null;
+  const closeEditDrawer = () => setEditingDeviceId(null);
 
   return (
     <div className={styles.shell}>
@@ -796,7 +812,6 @@ function DevicesPage({
                         id: "add",
                         label: "Add",
                         icon: <AddRegular />,
-                        appearance: "primary",
                         onClick: () => console.log("add device"),
                       },
                       {
@@ -804,7 +819,12 @@ function DevicesPage({
                         label: "Edit",
                         icon: <EditRegular />,
                         disabled: selectedItems.size !== 1,
-                        onClick: () => console.log("edit device"),
+                        onClick: () => {
+                          const [id] = selectedItems;
+                          if (id) {
+                            setEditingDeviceId(id);
+                          }
+                        },
                       },
                       {
                         id: "delete",
@@ -874,6 +894,56 @@ function DevicesPage({
           </div>
         </div>
       </div>
+
+      <OverlayDrawer
+        key={editingDevice?.id ?? "none"}
+        position="end"
+        size="small"
+        open={editingDevice !== null}
+        onOpenChange={(_e, data) => !data.open && closeEditDrawer()}
+      >
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={closeEditDrawer}
+              />
+            }
+          >
+            Edit device
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+        <DrawerBody className={styles.editDrawerBody}>
+          {editingDevice && (
+            <>
+              <Field label="Name">
+                <Input defaultValue={editingDevice.name} />
+              </Field>
+              <Field label="Type">
+                <Input defaultValue={editingDevice.type} disabled />
+              </Field>
+              <Field label="Location">
+                <Input defaultValue={editingDevice.location} />
+              </Field>
+              <Checkbox
+                label="Online"
+                defaultChecked={editingDevice.status === "online"}
+              />
+            </>
+          )}
+        </DrawerBody>
+        <DrawerFooter>
+          <Button appearance="secondary" onClick={closeEditDrawer}>
+            Cancel
+          </Button>
+          <Button appearance="primary" onClick={closeEditDrawer}>
+            Save
+          </Button>
+        </DrawerFooter>
+      </OverlayDrawer>
     </div>
   );
 }
