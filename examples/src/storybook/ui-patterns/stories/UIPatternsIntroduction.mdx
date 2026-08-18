@@ -62,11 +62,55 @@ promoted into `components/`. The bar for that move is two things being true:
   This is a separate step from "looks done", because once it's published other
   apps depend on the API and breaking it is costly.
 
+### Want to promote a pattern? Here's how
+
+1. **Check it's a good fit.** The pattern should be reusable and self-contained,
+   depend only on `@fluentui/react-components` / `@fluentui/react-icons` as
+   peers, and fill a gap that isn't already covered by an existing package —
+   check for overlap with what's already published before starting.
+2. **Talk to the [Design System Group](#working-with-the-design-system-group)
+   early**, before you write the package. They confirm design-readiness and can
+   flag naming/API concerns before they're baked into a public contract.
+3. **Scaffold the package** under `components/<name>/`, mirroring an existing
+   small package (`side-navigation` is a good template):
+   `src/index.ts` (barrel export), `<name>.tsx`, `<name>.types.ts`,
+   `<name>.styles.ts`, `<name>.spec.tsx`, plus `package.json`, `tsconfig.json`,
+   `tsconfig.build.json`, `vitest.config.ts`, and `depcheck.yml`.
+4. **Move the implementation over**, refining the API as you go: trim any
+   oversized prop surface, and replace things like brittle string
+   interpolation with formatter callbacks so the component works for
+   internationalized consumers.
+5. **Meet the dev-ready checklist** before opening a PR:
+   - `package.json` has **no** `"private": true`, is named
+     `@axiscommunications/fluent-<name>`, and matches the shared monorepo
+     version.
+   - `exports` maps `.` to `./lib/index.d.ts` and `./lib/index.js`; `files` is
+     `["lib"]`.
+   - `peerDependencies` (not direct dependencies) declare the Fluent and React
+     packages the component needs.
+   - `publishConfig.registry` points at GitHub Packages, matching every other
+     published package.
+   - A `docs/README.md` covers install, usage, a props table, and
+     accessibility notes.
+   - At least one `*.spec.tsx` unit test using vitest + Testing Library.
+   - `pnpm build`, `pnpm --filter @axiscommunications/fluent-<name> lint`, and
+     `test` all pass.
+6. **Open a PR against `main`** using a
+   [conventional commit](https://www.conventionalcommits.org/) message (e.g.
+   `feat(my-component): add MyComponent package`). `CODEOWNERS` routes the
+   review to the maintainers team automatically.
+7. **Update the story** that used the pattern to import from the new published
+   package instead of the local composite, so the docs and the real package
+   stay in sync.
+
 A promoted component keeps the same conventions as the rest of the library:
 Fluent peer dependencies, `makeStyles` + design tokens, `axis-<Name>` class
 names, types and styles split into their own files, and a `*.spec.tsx` test
-suite. (See the *Promoting composites to components* notes in the repo for the
-full recipe.)
+suite. For the complete step-by-step recipe (including the `advanced-data-grid`
+private-package precedent for patterns that are structurally ready but not yet
+publishable), see
+[`.github/skills/promoting-composites-to-components/SKILL.md`](https://github.com/AxisCommunications/fluent-components/blob/main/.github/skills/promoting-composites-to-components/SKILL.md)
+in the repo.
 
 ## Working with the Design System Group
 
