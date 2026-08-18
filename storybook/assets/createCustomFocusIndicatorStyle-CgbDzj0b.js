@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,n,r,t as i}from"./constants-DQkbQUtm.js";function a(e,{selector:t=r.selector,customizeSelector:n=r.customizeSelector}=r){return{[n(o(t))]:e}}function o(e){switch(e){case`focus`:return`&[${i}]`;case`focus-within`:return`&[${n}]:focus-within`}}function s(){return(s=e((()=>{t()})))()}export{s as n,a as t};

@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";function t(e,t){return typeof e==`number`||typeof e==`object`&&e?n(e,t):typeof e==`function`?r=>{let i=e(r);return n(i,t)}:{mainAxis:t}}var n;function r(){return(r=e((()=>{n=(e,t)=>typeof e==`number`?{mainAxis:e+t}:{...e,mainAxis:(e.mainAxis??0)+t}})))()}export{t as n,r as t};

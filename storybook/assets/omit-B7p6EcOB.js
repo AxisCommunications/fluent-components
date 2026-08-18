@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";function t(e,t){let n={};for(let r in e)t.indexOf(r)===-1&&e.hasOwnProperty(r)&&(n[r]=e[r]);return n}function n(){return(n=e((()=>{})))()}export{t as n,n as t};

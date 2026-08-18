@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";var t,n,r,i;function a(){return(a=e((()=>{t=`data-keyboard-nav`,`${t}`,n=`data-fui-focus-visible`,r=`data-fui-focus-within`,i={style:{},selector:`focus`,customizeSelector:e=>e}})))()}export{a as i,r as n,i as r,n as t};
