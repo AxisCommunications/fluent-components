@@ -71,7 +71,7 @@ const INITIAL_TABS: DynamicTabItem[] = [
  *   `Delete`/`Backspace` (advertised via `aria-keyshortcuts`) or the context
  *   menu, which keeps the pattern free of nested interactive controls
  *
- * <p align="right"><a href="https://www.figma.com/design/3dbVV6ioOwvMMnhqTZVHJZ/ADA-UI-kit?node-id=2915-101594"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS ADA UI kit" /></a></p>
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=349-159"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof DynamicTabList> = {
   title: "UI patterns/Dynamic Tab List",

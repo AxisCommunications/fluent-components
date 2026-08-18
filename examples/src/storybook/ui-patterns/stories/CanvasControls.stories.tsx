@@ -103,7 +103,7 @@ const END_ACTIONS: CanvasControlAction[] = [
  * - Every button has a tooltip and an `aria-label`, and the slider announces
  *   `aria-valuetext` as a percentage
  *
- * <p align="right"><a href="https://www.figma.com/design/3dbVV6ioOwvMMnhqTZVHJZ/ADA-UI-kit?node-id=3450-103876"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS ADA UI kit" /></a></p>
+ * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=350-311"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
 const meta: Meta<typeof CanvasControls> = {
   title: "UI patterns/Canvas Controls",
