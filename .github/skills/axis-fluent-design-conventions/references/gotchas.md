@@ -105,3 +105,57 @@ the component description:
   `.github/workflows/deploy-storybook.yml` (peaceiris/actions-gh-pages) to
   gh-pages `/storybook` + `/docs/storybook`. The pre-push husky hook (`tools`
   lint's `git:check-dirty`) fails on a dirty tree.
+
+## Closable tabs: never nest a button inside `role="tab"`
+
+ARIA marks `tab` as `childrenPresentational`, and axe-core encodes that
+(`ariaRoles.tab.childrenPresentational === true` in
+`node_modules/.pnpm/axe-core@*/…/axe.js`). Any focusable descendant — including
+a `<button tabindex="-1">`, since axe treats native buttons as focusable
+regardless of tabindex — trips the serious `nested-interactive` rule.
+
+- Symptom: a document tab bar with a per-tab dismiss `<button>` reports
+  `nested-interactive` in the Storybook Accessibility panel.
+- Fix used by `DynamicTabList`
+  (`examples/src/storybook/ui-patterns/components/composites/DynamicTabList.tsx`):
+  render the dismiss affordance as an `aria-hidden` `<span>` with a click
+  handler that calls `stopPropagation()`, and give keyboard users an equivalent
+  path — `Delete`/`Backspace` on the focused tab (advertised via
+  `aria-keyshortcuts`) plus the right-click menu. Verified 0 axe violations.
+- The same reasoning applies to `button`, `checkbox`, `radio`, `switch`,
+  `option`, `menuitem*` and `slider` — all `childrenPresentational`.
+- Roving tab stop (`tabIndex={isSelected ? 0 : -1}`) plus manual
+  Arrow/Home/End handling is fine here; Fluent's `TabList` has no closable-tab
+  support to reuse.
+
+## Fluent `Slider`: `step` draws tick marks on the rail
+
+Passing `step` to `@fluentui/react-components`' `Slider` switches the rail from
+a solid gradient to a stepped/dashed one (Fluent renders `--fui-Slider--steps-percent`
+tick marks). A design that shows a plain rail will not match.
+
+- Symptom: the zoom rail in `CanvasControls` rendered as a dashed line instead
+  of the solid `colorNeutralStrokeAccessible` rail in Figma.
+- Fix: omit `step` from the `Slider` (leaving it continuous) and keep the step
+  size as a separate prop that only drives the +/- buttons; round the value in
+  the change handler. Verified rail becomes
+  `linear-gradient(0deg, brand 0%, brand N%, #616161 N%)`.
+- `Slider` accepts `vertical` and honours an explicit `height` on the root
+  (`className`/`style` land on root; other native props land on the `input`
+  primary slot, so `aria-label`/`aria-valuetext` can be passed directly).
+
+## `role="toolbar"` promises roving arrow-key navigation
+
+APG expects a toolbar to be a single tab stop with arrow keys moving between
+its controls. A plain `<div role="toolbar">` whose children are each their own
+tab stop announces a contract it does not honour — axe will not flag it, but
+screen-reader users get the wrong model.
+
+- Use Fluent's `Toolbar` (it wires roving focus through Tabster) when the
+  roving behaviour is what you want.
+- Use `role="group"` when it is not. `CanvasControls` does this: it is vertical,
+  so toolbar arrow-key navigation would fight the arrow keys its vertical zoom
+  `Slider` needs. Note `aria-orientation` is **not** allowed on `group`
+  (`aria-allowed-attr` will flag it) — drop it.
+- `VideoControlBar` still has the raw `role="toolbar"` + per-control tab stops
+  combination; fix it the same way if you touch that file.

@@ -22,6 +22,8 @@
  * - DataTable: Composable table with Root/Header/Row pattern
  * - Pagination: Page navigation with item range display
  * - StickySave: Persistent save/cancel bar for long forms
+ * - DynamicTabList: Document tab bar for runtime-opened objects
+ * - CanvasControls: Floating vertical zoom/navigation toolbar for canvases
  */
 
 export { FormField, type FormFieldProps } from "./FormField";
@@ -86,6 +88,17 @@ export {
   type DataTableCellProps,
 } from "./DataTable";
 export { Pagination, type PaginationProps } from "./Pagination";
+export {
+  DynamicTabList,
+  type DynamicTabItem,
+  type DynamicTabListProps,
+  type DynamicTabMenuItem,
+} from "./DynamicTabList";
+export {
+  CanvasControls,
+  type CanvasControlAction,
+  type CanvasControlsProps,
+} from "./CanvasControls";
 export { StickySave, type StickySaveProps } from "./StickySave";
 export {
   Wizard,
