@@ -116,27 +116,22 @@ export const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
         className={[styles.root, className].filter(Boolean).join(" ")}
         {...rest}
       >
-        {/* Breadcrumb navigation */}
+        {/* Breadcrumb already renders its own `nav` landmark; avoid nesting a second one */}
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav className={styles.breadcrumbRow} aria-label="Breadcrumb">
-            <Breadcrumb>
-              {breadcrumbs.map(
-                (
-                  crumb: { label: string; onClick?: () => void },
-                  idx: number
-                ) => (
-                  <Fragment key={idx}>
-                    <BreadcrumbItem className={styles.breadcrumbItem}>
-                      <BreadcrumbButton onClick={crumb.onClick}>
-                        {crumb.label}
-                      </BreadcrumbButton>
-                    </BreadcrumbItem>
-                    {idx < breadcrumbs.length - 1 && <BreadcrumbDivider />}
-                  </Fragment>
-                )
-              )}
-            </Breadcrumb>
-          </nav>
+          <Breadcrumb className={styles.breadcrumbRow} aria-label="Breadcrumb">
+            {breadcrumbs.map(
+              (crumb: { label: string; onClick?: () => void }, idx: number) => (
+                <Fragment key={idx}>
+                  <BreadcrumbItem className={styles.breadcrumbItem}>
+                    <BreadcrumbButton onClick={crumb.onClick}>
+                      {crumb.label}
+                    </BreadcrumbButton>
+                  </BreadcrumbItem>
+                  {idx < breadcrumbs.length - 1 && <BreadcrumbDivider />}
+                </Fragment>
+              )
+            )}
+          </Breadcrumb>
         )}
 
         {/* Title row with actions */}

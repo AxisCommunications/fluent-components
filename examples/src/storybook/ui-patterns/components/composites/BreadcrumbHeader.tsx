@@ -389,87 +389,85 @@ export const BreadcrumbHeader = forwardRef<
           </div>
         </div>
 
-        {/* Visible breadcrumb */}
+        {/* Visible breadcrumb; Breadcrumb already renders its own `nav` landmark */}
         <div className={styles.root}>
-          <nav aria-label={ariaLabel}>
-            <Breadcrumb className={styles.breadcrumb}>
-              {/* First item — always visible */}
-              {breadcrumbs.length > 0 && (
-                <Fragment>
-                  <BreadcrumbItem className={styles.breadcrumbItem}>
-                    <BreadcrumbButton onClick={firstItem.onClick}>
-                      {firstItem.label}
-                    </BreadcrumbButton>
-                  </BreadcrumbItem>
-                  {(breadcrumbs.length > 1 || shouldOverflow) && (
-                    <BreadcrumbDivider className={styles.divider}>
-                      /
-                    </BreadcrumbDivider>
-                  )}
-                </Fragment>
-              )}
-
-              {/* Overflow menu for collapsed middle items */}
-              {shouldOverflow && (
-                <Fragment>
-                  <BreadcrumbItem className={styles.breadcrumbItem}>
-                    <Menu>
-                      <MenuTrigger disableButtonEnhancement>
-                        <BreadcrumbButton className={styles.overflowButton}>
-                          <MoreHorizontalRegular />
-                        </BreadcrumbButton>
-                      </MenuTrigger>
-                      <MenuPopover>
-                        <MenuList>
-                          {overflowItems.map((crumb, index) => (
-                            <MenuItem
-                              key={`overflow-${crumb.label}-${index}`}
-                              onClick={crumb.onClick}
-                            >
-                              {crumb.label}
-                            </MenuItem>
-                          ))}
-                        </MenuList>
-                      </MenuPopover>
-                    </Menu>
-                  </BreadcrumbItem>
-                  {(middleItems.length > 0 || showLastItem) && (
-                    <BreadcrumbDivider className={styles.divider}>
-                      /
-                    </BreadcrumbDivider>
-                  )}
-                </Fragment>
-              )}
-
-              {/* Remaining visible middle items */}
-              {middleItems.map((crumb, index) => (
-                <Fragment key={`${crumb.label}-${index}`}>
-                  <BreadcrumbItem className={styles.breadcrumbItem}>
-                    <BreadcrumbButton onClick={crumb.onClick}>
-                      {crumb.label}
-                    </BreadcrumbButton>
-                  </BreadcrumbItem>
+          <Breadcrumb className={styles.breadcrumb} aria-label={ariaLabel}>
+            {/* First item — always visible */}
+            {breadcrumbs.length > 0 && (
+              <Fragment>
+                <BreadcrumbItem className={styles.breadcrumbItem}>
+                  <BreadcrumbButton onClick={firstItem.onClick}>
+                    {firstItem.label}
+                  </BreadcrumbButton>
+                </BreadcrumbItem>
+                {(breadcrumbs.length > 1 || shouldOverflow) && (
                   <BreadcrumbDivider className={styles.divider}>
                     /
                   </BreadcrumbDivider>
-                </Fragment>
-              ))}
+                )}
+              </Fragment>
+            )}
 
-              {/* Last item — visible when there's room */}
-              {breadcrumbs.length > 1 && showLastItem && (
-                <>
-                  <BreadcrumbItem className={styles.breadcrumbItem}>
-                    <BreadcrumbButton onClick={lastItem.onClick}>
-                      {lastItem.label}
-                    </BreadcrumbButton>
-                  </BreadcrumbItem>
+            {/* Overflow menu for collapsed middle items */}
+            {shouldOverflow && (
+              <Fragment>
+                <BreadcrumbItem className={styles.breadcrumbItem}>
+                  <Menu>
+                    <MenuTrigger disableButtonEnhancement>
+                      <BreadcrumbButton className={styles.overflowButton}>
+                        <MoreHorizontalRegular />
+                      </BreadcrumbButton>
+                    </MenuTrigger>
+                    <MenuPopover>
+                      <MenuList>
+                        {overflowItems.map((crumb, index) => (
+                          <MenuItem
+                            key={`overflow-${crumb.label}-${index}`}
+                            onClick={crumb.onClick}
+                          >
+                            {crumb.label}
+                          </MenuItem>
+                        ))}
+                      </MenuList>
+                    </MenuPopover>
+                  </Menu>
+                </BreadcrumbItem>
+                {(middleItems.length > 0 || showLastItem) && (
                   <BreadcrumbDivider className={styles.divider}>
                     /
                   </BreadcrumbDivider>
-                </>
-              )}
-            </Breadcrumb>
-          </nav>
+                )}
+              </Fragment>
+            )}
+
+            {/* Remaining visible middle items */}
+            {middleItems.map((crumb, index) => (
+              <Fragment key={`${crumb.label}-${index}`}>
+                <BreadcrumbItem className={styles.breadcrumbItem}>
+                  <BreadcrumbButton onClick={crumb.onClick}>
+                    {crumb.label}
+                  </BreadcrumbButton>
+                </BreadcrumbItem>
+                <BreadcrumbDivider className={styles.divider}>
+                  /
+                </BreadcrumbDivider>
+              </Fragment>
+            ))}
+
+            {/* Last item — visible when there's room */}
+            {breadcrumbs.length > 1 && showLastItem && (
+              <>
+                <BreadcrumbItem className={styles.breadcrumbItem}>
+                  <BreadcrumbButton onClick={lastItem.onClick}>
+                    {lastItem.label}
+                  </BreadcrumbButton>
+                </BreadcrumbItem>
+                <BreadcrumbDivider className={styles.divider}>
+                  /
+                </BreadcrumbDivider>
+              </>
+            )}
+          </Breadcrumb>
 
           <div className={styles.titleGroup} data-title-group="">
             <span className={styles.titleIcon} aria-hidden="true">
