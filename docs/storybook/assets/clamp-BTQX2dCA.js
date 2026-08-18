@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";var t;function n(){return(n=e((()=>{t=(e,t,n)=>Math.max(t,Math.min(n,e||0))})))()}export{n,t};
