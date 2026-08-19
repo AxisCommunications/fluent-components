@@ -34,8 +34,8 @@
     "tokens": "node lib/tokens.cjs"
   },
   "devDependencies": {
-    "@fluentui/react-components": "^9.74.4",
-    "@fluentui/react-theme": "^9.2.1",
+    "@fluentui/react-components": "^9.74.6",
+    "@fluentui/react-theme": "^9.2.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.2",
     "@types/node": "^25.5.2",
@@ -51,8 +51,8 @@
     "vitest": "^4.1.10"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.74.4",
-    "@fluentui/react-theme": "^9.2.1",
+    "@fluentui/react-components": "^9.74.6",
+    "@fluentui/react-theme": "^9.2.2",
     "react": ">=16.14.0 <20.0.0",
     "react-dom": ">=16.14.0 <20.0.0"
   },
