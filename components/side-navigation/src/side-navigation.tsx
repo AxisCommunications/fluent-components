@@ -38,6 +38,7 @@ export const SideNavigation = React.forwardRef<
     defaultExpanded = false,
     onExpandedChange,
     collapsible = true,
+    togglePosition = "top",
     defaultOpenItemIds,
     expandedWidth = DEFAULT_EXPANDED_WIDTH,
     expandLabel = "Expand navigation",
@@ -70,6 +71,29 @@ export const SideNavigation = React.forwardRef<
   const [openItemIds, setOpenItemIds] = React.useState<string[]>(
     () => defaultOpenItemIds ?? []
   );
+  // Remembers which group a collapsed-mode flyout selection belongs to, so it
+  // can be the only one open once the rail expands again.
+  const pendingOpenParentIdRef = React.useRef<string | null>(null);
+
+  const findParentId = React.useCallback(
+    (childId: string): string | undefined => {
+      const parent = [...items, ...(footerItems ?? [])].find((candidate) =>
+        candidate.children?.some((child) => child.id === childId)
+      );
+      return parent?.id;
+    },
+    [items, footerItems]
+  );
+
+  const handleSelect = React.useCallback(
+    (id: string) => {
+      if (!expanded) {
+        pendingOpenParentIdRef.current = findParentId(id) ?? null;
+      }
+      setSelectedItem(id);
+    },
+    [expanded, findParentId, setSelectedItem]
+  );
 
   const setRootRef = React.useCallback(
     (node: HTMLElement | null) => {
@@ -97,8 +121,15 @@ export const SideNavigation = React.forwardRef<
 
   const updateIndicator = React.useCallback(() => {
     const rootElement = rootRef.current;
-    const selectedElement = selectedItem
-      ? itemRefs.current.get(selectedItem)
+    // Sub-items only render (and register a ref) while their group is open
+    // and the rail is expanded; when they're hidden, the marker falls back to
+    // the parent category so it always points at something visible.
+    let targetId = selectedItem;
+    if (targetId && !itemRefs.current.has(targetId)) {
+      targetId = findParentId(targetId);
+    }
+    const selectedElement = targetId
+      ? itemRefs.current.get(targetId)
       : undefined;
 
     if (!rootElement || !selectedElement) {
@@ -114,12 +145,19 @@ export const SideNavigation = React.forwardRef<
       (selectedRect.height - INDICATOR_HEIGHT) / 2;
 
     setIndicatorOffset(offset);
-  }, [selectedItem]);
+  }, [selectedItem, findParentId]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: re-measure the indicator after layout changes (expand, open groups, items)
   React.useLayoutEffect(() => {
     updateIndicator();
   }, [updateIndicator, expanded, openItemIds, items, footerItems]);
+
+  React.useLayoutEffect(() => {
+    if (expanded && pendingOpenParentIdRef.current) {
+      setOpenItemIds([pendingOpenParentIdRef.current]);
+      pendingOpenParentIdRef.current = null;
+    }
+  }, [expanded]);
 
   React.useEffect(() => {
     if (typeof window === "undefined") {
@@ -147,6 +185,21 @@ export const SideNavigation = React.forwardRef<
 
   const toggleLabel = expanded ? collapseLabel : expandLabel;
 
+  const toggleButton = collapsible ? (
+    <Tooltip content={toggleLabel} relationship="label" withArrow>
+      <button
+        type="button"
+        className={mergeClasses(classNames.toggle, styles.toggle)}
+        onClick={handleToggleExpanded}
+        aria-label={toggleLabel}
+        aria-expanded={expanded}
+      >
+        {expanded ? <ChevronLeftRegular /> : <ChevronRightRegular />}
+      </button>
+    </Tooltip>
+  ) : null;
+  const hasBottomToggle = collapsible && togglePosition === "bottom";
+
   return (
     <nav
       ref={setRootRef}
@@ -169,19 +222,7 @@ export const SideNavigation = React.forwardRef<
         />
       ) : null}
 
-      {collapsible ? (
-        <Tooltip content={toggleLabel} relationship="label" withArrow>
-          <button
-            type="button"
-            className={mergeClasses(classNames.toggle, styles.toggle)}
-            onClick={handleToggleExpanded}
-            aria-label={toggleLabel}
-            aria-expanded={expanded}
-          >
-            {expanded ? <ChevronLeftRegular /> : <ChevronRightRegular />}
-          </button>
-        </Tooltip>
-      ) : null}
+      {togglePosition === "top" ? toggleButton : null}
 
       <div className={mergeClasses(classNames.list, styles.list)}>
         {items.map((item) => (
@@ -191,28 +232,35 @@ export const SideNavigation = React.forwardRef<
             expanded={expanded}
             selectedItemId={selectedItem}
             open={openItemIds.includes(item.id)}
-            onSelect={setSelectedItem}
+            onSelect={handleSelect}
             onToggleOpen={handleToggleOpen}
             registerRef={registerRef}
           />
         ))}
       </div>
 
-      {footerItems && footerItems.length > 0 ? (
+      {(footerItems && footerItems.length > 0) || hasBottomToggle ? (
         <div className={mergeClasses(classNames.footer, styles.footer)}>
-          <div className={mergeClasses(classNames.divider, styles.divider)} />
-          {footerItems.map((item) => (
-            <SideNavigationItemRow
-              key={item.id}
-              item={item}
-              expanded={expanded}
-              selectedItemId={selectedItem}
-              open={openItemIds.includes(item.id)}
-              onSelect={setSelectedItem}
-              onToggleOpen={handleToggleOpen}
-              registerRef={registerRef}
-            />
-          ))}
+          {footerItems && footerItems.length > 0 ? (
+            <>
+              <div
+                className={mergeClasses(classNames.divider, styles.divider)}
+              />
+              {footerItems.map((item) => (
+                <SideNavigationItemRow
+                  key={item.id}
+                  item={item}
+                  expanded={expanded}
+                  selectedItemId={selectedItem}
+                  open={openItemIds.includes(item.id)}
+                  onSelect={handleSelect}
+                  onToggleOpen={handleToggleOpen}
+                  registerRef={registerRef}
+                />
+              ))}
+            </>
+          ) : null}
+          {hasBottomToggle ? toggleButton : null}
         </div>
       ) : null}
     </nav>

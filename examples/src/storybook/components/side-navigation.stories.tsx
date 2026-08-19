@@ -1,6 +1,20 @@
-import { SideNavigation } from "@axiscommunications/fluent-side-navigation";
+import {
+  SideNavigation,
+  SideNavigationItem,
+} from "@axiscommunications/fluent-side-navigation";
 import { makeStyles } from "@fluentui/react-components";
+import {
+  AppsFilled,
+  AppsRegular,
+  HomeFilled,
+  HomeRegular,
+  LayerFilled,
+  LayerRegular,
+  SettingsFilled,
+  SettingsRegular,
+} from "@fluentui/react-icons";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { BottomToggleSideNavigationExample } from "../../stories/side-navigation/examples/bottom-toggle-side-navigation-example";
 import { CollapsibleSideNavigationExample } from "../../stories/side-navigation/examples/collapsible-side-navigation-example";
 import { CompactSideNavigationExample } from "../../stories/side-navigation/examples/compact-side-navigation-example";
 import { IconOnlySideNavigationExample } from "../../stories/side-navigation/examples/icon-only-side-navigation-example";
@@ -11,6 +25,42 @@ const useStyles = makeStyles({
     height: "520px",
   },
 });
+
+// Default `args` so the Interactive story (and the Controls panel) render a
+// working rail out of the box.
+const interactiveItems: SideNavigationItem[] = [
+  {
+    id: "home",
+    label: "Home",
+    icon: <HomeRegular />,
+    selectedIcon: <HomeFilled />,
+  },
+  {
+    id: "workspaces",
+    label: "Workspaces",
+    icon: <AppsRegular />,
+    selectedIcon: <AppsFilled />,
+    children: [
+      { id: "workspaces-personal", label: "Personal" },
+      { id: "workspaces-shared", label: "Shared with me" },
+    ],
+  },
+  {
+    id: "onelake",
+    label: "OneLake",
+    icon: <LayerRegular />,
+    selectedIcon: <LayerFilled />,
+  },
+];
+
+const interactiveFooterItems: SideNavigationItem[] = [
+  {
+    id: "settings",
+    label: "Settings",
+    icon: <SettingsRegular />,
+    selectedIcon: <SettingsFilled />,
+  },
+];
 
 /**
  * Side Navigation
@@ -31,6 +81,12 @@ const useStyles = makeStyles({
  * - **Expanded with sub-menus** — start expanded with `defaultExpanded` and seed
  *   open groups with `defaultOpenItemIds`. Items with `children` render an
  *   expandable group of sub-items.
+ * - **Collapsed with sub-menus** — while the rail is collapsed, an item with
+ *   `children` opens a foldout menu on hover (or focus) instead of an inline
+ *   group, so its sub-items stay reachable without expanding the rail.
+ * - **Toggle at the bottom** — set `togglePosition="bottom"` to pin the
+ *   expand/collapse toggle below the items (and any `footerItems`) instead of
+ *   above them. Defaults to `"top"`.
  *
  * ## Guidelines
  *
@@ -55,18 +111,137 @@ const useStyles = makeStyles({
  *
  * <p align="right"><a href="https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157"><img width="240" src="./figma-global-components-cover.svg" alt="Open in Figma — AXIS Fluent Global components" /></a></p>
  */
-const meta: Meta = {
+const meta: Meta<typeof SideNavigation> = {
   title: "UI patterns/Side Navigation",
   component: SideNavigation,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },
+  args: {
+    items: interactiveItems,
+    footerItems: interactiveFooterItems,
+    defaultSelectedItemId: "home",
+    "aria-label": "Side navigation",
+  },
+  argTypes: {
+    items: {
+      control: false,
+      description: "Top-level items, rendered top to bottom. **Required.**",
+      table: { type: { summary: "SideNavigationItem[]" } },
+    },
+    footerItems: {
+      control: false,
+      description:
+        "Items pinned to the bottom of the rail, separated by a divider.",
+      table: { type: { summary: "SideNavigationItem[]" } },
+    },
+    selectedItemId: {
+      control: false,
+      description: "The id of the selected item (controlled).",
+      table: { type: { summary: "string" } },
+    },
+    defaultSelectedItemId: {
+      control: false,
+      description: "The id of the item selected initially (uncontrolled).",
+      table: { type: { summary: "string" } },
+    },
+    onSelect: {
+      control: false,
+      description:
+        "Called with the id of an item or sub-item when it is selected.",
+      table: { type: { summary: "(id: string) => void" } },
+    },
+    expanded: {
+      control: false,
+      description:
+        "Whether the rail is expanded to reveal labels (controlled).",
+      table: { type: { summary: "boolean" } },
+    },
+    defaultExpanded: {
+      control: "boolean",
+      description: "Whether the rail is expanded initially (uncontrolled).",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
+    onExpandedChange: {
+      control: false,
+      description:
+        "Called with the next expanded state when the toggle is used.",
+      table: { type: { summary: "(expanded: boolean) => void" } },
+    },
+    collapsible: {
+      control: "boolean",
+      description:
+        "Whether to render the expand/collapse toggle button. When `false` the rail stays fixed in its current expanded state.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "true" },
+      },
+    },
+    togglePosition: {
+      control: "radio",
+      options: ["top", "bottom"],
+      description:
+        "Where the toggle button is rendered: above the items, or pinned to the bottom alongside `footerItems`.",
+      table: {
+        type: { summary: '"top" | "bottom"' },
+        defaultValue: { summary: '"top"' },
+      },
+    },
+    defaultOpenItemIds: {
+      control: false,
+      description: "The ids of group items whose sub-items are open initially.",
+      table: { type: { summary: "string[]" }, defaultValue: { summary: "[]" } },
+    },
+    expandedWidth: {
+      control: "number",
+      description: "Width in pixels of the rail when expanded.",
+      table: { type: { summary: "number" }, defaultValue: { summary: "260" } },
+    },
+    expandLabel: {
+      control: "text",
+      description:
+        "Accessible label and tooltip for the toggle button while collapsed.",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: '"Expand navigation"' },
+      },
+    },
+    collapseLabel: {
+      control: "text",
+      description:
+        "Accessible label and tooltip for the toggle button while expanded.",
+      table: {
+        type: { summary: "string" },
+        defaultValue: { summary: '"Collapse navigation"' },
+      },
+    },
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+/**
+ * All args are wired up here — use the **Controls** panel below to toggle
+ * `togglePosition`, `collapsible`, `defaultExpanded`, `expandedWidth`, and the
+ * toggle labels and see the rail update live.
+ */
+export const Interactive: Story = {
+  render: (args) => {
+    const styles = useStyles();
+
+    return (
+      <div className={styles.frame}>
+        <SideNavigation {...args} />
+      </div>
+    );
+  },
+};
 
 /**
  * A collapsible rail that starts collapsed. The toggle button at the top expands
@@ -104,7 +279,8 @@ export const IconOnlyRail: Story = {
 /**
  * Starting expanded with `defaultExpanded`, this rail reveals labels, group
  * chevrons, and nested sub-items. Groups seeded with `defaultOpenItemIds` are
- * open initially.
+ * open initially. Use the toggle button to collapse the rail and hover an
+ * item with sub-items to see them appear in a foldout menu instead.
  */
 export const ExpandedWithSubMenus: Story = {
   render: () => {
@@ -113,6 +289,22 @@ export const ExpandedWithSubMenus: Story = {
     return (
       <div className={styles.frame}>
         <CollapsibleSideNavigationExample />
+      </div>
+    );
+  },
+};
+
+/**
+ * Setting `togglePosition="bottom"` pins the expand/collapse toggle below the
+ * items, alongside any `footerItems`, instead of above them.
+ */
+export const ToggleAtBottom: Story = {
+  render: () => {
+    const styles = useStyles();
+
+    return (
+      <div className={styles.frame}>
+        <BottomToggleSideNavigationExample />
       </div>
     );
   },

@@ -71,16 +71,33 @@ describe("SideNavigation", () => {
   it("should not change selection in controlled mode without consumer update", () => {
     const onSelect = vi.fn();
     const { getByRole } = renderNav(
-      <SideNavigation items={items} selectedItemId="home" onSelect={onSelect} />
+      <SideNavigation
+        items={items}
+        footerItems={footerItems}
+        selectedItemId="home"
+        onSelect={onSelect}
+      />
+    );
+
+    fireEvent.click(getByRole("button", { name: "Settings" }));
+
+    expect(onSelect).toHaveBeenCalledWith("settings");
+    expect(getByRole("button", { name: "Settings" })).not.toHaveAttribute(
+      "aria-current",
+      "page"
+    );
+  });
+
+  it("should not select a group label when clicked, only toggle it", () => {
+    const onSelect = vi.fn();
+    const { getByRole, queryByText } = renderNav(
+      <SideNavigation items={items} onSelect={onSelect} defaultExpanded />
     );
 
     fireEvent.click(getByRole("button", { name: "Workspaces" }));
 
-    expect(onSelect).toHaveBeenCalledWith("workspaces");
-    expect(getByRole("button", { name: "Workspaces" })).not.toHaveAttribute(
-      "aria-current",
-      "page"
-    );
+    expect(onSelect).not.toHaveBeenCalled();
+    expect(queryByText("Personal")).toBeInTheDocument();
   });
 
   it("should not select a disabled item", () => {
@@ -115,6 +132,24 @@ describe("SideNavigation", () => {
     expect(
       queryByRole("button", { name: "Expand navigation" })
     ).not.toBeInTheDocument();
+  });
+
+  it("should render the toggle after the footer items when togglePosition is bottom", () => {
+    const { getByRole } = renderNav(
+      <SideNavigation
+        items={items}
+        footerItems={footerItems}
+        togglePosition="bottom"
+      />
+    );
+
+    const toggle = getByRole("button", { name: "Expand navigation" });
+    const settings = getByRole("button", { name: "Settings" });
+
+    expect(
+      toggle.compareDocumentPosition(settings) &
+        Node.DOCUMENT_POSITION_PRECEDING
+    ).toBeTruthy();
   });
 
   it("should reveal sub-items when expanded and the group is open", () => {

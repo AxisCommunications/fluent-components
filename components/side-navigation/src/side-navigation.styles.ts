@@ -19,6 +19,8 @@ export const sideNavigationClassNames = {
   group: `${componentId}__group`,
   subItem: `${componentId}__sub-item`,
   subItemSelected: `${componentId}__sub-item--selected`,
+  flyoutItem: `${componentId}__flyout-item`,
+  flyoutItemSelected: `${componentId}__flyout-item--selected`,
 } as const;
 
 export type SideNavigationSlot = keyof typeof sideNavigationClassNames;
@@ -274,6 +276,22 @@ const useStyles = makeStyles({
     "&:hover": {
       backgroundColor: tokens.colorNeutralBackground2Pressed,
       color: tokens.colorNeutralForeground1,
+    },
+  },
+  flyoutItemSelected: {
+    color: tokens.colorNeutralForeground1,
+    fontWeight: tokens.fontWeightSemibold,
+    backgroundColor: tokens.colorNeutralBackground2Pressed,
+    "&:hover": {
+      backgroundColor: tokens.colorNeutralBackground2Pressed,
+      color: tokens.colorNeutralForeground1,
+    },
+  },
+  // Menu auto-focuses the first item when it opens on hover; suppress the
+  // resulting focus-visible ring since it isn't a real keyboard interaction.
+  flyoutItem: {
+    "&::after": {
+      ...shorthands.borderColor("transparent"),
     },
   },
 });

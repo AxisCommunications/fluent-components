@@ -75,11 +75,21 @@ export const SideNavigationExample = () => {
 
 ## Behaviour
 
-- **Collapsed rail (default):** shows only icons in a fixed 68px column.
+- **Collapsed rail (default):** shows only icons in a fixed 68px column. An
+  item with `children` opens a foldout menu on hover (or focus) instead of an
+  inline group, so its sub-items stay reachable without expanding the rail.
 - **Expanded:** reveals labels beside icons, chevrons for groups, and any open
   sub-items. The width animates between the rail and `expandedWidth`.
+- **Group labels aren't pages:** an item with `children` only toggles its
+  group open or closed when clicked — it never becomes the selected item.
+  Only an actual sub-item (or a childless item) can be selected.
 - **Selection indicator:** a sliding marker animates to the selected item or
-  sub-item. While collapsed it is hidden for sub-items that are not visible.
+  sub-item. When the selected sub-item isn't currently rendered (collapsed
+  rail, or its group is closed), the marker sticks to the parent category
+  instead.
+- **Auto-opening the right group:** selecting a sub-item from the collapsed
+  rail's foldout menu remembers its parent group; expanding the rail again
+  opens just that group and collapses any others.
 - **Controlled or uncontrolled:** both selection (`selectedItemId` /
   `defaultSelectedItemId`) and the expanded state (`expanded` /
   `defaultExpanded`) can be driven by the consumer or managed internally.
@@ -97,6 +107,7 @@ export const SideNavigationExample = () => {
 | `defaultExpanded`       | `boolean`                   | `false`               | Whether the rail is expanded initially (uncontrolled).            |
 | `onExpandedChange`      | `(expanded: boolean) => void` | —                   | Called with the next expanded state when the toggle is used.      |
 | `collapsible`           | `boolean`                   | `true`                | Whether to render the expand/collapse toggle button.              |
+| `togglePosition`        | `"top" \| "bottom"`       | `"top"`               | Where the toggle button is rendered: above the items, or pinned to the bottom alongside `footerItems`. |
 | `defaultOpenItemIds`    | `string[]`                  | `[]`                  | Ids of group items whose sub-items are open initially.            |
 | `expandedWidth`         | `number`                    | `260`                 | Width in pixels of the rail when expanded.                        |
 | `expandLabel`           | `string`                    | `"Expand navigation"` | Accessible label/tooltip for the toggle while collapsed.          |
@@ -133,6 +144,7 @@ All other props are forwarded to the underlying `<nav>` element (e.g.
 - Group items expose `aria-expanded`, and the collapse/expand toggle exposes
   both `aria-expanded` and an accessible label (`expandLabel` / `collapseLabel`).
 - While collapsed, each item's `label` is used as its accessible name and
-  tooltip so icon-only items remain understandable.
+  tooltip so icon-only items remain understandable; a foldout menu for its
+  sub-items uses Fluent's `Menu` primitives (`role="menu"`/`role="menuitem"`).
 - Animations are disabled when the user prefers reduced motion.
 ```

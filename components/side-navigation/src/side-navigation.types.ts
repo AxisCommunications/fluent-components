@@ -30,6 +30,8 @@ export type SideNavigationItem = {
   /**
    * Nested items revealed when the item's group is open. Items with children
    * render a chevron and act as expandable groups while the rail is expanded.
+   * While the rail is collapsed, these instead appear in a foldout menu that
+   * opens when the item is hovered.
    */
   children?: SideNavigationSubItem[];
   /** When `true`, the item is rendered dimmed and cannot be selected. */
@@ -64,6 +66,12 @@ export type SideNavigationProps = Omit<ComponentProps<"nav">, "onSelect"> & {
    * stays fixed in its current expanded state. Defaults to `true`.
    */
   collapsible?: boolean;
+  /**
+   * Where the expand/collapse toggle button is rendered: above the items or
+   * pinned to the bottom of the rail (alongside {@link footerItems}, if any).
+   * Defaults to `"top"`.
+   */
+  togglePosition?: "top" | "bottom";
   /** The ids of group items whose sub-items are open initially. */
   defaultOpenItemIds?: string[];
   /** Width in pixels of the rail when expanded. Defaults to `260`. */
