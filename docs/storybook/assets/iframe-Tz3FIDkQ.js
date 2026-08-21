@@ -1,0 +1,1 @@
+import{t as e}from"./iframe-GPTJaq_A.js";e();

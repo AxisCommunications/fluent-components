@@ -291,7 +291,35 @@
           "snippet": "const Interactive = () => <BreadcrumbHeader\n    breadcrumbs={[\n      { label: \"Europe\", onClick: () => console.log(\"Europe\") },\n      { label: \"Norway\", onClick: () => console.log(\"Norway\") },\n      { label: \"Bergen\", onClick: () => console.log(\"Bergen\") },\n    ]}\n    title=\"City\" />;"
         }
       ],
-      "import": "import { BreadcrumbHeader } from \"examples\";"
+      "import": "import { BreadcrumbHeader } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/BreadcrumbHeader.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusSmall",
+          "tokens.colorCompoundBrandForeground1",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralForeground2Hover",
+          "tokens.colorNeutralForeground2Pressed",
+          "tokens.colorNeutralForeground3",
+          "tokens.fontSizeBase300",
+          "tokens.fontSizeBase400",
+          "tokens.fontWeightSemibold",
+          "tokens.lineHeightBase400",
+          "tokens.spacingHorizontalSNudge",
+          "tokens.spacingHorizontalXXS",
+          "tokens.spacingVerticalSNudge",
+          "tokens.spacingVerticalXXL",
+          "tokens.spacingVerticalXXS"
+        ],
+        "rawValues": [
+          "100%",
+          "20px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-canvas-controls": {
       "id": "ui-patterns-canvas-controls",
@@ -678,7 +706,21 @@
           "description": "The zoom in and out buttons disable themselves at the ends of the range, and\nsnap to the `zoomStep` grid, so a dragged value like 137% still steps to 150%\nor 125% rather than 162% or 112%."
         }
       ],
-      "import": "import {\n    ArrowMinimizeVerticalRegular,\n    CanvasControls,\n    CursorRegular,\n    HandRightRegular,\n    ScaleFillRegular,\n} from \"examples\";"
+      "import": "import {\n    ArrowMinimizeVerticalRegular,\n    CanvasControls,\n    CursorRegular,\n    HandRightRegular,\n    ScaleFillRegular,\n} from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/CanvasControls.tsx"
+        ],
+        "tokens": [
+          "tokens.shadow2",
+          "tokens.spacingVerticalXS"
+        ],
+        "rawValues": [
+          "120%",
+          "32px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-data-display": {
       "id": "ui-patterns-data-display",
@@ -877,7 +919,39 @@
           "snippet": "const Interactive = () => <StatCard />;"
         }
       ],
-      "import": "import { StatCard } from \"examples\";"
+      "import": "import { StatCard } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/StatCard.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusMedium",
+          "tokens.colorBrandForeground1",
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralForeground3",
+          "tokens.colorNeutralStroke1",
+          "tokens.colorStatusDangerForeground1",
+          "tokens.colorStatusSuccessForeground1",
+          "tokens.fontSizeBase200",
+          "tokens.fontSizeBase300",
+          "tokens.fontSizeBase500",
+          "tokens.fontSizeBase600",
+          "tokens.fontWeightBold",
+          "tokens.fontWeightSemibold",
+          "tokens.spacingHorizontalXS",
+          "tokens.spacingHorizontalXXXL",
+          "tokens.spacingVerticalL",
+          "tokens.spacingVerticalS",
+          "tokens.spacingVerticalXS",
+          "tokens.strokeWidthThin"
+        ],
+        "rawValues": [
+          "-5%"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-dynamic-tab-list": {
       "id": "ui-patterns-dynamic-tab-list",
@@ -1167,7 +1241,49 @@
           "description": "Tabs accept any Fluent icon, so a workspace can distinguish document types at\na glance instead of repeating the default file glyph."
         }
       ],
-      "import": "import {\n    ArrowSyncRegular,\n    CodeRegular,\n    DocumentBulletListRegular,\n    DocumentRegular,\n    DynamicTabList,\n    RenameRegular,\n} from \"examples\";"
+      "import": "import {\n    ArrowSyncRegular,\n    CodeRegular,\n    DocumentBulletListRegular,\n    DocumentRegular,\n    DynamicTabList,\n    RenameRegular,\n} from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/DynamicTabList.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusCircular",
+          "tokens.borderRadiusMedium",
+          "tokens.borderRadiusSmall",
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralForeground3",
+          "tokens.colorNeutralForegroundDisabled",
+          "tokens.colorNeutralStroke2",
+          "tokens.colorStrokeFocus2",
+          "tokens.colorSubtleBackground",
+          "tokens.colorSubtleBackgroundHover",
+          "tokens.colorSubtleBackgroundPressed",
+          "tokens.colorSubtleBackgroundSelected",
+          "tokens.fontFamilyBase",
+          "tokens.fontSizeBase300",
+          "tokens.fontWeightRegular",
+          "tokens.fontWeightSemibold",
+          "tokens.lineHeightBase300",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingHorizontalXS",
+          "tokens.spacingHorizontalXXS",
+          "tokens.strokeWidthThick",
+          "tokens.strokeWidthThin"
+        ],
+        "rawValues": [
+          "-1px",
+          "100%",
+          "1px",
+          "20px",
+          "32px",
+          "44px",
+          "50%",
+          "6px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-file-upload": {
       "id": "ui-patterns-file-upload",
@@ -1419,7 +1535,39 @@
           "snippet": "const SingleFile = () => <FileUpload\n    title=\"Upload profile document\"\n    description=\"Select a single file to continue.\"\n    ctaLabel=\"Choose file\"\n    helperText=\"One PDF file only.\"\n    acceptedFileTypes={[\".pdf\"]}\n    allowMultiple={false}\n    maxFiles={1} />;"
         }
       ],
-      "import": "import { FileUpload } from \"examples\";"
+      "import": "import { FileUpload } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/FileUpload.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusLarge",
+          "tokens.colorCompoundBrandStroke",
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralBackground1Hover",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralForeground3",
+          "tokens.colorNeutralStroke2",
+          "tokens.colorPaletteGreenForeground1",
+          "tokens.curveEasyEase",
+          "tokens.durationNormal",
+          "tokens.fontWeightSemibold",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalXL",
+          "tokens.spacingVerticalL",
+          "tokens.spacingVerticalM",
+          "tokens.spacingVerticalS",
+          "tokens.spacingVerticalXXL",
+          "tokens.strokeWidthThin"
+        ],
+        "rawValues": [
+          "100%",
+          "200px",
+          "640px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-filter-chip": {
       "id": "ui-patterns-filter-chip",
@@ -1697,7 +1845,17 @@
           "description": "Available chip appearances. Click to toggle, X to remove."
         }
       ],
-      "import": "import { FilterChip, FilterChipGroup } from \"examples\";"
+      "import": "import { FilterChip, FilterChipGroup } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/FilterChip.tsx"
+        ],
+        "tokens": [
+          "tokens.spacingHorizontalXS"
+        ],
+        "rawValues": [],
+        "hexColors": []
+      }
     },
     "ui-patterns-filter-toolbar": {
       "id": "ui-patterns-filter-toolbar",
@@ -2025,7 +2183,31 @@
           "snippet": "const ToolbarOnly = () => <FilterToolbar\n    filters={[\n      { id: \"status-open\", label: \"Status: Open\" },\n      { id: \"priority-low\", label: \"Priority: Low\" },\n    ]}\n    searchPlaceholder=\"Search\"\n    primaryActions={[\n      { id: \"refresh\", label: \"Refresh\", appearance: \"primary\" },\n      { id: \"export\", label: \"Export\", appearance: \"secondary\" },\n    ]}\n    selectedFilterIds={[]}\n    filterButtonLabel=\"Filters\"\n    filterButtonIcon={<FilterRegular />} />;"
         }
       ],
-      "import": "import { FilterRegular, FilterToolbar } from \"examples\";"
+      "import": "import { FilterRegular, FilterToolbar } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/FilterToolbar.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusCircular",
+          "tokens.borderRadiusMedium",
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.fontSizeBase100",
+          "tokens.fontWeightSemibold",
+          "tokens.lineHeightBase200",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingHorizontalXS",
+          "tokens.spacingVerticalS",
+          "tokens.spacingVerticalXS"
+        ],
+        "rawValues": [
+          "100%",
+          "220px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-form-field": {
       "id": "ui-patterns-form-field",
@@ -2226,7 +2408,17 @@
           "description": "A complete registration form with client-side validation.\nRequired fields show errors on submit; each error clears as the user types."
         }
       ],
-      "import": "import { Button, FormField, Input } from \"examples\";"
+      "import": "import { Button, FormField, Input } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/FormField.tsx"
+        ],
+        "tokens": [
+          "tokens.spacingVerticalS"
+        ],
+        "rawValues": [],
+        "hexColors": []
+      }
     },
     "ui-patterns-full-page-header": {
       "id": "ui-patterns-full-page-header",
@@ -2496,7 +2688,31 @@
           "description": "Settings/configuration pages that do not auto-save expose their commit\ncontrols in the header `actions` slot. This interactive example demonstrates\nthe full dirty-state lifecycle:\n\n- Edit any field to mark the form dirty — **Save** promotes itself to the\n  `primary` appearance and **Reset** becomes enabled.\n- **Reset** discards edits and returns the form to its last saved state,\n  which makes both actions inactive again.\n- **Save** persists the values (here, into the \"saved\" baseline), after which\n  the form is pristine and Save drops back to a disabled `secondary` button."
         }
       ],
-      "import": "import {\n    ArrowResetRegular,\n    Card,\n    Field,\n    FullPageHeader,\n    Input,\n    SaveRegular,\n    Textarea,\n} from \"examples\";"
+      "import": "import {\n    ArrowResetRegular,\n    Card,\n    Field,\n    FullPageHeader,\n    Input,\n    SaveRegular,\n    Textarea,\n} from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/FullPageHeader.tsx"
+        ],
+        "tokens": [
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.fontSizeBase200",
+          "tokens.fontWeightSemibold",
+          "tokens.lineHeightBase200",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingHorizontalXS",
+          "tokens.spacingVerticalSNudge",
+          "tokens.spacingVerticalXXS"
+        ],
+        "rawValues": [
+          "-2px",
+          "0px",
+          "100%",
+          "160px",
+          "24px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-inline-filter-drawer": {
       "id": "ui-patterns-inline-filter-drawer",
@@ -3106,7 +3322,42 @@
           "description": "Responsive Width\n\nEnables `responsiveWidth` so the drawer collapses to a compact width on small\nviewports using the `smallViewport*` props. Use when the same layout must work\nacross desktop and narrow screens without hiding the filters entirely. Resize\nthe preview to see the width adapt."
         }
       ],
-      "import": "import {\n    Building20Regular,\n    ConferenceRoom20Regular,\n    Folder20Regular,\n    Globe20Regular,\n    InlineFilterDrawer,\n    Layer20Regular,\n    Location20Regular,\n} from \"examples\";"
+      "import": "import {\n    Building20Regular,\n    ConferenceRoom20Regular,\n    Folder20Regular,\n    Globe20Regular,\n    InlineFilterDrawer,\n    Layer20Regular,\n    Location20Regular,\n} from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/InlineFilterDrawer.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusCircular",
+          "tokens.borderRadiusMedium",
+          "tokens.borderRadiusSmall",
+          "tokens.colorNeutralBackground3",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralForeground3",
+          "tokens.colorNeutralStroke1",
+          "tokens.colorNeutralStroke2",
+          "tokens.fontSizeBase200",
+          "tokens.fontSizeBase400",
+          "tokens.fontWeightSemibold",
+          "tokens.lineHeightBase200",
+          "tokens.lineHeightBase400",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalXS",
+          "tokens.spacingHorizontalXXS",
+          "tokens.spacingVerticalS",
+          "tokens.spacingVerticalXXS",
+          "tokens.strokeWidthThick",
+          "tokens.strokeWidthThin"
+        ],
+        "rawValues": [
+          "0px",
+          "100%",
+          "40px",
+          "50%"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-message-bar": {
       "id": "ui-patterns-message-bar",
@@ -3308,7 +3559,27 @@
           "description": "Header with actions but no description."
         }
       ],
-      "import": "import { PageHeader } from \"examples\";"
+      "import": "import { PageHeader } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/PageHeader.tsx"
+        ],
+        "tokens": [
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralStroke1",
+          "tokens.fontSizeBase300",
+          "tokens.fontSizeBase600",
+          "tokens.fontWeightBold",
+          "tokens.spacingHorizontalL",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingVerticalL",
+          "tokens.spacingVerticalM",
+          "tokens.spacingVerticalS"
+        ],
+        "rawValues": [],
+        "hexColors": []
+      }
     },
     "ui-patterns-pagination": {
       "id": "ui-patterns-pagination",
@@ -3632,7 +3903,31 @@
           "description": "Interactive pagination with full state management.\nTry using the dropdown selector or navigation buttons to switch pages."
         }
       ],
-      "import": "import { Pagination } from \"examples\";"
+      "import": "import { Pagination } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/Pagination.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusSmall",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralStroke1",
+          "tokens.fontSizeBase300",
+          "tokens.fontWeightSemibold",
+          "tokens.spacingHorizontalL",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingHorizontalXS",
+          "tokens.spacingVerticalM",
+          "tokens.strokeWidthThin"
+        ],
+        "rawValues": [
+          "100%",
+          "56px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-responsive-layout": {
       "id": "ui-patterns-responsive-layout",
@@ -3825,7 +4120,35 @@
           "snippet": "const Empty = () => <SectionHeader\n    meta={undefined}\n    title={undefined}\n    description={undefined}\n    actions={undefined} />;"
         }
       ],
-      "import": "import { AddRegular, ArrowSyncRegular, SectionHeader } from \"examples\";"
+      "import": "import { AddRegular, ArrowSyncRegular, SectionHeader } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/SectionHeader.tsx"
+        ],
+        "tokens": [
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralStroke2",
+          "tokens.fontSizeBase100",
+          "tokens.fontSizeBase200",
+          "tokens.fontSizeBase500",
+          "tokens.fontWeightSemibold",
+          "tokens.lineHeightBase200",
+          "tokens.lineHeightBase300",
+          "tokens.lineHeightBase500",
+          "tokens.spacingHorizontalL",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingVerticalL",
+          "tokens.spacingVerticalM",
+          "tokens.spacingVerticalXS",
+          "tokens.spacingVerticalXXS"
+        ],
+        "rawValues": [
+          "0.08em",
+          "100%"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-sticky-save": {
       "id": "ui-patterns-sticky-save",
@@ -4061,7 +4384,31 @@
           "description": "The bar in isolation, forced visible via the `visible` control. Use the\ncontrols to explore labels, the saving spinner, and the disabled state."
         }
       ],
-      "import": "import {\n    Divider,\n    Dropdown,\n    Field,\n    Input,\n    Label,\n    Option,\n    StickySave,\n    Switch,\n    Text,\n    Textarea,\n} from \"examples\";"
+      "import": "import {\n    Divider,\n    Dropdown,\n    Field,\n    Input,\n    Label,\n    Option,\n    StickySave,\n    Switch,\n    Text,\n    Textarea,\n} from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/StickySave.tsx"
+        ],
+        "tokens": [
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralStroke1",
+          "tokens.curveAccelerateMax",
+          "tokens.curveDecelerateMax",
+          "tokens.durationNormal",
+          "tokens.shadow16",
+          "tokens.spacingHorizontalL",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingVerticalS",
+          "tokens.strokeWidthThin"
+        ],
+        "rawValues": [
+          "100%",
+          "56px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-suite-header": {
       "id": "ui-patterns-suite-header",
@@ -4593,7 +4940,56 @@
           "description": "Click the help button to open its flyout. Actions can carry a `flyout` of\ntheir own, which opens in a popover anchored to the button just like the app\nlauncher."
         }
       ],
-      "import": "import {\n    AlertRegular,\n    CalendarRegular,\n    ChatRegular,\n    Divider,\n    Link,\n    QuestionCircleRegular,\n    SettingsRegular,\n    ShareRegular,\n    SuiteHeader,\n} from \"examples\";\nimport { Fragment } from \"react\";"
+      "import": "import {\n    AlertRegular,\n    CalendarRegular,\n    ChatRegular,\n    Divider,\n    Link,\n    QuestionCircleRegular,\n    SettingsRegular,\n    ShareRegular,\n    SuiteHeader,\n} from \"examples\";\nimport { Fragment } from \"react\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/suite/SuiteHeader.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusMedium",
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralBackground2",
+          "tokens.colorNeutralBackground4",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground2",
+          "tokens.colorNeutralForeground3",
+          "tokens.colorNeutralStroke2",
+          "tokens.colorPaletteYellowBorderActive",
+          "tokens.fontSizeBase100",
+          "tokens.fontSizeBase200",
+          "tokens.fontSizeBase300",
+          "tokens.fontWeightSemibold",
+          "tokens.lineHeightBase100",
+          "tokens.lineHeightBase200",
+          "tokens.lineHeightBase300",
+          "tokens.spacingHorizontalL",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingHorizontalXS",
+          "tokens.spacingHorizontalXXS",
+          "tokens.spacingVerticalXS"
+        ],
+        "rawValues": [
+          "0.02em",
+          "100%",
+          "10px",
+          "12px",
+          "16px",
+          "180px",
+          "1px",
+          "20px",
+          "24px",
+          "28px",
+          "48px",
+          "4px",
+          "560px",
+          "68px",
+          "6px",
+          "84px",
+          "8px"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-table-patterns": {
       "id": "ui-patterns-table-patterns",
@@ -4658,7 +5054,31 @@
           "description": "Interactive table story."
         }
       ],
-      "import": "import { DataTable } from \"examples\";"
+      "import": "import { DataTable } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/DataTable.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusSmall",
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralBackground1Hover",
+          "tokens.colorNeutralBackground2",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralStroke1",
+          "tokens.durationFaster",
+          "tokens.fontSizeBase300",
+          "tokens.fontWeightBold",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingVerticalM",
+          "tokens.strokeWidthThick",
+          "tokens.strokeWidthThin"
+        ],
+        "rawValues": [
+          "100%"
+        ],
+        "hexColors": []
+      }
     },
     "ui-patterns-video-control-bar": {
       "id": "ui-patterns-video-control-bar",
@@ -4838,7 +5258,39 @@
           "description": "Resolution and framing controls, isolated to show a segmented cluster."
         }
       ],
-      "import": "import {\n    CameraRegular,\n    FullScreenMaximizeRegular,\n    FullScreenMinimizeRegular,\n    OptionsRegular,\n    PauseFilled,\n    PlayFilled,\n    RatioOneToOneRegular,\n    RecordRegular,\n    RectangleLandscapeRegular,\n    SettingsRegular,\n    StorageRegular,\n    VideoControlBar,\n    WeatherMoonRegular,\n} from \"examples\";"
+      "import": "import {\n    CameraRegular,\n    FullScreenMaximizeRegular,\n    FullScreenMinimizeRegular,\n    OptionsRegular,\n    PauseFilled,\n    PlayFilled,\n    RatioOneToOneRegular,\n    RecordRegular,\n    RectangleLandscapeRegular,\n    SettingsRegular,\n    StorageRegular,\n    VideoControlBar,\n    WeatherMoonRegular,\n} from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/VideoControlBar.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusMedium",
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralBackground1Selected",
+          "tokens.colorNeutralBackground3",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralStroke2",
+          "tokens.colorPaletteRedForeground1",
+          "tokens.fontSizeBase300",
+          "tokens.fontWeightSemibold",
+          "tokens.lineHeightBase300",
+          "tokens.spacingHorizontalL",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingHorizontalXXS",
+          "tokens.spacingVerticalS"
+        ],
+        "rawValues": [
+          "100%",
+          "1px",
+          "20px",
+          "32px"
+        ],
+        "hexColors": [
+          "#292929",
+          "#ffffff"
+        ]
+      }
     },
     "ui-patterns-wizard": {
       "id": "ui-patterns-wizard",
@@ -5295,7 +5747,56 @@
           "description": "**Compact inline drawer** (`layout=\"compact\"`, `surface=\"inline\"`). Same\ncompact stepper, but docked into the page: square corners and a leading\ndivider instead of rounded corners and a shadow."
         }
       ],
-      "import": "import { Wizard } from \"examples\";"
+      "import": "import { Wizard } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/Wizard.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusCircular",
+          "tokens.borderRadiusLarge",
+          "tokens.colorBrandBackground",
+          "tokens.colorNeutralBackground1",
+          "tokens.colorNeutralBackground2",
+          "tokens.colorNeutralBackground3",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground3",
+          "tokens.colorNeutralForeground4",
+          "tokens.colorNeutralForegroundDisabled",
+          "tokens.colorNeutralForegroundOnBrand",
+          "tokens.colorNeutralStroke1",
+          "tokens.colorNeutralStrokeAccessible",
+          "tokens.colorStatusDangerForeground1",
+          "tokens.colorStrokeFocus2",
+          "tokens.colorSubtleBackgroundHover",
+          "tokens.curveDecelerateMid",
+          "tokens.durationNormal",
+          "tokens.fontWeightSemibold",
+          "tokens.shadow64",
+          "tokens.spacingHorizontalL",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingHorizontalXXL",
+          "tokens.spacingVerticalL",
+          "tokens.spacingVerticalM",
+          "tokens.spacingVerticalS",
+          "tokens.spacingVerticalXXL"
+        ],
+        "rawValues": [
+          "100%",
+          "12px",
+          "1440px",
+          "14px",
+          "18px",
+          "20px",
+          "24px",
+          "268px",
+          "2px",
+          "480px",
+          "8px"
+        ],
+        "hexColors": []
+      }
     },
     "components-empty-view": {
       "id": "components-empty-view",
@@ -5641,6 +6142,29 @@
           "content": "import { Canvas, Controls, Description, Meta, Story, Subtitle, Title } from \"@storybook/addon-docs/blocks\";\nimport * as EmptyViewStories from \"./empty-view.stories\";\n\n<Meta of={EmptyViewStories} />\n\n<Title />\n<Subtitle>Contextual empty states for main, panel, submenu, and dialog layouts.</Subtitle>\n<Description>\nThe empty view package provides presentation variants for no-data states.\nUse the variant that matches the container where the empty state is rendered.\n</Description>\n\n## Exports\n\n- MainEmptyView\n- PanelEmptyView\n- SubmenuEmptyView\n- DialogEmptyView\n\n## Installation\n\n```bash\npnpm add @axiscommunications/fluent-empty-view\n```\n\n## Props\n\nAuto-generated from the `MainEmptyView` component props. The `PanelEmptyView`,\n`SubmenuEmptyView`, and `DialogEmptyView` variants share the same prop shape.\n\n<Controls />\n\n## Examples\n\n<Canvas of={EmptyViewStories.Main} />\n<Canvas of={EmptyViewStories.Panel} />\n<Canvas of={EmptyViewStories.Submenu} />\n<Canvas of={EmptyViewStories.Dialog} />\n\n## Guidance\n\n- MainEmptyView: use for full-page or large content areas.\n- PanelEmptyView: use inside side panels and constrained surfaces.\n- SubmenuEmptyView: use in compact navigation or submenu regions.\n- DialogEmptyView: use in dialog content with limited height.\n",
           "summary": "Contextual empty states for main, panel, submenu, and dialog layouts. The empty view packa..."
         }
+      },
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/components/empty-view/src/styles.ts"
+        ],
+        "tokens": [
+          "tokens.colorNeutralForeground2",
+          "tokens.spacingVerticalL",
+          "tokens.spacingVerticalS",
+          "tokens.spacingVerticalXS"
+        ],
+        "rawValues": [
+          "100%",
+          "115px",
+          "140px",
+          "160px",
+          "200px",
+          "230px",
+          "500px",
+          "60px",
+          "80px"
+        ],
+        "hexColors": []
       }
     },
     "components-password-input": {
@@ -5985,6 +6509,6 @@
   },
   "meta": {
     "docgen": "react-docgen-typescript",
-    "durationMs": 5023
+    "durationMs": 4730
   }
 }
