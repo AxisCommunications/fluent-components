@@ -1,0 +1,8 @@
+import{a as e,n as t,r as n}from"./rolldown-runtime-DkW27tQK.js";import{t as r}from"./react-BZJXY1be.js";import{G as i,K as a}from"./tokens-vLGBt8wU.js";import{n as o,t as s}from"./mergeClasses.esm-CfqCpu6e.js";import{t as c}from"./jsx-runtime-DeHZSEgm.js";import{i as l,n as u,t as d}from"./chunk-15-D8BrIkVB.js";import{n as f,t as p}from"./Input-DCS5zo0u.js";var m,h;function g(){return(g=t((()=>{i(),m=typeof window<`u`&&/Edge\/\d./i.test(navigator.userAgent),h=a({edgeHack:m?{"&::-ms-reveal":{display:`none`}}:{}})})))()}var _,v,y;function b(){return(b=t((()=>{_=e(r(),1),f(),s(),l(),g(),v=c(),y=_.forwardRef((e,t)=>{let{className:n,...r}=e,i=h(),a=o(i.edgeHack,n),[s,c]=(0,_.useState)(!1),l={style:{cursor:`pointer`},onClick:(0,_.useCallback)(()=>{c(e=>!e)},[])};return(0,v.jsx)(p,{ref:t,type:s?`text`:`password`,contentAfter:s?(0,v.jsx)(d,{...l}):(0,v.jsx)(u,{...l}),className:a,...r})})})))()}function x(){return(x=t((()=>{b(),g()})))()}function S(){return(0,C.jsx)(y,{})}var C;function w(){return(w=t((()=>{x(),C=c()})))()}var T=n({Default:()=>k,__namedExportsOrder:()=>A,default:()=>O}),E,D,O,k,A;function j(){return(j=t((()=>{x(),i(),w(),E=c(),D=a({frame:{maxWidth:`400px`}}),O={title:`Components/Password Input`,component:y},k={render:function(){let e=D();return(0,E.jsx)(`div`,{className:e.frame,children:(0,E.jsx)(S,{})})}},k.parameters={...k.parameters,docs:{...k.parameters?.docs,source:{originalSource:`{
+  render: function Render() {
+    const styles = useStyles();
+    return <div className={styles.frame}>
+        <PasswordInputExample />
+      </div>;
+  }
+}`,...k.parameters?.docs?.source}}},A=[`Default`]})))()}export{j as n,T as r,k as t};
