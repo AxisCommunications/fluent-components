@@ -15,6 +15,9 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  features: {
+    componentsManifest: true,
+  },
   typescript: {
     // Auto-generate the ArgTypes / Controls table from each component's
     // TypeScript prop types instead of relying on hand-written argTypes.

@@ -1,27 +1,26 @@
 import {
   Button,
   Text,
-  Tooltip,
   makeStyles,
   mergeClasses,
   tokens,
   typographyStyles,
 } from "@fluentui/react-components";
 import {
-  CheckmarkRegular,
+  CheckmarkFilled,
+  CircleRegular,
+  DismissCircleFilled,
   DismissRegular,
-  LightbulbRegular,
-  QuestionCircleRegular,
 } from "@fluentui/react-icons";
 import {
   type ReactNode,
   forwardRef,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
+import { SectionHeader, type SectionHeaderAction } from "./SectionHeader";
 
 /**
  * Controls whether sidebar steps can be clicked to navigate.
@@ -37,8 +36,14 @@ export interface WizardStep {
   /** Label shown next to the step indicator in the sidebar. */
   label: string;
 
+  /** Optional supporting copy shown under the step label in the sidebar. */
+  details?: string;
+
   /** Optional per-step title shown above the content area. */
   stepTitle?: string;
+
+  /** Optional supporting copy shown beneath the step title. */
+  description?: string;
 
   /** Content rendered in the main area when the step is active. */
   content?: ReactNode;
@@ -102,25 +107,121 @@ export interface WizardProps {
    */
   animateContent?: boolean;
 
-  /** Override the top-right header actions. */
-  headerActions?: ReactNode;
+  /**
+   * Step indicator placement.
+   *
+   * - `default`: vertical labelled rail beside the content (modal / large drawer).
+   * - `compact`: horizontal numbered stepper above the content (small drawer / mobile).
+   */
+  layout?: "default" | "compact";
+
+  /**
+   * Surface chrome.
+   *
+   * - `overlay` (default): rounded corners and an elevation shadow.
+   * - `inline`: square corners with a leading divider, for docked drawers.
+   */
+  surface?: "overlay" | "inline";
+
+  /**
+   * Optional header actions rendered next to the close button. Defaults to
+   * none, matching the design where the header carries only the close action.
+   */
+  headerActions?: SectionHeaderAction[];
 
   /** Optional CSS class. */
   className?: string;
 }
 
-const INDICATOR_SIZE = "18px";
-
 const useStyles = makeStyles({
   root: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
+    maxWidth: "1440px",
     height: "100%",
-    minHeight: "520px",
+    minHeight: "480px",
     backgroundColor: tokens.colorNeutralBackground1,
-    borderRadius: tokens.borderRadiusXLarge,
-    boxShadow: tokens.shadow16,
     overflow: "hidden",
+  },
+
+  rootOverlay: {
+    borderRadius: tokens.borderRadiusLarge,
+    boxShadow: tokens.shadow64,
+  },
+
+  rootInline: {
+    borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
+  },
+
+  compactStepper: {
+    display: "flex",
+    alignItems: "center",
+    flexShrink: 0,
+    padding: "10px 24px 12px 20px",
+    backgroundColor: tokens.colorNeutralBackground3,
+    boxShadow: "inset 0 -2px 4px rgba(0,0,0,0.14)",
+    overflowX: "auto",
+  },
+
+  compactStep: {
+    display: "flex",
+    alignItems: "center",
+    flexGrow: 1,
+    flexShrink: 1,
+    minWidth: 0,
+    margin: 0,
+    padding: 0,
+    border: "none",
+    backgroundColor: "transparent",
+    color: "inherit",
+    font: "inherit",
+  },
+
+  compactIndicator: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "24px",
+    height: "24px",
+    flexShrink: 0,
+    borderRadius: tokens.borderRadiusCircular,
+    boxSizing: "border-box",
+    ...typographyStyles.caption1Strong,
+  },
+
+  compactIcon: {
+    width: "24px",
+    height: "24px",
+    fontSize: "24px",
+    flexShrink: 0,
+  },
+
+  compactGlyph: {
+    fontSize: "14px",
+  },
+
+  compactIndicatorPending: {
+    border: `1px solid ${tokens.colorNeutralStrokeAccessible}`,
+    color: tokens.colorNeutralForeground3,
+  },
+
+  compactIndicatorDisabled: {
+    border: `1px solid ${tokens.colorNeutralForegroundDisabled}`,
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+
+  compactStepLast: {
+    flexGrow: 0,
+  },
+
+  compactConnector: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "18px",
+    minWidth: "8px",
+    height: "2px",
+    backgroundColor: tokens.colorNeutralForegroundDisabled,
   },
 
   body: {
@@ -134,9 +235,10 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: 0,
     flexShrink: 0,
-    width: "200px",
-    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalL}`,
-    borderRight: `1px solid ${tokens.colorNeutralStroke2}`,
+    width: "268px",
+    padding: `${tokens.spacingVerticalXXL} ${tokens.spacingHorizontalXXL} ${tokens.spacingVerticalXXL} ${tokens.spacingHorizontalL}`,
+    backgroundColor: tokens.colorNeutralBackground3,
+    boxShadow: "inset -2px 0 4px rgba(0,0,0,0.14)",
     overflowY: "auto",
   },
 
@@ -156,10 +258,28 @@ const useStyles = makeStyles({
 
   stepRow: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "stretch",
     gap: tokens.spacingHorizontalM,
-    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalS}`,
-    borderRadius: tokens.borderRadiusMedium,
+  },
+
+  indicatorColumn: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    flexShrink: 0,
+    width: "20px",
+  },
+
+  stepText: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "2px",
+    minWidth: 0,
+    textAlign: "left",
+  },
+
+  stepTextSpaced: {
+    paddingBottom: tokens.spacingVerticalL,
   },
 
   stepClickable: {
@@ -180,68 +300,49 @@ const useStyles = makeStyles({
     cursor: "not-allowed",
   },
 
-  connectorWrap: {
-    display: "flex",
-    justifyContent: "flex-start",
-    // Align the connector under the centre of the indicator:
-    // row padding-left (spacingHorizontalS = 8px) + half indicator (9px) - half line (1px).
-    paddingLeft: "16px",
-    height: tokens.spacingVerticalM,
-  },
-
   indicator: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: INDICATOR_SIZE,
-    height: INDICATOR_SIZE,
+    width: "20px",
+    height: "20px",
+    fontSize: "20px",
     flexShrink: 0,
     borderRadius: tokens.borderRadiusCircular,
     boxSizing: "border-box",
   },
 
-  indicatorPending: {
-    border: `2px solid ${tokens.colorNeutralStroke1}`,
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
-
-  indicatorActive: {
-    backgroundColor: tokens.colorBrandBackground,
-  },
-
-  indicatorActiveDot: {
-    width: "7px",
-    height: "7px",
-    borderRadius: tokens.borderRadiusCircular,
-    backgroundColor: tokens.colorNeutralForegroundOnBrand,
-  },
-
-  indicatorComplete: {
+  indicatorBrand: {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
   },
 
-  indicatorDone: {
-    backgroundColor: tokens.colorStatusSuccessBackground1,
-    color: tokens.colorStatusSuccessForeground1,
+  indicatorDisabledFill: {
+    backgroundColor: tokens.colorNeutralForegroundDisabled,
+    color: tokens.colorNeutralBackground1,
   },
 
-  indicatorSkipped: {
-    border: `2px solid ${tokens.colorStatusDangerBorder2}`,
-    backgroundColor: tokens.colorNeutralBackground1,
+  indicatorGlyph: {
+    fontSize: "12px",
   },
 
-  indicatorSkippedDot: {
-    width: "7px",
-    height: "7px",
-    borderRadius: tokens.borderRadiusCircular,
-    backgroundColor: tokens.colorStatusDangerBackground3,
+  indicatorPending: {
+    color: tokens.colorNeutralStrokeAccessible,
+  },
+
+  indicatorError: {
+    color: tokens.colorStatusDangerForeground1,
+  },
+
+  indicatorDisabled: {
+    color: tokens.colorNeutralForegroundDisabled,
   },
 
   connector: {
+    flexGrow: 1,
     width: "2px",
-    height: "100%",
-    backgroundColor: tokens.colorNeutralStroke2,
+    minHeight: tokens.spacingVerticalM,
+    backgroundColor: tokens.colorNeutralForegroundDisabled,
   },
 
   connectorComplete: {
@@ -250,7 +351,7 @@ const useStyles = makeStyles({
 
   stepLabel: {
     ...typographyStyles.body1,
-    color: tokens.colorNeutralForeground2,
+    color: tokens.colorNeutralForeground1,
   },
 
   stepLabelActive: {
@@ -258,47 +359,34 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
   },
 
-  stepLabelSkipped: {
-    color: tokens.colorStatusDangerForeground1,
+  stepLabelDisabled: {
+    color: tokens.colorNeutralForegroundDisabled,
   },
 
-  content: {
+  stepDetails: {
+    ...typographyStyles.caption1,
+    color: tokens.colorNeutralForeground4,
+  },
+
+  main: {
     display: "flex",
     flexDirection: "column",
     flex: 1,
     minWidth: 0,
-    padding: tokens.spacingHorizontalL,
-    gap: tokens.spacingVerticalM,
+    backgroundColor: tokens.colorNeutralBackground2,
   },
 
   header: {
     display: "flex",
     alignItems: "flex-start",
-    justifyContent: "space-between",
-    gap: tokens.spacingHorizontalM,
+    gap: tokens.spacingHorizontalS,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalL} 0`,
+    overflow: "hidden",
   },
 
-  headerTitles: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalXXS,
-    minWidth: 0,
-  },
-
-  title: {
-    ...typographyStyles.caption1,
-    color: tokens.colorNeutralForeground3,
-  },
-
-  stepTitle: {
-    ...typographyStyles.subtitle1,
-    color: tokens.colorNeutralForeground1,
-  },
-
-  headerActions: {
-    display: "flex",
-    alignItems: "center",
-    gap: tokens.spacingHorizontalXXS,
+  closeButton: {
+    // Aligns the close button with the SectionHeader action row.
+    marginTop: tokens.spacingVerticalL,
     flexShrink: 0,
   },
 
@@ -306,6 +394,7 @@ const useStyles = makeStyles({
     flex: 1,
     minHeight: 0,
     overflow: "auto",
+    padding: `0 ${tokens.spacingHorizontalL}`,
   },
 
   swayForward: {
@@ -332,8 +421,8 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "flex-end",
     gap: tokens.spacingHorizontalS,
-    padding: tokens.spacingHorizontalL,
-    borderTop: `1px solid ${tokens.colorNeutralStroke2}`,
+    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalL} ${tokens.spacingVerticalXXL}`,
+    borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
   },
 });
 
@@ -341,10 +430,10 @@ const useStyles = makeStyles({
  * Wizard
  *
  * A full-page guided flow that pairs a vertical step indicator with a content
- * area and Back / Next navigation. Completed steps show a checkmark, the active
- * step is filled with the Axis brand color, and upcoming steps are outlined.
- * Finishing the final step shows a green checkmark, and required steps that were
- * skipped (jumped past without visiting) show an attention dot marker.
+ * area and Back / Next navigation. The current step shows a filled brand
+ * circle, completed steps show a brand checkmark circle with a brand connector,
+ * and upcoming steps show an outlined circle. Required steps that were skipped
+ * (jumped past without visiting) show a danger dismiss circle.
  *
  * Steps can optionally be clicked to navigate via `navigationMode` (`linear`
  * requires completing steps in order, `free` allows jumping anywhere).
@@ -368,6 +457,8 @@ export const Wizard = forwardRef<HTMLDivElement, WizardProps>(
       finishLabel = "Finish",
       disableProgression = false,
       animateContent = false,
+      layout = "default",
+      surface = "overlay",
       headerActions,
       className,
     },
@@ -471,58 +562,58 @@ export const Wizard = forwardRef<HTMLDivElement, WizardProps>(
     }, [activeStep, goToStep]);
 
     const current = steps[activeStep];
+    const isCompact = layout === "compact";
 
-    const defaultHeaderActions = useMemo(
-      () => (
-        <>
-          <Tooltip content="Tips" relationship="label">
-            <Button
-              appearance="subtle"
-              icon={<LightbulbRegular />}
-              aria-label="Tips"
-            />
-          </Tooltip>
-          <Tooltip content="Help" relationship="label">
-            <Button
-              appearance="subtle"
-              icon={<QuestionCircleRegular />}
-              aria-label="Help"
-            />
-          </Tooltip>
-          <Tooltip content="Close" relationship="label">
-            <Button
-              appearance="subtle"
-              icon={<DismissRegular />}
-              aria-label="Close"
-              onClick={onClose}
-            />
-          </Tooltip>
-        </>
-      ),
-      [onClose]
-    );
+    const getStepState = (index: number) => {
+      const isLast = index === steps.length - 1;
+      const isPassed = index < activeStep;
+      const isSkippedRequired =
+        isPassed && !visitedSteps.has(index) && !!steps[index]?.required;
+      const isInteractive = navigationMode !== "none";
+      const isNavigable = canNavigateTo(index);
+
+      return {
+        isActive: index === activeStep,
+        isLast,
+        isSkippedRequired,
+        isCompleteStep: isPassed && !isSkippedRequired,
+        isDone: finished && isLast,
+        isInteractive,
+        isNavigable,
+        isLocked: isInteractive && !isNavigable,
+      };
+    };
 
     return (
-      <div ref={ref} className={mergeClasses(styles.root, className)}>
-        <div className={styles.body}>
-          <nav className={styles.sidebar} aria-label="Wizard steps">
+      <div
+        ref={ref}
+        className={mergeClasses(
+          styles.root,
+          surface === "inline" ? styles.rootInline : styles.rootOverlay,
+          className
+        )}
+      >
+        {isCompact && (
+          <nav className={styles.compactStepper} aria-label="Wizard steps">
             {steps.map((step, index) => {
-              const isActive = index === activeStep;
-              const isLast = index === steps.length - 1;
-              const isPassed = index < activeStep;
-              const isSkippedRequired =
-                isPassed && !visitedSteps.has(index) && !!step.required;
-              const isCompleteStep = isPassed && !isSkippedRequired;
-              const isDone = finished && isLast;
-              const isInteractive = navigationMode !== "none";
-              const isNavigable = canNavigateTo(index);
+              const {
+                isActive,
+                isLast,
+                isSkippedRequired,
+                isCompleteStep,
+                isDone,
+                isInteractive,
+                isNavigable,
+                isLocked,
+              } = getStepState(index);
 
               return (
                 <button
                   key={index}
                   type="button"
                   className={mergeClasses(
-                    styles.step,
+                    styles.compactStep,
+                    isLast && styles.compactStepLast,
                     isInteractive &&
                       (isNavigable ? styles.stepClickable : styles.stepLocked)
                   )}
@@ -531,73 +622,185 @@ export const Wizard = forwardRef<HTMLDivElement, WizardProps>(
                   }
                   disabled={isInteractive && !isNavigable}
                   aria-current={isActive ? "step" : undefined}
+                  aria-label={`${step.label}${isCompleteStep || isDone ? " (completed)" : ""}`}
                 >
-                  <div
-                    className={mergeClasses(
-                      "axis-WizardStepRow",
-                      styles.stepRow
-                    )}
-                  >
-                    <div
+                  {isSkippedRequired ? (
+                    <DismissCircleFilled
                       className={mergeClasses(
-                        styles.indicator,
-                        isDone && styles.indicatorDone,
-                        !isDone && isCompleteStep && styles.indicatorComplete,
-                        !isDone && isActive && styles.indicatorActive,
-                        isSkippedRequired && styles.indicatorSkipped,
-                        !isDone &&
-                          !isCompleteStep &&
-                          !isActive &&
-                          !isSkippedRequired &&
-                          styles.indicatorPending
+                        styles.compactIcon,
+                        styles.indicatorError
+                      )}
+                    />
+                  ) : isDone || isCompleteStep ? (
+                    <span
+                      className={mergeClasses(
+                        styles.compactIndicator,
+                        isLocked
+                          ? styles.indicatorDisabledFill
+                          : styles.indicatorBrand
                       )}
                     >
-                      {(isDone || isCompleteStep) && (
-                        <CheckmarkRegular fontSize={10} />
-                      )}
-                      {!isDone && isActive && (
-                        <span className={styles.indicatorActiveDot} />
-                      )}
-                      {isSkippedRequired && (
-                        <span className={styles.indicatorSkippedDot} />
-                      )}
-                    </div>
-                    <Text
+                      <CheckmarkFilled className={styles.compactGlyph} />
+                    </span>
+                  ) : (
+                    <span
                       className={mergeClasses(
-                        styles.stepLabel,
-                        (isActive || isDone) && styles.stepLabelActive,
-                        isSkippedRequired && styles.stepLabelSkipped
+                        styles.compactIndicator,
+                        isActive
+                          ? styles.indicatorBrand
+                          : isLocked
+                            ? styles.compactIndicatorDisabled
+                            : styles.compactIndicatorPending
                       )}
                     >
-                      {step.label}
-                    </Text>
-                  </div>
+                      {index + 1}
+                    </span>
+                  )}
                   {!isLast && (
-                    <div className={styles.connectorWrap}>
-                      <div
-                        className={mergeClasses(
-                          styles.connector,
-                          isCompleteStep && styles.connectorComplete
-                        )}
-                      />
-                    </div>
+                    <span
+                      className={mergeClasses(
+                        styles.compactConnector,
+                        isCompleteStep && styles.connectorComplete
+                      )}
+                    />
                   )}
                 </button>
               );
             })}
           </nav>
+        )}
 
-          <div className={styles.content}>
+        <div className={styles.body}>
+          {!isCompact && (
+            <nav className={styles.sidebar} aria-label="Wizard steps">
+              {steps.map((step, index) => {
+                const {
+                  isActive,
+                  isLast,
+                  isSkippedRequired,
+                  isCompleteStep,
+                  isDone,
+                  isInteractive,
+                  isNavigable,
+                  isLocked,
+                } = getStepState(index);
+
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    className={mergeClasses(
+                      styles.step,
+                      isInteractive &&
+                        (isNavigable ? styles.stepClickable : styles.stepLocked)
+                    )}
+                    onClick={
+                      isInteractive ? () => handleStepClick(index) : undefined
+                    }
+                    disabled={isInteractive && !isNavigable}
+                    aria-current={isActive ? "step" : undefined}
+                  >
+                    <div
+                      className={mergeClasses(
+                        "axis-WizardStepRow",
+                        styles.stepRow
+                      )}
+                    >
+                      <div className={styles.indicatorColumn}>
+                        {isSkippedRequired ? (
+                          <DismissCircleFilled
+                            className={mergeClasses(
+                              styles.indicator,
+                              styles.indicatorError
+                            )}
+                          />
+                        ) : isDone || isCompleteStep ? (
+                          <span
+                            className={mergeClasses(
+                              styles.indicator,
+                              isLocked
+                                ? styles.indicatorDisabledFill
+                                : styles.indicatorBrand
+                            )}
+                          >
+                            <CheckmarkFilled
+                              className={styles.indicatorGlyph}
+                            />
+                          </span>
+                        ) : isActive ? (
+                          <span
+                            className={mergeClasses(
+                              styles.indicator,
+                              styles.indicatorBrand
+                            )}
+                          />
+                        ) : (
+                          <CircleRegular
+                            className={mergeClasses(
+                              styles.indicator,
+                              isLocked
+                                ? styles.indicatorDisabled
+                                : styles.indicatorPending
+                            )}
+                          />
+                        )}
+                        {!isLast && (
+                          <div
+                            className={mergeClasses(
+                              styles.connector,
+                              isCompleteStep && styles.connectorComplete
+                            )}
+                          />
+                        )}
+                      </div>
+                      <div
+                        className={mergeClasses(
+                          styles.stepText,
+                          !isLast && styles.stepTextSpaced
+                        )}
+                      >
+                        <Text
+                          className={mergeClasses(
+                            styles.stepLabel,
+                            (isActive || isDone) && styles.stepLabelActive,
+                            isLocked && styles.stepLabelDisabled
+                          )}
+                        >
+                          {step.label}
+                        </Text>
+                        {step.details && (
+                          <Text
+                            className={mergeClasses(
+                              styles.stepDetails,
+                              isLocked && styles.stepLabelDisabled
+                            )}
+                          >
+                            {step.details}
+                          </Text>
+                        )}
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </nav>
+          )}
+
+          <div className={styles.main}>
             <div className={styles.header}>
-              <div className={styles.headerTitles}>
-                <Text className={styles.title}>{title}</Text>
-                <Text className={styles.stepTitle}>
-                  {current?.stepTitle ?? current?.label}
-                </Text>
-              </div>
-              <div className={styles.headerActions}>
-                {headerActions ?? defaultHeaderActions}
-              </div>
+              <SectionHeader
+                meta={title}
+                title={current?.stepTitle ?? current?.label}
+                description={current?.description}
+                actions={headerActions}
+              />
+              <Button
+                className={styles.closeButton}
+                appearance="subtle"
+                icon={<DismissRegular />}
+                aria-label="Close"
+                onClick={onClose}
+              />
             </div>
 
             <div
@@ -610,24 +813,24 @@ export const Wizard = forwardRef<HTMLDivElement, WizardProps>(
             >
               {current?.content}
             </div>
-          </div>
-        </div>
 
-        <div className={styles.footer}>
-          <Button
-            appearance="secondary"
-            onClick={handleBack}
-            disabled={isFirstStep}
-          >
-            {backLabel}
-          </Button>
-          <Button
-            appearance="primary"
-            onClick={handleNext}
-            disabled={disableProgression}
-          >
-            {isLastStep ? finishLabel : nextLabel}
-          </Button>
+            <div className={styles.footer}>
+              <Button
+                appearance="secondary"
+                onClick={handleBack}
+                disabled={isFirstStep}
+              >
+                {backLabel}
+              </Button>
+              <Button
+                appearance="primary"
+                onClick={handleNext}
+                disabled={disableProgression}
+              >
+                {isLastStep ? finishLabel : nextLabel}
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     );

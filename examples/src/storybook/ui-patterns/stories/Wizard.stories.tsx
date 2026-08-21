@@ -14,14 +14,15 @@ import { Wizard, type WizardStep } from "../components/composites/Wizard";
  * **Fluent Guidelines Applied:**
  * - Composed only from `@fluentui/react-components`
  * - Token-driven styling via `makeStyles` + Fluent `tokens` (Axis theme aware)
- * - Active and completed steps use the Axis brand color
+ * - Step status uses Fluent status icons tinted with foreground tokens, so the
+ *   Axis yellow brand never carries an on-brand glyph
  * - Accessible: `nav` landmark, `aria-current="step"`, labelled icon buttons
  *
  * ## Behaviour
  *
- * - Completed steps render a checkmark and a brand-colored connector.
- * - The active step is filled with the brand color.
- * - Upcoming steps are outlined.
+ * - The current step shows a filled brand circle.
+ * - Completed steps show a brand checkmark circle and a brand connector.
+ * - Upcoming steps show an outlined circle; locked steps are muted.
  * - The primary button switches from **Next** to **Finish** on the last step.
  *
  * Supports both controlled (`currentStep` + `onStepChange`) and uncontrolled
@@ -34,8 +35,15 @@ const meta: Meta<typeof Wizard> = {
   component: Wizard,
   tags: ["autodocs"],
   parameters: {
-    layout: "padded",
+    layout: "fullscreen",
   },
+  decorators: [
+    (Story) => (
+      <div style={{ height: "100vh", padding: 24, boxSizing: "border-box" }}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     title: {
       control: "text",
@@ -50,6 +58,20 @@ const meta: Meta<typeof Wizard> = {
     },
     backLabel: { control: "text", description: "Label for the back button" },
     nextLabel: { control: "text", description: "Label for the next button" },
+    layout: {
+      control: "radio",
+      options: ["default", "compact"],
+      description:
+        "Step indicator placement: 'default' (vertical labelled rail) or " +
+        "'compact' (horizontal numbered stepper for small drawers / mobile)",
+    },
+    surface: {
+      control: "radio",
+      options: ["overlay", "inline"],
+      description:
+        "Surface chrome: 'overlay' (rounded with elevation) or 'inline' " +
+        "(square with a leading divider)",
+    },
     finishLabel: {
       control: "text",
       description: "Label for the primary action on the final step",
@@ -75,7 +97,7 @@ function PlaceholderContent() {
     <div
       style={{
         height: "100%",
-        minHeight: 360,
+        minHeight: 0,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -142,10 +164,10 @@ export const FreeNavigation: Story = {
 
 /**
  * **Required steps** (`step.required`). With `free` navigation you can jump past
- * steps. Any *required* step you skip without ever visiting it shows an
- * attention dot marker (instead of a completion checkmark) so it is clear it
- * still needs to be filled in. Jump from the first step to a later one to see
- * the marker appear on the required steps in between.
+ * steps. Any *required* step you skip without ever visiting it shows a danger
+ * dismiss circle (instead of a completion checkmark) so it is clear it still
+ * needs to be filled in. Jump from the first step to a later one to see the
+ * marker appear on the required steps in between.
  */
 export const RequiredSteps: Story = {
   args: {
@@ -163,8 +185,8 @@ export const RequiredSteps: Story = {
 
 /**
  * **Completion** — pressing **Finish** on the last step marks the wizard done
- * and turns the final step indicator into a green checkmark. Walk through with
- * **Next** and press **Finish** to see it.
+ * and turns the final step indicator into a brand checkmark circle. Walk through
+ * with **Next** and press **Finish** to see it.
  */
 export const Completion: Story = {
   args: {
@@ -256,5 +278,101 @@ export const ThreeSteps: Story = {
         content: <PlaceholderContent />,
       },
     ],
+  },
+};
+
+/**
+ * **Section Header integration.** The wizard header *is* the
+ * [Section Header](?path=/docs/ui-patterns-section-header--docs) pattern: the
+ * wizard `title` becomes the meta label, the step's `stepTitle` becomes the
+ * `h2`, and the optional step `description` becomes the supporting copy. The
+ * header carries only the close action; pass `headerActions` if a flow needs
+ * local section actions.
+ */
+export const SectionHeaderIntegration: Story = {
+  args: {
+    title: "Wizard title",
+    navigationMode: "linear",
+    defaultStep: 0,
+    steps: [
+      {
+        label: "Choose data source",
+        details:
+          "Choose from sample data, existing sources, or create a new one.",
+        stepTitle: "Choose data source",
+        description:
+          "Introduce the active step, clarify the task, and provide local actions without repeating the wizard-level title.",
+        content: <PlaceholderContent />,
+      },
+      {
+        label: "Choose data",
+        stepTitle: "Choose data",
+        description:
+          "Pick the records that should be included in this deployment.",
+        content: <PlaceholderContent />,
+      },
+      {
+        label: "Choose data destination",
+        stepTitle: "Choose data destination",
+        description:
+          "Select where the data should land. Step actions stay in the header, navigation stays in the footer.",
+        content: <PlaceholderContent />,
+      },
+      {
+        label: "Map to destination",
+        stepTitle: "Map to destination",
+        description: "Match each source field to a destination field.",
+        content: <PlaceholderContent />,
+      },
+      {
+        label: "Review and Create",
+        stepTitle: "Review and confirm",
+        description:
+          "Confirm the source and targets before finishing the wizard.",
+        content: <PlaceholderContent />,
+      },
+    ],
+  },
+};
+
+/**
+ * **Compact overlay drawer / mobile** (`layout="compact"`, `surface="overlay"`).
+ * At small widths the labelled rail is replaced by a horizontal numbered
+ * stepper above the content: completed steps collapse to a brand checkmark,
+ * the current step is a filled brand circle with its number, and upcoming
+ * steps are outlined. Rounded corners and elevation mark it as an overlay.
+ */
+export const CompactOverlayDrawer: Story = {
+  render: (args) => (
+    <div style={{ width: 340, height: "100%" }}>
+      <Wizard {...args} />
+    </div>
+  ),
+  args: {
+    title: "Wizard title",
+    steps,
+    defaultStep: 4,
+    layout: "compact",
+    surface: "overlay",
+  },
+};
+
+/**
+ * **Compact inline drawer** (`layout="compact"`, `surface="inline"`). Same
+ * compact stepper, but docked into the page: square corners and a leading
+ * divider instead of rounded corners and a shadow.
+ */
+export const CompactInlineDrawer: Story = {
+  render: (args) => (
+    <div style={{ width: 340, height: "100%" }}>
+      <Wizard {...args} />
+    </div>
+  ),
+  args: {
+    title: "Wizard title",
+    steps,
+    defaultStep: 4,
+    layout: "compact",
+    surface: "inline",
   },
 };
