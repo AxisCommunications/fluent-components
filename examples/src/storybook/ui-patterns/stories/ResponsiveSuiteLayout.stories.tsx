@@ -1287,8 +1287,9 @@ function ResponsiveLayoutDocsPage() {
   );
 }
 
-const meta: Meta = {
+const meta: Meta<typeof SuiteHeader> = {
   title: "UI patterns/Responsive Layout",
+  component: SuiteHeader,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",

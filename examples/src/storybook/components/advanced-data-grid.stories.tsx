@@ -42,9 +42,10 @@ const columns: AdvancedColumnDef<User>[] = [
   },
 ];
 
-// `AdvancedDataGrid` is generic; alias it to a concrete item type so Storybook
-// can infer `args` and render the Controls / ArgTypes table.
-const AdvancedDataGridStory = AdvancedDataGrid as (
+// `AdvancedDataGrid` is generic; this concrete-item type alias is only used
+// for Meta/Story inference. `component` below stays the direct import so
+// react-docgen-typescript can trace it back to the component's prop types.
+type ConcreteAdvancedDataGrid = (
   props: AdvancedDataGridProps<User>
 ) => ReactElement;
 
@@ -68,9 +69,9 @@ const AdvancedDataGridStory = AdvancedDataGrid as (
  * - Disable the features you do not need (e.g. `enableGrouping={false}`) to keep
  *   the toolbar focused.
  */
-const meta: Meta<typeof AdvancedDataGridStory> = {
+const meta: Meta<ConcreteAdvancedDataGrid> = {
   title: "UI patterns/Advanced data grid",
-  component: AdvancedDataGridStory,
+  component: AdvancedDataGrid,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
@@ -245,7 +246,7 @@ const meta: Meta<typeof AdvancedDataGridStory> = {
 
 export default meta;
 
-type Story = StoryObj<typeof AdvancedDataGridStory>;
+type Story = StoryObj<ConcreteAdvancedDataGrid>;
 
 /**
  * Interactive playground. Use the **Controls** panel to toggle features such as

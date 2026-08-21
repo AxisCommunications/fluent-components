@@ -524,8 +524,9 @@ function DoAndDontTable() {
 // Storybook meta
 // ---------------------------------------------------------------------------
 
-const meta: Meta = {
+const meta: Meta<typeof Badge> = {
   title: "UI patterns/Badge Patterns",
+  component: Badge,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",

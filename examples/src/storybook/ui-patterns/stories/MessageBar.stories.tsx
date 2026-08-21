@@ -398,8 +398,11 @@ function ShellRailNavigation({
 // Storybook meta
 // ---------------------------------------------------------------------------
 
+// Untyped `Meta`: the Playground story below uses its own `title`/`body`
+// args to compose `MessageBar`'s children, which aren't part of its props.
 const meta: Meta = {
   title: "UI patterns/Message Bar",
+  component: MessageBar,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
