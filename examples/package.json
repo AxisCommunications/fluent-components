@@ -19,7 +19,7 @@
     "dev": "vite",
     "lint": "tsc --noEmit && biome check",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
+    "storybook:build": "storybook build --docs && node scripts/extend-manifest-metrics.mjs",
     "serve": "vite preview",
     "stest": "pnpm playwright test",
     "stest:ui": "pnpm playwright test --ui"
