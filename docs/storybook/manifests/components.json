@@ -1279,6 +1279,348 @@
         "hexColors": []
       }
     },
+    "ui-patterns-expandable-error-toast": {
+      "id": "ui-patterns-expandable-error-toast",
+      "name": "ExpandableErrorToast",
+      "path": "./src/storybook/ui-patterns/stories/ExpandableErrorToast.stories.tsx",
+      "jsDocTags": {},
+      "description": "Use this pattern when a background operation fails and the user needs both a\nplain-language summary and the raw system error. The toast leads with the\nhuman message, keeps the code, correlation id and system output behind a\n\"Show details\" disclosure, and offers a copy action so the whole payload can\nbe pasted into a support ticket.\n\nPrefer it over a bare error toast whenever support or engineering will\nrealistically need the underlying error. Prefer a plain `Toast` when the\nfailure is fully self-explanatory and there is nothing technical to reveal.\nPrefer a `MessageBar` or an error page when the failure blocks the whole view\nrather than a single action.",
+      "reactDocgenTypescript": {
+        "tags": {
+          "example": "<ExpandableErrorToast\n  title=\"Couldn't save device settings\"\n  description=\"The device rejected the configuration. Try again in a moment.\"\n  details={{\n    code: \"E_DEVICE_UNREACHABLE\",\n    correlationId: \"8f3c1a94-2b77-4de1-9f0c-6a1c7d0b2e55\",\n    source: \"PUT /api/devices/42/settings\",\n    timestamp: \"2026-08-25T09:14:02.117Z\",\n    message: \"HTTP 502 Bad Gateway: upstream device did not respond within 30000 ms\",\n  }}\n/>"
+        },
+        "filePath": "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+        "description": "ExpandableErrorToast — an error toast that reveals the underlying system\nerror on demand and lets the user copy it.\n\nError toasts normally have to choose between being readable (\"Couldn't save\nthe device settings\") and being actionable (\"HTTP 502 from\n/api/devices/42/settings, trace 8f3c…\"). This pattern does both: the toast\nleads with the plain-language summary and keeps the raw code, correlation id\nand system message behind a disclosure action, with a copy action so the user\ncan paste it into a support ticket.\n\n**Fluent Guidelines Applied:**\n- Built on Fluent `Toaster` / `Toast` / `ToastTitle` / `ToastBody`; the\n  dismiss affordance uses `ToastTrigger`, not a hand-rolled close button\n- Dispatched with `intent=\"error\"`, `timeout: -1` and\n  `politeness=\"assertive\"` so the failure is announced and never times out\n  while the user is reading or copying it\n- Disclosure button carries `aria-expanded` / `aria-controls`; the details\n  region is focusable so it can be scrolled from the keyboard\n- Token-driven styling only, including the monospace details surface",
+        "displayName": "ExpandableErrorToast",
+        "methods": [],
+        "props": {
+          "triggerLabel": {
+            "defaultValue": {
+              "value": "Save settings"
+            },
+            "description": "Label of the button that raises the error toast.",
+            "name": "triggerLabel",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ExpandableErrorToastProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ExpandableErrorToastProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "string"
+            }
+          },
+          "position": {
+            "defaultValue": {
+              "value": "top-end"
+            },
+            "description": "Where the toaster anchors itself.",
+            "name": "position",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ExpandableErrorToastProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ExpandableErrorToastProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "enum",
+              "raw": "\"top-start\" | \"top-end\" | \"bottom-start\" | \"bottom-end\"",
+              "value": [
+                {
+                  "value": "\"top-start\""
+                },
+                {
+                  "value": "\"top-end\""
+                },
+                {
+                  "value": "\"bottom-start\""
+                },
+                {
+                  "value": "\"bottom-end\""
+                }
+              ]
+            }
+          },
+          "className": {
+            "defaultValue": null,
+            "description": "Optional CSS class applied to the wrapper.",
+            "name": "className",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ExpandableErrorToastProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ExpandableErrorToastProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "string"
+            }
+          },
+          "title": {
+            "defaultValue": null,
+            "description": "Short, human-readable summary of what failed.",
+            "name": "title",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": true,
+            "type": {
+              "name": "string"
+            }
+          },
+          "description": {
+            "defaultValue": null,
+            "description": "One-line plain-language explanation or recovery hint.",
+            "name": "description",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "string"
+            }
+          },
+          "details": {
+            "defaultValue": null,
+            "description": "The technical payload revealed by the \"Show details\" action.",
+            "name": "details",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": true,
+            "type": {
+              "name": "SystemErrorDetails"
+            }
+          },
+          "expandLabel": {
+            "defaultValue": null,
+            "description": "Label for the disclosure action while the details are collapsed.",
+            "name": "expandLabel",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "string"
+            }
+          },
+          "collapseLabel": {
+            "defaultValue": null,
+            "description": "Label for the disclosure action while the details are expanded.",
+            "name": "collapseLabel",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "string"
+            }
+          },
+          "copyLabel": {
+            "defaultValue": null,
+            "description": "Label for the copy action.",
+            "name": "copyLabel",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "string"
+            }
+          },
+          "copiedLabel": {
+            "defaultValue": null,
+            "description": "Label shown briefly after a successful copy.",
+            "name": "copiedLabel",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "string"
+            }
+          },
+          "dismissLabel": {
+            "defaultValue": null,
+            "description": "Label for the dismiss action in the toast title.",
+            "name": "dismissLabel",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "string"
+            }
+          },
+          "defaultExpanded": {
+            "defaultValue": null,
+            "description": "Start with the technical details already revealed.",
+            "name": "defaultExpanded",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "boolean"
+            }
+          },
+          "onCopy": {
+            "defaultValue": null,
+            "description": "Called with the exact text that was written to the clipboard.",
+            "name": "onCopy",
+            "parent": {
+              "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+              "name": "ErrorToastContentProps"
+            },
+            "declarations": [
+              {
+                "fileName": "examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx",
+                "name": "ErrorToastContentProps"
+              }
+            ],
+            "required": false,
+            "type": {
+              "name": "((copiedText: string) => void)"
+            }
+          }
+        },
+        "exportName": "ExpandableErrorToast"
+      },
+      "stories": [
+        {
+          "id": "ui-patterns-expandable-error-toast--default",
+          "name": "Default",
+          "snippet": "const Default = () => <ExpandableErrorToast\n    title=\"Couldn't save device settings\"\n    description=\"The device rejected the configuration. Try again in a moment.\"\n    triggerLabel=\"Save settings\"\n    details={{\n      code: \"E_DEVICE_UNREACHABLE\",\n      correlationId: \"8f3c1a94-2b77-4de1-9f0c-6a1c7d0b2e55\",\n      source: \"PUT /api/devices/42/settings\",\n      timestamp: \"2026-08-25T09:14:02.117Z\",\n      message:\n        \"HTTP 502 Bad Gateway: upstream device did not respond within 30000 ms\",\n    }} />;"
+        },
+        {
+          "id": "ui-patterns-expandable-error-toast--expanded-by-default",
+          "name": "Expanded By Default",
+          "snippet": "const ExpandedByDefault = () => <ExpandableErrorToast\n    title=\"License activation failed\"\n    description=\"Contact support and include the details below.\"\n    triggerLabel=\"Activate license\"\n    defaultExpanded\n    details={{\n      code: \"LIC_4013\",\n      correlationId: \"b21e77c0-51aa-4f39-8f4a-0d9f2c6b1e07\",\n      source: \"POST /api/licenses/activate\",\n      timestamp: \"2026-08-25T09:22:47.004Z\",\n      message:\n        \"License key 'AXIS-XXXX-XXXX-XXXX' is already bound to serial B8A44F1C2D30.\",\n    }} />;"
+        },
+        {
+          "id": "ui-patterns-expandable-error-toast--multiline-stack-trace",
+          "name": "Multiline Stack Trace",
+          "snippet": "const MultilineStackTrace = () => <ExpandableErrorToast\n    title=\"Firmware upgrade failed\"\n    description=\"The device was rolled back to the previous firmware.\"\n    triggerLabel=\"Upgrade firmware\"\n    defaultExpanded\n    details={{\n      code: \"FW_UPGRADE_ABORTED\",\n      source: \"POST /api/devices/42/firmware\",\n      timestamp: \"2026-08-25T09:31:10.885Z\",\n      message: [\n        \"UpgradeError: package verification failed\",\n        \"  at verifyPackage (firmware/verify.ts:118:11)\",\n        \"  at applyUpgrade (firmware/apply.ts:64:5)\",\n        \"  at processTicksAndRejections (node:internal/process/task_queues:95:5)\",\n        \"caused by: SignatureMismatch: expected sha256 9f2c… got 41ab…\",\n      ].join(\"\\n\"),\n    }} />;"
+        },
+        {
+          "id": "ui-patterns-expandable-error-toast--minimal-details",
+          "name": "Minimal Details",
+          "snippet": "const MinimalDetails = () => <ExpandableErrorToast\n    title=\"Couldn't load the recording\"\n    description=\"Check your connection and try again.\"\n    triggerLabel=\"Load recording\"\n    details={{\n      message: \"NetworkError: Failed to fetch\",\n    }} />;"
+        },
+        {
+          "id": "ui-patterns-expandable-error-toast--bottom-end",
+          "name": "Bottom End",
+          "snippet": "const BottomEnd = () => <ExpandableErrorToast position=\"bottom-end\" />;"
+        }
+      ],
+      "import": "import { ExpandableErrorToast } from \"examples\";",
+      "metrics": {
+        "sourceFiles": [
+          "/home/runner/work/fluent-components/fluent-components/examples/src/storybook/ui-patterns/components/composites/ExpandableErrorToast.tsx"
+        ],
+        "tokens": [
+          "tokens.borderRadiusMedium",
+          "tokens.colorNeutralBackground3",
+          "tokens.colorNeutralForeground1",
+          "tokens.colorNeutralForeground3",
+          "tokens.colorNeutralStroke2",
+          "tokens.colorPaletteGreenForeground1",
+          "tokens.fontFamilyMonospace",
+          "tokens.fontSizeBase200",
+          "tokens.fontWeightRegular",
+          "tokens.lineHeightBase200",
+          "tokens.spacingHorizontalM",
+          "tokens.spacingHorizontalS",
+          "tokens.spacingVerticalS",
+          "tokens.spacingVerticalSNudge",
+          "tokens.spacingVerticalXXS",
+          "tokens.strokeWidthThin"
+        ],
+        "rawValues": [
+          "100%",
+          "220px",
+          "420px"
+        ],
+        "hexColors": []
+      }
+    },
     "ui-patterns-file-upload": {
       "id": "ui-patterns-file-upload",
       "name": "FileUpload",
@@ -7023,6 +7365,6 @@
   },
   "meta": {
     "docgen": "react-docgen-typescript",
-    "durationMs": 4618
+    "durationMs": 4541
   }
 }
