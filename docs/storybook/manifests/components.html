@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>4.5s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>4.7s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -8195,13 +8195,13 @@ title?: string</code></pre>
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;SideNavigation&quot; component.
-  112 |  * &lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157&quot;&gt;&lt;img width=&quot;240&quot; src=&quot;./figma-global-components-cover.svg&quot; alt=&quot;Open in Figma — AXIS Fluent Global components&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-  113 |  */
-&gt; 114 | const meta: Meta&lt;typeof SideNavigation&gt; = {
+  116 |  * &lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157&quot;&gt;&lt;img width=&quot;240&quot; src=&quot;./figma-global-components-cover.svg&quot; alt=&quot;Open in Figma — AXIS Fluent Global components&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+  117 |  */
+&gt; 118 | const meta: Meta&lt;typeof SideNavigation&gt; = {
       | ^
-  115 |   title: &quot;UI patterns/Side Navigation&quot;,
-  116 |   component: SideNavigation,
-  117 |   tags: [&quot;autodocs&quot;],
+  119 |   title: &quot;UI patterns/Side Navigation&quot;,
+  120 |   component: SideNavigation,
+  121 |   tags: [&quot;autodocs&quot;],
 
 ./src/storybook/components/side-navigation.stories.tsx:
 import {
@@ -8290,12 +8290,16 @@ const interactiveFooterItems: SideNavigationItem[] = [
  * - **Collapsed with sub-menus** — while the rail is collapsed, an item with
  *   `children` opens a foldout menu on hover (or focus) instead of an inline
  *   group, so its sub-items stay reachable without expanding the rail.
- * - **Toggle at the bottom** — set `togglePosition=&quot;bottom&quot;` to pin the
+ * - **Toggle at the bottom** — `togglePosition=&quot;bottom&quot;` pins the
  *   expand/collapse toggle below the items (and any `footerItems`) instead of
- *   above them. Defaults to `&quot;top&quot;`.
+ *   above them. Every example below uses it; it is the recommended placement so
+ *   the chevron stays in a predictable spot as the item list grows. The prop
+ *   still defaults to `&quot;top&quot;`.
  *
  * ## Guidelines
  *
+ * - Pin the toggle to the bottom with `togglePosition=&quot;bottom&quot;` so the chevron
+ *   never shifts position when items are added or removed.
  * - Provide a meaningful `aria-label` on the rail (e.g. &quot;Side navigation&quot;).
  * - Keep labels short (one or two words) so they fit the expanded rail.
  * - Always supply a recognizable `icon` for every item; while collapsed the icon
@@ -8328,6 +8332,7 @@ const meta: Meta&lt;typeof SideNavigation&gt; = {
     items: interactiveItems,
     footerItems: interactiveFooterItems,
     defaultSelectedItemId: &quot;home&quot;,
+    togglePosition: &quot;bottom&quot;,
     &quot;aria-label&quot;: &quot;Side navigation&quot;,
   },
   argTypes: {
@@ -8450,9 +8455,9 @@ export const Interactive: Story = {
 };
 
 /**
- * A collapsible rail that starts collapsed. The toggle button at the top expands
- * the rail to reveal labels and collapses it back to icons. `footerItems` are
- * pinned to the bottom.
+ * A collapsible rail that starts collapsed. The toggle button pinned to the
+ * bottom expands the rail to reveal labels and collapses it back to icons.
+ * `footerItems` sit above the toggle.
  */
 export const CollapsibleRail: Story = {
   render: () =&gt; {
@@ -8501,8 +8506,9 @@ export const ExpandedWithSubMenus: Story = {
 };
 
 /**
- * Setting `togglePosition=&quot;bottom&quot;` pins the expand/collapse toggle below the
- * items, alongside any `footerItems`, instead of above them.
+ * `togglePosition=&quot;bottom&quot;` in isolation: the expand/collapse toggle sits below
+ * the items, alongside any `footerItems`, instead of above them. The other
+ * examples on this page use the same placement.
  */
 export const ToggleAtBottom: Story = {
   render: () =&gt; {
@@ -8572,6 +8578,7 @@ toggle labels and see the rail update live.</div>
                 items={interactiveItems}
                 footerItems={interactiveFooterItems}
                 defaultSelectedItemId=&quot;home&quot;
+                togglePosition=&quot;bottom&quot;
                 aria-label=&quot;Side navigation&quot; /&gt;
         &lt;/div&gt;
     );
@@ -8583,9 +8590,9 @@ toggle labels and see the rail update live.</div>
                 <span class="badge ok">story ok</span>
               </div>
               
-              <div class="hint">A collapsible rail that starts collapsed. The toggle button at the top expands
-the rail to reveal labels and collapses it back to icons. `footerItems` are
-pinned to the bottom.</div>
+              <div class="hint">A collapsible rail that starts collapsed. The toggle button pinned to the
+bottom expands the rail to reveal labels and collapses it back to icons.
+`footerItems` sit above the toggle.</div>
               <pre><code>const CollapsibleRail = () =&gt; {
   const styles = useStyles();
 
@@ -8640,8 +8647,9 @@ item with sub-items to see them appear in a foldout menu instead.</div>
                 <span class="badge ok">story ok</span>
               </div>
               
-              <div class="hint">Setting `togglePosition=&quot;bottom&quot;` pins the expand/collapse toggle below the
-items, alongside any `footerItems`, instead of above them.</div>
+              <div class="hint">`togglePosition=&quot;bottom&quot;` in isolation: the expand/collapse toggle sits below
+the items, alongside any `footerItems`, instead of above them. The other
+examples on this page use the same placement.</div>
               <pre><code>const ToggleAtBottom = () =&gt; {
   const styles = useStyles();
 
@@ -15648,13 +15656,13 @@ and layout. Politeness follows the intent automatically (assertive for errors).<
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;SideNavigation&quot; component.
-  112 |  * &lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157&quot;&gt;&lt;img width=&quot;240&quot; src=&quot;./figma-global-components-cover.svg&quot; alt=&quot;Open in Figma — AXIS Fluent Global components&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-  113 |  */
-&gt; 114 | const meta: Meta&lt;typeof SideNavigation&gt; = {
+  116 |  * &lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157&quot;&gt;&lt;img width=&quot;240&quot; src=&quot;./figma-global-components-cover.svg&quot; alt=&quot;Open in Figma — AXIS Fluent Global components&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+  117 |  */
+&gt; 118 | const meta: Meta&lt;typeof SideNavigation&gt; = {
       | ^
-  115 |   title: &quot;UI patterns/Side Navigation&quot;,
-  116 |   component: SideNavigation,
-  117 |   tags: [&quot;autodocs&quot;],
+  119 |   title: &quot;UI patterns/Side Navigation&quot;,
+  120 |   component: SideNavigation,
+  121 |   tags: [&quot;autodocs&quot;],
 
 ./src/storybook/components/side-navigation.stories.tsx:
 import {
@@ -15743,12 +15751,16 @@ const interactiveFooterItems: SideNavigationItem[] = [
  * - **Collapsed with sub-menus** — while the rail is collapsed, an item with
  *   `children` opens a foldout menu on hover (or focus) instead of an inline
  *   group, so its sub-items stay reachable without expanding the rail.
- * - **Toggle at the bottom** — set `togglePosition=&quot;bottom&quot;` to pin the
+ * - **Toggle at the bottom** — `togglePosition=&quot;bottom&quot;` pins the
  *   expand/collapse toggle below the items (and any `footerItems`) instead of
- *   above them. Defaults to `&quot;top&quot;`.
+ *   above them. Every example below uses it; it is the recommended placement so
+ *   the chevron stays in a predictable spot as the item list grows. The prop
+ *   still defaults to `&quot;top&quot;`.
  *
  * ## Guidelines
  *
+ * - Pin the toggle to the bottom with `togglePosition=&quot;bottom&quot;` so the chevron
+ *   never shifts position when items are added or removed.
  * - Provide a meaningful `aria-label` on the rail (e.g. &quot;Side navigation&quot;).
  * - Keep labels short (one or two words) so they fit the expanded rail.
  * - Always supply a recognizable `icon` for every item; while collapsed the icon
@@ -15781,6 +15793,7 @@ const meta: Meta&lt;typeof SideNavigation&gt; = {
     items: interactiveItems,
     footerItems: interactiveFooterItems,
     defaultSelectedItemId: &quot;home&quot;,
+    togglePosition: &quot;bottom&quot;,
     &quot;aria-label&quot;: &quot;Side navigation&quot;,
   },
   argTypes: {
@@ -15903,9 +15916,9 @@ export const Interactive: Story = {
 };
 
 /**
- * A collapsible rail that starts collapsed. The toggle button at the top expands
- * the rail to reveal labels and collapses it back to icons. `footerItems` are
- * pinned to the bottom.
+ * A collapsible rail that starts collapsed. The toggle button pinned to the
+ * bottom expands the rail to reveal labels and collapses it back to icons.
+ * `footerItems` sit above the toggle.
  */
 export const CollapsibleRail: Story = {
   render: () =&gt; {
@@ -15954,8 +15967,9 @@ export const ExpandedWithSubMenus: Story = {
 };
 
 /**
- * Setting `togglePosition=&quot;bottom&quot;` pins the expand/collapse toggle below the
- * items, alongside any `footerItems`, instead of above them.
+ * `togglePosition=&quot;bottom&quot;` in isolation: the expand/collapse toggle sits below
+ * the items, alongside any `footerItems`, instead of above them. The other
+ * examples on this page use the same placement.
  */
 export const ToggleAtBottom: Story = {
   render: () =&gt; {
@@ -16025,6 +16039,7 @@ toggle labels and see the rail update live.</div>
                 items={interactiveItems}
                 footerItems={interactiveFooterItems}
                 defaultSelectedItemId=&quot;home&quot;
+                togglePosition=&quot;bottom&quot;
                 aria-label=&quot;Side navigation&quot; /&gt;
         &lt;/div&gt;
     );
@@ -16036,9 +16051,9 @@ toggle labels and see the rail update live.</div>
                 <span class="badge ok">story ok</span>
               </div>
               
-              <div class="hint">A collapsible rail that starts collapsed. The toggle button at the top expands
-the rail to reveal labels and collapses it back to icons. `footerItems` are
-pinned to the bottom.</div>
+              <div class="hint">A collapsible rail that starts collapsed. The toggle button pinned to the
+bottom expands the rail to reveal labels and collapses it back to icons.
+`footerItems` sit above the toggle.</div>
               <pre><code>const CollapsibleRail = () =&gt; {
   const styles = useStyles();
 
@@ -16093,8 +16108,9 @@ item with sub-items to see them appear in a foldout menu instead.</div>
                 <span class="badge ok">story ok</span>
               </div>
               
-              <div class="hint">Setting `togglePosition=&quot;bottom&quot;` pins the expand/collapse toggle below the
-items, alongside any `footerItems`, instead of above them.</div>
+              <div class="hint">`togglePosition=&quot;bottom&quot;` in isolation: the expand/collapse toggle sits below
+the items, alongside any `footerItems`, instead of above them. The other
+examples on this page use the same placement.</div>
               <pre><code>const ToggleAtBottom = () =&gt; {
   const styles = useStyles();
 
