@@ -5,7 +5,7 @@ import React from "react";
 import { SideNavigationItemRow } from "./side-navigation-item.js";
 import {
   DEFAULT_EXPANDED_WIDTH,
-  INDICATOR_HEIGHT,
+  INDICATOR_INSET,
   RAIL_WIDTH,
   sideNavigationClassNames as classNames,
   useSideNavigationStyles,
@@ -50,9 +50,10 @@ export const SideNavigation = React.forwardRef<
 
   const rootRef = React.useRef<HTMLElement | null>(null);
   const itemRefs = React.useRef<Map<string, HTMLElement>>(new Map());
-  const [indicatorOffset, setIndicatorOffset] = React.useState<number | null>(
-    null
-  );
+  const [indicator, setIndicator] = React.useState<{
+    offset: number;
+    height: number;
+  } | null>(null);
 
   const [selectedItem, setSelectedItem] = useControllableState<
     string | undefined
@@ -133,18 +134,17 @@ export const SideNavigation = React.forwardRef<
       : undefined;
 
     if (!rootElement || !selectedElement) {
-      setIndicatorOffset(null);
+      setIndicator(null);
       return;
     }
 
     const rootRect = rootElement.getBoundingClientRect();
     const selectedRect = selectedElement.getBoundingClientRect();
-    const offset =
-      selectedRect.top -
-      rootRect.top +
-      (selectedRect.height - INDICATOR_HEIGHT) / 2;
 
-    setIndicatorOffset(offset);
+    setIndicator({
+      offset: selectedRect.top - rootRect.top + INDICATOR_INSET,
+      height: Math.max(selectedRect.height - INDICATOR_INSET * 2, 0),
+    });
   }, [selectedItem, findParentId]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: re-measure the indicator after layout changes (expand, open groups, items)
@@ -212,13 +212,16 @@ export const SideNavigation = React.forwardRef<
       style={{ ...style, width: expanded ? expandedWidth : RAIL_WIDTH }}
       {...rest}
     >
-      {indicatorOffset !== null ? (
+      {indicator !== null ? (
         <span
           className={mergeClasses(
             classNames.selectedIndicator,
             styles.selectedIndicator
           )}
-          style={{ transform: `translateY(${indicatorOffset}px)` }}
+          style={{
+            height: indicator.height,
+            transform: `translateY(${indicator.offset}px)`,
+          }}
         />
       ) : null}
 

@@ -29,8 +29,8 @@ export type SideNavigationSlot = keyof typeof sideNavigationClassNames;
 export const RAIL_WIDTH = 68;
 /** Default rail width when expanded, in pixels. */
 export const DEFAULT_EXPANDED_WIDTH = 260;
-/** Height of the sliding selection indicator, in pixels. */
-export const INDICATOR_HEIGHT = 20;
+/** Vertical inset of the sliding selection indicator within an item, in pixels. */
+export const INDICATOR_INSET = 8;
 
 const useStyles = makeStyles({
   root: {
@@ -76,18 +76,18 @@ const useStyles = makeStyles({
     marginRight: "12px",
     backgroundColor: tokens.colorNeutralStroke2,
   },
+  // Mirrors the Fluent Tab active indicator: a fully rounded stroke inset from
+  // the top and bottom edges of the item it marks.
   selectedIndicator: {
     position: "absolute",
-    left: 0,
+    left: tokens.spacingHorizontalXS,
     top: 0,
-    width: "3px",
-    height: `${INDICATOR_HEIGHT}px`,
+    width: tokens.strokeWidthThicker,
     backgroundColor: "#efab01",
-    borderTopRightRadius: tokens.borderRadiusCircular,
-    borderBottomRightRadius: tokens.borderRadiusCircular,
+    borderRadius: tokens.borderRadiusCircular,
     zIndex: 2,
     pointerEvents: "none",
-    transitionProperty: "transform, opacity",
+    transitionProperty: "transform, height, opacity",
     transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
     "@media (prefers-reduced-motion: reduce)": {
