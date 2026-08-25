@@ -83,6 +83,7 @@ export function CollapsibleSideNavigationExample() {
         onSelect={setSelectedItemId}
         defaultExpanded
         defaultOpenItemIds={["workspaces"]}
+        togglePosition="bottom"
         aria-label="Side navigation"
       />
     </div>
@@ -175,6 +176,7 @@ export function CollapsibleSideNavigationExample() {
         onSelect={setSelectedItemId}
         defaultExpanded
         defaultOpenItemIds={["workspaces"]}
+        togglePosition="bottom"
         aria-label="Side navigation"
       />
     </div>

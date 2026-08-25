@@ -64,6 +64,7 @@ export function CompactSideNavigationExample() {
         footerItems={footerItems}
         selectedItemId={selectedItemId}
         onSelect={setSelectedItemId}
+        togglePosition="bottom"
         aria-label="Side navigation"
       />
     </div>
@@ -137,6 +138,7 @@ export function CompactSideNavigationExample() {
         footerItems={footerItems}
         selectedItemId={selectedItemId}
         onSelect={setSelectedItemId}
+        togglePosition="bottom"
         aria-label="Side navigation"
       />
     </div>

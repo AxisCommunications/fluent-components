@@ -84,12 +84,16 @@ const interactiveFooterItems: SideNavigationItem[] = [
  * - **Collapsed with sub-menus** — while the rail is collapsed, an item with
  *   `children` opens a foldout menu on hover (or focus) instead of an inline
  *   group, so its sub-items stay reachable without expanding the rail.
- * - **Toggle at the bottom** — set `togglePosition="bottom"` to pin the
+ * - **Toggle at the bottom** — `togglePosition="bottom"` pins the
  *   expand/collapse toggle below the items (and any `footerItems`) instead of
- *   above them. Defaults to `"top"`.
+ *   above them. Every example below uses it; it is the recommended placement so
+ *   the chevron stays in a predictable spot as the item list grows. The prop
+ *   still defaults to `"top"`.
  *
  * ## Guidelines
  *
+ * - Pin the toggle to the bottom with `togglePosition="bottom"` so the chevron
+ *   never shifts position when items are added or removed.
  * - Provide a meaningful `aria-label` on the rail (e.g. "Side navigation").
  * - Keep labels short (one or two words) so they fit the expanded rail.
  * - Always supply a recognizable `icon` for every item; while collapsed the icon
@@ -122,6 +126,7 @@ const meta: Meta<typeof SideNavigation> = {
     items: interactiveItems,
     footerItems: interactiveFooterItems,
     defaultSelectedItemId: "home",
+    togglePosition: "bottom",
     "aria-label": "Side navigation",
   },
   argTypes: {
@@ -244,9 +249,9 @@ export const Interactive: Story = {
 };
 
 /**
- * A collapsible rail that starts collapsed. The toggle button at the top expands
- * the rail to reveal labels and collapses it back to icons. `footerItems` are
- * pinned to the bottom.
+ * A collapsible rail that starts collapsed. The toggle button pinned to the
+ * bottom expands the rail to reveal labels and collapses it back to icons.
+ * `footerItems` sit above the toggle.
  */
 export const CollapsibleRail: Story = {
   render: () => {
@@ -295,8 +300,9 @@ export const ExpandedWithSubMenus: Story = {
 };
 
 /**
- * Setting `togglePosition="bottom"` pins the expand/collapse toggle below the
- * items, alongside any `footerItems`, instead of above them.
+ * `togglePosition="bottom"` in isolation: the expand/collapse toggle sits below
+ * the items, alongside any `footerItems`, instead of above them. The other
+ * examples on this page use the same placement.
  */
 export const ToggleAtBottom: Story = {
   render: () => {
