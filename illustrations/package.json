@@ -40,12 +40,12 @@
     "@types/node": "^25.5.2",
     "@types/react": "^19.2.18",
     "@types/yargs": "17.0.32",
-    "esbuild": "^0.28.1",
+    "esbuild": "^0.28.2",
     "jsdom": "^30.0.1",
     "react": "^19.2.8",
     "svgo": "3.3.4",
     "typescript": "^5.8.3",
-    "vitest": "^4.1.10",
+    "vitest": "^4.1.11",
     "yargs": "17.7.2"
   },
   "peerDependencies": {
