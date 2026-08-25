@@ -24,9 +24,18 @@
  * - StickySave: Persistent save/cancel bar for long forms
  * - DynamicTabList: Document tab bar for runtime-opened objects
  * - CanvasControls: Floating vertical zoom/navigation toolbar for canvases
+ * - ExpandableErrorToast: Error toast that reveals and copies the raw system error
  */
 
 export { FormField, type FormFieldProps } from "./FormField";
+export {
+  ErrorToastContent,
+  ExpandableErrorToast,
+  formatErrorDetails,
+  type ErrorToastContentProps,
+  type ExpandableErrorToastProps,
+  type SystemErrorDetails,
+} from "./ExpandableErrorToast";
 export {
   FileUpload,
   type FileUploadItem,
