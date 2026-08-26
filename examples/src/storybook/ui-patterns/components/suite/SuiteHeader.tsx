@@ -1,6 +1,7 @@
 import {
   Avatar,
   Button,
+  CounterBadge,
   Divider,
   Input,
   Menu,
@@ -53,6 +54,11 @@ export interface SuiteHeaderAction {
   onClick?: () => void;
   /** When set, the action opens a flyout with this content instead of only firing onClick. */
   flyout?: ReactNode;
+  /**
+   * Unread count shown as a small badge on the icon. Omit or pass 0 to hide it.
+   * Include the same number in `ariaLabel`, since the badge is decorative.
+   */
+  badgeCount?: number;
 }
 
 export interface SuiteHeaderLauncherItem {
@@ -222,6 +228,20 @@ const useStyles = makeStyles({
   appButton: {
     ...shorthands.margin(0),
   },
+  badgedIcon: {
+    position: "relative",
+    display: "inline-flex",
+    // The badge is allowed to sit outside the 20px icon box.
+    overflow: "visible",
+  },
+  iconBadge: {
+    position: "absolute",
+    // Kept inside the 32px button box: the toolbar clips with overflow:hidden,
+    // so a badge hanging further out loses its corner.
+    top: "-4px",
+    insetInlineEnd: "-4px",
+    pointerEvents: "none",
+  },
   appLauncher: {
     // Match the 68px side-navigation rail column and center the launcher so its
     // icon lines up vertically with the rail icons below it.
@@ -388,7 +408,13 @@ function OverflowMenuItem({ action }: { action: SuiteHeaderAction }) {
   }
 
   return (
-    <MenuItem icon={action.icon} onClick={action.onClick}>
+    <MenuItem
+      icon={action.icon}
+      onClick={action.onClick}
+      secondaryContent={
+        action.badgeCount ? String(action.badgeCount) : undefined
+      }
+    >
       {action.ariaLabel}
     </MenuItem>
   );
@@ -444,11 +470,31 @@ function ActionButton({
   action: SuiteHeaderAction;
   className?: string;
 }) {
+  const styles = useStyles();
+
+  const icon = action.badgeCount ? (
+    <span className={styles.badgedIcon}>
+      {action.icon}
+      {/* `important` rather than `danger`: filled-danger pairs red with
+          colorNeutralForegroundOnBrand, which is black in the Axis themes. */}
+      <CounterBadge
+        className={styles.iconBadge}
+        appearance="filled"
+        color="important"
+        size="small"
+        count={action.badgeCount}
+        aria-hidden
+      />
+    </span>
+  ) : (
+    action.icon
+  );
+
   const button = (
     <ToolbarButton
       className={className}
       aria-label={action.ariaLabel}
-      icon={action.icon}
+      icon={icon}
       onClick={action.onClick}
     />
   );
