@@ -588,7 +588,7 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">11/32 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">14/32 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">16/171 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">10 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">11/33 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">14/33 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">16/177 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">10 docs ok</a></div>
   </div>
 </header>
 <main>
@@ -7257,14 +7257,272 @@ and layout. Politeness follows the intent automatically (assertive for errors).<
   no-story-error
   no-doc-error"
   role="listitem"
+  aria-label="NotificationCenter">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> NotificationCenter</h2>
+      <div class="badges">
+        <label for="c-18-ui-patterns-notification-center-props" class="badge ok as-toggle">11 prop types</label>
+        
+        <label for="c-18-ui-patterns-notification-center-stories" class="badge ok as-toggle">6 stories</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/storybook/ui-patterns/stories/NotificationCenter.stories.tsx">ui-patterns-notification-center · ./src/storybook/ui-patterns/stories/NotificationCenter.stories.tsx</div>
+    
+    <div class="hint">A single stack for every system message in the product. Toasts announce
+things as they happen; the notification center is where those messages go to
+live afterwards, so nothing is lost when a toast times out or the user is
+looking at another part of the app.
+
+Every message carries a `priority` from 1 (critical) to 5 (informational).
+That number drives both the badge and the default sort order, so routine
+chatter can never bury a critical alert. Sorting is exposed as pure exported
+functions — `sortByPriority`, `sortByNewest`, `sortByOldest`,
+`sortByUnreadFirst`, and the `sortNotifications` dispatcher — so the same
+ordering can be reused in a full-page inbox or in tests.
+
+The center is built to be dropped into a Suite Header quick action as its
+`flyout`, which is how the &quot;In the suite header&quot; story below wires it up.</div>
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-18-ui-patterns-notification-center-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  <input id="c-18-ui-patterns-notification-center-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
+              <span class="badge ok">11 prop types</span>
+            </div>
+            <pre><code>Component: src/storybook/ui-patterns/components/composites/NotificationCenter.tsx::NotificationCenter</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Optional CSS class applied to the root.
+ */
+className?: string
+
+/**
+ * Sort order applied on first render. Defaults to `&quot;priority&quot;`.
+ */
+defaultSort?: NotificationSortKey = priority
+
+/**
+ * Shown in place of the list when there are no messages.
+ */
+emptyLabel?: string = You&#39;re all caught up
+
+/**
+ * Maximum height of the scrollable stack, in pixels.
+ */
+maxListHeight?: number = 420
+
+/**
+ * The stack of system messages. Sorting is applied to a copy, never in place.
+ */
+messages: NotificationMessage[]
+
+/**
+ * Called with the id of a message the user dismissed.
+ */
+onDismiss?: ((id: string) =&gt; void)
+
+/**
+ * Called when the user clears the whole stack. Hides the action when omitted.
+ */
+onDismissAll?: (() =&gt; void)
+
+/**
+ * Called when the user marks everything as read. Hides the action when omitted.
+ */
+onMarkAllRead?: (() =&gt; void)
+
+/**
+ * Called with the next sort key when the user picks one.
+ */
+onSortChange?: ((sort: NotificationSortKey) =&gt; void)
+
+/**
+ * Sort order (controlled). Supply together with `onSortChange`.
+ */
+sort?: NotificationSortKey
+
+/**
+ * Heading above the stack.
+ */
+title?: string = Notifications</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { AlertRegular, NotificationCenter, SettingsRegular, SuiteHeader } from "examples";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Default</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">The default sort puts priority 1 at the top and falls back to newest first
+within a priority. Unread messages sit on a tinted surface, and the counter
+next to the heading tracks how many are left.</div>
+              <pre><code>const Default = () =&gt; &lt;NotificationCenter messages={sampleMessages} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Sorted By Newest</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Use the sort button in the header to switch order. The same four orderings are
+available as standalone functions, so a full-page inbox can offer identical
+sorting without duplicating the comparators.</div>
+              <pre><code>const SortedByNewest = () =&gt; &lt;NotificationCenter messages={sampleMessages} defaultSort=&quot;newest&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Interactive</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">With `onDismiss`, `onDismissAll`, and `onMarkAllRead` wired up, the stack
+becomes a working inbox. Each handler is optional; omit one and its affordance
+disappears rather than rendering a dead control.</div>
+              <pre><code>const Interactive = () =&gt; {
+    const [messages, setMessages] = useState(sampleMessages);
+
+    return (
+        &lt;NotificationCenter
+            messages={messages}
+            onDismiss={(id) =&gt;
+              setMessages((current) =&gt;
+                current.filter((message) =&gt; message.id !== id)
+              )
+            }
+            onDismissAll={() =&gt; setMessages([])}
+            onMarkAllRead={() =&gt;
+              setMessages((current) =&gt;
+                current.map((message) =&gt; ({ ...message, read: true }))
+              )
+            } /&gt;
+    );
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Empty</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">When the stack is clear, the empty state confirms it rather than showing a
+blank panel.</div>
+              <pre><code>const Empty = () =&gt; &lt;NotificationCenter messages={[]} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">In The Suite Header</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">The intended home for the pattern. The bell in the suite header&#39;s quick-action
+cluster carries the notification center as its `flyout`, so the same stack is
+reachable from anywhere in the product. Click the bell to open it.</div>
+              <pre><code>const InTheSuiteHeader = () =&gt; {
+  const styles = useSuiteStyles();
+  const [messages, setMessages] = useState(sampleMessages);
+  const unreadCount = messages.filter((message) =&gt; !message.read).length;
+
+  const actions: SuiteHeaderAction[] = [
+    {
+      id: &quot;notifications&quot;,
+      icon: &lt;AlertRegular /&gt;,
+      ariaLabel: `Notifications (${unreadCount} unread)`,
+      badgeCount: unreadCount,
+      flyout: (
+        &lt;NotificationCenter
+          messages={messages}
+          onDismiss={(id) =&gt;
+            setMessages((current) =&gt;
+              current.filter((message) =&gt; message.id !== id)
+            )
+          }
+          onDismissAll={() =&gt; setMessages([])}
+          onMarkAllRead={() =&gt;
+            setMessages((current) =&gt;
+              current.map((message) =&gt; ({ ...message, read: true }))
+            )
+          }
+        /&gt;
+      ),
+    },
+    { id: &quot;settings&quot;, icon: &lt;SettingsRegular /&gt;, ariaLabel: &quot;Settings&quot; },
+  ];
+
+  return (
+    &lt;div className={styles.frame}&gt;
+      &lt;SuiteHeader
+        productName=&quot;Product name&quot;
+        showSearch={false}
+        showOrganizationPicker={false}
+        notificationCount={unreadCount}
+        utilityActions={actions}
+      /&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Pre Sorted List</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">The sort helpers are plain functions over an array, so the same ordering can
+drive a full-page inbox, a digest email, or a test assertion. This story
+renders `sortByPriority` applied ahead of time with sorting inside the center
+left at its default.</div>
+              <pre><code>const PreSortedList = () =&gt; &lt;NotificationCenter title=&quot;System messages&quot; messages={sortByPriority(sampleMessages)} /&gt;;</code></pre>
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
   aria-label="PageHeader">
   <div class="head">
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> PageHeader</h2>
       <div class="badges">
-        <label for="c-18-ui-patterns-page-header-props" class="badge ok as-toggle">5 prop types</label>
+        <label for="c-19-ui-patterns-page-header-props" class="badge ok as-toggle">5 prop types</label>
         
-        <label for="c-18-ui-patterns-page-header-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-19-ui-patterns-page-header-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -7288,10 +7546,10 @@ right. Use it to establish page identity and primary page-level actions.
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-18-ui-patterns-page-header-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-19-ui-patterns-page-header-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-18-ui-patterns-page-header-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-19-ui-patterns-page-header-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -7442,9 +7700,9 @@ title: string</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> Pagination</h2>
       <div class="badges">
-        <label for="c-19-ui-patterns-pagination-props" class="badge ok as-toggle">14 prop types</label>
+        <label for="c-20-ui-patterns-pagination-props" class="badge ok as-toggle">14 prop types</label>
         
-        <label for="c-19-ui-patterns-pagination-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-20-ui-patterns-pagination-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -7470,10 +7728,10 @@ Recommended when table has 100+ rows with ~50 rows per page.
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-19-ui-patterns-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-20-ui-patterns-pagination-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-19-ui-patterns-pagination-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-20-ui-patterns-pagination-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -7756,10 +8014,10 @@ Try using the dropdown selector or navigation buttons to switch pages.</div>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> PasswordInput</h2>
       <div class="badges">
-        <label for="c-20-components-password-input-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-20-components-password-input-info" class="badge info as-toggle">1 info</label>
-        <label for="c-20-components-password-input-stories" class="badge ok as-toggle">1 story</label>
-        <label for="c-20-components-password-input-docs" class="badge ok as-toggle">1 doc</label>
+        <label for="c-21-components-password-input-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-21-components-password-input-info" class="badge info as-toggle">1 info</label>
+        <label for="c-21-components-password-input-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-21-components-password-input-docs" class="badge ok as-toggle">1 doc</label>
         
       </div>
     </div>
@@ -7770,10 +8028,10 @@ Try using the dropdown selector or navigation buttons to switch pages.</div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-20-components-password-input-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-20-components-password-input-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-20-components-password-input-stories" class="tg tg-stories" type="checkbox" hidden />
-  <input id="c-20-components-password-input-docs" class="tg tg-docs" type="checkbox" hidden />
+  <input id="c-21-components-password-input-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-21-components-password-input-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-21-components-password-input-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-21-components-password-input-docs" class="tg tg-docs" type="checkbox" hidden />
   
   
 
@@ -7893,9 +8151,9 @@ Auto-generated from the `PasswordInput` component props.
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> SectionHeader</h2>
       <div class="badges">
-        <label for="c-21-ui-patterns-section-header-props" class="badge ok as-toggle">5 prop types</label>
+        <label for="c-22-ui-patterns-section-header-props" class="badge ok as-toggle">5 prop types</label>
         
-        <label for="c-21-ui-patterns-section-header-stories" class="badge ok as-toggle">10 stories</label>
+        <label for="c-22-ui-patterns-section-header-stories" class="badge ok as-toggle">10 stories</label>
         
         
       </div>
@@ -7912,10 +8170,10 @@ page identity remains in the primary page header above.</div>
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-21-ui-patterns-section-header-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-22-ui-patterns-section-header-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-21-ui-patterns-section-header-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-22-ui-patterns-section-header-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -8167,9 +8425,9 @@ title?: string</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> SideNavigation</h2>
       <div class="badges">
-        <label for="c-22-ui-patterns-side-navigation-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-22-ui-patterns-side-navigation-info" class="badge info as-toggle">1 info</label>
-        <label for="c-22-ui-patterns-side-navigation-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-23-ui-patterns-side-navigation-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-23-ui-patterns-side-navigation-info" class="badge info as-toggle">1 info</label>
+        <label for="c-23-ui-patterns-side-navigation-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -8181,9 +8439,9 @@ title?: string</code></pre>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-22-ui-patterns-side-navigation-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-22-ui-patterns-side-navigation-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-22-ui-patterns-side-navigation-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-23-ui-patterns-side-navigation-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-23-ui-patterns-side-navigation-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-23-ui-patterns-side-navigation-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -8677,10 +8935,10 @@ examples on this page use the same placement.</div>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Slider</h2>
       <div class="badges">
-        <label for="c-23-components-slider-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-23-components-slider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-23-components-slider-stories" class="badge err as-toggle">16/16 story errors</label>
-        <label for="c-23-components-slider-docs" class="badge ok as-toggle">1 doc</label>
+        <label for="c-24-components-slider-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-24-components-slider-info" class="badge info as-toggle">1 info</label>
+        <label for="c-24-components-slider-stories" class="badge err as-toggle">16/16 story errors</label>
+        <label for="c-24-components-slider-docs" class="badge ok as-toggle">1 doc</label>
         
       </div>
     </div>
@@ -8691,10 +8949,10 @@ examples on this page use the same placement.</div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-23-components-slider-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-23-components-slider-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-23-components-slider-stories" class="tg tg-stories" type="checkbox" hidden />
-  <input id="c-23-components-slider-docs" class="tg tg-docs" type="checkbox" hidden />
+  <input id="c-24-components-slider-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-24-components-slider-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-24-components-slider-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-24-components-slider-docs" class="tg tg-docs" type="checkbox" hidden />
   
   
 
@@ -9099,9 +9357,9 @@ Auto-generated from the `Slider` component props.
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> StatCard</h2>
       <div class="badges">
-        <label for="c-24-ui-patterns-data-display-props" class="badge ok as-toggle">7 prop types</label>
+        <label for="c-25-ui-patterns-data-display-props" class="badge ok as-toggle">7 prop types</label>
         
-        <label for="c-24-ui-patterns-data-display-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-25-ui-patterns-data-display-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -9124,10 +9382,10 @@ Display key metrics with optional trend indicators.
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-24-ui-patterns-data-display-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-25-ui-patterns-data-display-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-24-ui-patterns-data-display-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-25-ui-patterns-data-display-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -9296,9 +9554,9 @@ value: string | number</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> StickySave</h2>
       <div class="badges">
-        <label for="c-25-ui-patterns-sticky-save-props" class="badge ok as-toggle">10 prop types</label>
+        <label for="c-26-ui-patterns-sticky-save-props" class="badge ok as-toggle">10 prop types</label>
         
-        <label for="c-25-ui-patterns-sticky-save-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-26-ui-patterns-sticky-save-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -9328,10 +9586,10 @@ value). Saving or cancelling clears the dirty state and the bar slides away.
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-25-ui-patterns-sticky-save-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-26-ui-patterns-sticky-save-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-25-ui-patterns-sticky-save-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-26-ui-patterns-sticky-save-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -9618,10 +9876,10 @@ controls to explore labels, the saving spinner, and the disabled state.</div>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Styles</h2>
       <div class="badges">
-        <label for="c-26-utilities-styles-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-26-utilities-styles-info" class="badge info as-toggle">1 info</label>
-        <label for="c-26-utilities-styles-stories" class="badge ok as-toggle">3 stories</label>
-        <label for="c-26-utilities-styles-docs" class="badge ok as-toggle">1 doc</label>
+        <label for="c-27-utilities-styles-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-27-utilities-styles-info" class="badge info as-toggle">1 info</label>
+        <label for="c-27-utilities-styles-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-27-utilities-styles-docs" class="badge ok as-toggle">1 doc</label>
         
       </div>
     </div>
@@ -9632,10 +9890,10 @@ controls to explore labels, the saving spinner, and the disabled state.</div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-26-utilities-styles-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-26-utilities-styles-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-26-utilities-styles-stories" class="tg tg-stories" type="checkbox" hidden />
-  <input id="c-26-utilities-styles-docs" class="tg tg-docs" type="checkbox" hidden />
+  <input id="c-27-utilities-styles-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-27-utilities-styles-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-27-utilities-styles-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-27-utilities-styles-docs" class="tg tg-docs" type="checkbox" hidden />
   
   
 
@@ -9863,9 +10121,9 @@ pnpm add @axiscommunications/fluent-styles
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> SuiteHeader</h2>
       <div class="badges">
-        <label for="c-27-ui-patterns-responsive-layout-props" class="badge ok as-toggle">23 prop types</label>
-        <label for="c-27-ui-patterns-responsive-layout-info" class="badge info as-toggle">1 info</label>
-        <label for="c-27-ui-patterns-responsive-layout-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-28-ui-patterns-responsive-layout-props" class="badge ok as-toggle">23 prop types</label>
+        <label for="c-28-ui-patterns-responsive-layout-info" class="badge info as-toggle">1 info</label>
+        <label for="c-28-ui-patterns-responsive-layout-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -9878,11 +10136,11 @@ pnpm add @axiscommunications/fluent-styles
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="c-27-ui-patterns-responsive-layout-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-27-ui-patterns-responsive-layout-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-28-ui-patterns-responsive-layout-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-28-ui-patterns-responsive-layout-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-27-ui-patterns-responsive-layout-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-28-ui-patterns-responsive-layout-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -10075,9 +10333,9 @@ import { Canvas, Description, Heading, Markdown, Title } from "@storybook/addon-
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> SuiteHeader</h2>
       <div class="badges">
-        <label for="c-28-ui-patterns-suite-header-props" class="badge ok as-toggle">23 prop types</label>
-        <label for="c-28-ui-patterns-suite-header-info" class="badge info as-toggle">1 info</label>
-        <label for="c-28-ui-patterns-suite-header-stories" class="badge ok as-toggle">8 stories</label>
+        <label for="c-29-ui-patterns-suite-header-props" class="badge ok as-toggle">23 prop types</label>
+        <label for="c-29-ui-patterns-suite-header-info" class="badge info as-toggle">1 info</label>
+        <label for="c-29-ui-patterns-suite-header-stories" class="badge ok as-toggle">8 stories</label>
         
         
       </div>
@@ -10090,11 +10348,11 @@ import { Canvas, Description, Heading, Markdown, Title } from "@storybook/addon-
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="c-28-ui-patterns-suite-header-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-28-ui-patterns-suite-header-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-29-ui-patterns-suite-header-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-29-ui-patterns-suite-header-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-28-ui-patterns-suite-header-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-29-ui-patterns-suite-header-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -10336,10 +10594,10 @@ launcher.</div>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> TokenExplorer</h2>
       <div class="badges">
-        <label for="c-29-theme-token-explorer-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-29-theme-token-explorer-info" class="badge info as-toggle">1 info</label>
-        <label for="c-29-theme-token-explorer-stories" class="badge ok as-toggle">3 stories</label>
-        <label for="c-29-theme-token-explorer-docs" class="badge ok as-toggle">1 doc</label>
+        <label for="c-30-theme-token-explorer-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-30-theme-token-explorer-info" class="badge info as-toggle">1 info</label>
+        <label for="c-30-theme-token-explorer-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-30-theme-token-explorer-docs" class="badge ok as-toggle">1 doc</label>
         
       </div>
     </div>
@@ -10350,10 +10608,10 @@ launcher.</div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-29-theme-token-explorer-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-29-theme-token-explorer-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-29-theme-token-explorer-stories" class="tg tg-stories" type="checkbox" hidden />
-  <input id="c-29-theme-token-explorer-docs" class="tg tg-docs" type="checkbox" hidden />
+  <input id="c-30-theme-token-explorer-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-30-theme-token-explorer-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-30-theme-token-explorer-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-30-theme-token-explorer-docs" class="tg tg-docs" type="checkbox" hidden />
   
   
 
@@ -10580,9 +10838,9 @@ Status families share the same Fluent slot roles:
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> VideoControlBar</h2>
       <div class="badges">
-        <label for="c-30-ui-patterns-video-control-bar-props" class="badge ok as-toggle">5 prop types</label>
+        <label for="c-31-ui-patterns-video-control-bar-props" class="badge ok as-toggle">5 prop types</label>
         
-        <label for="c-30-ui-patterns-video-control-bar-stories" class="badge ok as-toggle">8 stories</label>
+        <label for="c-31-ui-patterns-video-control-bar-stories" class="badge ok as-toggle">8 stories</label>
         
         
       </div>
@@ -10607,10 +10865,10 @@ while `subtle` is a theme-aware bar for placement on a page surface.
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-30-ui-patterns-video-control-bar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-31-ui-patterns-video-control-bar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-30-ui-patterns-video-control-bar-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-31-ui-patterns-video-control-bar-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -11448,9 +11706,9 @@ rather than floating over the video.</div>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> Wizard</h2>
       <div class="badges">
-        <label for="c-31-ui-patterns-wizard-props" class="badge ok as-toggle">17 prop types</label>
+        <label for="c-32-ui-patterns-wizard-props" class="badge ok as-toggle">17 prop types</label>
         
-        <label for="c-31-ui-patterns-wizard-stories" class="badge ok as-toggle">11 stories</label>
+        <label for="c-32-ui-patterns-wizard-stories" class="badge ok as-toggle">11 stories</label>
         
         
       </div>
@@ -11488,10 +11746,10 @@ Supports both controlled (`currentStep` + `onStepChange`) and uncontrolled
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-31-ui-patterns-wizard-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-32-ui-patterns-wizard-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-31-ui-patterns-wizard-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-32-ui-patterns-wizard-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
