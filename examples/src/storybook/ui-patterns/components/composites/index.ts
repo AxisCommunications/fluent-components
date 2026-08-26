@@ -25,9 +25,24 @@
  * - DynamicTabList: Document tab bar for runtime-opened objects
  * - CanvasControls: Floating vertical zoom/navigation toolbar for canvases
  * - ExpandableErrorToast: Error toast that reveals and copies the raw system error
+ * - NotificationCenter: Priority-sorted stack of system messages for the suite header
  */
 
 export { FormField, type FormFieldProps } from "./FormField";
+export {
+  NotificationCenter,
+  notificationSortOptions,
+  sortByNewest,
+  sortByOldest,
+  sortByPriority,
+  sortByUnreadFirst,
+  sortNotifications,
+  type NotificationCenterProps,
+  type NotificationIntent,
+  type NotificationMessage,
+  type NotificationPriority,
+  type NotificationSortKey,
+} from "./NotificationCenter";
 export {
   ErrorToastContent,
   ExpandableErrorToast,
