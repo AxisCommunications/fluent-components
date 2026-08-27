@@ -51,7 +51,7 @@
     "replace": "^1.2.2",
     "svgo": "3.3.4",
     "typescript": "^7.0.2",
-    "yargs": "^14.2.3"
+    "yargs": "^18.1.0"
   },
   "peerDependencies": {
     "react": ">=16.14.0 <20.0.0"
