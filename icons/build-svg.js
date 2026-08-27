@@ -3,6 +3,7 @@ import path from "node:path";
 import process from "node:process";
 
 import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
 const ICON_OUTLINE_STYLE = "_regular";
 const ICON_FILLED_STYLE = "_filled";
@@ -63,7 +64,7 @@ const processFolder = (srcPath, destPath, folderDepth, extension) => {
   });
 };
 
-const argv = yargs.argv;
+const argv = yargs(hideBin(process.argv)).parseSync();
 
 if (!argv.source) {
   throw new Error("Icon source folder not specified by --source");
