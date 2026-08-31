@@ -191,16 +191,18 @@ export const SortedByNewest: Story = {
 };
 
 /**
- * With `onDismiss`, `onDismissAll`, and `onMarkAllRead` wired up, the stack
- * becomes a working inbox. Each handler is optional; omit one and its affordance
- * disappears rather than rendering a dead control.
+ * Use a message's chevron to reveal its description and action, like the
+ * Windows notification center. With `onDismiss`, `onDismissAll`, and
+ * `onMarkAllRead` wired up, the stack becomes a working inbox. Each handler is
+ * optional; omit one and its affordance disappears rather than rendering a dead
+ * control.
  */
 export const Interactive: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          "Dismiss individual messages, mark everything as read, or clear the stack to reach the empty state.",
+          "Expand a message to view its details and action, dismiss individual messages, mark everything as read, or clear the stack to reach the empty state.",
       },
     },
   },

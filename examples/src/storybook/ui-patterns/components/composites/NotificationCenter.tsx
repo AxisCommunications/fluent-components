@@ -18,6 +18,8 @@ import {
   ArrowSortRegular,
   CheckmarkCircleFilled,
   CheckmarkRegular,
+  ChevronDownRegular,
+  ChevronUpRegular,
   DismissRegular,
   ErrorCircleFilled,
   InfoFilled,
@@ -310,6 +312,15 @@ const useStyles = makeStyles({
   inlineAction: {
     justifySelf: "start",
     marginInlineStart: `calc(-1 * ${tokens.spacingHorizontalS})`,
+    color: tokens.colorBrandForegroundLink,
+    "&:hover": {
+      color: tokens.colorBrandForegroundLinkHover,
+    },
+  },
+
+  itemControls: {
+    display: "flex",
+    alignItems: "center",
   },
 
   empty: {
@@ -323,13 +334,6 @@ const useStyles = makeStyles({
 
   emptyIcon: {
     fontSize: "32px",
-  },
-
-  footer: {
-    display: "flex",
-    justifyContent: "flex-start",
-    paddingTop: tokens.spacingVerticalS,
-    marginInlineStart: `calc(-1 * ${tokens.spacingHorizontalS})`,
   },
 });
 
@@ -501,6 +505,22 @@ export const NotificationCenter = forwardRef<
               />
             </Tooltip>
           ) : null}
+
+          {onDismissAll ? (
+            <Tooltip
+              content="Clear all notifications"
+              relationship="label"
+              withArrow
+            >
+              <Button
+                appearance="subtle"
+                size="small"
+                icon={<DismissRegular />}
+                aria-label="Clear all notifications"
+                onClick={onDismissAll}
+              />
+            </Tooltip>
+          ) : null}
         </div>
 
         <Divider />
@@ -521,14 +541,6 @@ export const NotificationCenter = forwardRef<
                 />
               ))}
             </ul>
-
-            {onDismissAll ? (
-              <div className={styles.footer}>
-                <Button appearance="subtle" size="small" onClick={onDismissAll}>
-                  Clear all
-                </Button>
-              </div>
-            ) : null}
           </>
         )}
       </div>
@@ -547,6 +559,9 @@ function NotificationRow({
 }) {
   const styles = useStyles();
   const unread = !message.read;
+  const [expanded, setExpanded] = useState(false);
+  const canExpand = Boolean(message.description || message.actionLabel);
+  const detailsId = `notification-details-${message.id}`;
 
   const meta: ReactNode[] = [
     <span key="time">{formatRelativeTime(message.timestamp)}</span>,
@@ -575,15 +590,15 @@ function NotificationRow({
           <Text className={styles.title}>{message.title}</Text>
         </div>
 
-        {message.description ? (
-          <Text size={200} className={styles.description}>
+        {expanded && message.description ? (
+          <Text id={detailsId} size={200} className={styles.description}>
             {message.description}
           </Text>
         ) : null}
 
         <div className={styles.meta}>{meta}</div>
 
-        {message.actionLabel ? (
+        {expanded && message.actionLabel ? (
           <Button
             className={styles.inlineAction}
             appearance="transparent"
@@ -595,20 +610,44 @@ function NotificationRow({
         ) : null}
       </div>
 
-      {onDismiss ? (
-        <Tooltip
-          content={`Dismiss ${message.title}`}
-          relationship="label"
-          withArrow
-        >
-          <Button
-            appearance="subtle"
-            size="small"
-            icon={<DismissRegular />}
-            aria-label={`Dismiss ${message.title}`}
-            onClick={() => onDismiss(message.id)}
-          />
-        </Tooltip>
+      {canExpand || onDismiss ? (
+        <div className={styles.itemControls}>
+          {canExpand ? (
+            <Tooltip
+              content={
+                expanded ? "Collapse notification" : "Expand notification"
+              }
+              relationship="label"
+              withArrow
+            >
+              <Button
+                appearance="subtle"
+                size="small"
+                icon={expanded ? <ChevronUpRegular /> : <ChevronDownRegular />}
+                aria-controls={expanded ? detailsId : undefined}
+                aria-expanded={expanded}
+                aria-label={`${expanded ? "Collapse" : "Expand"} ${message.title}`}
+                onClick={() => setExpanded((current) => !current)}
+              />
+            </Tooltip>
+          ) : null}
+
+          {onDismiss ? (
+            <Tooltip
+              content={`Dismiss ${message.title}`}
+              relationship="label"
+              withArrow
+            >
+              <Button
+                appearance="subtle"
+                size="small"
+                icon={<DismissRegular />}
+                aria-label={`Dismiss ${message.title}`}
+                onClick={() => onDismiss(message.id)}
+              />
+            </Tooltip>
+          ) : null}
+        </div>
       ) : null}
     </li>
   );
