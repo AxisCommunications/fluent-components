@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>4.7s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>4.8s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -7405,9 +7405,11 @@ sorting without duplicating the comparators.</div>
                 <span class="badge ok">story ok</span>
               </div>
               
-              <div class="hint">With `onDismiss`, `onDismissAll`, and `onMarkAllRead` wired up, the stack
-becomes a working inbox. Each handler is optional; omit one and its affordance
-disappears rather than rendering a dead control.</div>
+              <div class="hint">Use a message&#39;s chevron to reveal its description and action, like the
+Windows notification center. With `onDismiss`, `onDismissAll`, and
+`onMarkAllRead` wired up, the stack becomes a working inbox. Each handler is
+optional; omit one and its affordance disappears rather than rendering a dead
+control.</div>
               <pre><code>const Interactive = () =&gt; {
     const [messages, setMessages] = useState(sampleMessages);
 

@@ -4038,7 +4038,7 @@
           "id": "ui-patterns-notification-center--interactive",
           "name": "Interactive",
           "snippet": "const Interactive = () => {\n    const [messages, setMessages] = useState(sampleMessages);\n\n    return (\n        <NotificationCenter\n            messages={messages}\n            onDismiss={(id) =>\n              setMessages((current) =>\n                current.filter((message) => message.id !== id)\n              )\n            }\n            onDismissAll={() => setMessages([])}\n            onMarkAllRead={() =>\n              setMessages((current) =>\n                current.map((message) => ({ ...message, read: true }))\n              )\n            } />\n    );\n};",
-          "description": "With `onDismiss`, `onDismissAll`, and `onMarkAllRead` wired up, the stack\nbecomes a working inbox. Each handler is optional; omit one and its affordance\ndisappears rather than rendering a dead control."
+          "description": "Use a message's chevron to reveal its description and action, like the\nWindows notification center. With `onDismiss`, `onDismissAll`, and\n`onMarkAllRead` wired up, the stack becomes a working inbox. Each handler is\noptional; omit one and its affordance disappears rather than rendering a dead\ncontrol."
         },
         {
           "id": "ui-patterns-notification-center--empty",
@@ -4066,6 +4066,8 @@
         ],
         "tokens": [
           "tokens.borderRadiusMedium",
+          "tokens.colorBrandForegroundLink",
+          "tokens.colorBrandForegroundLinkHover",
           "tokens.colorNeutralBackground1Hover",
           "tokens.colorNeutralBackground2",
           "tokens.colorNeutralForeground1",
@@ -7704,6 +7706,6 @@
   },
   "meta": {
     "docgen": "react-docgen-typescript",
-    "durationMs": 4658
+    "durationMs": 4806
   }
 }
