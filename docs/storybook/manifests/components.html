@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>4.8s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>4.7s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -8455,13 +8455,13 @@ title?: string</code></pre>
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;SideNavigation&quot; component.
-  116 |  * &lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157&quot;&gt;&lt;img width=&quot;240&quot; src=&quot;./figma-global-components-cover.svg&quot; alt=&quot;Open in Figma — AXIS Fluent Global components&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-  117 |  */
-&gt; 118 | const meta: Meta&lt;typeof SideNavigation&gt; = {
+  122 |  * &lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157&quot;&gt;&lt;img width=&quot;240&quot; src=&quot;./figma-global-components-cover.svg&quot; alt=&quot;Open in Figma — AXIS Fluent Global components&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+  123 |  */
+&gt; 124 | const meta: Meta&lt;typeof SideNavigation&gt; = {
       | ^
-  119 |   title: &quot;UI patterns/Side Navigation&quot;,
-  120 |   component: SideNavigation,
-  121 |   tags: [&quot;autodocs&quot;],
+  125 |   title: &quot;UI patterns/Side Navigation&quot;,
+  126 |   component: SideNavigation,
+  127 |   tags: [&quot;autodocs&quot;],
 
 ./src/storybook/components/side-navigation.stories.tsx:
 import {
@@ -8509,6 +8509,11 @@ const interactiveItems: SideNavigationItem[] = [
     children: [
       { id: &quot;workspaces-personal&quot;, label: &quot;Personal&quot; },
       { id: &quot;workspaces-shared&quot;, label: &quot;Shared with me&quot; },
+      {
+        id: &quot;workspaces-team&quot;,
+        label: &quot;Team&quot;,
+        children: [{ id: &quot;workspaces-team-members&quot;, label: &quot;Members&quot; }],
+      },
     ],
   },
   {
@@ -8546,7 +8551,8 @@ const interactiveFooterItems: SideNavigationItem[] = [
  *   destinations are well known.
  * - **Expanded with sub-menus** — start expanded with `defaultExpanded` and seed
  *   open groups with `defaultOpenItemIds`. Items with `children` render an
- *   expandable group of sub-items.
+ *   expandable group of sub-items. Sub-items can use `children` to create a
+ *   third-level group.
  * - **Collapsed with sub-menus** — while the rail is collapsed, an item with
  *   `children` opens a foldout menu on hover (or focus) instead of an inline
  *   group, so its sub-items stay reachable without expanding the rail.
@@ -8620,7 +8626,7 @@ const meta: Meta&lt;typeof SideNavigation&gt; = {
     onSelect: {
       control: false,
       description:
-        &quot;Called with the id of an item or sub-item when it is selected.&quot;,
+        &quot;Called with the id of an item, sub-item, or nested sub-item when selected.&quot;,
       table: { type: { summary: &quot;(id: string) =&gt; void&quot; } },
     },
     expanded: {
@@ -8664,7 +8670,8 @@ const meta: Meta&lt;typeof SideNavigation&gt; = {
     },
     defaultOpenItemIds: {
       control: false,
-      description: &quot;The ids of group items whose sub-items are open initially.&quot;,
+      description:
+        &quot;The ids of group items whose nested items are open initially.&quot;,
       table: { type: { summary: &quot;string[]&quot; }, defaultValue: { summary: &quot;[]&quot; } },
     },
     expandedWidth: {
@@ -15916,13 +15923,13 @@ and layout. Politeness follows the intent automatically (assertive for errors).<
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;SideNavigation&quot; component.
-  116 |  * &lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157&quot;&gt;&lt;img width=&quot;240&quot; src=&quot;./figma-global-components-cover.svg&quot; alt=&quot;Open in Figma — AXIS Fluent Global components&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-  117 |  */
-&gt; 118 | const meta: Meta&lt;typeof SideNavigation&gt; = {
+  122 |  * &lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;https://www.figma.com/design/0kVLp2qecBWQiQXEQidCeJ/Axis-Global-components?node-id=44-157&quot;&gt;&lt;img width=&quot;240&quot; src=&quot;./figma-global-components-cover.svg&quot; alt=&quot;Open in Figma — AXIS Fluent Global components&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+  123 |  */
+&gt; 124 | const meta: Meta&lt;typeof SideNavigation&gt; = {
       | ^
-  119 |   title: &quot;UI patterns/Side Navigation&quot;,
-  120 |   component: SideNavigation,
-  121 |   tags: [&quot;autodocs&quot;],
+  125 |   title: &quot;UI patterns/Side Navigation&quot;,
+  126 |   component: SideNavigation,
+  127 |   tags: [&quot;autodocs&quot;],
 
 ./src/storybook/components/side-navigation.stories.tsx:
 import {
@@ -15970,6 +15977,11 @@ const interactiveItems: SideNavigationItem[] = [
     children: [
       { id: &quot;workspaces-personal&quot;, label: &quot;Personal&quot; },
       { id: &quot;workspaces-shared&quot;, label: &quot;Shared with me&quot; },
+      {
+        id: &quot;workspaces-team&quot;,
+        label: &quot;Team&quot;,
+        children: [{ id: &quot;workspaces-team-members&quot;, label: &quot;Members&quot; }],
+      },
     ],
   },
   {
@@ -16007,7 +16019,8 @@ const interactiveFooterItems: SideNavigationItem[] = [
  *   destinations are well known.
  * - **Expanded with sub-menus** — start expanded with `defaultExpanded` and seed
  *   open groups with `defaultOpenItemIds`. Items with `children` render an
- *   expandable group of sub-items.
+ *   expandable group of sub-items. Sub-items can use `children` to create a
+ *   third-level group.
  * - **Collapsed with sub-menus** — while the rail is collapsed, an item with
  *   `children` opens a foldout menu on hover (or focus) instead of an inline
  *   group, so its sub-items stay reachable without expanding the rail.
@@ -16081,7 +16094,7 @@ const meta: Meta&lt;typeof SideNavigation&gt; = {
     onSelect: {
       control: false,
       description:
-        &quot;Called with the id of an item or sub-item when it is selected.&quot;,
+        &quot;Called with the id of an item, sub-item, or nested sub-item when selected.&quot;,
       table: { type: { summary: &quot;(id: string) =&gt; void&quot; } },
     },
     expanded: {
@@ -16125,7 +16138,8 @@ const meta: Meta&lt;typeof SideNavigation&gt; = {
     },
     defaultOpenItemIds: {
       control: false,
-      description: &quot;The ids of group items whose sub-items are open initially.&quot;,
+      description:
+        &quot;The ids of group items whose nested items are open initially.&quot;,
       table: { type: { summary: &quot;string[]&quot; }, defaultValue: { summary: &quot;[]&quot; } },
     },
     expandedWidth: {
