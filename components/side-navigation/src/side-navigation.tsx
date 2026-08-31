@@ -10,7 +10,11 @@ import {
   sideNavigationClassNames as classNames,
   useSideNavigationStyles,
 } from "./side-navigation.styles.js";
-import { SideNavigationProps } from "./side-navigation.types.js";
+import {
+  SideNavigationItem,
+  SideNavigationProps,
+  SideNavigationSubItem,
+} from "./side-navigation.types.js";
 import { useControllableState } from "./use-controllable-state.js";
 
 /**
@@ -72,28 +76,25 @@ export const SideNavigation = React.forwardRef<
   const [openItemIds, setOpenItemIds] = React.useState<string[]>(
     () => defaultOpenItemIds ?? []
   );
-  // Remembers which group a collapsed-mode flyout selection belongs to, so it
-  // can be the only one open once the rail expands again.
-  const pendingOpenParentIdRef = React.useRef<string | null>(null);
+  // Remembers a collapsed-mode flyout selection's ancestors so every level is
+  // open once the rail expands again.
+  const pendingOpenParentIdsRef = React.useRef<string[] | null>(null);
 
   const findParentId = React.useCallback(
-    (childId: string): string | undefined => {
-      const parent = [...items, ...(footerItems ?? [])].find((candidate) =>
-        candidate.children?.some((child) => child.id === childId)
-      );
-      return parent?.id;
-    },
+    (childId: string): string | undefined =>
+      findParentIdInItems([...items, ...(footerItems ?? [])], childId),
     [items, footerItems]
   );
 
   const handleSelect = React.useCallback(
     (id: string) => {
       if (!expanded) {
-        pendingOpenParentIdRef.current = findParentId(id) ?? null;
+        pendingOpenParentIdsRef.current =
+          findParentIdsInItems([...items, ...(footerItems ?? [])], id) ?? null;
       }
       setSelectedItem(id);
     },
-    [expanded, findParentId, setSelectedItem]
+    [expanded, footerItems, items, setSelectedItem]
   );
 
   const setRootRef = React.useCallback(
@@ -126,7 +127,7 @@ export const SideNavigation = React.forwardRef<
     // and the rail is expanded; when they're hidden, the marker falls back to
     // the parent category so it always points at something visible.
     let targetId = selectedItem;
-    if (targetId && !itemRefs.current.has(targetId)) {
+    while (targetId && !itemRefs.current.has(targetId)) {
       targetId = findParentId(targetId);
     }
     const selectedElement = targetId
@@ -153,9 +154,9 @@ export const SideNavigation = React.forwardRef<
   }, [updateIndicator, expanded, openItemIds, items, footerItems]);
 
   React.useLayoutEffect(() => {
-    if (expanded && pendingOpenParentIdRef.current) {
-      setOpenItemIds([pendingOpenParentIdRef.current]);
-      pendingOpenParentIdRef.current = null;
+    if (expanded && pendingOpenParentIdsRef.current) {
+      setOpenItemIds(pendingOpenParentIdsRef.current);
+      pendingOpenParentIdsRef.current = null;
     }
   }, [expanded]);
 
@@ -235,6 +236,7 @@ export const SideNavigation = React.forwardRef<
             expanded={expanded}
             selectedItemId={selectedItem}
             open={openItemIds.includes(item.id)}
+            openItemIds={openItemIds}
             onSelect={handleSelect}
             onToggleOpen={handleToggleOpen}
             registerRef={registerRef}
@@ -256,6 +258,7 @@ export const SideNavigation = React.forwardRef<
                   expanded={expanded}
                   selectedItemId={selectedItem}
                   open={openItemIds.includes(item.id)}
+                  openItemIds={openItemIds}
                   onSelect={handleSelect}
                   onToggleOpen={handleToggleOpen}
                   registerRef={registerRef}
@@ -270,3 +273,41 @@ export const SideNavigation = React.forwardRef<
   );
 });
 SideNavigation.displayName = "SideNavigation";
+
+function findParentIdInItems(
+  items: (SideNavigationItem | SideNavigationSubItem)[],
+  childId: string
+): string | undefined {
+  for (const item of items) {
+    for (const child of item.children ?? []) {
+      if (child.id === childId) {
+        return item.id;
+      }
+
+      const parentId = findParentIdInItems([child], childId);
+      if (parentId) {
+        return parentId;
+      }
+    }
+  }
+}
+
+function findParentIdsInItems(
+  items: (SideNavigationItem | SideNavigationSubItem)[],
+  childId: string,
+  ancestorIds: string[] = []
+): string[] | undefined {
+  for (const item of items) {
+    if (item.id === childId) {
+      return ancestorIds;
+    }
+
+    const parentIds = findParentIdsInItems(item.children ?? [], childId, [
+      ...ancestorIds,
+      item.id,
+    ]);
+    if (parentIds) {
+      return parentIds;
+    }
+  }
+}

@@ -9,6 +9,8 @@ export type SideNavigationSubItem = {
   id: string;
   /** Visible text label. Also used as the accessible name. */
   label: string;
+  /** Nested items revealed when this sub-item group is open. */
+  children?: SideNavigationSubItem[];
   /** When `true`, the sub-item is rendered dimmed and cannot be selected. */
   disabled?: boolean;
 };
@@ -50,7 +52,7 @@ export type SideNavigationProps = Omit<ComponentProps<"nav">, "onSelect"> & {
   selectedItemId?: string;
   /** The id of the item selected initially (uncontrolled). */
   defaultSelectedItemId?: string;
-  /** Called with the id of an item or sub-item when it is selected. */
+  /** Called with the id of an item, sub-item, or nested sub-item when selected. */
   onSelect?: (id: string) => void;
   /** Whether the rail is expanded to reveal labels (controlled). */
   expanded?: boolean;
@@ -72,7 +74,7 @@ export type SideNavigationProps = Omit<ComponentProps<"nav">, "onSelect"> & {
    * Defaults to `"top"`.
    */
   togglePosition?: "top" | "bottom";
-  /** The ids of group items whose sub-items are open initially. */
+  /** The ids of group items whose nested items are open initially. */
   defaultOpenItemIds?: string[];
   /** Width in pixels of the rail when expanded. Defaults to `260`. */
   expandedWidth?: number;

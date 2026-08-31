@@ -13,7 +13,10 @@ import {
   sideNavigationClassNames as classNames,
   useSideNavigationStyles,
 } from "./side-navigation.styles.js";
-import { SideNavigationItem } from "./side-navigation.types.js";
+import {
+  SideNavigationItem,
+  SideNavigationSubItem,
+} from "./side-navigation.types.js";
 
 export type SideNavigationItemRowProps = {
   /** The item to render. */
@@ -24,6 +27,8 @@ export type SideNavigationItemRowProps = {
   selectedItemId: string | undefined;
   /** Whether this item's group of sub-items is open. */
   open: boolean;
+  /** The ids of all open nested groups. */
+  openItemIds: string[];
   /** Selects an item or sub-item by id. */
   onSelect: (id: string) => void;
   /** Toggles this item's group of sub-items open or closed. */
@@ -41,6 +46,7 @@ export const SideNavigationItemRow = ({
   expanded,
   selectedItemId,
   open,
+  openItemIds,
   onSelect,
   onToggleOpen,
   registerRef,
@@ -49,9 +55,7 @@ export const SideNavigationItemRow = ({
 
   const hasChildren = Boolean(item.children && item.children.length > 0);
   const isSelected = item.id === selectedItemId;
-  const hasSelectedDescendant =
-    hasChildren &&
-    (item.children?.some((child) => child.id === selectedItemId) ?? false);
+  const hasSelectedDescendant = hasSelectedChild(item.children, selectedItemId);
   const showChildren = expanded && hasChildren && open;
   // Items with children are just group labels, not pages: the selected
   // appearance (and the sliding marker) only lands on them while their
@@ -130,30 +134,11 @@ export const SideNavigationItemRow = ({
           <MenuPopover>
             <MenuList>
               <MenuGroupHeader>{item.label}</MenuGroupHeader>
-              {item.children?.map((child) => {
-                const isChildSelected = child.id === selectedItemId;
-
-                return (
-                  <MenuItem
-                    key={child.id}
-                    disabled={child.disabled}
-                    aria-current={isChildSelected ? "page" : undefined}
-                    className={mergeClasses(
-                      classNames.flyoutItem,
-                      styles.flyoutItem,
-                      isChildSelected && classNames.flyoutItemSelected,
-                      isChildSelected && styles.flyoutItemSelected
-                    )}
-                    onClick={() => {
-                      if (!child.disabled) {
-                        onSelect(child.id);
-                      }
-                    }}
-                  >
-                    {child.label}
-                  </MenuItem>
-                );
-              })}
+              <FlyoutItems
+                items={item.children ?? []}
+                selectedItemId={selectedItemId}
+                onSelect={onSelect}
+              />
             </MenuList>
           </MenuPopover>
         </Menu>
@@ -161,35 +146,166 @@ export const SideNavigationItemRow = ({
         itemButton
       )}
 
-      {showChildren
-        ? item.children?.map((child) => {
-            const isChildSelected = child.id === selectedItemId;
-
-            return (
-              <button
-                key={child.id}
-                type="button"
-                ref={registerRef(child.id)}
-                className={mergeClasses(
-                  classNames.subItem,
-                  styles.subItem,
-                  isChildSelected && classNames.subItemSelected,
-                  isChildSelected && styles.subItemSelected
-                )}
-                onClick={() => {
-                  if (!child.disabled) {
-                    onSelect(child.id);
-                  }
-                }}
-                disabled={child.disabled}
-                aria-current={isChildSelected ? "page" : undefined}
-              >
-                {child.label}
-              </button>
-            );
-          })
-        : null}
+      {showChildren ? (
+        <NestedItems
+          items={item.children ?? []}
+          depth={1}
+          selectedItemId={selectedItemId}
+          openItemIds={openItemIds}
+          onSelect={onSelect}
+          onToggleOpen={onToggleOpen}
+          registerRef={registerRef}
+        />
+      ) : null}
     </div>
   );
 };
 SideNavigationItemRow.displayName = "SideNavigationItemRow";
+
+type NestedItemsProps = {
+  items: SideNavigationSubItem[];
+  depth: number;
+  selectedItemId: string | undefined;
+  openItemIds: string[];
+  onSelect: (id: string) => void;
+  onToggleOpen: (id: string) => void;
+  registerRef: (id: string) => (node: HTMLElement | null) => void;
+};
+
+function NestedItems({
+  items,
+  depth,
+  selectedItemId,
+  openItemIds,
+  onSelect,
+  onToggleOpen,
+  registerRef,
+}: NestedItemsProps) {
+  const styles = useSideNavigationStyles();
+
+  return items.map((item) => {
+    const hasChildren = Boolean(item.children?.length);
+    const open = openItemIds.includes(item.id);
+    const isSelected = item.id === selectedItemId;
+    const isChildSelected = hasSelectedChild(item.children, selectedItemId);
+
+    return (
+      <div
+        key={item.id}
+        className={mergeClasses(classNames.group, styles.group)}
+      >
+        <button
+          type="button"
+          ref={registerRef(item.id)}
+          className={mergeClasses(
+            classNames.subItem,
+            styles.subItem,
+            depth > 1 && styles.nestedSubItem,
+            hasChildren && styles.subItemGroup,
+            isSelected && classNames.subItemSelected,
+            (isSelected || (isChildSelected && !open)) && styles.subItemSelected
+          )}
+          onClick={() => {
+            if (!item.disabled) {
+              hasChildren ? onToggleOpen(item.id) : onSelect(item.id);
+            }
+          }}
+          disabled={item.disabled}
+          aria-current={isSelected ? "page" : undefined}
+          aria-expanded={hasChildren ? open : undefined}
+        >
+          <span className={styles.subItemLabel}>{item.label}</span>
+          {hasChildren ? (
+            <span
+              className={mergeClasses(
+                classNames.itemChevron,
+                styles.itemChevron,
+                open && styles.itemChevronOpen
+              )}
+            >
+              <ChevronRightRegular />
+            </span>
+          ) : null}
+        </button>
+
+        {hasChildren && open ? (
+          <NestedItems
+            items={item.children ?? []}
+            depth={depth + 1}
+            selectedItemId={selectedItemId}
+            openItemIds={openItemIds}
+            onSelect={onSelect}
+            onToggleOpen={onToggleOpen}
+            registerRef={registerRef}
+          />
+        ) : null}
+      </div>
+    );
+  });
+}
+
+function FlyoutItems({
+  items,
+  selectedItemId,
+  onSelect,
+}: Pick<NestedItemsProps, "items" | "selectedItemId" | "onSelect">) {
+  const styles = useSideNavigationStyles();
+
+  return items.map((item) => {
+    const hasChildren = Boolean(item.children?.length);
+    const isSelected = item.id === selectedItemId;
+    const itemClassName = mergeClasses(
+      classNames.flyoutItem,
+      styles.flyoutItem,
+      isSelected && classNames.flyoutItemSelected,
+      isSelected && styles.flyoutItemSelected
+    );
+
+    const menuItem = (
+      <MenuItem
+        key={item.id}
+        disabled={item.disabled}
+        aria-current={isSelected ? "page" : undefined}
+        className={itemClassName}
+        onClick={() => {
+          if (!item.disabled && !hasChildren) {
+            onSelect(item.id);
+          }
+        }}
+      >
+        {item.label}
+      </MenuItem>
+    );
+
+    return hasChildren ? (
+      <Menu key={item.id} openOnHover positioning="after">
+        <MenuTrigger disableButtonEnhancement>{menuItem}</MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuGroupHeader>{item.label}</MenuGroupHeader>
+            <FlyoutItems
+              items={item.children ?? []}
+              selectedItemId={selectedItemId}
+              onSelect={onSelect}
+            />
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ) : (
+      menuItem
+    );
+  });
+}
+
+function hasSelectedChild(
+  items: SideNavigationSubItem[] | undefined,
+  selectedItemId: string | undefined
+): boolean {
+  return (
+    items?.some(
+      (item) =>
+        item.id === selectedItemId ||
+        hasSelectedChild(item.children, selectedItemId)
+    ) ?? false
+  );
+}

@@ -43,6 +43,11 @@ const interactiveItems: SideNavigationItem[] = [
     children: [
       { id: "workspaces-personal", label: "Personal" },
       { id: "workspaces-shared", label: "Shared with me" },
+      {
+        id: "workspaces-team",
+        label: "Team",
+        children: [{ id: "workspaces-team-members", label: "Members" }],
+      },
     ],
   },
   {
@@ -80,7 +85,8 @@ const interactiveFooterItems: SideNavigationItem[] = [
  *   destinations are well known.
  * - **Expanded with sub-menus** — start expanded with `defaultExpanded` and seed
  *   open groups with `defaultOpenItemIds`. Items with `children` render an
- *   expandable group of sub-items.
+ *   expandable group of sub-items. Sub-items can use `children` to create a
+ *   third-level group.
  * - **Collapsed with sub-menus** — while the rail is collapsed, an item with
  *   `children` opens a foldout menu on hover (or focus) instead of an inline
  *   group, so its sub-items stay reachable without expanding the rail.
@@ -154,7 +160,7 @@ const meta: Meta<typeof SideNavigation> = {
     onSelect: {
       control: false,
       description:
-        "Called with the id of an item or sub-item when it is selected.",
+        "Called with the id of an item, sub-item, or nested sub-item when selected.",
       table: { type: { summary: "(id: string) => void" } },
     },
     expanded: {
@@ -198,7 +204,8 @@ const meta: Meta<typeof SideNavigation> = {
     },
     defaultOpenItemIds: {
       control: false,
-      description: "The ids of group items whose sub-items are open initially.",
+      description:
+        "The ids of group items whose nested items are open initially.",
       table: { type: { summary: "string[]" }, defaultValue: { summary: "[]" } },
     },
     expandedWidth: {

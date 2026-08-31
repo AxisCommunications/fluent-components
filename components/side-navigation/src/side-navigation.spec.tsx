@@ -16,6 +16,11 @@ const items: SideNavigationItem[] = [
     children: [
       { id: "personal", label: "Personal" },
       { id: "shared", label: "Shared", disabled: true },
+      {
+        id: "team",
+        label: "Team",
+        children: [{ id: "members", label: "Members" }],
+      },
     ],
   },
   { id: "disabled", label: "Disabled", icon: <span />, disabled: true },
@@ -201,6 +206,45 @@ describe("SideNavigation", () => {
     fireEvent.click(getByRole("button", { name: "Personal" }));
 
     expect(onSelect).toHaveBeenCalledWith("personal");
+  });
+
+  it("should reveal and select a third-level sub-item", () => {
+    const onSelect = vi.fn();
+    const { getByRole, queryByRole } = renderNav(
+      <SideNavigation
+        items={items}
+        onSelect={onSelect}
+        defaultExpanded
+        defaultOpenItemIds={["workspaces"]}
+      />
+    );
+
+    expect(queryByRole("button", { name: "Members" })).not.toBeInTheDocument();
+    fireEvent.click(getByRole("button", { name: "Team" }));
+    fireEvent.click(getByRole("button", { name: "Members" }));
+
+    expect(onSelect).toHaveBeenCalledWith("members");
+    expect(getByRole("button", { name: "Members" })).toHaveAttribute(
+      "aria-current",
+      "page"
+    );
+  });
+
+  it("should keep the marker on a visible ancestor of a hidden third-level item", () => {
+    const { container, getByRole } = renderNav(
+      <SideNavigation
+        items={items}
+        defaultExpanded
+        defaultOpenItemIds={["workspaces", "team"]}
+      />
+    );
+
+    fireEvent.click(getByRole("button", { name: "Members" }));
+    fireEvent.click(getByRole("button", { name: "Workspaces" }));
+
+    expect(
+      container.querySelector(".side-navigation__selected-indicator")
+    ).toBeInTheDocument();
   });
 
   it("should not select a disabled sub-item", () => {

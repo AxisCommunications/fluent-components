@@ -269,6 +269,18 @@ const useStyles = makeStyles({
       backgroundColor: "transparent",
     },
   },
+  subItemGroup: {
+    paddingRight: "8px",
+  },
+  nestedSubItem: {
+    paddingLeft: `${RAIL_WIDTH + 16}px`,
+  },
+  subItemLabel: {
+    flexGrow: 1,
+    minWidth: 0,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
   subItemSelected: {
     color: tokens.colorNeutralForeground1,
     fontWeight: tokens.fontWeightSemibold,
