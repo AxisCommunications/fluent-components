@@ -42,7 +42,7 @@
     "@griffel/react": "^1.7.7"
   },
   "devDependencies": {
-    "@svgr/core": "^5.5.0",
+    "@svgr/core": "^8.1.0",
     "@types/node": "^25.5.2",
     "@types/react": "^19.2.18",
     "esbuild": "^0.28.2",
