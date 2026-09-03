@@ -42,7 +42,7 @@
     "@griffel/react": "^1.7.7"
   },
   "devDependencies": {
-    "@svgr/core": "^5.5.0",
+    "@svgr/core": "^8.1.0",
     "@types/node": "^25.5.2",
     "@types/react": "^19.2.18",
     "esbuild": "^0.28.2",
@@ -51,7 +51,7 @@
     "replace": "^1.2.2",
     "svgo": "3.3.4",
     "typescript": "^7.0.2",
-    "yargs": "^14.2.3"
+    "yargs": "^18.1.0"
   },
   "peerDependencies": {
     "react": ">=16.14.0 <20.0.0"

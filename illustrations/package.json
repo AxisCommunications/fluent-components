@@ -46,7 +46,7 @@
     "svgo": "3.3.4",
     "typescript": "^7.0.2",
     "vitest": "^4.1.11",
-    "yargs": "17.7.2"
+    "yargs": "18.1.0"
   },
   "peerDependencies": {
     "@axiscommunications/fluent-theme": ">=9.0.0",
