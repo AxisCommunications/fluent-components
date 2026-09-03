@@ -1,4 +1,7 @@
-import StyleDictionaryPackage, { Dictionary, Platform } from "style-dictionary";
+import StyleDictionaryPackage, {
+  Dictionary,
+  PlatformConfig,
+} from "style-dictionary";
 
 const getTypeName = (category: string) =>
   `${category[0].toUpperCase()}${category.substring(1)}Tokens`;
@@ -60,7 +63,7 @@ const getTsFileHeader = () =>
 
 StyleDictionaryPackage.registerFormat({
   name: "typescript/fluentui",
-  formatter: ({ dictionary, options }) => {
+  format: ({ dictionary, options }) => {
     const tokens = options.categories
       .map((c: string) => getTsTokens(options.sortCategories, dictionary, c))
       .filter((t: string | undefined) => !!t)
@@ -71,13 +74,8 @@ StyleDictionaryPackage.registerFormat({
   },
 });
 
-export const getTsPlatform: (theme: string) => Platform = (theme) => ({
-  transforms: [
-    "attribute/cti",
-    "name/cti/camel",
-    "sizes/px",
-    "shadow/boxShadow",
-  ],
+export const getTsPlatform: (theme: string) => PlatformConfig = (theme) => ({
+  transforms: ["attribute/cti", "name/camel", "sizes/px", "shadow/boxShadow"],
   transformGroup: "js",
   files: [
     {

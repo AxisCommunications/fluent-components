@@ -1,5 +1,8 @@
 import { appendFileSync, existsSync, readFileSync, unlinkSync } from "fs";
-import StyleDictionaryPackage, { Dictionary, Platform } from "style-dictionary";
+import StyleDictionaryPackage, {
+  Dictionary,
+  PlatformConfig,
+} from "style-dictionary";
 
 const resDictStartTag =
   '<ResourceDictionary\r\n  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"\r\n  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"\r\n>';
@@ -14,7 +17,7 @@ const getXamlColorTokens = (
   prefix: string
 ): string | undefined => {
   return dictionary.allTokens
-    .filter((t) => t.attributes?.category?.startsWith("color"))
+    .filter((t) => (t.attributes?.category as string)?.startsWith("color"))
     .map((t) => `<Color x:Key="${prefix}${t.name}">${t.value}</Color>`)
     .join("\r\n  ");
 };
@@ -24,7 +27,7 @@ const getXamlBrushTokens = (
   prefix: string
 ): string | undefined => {
   return dictionary.allTokens
-    .filter((t) => t.attributes?.category?.startsWith("color"))
+    .filter((t) => (t.attributes?.category as string)?.startsWith("color"))
     .map(
       (t) =>
         `<SolidColorBrush\r\n    x:Key="${t.name}"\r\n    Color="{StaticResource ${prefix}${t.name}}"\r\n    p:Freeze="True"\r\n  />`
@@ -90,7 +93,7 @@ const getXamlFileHeader = () =>
 
 StyleDictionaryPackage.registerFormat({
   name: "xaml/fluentui/color",
-  formatter: ({ dictionary, options }) => {
+  format: ({ dictionary, options }) => {
     const tokens = getXamlColorTokens(dictionary, options.prefix);
     return `  ${tokens}\r\n`;
   },
@@ -98,7 +101,7 @@ StyleDictionaryPackage.registerFormat({
 
 StyleDictionaryPackage.registerFormat({
   name: "xaml/fluentui/brush",
-  formatter: ({ dictionary, options }) => {
+  format: ({ dictionary, options }) => {
     const tokens = getXamlBrushTokens(dictionary, options.prefix);
     return `${getXamlFileHeader()}\r\n${resDictBrushesStartTag}\r\n  ${tokens}\r\n${resDictEndTag}`;
   },
@@ -106,7 +109,7 @@ StyleDictionaryPackage.registerFormat({
 
 StyleDictionaryPackage.registerFormat({
   name: "xaml/fluentui/global",
-  formatter: ({ dictionary }) => {
+  format: ({ dictionary }) => {
     const tokens = [
       getXamlFontSizeTokens(dictionary),
       getXamlFontWeightTokens(dictionary),
@@ -117,8 +120,8 @@ StyleDictionaryPackage.registerFormat({
   },
 });
 
-export const getXamlPlatform: (theme: string) => Platform = (theme) => ({
-  transforms: ["attribute/cti", "name/cti/pascal"],
+export const getXamlPlatform: (theme: string) => PlatformConfig = (theme) => ({
+  transforms: ["attribute/cti", "name/pascal"],
   files:
     theme === "global"
       ? [

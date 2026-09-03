@@ -1,12 +1,7 @@
-import { Platform } from "style-dictionary";
+import { PlatformConfig } from "style-dictionary";
 
-export const getCssPlatform: (theme: string) => Platform = (theme) => ({
-  transforms: [
-    "attribute/cti",
-    "name/cti/kebab",
-    "sizes/px",
-    "shadow/boxShadow",
-  ],
+export const getCssPlatform: (theme: string) => PlatformConfig = (theme) => ({
+  transforms: ["attribute/cti", "name/kebab", "sizes/px", "shadow/boxShadow"],
   files: [
     {
       destination: `${theme}.css`,

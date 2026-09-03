@@ -1,6 +1,9 @@
 import { existsSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 
-import StyleDictionaryPackage, { Dictionary, Platform } from "style-dictionary";
+import StyleDictionaryPackage, {
+  Dictionary,
+  PlatformConfig,
+} from "style-dictionary";
 
 const getJsonColorToTokensDict = (
   dictionary: Dictionary,
@@ -18,14 +21,14 @@ const getJsonColorToTokensDict = (
 
 StyleDictionaryPackage.registerFormat({
   name: "json/fluentui/color",
-  formatter: ({ dictionary, options }) => {
+  format: ({ dictionary, options }) => {
     const tokens = getJsonColorToTokensDict(dictionary, options.theme);
     return JSON.stringify(tokens);
   },
 });
 
-export const getJsonPlatform: (theme: string) => Platform = (theme) => ({
-  transforms: ["attribute/cti", "name/cti/camel"],
+export const getJsonPlatform: (theme: string) => PlatformConfig = (theme) => ({
+  transforms: ["attribute/cti", "name/camel"],
   files:
     theme === "global"
       ? []

@@ -20,18 +20,18 @@ const toPixelValue = (value: string) => {
 StyleDictionaryPackage.registerTransform({
   name: "sizes/px",
   type: "value",
-  matcher: (token) =>
+  filter: (token) =>
     ["fontSizes", "lineHeights", "borderRadius", "borderWidth"].includes(
-      token.type
+      token.type ?? ""
     ),
-  transformer: (token) => toPixelValue(token.original.value),
+  transform: (token) => toPixelValue(token.original.value),
 });
 
 StyleDictionaryPackage.registerTransform({
   name: "shadow/boxShadow",
   type: "value",
-  matcher: (token) => token.type === "boxShadow",
-  transformer: (token) =>
+  filter: (token) => token.type === "boxShadow",
+  transform: (token) =>
     token.value
       .map(
         (v: {
@@ -58,40 +58,41 @@ const getStyleDictionaryConfig = (theme: string) => ({
   },
 });
 
-console.log("Build started...");
+const build = async () => {
+  console.log("Build started...");
 
-// JSON token definitions are generated first as needed later
-// in the styles config as file paths.
+  // JSON token definitions are generated first as needed later
+  // in the styles config as file paths.
 
-console.log("Converting fluent themes to json...");
-generateJson();
-console.log("End conversion");
+  console.log("Converting fluent themes to json...");
+  generateJson();
+  console.log("End conversion");
 
-// PROCESS THE DESIGN TOKENS FOR THE DIFFERENT BRANDS AND PLATFORMS
+  // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT BRANDS AND PLATFORMS
 
-for (const theme of ["global", "dark", "light"]) {
+  for (const theme of ["global", "dark", "light"]) {
+    console.log("\n==============================================");
+    console.log(`\nProcessing: ${theme}`);
+
+    const StyleDictionary = new StyleDictionaryPackage(
+      getStyleDictionaryConfig(theme)
+    );
+
+    await StyleDictionary.buildAllPlatforms();
+
+    console.log("\nEnd processing");
+  }
+
+  concatXamlFiles();
+
+  mergeJsonDictFiles();
+
+  console.log("Start building ts-theme");
+  generateTsTheme();
+  console.log("Build ts-theme completed!");
+
   console.log("\n==============================================");
-  console.log(`\nProcessing: ${theme}`);
+  console.log("\nBuild completed!");
+};
 
-  const StyleDictionary = StyleDictionaryPackage.extend(
-    getStyleDictionaryConfig(theme)
-  );
-
-  StyleDictionary.buildPlatform("css");
-  StyleDictionary.buildPlatform("ts");
-  StyleDictionary.buildPlatform("xaml");
-  StyleDictionary.buildPlatform("json");
-
-  console.log("\nEnd processing");
-}
-
-concatXamlFiles();
-
-mergeJsonDictFiles();
-
-console.log("Start building ts-theme");
-generateTsTheme();
-console.log("Build ts-theme completed!");
-
-console.log("\n==============================================");
-console.log("\nBuild completed!");
+build();
