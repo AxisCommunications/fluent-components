@@ -1,19 +1,19 @@
-## [12.9.0](https://github.com/AxisCommunications/fluent-components/compare/50d7c7afb612c6cd8cdd92926d53e3d7094ac148..2b20b7e9ee7a0b9f5ffd44ae27d8a1e041d8a87f) (2026-08-12T08:25:03.621Z)
+## [12.10.0](https://github.com/AxisCommunications/fluent-components/compare/89debc8feb0a8f912bdd7e835597259916257c8f..824658ab682f92e39e38afd190ccf499ce06f538) (2026-09-08T06:22:01.025Z)
 
 ### 🚧 Maintenance
 
-  - new icons and illustrations (#630) ([2b20b7e](https://github.com/AxisCommunications/fluent-components/commit/2b20b7e9ee7a0b9f5ffd44ae27d8a1e041d8a87f))
-  - **deps**: bump jsdom from 29.0.2 to 30.0.1 (#625) ([2de6374](https://github.com/AxisCommunications/fluent-components/commit/2de637487b3490b1519f4e6af0ee5a83a4ad0f1f))
-  - **deps**: bump @playwright/test (#621) ([9e13339](https://github.com/AxisCommunications/fluent-components/commit/9e13339792da0ec8ec73720101f9861d68742734))
-  - **deps**: bump the dependencies group across 1 directory with 4 updates (#622) ([c4f15e9](https://github.com/AxisCommunications/fluent-components/commit/c4f15e9f51cf2a7d2567026f34942679202b6ab1))
-  - **ci**: auto-rebase behind dependabot PRs on push to main (#626) ([c62db6b](https://github.com/AxisCommunications/fluent-components/commit/c62db6bbb6e3d356f072951de067eae9a476c2c2))
-  - **deps**: prune icon-font-generator vulns via svg2ttf@6/ttf2woff2@8 overrides (#618) ([86687e5](https://github.com/AxisCommunications/fluent-components/commit/86687e55f1e3e6aae8a38b7ac0586a43593da1e5))
-  - **deps**: upgrade react-router-dom to 7.18.2 in examples (#617) ([72e8917](https://github.com/AxisCommunications/fluent-components/commit/72e891745677733b5d02cd600471ebc03f3ac3fd))
-  - **deps**: upgrade svgo to 3.3.4 and migrate configs to preset-default (#616) ([98c2390](https://github.com/AxisCommunications/fluent-components/commit/98c2390debe9d1e4430b8f4808c30b44c422472b))
-  - add preflight checking tags locally align with origin (#614) ([d646395](https://github.com/AxisCommunications/fluent-components/commit/d64639555c1841f5ac99546fe47195dbe31211e2))
-  - fix 70+ vulnrabilities (#615) ([e99c7a4](https://github.com/AxisCommunications/fluent-components/commit/e99c7a4a0fbef6b8e49a4d7d1ef1e0c8f9ebab60))
+  - **deps**: bump style-dictionary from 3.9.2 to 5.5.2 (#641) ([ddc3f1f](https://github.com/AxisCommunications/fluent-components/commit/ddc3f1f401421cb2fb669a555fbd4e8229836508))
+  - **deps**: bump @svgr/core from 5.5.0 to 8.1.0 (#645) ([8d4e9b3](https://github.com/AxisCommunications/fluent-components/commit/8d4e9b369ce284a3a10d1f23b8e87ad741603663))
+  - **deps**: bump the dependencies group with 2 updates (#644) ([fcfe3a8](https://github.com/AxisCommunications/fluent-components/commit/fcfe3a81169817d62889df9ba5f3766498c1931f))
+  - **deps**: bump yargs from 14.2.3 to 18.1.0 (#624) ([d56bf3e](https://github.com/AxisCommunications/fluent-components/commit/d56bf3e97af57a8a04b19257430afa59e495c34a))
+  - **deps**: bump sort-package-json from 3.6.1 to 4.0.0 (#642) ([0ec0e47](https://github.com/AxisCommunications/fluent-components/commit/0ec0e47f24dea4fcfca4a14f081ba1a77c17b4e6))
+  - **deps**: bump typescript from 5.9.3 to 7.0.2 (#623) ([9f3a52e](https://github.com/AxisCommunications/fluent-components/commit/9f3a52e31f45767e7a390770492a26615b8d40f4))
+  - **deps**: bump the dev-dependencies group across 1 directory with 3 updates (#640) ([daa50eb](https://github.com/AxisCommunications/fluent-components/commit/daa50ebcd1008588c41e273327873b7aabf5470f))
+  - **deps**: bump the dependencies group across 1 directory with 3 updates (#639) ([f215b2a](https://github.com/AxisCommunications/fluent-components/commit/f215b2aac0fc44773b51b48a3ebe7f06b620c226))
+  - **ci**: re-enable dependabot auto-rebase on push to main (#638) ([25ebd59](https://github.com/AxisCommunications/fluent-components/commit/25ebd599020cc74b4d54a471d39440171a1dd926))
+  - Pin GitHub Actions to commit SHAs (#636) ([392c613](https://github.com/AxisCommunications/fluent-components/commit/392c613db32ec472cfc382af635b31ee9efe1c7b))
+  - Set default workflow token permissions to read-only (#635) ([768ad8e](https://github.com/AxisCommunications/fluent-components/commit/768ad8ef5b4a36b490a76c91b5667b362f20b282))
 
-### 🐛 Bug fixes
+### 💄 Styling
 
-  - **ci**: use PAT so dependabot accepts the rebase command (#627) ([cb2b72f](https://github.com/AxisCommunications/fluent-components/commit/cb2b72f4b9229abf4d0dc8dcac24827cad4a586f))
-  - **ci**: stop main deploy from force-wiping gh-pages (keep_files) (#620) ([14e4645](https://github.com/AxisCommunications/fluent-components/commit/14e46455cf964142954163d0a64c8ca86aaec114))
+  - new icons (#646) ([824658a](https://github.com/AxisCommunications/fluent-components/commit/824658ab682f92e39e38afd190ccf499ce06f538))
