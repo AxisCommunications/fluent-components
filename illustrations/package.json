@@ -37,7 +37,7 @@
     "@axiscommunications/fluent-theme": "workspace:*",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.2",
-    "@types/node": "^25.5.2",
+    "@types/node": "^26.5.0",
     "@types/react": "^19.2.18",
     "@types/yargs": "17.0.32",
     "esbuild": "^0.28.2",
