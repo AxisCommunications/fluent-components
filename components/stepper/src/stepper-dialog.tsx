@@ -58,9 +58,9 @@ export const StepperDialog = ({
       </div>
       <div className={buttonContainerStyles}>
         <div className={buttonStyles}>
-          {cancelLabel && onCancel && (
-            <Button className={buttonCancel} onClick={onCancel}>
-              {cancelLabel}
+          {currentStep > 0 && previousLabel && (
+            <Button className={buttonPrevious} onClick={onPrevious}>
+              {previousLabel}
             </Button>
           )}
         </div>
@@ -68,9 +68,9 @@ export const StepperDialog = ({
           <div className={footerContentStyles}>{footerContent}</div>
         )}
         <div className={buttonStyles}>
-          {currentStep > 0 && previousLabel && (
-            <Button className={buttonPrevious} onClick={onPrevious}>
-              {previousLabel}
+          {cancelLabel && onCancel && (
+            <Button className={buttonCancel} onClick={onCancel}>
+              {cancelLabel}
             </Button>
           )}
           {currentStep !== steps.length - 1 && nextLabel && (
@@ -98,4 +98,5 @@ export const StepperDialog = ({
     </div>
   );
 };
+
 StepperDialog.displayName = "StepperDialog";
