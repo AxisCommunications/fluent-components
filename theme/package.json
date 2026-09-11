@@ -48,7 +48,7 @@
     "style-dictionary": "^5.5.2",
     "token-transformer": "^0.0.33",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.11"
+    "vitest": "^5.0.0"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.74.4",
