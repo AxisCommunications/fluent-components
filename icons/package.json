@@ -49,7 +49,7 @@
     "icon-font-generator": "^2.1.11",
     "react": "^19.2.8",
     "replace": "^1.2.2",
-    "svgo": "3.3.4",
+    "svgo": "4.1.0",
     "typescript": "^7.0.2",
     "yargs": "^18.1.0"
   },
