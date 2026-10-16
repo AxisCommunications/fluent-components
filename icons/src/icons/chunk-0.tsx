@@ -1150,6 +1150,20 @@ export const FrameStepForwardRegular = /*#__PURE__*/ createFluentIcon(
     "M3.5 17a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5",
   ]
 );
+export const GroupViewFilled = /*#__PURE__*/ createFluentIcon(
+  "GroupViewFilled",
+  "1em",
+  [
+    "M9.5 15.5h-5A2.5 2.5 0 0 1 2 13V7a2.5 2.5 0 0 1 2.5-2.5h5zm6-11A2.5 2.5 0 0 1 18 7v6a2.5 2.5 0 0 1-2.5 2.5h-5v-11z",
+  ]
+);
+export const GroupViewRegular = /*#__PURE__*/ createFluentIcon(
+  "GroupViewRegular",
+  "1em",
+  [
+    "M15.5 4.5A2.5 2.5 0 0 1 18 7v6a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 13V7a2.5 2.5 0 0 1 2.5-2.5zm-5 10h5c.83 0 1.5-.67 1.5-1.5V7c0-.83-.67-1.5-1.5-1.5h-5zm-6-9C3.67 5.5 3 6.17 3 7v6c0 .83.67 1.5 1.5 1.5h5v-9z",
+  ]
+);
 export const HeadphonesOffFilled = /*#__PURE__*/ createFluentIcon(
   "HeadphonesOffFilled",
   "1em",
