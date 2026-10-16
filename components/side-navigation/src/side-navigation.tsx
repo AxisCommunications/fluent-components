@@ -5,8 +5,8 @@ import React from "react";
 import { SideNavigationItemRow } from "./side-navigation-item.js";
 import {
   DEFAULT_EXPANDED_WIDTH,
-  INDICATOR_INSET,
   RAIL_WIDTH,
+  SELECTED_INDICATOR_HEIGHT,
   sideNavigationClassNames as classNames,
   useSideNavigationStyles,
 } from "./side-navigation.styles.js";
@@ -55,8 +55,8 @@ export const SideNavigation = React.forwardRef<
   const rootRef = React.useRef<HTMLElement | null>(null);
   const itemRefs = React.useRef<Map<string, HTMLElement>>(new Map());
   const [indicator, setIndicator] = React.useState<{
+    left: number;
     offset: number;
-    height: number;
   } | null>(null);
 
   const [selectedItem, setSelectedItem] = useControllableState<
@@ -127,8 +127,18 @@ export const SideNavigation = React.forwardRef<
     // and the rail is expanded; when they're hidden, the marker falls back to
     // the parent category so it always points at something visible.
     let targetId = selectedItem;
-    while (targetId && !itemRefs.current.has(targetId)) {
-      targetId = findParentId(targetId);
+    if (expanded) {
+      const selectedElement = targetId
+        ? itemRefs.current.get(targetId)
+        : undefined;
+      if (!selectedElement || selectedElement.hasAttribute("aria-expanded")) {
+        setIndicator(null);
+        return;
+      }
+    } else {
+      while (targetId && !itemRefs.current.has(targetId)) {
+        targetId = findParentId(targetId);
+      }
     }
     const selectedElement = targetId
       ? itemRefs.current.get(targetId)
@@ -143,10 +153,13 @@ export const SideNavigation = React.forwardRef<
     const selectedRect = selectedElement.getBoundingClientRect();
 
     setIndicator({
-      offset: selectedRect.top - rootRect.top + INDICATOR_INSET,
-      height: Math.max(selectedRect.height - INDICATOR_INSET * 2, 0),
+      left: selectedRect.left - rootRect.left,
+      offset:
+        selectedRect.top -
+        rootRect.top +
+        (selectedRect.height - SELECTED_INDICATOR_HEIGHT) / 2,
     });
-  }, [selectedItem, findParentId]);
+  }, [selectedItem, findParentId, expanded]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: re-measure the indicator after layout changes (expand, open groups, items)
   React.useLayoutEffect(() => {
@@ -220,7 +233,7 @@ export const SideNavigation = React.forwardRef<
             styles.selectedIndicator
           )}
           style={{
-            height: indicator.height,
+            left: indicator.left,
             transform: `translateY(${indicator.offset}px)`,
           }}
         />

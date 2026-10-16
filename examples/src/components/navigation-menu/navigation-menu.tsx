@@ -139,7 +139,7 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForeground1,
     },
     ":active": {
-      backgroundColor: tokens.colorNeutralBackground2Pressed,
+      backgroundColor: tokens.colorNeutralBackground3Selected,
     },
   },
   itemActive: {

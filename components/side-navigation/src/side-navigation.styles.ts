@@ -13,12 +13,15 @@ export const sideNavigationClassNames = {
   selectedIndicator: `${componentId}__selected-indicator`,
   item: `${componentId}__item`,
   itemSelected: `${componentId}__item--selected`,
+  itemCollapsed: `${componentId}__item--collapsed`,
   itemIcon: `${componentId}__item-icon`,
   itemLabel: `${componentId}__item-label`,
   itemChevron: `${componentId}__item-chevron`,
+  itemChevronCollapsed: `${componentId}__item-chevron--collapsed`,
   group: `${componentId}__group`,
   subItem: `${componentId}__sub-item`,
   subItemSelected: `${componentId}__sub-item--selected`,
+  hoverIndicator: `${componentId}__hover-indicator`,
   flyoutItem: `${componentId}__flyout-item`,
   flyoutItemSelected: `${componentId}__flyout-item--selected`,
 } as const;
@@ -26,11 +29,11 @@ export const sideNavigationClassNames = {
 export type SideNavigationSlot = keyof typeof sideNavigationClassNames;
 
 /** Width of the collapsed rail and the fixed icon column, in pixels. */
-export const RAIL_WIDTH = 68;
+export const RAIL_WIDTH = 60;
 /** Default rail width when expanded, in pixels. */
 export const DEFAULT_EXPANDED_WIDTH = 260;
-/** Vertical inset of the sliding selection indicator within an item, in pixels. */
-export const INDICATOR_INSET = 8;
+/** Height of the sliding selection indicator, in pixels. */
+export const SELECTED_INDICATOR_HEIGHT = 16;
 
 const useStyles = makeStyles({
   root: {
@@ -41,12 +44,12 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     paddingTop: "16px",
-    paddingLeft: tokens.spacingHorizontalXS,
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingLeft: "8px",
+    paddingRight: "8px",
     rowGap: "4px",
     position: "relative",
     overflow: "hidden",
-    backgroundColor: tokens.colorNeutralBackground2,
+    backgroundColor: tokens.colorNeutralBackground4,
     ...shorthands.borderRight("1px", "solid", tokens.colorNeutralStroke2),
     transitionProperty: "width",
     transitionDuration: tokens.durationNormal,
@@ -76,13 +79,13 @@ const useStyles = makeStyles({
     marginRight: "12px",
     backgroundColor: tokens.colorNeutralStroke2,
   },
-  // Mirrors the Fluent Tab active indicator: a fully rounded stroke inset from
-  // the top and bottom edges of the item it marks.
+  // A short rounded stroke sits inside the left edge of the selected item.
   selectedIndicator: {
     position: "absolute",
-    left: tokens.spacingHorizontalXS,
+    left: 0,
     top: 0,
     width: tokens.strokeWidthThicker,
+    height: `${SELECTED_INDICATOR_HEIGHT}px`,
     backgroundColor: "#efab01",
     borderRadius: tokens.borderRadiusCircular,
     zIndex: 2,
@@ -98,8 +101,8 @@ const useStyles = makeStyles({
     boxSizing: "border-box",
     flexShrink: 0,
     height: "40px",
-    minWidth: `${RAIL_WIDTH - 8}px`,
-    width: `${RAIL_WIDTH - 8}px`,
+    minWidth: `${RAIL_WIDTH - 16}px`,
+    width: `${RAIL_WIDTH - 16}px`,
     paddingLeft: 0,
     paddingRight: 0,
     display: "inline-flex",
@@ -142,7 +145,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     width: "100%",
     minWidth: 0,
-    height: "44px",
+    height: "40px",
     paddingLeft: 0,
     paddingRight: "8px",
     color: tokens.colorNeutralForeground2,
@@ -155,8 +158,27 @@ const useStyles = makeStyles({
     transitionProperty: "background-color, color",
     transitionDuration: tokens.durationFaster,
     transitionTimingFunction: tokens.curveEasyEase,
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      left: 0,
+      top: "50%",
+      width: tokens.strokeWidthThicker,
+      height: `${SELECTED_INDICATOR_HEIGHT}px`,
+      backgroundColor: tokens.colorNeutralStroke1Hover,
+      borderRadius: tokens.borderRadiusCircular,
+      opacity: 0,
+      transform: "translateY(-50%)",
+      transitionProperty: "opacity",
+      transitionDuration: tokens.durationFaster,
+      transitionTimingFunction: tokens.curveEasyEase,
+      pointerEvents: "none",
+    },
+    "&:not(:disabled):hover::before": {
+      opacity: 1,
+    },
     "&:hover": {
-      backgroundColor: tokens.colorNeutralBackground2Hover,
+      backgroundColor: tokens.colorNeutralBackground3Hover,
       color: tokens.colorNeutralForeground1,
     },
     "&:focus-visible": {
@@ -174,15 +196,24 @@ const useStyles = makeStyles({
   },
   itemSelected: {
     color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorNeutralBackground2Pressed,
+    fontWeight: tokens.fontWeightSemibold,
+    backgroundColor: tokens.colorNeutralBackground3Selected,
     "&:hover": {
-      backgroundColor: tokens.colorNeutralBackground2Pressed,
+      backgroundColor: tokens.colorNeutralBackground3Selected,
       color: tokens.colorNeutralForeground1,
     },
   },
+  itemCollapsed: {
+    alignSelf: "flex-start",
+    width: "44px",
+    height: "40px",
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingRight: 0,
+  },
   itemIcon: {
     flexShrink: 0,
-    width: `${RAIL_WIDTH - 8}px`,
+    width: "44px",
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
@@ -228,6 +259,14 @@ const useStyles = makeStyles({
   itemChevronOpen: {
     transform: "rotate(90deg)",
   },
+  itemChevronCollapsed: {
+    position: "absolute",
+    right: "2px",
+    width: "12px",
+    "& svg": {
+      fontSize: "12px",
+    },
+  },
   subItem: {
     boxSizing: "border-box",
     display: "flex",
@@ -269,6 +308,28 @@ const useStyles = makeStyles({
       backgroundColor: "transparent",
     },
   },
+  hoverIndicator: {
+    position: "relative",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      left: 0,
+      top: "50%",
+      width: tokens.strokeWidthThicker,
+      height: `${SELECTED_INDICATOR_HEIGHT}px`,
+      backgroundColor: tokens.colorNeutralStroke1Hover,
+      borderRadius: tokens.borderRadiusCircular,
+      opacity: 0,
+      transform: "translateY(-50%)",
+      transitionProperty: "opacity",
+      transitionDuration: tokens.durationFaster,
+      transitionTimingFunction: tokens.curveEasyEase,
+      pointerEvents: "none",
+    },
+    '&:not(:disabled):not([aria-disabled="true"]):hover::before': {
+      opacity: 1,
+    },
+  },
   subItemGroup: {
     paddingRight: "8px",
   },
@@ -284,18 +345,32 @@ const useStyles = makeStyles({
   subItemSelected: {
     color: tokens.colorNeutralForeground1,
     fontWeight: tokens.fontWeightSemibold,
-    backgroundColor: tokens.colorNeutralBackground2Pressed,
+    backgroundColor: tokens.colorNeutralBackground3Selected,
     "&:hover": {
-      backgroundColor: tokens.colorNeutralBackground2Pressed,
+      backgroundColor: tokens.colorNeutralBackground3Selected,
       color: tokens.colorNeutralForeground1,
     },
   },
   flyoutItemSelected: {
+    position: "relative",
     color: tokens.colorNeutralForeground1,
     fontWeight: tokens.fontWeightSemibold,
-    backgroundColor: tokens.colorNeutralBackground2Pressed,
+    backgroundColor: tokens.colorNeutralBackground3Selected,
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      left: 0,
+      top: "50%",
+      width: tokens.strokeWidthThicker,
+      height: `${SELECTED_INDICATOR_HEIGHT}px`,
+      backgroundColor: "#efab01",
+      borderRadius: tokens.borderRadiusCircular,
+      opacity: 1,
+      transform: "translateY(-50%)",
+      pointerEvents: "none",
+    },
     "&:hover": {
-      backgroundColor: tokens.colorNeutralBackground2Pressed,
+      backgroundColor: tokens.colorNeutralBackground3Selected,
       color: tokens.colorNeutralForeground1,
     },
   },

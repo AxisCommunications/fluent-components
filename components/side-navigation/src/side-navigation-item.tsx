@@ -57,11 +57,11 @@ export const SideNavigationItemRow = ({
   const isSelected = item.id === selectedItemId;
   const hasSelectedDescendant = hasSelectedChild(item.children, selectedItemId);
   const showChildren = expanded && hasChildren && open;
-  // Items with children are just group labels, not pages: the selected
-  // appearance (and the sliding marker) only lands on them while their
-  // sub-item isn't visibly rendered — collapsed rail or a closed group.
-  const showSelectedAppearance =
-    isSelected || (hasSelectedDescendant && !showChildren);
+  // In expanded mode, only leaf items represent selectable pages. In collapsed
+  // mode, a parent represents its selected descendant while its flyout is hidden.
+  const showSelectedAppearance = expanded
+    ? isSelected && !hasChildren
+    : isSelected || hasSelectedDescendant;
   // While collapsed, sub-items are instead revealed in a Fluent `Menu` that
   // opens on hover (or focus) of the parent item.
   const showFlyout = !expanded && hasChildren && !item.disabled;
@@ -91,11 +91,13 @@ export const SideNavigationItemRow = ({
         classNames.item,
         styles.item,
         showSelectedAppearance && classNames.itemSelected,
-        showSelectedAppearance && styles.itemSelected
+        showSelectedAppearance && styles.itemSelected,
+        !expanded && classNames.itemCollapsed,
+        !expanded && styles.itemCollapsed
       )}
       onClick={handleClick}
       disabled={item.disabled}
-      aria-current={isSelected ? "page" : undefined}
+      aria-current={isSelected && !hasChildren ? "page" : undefined}
       aria-expanded={hasChildren && expanded ? open : undefined}
       aria-label={expanded ? undefined : item.label}
       title={expanded ? undefined : item.label}
@@ -112,12 +114,14 @@ export const SideNavigationItemRow = ({
       >
         {item.label}
       </span>
-      {hasChildren && expanded ? (
+      {hasChildren ? (
         <span
           className={mergeClasses(
             classNames.itemChevron,
             styles.itemChevron,
-            open && styles.itemChevronOpen
+            !expanded && classNames.itemChevronCollapsed,
+            !expanded && styles.itemChevronCollapsed,
+            expanded && open && styles.itemChevronOpen
           )}
         >
           <ChevronRightRegular />
@@ -187,7 +191,6 @@ function NestedItems({
     const hasChildren = Boolean(item.children?.length);
     const open = openItemIds.includes(item.id);
     const isSelected = item.id === selectedItemId;
-    const isChildSelected = hasSelectedChild(item.children, selectedItemId);
 
     return (
       <div
@@ -200,10 +203,12 @@ function NestedItems({
           className={mergeClasses(
             classNames.subItem,
             styles.subItem,
+            !hasChildren && classNames.hoverIndicator,
+            !hasChildren && styles.hoverIndicator,
             depth > 1 && styles.nestedSubItem,
             hasChildren && styles.subItemGroup,
-            isSelected && classNames.subItemSelected,
-            (isSelected || (isChildSelected && !open)) && styles.subItemSelected
+            isSelected && !hasChildren && classNames.subItemSelected,
+            isSelected && !hasChildren && styles.subItemSelected
           )}
           onClick={() => {
             if (!item.disabled) {
@@ -211,7 +216,7 @@ function NestedItems({
             }
           }}
           disabled={item.disabled}
-          aria-current={isSelected ? "page" : undefined}
+          aria-current={isSelected && !hasChildren ? "page" : undefined}
           aria-expanded={hasChildren ? open : undefined}
         >
           <span className={styles.subItemLabel}>{item.label}</span>
@@ -257,6 +262,8 @@ function FlyoutItems({
     const itemClassName = mergeClasses(
       classNames.flyoutItem,
       styles.flyoutItem,
+      !hasChildren && classNames.hoverIndicator,
+      !hasChildren && styles.hoverIndicator,
       isSelected && classNames.flyoutItemSelected,
       isSelected && styles.flyoutItemSelected
     );

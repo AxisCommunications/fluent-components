@@ -73,6 +73,41 @@ describe("SideNavigation", () => {
     );
   });
 
+  it("should not show a selected parent when expanded around a selected sub-item", () => {
+    const { container, getByRole } = renderNav(
+      <SideNavigation
+        items={items}
+        selectedItemId="personal"
+        defaultExpanded
+        onSelect={vi.fn()}
+      />
+    );
+
+    const workspaces = getByRole("button", { name: "Workspaces" });
+    expect(workspaces).not.toHaveClass("side-navigation__item--selected");
+    expect(workspaces).not.toHaveAttribute("aria-current");
+    expect(
+      container.querySelector(".side-navigation__selected-indicator")
+    ).not.toBeInTheDocument();
+  });
+
+  it("should show a selected parent for a selected sub-item while collapsed", () => {
+    const { getByRole } = renderNav(
+      <SideNavigation items={items} selectedItemId="personal" />
+    );
+
+    const workspaces = getByRole("button", { name: "Workspaces" });
+    expect(workspaces).toHaveClass("side-navigation__item--selected");
+    expect(
+      workspaces.querySelector(".side-navigation__item-chevron--collapsed")
+    ).toBeInTheDocument();
+    expect(
+      getByRole("button", { name: "Home" }).querySelector(
+        ".side-navigation__item-chevron--collapsed"
+      )
+    ).not.toBeInTheDocument();
+  });
+
   it("should not change selection in controlled mode without consumer update", () => {
     const onSelect = vi.fn();
     const { getByRole } = renderNav(
@@ -230,7 +265,7 @@ describe("SideNavigation", () => {
     );
   });
 
-  it("should keep the marker on a visible ancestor of a hidden third-level item", () => {
+  it("should not show a selected parent when an expanded group hides the selected leaf", () => {
     const { container, getByRole } = renderNav(
       <SideNavigation
         items={items}
@@ -242,9 +277,12 @@ describe("SideNavigation", () => {
     fireEvent.click(getByRole("button", { name: "Members" }));
     fireEvent.click(getByRole("button", { name: "Workspaces" }));
 
+    expect(getByRole("button", { name: "Workspaces" })).not.toHaveClass(
+      "side-navigation__item--selected"
+    );
     expect(
       container.querySelector(".side-navigation__selected-indicator")
-    ).toBeInTheDocument();
+    ).not.toBeInTheDocument();
   });
 
   it("should not select a disabled sub-item", () => {
