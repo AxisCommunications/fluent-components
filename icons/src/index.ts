@@ -135,6 +135,8 @@ export {
   FrameStepBackRegular,
   FrameStepForwardFilled,
   FrameStepForwardRegular,
+  GroupViewFilled,
+  GroupViewRegular,
   HeadphonesOffFilled,
   HeadphonesOffRegular,
   HeatFilled,
@@ -864,6 +866,14 @@ export {
   FrameStepForward32Regular,
   FrameStepForward48Filled,
   FrameStepForward48Regular,
+  GroupView16Filled,
+  GroupView16Regular,
+  GroupView20Filled,
+  GroupView20Regular,
+  GroupView24Filled,
+  GroupView24Regular,
+  GroupView28Filled,
+  GroupView28Regular,
   HeadphonesOff20Filled,
   HeadphonesOff20Regular,
   HeadphonesOff24Filled,
@@ -1278,6 +1288,8 @@ export {
   StepFile32Filled,
   StepFile32Regular,
   StepFile48Filled,
+} from "./sizedIcons/chunk-1";
+export {
   StepFile48Regular,
   TableOff20Filled,
   TableOff20Regular,
@@ -1286,8 +1298,6 @@ export {
   TempRecord16Regular,
   TempRecord20Regular,
   TempRecord24Regular,
-} from "./sizedIcons/chunk-1";
-export {
   TempRecord28Regular,
   TempRecord32Regular,
   TempRecord48Regular,
