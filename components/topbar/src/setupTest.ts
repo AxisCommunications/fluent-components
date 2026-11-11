@@ -1,2 +1,2 @@
 // needed to use toBeVisible, etc expect(toast).toBeVisible();
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
