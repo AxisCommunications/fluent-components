@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "cmd-ts": "0.15.0",
-    "semver": "^7.8.5"
+    "semver": "^7.8.6"
   },
   "devDependencies": {
     "@types/node": "^25.5.2",
