@@ -29,6 +29,8 @@ export {
   DesktopLight,
   DevicesDark,
   DevicesLight,
+  DisableBatteryOptimizationDark,
+  DisableBatteryOptimizationLight,
   DisconnectedDark,
   DisconnectedLight,
   DocumentsDark,
@@ -45,12 +47,14 @@ export {
   EmptySpaceLight,
   ExtendSystemDark,
   ExtendSystemLight,
+  FailureDark,
+  FailureLight,
+} from "./illustrations/chunk-0.js";
+export {
   FileMissingDark,
   FileMissingLight,
   FolderDark,
   FolderLight,
-} from "./illustrations/chunk-0.js";
-export {
   GridLocationDark,
   GridLocationLight,
   ImportExcelDark,
@@ -97,12 +101,12 @@ export {
   InstructionNewSystemLight,
   InstructionObjectInAreaDark,
   InstructionObjectInAreaLight,
+} from "./illustrations/chunk-1.js";
+export {
   InstructionOccupancyInAreaDark,
   InstructionOccupancyInAreaLight,
   InstructionPanoramaSelectedFromFisheyeDark,
   InstructionPanoramaSelectedFromFisheyeLight,
-} from "./illustrations/chunk-1.js";
-export {
   InstructionSearchDark,
   InstructionSearchLight,
   InstructionSpecialisedDetectionModelDark,
@@ -149,16 +153,18 @@ export {
   NoSitesLight,
   NotFoundDark,
   NotFoundLight,
+} from "./illustrations/chunk-2.js";
+export {
   NotificationsDark,
   NotificationsLight,
   OrganizationDark,
   OrganizationLight,
-} from "./illustrations/chunk-2.js";
-export {
   PasswordSentDark,
   PasswordSentLight,
   ProhibitedDark,
   ProhibitedLight,
+  RefreshPageDark,
+  RefreshPageLight,
   ResetPasswordDark,
   ResetPasswordLight,
   SetPasswordDark,
