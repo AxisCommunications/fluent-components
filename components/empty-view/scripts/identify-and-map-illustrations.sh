@@ -39,16 +39,12 @@ for dark_export in $all_dark; do
   fi
 done
 
-# --- Find which are already mapped in constants.ts ---
-mapped_dark=$(grep -oE '[A-Za-z]+Dark' "$CONSTANTS_FILE" | sort -u)
-mapped_bases=" "
-for m in $mapped_dark; do
-  mapped_bases="$mapped_bases${m%Dark} "
-done
+# --- Find which are already mapped in constants.ts (by module path) ---
+mapped_modules=" $(grep -oE 'fluent-illustrations/[a-z-]+' "$CONSTANTS_FILE" | sed 's|.*/||' | tr '\n' ' ')"
 
 unmapped=()
 for base in "${bases[@]}"; do
-  if [[ "$mapped_bases" != *" $base "* ]]; then
+  if [[ "$mapped_modules" != *" $(pascal_to_kebab "$base") "* ]]; then
     unmapped+=("$base")
   fi
 done
@@ -112,7 +108,7 @@ echo "Will add:"
 for entry in "${additions[@]}"; do
   base="${entry%%:*}"
   key="${entry#*:}"
-  echo "  \"${key}\" -> bundleIllustrationSmart(${base}Dark, ${base}Light)"
+  echo "  \"${key}\" -> @axiscommunications/fluent-illustrations/$(pascal_to_kebab "$base")"
 done
 echo ""
 read -rp "Proceed? [Y/n]: " confirm
@@ -125,41 +121,13 @@ fi
 for entry in "${additions[@]}"; do
   base="${entry%%:*}"
   key="${entry#*:}"
+  module="$(pascal_to_kebab "$base")"
 
-  # 1. Add imports to constants.ts (alphabetically sorted within the import block)
-  # Find the right insertion point for Dark import
-  dark_import="  ${base}Dark,"
-  light_import="  ${base}Light,"
-  # Use perl to insert imports in sorted position within the import block
-  perl -i -pe "
-    if (/^  (\w+),\$/ || /^  (\w+)Light,\$/ || /^  (\w+)Dark,\$/) {
-      my \$line = \$_;
-      chomp \$line;
-      \$line =~ s/^  //;
-      if (!defined \$inserted_dark && \$line gt \"${base}Dark,\") {
-        print \"  ${base}Dark,\n\";
-        \$inserted_dark = 1;
-      }
-      if (!defined \$inserted_light && \$line gt \"${base}Light,\") {
-        print \"  ${base}Light,\n\";
-        \$inserted_light = 1;
-      }
-    }
-    if (/bundleIllustrationSmart/) {
-      if (!defined \$inserted_dark) {
-        print \"  ${base}Dark,\n\";
-      }
-      if (!defined \$inserted_light) {
-        print \"  ${base}Light,\n\";
-      }
-    }
-  " "$CONSTANTS_FILE"
-
-  # 2. Add map entry to constants.ts (before "} as const;")
+  # 1. Add loader entry to constants.ts (before "} as const;")
   sed -i '' "/^} as const;/i\\
-  \"${key}\": bundleIllustrationSmart(${base}Dark, ${base}Light)," "$CONSTANTS_FILE"
+  \"${key}\": () => import(\"@axiscommunications/fluent-illustrations/${module}\")," "$CONSTANTS_FILE"
 
-  # 3. Add to IllustrationKind type in types.ts (multiline union, insert before ";")
+  # 2. Add to IllustrationKind type in types.ts (multiline union, insert before ";")
   perl -i -0pe "s/(IllustrationKind\s*=\s*.*?)(;)/\${1}\n  | \"${key}\"\${2}/s" "$TYPES_FILE"
 done
 

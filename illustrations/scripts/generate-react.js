@@ -1,5 +1,5 @@
 import path from "path";
-import { DEFAULT_CHUNK_SIZE, FILE_PREFIX } from "./constants.js";
+import { FILE_PREFIX } from "./constants.js";
 import {
   checkDirectory,
   clearDirectory,
@@ -29,15 +29,12 @@ function main({ from, to }) {
   const illustrations = processFolder(from);
   console.info("illustrations to be react-ified:", illustrations.length);
 
-  console.info("dividing into chunks...");
-  const illustrationsChunks = toChunks(illustrations);
-  console.info("chunks to be written :", illustrationsChunks.length);
+  console.info("grouping light/dark variants into modules...");
+  const modules = toModules(illustrations);
+  console.info("modules to be written :", modules.length);
 
-  console.info("writing chunks into files...");
-  const indexContents = writeChunksToFile(
-    illustrationsChunks,
-    illustrationsDestFolder
-  );
+  console.info("writing modules into files...");
+  const indexContents = writeModulesToFile(modules, illustrationsDestFolder);
 
   console.info("writing index file...");
   createIndexFile(to, indexContents);
@@ -64,52 +61,78 @@ function createIndexFile(dest, illustrationContents) {
   writeToFile(indexPath, indexContent.join("\n"));
 }
 
-function writeChunksToFile(chunks, dest) {
+/**
+ * One module per illustration (light + dark variant), so that consumers can
+ * import or lazy load a single illustration through the `./<kebab-name>`
+ * subpath export instead of pulling in the whole set.
+ */
+function writeModulesToFile(modules, dest) {
   const indexContents = [];
-  chunks.forEach((chunk, i) => {
-    const chunkFileName = `chunk-${i}`;
-    const chunkPath = path.resolve(dest, `${chunkFileName}.tsx`);
+  for (const { fileName, variants, hasPair, baseName } of modules) {
+    const exportNames = variants.map((v) => v.name);
+    const lines = [
+      `import { createFluentIllustration } from "../utils/createFluentIllustration.js";`,
+    ];
+    if (hasPair) {
+      lines.unshift(
+        `import { bundleIllustrationSmart } from "../utils/bundleIllustration.js";`
+      );
+    }
+    for (const { name, svg } of variants) {
+      lines.push(
+        `export const ${name} = (/*#__PURE__*/createFluentIllustration('${name}', \`${svg}\`));`
+      );
+    }
+    if (hasPair) {
+      lines.push(
+        `export default /*#__PURE__*/bundleIllustrationSmart(${baseName}Dark, ${baseName}Light);`
+      );
+    }
+    writeToFile(path.resolve(dest, `${fileName}.tsx`), lines.join("\n"));
     indexContents.push(
-      `export { ${toExports(chunk)} } from './illustrations/${chunkFileName}.js'`
+      `export { ${exportNames.join(", ")} } from './illustrations/${fileName}.js'`
     );
-    writeToFile(chunkPath, chunk);
-  });
+  }
 
   return indexContents;
 }
 
-function toExports(chunk) {
-  const pattern = /export const (\w+) =/g;
-  const iconNameRegexp = new RegExp(pattern, "g");
-  return (chunk.match(iconNameRegexp) ?? [])
-    .map((m) => m.split(" ")[2])
-    .join(", ");
+function toModules(illustrations) {
+  const byBaseName = new Map();
+  for (const illustration of illustrations) {
+    const baseName = illustration.name.replace(/(Dark|Light)$/, "");
+    const variants = byBaseName.get(baseName) ?? [];
+    variants.push(illustration);
+    byBaseName.set(baseName, variants);
+  }
+
+  return [...byBaseName.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([baseName, variants]) => {
+      variants.sort((a, b) => a.name.localeCompare(b.name));
+      const names = variants.map((v) => v.name);
+      return {
+        baseName,
+        fileName: toKebabCase(baseName),
+        variants,
+        hasPair:
+          names.includes(`${baseName}Dark`) &&
+          names.includes(`${baseName}Light`),
+      };
+    });
 }
 
-function toChunks(content, chunkSize = DEFAULT_CHUNK_SIZE) {
-  const chunks = [];
-
-  while (content.length > 0) {
-    chunks.push(content.splice(0, chunkSize));
-  }
-
-  for (const chunk of chunks) {
-    chunk.unshift(
-      `import { createFluentIllustration } from "../utils/createFluentIllustration.js";`
-    );
-  }
-
-  const chunkContent = chunks.map((chunk) => chunk.join("\n"));
-  return chunkContent;
+function toKebabCase(pascalCase) {
+  return pascalCase.replace(/(?<!^)([A-Z])/g, "-$1").toLowerCase();
 }
 
 function processFolder(from) {
   const illustrations = [];
   for (const file of readAllFiles(from)) {
-    const illustrationName = toIllustrationName(file.fileName);
-    const fileContentAsString = `\`${file.content}\``;
-    const jsCode = `export const ${illustrationName} = (/*#__PURE__*/createFluentIllustration('${illustrationName}', ${fileContentAsString}));`;
-    illustrations.push(jsCode);
+    illustrations.push({
+      name: toIllustrationName(file.fileName),
+      svg: file.content,
+    });
   }
   return illustrations;
 }
