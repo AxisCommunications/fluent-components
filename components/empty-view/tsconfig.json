@@ -3,7 +3,8 @@
   "compilerOptions": {
     "noEmit": true,
     "module": "esnext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "types": ["vitest/globals"]
   },
-  "include": ["src"]
+  "include": ["src", "vitest.config.ts"]
 }

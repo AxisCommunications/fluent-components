@@ -11,7 +11,7 @@ import {
 
 import { useMediaQuery } from "@axiscommunications/fluent-hooks";
 
-import { Illustration } from "./constants.js";
+import { LazyIllustration } from "./lazy-illustration.js";
 import { useContainerStyle, useStyles } from "./styles.js";
 import {
   ContentProps,
@@ -72,10 +72,12 @@ function ContainerTop({
 
 function ContentLarge({ body, illustration, title }: ContentProps) {
   const screenStyles = useStyles();
-  const IllustrationComponent = Illustration[illustration];
   return (
     <>
-      <IllustrationComponent className={screenStyles.illustrationLarge} />
+      <LazyIllustration
+        illustration={illustration}
+        className={screenStyles.illustrationLarge}
+      />
       <Title3 className={screenStyles.title}>{title}</Title3>
       <Body2 className={screenStyles.text}>{body}</Body2>
     </>
@@ -84,10 +86,12 @@ function ContentLarge({ body, illustration, title }: ContentProps) {
 
 function ContentMedium({ body, illustration, title }: ContentProps) {
   const screenStyles = useStyles();
-  const IllustrationComponent = Illustration[illustration];
   return (
     <>
-      <IllustrationComponent className={screenStyles.illustrationMedium} />
+      <LazyIllustration
+        illustration={illustration}
+        className={screenStyles.illustrationMedium}
+      />
       <Subtitle2 className={screenStyles.title}>{title}</Subtitle2>
       <Body1 className={screenStyles.text}>{body}</Body1>
     </>
@@ -96,10 +100,12 @@ function ContentMedium({ body, illustration, title }: ContentProps) {
 
 function ContentSmall({ body, illustration, title }: ContentProps) {
   const screenStyles = useStyles();
-  const IllustrationComponent = Illustration[illustration];
   return (
     <>
-      <IllustrationComponent className={screenStyles.illustrationSmall} />
+      <LazyIllustration
+        illustration={illustration}
+        className={screenStyles.illustrationSmall}
+      />
       <Subtitle2 className={screenStyles.title}>{title}</Subtitle2>
       <Body1 className={screenStyles.text}>{body}</Body1>
     </>

@@ -59,7 +59,7 @@ Reusable style exports: `main-menu`, `navigation`, `static`, `tab-list`, `table`
 
 - `assets/` — Source SVG files (light/dark variants)
 - `scripts/` — Build pipeline scripts:
-  - `generate-svg.js` (filter/copy SVGs) → `svgo` (optimize) → `generate-react.js` (chunked React components)
+  - `generate-svg.js` (filter/copy SVGs) → `svgo` (optimize) → `generate-react.js` (one React module per illustration, exposed as `./<kebab-name>` subpath export)
 - `src/illustrations/` — Generated React illustration components
 - Depends on `@axiscommunications/fluent-theme` (workspace) for theme-aware rendering
 

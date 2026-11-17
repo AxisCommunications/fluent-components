@@ -59,9 +59,15 @@ export const DialogEmptyViewExample = () => {
   );
 };
 ```
+### Illustration loading
+
+Each view only downloads the illustration named by its `illustration` prop. Illustrations are loaded on demand with `React.lazy` from `@axiscommunications/fluent-illustrations/<name>`, so the title, text and `after` content render immediately and the illustration appears once loaded. While it loads, an empty placeholder of the same size keeps the layout stable. If loading fails (for example when offline), the placeholder stays and the illustration is requested again the next time the view mounts.
+
+Your bundler needs to support `package.json` subpath exports and code splitting for dynamic `import()` (webpack 5, Rspack, Vite and Rollup do). Server-side rendering of the views requires React 18 or later, because they render `Suspense`. In tests, wait for the illustration with `findBy*` queries if you assert on it.
+
 ## Adding new illustrations
 
-The `add-illustration` script automates adding new illustration mappings from `@axiscommunications/fluent-illustrations` into this component. It scans the illustrations library for available Dark/Light pairs, shows which ones aren't yet mapped, and lets you interactively select which to add. The script updates both `IllustrationKind` in `types.ts` and the mapping in `constants.ts`.
+The `add-illustration` script automates adding new illustration mappings from `@axiscommunications/fluent-illustrations` into this component. It scans the illustrations library for available Dark/Light pairs, shows which ones aren't yet mapped, and lets you interactively select which to add. The script updates both `IllustrationKind` in `types.ts` and the loader map in `constants.ts`.
 
 ```sh
 pnpm add-illustration

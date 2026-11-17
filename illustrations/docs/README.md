@@ -25,6 +25,28 @@ function IllustrationReactExample(){
 }
 ;
 ```
+
+### Import a single illustration
+
+Each illustration is also published as its own module, `@axiscommunications/fluent-illustrations/<kebab-case-name>`.
+It exports the dark and light variants plus a default export that picks the variant matching the current Axis theme (`bundleIllustrationSmart`).
+Use it to load an illustration on demand, so it is only downloaded when rendered:
+
+```tsx
+import { Suspense, lazy } from "react";
+
+const AddUser = lazy(() => import("@axiscommunications/fluent-illustrations/add-user"));
+
+function LazyIllustrationExample() {
+  return (
+    <Suspense fallback={<div style={{ width: 230, height: 160 }} />}>
+      <AddUser width={230} />
+    </Suspense>
+  );
+}
+```
+
+The package is marked `"sideEffects": false`, so bundlers also drop unused illustrations when importing named exports from the package root.
 ## Assets
 
 The `assets` folder contains all the SVG icons.
@@ -48,11 +70,7 @@ This script will start a chain of operations to generate react components. In sh
 * Wrap svg in react component (and image, src=svg)
 * Package index file for export
 
-The components will be divided into chunk-files in the `illustrations` folder.
-
-**known issue** when doing a lot of updates, we recommend to empty this folder completely before running script. currently it only override files, not remove. 
-
-For example: if there are lots of illustrations divided into 3 chunk-files. Then you remove a lot of them, now it generates 2 chunk-files. the 3rd will linger, delete it! :D
+The components are written to one file per illustration in the `illustrations` folder, named after the illustration in kebab-case (for example `add-user.tsx`). The folder is emptied before the new files are copied, so removed illustrations don't linger.
 
 ### Step 3 - verify illustrations
 When done please start the dev example project and navigate to illustration page.
