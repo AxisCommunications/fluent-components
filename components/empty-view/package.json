@@ -17,7 +17,7 @@
       "import": "./lib/index.js"
     }
   },
-  "files": ["lib"],
+  "files": ["lib", "LICENSE"],
   "scripts": {
     "prebuild": "pnpm run -C ../../illustrations build",
     "build": "pnpm prebuild && pnpm build:types && pnpm build:esm",

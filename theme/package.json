@@ -20,7 +20,7 @@
   "bin": {
     "fluent-theme-tokens": "./lib/tokens.cjs"
   },
-  "files": ["lib", "lib-commonjs"],
+  "files": ["lib", "lib-commonjs", "LICENSE"],
   "scripts": {
     "build": "pnpm build:types && pnpm build:esm && pnpm build:cjs && pnpm build:cli",
     "build:cli": "esbuild --format=cjs --bundle --platform=node --packages=external --outfile=lib/tokens.cjs src/tokens/build.ts",

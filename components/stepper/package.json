@@ -17,7 +17,7 @@
       "import": "./lib/index.js"
     }
   },
-  "files": ["lib"],
+  "files": ["lib", "LICENSE"],
   "scripts": {
     "build": "pnpm build:types && pnpm build:esm",
     "build:esm": "esbuild --format=esm --bundle --sourcemap --packages=external --outdir=lib src/index.ts",
