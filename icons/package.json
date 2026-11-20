@@ -17,7 +17,7 @@
       "import": "./lib/index.js"
     }
   },
-  "files": ["lib"],
+  "files": ["lib", "LICENSE"],
   "scripts": {
     "all": "pnpm fonts:deploy && pnpm react:deploy",
     "build": "pnpm build:types && pnpm build:esm",
