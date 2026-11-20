@@ -1,5 +1,5 @@
 import { act, render } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Slider } from "../../slider";
 import { sliderClassNames } from "../../use-slider-styles";
